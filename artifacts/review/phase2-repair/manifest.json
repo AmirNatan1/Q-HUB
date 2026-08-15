@@ -1,0 +1,1742 @@
+{
+  "schemaVersion": 1,
+  "package": "Q-HUB Phase 2 / final visual integration repair evidence",
+  "generatedAt": "2026-08-15T21:10:24.921Z",
+  "source": {
+    "branch": "phase2/maradin-field-evidence",
+    "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+    "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+    "candidateBasis": "explicit-environment-value-equal-to-head",
+    "expectedBranch": "phase2/maradin-field-evidence",
+    "workingTreeCleanAtStart": true,
+    "statusPorcelainAtStart": "",
+    "candidateEnvironmentProvided": true
+  },
+  "server": {
+    "type": "isolated-astro-production-preview",
+    "baseUrl": "http://127.0.0.1:57446",
+    "buildSkipped": false,
+    "externalServerAllowed": false,
+    "astroDevToolbarAllowed": false
+  },
+  "contract": {
+    "screenshotCount": 16,
+    "baselineScreenshots": 1,
+    "desktopApertureSequenceScreenshots": 7,
+    "desktopSettledScreenshots": 3,
+    "mobileScreenshots": 3,
+    "fallbackScreenshots": 2,
+    "journeyVideos": 1,
+    "desktopViewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobileViewport": {
+      "width": 390,
+      "height": 844
+    },
+    "apertureDesktopRequestedSeconds": [
+      0.17,
+      1.84,
+      2.57,
+      2.81,
+      2.95,
+      3.15,
+      3.2
+    ],
+    "apertureMobileRequestedSeconds": [
+      3.05
+    ],
+    "apertureNoWebglRequestedSeconds": [
+      3.05
+    ],
+    "testRequestedSeconds": 0.7,
+    "baselineRequestedSeconds": 9.4,
+    "journeyApertureMinimumDwellMs": 3500,
+    "exactOutputFiles": [
+      "baseline-aperture-subtitle-9-40s.png",
+      "desktop-aperture-0-17s.png",
+      "desktop-aperture-1-84s.png",
+      "desktop-aperture-2-57s.png",
+      "desktop-aperture-2-81s.png",
+      "desktop-aperture-2-95s.png",
+      "desktop-aperture-3-15s.png",
+      "desktop-aperture-3-20s.png",
+      "desktop-need.png",
+      "desktop-test-0-70s.png",
+      "desktop-prove.png",
+      "mobile-aperture-3-05s.png",
+      "mobile-test-0-70s.png",
+      "mobile-prove.png",
+      "fallback-reduced-motion-aperture.png",
+      "fallback-no-webgl-aperture-3-05s.png",
+      "desktop-repair-journey.webm",
+      "manifest.json"
+    ]
+  },
+  "priorEvidencePolicy": "Every pre-existing artifacts/review file outside phase2-repair was read and hashed; capture and promotion abort on any difference.",
+  "priorEvidenceIntegrity": {
+    "status": "verified-unchanged-after-capture",
+    "fileCount": 50,
+    "beforeDigest": "81b51cb6e6902fb5a3d33314f1ddac206061a86096efae21b272df57d5602b69",
+    "afterCaptureDigest": "81b51cb6e6902fb5a3d33314f1ddac206061a86096efae21b272df57d5602b69",
+    "files": [
+      {
+        "file": "artifacts/review/desktop-aperture.jpg",
+        "sha256": "a5f62fa03588e555ba20e50e6505ecf3c4a5ae98d3e707d645ad26db2ca8e6b1",
+        "bytes": 162596
+      },
+      {
+        "file": "artifacts/review/desktop-find.jpg",
+        "sha256": "9395cb75c32f90c2829957b171d4aae0c9f73beb10acd8bbc31858073dc496f1",
+        "bytes": 121949
+      },
+      {
+        "file": "artifacts/review/desktop-need.jpg",
+        "sha256": "adb12e57c2abee2b393478e8c3386289f31f211b6bcf3d8891f687e65f0afa7c",
+        "bytes": 118607
+      },
+      {
+        "file": "artifacts/review/desktop-prove.jpg",
+        "sha256": "8c1444db37b2174d384c63f4ee1a7e8c2ebc01e2f60c1bb2d678567a4674fa0f",
+        "bytes": 74662
+      },
+      {
+        "file": "artifacts/review/desktop-signal.jpg",
+        "sha256": "9d7370aba276d0e410c391ba0a45056eff0963fbf4b1837d22648e163dcf0d39",
+        "bytes": 170721
+      },
+      {
+        "file": "artifacts/review/desktop-test.jpg",
+        "sha256": "1849bcf58287309010be67b192b9dcfbddd7fcd027ed41196643945a46c66bac",
+        "bytes": 141865
+      },
+      {
+        "file": "artifacts/review/mobile-aperture.jpg",
+        "sha256": "db22b1202164f6fb65f7e5c6c0e780078a67d97942b87e0ce43eda3b6fcdcf60",
+        "bytes": 56609
+      },
+      {
+        "file": "artifacts/review/mobile-find.jpg",
+        "sha256": "a22b36eff42a20e379783334184d7657d153e03e20a44f61d2aab33a10523ff7",
+        "bytes": 41452
+      },
+      {
+        "file": "artifacts/review/mobile-need.jpg",
+        "sha256": "3d0686bae7aabc89a09ae31cdaf1846d0bf2c4e3baa6f28f807f06f860ec966e",
+        "bytes": 46063
+      },
+      {
+        "file": "artifacts/review/mobile-prove.jpg",
+        "sha256": "478eb2ea5dc4dfe22db382f55566acd17e4dd6b5e383030a49a24163e1b3b894",
+        "bytes": 33336
+      },
+      {
+        "file": "artifacts/review/mobile-signal.jpg",
+        "sha256": "887cb9c5e510d84adde8345b4dcaef066297c8323807530a088706aa96ee10ef",
+        "bytes": 29463
+      },
+      {
+        "file": "artifacts/review/mobile-test.jpg",
+        "sha256": "ae52a498b7ca834835fd38bab793c119d1643fd7bd4da1ca6fa75443dbae272d",
+        "bytes": 49698
+      },
+      {
+        "file": "artifacts/review/no-webgl-aperture.jpg",
+        "sha256": "afe33d97a758b7a52ed35b2d09ff9e0682a828073442853aa14139a087ccaf09",
+        "bytes": 81807
+      },
+      {
+        "file": "artifacts/review/phase2.zip",
+        "sha256": "1e184d2891b939d72c9af434e0fc90151087603b36b4efb8d96d563140544122",
+        "bytes": 10975108
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-aperture-early-split.png",
+        "sha256": "44befcdb32d1f17d3fa87b28d35c9ee7c8460a27b55cb69c4a5e1cc6806ce30b",
+        "bytes": 795043
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-aperture-media-reveal.png",
+        "sha256": "32f1ec10ea0f0571c706674784384e3232334e88fdc6e7aa1839ac66c4212db4",
+        "bytes": 875183
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-find.png",
+        "sha256": "483122a37e52cc0ee9405d2f2d1aae7e9cbd8f9172798cc09f0998aa0f1cdf94",
+        "bytes": 838002
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-journey.webm",
+        "sha256": "2aca51553494f9aa0a56e472c70f21c6d75404679bb07c98706fb10abda4d4c7",
+        "bytes": 2154513
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-need.png",
+        "sha256": "6293e1c378dfec36ab3a365053b3f6005b93dda1e184c70fc2000412b0e4d754",
+        "bytes": 880324
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-prove.png",
+        "sha256": "acc41feaf4c869ef0bc2ccb35bb5ac33e29cd957790a844b66c85245ab76b315",
+        "bytes": 210366
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-signal.png",
+        "sha256": "6bf6f1a57c96bf05f11965463ce764b300ebe592775c6312710de6d9599e5c04",
+        "bytes": 732008
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-test.png",
+        "sha256": "95405d7fa5b3d858d954a08029c1cbac5baad0fa42218bd3a781a69261ac077e",
+        "bytes": 704763
+      },
+      {
+        "file": "artifacts/review/phase2/fallback-no-webgl-aperture.png",
+        "sha256": "23224eecbf235cf91dd8057bf0958b171b70ad2681e4b2bfeb5cbedd6092327b",
+        "bytes": 941895
+      },
+      {
+        "file": "artifacts/review/phase2/fallback-reduced-motion-aperture.png",
+        "sha256": "8edb722cfb6c16579b43d92eeb5d70b34f56e860a2449c962776a9697987d71e",
+        "bytes": 797862
+      },
+      {
+        "file": "artifacts/review/phase2/fallback-reduced-motion-test.png",
+        "sha256": "e65c9f394067f2671b1c6460b977abfecc82e13984b5ef93dff1ec1d3e133117",
+        "bytes": 776800
+      },
+      {
+        "file": "artifacts/review/phase2/manifest.json",
+        "sha256": "bc782bd6cf30fe56043715f0a6eb3fd38c23baae2f700454fd022a530073b7f6",
+        "bytes": 20940
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-aperture.png",
+        "sha256": "0d55c628c73f91624834a870024000e33b71f159300dc5d73f1e010b04f1f7a1",
+        "bytes": 267179
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-find.png",
+        "sha256": "7dc78d6288d844bc7a1ec9434a531cfe01d750ffa0308d66df38bc29b9c78b53",
+        "bytes": 251241
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-need.png",
+        "sha256": "8e78fcc151cddbba81ebbdc79b22be9fdb3a3e766fac05fb3b1de5a914d70347",
+        "bytes": 265822
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-prove.png",
+        "sha256": "8ae50c086814bb25c29def3e8c3998407c263e343f4889ef5444278dd90055a7",
+        "bytes": 83975
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-signal.png",
+        "sha256": "c558ea765881b0539beedeaef50b58c55fdbe8b77ac605c9b898a01442e686ad",
+        "bytes": 250839
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-test.png",
+        "sha256": "6f3ee7fa814ca24d3b00ed90c922326f1220247f1a17b915d8d5318aa90ae69a",
+        "bytes": 196996
+      },
+      {
+        "file": "artifacts/review/reduced-motion-aperture.jpg",
+        "sha256": "0ddfe1f605f6a49bce7bf920cf43605e277c4623fd154b731dfb61572d5d9774",
+        "bytes": 94460
+      },
+      {
+        "file": "artifacts/review/repair/analysis.json",
+        "sha256": "29de3ba01b58f31156b7c9c1f8b1c03236e5e9837881dcd0952312195e67bbba",
+        "bytes": 6082
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture-no-webgl.png",
+        "sha256": "fb5b12da747ed367d25855d0f842d82e797fbd047c32db1095ceda96160e62d8",
+        "bytes": 1159090
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture-reduced-motion.png",
+        "sha256": "a037248f42a0ac90969f53455238a9f61b19be8184fbf8c74fc9b0bf2b90060a",
+        "bytes": 1187714
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture.png",
+        "sha256": "127ff149e117b9bf85b6a48f6518756ed062f07764390503803a9abdd4d81926",
+        "bytes": 1162740
+      },
+      {
+        "file": "artifacts/review/repair/desktop-find.png",
+        "sha256": "1167f752cf651972b5725db0951f61e6559223beca3ad7cc4792ad1b50c87071",
+        "bytes": 852302
+      },
+      {
+        "file": "artifacts/review/repair/desktop-journey.webm",
+        "sha256": "6ae95078848af7e30e297232642def5032005a8adee4f4824c43ef99cdf1340a",
+        "bytes": 1594206
+      },
+      {
+        "file": "artifacts/review/repair/desktop-need.png",
+        "sha256": "8c987f306556740d0f3c6b9afcc6df89cc4c20c67c37d84ee4034de841198e38",
+        "bytes": 819169
+      },
+      {
+        "file": "artifacts/review/repair/desktop-prove.png",
+        "sha256": "e4b6da6ef8e505c900c686ec6122a4c107f380597074737fd2d9ecde3260793b",
+        "bytes": 102102
+      },
+      {
+        "file": "artifacts/review/repair/desktop-signal.png",
+        "sha256": "bdcdc8d64dc5afbb835aba7e3d4d44538708a6d2c74ea52e7c8c5a461ea39267",
+        "bytes": 741088
+      },
+      {
+        "file": "artifacts/review/repair/desktop-test.png",
+        "sha256": "7cc7db7ec524b1c1a1ea4bd34b493806b16ecaa31cbd6e18053c075350025e48",
+        "bytes": 1217086
+      },
+      {
+        "file": "artifacts/review/repair/manifest.json",
+        "sha256": "51db084192db08dd970db3979fd3eb99fabdf4a5acd109e697bfb73bc8c39e9f",
+        "bytes": 11688
+      },
+      {
+        "file": "artifacts/review/repair/mobile-aperture.png",
+        "sha256": "a6ada6c41edcb9218d94b405872aa4dea44c6a7ab8ec999018542ff18ca75d80",
+        "bytes": 323552
+      },
+      {
+        "file": "artifacts/review/repair/mobile-find.png",
+        "sha256": "cd1c9abaee59a55e2a7798fb83d8c955b637d3aa4c1c9342cff79e82c0acf7c3",
+        "bytes": 255643
+      },
+      {
+        "file": "artifacts/review/repair/mobile-need.png",
+        "sha256": "4c3fca72a0134082a69e3d8338aa26a080d275bb276a8ab79ecfc97e6c962fcc",
+        "bytes": 247217
+      },
+      {
+        "file": "artifacts/review/repair/mobile-prove.png",
+        "sha256": "5f54feea77e9d740440a2dac115ef83ad9874e4b0e91ac8f22c7c9f699edca7b",
+        "bytes": 40623
+      },
+      {
+        "file": "artifacts/review/repair/mobile-signal.png",
+        "sha256": "b344db263b2605ee6a461991da0e16b7ff5bcc649d02f6829ff6bafd1d1370ca",
+        "bytes": 246971
+      },
+      {
+        "file": "artifacts/review/repair/mobile-test.png",
+        "sha256": "e624ad4b668a43d53473868fe2439495dfcf3c1544a1935ad23f6b9ec0310ee5",
+        "bytes": 319159
+      }
+    ]
+  },
+  "visibleWorkflowAudit": {
+    "status": "passed",
+    "auditedSurface": "visible main text plus rejected named phrases in rendered HTML",
+    "rejectedVisiblePattern": "approved|approval|classification|publicApproved|publication",
+    "rejectedNamedPhrases": [
+      "APPROVED FIELD RECORD",
+      "APPROVED NEED",
+      "APPROVED PUBLIC RECORD"
+    ],
+    "requiredEditorialLabels": [
+      "Field record / SPARK",
+      "Field condition",
+      "Proof / field record",
+      "Field evidence / documentary stills"
+    ],
+    "missingEditorialLabels": [],
+    "routes": [
+      {
+        "route": "/",
+        "finalUrl": "http://127.0.0.1:57446/",
+        "visibleTextSha256": "330286f3ef8a0eba4b21e0362600eb0553edab1e2643c213b3bbb883652c0384",
+        "visibleTextBytes": 2557,
+        "visibleWorkflowMatches": [],
+        "rejectedPhraseMatches": []
+      },
+      {
+        "route": "/proof/",
+        "finalUrl": "http://127.0.0.1:57446/proof/",
+        "visibleTextSha256": "efab3a0742a8a64b21baf840b1870b54aa872e2cd4501228c5a7354ff0600fea",
+        "visibleTextBytes": 202,
+        "visibleWorkflowMatches": [],
+        "rejectedPhraseMatches": []
+      },
+      {
+        "route": "/industry/",
+        "finalUrl": "http://127.0.0.1:57446/industry/",
+        "visibleTextSha256": "8cc95c2d119799b784b54a2952eccfc8acc69b48dd514b3ec07616d4e0f6a251",
+        "visibleTextBytes": 221,
+        "visibleWorkflowMatches": [],
+        "rejectedPhraseMatches": []
+      },
+      {
+        "route": "/startups/",
+        "finalUrl": "http://127.0.0.1:57446/startups/",
+        "visibleTextSha256": "40338fb62b5c8e7c23698e58a7fc1b1c9ffab9fdf19df4a827cb0b9b785a41ef",
+        "visibleTextBytes": 222,
+        "visibleWorkflowMatches": [],
+        "rejectedPhraseMatches": []
+      },
+      {
+        "route": "/programs/",
+        "finalUrl": "http://127.0.0.1:57446/programs/",
+        "visibleTextSha256": "7574a641cff6f94d9f2bbbdfbe61084c40dd2e8c15d29316daba7f35009996b1",
+        "visibleTextBytes": 179,
+        "visibleWorkflowMatches": [],
+        "rejectedPhraseMatches": []
+      },
+      {
+        "route": "/programs/spark/",
+        "finalUrl": "http://127.0.0.1:57446/programs/spark/",
+        "visibleTextSha256": "0da402ee5b6ad11d862fce58ae08efa7302ddb0c803cef609f253906d5b2d9b3",
+        "visibleTextBytes": 182,
+        "visibleWorkflowMatches": [],
+        "rejectedPhraseMatches": []
+      },
+      {
+        "route": "/programs/champ/",
+        "finalUrl": "http://127.0.0.1:57446/programs/champ/",
+        "visibleTextSha256": "6d8198aa12099ae6f5a1de9651d0dc2baf9e92f197b0af4a4a3e1c8100bb58ea",
+        "visibleTextBytes": 182,
+        "visibleWorkflowMatches": [],
+        "rejectedPhraseMatches": []
+      },
+      {
+        "route": "/network/",
+        "finalUrl": "http://127.0.0.1:57446/network/",
+        "visibleTextSha256": "2fed5fa8b4220eaddfd5f19060035ad68a3df9dd30cc3eaf5d0def2099570c12",
+        "visibleTextBytes": 212,
+        "visibleWorkflowMatches": [],
+        "rejectedPhraseMatches": []
+      },
+      {
+        "route": "/about/",
+        "finalUrl": "http://127.0.0.1:57446/about/",
+        "visibleTextSha256": "020d8936da1522f2e3e983f197cca72473a60c2c92c8a1d477843d56f30b0a4e",
+        "visibleTextBytes": 202,
+        "visibleWorkflowMatches": [],
+        "rejectedPhraseMatches": []
+      },
+      {
+        "route": "/contact/",
+        "finalUrl": "http://127.0.0.1:57446/contact/",
+        "visibleTextSha256": "7c2974951d3804f3eac9aee3d42e794c1078fc00aed4b432eea05dfcd8f7cbab",
+        "visibleTextBytes": 225,
+        "visibleWorkflowMatches": [],
+        "rejectedPhraseMatches": []
+      }
+    ]
+  },
+  "captures": [
+    {
+      "id": "baseline-aperture-subtitle-9-40s",
+      "kind": "baseline-screenshot",
+      "file": "artifacts/review/phase2-repair/baseline-aperture-subtitle-9-40s.png",
+      "profile": "baseline",
+      "mode": "prior-phase2-journey",
+      "phase": "aperture",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "mediaFrame": {
+        "requestedSeconds": 9.4,
+        "actualSeconds": 9.4,
+        "durationSeconds": 16.84,
+        "videoWidth": 1440,
+        "videoHeight": 900,
+        "readyState": 4,
+        "paused": true
+      },
+      "sourceArtifact": {
+        "file": "artifacts/review/phase2/desktop-journey.webm",
+        "sha256": "2aca51553494f9aa0a56e472c70f21c6d75404679bb07c98706fb10abda4d4c7",
+        "expectedSha256": "2aca51553494f9aa0a56e472c70f21c6d75404679bb07c98706fb10abda4d4c7",
+        "bytes": 2154513
+      },
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:29.212Z",
+      "sha256": "191ee6b5667645f01d8810d017bb83f1b9c256df4a2b36be20bd60453e594ec8",
+      "bytes": 566790
+    },
+    {
+      "id": "desktop-aperture-0-17s",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/desktop-aperture-0-17s.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "phase": "aperture",
+      "variant": "subtitle-band-exclusion-sequence",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.78,
+      "actualProgress": 0.7802,
+      "scrollY": 2262,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "mediaFrame": {
+        "requestedSeconds": 0.17,
+        "actualSeconds": 0.17,
+        "durationSeconds": 3.2032,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "paused": true,
+        "loop": true,
+        "readyState": 4,
+        "currentSource": "http://127.0.0.1:57446/media/maradin/maradin-field-aperture-approved.mp4"
+      },
+      "staticPoster": null,
+      "cropGeometry": {
+        "naturalSource": "video",
+        "naturalWidth": 1920,
+        "naturalHeight": 1080,
+        "frame": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 928.469
+        },
+        "media": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 1077.024
+        },
+        "objectFit": "cover",
+        "objectPosition": "52% 0%",
+        "frameOverflow": "hidden",
+        "scale": 0.997245,
+        "renderedSource": {
+          "width": 1914.71,
+          "height": 1077.024,
+          "offsetX": -223.163,
+          "offsetY": 0
+        },
+        "sourceCrop": {
+          "xMin": 223.779,
+          "yMin": 0,
+          "xMax": 1713.434,
+          "yMax": 931.035
+        },
+        "elementTopOffsetPx": 0,
+        "elementBottomExclusionRatio": 0.137931,
+        "sourceBottomExclusionRatio": 0.137931
+      },
+      "testCoverage": null,
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:32.686Z",
+      "sha256": "353a400bee1459d4be7e8fe1f8d6c2d3a103d68b5e9cf1a4ab04d009090fcbf3",
+      "bytes": 737933
+    },
+    {
+      "id": "desktop-aperture-1-84s",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/desktop-aperture-1-84s.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "phase": "aperture",
+      "variant": "subtitle-band-exclusion-sequence",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.78,
+      "actualProgress": 0.7802,
+      "scrollY": 2262,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "mediaFrame": {
+        "requestedSeconds": 1.84,
+        "actualSeconds": 1.84,
+        "durationSeconds": 3.2032,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "paused": true,
+        "loop": true,
+        "readyState": 4,
+        "currentSource": "http://127.0.0.1:57446/media/maradin/maradin-field-aperture-approved.mp4"
+      },
+      "staticPoster": null,
+      "cropGeometry": {
+        "naturalSource": "video",
+        "naturalWidth": 1920,
+        "naturalHeight": 1080,
+        "frame": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 928.469
+        },
+        "media": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 1077.024
+        },
+        "objectFit": "cover",
+        "objectPosition": "52% 0%",
+        "frameOverflow": "hidden",
+        "scale": 0.997245,
+        "renderedSource": {
+          "width": 1914.71,
+          "height": 1077.024,
+          "offsetX": -223.163,
+          "offsetY": 0
+        },
+        "sourceCrop": {
+          "xMin": 223.779,
+          "yMin": 0,
+          "xMax": 1713.434,
+          "yMax": 931.035
+        },
+        "elementTopOffsetPx": 0,
+        "elementBottomExclusionRatio": 0.137931,
+        "sourceBottomExclusionRatio": 0.137931
+      },
+      "testCoverage": null,
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:35.413Z",
+      "sha256": "e54e9a54299e9461738f72a94c21ae94ea8e6b116f55fe0ab63eee3898b7729d",
+      "bytes": 815086
+    },
+    {
+      "id": "desktop-aperture-2-57s",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/desktop-aperture-2-57s.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "phase": "aperture",
+      "variant": "subtitle-band-exclusion-sequence",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.78,
+      "actualProgress": 0.7802,
+      "scrollY": 2262,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "mediaFrame": {
+        "requestedSeconds": 2.57,
+        "actualSeconds": 2.57,
+        "durationSeconds": 3.2032,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "paused": true,
+        "loop": true,
+        "readyState": 4,
+        "currentSource": "http://127.0.0.1:57446/media/maradin/maradin-field-aperture-approved.mp4"
+      },
+      "staticPoster": null,
+      "cropGeometry": {
+        "naturalSource": "video",
+        "naturalWidth": 1920,
+        "naturalHeight": 1080,
+        "frame": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 928.469
+        },
+        "media": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 1077.024
+        },
+        "objectFit": "cover",
+        "objectPosition": "52% 0%",
+        "frameOverflow": "hidden",
+        "scale": 0.997245,
+        "renderedSource": {
+          "width": 1914.71,
+          "height": 1077.024,
+          "offsetX": -223.163,
+          "offsetY": 0
+        },
+        "sourceCrop": {
+          "xMin": 223.779,
+          "yMin": 0,
+          "xMax": 1713.434,
+          "yMax": 931.035
+        },
+        "elementTopOffsetPx": 0,
+        "elementBottomExclusionRatio": 0.137931,
+        "sourceBottomExclusionRatio": 0.137931
+      },
+      "testCoverage": null,
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:38.153Z",
+      "sha256": "ca686496d53609cae6d637367ce17d914a60e327a2c95832efe36315550470bc",
+      "bytes": 997841
+    },
+    {
+      "id": "desktop-aperture-2-81s",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/desktop-aperture-2-81s.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "phase": "aperture",
+      "variant": "subtitle-band-exclusion-sequence",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.78,
+      "actualProgress": 0.7802,
+      "scrollY": 2262,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "mediaFrame": {
+        "requestedSeconds": 2.81,
+        "actualSeconds": 2.81,
+        "durationSeconds": 3.2032,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "paused": true,
+        "loop": true,
+        "readyState": 4,
+        "currentSource": "http://127.0.0.1:57446/media/maradin/maradin-field-aperture-approved.mp4"
+      },
+      "staticPoster": null,
+      "cropGeometry": {
+        "naturalSource": "video",
+        "naturalWidth": 1920,
+        "naturalHeight": 1080,
+        "frame": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 928.469
+        },
+        "media": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 1077.024
+        },
+        "objectFit": "cover",
+        "objectPosition": "52% 0%",
+        "frameOverflow": "hidden",
+        "scale": 0.997245,
+        "renderedSource": {
+          "width": 1914.71,
+          "height": 1077.024,
+          "offsetX": -223.163,
+          "offsetY": 0
+        },
+        "sourceCrop": {
+          "xMin": 223.779,
+          "yMin": 0,
+          "xMax": 1713.434,
+          "yMax": 931.035
+        },
+        "elementTopOffsetPx": 0,
+        "elementBottomExclusionRatio": 0.137931,
+        "sourceBottomExclusionRatio": 0.137931
+      },
+      "testCoverage": null,
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:40.638Z",
+      "sha256": "6a54e54ccc9b0cc39b9bc9a64e584efe36dbf21878327fb078ddf625d2b94b07",
+      "bytes": 989883
+    },
+    {
+      "id": "desktop-aperture-2-95s",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/desktop-aperture-2-95s.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "phase": "aperture",
+      "variant": "subtitle-band-exclusion-sequence",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.78,
+      "actualProgress": 0.7802,
+      "scrollY": 2262,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "mediaFrame": {
+        "requestedSeconds": 2.95,
+        "actualSeconds": 2.95,
+        "durationSeconds": 3.2032,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "paused": true,
+        "loop": true,
+        "readyState": 4,
+        "currentSource": "http://127.0.0.1:57446/media/maradin/maradin-field-aperture-approved.mp4"
+      },
+      "staticPoster": null,
+      "cropGeometry": {
+        "naturalSource": "video",
+        "naturalWidth": 1920,
+        "naturalHeight": 1080,
+        "frame": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 928.469
+        },
+        "media": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 1077.024
+        },
+        "objectFit": "cover",
+        "objectPosition": "52% 0%",
+        "frameOverflow": "hidden",
+        "scale": 0.997245,
+        "renderedSource": {
+          "width": 1914.71,
+          "height": 1077.024,
+          "offsetX": -223.163,
+          "offsetY": 0
+        },
+        "sourceCrop": {
+          "xMin": 223.779,
+          "yMin": 0,
+          "xMax": 1713.434,
+          "yMax": 931.035
+        },
+        "elementTopOffsetPx": 0,
+        "elementBottomExclusionRatio": 0.137931,
+        "sourceBottomExclusionRatio": 0.137931
+      },
+      "testCoverage": null,
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:43.242Z",
+      "sha256": "8d12c313a4c4da1c18648ca2e8e8686df02eb7960580e68efd5b8d339b336fe4",
+      "bytes": 932824
+    },
+    {
+      "id": "desktop-aperture-3-15s",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/desktop-aperture-3-15s.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "phase": "aperture",
+      "variant": "subtitle-band-exclusion-sequence",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.78,
+      "actualProgress": 0.7802,
+      "scrollY": 2262,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "mediaFrame": {
+        "requestedSeconds": 3.15,
+        "actualSeconds": 3.15,
+        "durationSeconds": 3.2032,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "paused": true,
+        "loop": true,
+        "readyState": 4,
+        "currentSource": "http://127.0.0.1:57446/media/maradin/maradin-field-aperture-approved.mp4"
+      },
+      "staticPoster": null,
+      "cropGeometry": {
+        "naturalSource": "video",
+        "naturalWidth": 1920,
+        "naturalHeight": 1080,
+        "frame": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 928.469
+        },
+        "media": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 1077.024
+        },
+        "objectFit": "cover",
+        "objectPosition": "52% 0%",
+        "frameOverflow": "hidden",
+        "scale": 0.997245,
+        "renderedSource": {
+          "width": 1914.71,
+          "height": 1077.024,
+          "offsetX": -223.163,
+          "offsetY": 0
+        },
+        "sourceCrop": {
+          "xMin": 223.779,
+          "yMin": 0,
+          "xMax": 1713.434,
+          "yMax": 931.035
+        },
+        "elementTopOffsetPx": 0,
+        "elementBottomExclusionRatio": 0.137931,
+        "sourceBottomExclusionRatio": 0.137931
+      },
+      "testCoverage": null,
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:45.823Z",
+      "sha256": "c23ea4bc6898743bf8e48dd95fa4d692b6a8a75528c1b8dd5c94e70b1e2518b2",
+      "bytes": 959049
+    },
+    {
+      "id": "desktop-aperture-3-20s",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/desktop-aperture-3-20s.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "phase": "aperture",
+      "variant": "subtitle-band-exclusion-sequence",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.78,
+      "actualProgress": 0.7802,
+      "scrollY": 2262,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "mediaFrame": {
+        "requestedSeconds": 3.2,
+        "actualSeconds": 3.2,
+        "durationSeconds": 3.2032,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "paused": true,
+        "loop": true,
+        "readyState": 4,
+        "currentSource": "http://127.0.0.1:57446/media/maradin/maradin-field-aperture-approved.mp4"
+      },
+      "staticPoster": null,
+      "cropGeometry": {
+        "naturalSource": "video",
+        "naturalWidth": 1920,
+        "naturalHeight": 1080,
+        "frame": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 928.469
+        },
+        "media": {
+          "x": -33.721,
+          "y": -15.089,
+          "width": 1485.551,
+          "height": 1077.024
+        },
+        "objectFit": "cover",
+        "objectPosition": "52% 0%",
+        "frameOverflow": "hidden",
+        "scale": 0.997245,
+        "renderedSource": {
+          "width": 1914.71,
+          "height": 1077.024,
+          "offsetX": -223.163,
+          "offsetY": 0
+        },
+        "sourceCrop": {
+          "xMin": 223.779,
+          "yMin": 0,
+          "xMax": 1713.434,
+          "yMax": 931.035
+        },
+        "elementTopOffsetPx": 0,
+        "elementBottomExclusionRatio": 0.137931,
+        "sourceBottomExclusionRatio": 0.137931
+      },
+      "testCoverage": null,
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:48.831Z",
+      "sha256": "861d908af124f7017cccd24d3d5b1a4a37b7bc49eb23399576e1f67704e5a06d",
+      "bytes": 925172
+    },
+    {
+      "id": "desktop-need",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/desktop-need.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "phase": "need",
+      "variant": "settled",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.68,
+      "actualProgress": 0.6803,
+      "scrollY": 3577,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "mediaFrame": null,
+      "staticPoster": null,
+      "cropGeometry": null,
+      "testCoverage": null,
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:49.672Z",
+      "sha256": "3aa3e7877817ef7453b8a74d23757dc3fefa5f2e5dc87c425d553d309675531b",
+      "bytes": 846715
+    },
+    {
+      "id": "desktop-test-0-70s",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/desktop-test-0-70s.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "phase": "test",
+      "variant": "physical-field-contact",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.56,
+      "actualProgress": 0.5598,
+      "scrollY": 6575,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "mediaFrame": {
+        "requestedSeconds": 0.7,
+        "actualSeconds": 0.7,
+        "durationSeconds": 5.005,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "paused": true,
+        "loop": true,
+        "readyState": 4,
+        "currentSource": "http://127.0.0.1:57446/media/maradin/maradin-test-contact-approved.mp4"
+      },
+      "staticPoster": null,
+      "cropGeometry": null,
+      "testCoverage": {
+        "videoRect": {
+          "x": 631.109,
+          "y": 181.594,
+          "width": 630.891,
+          "height": 574
+        },
+        "plateRect": {
+          "x": 651.109,
+          "y": 535.016,
+          "width": 512,
+          "height": 200.578
+        },
+        "objectPosition": "52% 50%",
+        "plateBackground": "rgba(11, 10, 13, 0.88)",
+        "opaqueCoverage": 0.283588,
+        "unobstructedRatio": 0.716412,
+        "uninterruptedOpenRegionHeightRatio": 0.615718
+      },
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:50.926Z",
+      "sha256": "673d47da251c6613c9010e51e4752441d7aa011ee44788e2f9c016e6facc169b",
+      "bytes": 859168
+    },
+    {
+      "id": "desktop-prove",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/desktop-prove.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "phase": "prove",
+      "variant": "settled-evidence-record",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.16,
+      "actualProgress": 0.1602,
+      "scrollY": 7582,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "mediaFrame": null,
+      "staticPoster": null,
+      "cropGeometry": null,
+      "testCoverage": null,
+      "provePositions": {
+        "figure": {
+          "x": 112,
+          "y": 725.328,
+          "width": 1120,
+          "height": 244.797
+        },
+        "caption": {
+          "x": 112,
+          "y": 935.297,
+          "width": 1120,
+          "height": 33.828
+        },
+        "images": [
+          {
+            "subject": "projected-stop-symbol",
+            "alt": "A red stop-hand symbol projected onto a road surface during field testing.",
+            "decoded": true,
+            "rect": {
+              "x": 112,
+              "y": 725.328,
+              "width": 672,
+              "height": 209.969
+            },
+            "naturalWidth": 1920,
+            "naturalHeight": 1080,
+            "objectFit": "cover",
+            "objectPosition": "50% 100%",
+            "figureWidthRatio": 0.6,
+            "subjectColorRatio": 0.111097,
+            "sourceCrop": {
+              "xMin": 0,
+              "yMin": 480.089,
+              "xMax": 1920,
+              "yMax": 1080
+            },
+            "subjectVisibility": {
+              "sourceRegion": {
+                "xMin": 550,
+                "yMin": 600,
+                "xMax": 1320,
+                "yMax": 1070
+              },
+              "visibleSourceRatio": 1,
+              "projectedRegion": {
+                "xMin": 304.5,
+                "yMin": 767.297,
+                "xMax": 574,
+                "yMax": 931.797
+              },
+              "projectedWidth": 269.5,
+              "projectedHeight": 164.5,
+              "captionOverlapRatio": 0
+            }
+          },
+          {
+            "subject": "field-vehicle",
+            "alt": "A Hyundai CRADLE vehicle parked in an open parking structure.",
+            "decoded": true,
+            "rect": {
+              "x": 784,
+              "y": 725.328,
+              "width": 448,
+              "height": 209.969
+            },
+            "naturalWidth": 2160,
+            "naturalHeight": 3840,
+            "objectFit": "cover",
+            "objectPosition": "55% 58%",
+            "figureWidthRatio": 0.4,
+            "subjectColorRatio": 0.01842,
+            "sourceCrop": {
+              "xMin": 0,
+              "yMin": 1640.037,
+              "xMax": 2160,
+              "yMax": 2652.387
+            },
+            "subjectVisibility": {
+              "sourceRegion": {
+                "xMin": 780,
+                "yMin": 1660,
+                "xMax": 1600,
+                "yMax": 2040
+              },
+              "visibleSourceRatio": 1,
+              "projectedRegion": {
+                "xMin": 945.778,
+                "yMin": 729.469,
+                "xMax": 1115.852,
+                "yMax": 808.283
+              },
+              "projectedWidth": 170.074,
+              "projectedHeight": 78.815,
+              "captionOverlapRatio": 0
+            }
+          }
+        ]
+      },
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:51.393Z",
+      "sha256": "564359ec50ebcb762b6b9310911421f4edc24f261bf5bdd498bc726c640783ad",
+      "bytes": 381457
+    },
+    {
+      "id": "mobile-aperture-3-05s",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/mobile-aperture-3-05s.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "phase": "aperture",
+      "variant": "subtitle-band-exclusion",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pngDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "targetProgress": 0.68,
+      "actualProgress": 0.6803,
+      "scrollY": 1837,
+      "renderMode": "dom-fallback-ready",
+      "mediaMode": "native-video",
+      "mediaFrame": {
+        "requestedSeconds": 3.05,
+        "actualSeconds": 3.05,
+        "durationSeconds": 3.2032,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "paused": true,
+        "loop": true,
+        "readyState": 4,
+        "currentSource": "http://127.0.0.1:57446/media/maradin/maradin-field-aperture-approved.mp4"
+      },
+      "staticPoster": null,
+      "cropGeometry": {
+        "naturalSource": "video",
+        "naturalWidth": 1920,
+        "naturalHeight": 1080,
+        "frame": {
+          "x": -7.693,
+          "y": -13.204,
+          "width": 403.263,
+          "height": 872.703
+        },
+        "media": {
+          "x": -7.693,
+          "y": -13.204,
+          "width": 403.263,
+          "height": 1012.327
+        },
+        "objectFit": "cover",
+        "objectPosition": "38% 0%",
+        "frameOverflow": "hidden",
+        "scale": 0.93734,
+        "renderedSource": {
+          "width": 1799.692,
+          "height": 1012.327,
+          "offsetX": -530.643,
+          "offsetY": 0
+        },
+        "sourceCrop": {
+          "xMin": 566.116,
+          "yMin": 0,
+          "xMax": 996.337,
+          "yMax": 931.043
+        },
+        "elementTopOffsetPx": 0,
+        "elementBottomExclusionRatio": 0.137923,
+        "sourceBottomExclusionRatio": 0.137923
+      },
+      "testCoverage": null,
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:52.910Z",
+      "sha256": "d7de7d969e1cfef158fd9d2a1a41ce2c8ba1dd849261dd12f42367d294169dd4",
+      "bytes": 204247
+    },
+    {
+      "id": "mobile-test-0-70s",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/mobile-test-0-70s.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "phase": "test",
+      "variant": "physical-field-contact",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pngDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "targetProgress": 0.56,
+      "actualProgress": 0.5602,
+      "scrollY": 5937,
+      "renderMode": "dom-fallback-ready",
+      "mediaMode": "native-video",
+      "mediaFrame": {
+        "requestedSeconds": 0.7,
+        "actualSeconds": 0.7,
+        "durationSeconds": 5.005,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "paused": true,
+        "loop": true,
+        "readyState": 4,
+        "currentSource": "http://127.0.0.1:57446/media/maradin/maradin-test-contact-approved.mp4"
+      },
+      "staticPoster": null,
+      "cropGeometry": null,
+      "testCoverage": {
+        "videoRect": {
+          "x": 22,
+          "y": 377.641,
+          "width": 346,
+          "height": 388
+        },
+        "plateRect": {
+          "x": 34,
+          "y": 567.422,
+          "width": 322,
+          "height": 186.219
+        },
+        "objectPosition": "55% 50%",
+        "plateBackground": "rgba(11, 10, 13, 0.88)",
+        "opaqueCoverage": 0.446654,
+        "unobstructedRatio": 0.553346,
+        "uninterruptedOpenRegionHeightRatio": 0.489127
+      },
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:53.366Z",
+      "sha256": "b0c3a04fbcb46116ca94329e4ac17a11efa32e356b80a295a1e75ae64885f7a9",
+      "bytes": 254032
+    },
+    {
+      "id": "mobile-prove",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/mobile-prove.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "phase": "prove",
+      "variant": "settled-evidence-record",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pngDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "targetProgress": 0.16,
+      "actualProgress": 0.1599,
+      "scrollY": 6977,
+      "renderMode": "dom-fallback-ready",
+      "mediaMode": "native-video",
+      "mediaFrame": null,
+      "staticPoster": null,
+      "cropGeometry": null,
+      "testCoverage": null,
+      "provePositions": {
+        "figure": {
+          "x": 56,
+          "y": 632.594,
+          "width": 278,
+          "height": 148.188
+        },
+        "caption": {
+          "x": 56,
+          "y": 632.594,
+          "width": 278,
+          "height": 24
+        },
+        "images": [
+          {
+            "subject": "projected-stop-symbol",
+            "alt": "A red stop-hand symbol projected onto a road surface during field testing.",
+            "decoded": true,
+            "rect": {
+              "x": 56,
+              "y": 656.594,
+              "width": 278,
+              "height": 61.594
+            },
+            "naturalWidth": 1920,
+            "naturalHeight": 1080,
+            "objectFit": "cover",
+            "objectPosition": "48% 90%",
+            "figureWidthRatio": 1,
+            "subjectColorRatio": 0.156301,
+            "sourceCrop": {
+              "xMin": 0,
+              "yMin": 589.144,
+              "xMax": 1920,
+              "yMax": 1014.54
+            },
+            "subjectVisibility": {
+              "sourceRegion": {
+                "xMin": 550,
+                "yMin": 600,
+                "xMax": 1320,
+                "yMax": 1070
+              },
+              "visibleSourceRatio": 0.881999,
+              "projectedRegion": {
+                "xMin": 135.635,
+                "yMin": 658.166,
+                "xMax": 247.125,
+                "yMax": 718.188
+              },
+              "projectedWidth": 111.49,
+              "projectedHeight": 60.022,
+              "captionOverlapRatio": 0
+            }
+          },
+          {
+            "subject": "field-vehicle",
+            "alt": "A Hyundai CRADLE vehicle parked in an open parking structure.",
+            "decoded": true,
+            "rect": {
+              "x": 56,
+              "y": 718.188,
+              "width": 278,
+              "height": 61.594
+            },
+            "naturalWidth": 2160,
+            "naturalHeight": 3840,
+            "objectFit": "cover",
+            "objectPosition": "50% 48%",
+            "figureWidthRatio": 1,
+            "subjectColorRatio": 0.03864,
+            "sourceCrop": {
+              "xMin": 0,
+              "yMin": 1613.486,
+              "xMax": 2160,
+              "yMax": 2092.056
+            },
+            "subjectVisibility": {
+              "sourceRegion": {
+                "xMin": 780,
+                "yMin": 1660,
+                "xMax": 1600,
+                "yMax": 2040
+              },
+              "visibleSourceRatio": 1,
+              "projectedRegion": {
+                "xMin": 156.389,
+                "yMin": 724.174,
+                "xMax": 261.926,
+                "yMax": 773.081
+              },
+              "projectedWidth": 105.537,
+              "projectedHeight": 48.907,
+              "captionOverlapRatio": 0
+            }
+          }
+        ]
+      },
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:53.625Z",
+      "sha256": "30b2e79c0f4ac78c1442ebb1be719bfb8057bc4d1c5c95fde427560b7ed3a769",
+      "bytes": 105513
+    },
+    {
+      "id": "fallback-reduced-motion-aperture",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/fallback-reduced-motion-aperture.png",
+      "profile": "fallback",
+      "mode": "reduced-motion",
+      "phase": "aperture",
+      "variant": "resolved-poster",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.68,
+      "actualProgress": 0.6804,
+      "scrollY": 1082,
+      "renderMode": "reduced-motion",
+      "mediaMode": "static-posters",
+      "mediaFrame": null,
+      "staticPoster": {
+        "loop": false,
+        "mediaLoaded": false,
+        "paused": true,
+        "poster": "http://127.0.0.1:57446/media/maradin/maradin-field-aperture-poster-approved.jpg",
+        "posterDimensions": {
+          "width": 1920,
+          "height": 1080
+        },
+        "sourceAttribute": null
+      },
+      "cropGeometry": {
+        "naturalSource": "poster",
+        "naturalWidth": 1920,
+        "naturalHeight": 1080,
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900
+        },
+        "media": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1044
+        },
+        "objectFit": "cover",
+        "objectPosition": "52% 0%",
+        "frameOverflow": "hidden",
+        "scale": 0.966667,
+        "renderedSource": {
+          "width": 1856,
+          "height": 1044,
+          "offsetX": -216.32,
+          "offsetY": 0
+        },
+        "sourceCrop": {
+          "xMin": 223.779,
+          "yMin": 0,
+          "xMax": 1713.434,
+          "yMax": 931.034
+        },
+        "elementTopOffsetPx": 0,
+        "elementBottomExclusionRatio": 0.137931,
+        "sourceBottomExclusionRatio": 0.137931
+      },
+      "testCoverage": null,
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:55.307Z",
+      "sha256": "7303f636d80917fe47fda04e5434e0c674e16ec295582e1b50ceb1afd138150c",
+      "bytes": 783907
+    },
+    {
+      "id": "fallback-no-webgl-aperture-3-05s",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2-repair/fallback-no-webgl-aperture-3-05s.png",
+      "profile": "fallback",
+      "mode": "no-webgl",
+      "phase": "aperture",
+      "variant": "subtitle-band-exclusion",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "targetProgress": 0.72,
+      "actualProgress": 0.7201,
+      "scrollY": 2162,
+      "renderMode": "no-webgl-fallback",
+      "mediaMode": "native-video",
+      "mediaFrame": {
+        "requestedSeconds": 3.05,
+        "actualSeconds": 3.05,
+        "durationSeconds": 3.2032,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "paused": true,
+        "loop": true,
+        "readyState": 4,
+        "currentSource": "http://127.0.0.1:57446/media/maradin/maradin-field-aperture-approved.mp4"
+      },
+      "staticPoster": null,
+      "cropGeometry": {
+        "naturalSource": "video",
+        "naturalWidth": 1920,
+        "naturalHeight": 1080,
+        "frame": {
+          "x": -32.373,
+          "y": -13.687,
+          "width": 1487.607,
+          "height": 929.755
+        },
+        "media": {
+          "x": -32.373,
+          "y": -13.687,
+          "width": 1487.607,
+          "height": 1078.515
+        },
+        "objectFit": "cover",
+        "objectPosition": "52% 0%",
+        "frameOverflow": "hidden",
+        "scale": 0.998625,
+        "renderedSource": {
+          "width": 1917.36,
+          "height": 1078.515,
+          "offsetX": -223.472,
+          "offsetY": 0
+        },
+        "sourceCrop": {
+          "xMin": 223.779,
+          "yMin": 0,
+          "xMax": 1713.435,
+          "yMax": 931.035
+        },
+        "elementTopOffsetPx": 0,
+        "elementBottomExclusionRatio": 0.137931,
+        "sourceBottomExclusionRatio": 0.137931
+      },
+      "testCoverage": null,
+      "provePositions": null,
+      "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+      "capturedAt": "2026-08-15T21:09:57.561Z",
+      "sha256": "179a29e705de63cf2555aac7716ce4263aed3e126e13932abdc9ace278958c71",
+      "bytes": 994166
+    }
+  ],
+  "journey": {
+    "id": "desktop-complete-repair-journey",
+    "kind": "video",
+    "file": "artifacts/review/phase2-repair/desktop-repair-journey.webm",
+    "profile": "desktop",
+    "mode": "normal",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "phase": "complete-journey",
+    "phaseSequence": [
+      {
+        "phase": "signal",
+        "targetProgress": 0.34,
+        "actualProgress": 0.3398,
+        "reachedAtMs": 2378.8,
+        "requestedSettleMs": 650
+      },
+      {
+        "phase": "aperture",
+        "targetProgress": 0.78,
+        "actualProgress": 0.7802,
+        "reachedAtMs": 9750.5,
+        "requestedSettleMs": 4200
+      },
+      {
+        "phase": "need",
+        "targetProgress": 0.68,
+        "actualProgress": 0.6803,
+        "reachedAtMs": 11613.3,
+        "requestedSettleMs": 700
+      },
+      {
+        "phase": "find",
+        "targetProgress": 0.74,
+        "actualProgress": 0.7401,
+        "reachedAtMs": 13510.3,
+        "requestedSettleMs": 700
+      },
+      {
+        "phase": "test",
+        "targetProgress": 0.56,
+        "actualProgress": 0.5598,
+        "reachedAtMs": 15950.9,
+        "requestedSettleMs": 900
+      },
+      {
+        "phase": "prove",
+        "targetProgress": 0.16,
+        "actualProgress": 0.1602,
+        "reachedAtMs": 17919.4,
+        "requestedSettleMs": 900
+      }
+    ],
+    "apertureDwell": {
+      "requiredMinimumMs": 3500,
+      "requestedMs": 4200,
+      "actualMs": 4207.2,
+      "startMediaSeconds": 2.751093,
+      "endMediaSeconds": 0.260862,
+      "mediaDurationSeconds": 3.2032,
+      "loop": true,
+      "playingAtStart": true,
+      "playingAtEnd": true,
+      "completeLoopExposureGuaranteedByDwell": true
+    },
+    "decodeVerification": {
+      "status": "decoded-frame-and-dimensions-verified",
+      "durationSeconds": 19.28,
+      "videoWidth": 1440,
+      "videoHeight": 900,
+      "readyState": 4,
+      "decodedFrame": true
+    },
+    "sourceHead": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+    "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+    "capturedAt": "2026-08-15T21:10:24.814Z",
+    "sha256": "885fb328a4ac59d6f70e8d1771ebe092ed218b7538bdc0e8f583c67988b92c89",
+    "bytes": 2381607
+  },
+  "verification": {
+    "exactInventoryStaged": true,
+    "everyScreenshotPngDecodedAndDimensionChecked": true,
+    "everyArtifactHashAndByteCountChecked": true,
+    "journeyWebmDecodedFrameChecked": true,
+    "journeyDimensionsChecked": true,
+    "priorEvidenceUnchangedBeforePromotion": true
+  }
+}
