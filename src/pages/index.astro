@@ -101,7 +101,7 @@ if (
             <span>{aperture.title[1]}</span>
           </h2>
           <p class="phase-copy phase-copy--plate">
-            <span>Approved field record</span>
+            <span>Field record / SPARK</span>
             {aperture.supporting}
           </p>
         </div>
@@ -128,7 +128,7 @@ if (
             <span>{need.title[1]}</span>
           </h2>
           <p class="phase-copy phase-copy--vertical">
-            <span>Approved need</span>
+            <span>Field condition</span>
             {need.supporting}
           </p>
         </div>
@@ -211,9 +211,9 @@ if (
           >
             <source data-src={testFilm.src} type="video/mp4" />
           </video>
-          <div class="test-boundary__content">
-            <p class="test-boundary__statement">{test.supporting}</p>
-            <dl>
+          <div class="test-boundary__content" data-test-metadata>
+            <p class="test-boundary__identifier">Field test / Maradin × Hyundai CRADLE</p>
+            <dl data-test-facts>
               <div><dt>Mount</dt><dd>Vehicle-mounted field test</dd></div>
               <div><dt>Positions</dt><dd>Multiple projector positions</dd></div>
               <div><dt>Conditions</dt><dd>Road surfaces, light and weather</dd></div>
@@ -243,7 +243,7 @@ if (
         <article class="proof-record" data-proof-record={maradinProofRecord.slug}>
           <header>
             <div>
-              <p>Proof / approved public record</p>
+              <p>Proof / field record</p>
               <h3>{maradinProofRecord.title}</h3>
             </div>
             <span>{startup.name} / {program.name}</span>
@@ -252,6 +252,7 @@ if (
           <figure class="proof-record__media">
             <img
               class="proof-record__image proof-record__image--primary"
+              data-evidence-subject="projected-stop-symbol"
               src={proveFrame.src}
               alt={proveFrame.alt}
               width={proveFrame.width}
@@ -261,6 +262,7 @@ if (
             />
             <img
               class="proof-record__image proof-record__image--supporting"
+              data-evidence-subject="field-vehicle"
               src={supportingStill.src}
               alt={supportingStill.alt}
               width={supportingStill.width}
@@ -268,7 +270,7 @@ if (
               loading="lazy"
               decoding="async"
             />
-            <figcaption>Field evidence / approved documentary stills</figcaption>
+            <figcaption>Field evidence / documentary stills</figcaption>
           </figure>
 
           <dl>
@@ -286,8 +288,8 @@ if (
         </article>
 
         <footer class="experience-end">
-          <p>Phase 2 / Real field evidence integrated</p>
-          <p>Human review decides the checkpoint.</p>
+          <p>Find / Test / Prove</p>
+          <p>Field evidence makes the next decision possible.</p>
         </footer>
       </div>
     </section>

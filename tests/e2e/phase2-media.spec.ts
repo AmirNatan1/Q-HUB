@@ -276,6 +276,43 @@ test.describe('Phase 2 approved field-media contract', () => {
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
   });
 
+  test('public presentation uses editorial labels instead of publication workflow language', async ({ page }) => {
+    const runtimeFailures = captureRuntimeFailures(page);
+    const routes = [
+      '/',
+      '/proof/',
+      '/industry/',
+      '/startups/',
+      '/programs/',
+      '/programs/spark/',
+      '/programs/champ/',
+      '/network/',
+      '/about/',
+      '/contact/',
+    ];
+    const rejectedVisibleLanguage = /\b(?:approved|approval|classification|publicApproved|publication)\b/i;
+    const rejectedNamedPhrases = /approved\s+field\s+record|approved\s+need|approved\s+public\s+record/i;
+
+    for (const route of routes) {
+      await page.goto(route);
+      const visibleText = await page.locator('main').innerText();
+      expect(visibleText, `${route} must not expose publication workflow terminology.`).not.toMatch(
+        rejectedVisibleLanguage,
+      );
+      expect(await page.content(), `${route} retains a rejected workflow phrase.`).not.toMatch(
+        rejectedNamedPhrases,
+      );
+    }
+
+    await page.goto('/');
+    const homepage = page.locator('main');
+    await expect(homepage).toContainText('Field record / SPARK');
+    await expect(homepage).toContainText('Field condition');
+    await expect(homepage).toContainText('Proof / field record');
+    await expect(homepage).toContainText('Field evidence / documentary stills');
+    expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+  });
+
   test('APERTURE owns the approved lazy native video and does not request MP4 on first paint', async ({ page }) => {
     const runtimeFailures = captureRuntimeFailures(page);
     const mp4Requests: string[] = [];
@@ -337,6 +374,61 @@ test.describe('Phase 2 approved field-media contract', () => {
       apertureVideoPath,
       aperturePosterPath,
     );
+
+    expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+  });
+
+  test('TEST leaves at least half of the documentary frame unobstructed on desktop and mobile', async ({ page }) => {
+    const runtimeFailures = captureRuntimeFailures(page);
+
+    for (const viewport of [
+      { label: 'desktop', width: 1440, height: 900 },
+      { label: 'mobile', width: 390, height: 844 },
+    ]) {
+      await page.setViewportSize({ width: viewport.width, height: viewport.height });
+      await page.goto('/');
+      await activatePhase(page, 'test');
+
+      const boundary = page.locator('.test-boundary');
+      const metadata = boundary.locator('[data-test-metadata]');
+      const facts = metadata.locator('[data-test-facts] > div');
+      await expect(metadata).toContainText('Field test / Maradin × Hyundai CRADLE');
+      await expect(facts).toHaveCount(4);
+      await expect(facts.last()).toContainText('More than 60 real-world scenarios');
+
+      const geometry = await boundary.evaluate((element) => {
+        const frame = element.querySelector<HTMLVideoElement>('.test-boundary__media');
+        const plate = element.querySelector<HTMLElement>('[data-test-metadata]');
+        if (!frame || !plate) throw new Error('Missing TEST media or metadata surface.');
+        const frameRect = frame.getBoundingClientRect();
+        const plateRect = plate.getBoundingClientRect();
+        const intersectionWidth = Math.max(
+          0,
+          Math.min(frameRect.right, plateRect.right) - Math.max(frameRect.left, plateRect.left),
+        );
+        const intersectionHeight = Math.max(
+          0,
+          Math.min(frameRect.bottom, plateRect.bottom) - Math.max(frameRect.top, plateRect.top),
+        );
+        return {
+          opaqueCoverage:
+            (intersectionWidth * intersectionHeight) / (frameRect.width * frameRect.height),
+          openRegionHeight: (plateRect.top - frameRect.top) / frameRect.height,
+          plateHeight: plateRect.height,
+          videoHeight: frameRect.height,
+        };
+      });
+
+      expect(
+        geometry.opaqueCoverage,
+        `${viewport.label} TEST opaque metadata may cover no more than half of the film.`,
+      ).toBeLessThanOrEqual(0.5);
+      expect(
+        geometry.openRegionHeight,
+        `${viewport.label} TEST needs a materially meaningful uninterrupted film region.`,
+      ).toBeGreaterThanOrEqual(0.45);
+      expect(geometry.plateHeight).toBeLessThan(geometry.videoHeight);
+    }
 
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
   });
@@ -440,6 +532,65 @@ test.describe('Phase 2 approved field-media contract', () => {
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
   });
 
+  test('APERTURE excludes the baked subtitle band across required viewports and no-WebGL', async ({ page }) => {
+    const runtimeFailures = captureRuntimeFailures(page);
+    const profiles = [
+      { label: 'desktop-wide', width: 1920, height: 1080, query: '' },
+      { label: 'desktop', width: 1440, height: 900, query: '' },
+      { label: 'tablet', width: 768, height: 1024, query: '' },
+      { label: 'mobile-wide', width: 430, height: 932, query: '' },
+      { label: 'mobile', width: 390, height: 844, query: '' },
+      { label: 'desktop-no-webgl', width: 1440, height: 900, query: '?webgl=off' },
+      { label: 'mobile-no-webgl', width: 430, height: 932, query: '?webgl=off' },
+    ];
+
+    for (const profile of profiles) {
+      await page.setViewportSize({ width: profile.width, height: profile.height });
+      await page.goto(`/${profile.query}`);
+      await activatePhase(page, 'aperture');
+      const video = page.locator(
+        '.field-media__documentary video[data-documentary-video][data-media-phase="aperture"]',
+      );
+      await expect(video.locator('source')).toHaveAttribute('src', apertureVideoPath);
+      await page.waitForFunction(() => {
+        const candidate = document.querySelector<HTMLVideoElement>(
+          'video[data-documentary-video][data-media-phase="aperture"]',
+        );
+        return Boolean(candidate && candidate.readyState >= HTMLMediaElement.HAVE_METADATA);
+      });
+
+      const crop = await video.evaluate((element) => {
+        if (!(element instanceof HTMLVideoElement)) throw new Error('Expected APERTURE video.');
+        const frameElement = element.parentElement;
+        if (!frameElement) throw new Error('Missing APERTURE documentary frame.');
+        const frame = frameElement.getBoundingClientRect();
+        const media = element.getBoundingClientRect();
+        const style = getComputedStyle(element);
+        return {
+          bottomExclusion: (media.bottom - frame.bottom) / media.height,
+          objectPosition: style.objectPosition,
+          overflow: getComputedStyle(frameElement).overflow,
+          topOffset: Math.abs(media.top - frame.top),
+          visibleSourceYMax: element.videoHeight * (frame.height / media.height),
+        };
+      });
+
+      expect(crop.overflow, `${profile.label} needs a local clipping boundary.`).toBe('hidden');
+      expect(
+        crop.bottomExclusion,
+        `${profile.label} must exclude at least 12% of the contaminated source bottom.`,
+      ).toBeGreaterThanOrEqual(0.12);
+      expect(crop.topOffset, `${profile.label} must anchor the approved film to the top.`).toBeLessThanOrEqual(1);
+      expect(
+        crop.visibleSourceYMax,
+        `${profile.label} must stop before the measured subtitle onset at source y=977.`,
+      ).toBeLessThanOrEqual(940);
+      expect(crop.objectPosition).toBe(profile.width <= 832 ? '38% 0%' : '52% 0%');
+    }
+
+    expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+  });
+
   test('uses the supplied official Quantum logo masters and icon favicon', async ({ page }) => {
     const runtimeFailures = captureRuntimeFailures(page);
     await page.goto('/');
@@ -486,14 +637,42 @@ test.describe('Phase 2 approved field-media contract', () => {
       apertureVideo.evaluate((element) => getComputedStyle(element).objectPosition),
       testVideo.evaluate((element) => getComputedStyle(element).objectPosition),
     ]);
+    const desktopCrop = await apertureVideo.evaluate((element) => {
+      const frame = element.parentElement?.getBoundingClientRect();
+      const media = element.getBoundingClientRect();
+      if (!frame) throw new Error('Missing APERTURE documentary frame.');
+      return {
+        bottomExclusion: (media.bottom - frame.bottom) / media.height,
+        topOffset: Math.abs(media.top - frame.top),
+      };
+    });
 
     await page.setViewportSize({ width: 390, height: 844 });
     const mobilePositions = await Promise.all([
       apertureVideo.evaluate((element) => getComputedStyle(element).objectPosition),
       testVideo.evaluate((element) => getComputedStyle(element).objectPosition),
     ]);
+    const mobileCrop = await apertureVideo.evaluate((element) => {
+      const frame = element.parentElement?.getBoundingClientRect();
+      const media = element.getBoundingClientRect();
+      if (!frame) throw new Error('Missing APERTURE documentary frame.');
+      return {
+        bottomExclusion: (media.bottom - frame.bottom) / media.height,
+        topOffset: Math.abs(media.top - frame.top),
+      };
+    });
     expect(mobilePositions[0], 'APERTURE needs an explicit mobile focal position.').not.toBe(desktopPositions[0]);
     expect(mobilePositions[1], 'TEST needs an explicit mobile focal position.').not.toBe(desktopPositions[1]);
+    for (const [profile, crop] of [
+      ['desktop', desktopCrop],
+      ['mobile', mobileCrop],
+    ] as const) {
+      expect(
+        crop.bottomExclusion,
+        `${profile} APERTURE must deterministically exclude the source-film subtitle band.`,
+      ).toBeGreaterThanOrEqual(0.12);
+      expect(crop.topOffset, `${profile} APERTURE crop must remain top-anchored.`).toBeLessThanOrEqual(1);
+    }
 
     for (const [index, video] of [apertureVideo, testVideo].entries()) {
       const style = await video.evaluate((element) => {
@@ -521,6 +700,54 @@ test.describe('Phase 2 approved field-media contract', () => {
       expect(overflow.root, `${phase.toUpperCase()} media must not overflow the mobile document.`).toBeLessThanOrEqual(1);
     }
 
+    expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+  });
+
+  test('PROVE uses separate authored focal crops for the stop symbol and field vehicle', async ({ page }) => {
+    const runtimeFailures = captureRuntimeFailures(page);
+    const positions: Record<string, string[]> = {};
+
+    for (const viewport of [
+      { label: 'desktop', width: 1440, height: 900 },
+      { label: 'mobile', width: 390, height: 844 },
+    ]) {
+      await page.setViewportSize({ width: viewport.width, height: viewport.height });
+      await page.goto('/');
+      const prove = await activatePhase(page, 'prove');
+      const figure = prove.locator('.proof-record__media');
+      const primary = figure.locator('[data-evidence-subject="projected-stop-symbol"]');
+      const supporting = figure.locator('[data-evidence-subject="field-vehicle"]');
+
+      await expect(primary).toHaveAttribute('alt', /stop-hand symbol/i);
+      await expect(supporting).toHaveAttribute('alt', /vehicle/i);
+      const state = await figure.evaluate((element) => {
+        const images = Array.from(element.querySelectorAll<HTMLImageElement>('[data-evidence-subject]'));
+        const figureRect = element.getBoundingClientRect();
+        return {
+          figureWidth: figureRect.width,
+          figureHeight: figureRect.height,
+          images: images.map((image) => {
+            const rect = image.getBoundingClientRect();
+            return {
+              height: rect.height,
+              objectPosition: getComputedStyle(image).objectPosition,
+              width: rect.width,
+            };
+          }),
+        };
+      });
+      expect(state.images).toHaveLength(2);
+      expect(state.images[1]!.width / state.figureWidth).toBeGreaterThanOrEqual(0.35);
+      expect(state.images.every((image) => Math.abs(image.height - state.figureHeight) <= 1)).toBe(true);
+      for (const image of state.images) {
+        const coordinates = image.objectPosition.match(/[\d.]+%/g) ?? [];
+        expect(coordinates).toHaveLength(2);
+        expect(image.objectPosition).not.toBe('50% 50%');
+      }
+      positions[viewport.label] = state.images.map((image) => image.objectPosition);
+    }
+
+    expect(positions.mobile).not.toEqual(positions.desktop);
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
   });
 

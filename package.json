@@ -21,6 +21,8 @@
     "evidence:analyze": "node scripts/analyze-repair-evidence.mjs",
     "evidence:phase2": "node scripts/capture-phase2-evidence.mjs",
     "evidence:phase2:plan": "node scripts/capture-phase2-evidence.mjs --plan",
+    "evidence:phase2:repair": "node scripts/capture-phase2-repair-evidence.mjs",
+    "evidence:phase2:repair:plan": "node scripts/capture-phase2-repair-evidence.mjs --plan",
     "media:check": "node scripts/check-phase2-media.mjs"
   },
   "dependencies": {

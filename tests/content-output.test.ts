@@ -73,7 +73,7 @@ describe('public-output boundary', () => {
   });
 
   it('requires visible temporary copy in Astro templates to carry a machine-readable marker', () => {
-    const placeholderLanguage = /development|approved[^\n<]{0,80}pending|pending[^\n<]{0,80}approved|phase\s*1\s+route\s+shell/i;
+    const placeholderLanguage = /development|approved[^\n<]{0,80}pending|pending[^\n<]{0,80}approved|later-phase\s+route\s+shell|not\s+yet\s+available/i;
     const findings = presentationRoots
       .flatMap((directory) => filesWithin(resolve(root, directory)))
       .filter((file) => extname(file).toLowerCase() === '.astro')
@@ -84,5 +84,19 @@ describe('public-output boundary', () => {
       .map(repositoryPath);
 
     expect(findings, `Temporary presentation copy lacks a data-development-* marker:\n${findings.join('\n')}`).toEqual([]);
+  });
+
+  it('keeps the rejected publication-workflow phrases out of presentation templates', () => {
+    const rejectedWorkflowLanguage = /approved\s+field\s+record|approved\s+need|approved\s+public\s+record/i;
+    const findings = presentationRoots
+      .flatMap((directory) => filesWithin(resolve(root, directory)))
+      .filter((file) => extname(file).toLowerCase() === '.astro')
+      .filter((file) => rejectedWorkflowLanguage.test(readFileSync(file, 'utf8')))
+      .map(repositoryPath);
+
+    expect(
+      findings,
+      `Publication-workflow language leaked into presentation templates:\n${findings.join('\n')}`,
+    ).toEqual([]);
   });
 });

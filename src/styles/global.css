@@ -576,6 +576,7 @@
 
   .field-media__documentary {
     z-index: 0;
+    overflow: hidden;
     background: var(--field-deep);
     opacity: 0;
     transition: opacity var(--duration-material) var(--ease-field);
@@ -584,9 +585,9 @@
   .field-media__documentary video {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 116%;
     object-fit: cover;
-    object-position: 52% 56%;
+    object-position: 52% 0%;
   }
 
   .field-media__surface {
@@ -1495,11 +1496,11 @@
     position: relative;
     z-index: 2;
     display: grid;
-    width: min(31rem, calc(100% - clamp(1.5rem, 4vw, 4rem)));
-    gap: clamp(1.2rem, 3vh, 2.5rem);
-    margin: clamp(0.75rem, 2vw, 2rem);
-    padding: clamp(1rem, 2.5vw, 2.25rem);
-    background: rgba(11, 10, 13, 0.9);
+    width: min(32rem, calc(100% - clamp(1.5rem, 4vw, 4rem)));
+    gap: 0.75rem;
+    margin: clamp(0.75rem, 1.4vw, 1.25rem);
+    padding: clamp(0.8rem, 1.4vw, 1.1rem);
+    background: rgba(11, 10, 13, 0.88);
     border-top: 2px solid var(--field);
   }
 
@@ -1527,26 +1528,35 @@
     border-right: 0;
   }
 
-  .test-boundary__statement {
-    max-width: 14ch;
-    font-family: var(--font-display);
-    font-size: clamp(2.1rem, 3.5vw, 4.8rem);
-    font-weight: 600;
-    letter-spacing: -0.045em;
-    line-height: 0.95;
+  .test-boundary__identifier {
+    color: var(--paper-bright);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    line-height: 1.25;
     text-transform: uppercase;
   }
 
   .test-boundary dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     border-top: 1px solid rgba(246, 119, 131, 0.52);
   }
 
   .test-boundary dl div {
     display: grid;
-    min-height: 3.6rem;
-    align-items: center;
-    grid-template-columns: 7rem 1fr;
+    min-height: 4.25rem;
+    align-content: start;
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+    padding: 0.65rem 0.55rem;
+    border-right: 1px solid rgba(246, 119, 131, 0.3);
     border-bottom: 1px solid rgba(246, 119, 131, 0.3);
+  }
+
+  .test-boundary dl div:nth-child(2n) {
+    border-right: 0;
   }
 
   .test-boundary dt,
@@ -1584,8 +1594,8 @@
     display: grid;
     min-height: 190svh;
     align-content: start;
-    gap: clamp(3.5rem, 8vh, 7rem);
-    padding-top: calc(var(--header-height) + clamp(5rem, 11vh, 10rem));
+    gap: clamp(2rem, 4vh, 3.5rem);
+    padding-top: calc(var(--header-height) + clamp(1.5rem, 4vh, 3.5rem));
   }
 
   .prove-heading {
@@ -1629,19 +1639,20 @@
 
   .proof-record > header {
     display: grid;
-    min-height: 9rem;
+    min-height: 7rem;
     align-items: start;
     grid-template-columns: 1fr auto;
     gap: 2rem;
-    padding: clamp(1.25rem, 3vw, 3rem);
+    padding: clamp(1.1rem, 2vw, 2rem);
     border-bottom: 1px solid var(--line-light);
   }
 
   .proof-record__media {
     position: relative;
     display: grid;
-    min-height: clamp(18rem, 42vw, 38rem);
-    grid-template-columns: minmax(0, 3fr) minmax(8rem, 1fr);
+    min-height: 0;
+    height: clamp(14rem, 17vw, 16rem);
+    grid-template-columns: minmax(0, 3fr) minmax(15rem, 2fr);
     overflow: hidden;
     background: var(--brand-gray);
     border-bottom: 1px solid var(--line-light);
@@ -1650,15 +1661,17 @@
   .proof-record__image {
     width: 100%;
     height: 100%;
+    min-width: 0;
+    min-height: 0;
     object-fit: cover;
   }
 
   .proof-record__image--primary {
-    object-position: 50% 52%;
+    object-position: 50% 100%;
   }
 
   .proof-record__image--supporting {
-    object-position: 50% 52%;
+    object-position: 55% 58%;
     border-left: 1px solid rgba(255, 255, 255, 0.68);
   }
 
@@ -2144,7 +2157,11 @@
     }
 
     .field-media__documentary video {
-      object-position: 48% 56%;
+      object-position: 38% 0%;
+    }
+
+    html[data-media-mode="static-posters"] .field-media__documentary video {
+      object-position: 50% 0%;
     }
 
     .field-media__plane {
@@ -2345,7 +2362,7 @@
       display: grid;
       align-content: center;
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2rem;
     }
 
     .test-heading {
@@ -2358,7 +2375,7 @@
     }
 
     .test-boundary {
-      min-height: min(62vh, 36rem);
+      min-height: min(48vh, 25rem);
       border-width: 0.4rem;
       box-shadow: 0.65rem 0.65rem 0 rgba(11, 10, 13, 0.28);
     }
@@ -2370,10 +2387,15 @@
     .test-boundary__content {
       width: calc(100% - 1.5rem);
       margin: 0.75rem;
+      padding: 0.75rem;
     }
 
-    .test-boundary__statement {
-      font-size: clamp(1.8rem, 7vw, 3.2rem);
+    .test-boundary__identifier {
+      font-size: 0.68rem;
+    }
+
+    .test-boundary dl div {
+      min-height: 3.65rem;
     }
 
     .act--prove,
@@ -2382,8 +2404,8 @@
     }
 
     .act__inner--prove {
-      gap: 4rem;
-      padding-top: calc(var(--header-height) + 4rem);
+      gap: 2rem;
+      padding-top: calc(var(--header-height) + 2rem);
       padding-bottom: 7rem;
     }
 
@@ -2406,14 +2428,24 @@
     }
 
     .proof-record > header {
-      min-height: 8rem;
+      min-height: 6.5rem;
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
     }
 
     .proof-record__media {
-      min-height: clamp(20rem, 78vw, 34rem);
-      grid-template-columns: minmax(0, 2.4fr) minmax(5.5rem, 0.8fr);
+      min-height: 0;
+      height: clamp(9rem, 38vw, 10.5rem);
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    }
+
+    .proof-record__image--primary {
+      object-position: 48% 100%;
+    }
+
+    .proof-record__image--supporting {
+      object-position: 54% 54%;
     }
 
     .proof-record dl {
@@ -2483,7 +2515,8 @@
     }
 
     .test-boundary dl div {
-      grid-template-columns: 6rem 1fr;
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
     }
   }
 }

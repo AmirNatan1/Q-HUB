@@ -362,3 +362,57 @@ All 16 PNG frames were inspected at original resolution. Hierarchy, focal crops,
 - No known application technical defect remains. Human creative judgment remains undecided.
 - The implementation candidate `d88f2020851325890e8951d88373475243ef9d1a` and evidence/documentation closure `939b2b3386e468dc995e70bce054bce8b7e44e4a` were normally pushed with upstream set and no force. The tree was clean immediately after the closure push; H15 passes.
 - No supporting-route redesign, broader Proof library, second story, ACT 07/08/09 work, main merge, or production deployment is part of this checkpoint.
+
+## 2026-08-15 — Phase 2 final visual integration repair QA — candidate stage
+
+The human Phase 2 decision is **REPAIR**. This dated section supersedes only the prior Phase 2 candidate/defect-status conclusions where they conflict with the human findings; the original Phase 2 records and artifacts remain historical evidence. Current detailed candidate-stage ledgers are [PHASE2_REPAIR_ACCEPTANCE.md](PHASE2_REPAIR_ACCEPTANCE.md) and [PHASE2_REPAIR_REVIEW_PACKAGE.md](PHASE2_REPAIR_REVIEW_PACKAGE.md).
+
+### Superseded subtitle conclusion
+
+The earlier Phase 2 QA stated that no subtitle contamination remained after inspecting 16 committed PNGs. That conclusion was insufficient because the static APERTURE screenshots did not sample the relevant playback interval. Human review of the committed 1440×900 journey found baked source-film text containing “…embedded in the vehicle” around journey time 9.2–9.6 seconds. Direct diagnostic inspection localized the source-film subtitle to approximately 2.90–3.15 seconds of the 3.2032-second APERTURE MP4.
+
+The old static-frame claim is therefore superseded. Repair acceptance requires explicit desktop/mobile/no-WebGL sampling of that source interval, a clean reduced-motion poster, and visual inspection of a complete APERTURE loop inside a new candidate-bound journey WebM.
+
+### Narrow repair scope
+
+1. Exclude the APERTURE subtitle band with deterministic crop/scale/positioning while retaining the vehicle, field environment, projection behavior, and physical scale.
+2. Reduce TEST opaque metadata dominance so real footage owns at least half of the desktop frame and remains materially inspectable on mobile.
+3. Reposition the two existing PROVE stills so the projected stop symbol and Quantum test vehicle are immediately visible on desktop/mobile.
+4. Remove public approval-workflow language while retaining the internal B + approved record and deny-by-default publication filter.
+
+No source replacement, generated imagery, invented measurement, new Proof story, route expansion, later act, Phase 1 reopening, font resolution, merge, or deployment is authorized.
+
+### Preserved system contract
+
+The repair preserves `SIGNAL → APERTURE → NEED → FIND → TEST → PROVE`, `ENGAGE → CONSTRAIN → LOCK → DWELL → RELEASE`, SIGNAL, APERTURE interaction/headline, NEED rails, FIND convergence, TEST enclosure/left statement, PROVE white/teal release, navigation, phase rail, schemas, semantic state attributes, mobile, reduced motion, no-WebGL, official identity, approved Maradin facts, dependency boundary, and `FONT-001` status.
+
+### Candidate and gate state
+
+- Frozen implementation baseline: `d88f2020851325890e8951d88373475243ef9d1a`.
+- Historical final Phase 2 handoff: `1ca36be5581dd33d8230f56876580fee4a386904`.
+- Repair implementation candidate: `PENDING_REPAIR_CANDIDATE_SHA`.
+- Clean candidate tree at evidence start: `PENDING_REPAIR_CLEAN_EVIDENCE_START`.
+- Candidate-bound repair manifest: `PENDING_REPAIR_EVIDENCE_MANIFEST`.
+- P2-1–P2-10 result: `PENDING_REPAIR_P2_GATE_RESULT`.
+- H1–H15 result: `PENDING_REPAIR_HARD_GATE_RESULT`.
+- Build/typecheck/lint/unit/build: `PENDING_REPAIR_CHECK_RESULT`.
+- Placeholder/media/Playwright/axe/bundle/Lighthouse/source-output/secret results: `PENDING_REPAIR_REGRESSION_RESULTS`.
+- Original-resolution PNG and complete-WebM inspection: `PENDING_REPAIR_VISUAL_QA`.
+- Candidate/evidence closure/final push and clean-tree proof: `PENDING_REPAIR_GIT_VERIFICATION`.
+
+No prior Phase 2 count, Lighthouse score, bundle metric, or PASS label is inherited by the repair candidate. All must be rerun and recorded against the committed repair candidate.
+
+### Required repair evidence
+
+The new package is isolated under `artifacts/review/phase2-repair/` and must preserve all prior review artifacts byte-for-byte. Its exact 18-file plan is 16 PNGs, one WebM, and one manifest: `baseline-aperture-subtitle-9-40s.png`; seven desktop APERTURE frames at source times 0.17, 1.84, 2.57, 2.81, 2.95, 3.15, and 3.20 seconds; `desktop-need.png`; `desktop-test-0-70s.png`; `desktop-prove.png`; `mobile-aperture-3-05s.png`; `mobile-test-0-70s.png`; `mobile-prove.png`; `fallback-reduced-motion-aperture.png`; `fallback-no-webgl-aperture-3-05s.png`; `desktop-repair-journey.webm`; and `manifest.json`. The journey must dwell in APERTURE longer than one full source loop, and the manifest must record hashes, bytes, exact media times, geometry, workflow-language audit, and prior-evidence integrity.
+
+Before/after review must cover subtitle contamination, TEST media visibility, PROVE focal crops, and public workflow labels. Automated tests support but do not replace human visual inspection.
+
+### Limitations and stop condition
+
+- `FONT-001` remains unresolved by instruction.
+- Remote deployment and production deployment are not authorized; only local production-preview evidence is expected.
+- Unless stronger evidence is actually recorded, coverage remains Chromium/local-lab rather than physical-device, Safari, Firefox, field telemetry, or dedicated screen-reader testing.
+- Supporting routes and later acts remain out of scope.
+
+All repair findings, P2-1–P2-10, H1–H15, candidate-bound evidence, normal pushes, and final clean-tree verification remain **PENDING**. Do not merge or deploy. When they pass, stop for **ACCEPT / REPAIR / REDIRECT**.

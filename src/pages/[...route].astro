@@ -11,15 +11,15 @@ type RouteRecord = {
 
 export function getStaticPaths() {
   const routes: RouteRecord[] = [
-    { route: "proof", eyebrow: "Evidence architecture", title: "Proof", description: "A future record system for approved field evidence, test context, and next-step decisions." },
-    { route: "industry", eyebrow: "For operating organizations", title: "Begin with the need", description: "This route is prepared for an approved industry journey and practical entry points." },
-    { route: "startups", eyebrow: "For technology companies", title: "Enter the field", description: "This route is prepared for an approved technology-company journey and suitability criteria." },
-    { route: "programs", eyebrow: "Program architecture", title: "Programs", description: "An index for approved SPARK and CHAMP program information." },
-    { route: "programs/spark", eyebrow: "Program shell", title: "SPARK", description: "Approved program detail and media will be introduced after the Phase 1 visual review." },
-    { route: "programs/champ", eyebrow: "Program shell", title: "CHAMP", description: "Approved program detail and media will be introduced after the Phase 1 visual review." },
-    { route: "network", eyebrow: "Relationship architecture", title: "Network", description: "A future view of approved organizations with precise, non-interchangeable relationship labels." },
-    { route: "about", eyebrow: "Operating model", title: "About Quantum", description: "This route is prepared for approved company, people, and operating-model content." },
-    { route: "contact", eyebrow: "Practical entry", title: "Enter the field", description: "Approved contact paths for industrial needs and relevant technologies will be added here." }
+    { route: "proof", eyebrow: "Evidence architecture", title: "Proof", description: "A future record system for field evidence, test context, and next-step decisions." },
+    { route: "industry", eyebrow: "For operating organizations", title: "Begin with the need", description: "This route is prepared for a future industry journey and practical entry points." },
+    { route: "startups", eyebrow: "For technology companies", title: "Enter the field", description: "This route is prepared for a future technology-company journey and suitability criteria." },
+    { route: "programs", eyebrow: "Program architecture", title: "Programs", description: "An index for future SPARK and CHAMP program information." },
+    { route: "programs/spark", eyebrow: "Program shell", title: "SPARK", description: "Program detail and media will be introduced in a later project phase." },
+    { route: "programs/champ", eyebrow: "Program shell", title: "CHAMP", description: "Program detail and media will be introduced in a later project phase." },
+    { route: "network", eyebrow: "Relationship architecture", title: "Network", description: "A future view of organizations with precise, non-interchangeable relationship labels." },
+    { route: "about", eyebrow: "Operating model", title: "About Quantum", description: "This route is prepared for future company, people, and operating-model content." },
+    { route: "contact", eyebrow: "Practical entry", title: "Enter the field", description: "Contact paths for industrial needs and relevant technologies will be added in a later project phase." }
   ];
 
   return routes.map((record) => ({
