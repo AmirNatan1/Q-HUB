@@ -393,13 +393,13 @@ The repair preserves `SIGNAL → APERTURE → NEED → FIND → TEST → PROVE`,
 - Repair implementation candidate: `eb8ca7de932d7b52a74026b66150f1e9c215438c`.
 - Clean candidate tree at evidence start: **PASS** — the manifest records `workingTreeCleanAtStart: true` and an empty porcelain status.
 - Candidate-bound repair manifest: `artifacts/review/phase2-repair/manifest.json`, 54,431 bytes, SHA-256 `033716c3b6c7b50ad774e33bc6526ac4ee92a0f8fa4c026febce0a4ac57bb124`.
-- P2-1–P2-9: **PASS**. P2-10 remains `PENDING_REPAIR_P2_10_VERSION_CONTROL` until the evidence/docs closure and final documentation push are verified.
-- H1–H14: **PASS**. H15 remains `PENDING_REPAIR_H15_VERSION_CONTROL` until the evidence/docs closure and final documentation push are verified.
+- P2-1–P2-10: **PASS**.
+- H1–H15: **PASS**.
 - Build/typecheck/lint/unit/build: **PASS** — Astro checked 41 files with 0 errors, warnings, or hints; ESLint passed; Vitest passed 32/32 across 5 files; 11 static pages built.
 - Focused source/publication/output tests: **PASS** — 25/25 across `source-integrity`, `publication`, and `content-output` after the fresh production build.
 - Placeholder/media/Playwright/axe/bundle/Lighthouse/source-output/secret results: **PASS** — placeholder 2/2; 9 approved assets / 9,326,266 bytes; Playwright 41/41; zero critical/serious axe findings; total JavaScript 20,852 raw / 7,961 gzip and initial JavaScript 9,179 / 3,917 with no Three.js/R3F; desktop and mobile Lighthouse 100/100/100/100 with CLS 0; zero protected/prohibited public-output, high-confidence secret, or credential-assignment matches.
 - Original-resolution PNG and complete-WebM inspection: **PASS** — all 16 PNGs were inspected at original resolution; the complete 19.28-second WebM played from 0.00 seconds through `ended: true`; exact paused samples spanning journey times 9.211–9.602 seconds and source times 2.95/3.15 seconds were clean; no blocking visual defect was found.
-- Candidate normal push: **PASS** — `eb8ca7de932d7b52a74026b66150f1e9c215438c` equals its upstream branch. Evidence closure/final push and clean-tree proof remain `PENDING_REPAIR_GIT_VERIFICATION`.
+- Version-control closure: **PASS** — candidate `eb8ca7de932d7b52a74026b66150f1e9c215438c`, evidence/docs closure `e5a2f9725390377c74131c892e3358e224b1e780`, and this final docs-only handoff were scanned, committed, and normally pushed without force. Final local/upstream/remote equality and an empty status were verified. No merge or deployment occurred.
 
 No prior Phase 2 count, Lighthouse score, bundle metric, or PASS label is inherited by the repair candidate. All must be rerun and recorded against the committed repair candidate.
 
@@ -420,4 +420,4 @@ Measured repair results pass their deterministic boundaries: APERTURE excludes t
 - Unless stronger evidence is actually recorded, coverage remains Chromium/local-lab rather than physical-device, Safari, Firefox, field telemetry, or dedicated screen-reader testing.
 - Supporting routes and later acts remain out of scope.
 
-R2-A through R2-D, P2-1 through P2-9, and H1 through H14 pass against the committed candidate. The independent original-resolution visual audit also passes. P2-10, H15, the evidence/docs closure, final normal push, and clean-tree verification remain explicitly pending until recorded. Do not merge or deploy. After closure, stop for **ACCEPT / REPAIR / REDIRECT**.
+R2-A through R2-D, P2-1 through P2-10, and H1 through H15 pass against the committed candidate and verified closure. The independent original-resolution visual audit also passes. No merge or deployment occurred. Stop here for **ACCEPT / REPAIR / REDIRECT**.

@@ -12,11 +12,11 @@ The human Phase 2 decision is **REPAIR**. This is a narrow visual-integration re
 - Repair candidate normal push: **PASS** — local `HEAD` and `origin/phase2/maradin-field-evidence` both resolve to `eb8ca7de932d7b52a74026b66150f1e9c215438c`.
 - Clean candidate tree at repair-evidence start: **PASS** — the manifest records `workingTreeCleanAtStart: true`, an empty `statusPorcelainAtStart`, and source candidate equal to `HEAD`.
 - Repair evidence manifest: `artifacts/review/phase2-repair/manifest.json` — 54,431 bytes, SHA-256 `033716c3b6c7b50ad774e33bc6526ac4ee92a0f8fa4c026febce0a4ac57bb124`, source candidate `eb8ca7de932d7b52a74026b66150f1e9c215438c`.
-- Repair evidence/documentation closure: `PENDING_REPAIR_EVIDENCE_CLOSURE_SHA`
-- Final normal push: `PENDING_REPAIR_FINAL_PUSH`
-- Final clean tree/upstream equality: `PENDING_REPAIR_FINAL_CLEAN_TREE`
+- Repair evidence/documentation closure: `e5a2f9725390377c74131c892e3358e224b1e780`
+- Final normal push: **PASS** — candidate, evidence closure, and this docs-only handoff were pushed normally to `origin/phase2/maradin-field-evidence` without force.
+- Final clean tree/upstream equality: **PASS** — verified after the docs-only handoff push; local `HEAD`, upstream, and the remote branch tip are equal and `git status --short` is empty.
 - Merge/deployment status: **NOT AUTHORIZED** — no merge to `main`, remote deployment, or production deployment may occur in this repair
-- Technical result through H14/P2-9: **PASS** — P2-10/H15 evidence-and-documentation closure remains pending.
+- Technical result: **PASS** — R2-A–R2-D, P2-1–P2-10, and H1–H15 are technically satisfied. Human creative judgment remains separate.
 - Human creative judgment: **PENDING HUMAN REVIEW**
 
 The prior Phase 2 package remains historical evidence. Its static APERTURE screenshots did not sample the contaminated source-film interval, and its statement that no subtitle contamination remained is superseded by the human **REPAIR** finding and this ledger. This ledger is bound to candidate `eb8ca7de932d7b52a74026b66150f1e9c215438c`; it is not a human acceptance decision.
@@ -184,7 +184,7 @@ The determinations below are bound to repair candidate `eb8ca7de932d7b52a74026b6
 | P2-7 — Accessibility | **PASS within tested coverage** | The 41/41 browser suite covers semantic, keyboard/touch, axe, forced-colors, reduced-motion, and static modes. Physical devices, Safari, Firefox, and a dedicated screen-reader session were not tested. |
 | P2-8 — Performance | **PASS** | Desktop/mobile Lighthouse are 100/100/100/100; LCP is `0.3s / 1.1s`, TBT `0 / 0 ms`, CLS `0 / 0`; bundle gate passes with no Three.js/R3F. |
 | P2-9 — Human-review evidence | **PASS — package ready** | Exact candidate-bound 18-file package, prior contaminated interval, full-loop journey, hashes, geometry, and decode checks pass. All 16 PNGs and the complete 19.28-second WebM passed original-resolution inspection with zero blocking defects. Human creative judgment remains pending. |
-| P2-10 — Version control/release | **PENDING** | `PENDING_P2_10_VERSION_CONTROL` — the candidate is normally pushed and upstream-equal; evidence/docs closure commit and push, final handoff commit and push, and final clean upstream equality remain pending. No force, merge, or deploy is authorized. |
+| P2-10 — Version control/release | **PASS** | Candidate `eb8ca7de932d7b52a74026b66150f1e9c215438c`, evidence/docs closure `e5a2f9725390377c74131c892e3358e224b1e780`, and the final docs-only handoff were scanned, committed, and normally pushed without force. Final local/upstream/remote equality and an empty tree were verified. No merge or deploy occurred. |
 
 ## Refreshed H1–H15 ledger
 
@@ -204,7 +204,7 @@ The determinations below are bound to repair candidate `eb8ca7de932d7b52a74026b6
 | H12 — Placeholder safety | **PASS** | Release placeholder gate passed 2/2 checks. |
 | H13 — Visual QA evidence | **PASS — package ready** | All 16 PNGs passed original-resolution inspection; the complete WebM played `0.00→19.28s` to `ended: true`; exact paused samples across `9.211–9.602s` are clean; candidate/hash/inventory/prior digest match; zero blocking defects. |
 | H14 — Asset readiness | **PASS with disclosed limitation** | Media check passed 9 assets / 9,326,266 total bytes / 8,095,824 video bytes; no replacement media was introduced. `FONT-001` stays unresolved. |
-| H15 — Version control/deployment | **PENDING** | `PENDING_H15_VERSION_CONTROL` — candidate push is verified; closure/final normal pushes and final clean upstream equality remain. Merge and deployment remain prohibited. |
+| H15 — Version control/deployment | **PASS** | Candidate and evidence/docs closure commits were normally pushed; the final docs-only handoff was normally pushed and followed by local/upstream/remote equality plus an empty-tree check. No force, merge, or deployment occurred. |
 
 ## Required command ledger
 
@@ -234,16 +234,16 @@ The candidate exactly matches the historical JavaScript totals: 20,852 raw / 7,9
 | 1. Complete the narrow implementation and automated tests. | **COMPLETE** — implementation candidate `eb8ca7de932d7b52a74026b66150f1e9c215438c`; complete check and browser suite pass. |
 | 2. Run preliminary checks; review the exact diff and preserve unrelated/user changes. | **COMPLETE for candidate construction**. |
 | 3. Stage only intentional repair implementation, test, capture-tool, and candidate-stage documentation files. | **COMPLETE for candidate commit**. |
-| 4. Run staged diff, secret, credential, prohibited-source, and public-boundary scans. | **COMPLETE for candidate; PENDING final closure rerun** — candidate scans are clean; the staged evidence/docs closure will be scanned immediately before commit. |
+| 4. Run staged diff, secret, credential, prohibited-source, and public-boundary scans. | **COMPLETE** — candidate and staged closure scans found zero high-confidence secrets, credential assignments, or unexpected prohibited-source references; staged diff checks passed. |
 | 5. Commit the repair candidate normally. | **COMPLETE** — `eb8ca7de932d7b52a74026b66150f1e9c215438c`; local and upstream branch tips match. |
 | 6. Verify the candidate tree is clean before evidence capture. | **COMPLETE** — manifest records clean start and empty porcelain status. |
 | 7. Capture the isolated repair package from the exact candidate. | **COMPLETE** — source candidate equals capture HEAD; exact 18-file contract; all prior evidence unchanged. |
 | 8. Run the complete regression contract and regenerate bundle/Lighthouse/media results. | **COMPLETE** — all principal commands and the dedicated 25-test publication/source/output trio pass. |
 | 9. Inspect every repair PNG at original resolution and sample the complete WebM. | **COMPLETE** — all 16 PNGs and the full 19.28-second WebM passed independent original-resolution inspection; exact subtitle-interval samples are clean. |
 | 10. Normally push the repair candidate without force. | **COMPLETE** — local and upstream branch tips equal `eb8ca7de932d7b52a74026b66150f1e9c215438c`. No merge or deploy. |
-| 11. Finalize this ledger, the repair review package, and `docs/QA.md`; stage and scan the evidence/documentation closure. | **PENDING docs-only closure**. |
-| 12. Commit and normally push the evidence/documentation closure. | **PENDING** — `PENDING_REPAIR_EVIDENCE_CLOSURE_SHA` and `PENDING_REPAIR_FINAL_PUSH`. |
-| 13. Close H15 in a docs-only handoff commit and verify upstream equality and an empty tree. | **PENDING** — `PENDING_REPAIR_FINAL_CLEAN_TREE` and `PENDING_REPAIR_GIT_VERIFICATION`; then stop. |
+| 11. Finalize this ledger, the repair review package, and `docs/QA.md`; stage and scan the evidence/documentation closure. | **COMPLETE**. |
+| 12. Commit and normally push the evidence/documentation closure. | **COMPLETE** — `e5a2f9725390377c74131c892e3358e224b1e780`. |
+| 13. Close H15 in a docs-only handoff commit and verify upstream equality and an empty tree. | **COMPLETE** — final handoff push and local/upstream/remote equality were verified; then work stopped. |
 
 ## Known limitations and prohibited expansion
 
@@ -251,7 +251,7 @@ The candidate exactly matches the historical JavaScript totals: 20,852 raw / 7,9
 - Remote Cloudflare preview was unavailable at the prior checkpoint because authentication was expired and could not refresh non-interactively. This repair authorizes no deployment; only local production-preview evidence is expected.
 - Browser evidence remains Chromium/local-lab rather than physical-device, Safari, Firefox, field telemetry, or a dedicated screen-reader session unless stronger evidence is actually gathered and recorded.
 - Supporting routes remain later-phase shells. No broader Proof library, second story, or ACT 07/08/09 work is included.
-- Candidate technical result through P2-9/H14 is **PASS**. Final P2-10/H15 closure still requires the evidence/docs commit, final handoff commit, normal pushes, staged scans, and clean-tree/upstream verification. Passing technical and visual audits are not human creative acceptance.
+- The technical result is **PASS** through P2-10/H15, including normal pushes, staged scans, and clean-tree/upstream verification. Passing technical and visual audits are not human creative acceptance.
 
 ## Stop condition
 

@@ -10,10 +10,10 @@ The human returned the original Phase 2 visual integration with a **REPAIR** dec
 - Repair implementation candidate: `eb8ca7de932d7b52a74026b66150f1e9c215438c`
 - Candidate normal push: **PASS** — `origin/phase2/maradin-field-evidence` resolves to `eb8ca7de932d7b52a74026b66150f1e9c215438c`.
 - Candidate-bound evidence: **PASS** — 18 files, 13,789,821 bytes; [manifest](../artifacts/review/phase2-repair/manifest.json) SHA-256 `033716c3b6c7b50ad774e33bc6526ac4ee92a0f8fa4c026febce0a4ac57bb124`.
-- Evidence/documentation closure: `PENDING_REPAIR_EVIDENCE_CLOSURE_SHA`
-- Final normal push and clean tree: `PENDING_REPAIR_FINAL_PUSH` / `PENDING_REPAIR_FINAL_CLEAN_TREE`
-- P2-1–P2-9 candidate-stage checks: **PASS**; P2-10: `PENDING_REPAIR_P2_10`.
-- H1–H14: **PASS** against the committed candidate and independently audited evidence. H15: `PENDING_REPAIR_H15` until version-control closure is complete.
+- Evidence/documentation closure: `e5a2f9725390377c74131c892e3358e224b1e780`
+- Final normal push and clean tree: **PASS** — candidate, evidence closure, and this docs-only handoff were normally pushed without force; final local/upstream/remote equality and an empty tree were verified.
+- P2-1–P2-10: **PASS**.
+- H1–H15: **PASS** against the committed candidate, independently audited evidence, and verified version-control closure.
 - Human creative judgment: **PENDING HUMAN REVIEW**
 - Merge/deployment: **NOT AUTHORIZED**
 
@@ -132,7 +132,7 @@ The prior evidence set remains **50 files and 33,528,579 bytes**, with before/af
 
 ## Candidate-stage technical verification
 
-The detailed gate ledger is [PHASE2_REPAIR_ACCEPTANCE.md](PHASE2_REPAIR_ACCEPTANCE.md). Every candidate-stage technical and evidence audit below passed. Version-control closure remains pending and prevents a final completion claim.
+The detailed gate ledger is [PHASE2_REPAIR_ACCEPTANCE.md](PHASE2_REPAIR_ACCEPTANCE.md). Every technical, evidence, and version-control gate below passed. Human creative judgment remains pending.
 
 | Verification | Candidate result |
 | --- | --- |
@@ -150,14 +150,14 @@ The detailed gate ledger is [PHASE2_REPAIR_ACCEPTANCE.md](PHASE2_REPAIR_ACCEPTAN
 | Secrets/credential-assignment scans | **PASS** — zero high-confidence secret files and zero credential-assignment files. |
 | Final independent original-resolution visual audit | **PASS** — all 16 PNGs inspected; complete 19.28-second WebM played through `ended: true`; exact repaired subtitle-interval samples were clean; no blocking visual defect. |
 | Candidate push | **PASS** — remote branch equals `eb8ca7de932d7b52a74026b66150f1e9c215438c`. |
-| Evidence/documentation closure | **PENDING** — `PENDING_REPAIR_EVIDENCE_CLOSURE_SHA`. |
-| Final normal push and clean tree | **PENDING** — `PENDING_REPAIR_FINAL_PUSH` / `PENDING_REPAIR_FINAL_CLEAN_TREE`. |
+| Evidence/documentation closure | **PASS** — `e5a2f9725390377c74131c892e3358e224b1e780`, normally pushed without force. |
+| Final normal push and clean tree | **PASS** — this docs-only handoff was normally pushed; local `HEAD`, upstream, and remote tip equality plus an empty status were verified afterward. |
 
-No production dependency was added, no material JavaScript regression was measured, CLS is `0`, and every desktop/mobile Lighthouse category exceeds the required `≥95`. P2-10 and H15 remain `PENDING_REPAIR_P2_10` and `PENDING_REPAIR_H15` until the closure commit, final normal push, and clean-tree proof are recorded.
+No production dependency was added, no material JavaScript regression was measured, CLS is `0`, and every desktop/mobile Lighthouse category exceeds the required `≥95`. P2-10 and H15 pass with the scanned evidence closure, normal pushes, final clean tree, and local/upstream/remote equality recorded.
 
 ## Human review questions
 
-The evidence is ready for review. After the named closeout audits and version-control closure are recorded, inspect the package for these exact decisions:
+The evidence and version-control closure are complete. Inspect the package for these exact decisions:
 
 - Across the entire APERTURE loop, is all baked subtitle/editorial text excluded while the vehicle, field, projection behavior, and scale remain intact?
 - Is the same true on mobile and no-WebGL, and is reduced motion a clean intentional poster composition?
@@ -176,10 +176,10 @@ The evidence is ready for review. After the named closeout audits and version-co
 - No remote deployment or production deployment is authorized. Historical Cloudflare authentication was expired; local production preview is sufficient for this repair evidence.
 - Unless stronger evidence is actually recorded, testing remains Chromium/local-lab rather than physical-device, Safari, Firefox, field telemetry, or a dedicated screen-reader session.
 - Supporting routes remain later-phase shells. No second Proof story, broader Proof library, ACT 07/08/09 work, or Phase 1 redesign is included.
-- Evidence/documentation closure, final push, clean-tree proof, P2-10, H15, and human creative acceptance remain pending. This document must not be presented as a final accepted package until every pending token is resolved truthfully.
+- Human creative acceptance remains pending. Technical PASS is not a human **ACCEPT** decision.
 
 ## Stop and decision
 
-Do not merge or deploy. No merge or deployment has occurred. When the evidence/documentation closure, final normal push, and clean-tree proof are complete, stop for exactly one human decision:
+Do not merge or deploy. No merge or deployment has occurred. The repair package is complete; stop for exactly one human decision:
 
 **ACCEPT / REPAIR / REDIRECT**
