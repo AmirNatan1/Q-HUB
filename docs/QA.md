@@ -306,3 +306,43 @@ H9, R1, R9, and R10 now pass. Keyboard/focus, forced colors, reduced motion, sem
 - The candidate push is confirmed. Evidence/docs closure commit `0bdf3631ff9f29394a25ed89fdcd745827aff52e` was followed by a clean-tree check, 0 high-confidence secret/token matches, 0 credential-assignment matches, an independent clean source/public-output audit, and a normal push to `origin/phase1/visual-grammar-repair`. No force push was used; H15 passes.
 
 **STOP. Do not begin Phase 2.** Return the repaired experience to human review for **ACCEPT**, **REPAIR**, or **REDIRECT**.
+
+## 2026-08-15 — Phase 2 Maradin real-field QA
+
+The human subsequently selected **ACCEPT** for the Phase 1 repair and authorized the supplied Phase 2 goal. This section preserves the earlier Phase 1 audit as historical evidence and records the Phase 2 verification boundary.
+
+### Implemented review scope
+
+- Official Quantum full/icon SVG masters replace the provisional navigation identity and favicon.
+- SIGNAL remains Quantum-led; approved Maradin material enters only from APERTURE onward.
+- APERTURE reveals the approved field film through the accepted boundary; TEST contains its approved film inside the enclosure; PROVE uses approved stills and a typed Proof record.
+- Native media uses lazy `data-src`, `preload="none"`, muted inline playback, posters, inactive pause, a static reduced-motion path, and no-WebGL independence.
+- Homepage development markers are removed only where the approved record resolves them. Later-phase route shells and non-public development families remain detectable.
+- Raleway/Comfortaa are intended token families, but no font binaries were supplied; local fallbacks remain (`FONT-001`).
+
+### Final command and browser record
+
+All values below are **PENDING FINAL ROOT VERIFICATION**. Earlier Phase 1 results must not be reused as Phase 2 results.
+
+| Verification | Phase 2 final result |
+| --- | --- |
+| `npm run check` | **PENDING FINAL ROOT VERIFICATION** |
+| `npm run release:placeholders` | **PENDING FINAL ROOT VERIFICATION** |
+| `npm run media:check` | **PENDING FINAL ROOT VERIFICATION** |
+| `npm run bundle:check` | **PENDING FINAL ROOT VERIFICATION** |
+| `npm run test:e2e` | **PENDING FINAL ROOT VERIFICATION** |
+| `npm run lighthouse` | **PENDING FINAL ROOT VERIFICATION** |
+| `npm run evidence:phase2` | **PENDING FINAL ROOT VERIFICATION** |
+| Secret/prohibited-source/public-output scans | **PENDING FINAL ROOT VERIFICATION** |
+
+### Visual evidence and inspection
+
+The final package must contain exactly 7 desktop 1440×900 PNGs, 6 mobile 390×844 PNGs, 3 fallback 1440×900 PNGs, one complete 1440×900 WebM, and a source-bound manifest under `artifacts/review/phase2/`. Capture existence, hashes, byte sizes, candidate binding, Phase 1 evidence integrity, and actual human inspection are **PENDING FINAL ROOT VERIFICATION**.
+
+Inspection must cover footage integration, APERTURE split clarity, Quantum/Maradin hierarchy, third-party-mark subordination, copy/media competition, mobile crops, text contrast on actual frames, TEST physicality, PROVE stillness, reduced motion, no-WebGL composition, compression, and subtitle/frame contamination. Findings and repairs must be written here from the final rendered candidate; none are fabricated in this draft.
+
+### Phase 2 known limitations at draft handoff
+
+- `FONT-001` remains narrowly unresolved because the approved pack contains no licensed font binaries. No runtime font service is used.
+- Final browser/device coverage, defects, Lighthouse results, bundle delta, deployment availability, candidate SHA, push status, and clean-tree status remain **PENDING FINAL ROOT VERIFICATION**.
+- No supporting-route redesign, broader Proof library, second story, ACT 07/08/09 work, main merge, or production deployment is part of this checkpoint.

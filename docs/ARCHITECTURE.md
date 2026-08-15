@@ -1,5 +1,13 @@
 # Architecture
 
+## Phase 2 continuation
+
+Phase 2 preserves the accepted static-first Astro 7 / strict-TypeScript architecture. A schema-validated, publication-filtered Maradin Proof record now owns the factual homepage story. Astro renders that semantic record before enhancement; approved documentary media and the official SVG identity are presentation assets, not new application runtimes.
+
+Native `<video>` elements use posters, `preload="none"`, muted inline playback, and source URLs held in `data-src`. The existing small controller assigns sources only near APERTURE or TEST, pauses inactive footage, and leaves reduced-motion media static. Documentary media is independent of the lazy custom WebGL layer, so no-WebGL mode retains the real-field journey. React, Three.js/R3F, GSAP, video-player frameworks, client routers, CMS runtimes, and external font/CDN dependencies remain absent.
+
+The official brand masters are copied unmodified under `public/brand/`; approved Maradin derivatives are copied unmodified under `public/media/maradin/`. The approved source JSON is not shipped wholesale. Raleway/Comfortaa are wired as intended token families, but local fallbacks remain active because the pack contains no licensed font binaries (`FONT-001`).
+
 ## Decision
 
 Q-HUB is a static-first Astro + strict TypeScript site built to dist and deployed from GitHub to Cloudflare Pages. Astro owns routing, document structure, metadata, and build-time content. Essential content is server-rendered HTML; browser code only enhances it.
@@ -24,7 +32,7 @@ Internal source references remain in authoring records only and are stripped bef
 - Canvas is aria-hidden and non-interactive from an accessibility-tree perspective; equivalent state meaning remains in DOM.
 - The custom renderer owns a narrow lifecycle: initialize, resize, setPhase, setPointer/scrollProgress, pause, resume, destroy.
 - Rendering pauses offscreen and when the document is hidden. Static frames or on-demand rendering replace continuous loops where possible.
-- Assets pass through a media adapter that supports a clearly labelled procedural placeholder now and approved responsive image/video sources later.
+- The field media adapter separates abstract interface material, approved documentary media, and semantic Proof content while retaining one shared stage. APERTURE and TEST media are lazy native-video layers with static fallbacks; PROVE uses approved stills.
 
 ## Route contract
 
@@ -61,4 +69,4 @@ Normal vertical page control is preserved. Any pinned narrative must be bounded,
 - **SEO:** shared metadata generates title, description, canonical, Open Graph/social tags; static robots, sitemap, meaningful links, and indexable copy remain independent of canvas.
 - **Deployment:** Cloudflare Pages publishes dist from a verified build. Secrets never enter source. Commit, push, and preview status are reported only from evidence.
 
-Architecture work stops at the Phase 1 candidate and Human Review Package. Approved media integration is Phase 2.
+Phase 2 remains limited to the accepted homepage grammar and one approved Proof story. Supporting routes remain shells; no broader Proof library, ACT 07/08/09, route redesign, deployment, or production release is authorized at this checkpoint. The Phase 2 candidate stops at its Human Review Package.

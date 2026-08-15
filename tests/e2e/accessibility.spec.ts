@@ -268,17 +268,25 @@ test.describe('accessibility release gate', () => {
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
   });
 
-  test('mobile APERTURE notice exit remains accessible throughout material settlement', async ({ page }) => {
+  test('mobile APERTURE media handoff to NEED remains accessible throughout material settlement', async ({ page }) => {
     const runtimeFailures = captureRuntimeFailures(page);
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/');
 
     for (const delayMs of transitionSampleDelaysMs) {
       await settlePhase(page, 'aperture');
-      await expect(page.locator('.field-media__notice')).toBeVisible();
+      const approvedMedia = page.locator(
+        '.field-media video[data-documentary-video][data-media-phase="aperture"]',
+      );
+      await expect(approvedMedia).toBeVisible();
+      await expect(approvedMedia).toHaveAttribute(
+        'data-poster',
+        '/media/maradin/maradin-field-aperture-poster-approved.jpg',
+      );
       await activatePhase(page, 'need');
       if (delayMs > 0) await page.waitForTimeout(delayMs);
-      await expect(page.locator('.field-media__notice')).toBeHidden();
+      await expect(approvedMedia).toBeVisible();
+      await expect(page.locator('.field-media__notice')).toHaveCount(0);
       await expectAccessibleSnapshot(page, `mobile APERTURE → NEED at +${delayMs}ms`);
     }
 

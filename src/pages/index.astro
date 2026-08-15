@@ -2,14 +2,42 @@
 import ExperienceStage from "@/components/ExperienceStage.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import {
-  developmentProofFields,
+  findSelection,
   findSequence,
   homepageActs,
+  homepageProofFields,
 } from "@/content/homepage";
+import { maradinProofRecord } from "@/content/proof";
 
 const [signal, aperture, need, find, test, prove] = homepageActs;
 if (!signal || !aperture || !need || !find || !test || !prove) {
   throw new Error("The six approved homepage acts are required.");
+}
+
+const aperturePoster = maradinProofRecord.media.find(
+  (asset) => asset.id === "maradin-field-aperture-poster",
+);
+const testFilm = maradinProofRecord.media.find(
+  (asset) => asset.id === "maradin-test-contact-video",
+);
+const proveFrame = maradinProofRecord.media.find(
+  (asset) => asset.id === "maradin-prove-field-frame",
+);
+const supportingStill = maradinProofRecord.media.find(
+  (asset) => asset.id === "maradin-real-field-still",
+);
+const { startup, operatingOrganization, program } = maradinProofRecord;
+
+if (
+  !aperturePoster ||
+  !testFilm ||
+  !proveFrame ||
+  !supportingStill ||
+  !startup ||
+  !operatingOrganization ||
+  !program
+) {
+  throw new Error("The approved Maradin homepage record is incomplete.");
 }
 ---
 
@@ -46,8 +74,8 @@ if (!signal || !aperture || !need || !find || !test || !prove) {
           <span>{signal.title[1]}</span>
         </h1>
         <div class="signal-footer">
-          <p class="editorial-draft">
-            <span>Editorial draft</span>
+          <p class="phase-copy">
+            <span>Operating logic</span>
             {signal.supporting}
           </p>
           <a class="scroll-cue" href="#aperture">
@@ -62,6 +90,7 @@ if (!signal || !aperture || !need || !find || !test || !prove) {
       id="aperture"
       class="act act--aperture"
       data-experience-phase="aperture"
+      data-approved-media="maradin-field-aperture"
       aria-labelledby="aperture-title"
     >
       <div class="act__inner act__inner--aperture">
@@ -71,15 +100,15 @@ if (!signal || !aperture || !need || !find || !test || !prove) {
             <span>{aperture.title[0]}</span>
             <span>{aperture.title[1]}</span>
           </h2>
-          <p class="editorial-draft">
-            <span>Editorial draft / interaction cue</span>
+          <p class="phase-copy phase-copy--plate">
+            <span>Approved field record</span>
             {aperture.supporting}
           </p>
         </div>
-        <div class="aperture-readout" aria-label="Field aperture concept">
+        <div class="aperture-readout" aria-label="Field aperture transition">
           <p><span>Layer 01</span> Abstract signal</p>
-          <p><span>Layer 02</span> Field surface</p>
-          <p><span>State</span> Resolution in progress</p>
+          <p><span>Layer 02</span> Maradin field test</p>
+          <p><span>State</span> Real environment emerging</p>
         </div>
       </div>
     </section>
@@ -93,20 +122,20 @@ if (!signal || !aperture || !need || !find || !test || !prove) {
       <div class="act__inner act__inner--need">
         <p class="act-number"><span>Act</span> {need.act} / {need.label}</p>
         <div class="need-composition">
-          <p class="need-label">Industrial starting point</p>
+          <p class="need-label">Field condition</p>
           <h2 id="need-title" class="display display--need">
             <span>{need.title[0]}</span>
             <span>{need.title[1]}</span>
           </h2>
-          <p class="editorial-draft editorial-draft--vertical">
-            <span>Editorial draft</span>
+          <p class="phase-copy phase-copy--vertical">
+            <span>Approved need</span>
             {need.supporting}
           </p>
         </div>
         <dl class="need-terms">
-          <div><dt>01</dt><dd>Constraint</dd></div>
-          <div><dt>02</dt><dd>Operational requirement</dd></div>
-          <div><dt>03</dt><dd>Selection pressure</dd></div>
+          <div><dt>01</dt><dd>Visual clarity</dd></div>
+          <div><dt>02</dt><dd>Nearby road users</dd></div>
+          <div><dt>03</dt><dd>Real conditions</dd></div>
         </dl>
       </div>
     </section>
@@ -124,8 +153,8 @@ if (!signal || !aperture || !need || !find || !test || !prove) {
             <span>{find.title[0]}</span>
             <span>{find.title[1]}</span>
           </h2>
-          <p class="editorial-draft">
-            <span>Editorial draft</span>
+          <p class="phase-copy">
+            <span>Controlled search</span>
             {find.supporting}
           </p>
         </header>
@@ -143,10 +172,11 @@ if (!signal || !aperture || !need || !find || !test || !prove) {
           ))}
         </ol>
 
-        <aside class="development-selection" data-development-placeholder="selection">
-          <p>Demonstrative placeholder</p>
-          <strong>Selected signal</strong>
-          <span>No company, result, or relationship implied.</span>
+        <aside class="find-selection" aria-label="Selected technology">
+          <p>Selected technology</p>
+          <strong>{findSelection.startup?.name}</strong>
+          <span>{findSelection.method}</span>
+          <span>{findSelection.title}</span>
         </aside>
       </div>
     </section>
@@ -166,14 +196,30 @@ if (!signal || !aperture || !need || !find || !test || !prove) {
           </h2>
         </header>
 
-        <div class="test-boundary" data-development-placeholder="field-test-structure">
-          <p class="test-boundary__statement">{test.supporting}</p>
-          <dl>
-            <div><dt>Environment</dt><dd>Approved context pending</dd></div>
-            <div><dt>Location</dt><dd>Approved location pending</dd></div>
-            <div><dt>Observation</dt><dd>Approved evidence pending</dd></div>
-          </dl>
-          <p class="placeholder-flag">Development structure / no test result represented</p>
+        <div class="test-boundary" data-approved-media="maradin-test-contact">
+          <video
+            class="test-boundary__media"
+            data-documentary-video
+            data-media-phase="test"
+            data-poster={proveFrame.src}
+            muted
+            playsinline
+            loop
+            preload="none"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <source data-src={testFilm.src} type="video/mp4" />
+          </video>
+          <div class="test-boundary__content">
+            <p class="test-boundary__statement">{test.supporting}</p>
+            <dl>
+              <div><dt>Mount</dt><dd>Vehicle-mounted field test</dd></div>
+              <div><dt>Positions</dt><dd>Multiple projector positions</dd></div>
+              <div><dt>Conditions</dt><dd>Road surfaces, light and weather</dd></div>
+              <div><dt>Scenarios</dt><dd>More than 60 real-world scenarios</dd></div>
+            </dl>
+          </div>
         </div>
       </div>
     </section>
@@ -194,16 +240,39 @@ if (!signal || !aperture || !need || !find || !test || !prove) {
           <p>{prove.supporting}</p>
         </header>
 
-        <article class="proof-record" data-development-placeholder="proof-record">
+        <article class="proof-record" data-proof-record={maradinProofRecord.slug}>
           <header>
             <div>
-              <p>Proof / development structure</p>
-              <h3>Development Proof Record</h3>
+              <p>Proof / approved public record</p>
+              <h3>{maradinProofRecord.title}</h3>
             </div>
-            <span>Content status / pending approval</span>
+            <span>{startup.name} / {program.name}</span>
           </header>
+
+          <figure class="proof-record__media">
+            <img
+              class="proof-record__image proof-record__image--primary"
+              src={proveFrame.src}
+              alt={proveFrame.alt}
+              width={proveFrame.width}
+              height={proveFrame.height}
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              class="proof-record__image proof-record__image--supporting"
+              src={supportingStill.src}
+              alt={supportingStill.alt}
+              width={supportingStill.width}
+              height={supportingStill.height}
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Field evidence / approved documentary stills</figcaption>
+          </figure>
+
           <dl>
-            {developmentProofFields.map((field, index) => (
+            {homepageProofFields.map((field, index) => (
               <div>
                 <dt><span>{String(index + 1).padStart(2, "0")}</span>{field.label}</dt>
                 <dd>{field.value}</dd>
@@ -211,14 +280,14 @@ if (!signal || !aperture || !need || !find || !test || !prove) {
             ))}
           </dl>
           <footer>
-            <p>No factual outcome is represented in this development record.</p>
+            <p>{operatingOrganization.name} / {program.name} / comparative field evidence</p>
             <a href="/proof/">View proof architecture <span aria-hidden="true">↗</span></a>
           </footer>
         </article>
 
         <footer class="experience-end">
-          <p>Phase 1 / Signature experiential grammar</p>
-          <p>Human visual review required before Phase 2.</p>
+          <p>Phase 2 / Real field evidence integrated</p>
+          <p>Human review decides the checkpoint.</p>
         </footer>
       </div>
     </section>

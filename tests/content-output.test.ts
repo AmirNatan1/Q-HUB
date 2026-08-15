@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { extname, relative, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { maradinProofRecord } from '../src/content/proof';
 
 const root = resolve(process.cwd());
 const presentationRoots = ['public', 'src/components', 'src/layouts', 'src/pages'];
@@ -22,6 +23,20 @@ function repositoryPath(file: string): string {
 }
 
 describe('public-output boundary', () => {
+  it('keeps the approved Maradin serialization free of private provenance', () => {
+    const serialized = JSON.stringify(maradinProofRecord);
+    const privateKeys = [
+      ['source', 'Reference', 'Internal'].join(''),
+      ['drive', 'Id'].join(''),
+      'approval',
+      'publicationRules',
+    ];
+
+    expect(serialized).toContain('Dynamic Ground Projection');
+    expect(serialized).toContain('Hyundai CRADLE TLV');
+    privateKeys.forEach((key) => expect(serialized).not.toContain(key));
+  });
+
   it('keeps internal source metadata out of presentation code and generated artifacts', () => {
     const internalKey = ['source', 'Reference', 'Internal'].join('');
     const internalScheme = ['internal', '://'].join('');

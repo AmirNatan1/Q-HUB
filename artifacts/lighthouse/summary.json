@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-15T13:00:45.959Z",
-  "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8",
-  "measuredUrl": "http://127.0.0.1:50685/",
+  "generatedAt": "2026-08-15T16:38:49.935Z",
+  "sourceHead": "b0b56d3fa38a41d0d40d24b2a9ab443fbca91a33",
+  "measuredUrl": "http://127.0.0.1:57520/",
   "buildInput": "dist/index.html",
   "results": [
     {
@@ -14,7 +14,7 @@
       },
       "metrics": {
         "lcp": {
-          "numericValue": 270.9413,
+          "numericValue": 313.08025,
           "displayValue": "0.3 s"
         },
         "tbt": {
@@ -27,11 +27,11 @@
         }
       },
       "thresholds": {
-        "performance": 0.9,
-        "accessibility": 0.95,
-        "best-practices": 0.95,
-        "seo": 0.95,
-        "cls": 0.05
+        "performance": 0.95,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1,
+        "cls": 0
       },
       "failures": [],
       "artifacts": {
@@ -49,12 +49,12 @@
       },
       "metrics": {
         "lcp": {
-          "numericValue": 961.3699999999999,
-          "displayValue": "1.0 s"
+          "numericValue": 1142.2805,
+          "displayValue": "1.1 s"
         },
         "tbt": {
-          "numericValue": 0,
-          "displayValue": "0 ms"
+          "numericValue": 16.5,
+          "displayValue": "20 ms"
         },
         "cls": {
           "numericValue": 0,
@@ -62,11 +62,11 @@
         }
       },
       "thresholds": {
-        "performance": 0.85,
-        "accessibility": 0.95,
-        "best-practices": 0.95,
-        "seo": 0.95,
-        "cls": 0.05
+        "performance": 0.95,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1,
+        "cls": 0
       },
       "failures": [],
       "artifacts": {

@@ -1,10 +1,33 @@
 # Approved Asset Requests
 
+## Phase 2 P0 resolution — 2026-08-15
+
+The explicitly approved Maradin source pack resolves the five Phase 1 P0 requests for this homepage checkpoint. The original request specifications remain below as retrieval history; they are not a claim that every preferred master format was delivered. Every copied production asset is byte-for-byte identical to its approved source derivative. No crop, transcode, recompression, SVG rewrite, recolor, or metadata edit was performed.
+
+| Request | Status | Approved source | Final Q-HUB location | Bytes | SHA-256 | Transformation |
+| --- | --- | --- | --- | ---: | --- | --- |
+| BRAND-001 | **RESOLVED** | `brand/quantum-full-logo-colors.svg` | `public/brand/quantum-full-logo-colors.svg` | 5,837 | `3b978e3a639d38e5d869afdae02d5e01eea706829ba95f1b9ee82710ffb19196` | None; exact copy |
+| BRAND-001 | **RESOLVED** | `brand/quantum-full-logo-white.svg` | `public/brand/quantum-full-logo-white.svg` | 5,834 | `244f2bb9a95af7ce6d337e1946dedac3ace6cf01feab53c1b0c2d75e58a68032` | None; exact copy |
+| BRAND-001 | **RESOLVED** | `brand/quantum-icon-color.svg` | `public/brand/quantum-icon-color.svg` | 788 | `04dc37965b33587fea5f4664660f8a7f9a81ec7904d39925b41c6826b80cded9` | None; exact copy |
+| BRAND-001 | **RESOLVED** | `brand/quantum-icon-white.svg` | `public/brand/quantum-icon-white.svg` | 785 | `c660ed87bc5293bfbffa662e523343a7e83bc86cb94848912494e85e0dc9d4ff` | None; exact copy |
+| FIELD-001 | **RESOLVED** | `media/maradin-field-aperture-approved.mp4` | `public/media/maradin/maradin-field-aperture-approved.mp4` | 3,962,341 | `daaec510c528bd7f72a97cfce1d9ede3359ec1339e28e26f524d127f09bf247c` | None; exact copy |
+| FIELD-001 | **RESOLVED** | `media/maradin-field-aperture-poster-approved.jpg` | `public/media/maradin/maradin-field-aperture-poster-approved.jpg` | 86,343 | `6afc1a69570f2541b89b4f6a5074bec04a5d607743d91670321f550b4d6364bd` | None; exact copy |
+| TEST-001 | **RESOLVED** | `media/maradin-test-contact-approved.mp4` | `public/media/maradin/maradin-test-contact-approved.mp4` | 4,133,483 | `076aecf40d9e67ac29eb0b8e2d34ffc374619862a9679a6e44bc08ccfd2c113d` | None; exact copy |
+| PROVE-001 | **RESOLVED** | `media/maradin-prove-field-frame-approved.jpg` | `public/media/maradin/maradin-prove-field-frame-approved.jpg` | 169,156 | `b85f1bd5413b6fe7da235e5217e16b106ae4ff0763e8deb9db6e509dbc0b8b8c` | None; exact copy |
+| PROVE-001 | **RESOLVED** | `media/maradin-real-field-still-approved.jpg` | `public/media/maradin/maradin-real-field-still-approved.jpg` | 961,699 | `49ab9aca0d2e3ef9e9ce164f43f9dbd1514ef815179626bef2bb4217827a6741` | None; exact copy |
+| CONTENT-001 | **RESOLVED** | `content/maradin-homepage-approved.json` | Typed, sanitized authoring in `src/content/proof.ts`; public view consumed by `src/content/homepage.ts` | 4,428 source bytes | `2023610b79391854ecde407154310ffdd07d08ad3c8b63cf215f81a74748f06f` | Public-approved fields mapped into the existing schema; source file was not copied or shipped |
+
+The approval record `content/PUBLICATION_APPROVAL.json` is 511 bytes with SHA-256 `c0a6f98dee13500dfdd78c38db70cfb8a210db167701db31784f270619d219cc`. It remains authoring evidence and is not copied into `public/` or serialized into the site. The record is classification **B**, `publicApproved: true`, with explicit user approval dated **2026-08-15**.
+
+The current brand guide `brand/Quantum-branding-current-2026-06-04.pdf` is 5,960,817 bytes with SHA-256 `b065e08219292daa146064c2ac2054b537bbbdb2acce30d16bd873e5a65c8083`. It is review-only and is not shipped. Its filename/current-pack date is 2026-06-04, while its embedded PDF creation and modification timestamps are both 2022-05-25. The explicitly approved pack remains the authority for this checkpoint; the metadata discrepancy is disclosed rather than silently reconciled.
+
+Protected exclusions remain contracts and commercial terms, internal final-report material, proprietary KPI tables, raw measurement values, confidential technical specifications, and inferred sales, production, deployment, procurement, or commercialization outcomes.
+
 This is the Phase 2 retrieval manifest. Supply assets directly from Quantum’s approved source library or original rights holder—never from the previous website, archives, search snippets, or prohibited repositories. Every delivered item needs an owner, usage rights, classification, publicApproved value, and an internal source reference retained only in authoring data. P0 items unblock replacement of the Phase 1 development media.
 
 ## P0 — required for primary real-media integration
 
-### FIELD-001 — Primary Field Aperture film
+### FIELD-001 — Primary Field Aperture film — RESOLVED
 
 - **Route / scene:** Homepage / ACT 02 APERTURE
 - **Purpose:** Replace the procedural field layer with the real operating world revealed beneath the abstract signal system.
@@ -21,7 +44,7 @@ This is the Phase 2 retrieval manifest. Supply assets directly from Quantum’s 
 - **Fallback behavior:** Approved poster frame shown as a composed field layer
 - **Publication concern:** Written confirmation that the depicted POC, site, people, equipment, trademarks, and operating organization may appear publicly; record classification A or approved B and publicApproved=true. Do not provide footage sourced from the old site.
 
-### TEST-001 — Contact and constraint film
+### TEST-001 — Contact and constraint film — RESOLVED
 
 - **Route / scene:** Homepage / ACT 05 TEST
 - **Purpose:** Make the selected signal’s entry into physical reality unmistakable through material contact, boundary, friction, and observation.
@@ -38,7 +61,7 @@ This is the Phase 2 retrieval manifest. Supply assets directly from Quantum’s 
 - **Fallback behavior:** Approved 3:2 or 4:5 still from the same test moment with CSS material treatment
 - **Publication concern:** Clear all site access, people, customer/startup marks, equipment IP, and confidential test setup. No measurement, result, or outcome may be inferred unless separately approved in structured content.
 
-### PROVE-001 — Matching evidence image set
+### PROVE-001 — Matching evidence image set — RESOLVED
 
 - **Route / scene:** Homepage / ACT 06 PROVE
 - **Purpose:** Replace the development evidence surface with truthful documentation from the same approved story used for TEST where possible.
@@ -55,7 +78,7 @@ This is the Phase 2 retrieval manifest. Supply assets directly from Quantum’s 
 - **Fallback behavior:** The semantic Proof structure remains visible over the designed CSS evidence surface
 - **Publication concern:** Caption each image with what is actually shown; identify people/organizations/marks requiring clearance. Images must not be framed as proof of an outcome without approved evidence text.
 
-### CONTENT-001 — Homepage proof data packet
+### CONTENT-001 — Homepage proof data packet — RESOLVED
 
 - **Route / scene:** Homepage / ACTS 03 NEED, 05 TEST, 06 PROVE
 - **Purpose:** Replace all development labels with one internally consistent, publishable real record without fabricating a challenge, test, evidence, or decision.
@@ -72,7 +95,7 @@ This is the Phase 2 retrieval manifest. Supply assets directly from Quantum’s 
 - **Fallback behavior:** Retain explicit “Approved content pending” development labels; do not publish a realistic substitute
 - **Publication concern:** Each field needs classification, publicApproved, content owner, date of approval, and internal source reference. Relationship labels must be exact and sourceReferenceInternal must never be public.
 
-### BRAND-001 — Official identity master pack
+### BRAND-001 — Official identity master pack — RESOLVED
 
 - **Route / scene:** Global navigation, metadata, favicon, and all homepage acts
 - **Purpose:** Replace the typographic development identifier and provisional brand tokens with the approved Quantum identity.
@@ -88,6 +111,23 @@ This is the Phase 2 retrieval manifest. Supply assets directly from Quantum’s 
 - **Whether audio matters:** No
 - **Fallback behavior:** Continue using the neutral text identifier and centralized PROVISIONAL semantic tokens; never redraw the mark
 - **Publication concern:** Confirm this pack is current, web-cleared, and not extracted from a prior website. Flag any territory, partner-lockup, or font-license restriction.
+
+### FONT-001 — Licensed Quantum webfont binaries — UNRESOLVED
+
+- **Route / scene:** Global typography
+- **Purpose:** Complete the approved Raleway headline/body and Comfortaa subhead treatment without a runtime font service.
+- **Asset type:** Licensed, web-cleared WOFF2 binaries plus license/usage confirmation
+- **Ideal subject matter:** The exact approved families and weights required by the implemented type hierarchy; no substitute family is requested.
+- **Priority:** P1; this is the only unresolved brand-material item in the Phase 2 checkpoint
+- **Preferred aspect ratio:** Not applicable
+- **Minimum useful resolution:** Not applicable
+- **Video duration if applicable:** Not applicable
+- **Preferred format:** WOFF2 with explicit web-embedding rights and weight/style mapping
+- **Mobile crop requirement:** Not applicable
+- **Transparency requirement if applicable:** Not applicable
+- **Whether audio matters:** No
+- **Fallback behavior:** Tokens name `Raleway` and `Comfortaa` first, then retain the existing local system stacks; no remote font request is made
+- **Publication concern:** Confirm license scope before committing binaries. Do not fetch fonts from opaque sources or add a runtime Google Fonts dependency.
 
 ## P1 — strengthens authorship and responsive range
 

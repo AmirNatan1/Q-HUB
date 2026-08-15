@@ -1,5 +1,13 @@
 # Motion System
 
+## Phase 2 documentary-media contract
+
+Real media enters the accepted grammar without becoming a second animation system. SIGNAL remains abstract. During APERTURE, the procedural field scaffold recedes while the approved Maradin film gains authority inside the existing field-side mask. NEED and FIND retain the accepted constraint and convergence physics. TEST places its approved film inside the existing enclosure. PROVE uses still images and structured evidence, with less motion than TEST.
+
+Documentary video uses native `<video>` only. Sources are held in `data-src` with `preload="none"`, prepared only in or near APERTURE/TEST, played muted and inline only while their phase is active, and paused outside it. No video-player dependency, audible track, visible decorative controls, or semantic meaning exists only in footage.
+
+Reduced motion resolves APERTURE and TEST to approved posters/stills: the motion source is not assigned, autoplay and loop remain disabled, and semantic content remains present. Approved media is independent of WebGL, so the DOM/CSS/SVG path retains the real-field handoff when WebGL is unavailable. Mobile uses authored focal positions rather than pointer emulation. APERTURE media remains within the accepted boundary, TEST media remains within its physical enclosure, and PROVE settles to stills; none is promoted to a generic full-page background.
+
 Motion is evidence of system state. It expresses **search → selection → convergence → entry → friction → resolution** and must reinforce FIND → TEST → PROVE.
 
 ## Phase 1 repair authority
@@ -84,6 +92,8 @@ The authored SVG trajectory groups plus DOM/CSS field layers reproduce the mater
 - Render on demand when idle. Cap device pixel ratio by quality tier and recompute safely on resize/orientation.
 - Destroy observers, listeners, and graphics resources when the scene unmounts.
 - Enhancement exceptions fall back silently to the designed DOM state, with no blank hero or blocked controls.
+- Documentary sources are assigned only as their phase approaches and are paused when inactive; posters reserve layout and own the reduced-motion state.
+- Media lifecycle remains part of the small existing controller. It introduces no production dependency and never gates navigation, copy, or phase reachability.
 - Readable technical labels do not animate below the design-system floor of `0.7rem`; the compact mobile rail keeps `0.7rem` numbered controls and exposes full phase names to assistive technology. Motion never substitutes low opacity for hierarchy.
 
 ## Accessibility and testing

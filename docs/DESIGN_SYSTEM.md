@@ -1,15 +1,23 @@
 # Design System
 
+## Phase 2 brand and real-field authority
+
+Phase 2 preserves the accepted Phase 1 trajectory grammar while replacing only the homepage material that the approved Maradin record resolves. Official Quantum SVG masters now own the navigation identity and favicon. The signal/live token maps to exact Quantum pink `#D82B72`; the constraint/field role maps to approved salmon `#F67783`; approved dark gray `#515151`, blue `#4E5DFF`, light gray `#E6E6E6`, and white `#FFFFFF` are available only for controlled semantic use. PROVE retains its established teal evidence role so the live-to-evidence distinction remains legible.
+
+The intended font tokens now name Raleway for display/body and Comfortaa for subheads. The approved pack contains no font binaries, so the existing local system fallbacks remain active and no runtime font service is used. This is tracked narrowly as `FONT-001`; `BRAND-001` is resolved.
+
+The approved guide's old four-industry icon taxonomy is identity-guide history, not business/content truth. It must not appear as navigation, content taxonomy, or a homepage grid.
+
 ## Direction
 
 The visual tension is **precision instrument × industrial documentary**. Premium comes from composition, material, pacing, restraint, and exact typography—not decoration. The page becomes progressively more physical as uncertainty collapses:
 
-- **SIGNAL / FIND:** near-black, spatial, distributed, uncertain; provisional magenta carries signal and selection.
+- **SIGNAL / FIND:** near-black, spatial, distributed, uncertain; approved Quantum pink carries signal and selection.
 - **APERTURE / NEED:** the abstract layer opens onto a distinct field surface; density narrows and constraint appears.
-- **TEST:** field heat/orange, texture, contact, boundary, time, and observation.
+- **TEST:** warm field material, approved salmon, documentary texture, contact, boundary, time, and observation.
 - **PROVE:** provisional teal, order, quiet, documentation, and stable evidence structure.
 
-All brand-dependent values are explicitly PROVISIONAL until approved Quantum identity assets arrive.
+Identity colors and SVG marks are approved for this checkpoint. Typography remains intentionally fallback-backed until licensed binaries resolve `FONT-001`.
 
 ## Phase 1 repair authority
 
@@ -61,7 +69,7 @@ Primary display typography owns a protected keepout region. The realtime engine 
 | TEST | The field surface, enclosure, boundary, and observation structure dominate. Distribution, channels, candidates, and general points are removed. At most one faint field-heat residual trajectory preserves continuity from FIND. No meaningful magenta remains. |
 | PROVE | Signal, aperture, constraint, and field layers settle to zero. Off-white, teal, evidence grid, headline, and Proof Record become the complete composition. No magenta noise survives. |
 
-The procedural field is a development surface, not documentary evidence. Its equal grid is subordinate to large perspective planes, surface shading, bounded contact geometry, and the explicit development-media notice.
+The procedural field remains an interface scaffold at the aperture boundary, subordinate to the approved documentary layer. It is no longer presented as development evidence or accompanied by an approval-pending notice. The real film gains authority only on the field side of APERTURE; TEST contains its own approved film inside the existing enclosure; PROVE settles into approved stills and the structured record.
 
 ## Responsive authorship
 
@@ -90,9 +98,17 @@ The procedural field is a development surface, not documentary evidence. Its equ
 ## Media and placeholders
 
 - Use only approved Quantum media in production. Never use stock factory imagery, old-site media, fake POC photography, fabricated logos, or a redrawn Quantum mark.
-- Development visuals must be procedural, visibly abstract, labelled as development material where exposed, and machine-detectable.
+- The Phase 2 homepage uses only the approved Maradin derivatives recorded in `ASSET_REQUESTS.md`; copied files are unmodified.
+- Documentary media remains visually subordinate to Quantum's operating journey: it is revealed through APERTURE, bounded in TEST, and quiet/evidence-led in PROVE rather than used as a generic full-bleed background.
+- Development visuals outside this resolved homepage story must remain procedural, visibly abstract, labelled where exposed, and machine-detectable.
 - Approved photography/video should show real operating context, physical constraint, observation, and evidence without cosmetic futuristic overlays.
 - Crops preserve the test subject and human/operational context; never crop into an unsupported claim.
+
+## Official mark usage
+
+- Use the supplied full-color/full-white and icon-color/icon-white SVG masters directly. Do not trace, simplify, recolor, rebuild, or inline-edit their paths.
+- The full white/color masters switch with dark/light composition on wider navigation. The icon variants provide the compact navigation treatment and favicon.
+- The accessible home link is named in HTML; decorative duplicate image alternatives remain empty so the four responsive masters are not announced repeatedly.
 
 ## Rejected patterns
 

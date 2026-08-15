@@ -6,11 +6,13 @@ test-results/
 .lighthouseci/
 artifacts/*
 !artifacts/bundle-report.json
+!artifacts/phase2-media-report.json
 !artifacts/lighthouse/
 artifacts/lighthouse/*
 !artifacts/lighthouse/summary.json
 !artifacts/review/
 !artifacts/review/**
+artifacts/review/*.zip
 coverage/
 .env
 .env.*

@@ -11,6 +11,7 @@ const excludedDirectories = new Set([
   'dist',
   'node_modules',
   'playwright-report',
+  'QH_PHASE2_MARADIN_APPROVED',
   'test-results',
 ]);
 const textExtensions = new Set([

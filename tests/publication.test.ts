@@ -2,6 +2,10 @@ import { describe, expect, it } from "vitest";
 
 import { developmentContent } from "../src/content/development";
 import {
+  maradinProofRecord,
+  publicProofRecords,
+} from "../src/content/proof";
+import {
   assertNoDevelopmentPlaceholders,
   filterPublicRecords,
   findDevelopmentPlaceholders,
@@ -66,6 +70,29 @@ describe("publication eligibility", () => {
       "B",
     ]);
   });
+
+  it("publishes the schema-valid B-approved Maradin record", () => {
+    expect(proofRecordSchema.safeParse(maradinProofRecord).success).toBe(true);
+    expect(isPubliclyEligible(maradinProofRecord)).toBe(true);
+    expect(publicProofRecords).toEqual([maradinProofRecord]);
+  });
+
+  it.each([
+    ["B", false],
+    ["C", true],
+    ["D", true],
+  ] as const)(
+    "denies the Maradin record if classification=%s and approved=%s",
+    (classification, publicApproved) => {
+      expect(
+        toPublicRecord({
+          ...maradinProofRecord,
+          classification,
+          publicApproved,
+        }),
+      ).toBeNull();
+    },
+  );
 });
 
 describe("public serialization", () => {
@@ -96,6 +123,40 @@ describe("public serialization", () => {
     });
 
     expect(sanitized).toEqual({ items: [{ label: "visible" }] });
+  });
+
+  it("serializes only approved public Maradin fields", () => {
+    expect(Object.keys(maradinProofRecord).sort()).toEqual(
+      [
+        "classification",
+        "contentType",
+        "developmentPlaceholder",
+        "domains",
+        "environment",
+        "evidence",
+        "featured",
+        "fieldCondition",
+        "heroMedia",
+        "id",
+        "media",
+        "nextStep",
+        "operatingOrganization",
+        "program",
+        "publicApproved",
+        "relatedProof",
+        "relationshipLabels",
+        "slug",
+        "startup",
+        "summary",
+        "technology",
+        "test",
+        "title",
+      ].sort(),
+    );
+    expect(maradinProofRecord).not.toHaveProperty("decision");
+    expect(maradinProofRecord).not.toHaveProperty("date");
+    expect(maradinProofRecord).not.toHaveProperty("location");
+    expect(maradinProofRecord).not.toHaveProperty("sourceReferenceInternal");
   });
 });
 

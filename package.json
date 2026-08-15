@@ -18,7 +18,10 @@
     "bundle:check": "node scripts/check-bundle.mjs",
     "lighthouse": "node scripts/run-lighthouse.mjs",
     "evidence:repair": "node scripts/capture-repair-evidence.mjs",
-    "evidence:analyze": "node scripts/analyze-repair-evidence.mjs"
+    "evidence:analyze": "node scripts/analyze-repair-evidence.mjs",
+    "evidence:phase2": "node scripts/capture-phase2-evidence.mjs",
+    "evidence:phase2:plan": "node scripts/capture-phase2-evidence.mjs --plan",
+    "media:check": "node scripts/check-phase2-media.mjs"
   },
   "dependencies": {
     "astro": "^7.2.2",

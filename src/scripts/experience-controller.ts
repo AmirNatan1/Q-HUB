@@ -9,6 +9,9 @@ const phaseLinks = Array.from(
 );
 const stageStatus = document.querySelector<HTMLElement>("[data-stage-status]");
 const canvas = document.querySelector<HTMLCanvasElement>("[data-signal-canvas]");
+const documentaryVideos = Array.from(
+  document.querySelectorAll<HTMLVideoElement>("[data-documentary-video]"),
+);
 
 const phases: ExperiencePhase[] = [
   "signal",
@@ -64,6 +67,51 @@ function phaseFromSection(section: HTMLElement): ExperiencePhase {
   return phases.includes(candidate as ExperiencePhase)
     ? (candidate as ExperiencePhase)
     : "signal";
+}
+
+function prepareDocumentaryVideo(
+  video: HTMLVideoElement,
+  includeMotion: boolean,
+): void {
+  const poster = video.dataset.poster;
+  if (poster && !video.poster) video.poster = poster;
+  if (!includeMotion || video.dataset.mediaLoaded === "true") return;
+
+  const source = video.querySelector<HTMLSourceElement>("source[data-src]");
+  const sourcePath = source?.dataset.src;
+  if (!source || !sourcePath) return;
+
+  source.src = sourcePath;
+  video.dataset.mediaLoaded = "true";
+  video.load();
+}
+
+function syncDocumentaryMedia(
+  phase: ExperiencePhase,
+  localProgress: number,
+): void {
+  const reduced = reducedMotionEnabled();
+
+  documentaryVideos.forEach((video) => {
+    const mediaPhase = video.dataset.mediaPhase as ExperiencePhase | undefined;
+    const nearAperture =
+      mediaPhase === "aperture" && phase === "signal" && localProgress >= 0.72;
+    const nearTest =
+      mediaPhase === "test" && phase === "find" && localProgress >= 0.62;
+    const shouldPrepare = mediaPhase === phase || nearAperture || nearTest;
+
+    video.muted = true;
+    video.loop = !reduced;
+    if (shouldPrepare) prepareDocumentaryVideo(video, !reduced);
+
+    if (!reduced && mediaPhase === phase) {
+      void video.play().catch(() => undefined);
+    } else {
+      video.pause();
+    }
+  });
+
+  root.dataset.mediaMode = reduced ? "static-posters" : "native-video";
 }
 
 function setActivePhase(index: number): void {
@@ -214,6 +262,7 @@ function updateStoryState(): void {
   root.style.setProperty("--trajectory-freedom", trajectoryFreedom.toFixed(4));
   root.style.setProperty("--selection-focus", selectionFocus.toFixed(4));
   root.style.setProperty("--settlement", settlement.toFixed(4));
+  syncDocumentaryMedia(phase, local);
 }
 
 function queueStoryUpdate(): void {

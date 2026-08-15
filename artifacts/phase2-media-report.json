@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-08-15T16:37:07.290Z",
+  "approvalDate": "2026-08-15",
+  "classification": "B",
+  "publicApproved": true,
+  "transformation": "Copied byte-for-byte from the approved Phase 2 derivative pack.",
+  "totals": {
+    "assets": 9,
+    "bytes": 9326266,
+    "videoBytes": 8095824
+  },
+  "inventory": [
+    {
+      "path": "public/brand/quantum-full-logo-colors.svg",
+      "bytes": 5837,
+      "sha256": "3b978e3a639d38e5d869afdae02d5e01eea706829ba95f1b9ee82710ffb19196",
+      "role": "official full-color logo",
+      "exists": true,
+      "verifiedBytes": 5837,
+      "verifiedSha256": "3b978e3a639d38e5d869afdae02d5e01eea706829ba95f1b9ee82710ffb19196"
+    },
+    {
+      "path": "public/brand/quantum-full-logo-white.svg",
+      "bytes": 5834,
+      "sha256": "244f2bb9a95af7ce6d337e1946dedac3ace6cf01feab53c1b0c2d75e58a68032",
+      "role": "official white logo",
+      "exists": true,
+      "verifiedBytes": 5834,
+      "verifiedSha256": "244f2bb9a95af7ce6d337e1946dedac3ace6cf01feab53c1b0c2d75e58a68032"
+    },
+    {
+      "path": "public/brand/quantum-icon-color.svg",
+      "bytes": 788,
+      "sha256": "04dc37965b33587fea5f4664660f8a7f9a81ec7904d39925b41c6826b80cded9",
+      "role": "official color icon and favicon",
+      "exists": true,
+      "verifiedBytes": 788,
+      "verifiedSha256": "04dc37965b33587fea5f4664660f8a7f9a81ec7904d39925b41c6826b80cded9"
+    },
+    {
+      "path": "public/brand/quantum-icon-white.svg",
+      "bytes": 785,
+      "sha256": "c660ed87bc5293bfbffa662e523343a7e83bc86cb94848912494e85e0dc9d4ff",
+      "role": "official white icon",
+      "exists": true,
+      "verifiedBytes": 785,
+      "verifiedSha256": "c660ed87bc5293bfbffa662e523343a7e83bc86cb94848912494e85e0dc9d4ff"
+    },
+    {
+      "path": "public/media/maradin/maradin-field-aperture-approved.mp4",
+      "bytes": 3962341,
+      "sha256": "daaec510c528bd7f72a97cfce1d9ede3359ec1339e28e26f524d127f09bf247c",
+      "role": "APERTURE documentary film",
+      "width": 1920,
+      "height": 1080,
+      "durationSeconds": 3.2032,
+      "audioTracks": 0,
+      "exists": true,
+      "verifiedBytes": 3962341,
+      "verifiedSha256": "daaec510c528bd7f72a97cfce1d9ede3359ec1339e28e26f524d127f09bf247c"
+    },
+    {
+      "path": "public/media/maradin/maradin-field-aperture-poster-approved.jpg",
+      "bytes": 86343,
+      "sha256": "6afc1a69570f2541b89b4f6a5074bec04a5d607743d91670321f550b4d6364bd",
+      "role": "APERTURE poster",
+      "width": 1920,
+      "height": 1080,
+      "exists": true,
+      "verifiedBytes": 86343,
+      "verifiedSha256": "6afc1a69570f2541b89b4f6a5074bec04a5d607743d91670321f550b4d6364bd"
+    },
+    {
+      "path": "public/media/maradin/maradin-test-contact-approved.mp4",
+      "bytes": 4133483,
+      "sha256": "076aecf40d9e67ac29eb0b8e2d34ffc374619862a9679a6e44bc08ccfd2c113d",
+      "role": "TEST documentary film",
+      "width": 1920,
+      "height": 1080,
+      "durationSeconds": 5.005,
+      "audioTracks": 0,
+      "exists": true,
+      "verifiedBytes": 4133483,
+      "verifiedSha256": "076aecf40d9e67ac29eb0b8e2d34ffc374619862a9679a6e44bc08ccfd2c113d"
+    },
+    {
+      "path": "public/media/maradin/maradin-prove-field-frame-approved.jpg",
+      "bytes": 169156,
+      "sha256": "b85f1bd5413b6fe7da235e5217e16b106ae4ff0763e8deb9db6e509dbc0b8b8c",
+      "role": "PROVE primary still and TEST poster",
+      "width": 1920,
+      "height": 1080,
+      "exists": true,
+      "verifiedBytes": 169156,
+      "verifiedSha256": "b85f1bd5413b6fe7da235e5217e16b106ae4ff0763e8deb9db6e509dbc0b8b8c"
+    },
+    {
+      "path": "public/media/maradin/maradin-real-field-still-approved.jpg",
+      "bytes": 961699,
+      "sha256": "49ab9aca0d2e3ef9e9ce164f43f9dbd1514ef815179626bef2bb4217827a6741",
+      "role": "PROVE supporting still",
+      "width": 3840,
+      "height": 2160,
+      "exists": true,
+      "verifiedBytes": 961699,
+      "verifiedSha256": "49ab9aca0d2e3ef9e9ce164f43f9dbd1514ef815179626bef2bb4217827a6741"
+    }
+  ],
+  "shippedVideos": [
+    "public/media/maradin/maradin-field-aperture-approved.mp4",
+    "public/media/maradin/maradin-test-contact-approved.mp4"
+  ],
+  "failures": []
+}

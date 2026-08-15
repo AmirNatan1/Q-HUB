@@ -20,22 +20,22 @@ const profiles = [
     name: "desktop",
     config: desktopConfig,
     thresholds: {
-      performance: 0.9,
-      accessibility: 0.95,
-      "best-practices": 0.95,
-      seo: 0.95,
-      cls: 0.05
+      performance: 0.95,
+      accessibility: 1,
+      "best-practices": 1,
+      seo: 1,
+      cls: 0
     }
   },
   {
     name: "mobile",
     config: undefined,
     thresholds: {
-      performance: 0.85,
-      accessibility: 0.95,
-      "best-practices": 0.95,
-      seo: 0.95,
-      cls: 0.05
+      performance: 0.95,
+      accessibility: 1,
+      "best-practices": 1,
+      seo: 1,
+      cls: 0
     }
   }
 ];

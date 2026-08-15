@@ -225,12 +225,18 @@ test.describe('Phase 1 visual grammar repair contract', () => {
     expect(find.candidatesOpacity, 'FIND must retain disciplined candidate relationships.').toBeGreaterThanOrEqual(0.08);
     expect(find.selectionOpacity, 'The selected signal must dominate remaining candidates.').toBeGreaterThan(find.candidatesOpacity + 0.15);
 
-    expect(fieldTest.fieldOpacity, 'TEST must be dominated by the physical field.').toBeGreaterThanOrEqual(0.9);
+    expect(fieldTest.fieldOpacity, 'The APERTURE field layer must recede once TEST owns the approved field evidence.').toBeLessThanOrEqual(0.05);
     expect(fieldTest.trajectoryOpacity, 'Very little original signal language may survive into TEST.').toBeLessThanOrEqual(0.08);
     expect(fieldTest.canvasOpacity, 'Realtime signal ink must not dominate TEST.').toBeLessThanOrEqual(0.05);
     const boundary = page.locator('.test-boundary');
     await activatePhase(page, 'test');
     await expect(boundary).toBeVisible();
+    const approvedFieldMedia = boundary.locator('.test-boundary__media');
+    await expect(approvedFieldMedia).toBeVisible();
+    expect(
+      await opacity(approvedFieldMedia),
+      'TEST must remain dominated by the approved physical field media inside its boundary.',
+    ).toBeGreaterThanOrEqual(0.9);
     const boundaryMetrics = await boundary.evaluate((element) => {
       const rect = element.getBoundingClientRect();
       const style = getComputedStyle(element);
@@ -769,7 +775,7 @@ test.describe('Phase 1 visual grammar repair contract', () => {
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
   });
 
-  test('H13 desktop APERTURE status boxes remain clear in normal, reduced, and no-WebGL modes', async ({ page }) => {
+  test('H13 approved APERTURE media and status remain legible in normal, reduced, and no-WebGL modes', async ({ page }) => {
     const runtimeFailures = captureRuntimeFailures(page);
     const modes = [
       { label: 'normal', reducedMotion: 'no-preference' as const, url: '/' },
@@ -782,11 +788,20 @@ test.describe('Phase 1 visual grammar repair contract', () => {
       await preparePage(page, mode.url);
       await activatePhase(page, 'aperture');
 
-      const notice = page.locator('.field-media__notice');
-      await expect(notice).toBeVisible();
-      const noticeBox = await notice.boundingBox();
-      expect(noticeBox, `${mode.label} APERTURE notice must have a rendered box.`).not.toBeNull();
-      if (!noticeBox) continue;
+      const documentary = page.locator('.field-media__documentary');
+      const video = documentary.locator(
+        'video[data-documentary-video][data-media-phase="aperture"]',
+      );
+      await expect(documentary).toBeVisible();
+      await expect(video).toBeVisible();
+      await expect(video).toHaveAttribute(
+        'data-poster',
+        '/media/maradin/maradin-field-aperture-poster-approved.jpg',
+      );
+      expect(
+        await documentary.evaluate((element) => Number.parseFloat(getComputedStyle(element).opacity)),
+        `${mode.label} APERTURE approved media must remain materially visible.`,
+      ).toBeGreaterThan(0);
 
       const statusBoxes = page.locator('.stage-frame p');
       await expect(statusBoxes).toHaveCount(2);
@@ -798,16 +813,25 @@ test.describe('Phase 1 visual grammar repair contract', () => {
         const statusBox = await status.boundingBox();
         expect(statusBox, `${mode.label} APERTURE status ${index + 1} must have a rendered box.`).not.toBeNull();
         if (!statusBox) continue;
-        const horizontalOverlap =
-          Math.min(noticeBox.x + noticeBox.width, statusBox.x + statusBox.width) -
-          Math.max(noticeBox.x, statusBox.x);
-        const verticalOverlap =
-          Math.min(noticeBox.y + noticeBox.height, statusBox.y + statusBox.height) -
-          Math.max(noticeBox.y, statusBox.y);
+        const statusPresentation = await status.evaluate((element) => ({
+          background: getComputedStyle(element).backgroundColor,
+          hudZ: Number.parseInt(
+            getComputedStyle(element.closest('.experience-hud') as HTMLElement).zIndex,
+            10,
+          ),
+          stageZ: Number.parseInt(
+            getComputedStyle(document.querySelector('.experience-stage') as HTMLElement).zIndex,
+            10,
+          ),
+        }));
         expect(
-          horizontalOverlap > 0 && verticalOverlap > 0,
-          `${mode.label} APERTURE notice overlaps stage status ${index + 1}.`,
-        ).toBe(false);
+          statusPresentation.background,
+          `${mode.label} APERTURE status ${index + 1} needs a deterministic legibility plate.`,
+        ).not.toMatch(/^rgba?\(0,\s*0,\s*0(?:,\s*0)?\)$/);
+        expect(
+          statusPresentation.hudZ,
+          `${mode.label} APERTURE status ${index + 1} must resolve above documentary media.`,
+        ).toBeGreaterThan(statusPresentation.stageZ);
       }
       expect(visibleStatuses, `${mode.label} APERTURE needs a visible stage status box.`).toBeGreaterThan(0);
     }

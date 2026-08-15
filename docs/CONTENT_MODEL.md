@@ -1,5 +1,13 @@
 # Content model
 
+## Phase 2 approved Proof record
+
+`src/content/proof.ts` now parses the approved Maradin record with `proofRecordSchema`, passes it through the existing deny-by-default publication filter, and exports only the eligible public value. `src/content/homepage.ts` derives NEED, FIND, TEST, PROVE, and the compact Proof fields from that filtered record; corporate facts are not duplicated in Astro presentation templates.
+
+The record is classification **B**, `publicApproved: true`, `developmentPlaceholder: false`, with explicit user approval dated **2026-08-15**. Its public fields are title, summary, startup, operating organization, program, domains, field condition, technology, environment, test, evidence, next step, approved media references, featured state, stable ID, and slug. `decision`, location, and a full date are omitted because the approved material does not supply them at the schema's required precision. No commercial result is inferred.
+
+The approved source JSON is not copied into the repository or public build. Only its approved public-safe values are mapped into the typed record. Internal provenance is absent from the presentation record and remains covered by recursive `sourceReferenceInternal` stripping and output scans.
+
 Quantum content is structured, validated, and publication-controlled before presentation. Corporate facts do not belong directly in visual components.
 
 ## Record families
@@ -45,6 +53,8 @@ Development records must always be:
 - `developmentPlaceholder: true`.
 
 The schemas reject a placeholder marked with public-safe metadata. The publication layer excludes placeholders regardless, and `assertNoDevelopmentPlaceholders` is the pre-release failure mechanism.
+
+Phase 2 resolves the homepage selection, field-test structure, Proof record, documentary-media notice, and identity placeholders only. The six deliberately non-public development-record families and later-phase supporting route shells remain machine-identifiable. Release tests distinguish those intentional future records from the now production-eligible homepage material.
 
 ## Authoring flow
 
