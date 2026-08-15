@@ -202,6 +202,7 @@ const workflowAuditRoutes = Object.freeze([
 ]);
 
 let previewProcess;
+let previewPort;
 let previewLog = "";
 let browser;
 let stagingDirectory;
@@ -335,6 +336,7 @@ async function reservePort() {
 }
 
 function startPreview(port) {
+  previewPort = port;
   const child = spawn(
     process.execPath,
     [astroCliPath, "preview", "--host", host, "--port", String(port)],
@@ -374,13 +376,43 @@ async function waitForPreview(url, timeoutMs = 45_000) {
 }
 
 async function stopPreview() {
-  if (!previewProcess?.pid || previewProcess.exitCode !== null) return;
-  previewProcess.kill();
-  for (let attempt = 0; attempt < 30; attempt += 1) {
-    if (previewProcess.exitCode !== null) return;
-    await new Promise((resolve) => setTimeout(resolve, 100));
+  if (previewProcess?.pid && previewProcess.exitCode === null) {
+    previewProcess.kill();
+    for (let attempt = 0; attempt < 30; attempt += 1) {
+      if (previewProcess.exitCode !== null) break;
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
   }
-  if (process.platform === "win32" && previewProcess.exitCode === null) {
+
+  if (process.platform === "win32" && previewPort) {
+    const { stdout } = await execFileAsync("netstat", ["-ano", "-p", "tcp"], {
+      windowsHide: true,
+      maxBuffer: 4 * 1024 * 1024,
+    });
+    const listenerPids = new Set(stdout
+      .split(/\r?\n/)
+      .map((line) => line.trim().split(/\s+/))
+      .filter((fields) => fields.length >= 5
+        && fields[1]?.endsWith(`:${previewPort}`)
+        && fields[3]?.toUpperCase() === "LISTENING")
+      .map((fields) => Number.parseInt(fields.at(-1), 10))
+      .filter((pid) => Number.isInteger(pid) && pid > 0 && pid !== process.pid));
+    for (const pid of listenerPids) {
+      try {
+        process.kill(pid);
+      } catch (error) {
+        if (!(error && typeof error === "object" && "code" in error && error.code === "ESRCH")) {
+          throw error;
+        }
+      }
+    }
+  }
+
+  if (previewProcess?.pid && previewProcess.exitCode === null) {
+    if (process.platform !== "win32") {
+      previewProcess.kill("SIGKILL");
+      return;
+    }
     await new Promise((resolve) => {
       const child = spawn(
         "taskkill",
@@ -390,9 +422,7 @@ async function stopPreview() {
       child.once("error", resolve);
       child.once("exit", resolve);
     });
-    return;
   }
-  if (previewProcess.exitCode === null) previewProcess.kill("SIGKILL");
 }
 
 async function shutdown() {
@@ -722,6 +752,20 @@ async function waitForVisibleImages(page) {
     });
     return visibleImages.every((image) => image.complete && image.naturalWidth > 0);
   }, undefined, { timeout: 12_000 });
+  await page.evaluate(async () => {
+    const visibleImages = Array.from(document.images).filter((image) => {
+      const bounds = image.getBoundingClientRect();
+      return bounds.bottom > 0
+        && bounds.right > 0
+        && bounds.top < window.innerHeight
+        && bounds.left < window.innerWidth
+        && getComputedStyle(image).visibility !== "hidden";
+    });
+    await Promise.all(visibleImages.map((image) => image.decode()));
+    await new Promise((resolve) => {
+      requestAnimationFrame(() => requestAnimationFrame(resolve));
+    });
+  });
 }
 
 async function captureState(page, definition) {
@@ -923,12 +967,37 @@ async function testCoverageGeometry(page) {
   };
 }
 
+const proveSubjectRegions = {
+  "projected-stop-symbol": { xMin: 550, yMin: 600, xMax: 1_320, yMax: 1_070 },
+  "field-vehicle": { xMin: 780, yMin: 1_660, xMax: 1_600, yMax: 2_040 },
+};
+
 async function proveMediaPositions(page) {
-  const result = await page.locator(".proof-record__media").evaluate((element) => {
+  const result = await page.locator(".proof-record__media").evaluate((element, subjectRegions) => {
     const figure = element.getBoundingClientRect();
+    const caption = element.querySelector("figcaption");
+    if (!(caption instanceof HTMLElement)) throw new Error("Expected PROVE evidence caption.");
+    const captionRect = caption.getBoundingClientRect();
     const images = Array.from(element.querySelectorAll("[data-evidence-subject]"));
+    const clamp = (value, minimum, maximum) => Math.min(maximum, Math.max(minimum, value));
+    const intersection = (first, second) => ({
+      xMin: Math.max(first.xMin, second.xMin),
+      yMin: Math.max(first.yMin, second.yMin),
+      xMax: Math.min(first.xMax, second.xMax),
+      yMax: Math.min(first.yMax, second.yMax),
+    });
+    const area = (rectangle) => (
+      Math.max(0, rectangle.xMax - rectangle.xMin)
+      * Math.max(0, rectangle.yMax - rectangle.yMin)
+    );
     return {
       figure: { x: figure.x, y: figure.y, width: figure.width, height: figure.height },
+      caption: {
+        x: captionRect.x,
+        y: captionRect.y,
+        width: captionRect.width,
+        height: captionRect.height,
+      },
       images: images.map((candidate) => {
         if (!(candidate instanceof HTMLImageElement)) throw new Error("Expected PROVE image.");
         const rect = candidate.getBoundingClientRect();
@@ -941,41 +1010,120 @@ async function proveMediaPositions(page) {
         const renderedHeight = candidate.naturalHeight * scale;
         const offsetX = (rect.width - renderedWidth) * positionX / 100;
         const offsetY = (rect.height - renderedHeight) * positionY / 100;
-        const clamp = (value, minimum, maximum) => Math.min(maximum, Math.max(minimum, value));
+        const sourceCrop = {
+          xMin: clamp(-offsetX / scale, 0, candidate.naturalWidth),
+          yMin: clamp(-offsetY / scale, 0, candidate.naturalHeight),
+          xMax: clamp((rect.width - offsetX) / scale, 0, candidate.naturalWidth),
+          yMax: clamp((rect.height - offsetY) / scale, 0, candidate.naturalHeight),
+        };
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.max(1, Math.round(rect.width));
+        canvas.height = Math.max(1, Math.round(rect.height));
+        const context = canvas.getContext("2d", { willReadFrequently: true });
+        if (!context) throw new Error("Expected a canvas context for PROVE crop verification.");
+        const canvasScale = Math.max(
+          canvas.width / candidate.naturalWidth,
+          canvas.height / candidate.naturalHeight,
+        );
+        const canvasWidth = candidate.naturalWidth * canvasScale;
+        const canvasHeight = candidate.naturalHeight * canvasScale;
+        const canvasOffsetX = (canvas.width - canvasWidth) * positionX / 100;
+        const canvasOffsetY = (canvas.height - canvasHeight) * positionY / 100;
+        context.drawImage(candidate, canvasOffsetX, canvasOffsetY, canvasWidth, canvasHeight);
+        const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+        let subjectColorPixels = 0;
+        for (let index = 0; index < pixels.length; index += 4) {
+          const red = pixels[index] ?? 0;
+          const green = pixels[index + 1] ?? 0;
+          const blue = pixels[index + 2] ?? 0;
+          if (red > 130 && red > green * 1.35 && red > blue * 1.12 && red - green > 35) {
+            subjectColorPixels += 1;
+          }
+        }
+        const subject = candidate.dataset.evidenceSubject ?? "unknown";
+        const subjectRegion = subjectRegions[subject];
+        let subjectVisibility = null;
+        if (subjectRegion) {
+          const visibleRegion = intersection(subjectRegion, sourceCrop);
+          const projectedRegion = {
+            xMin: rect.x + offsetX + visibleRegion.xMin * scale,
+            yMin: rect.y + offsetY + visibleRegion.yMin * scale,
+            xMax: rect.x + offsetX + visibleRegion.xMax * scale,
+            yMax: rect.y + offsetY + visibleRegion.yMax * scale,
+          };
+          const captionRegion = {
+            xMin: captionRect.left,
+            yMin: captionRect.top,
+            xMax: captionRect.right,
+            yMax: captionRect.bottom,
+          };
+          subjectVisibility = {
+            sourceRegion: subjectRegion,
+            visibleSourceRatio: area(subjectRegion) > 0 ? area(visibleRegion) / area(subjectRegion) : 0,
+            projectedRegion,
+            projectedWidth: Math.max(0, projectedRegion.xMax - projectedRegion.xMin),
+            projectedHeight: Math.max(0, projectedRegion.yMax - projectedRegion.yMin),
+            captionOverlapRatio:
+              area(projectedRegion) > 0
+                ? area(intersection(projectedRegion, captionRegion)) / area(projectedRegion)
+                : 1,
+          };
+        }
         return {
-          subject: candidate.dataset.evidenceSubject ?? "unknown",
+          subject,
           alt: candidate.alt,
+          decoded: candidate.complete && candidate.naturalWidth > 0,
           rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
           naturalWidth: candidate.naturalWidth,
           naturalHeight: candidate.naturalHeight,
           objectFit: style.objectFit,
           objectPosition: style.objectPosition,
           figureWidthRatio: rect.width / figure.width,
-          sourceCrop: {
-            xMin: clamp(-offsetX / scale, 0, candidate.naturalWidth),
-            yMin: clamp(-offsetY / scale, 0, candidate.naturalHeight),
-            xMax: clamp((rect.width - offsetX) / scale, 0, candidate.naturalWidth),
-            yMax: clamp((rect.height - offsetY) / scale, 0, candidate.naturalHeight),
-          },
+          subjectColorRatio: subjectColorPixels / (canvas.width * canvas.height),
+          sourceCrop,
+          subjectVisibility,
         };
       }),
     };
-  });
+  }, proveSubjectRegions);
   if (result.images.length !== 2) throw new Error("PROVE must expose exactly two authored evidence images.");
   const subjects = result.images.map((image) => image.subject);
   if (!subjects.includes("projected-stop-symbol") || !subjects.includes("field-vehicle")) {
     throw new Error(`PROVE evidence subjects are incomplete: ${subjects.join(", ")}.`);
   }
+  if (result.images.some((image) => !image.decoded)) {
+    throw new Error("PROVE evidence images must be fully decoded before capture.");
+  }
   if (result.images.some((image) => image.objectPosition === "50% 50%")) {
     throw new Error("PROVE evidence media must not use default focal positions.");
   }
   const supporting = result.images.find((image) => image.subject === "field-vehicle");
+  const primary = result.images.find((image) => image.subject === "projected-stop-symbol");
+  const minimumVehicleColorRatio = (page.viewportSize()?.width ?? 1_440) <= 832 ? 0.02 : 0.015;
+  if (!primary || primary.subjectColorRatio < 0.1) {
+    throw new Error(`PROVE stop-symbol crop lacks its measured subject signature: ${JSON.stringify(primary)}.`);
+  }
   if (!supporting || supporting.figureWidthRatio < 0.35) {
     throw new Error("PROVE supporting vehicle still is not materially visible in the composition.");
+  }
+  if (
+    !supporting.subjectVisibility
+    || supporting.subjectVisibility.visibleSourceRatio < 0.95
+    || supporting.subjectVisibility.projectedWidth < 40
+    || supporting.subjectVisibility.projectedHeight < 18
+    || supporting.subjectVisibility.captionOverlapRatio > 0.01
+    || supporting.subjectColorRatio < minimumVehicleColorRatio
+  ) {
+    throw new Error(
+      `PROVE vehicle subject region is cropped, undersized, or caption-obscured: ${JSON.stringify(supporting)}.`,
+    );
   }
   return {
     figure: Object.fromEntries(
       Object.entries(result.figure).map(([key, value]) => [key, round(value, 3)]),
+    ),
+    caption: Object.fromEntries(
+      Object.entries(result.caption).map(([key, value]) => [key, round(value, 3)]),
     ),
     images: result.images.map((image) => ({
       ...image,
@@ -983,9 +1131,23 @@ async function proveMediaPositions(page) {
         Object.entries(image.rect).map(([key, value]) => [key, round(value, 3)]),
       ),
       figureWidthRatio: round(image.figureWidthRatio),
+      subjectColorRatio: round(image.subjectColorRatio),
       sourceCrop: Object.fromEntries(
         Object.entries(image.sourceCrop).map(([key, value]) => [key, round(value, 3)]),
       ),
+      subjectVisibility: image.subjectVisibility
+        ? {
+            ...image.subjectVisibility,
+            visibleSourceRatio: round(image.subjectVisibility.visibleSourceRatio),
+            projectedWidth: round(image.subjectVisibility.projectedWidth, 3),
+            projectedHeight: round(image.subjectVisibility.projectedHeight, 3),
+            captionOverlapRatio: round(image.subjectVisibility.captionOverlapRatio),
+            projectedRegion: Object.fromEntries(
+              Object.entries(image.subjectVisibility.projectedRegion)
+                .map(([key, value]) => [key, round(value, 3)]),
+            ),
+          }
+        : null,
     })),
   };
 }

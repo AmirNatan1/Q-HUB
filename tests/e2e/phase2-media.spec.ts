@@ -720,30 +720,175 @@ test.describe('Phase 2 approved field-media contract', () => {
 
       await expect(primary).toHaveAttribute('alt', /stop-hand symbol/i);
       await expect(supporting).toHaveAttribute('alt', /vehicle/i);
+      await Promise.all(
+        [primary, supporting].map((image) =>
+          image.evaluate(async (element) => {
+            if (!(element instanceof HTMLImageElement)) throw new Error('Expected PROVE image.');
+            await element.decode();
+          }),
+        ),
+      );
+      await page.evaluate(
+        () => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))),
+      );
       const state = await figure.evaluate((element) => {
         const images = Array.from(element.querySelectorAll<HTMLImageElement>('[data-evidence-subject]'));
         const figureRect = element.getBoundingClientRect();
+        const caption = element.querySelector('figcaption');
+        if (!(caption instanceof HTMLElement)) throw new Error('Expected PROVE evidence caption.');
+        const captionRect = caption.getBoundingClientRect();
         return {
           figureWidth: figureRect.width,
           figureHeight: figureRect.height,
+          caption: {
+            bottom: captionRect.bottom,
+            left: captionRect.left,
+            right: captionRect.right,
+            top: captionRect.top,
+          },
           images: images.map((image) => {
             const rect = image.getBoundingClientRect();
+            const objectPosition = getComputedStyle(image).objectPosition;
+            const coordinates = objectPosition.match(/-?[\d.]+%/g)?.map(Number.parseFloat) ?? [];
+            const positionX = coordinates[0] ?? 50;
+            const positionY = coordinates[1] ?? 50;
+            const canvas = document.createElement('canvas');
+            canvas.width = Math.max(1, Math.round(rect.width));
+            canvas.height = Math.max(1, Math.round(rect.height));
+            const context = canvas.getContext('2d', { willReadFrequently: true });
+            if (!context) throw new Error('Expected a canvas context for PROVE crop verification.');
+            const scale = Math.max(
+              canvas.width / image.naturalWidth,
+              canvas.height / image.naturalHeight,
+            );
+            const renderedWidth = image.naturalWidth * scale;
+            const renderedHeight = image.naturalHeight * scale;
+            const offsetX = (canvas.width - renderedWidth) * positionX / 100;
+            const offsetY = (canvas.height - renderedHeight) * positionY / 100;
+            context.drawImage(image, offsetX, offsetY, renderedWidth, renderedHeight);
+            const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+            let subjectColorPixels = 0;
+            for (let index = 0; index < pixels.length; index += 4) {
+              const red = pixels[index] ?? 0;
+              const green = pixels[index + 1] ?? 0;
+              const blue = pixels[index + 2] ?? 0;
+              if (red > 130 && red > green * 1.35 && red > blue * 1.12 && red - green > 35) {
+                subjectColorPixels += 1;
+              }
+            }
             return {
+              bottom: rect.bottom,
+              complete: image.complete,
               height: rect.height,
-              objectPosition: getComputedStyle(image).objectPosition,
+              left: rect.left,
+              naturalHeight: image.naturalHeight,
+              naturalWidth: image.naturalWidth,
+              objectPosition,
+              right: rect.right,
+              subject: image.dataset.evidenceSubject,
+              subjectColorRatio: subjectColorPixels / (canvas.width * canvas.height),
+              top: rect.top,
               width: rect.width,
             };
           }),
         };
       });
+      const vehicleVisibility = await supporting.evaluate(
+        (element, region) => {
+          if (!(element instanceof HTMLImageElement)) throw new Error('Expected PROVE vehicle image.');
+          const rect = element.getBoundingClientRect();
+          const figure = element.closest('figure');
+          const caption = figure?.querySelector('figcaption');
+          if (!(caption instanceof HTMLElement)) throw new Error('Expected PROVE evidence caption.');
+          const captionRect = caption.getBoundingClientRect();
+          const style = getComputedStyle(element);
+          const coordinates = style.objectPosition.match(/-?[\d.]+%/g)?.map(Number.parseFloat) ?? [];
+          const positionX = coordinates[0] ?? 50;
+          const positionY = coordinates[1] ?? 50;
+          const scale = Math.max(rect.width / element.naturalWidth, rect.height / element.naturalHeight);
+          const renderedWidth = element.naturalWidth * scale;
+          const renderedHeight = element.naturalHeight * scale;
+          const offsetX = (rect.width - renderedWidth) * positionX / 100;
+          const offsetY = (rect.height - renderedHeight) * positionY / 100;
+          const crop = {
+            xMin: Math.max(0, -offsetX / scale),
+            yMin: Math.max(0, -offsetY / scale),
+            xMax: Math.min(element.naturalWidth, (rect.width - offsetX) / scale),
+            yMax: Math.min(element.naturalHeight, (rect.height - offsetY) / scale),
+          };
+          const visible = {
+            xMin: Math.max(region.xMin, crop.xMin),
+            yMin: Math.max(region.yMin, crop.yMin),
+            xMax: Math.min(region.xMax, crop.xMax),
+            yMax: Math.min(region.yMax, crop.yMax),
+          };
+          const visibleWidth = Math.max(0, visible.xMax - visible.xMin);
+          const visibleHeight = Math.max(0, visible.yMax - visible.yMin);
+          const regionArea = (region.xMax - region.xMin) * (region.yMax - region.yMin);
+          const projected = {
+            left: rect.left + offsetX + visible.xMin * scale,
+            top: rect.top + offsetY + visible.yMin * scale,
+            right: rect.left + offsetX + visible.xMax * scale,
+            bottom: rect.top + offsetY + visible.yMax * scale,
+          };
+          const projectedWidth = Math.max(0, projected.right - projected.left);
+          const projectedHeight = Math.max(0, projected.bottom - projected.top);
+          const captionOverlapWidth = Math.max(
+            0,
+            Math.min(projected.right, captionRect.right) - Math.max(projected.left, captionRect.left),
+          );
+          const captionOverlapHeight = Math.max(
+            0,
+            Math.min(projected.bottom, captionRect.bottom) - Math.max(projected.top, captionRect.top),
+          );
+          return {
+            captionOverlapRatio:
+              projectedWidth * projectedHeight > 0
+                ? (captionOverlapWidth * captionOverlapHeight) / (projectedWidth * projectedHeight)
+                : 1,
+            naturalHeight: element.naturalHeight,
+            naturalWidth: element.naturalWidth,
+            projectedHeight,
+            projectedWidth,
+            visibleSourceRatio: regionArea > 0 ? (visibleWidth * visibleHeight) / regionArea : 0,
+          };
+        },
+        { xMin: 780, yMin: 1660, xMax: 1600, yMax: 2040 },
+      );
       expect(state.images).toHaveLength(2);
       expect(state.images[1]!.width / state.figureWidth).toBeGreaterThanOrEqual(0.35);
-      expect(state.images.every((image) => Math.abs(image.height - state.figureHeight) <= 1)).toBe(true);
+      expect(state.images.every((image) => image.height / state.figureHeight >= 0.35)).toBe(true);
+      expect(state.images.every((image) => image.complete && image.naturalWidth > 0)).toBe(true);
+      expect(
+        state.images.every((image) => {
+          const overlapWidth = Math.max(
+            0,
+            Math.min(image.right, state.caption.right) - Math.max(image.left, state.caption.left),
+          );
+          const overlapHeight = Math.max(
+            0,
+            Math.min(image.bottom, state.caption.bottom) - Math.max(image.top, state.caption.top),
+          );
+          return overlapWidth * overlapHeight <= 1;
+        }),
+      ).toBe(true);
       for (const image of state.images) {
         const coordinates = image.objectPosition.match(/[\d.]+%/g) ?? [];
         expect(coordinates).toHaveLength(2);
         expect(image.objectPosition).not.toBe('50% 50%');
       }
+      expect(vehicleVisibility.naturalWidth).toBe(2160);
+      expect(vehicleVisibility.naturalHeight).toBe(3840);
+      expect(vehicleVisibility.visibleSourceRatio).toBeGreaterThanOrEqual(0.95);
+      expect(vehicleVisibility.projectedWidth).toBeGreaterThanOrEqual(40);
+      expect(vehicleVisibility.projectedHeight).toBeGreaterThanOrEqual(18);
+      expect(vehicleVisibility.captionOverlapRatio).toBeLessThanOrEqual(0.01);
+      expect(
+        state.images.find((image) => image.subject === 'projected-stop-symbol')?.subjectColorRatio,
+      ).toBeGreaterThanOrEqual(0.1);
+      expect(
+        state.images.find((image) => image.subject === 'field-vehicle')?.subjectColorRatio,
+      ).toBeGreaterThanOrEqual(viewport.label === 'mobile' ? 0.02 : 0.015);
       positions[viewport.label] = state.images.map((image) => image.objectPosition);
     }
 

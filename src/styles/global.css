@@ -1653,6 +1653,7 @@
     min-height: 0;
     height: clamp(14rem, 17vw, 16rem);
     grid-template-columns: minmax(0, 3fr) minmax(15rem, 2fr);
+    grid-template-rows: minmax(0, 1fr) auto;
     overflow: hidden;
     background: var(--brand-gray);
     border-bottom: 1px solid var(--line-light);
@@ -1667,24 +1668,28 @@
   }
 
   .proof-record__image--primary {
+    grid-column: 1;
+    grid-row: 1;
     object-position: 50% 100%;
   }
 
   .proof-record__image--supporting {
+    grid-column: 2;
+    grid-row: 1;
     object-position: 55% 58%;
     border-left: 1px solid rgba(255, 255, 255, 0.68);
   }
 
   .proof-record__media figcaption {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    grid-column: 1 / -1;
+    grid-row: 2;
     padding: 0.55rem 0.75rem;
     color: var(--paper-bright);
     background: rgba(11, 10, 13, 0.86);
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.06em;
+    text-align: right;
     text-transform: uppercase;
   }
 
@@ -2437,15 +2442,33 @@
     .proof-record__media {
       min-height: 0;
       height: clamp(9rem, 38vw, 10.5rem);
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: 1.5rem repeat(2, minmax(0, 1fr));
     }
 
     .proof-record__image--primary {
-      object-position: 48% 100%;
+      grid-column: 1;
+      grid-row: 2;
+      object-position: 48% 90%;
     }
 
     .proof-record__image--supporting {
-      object-position: 54% 54%;
+      grid-column: 1;
+      grid-row: 3;
+      object-position: 50% 48%;
+      border-top: 1px solid rgba(255, 255, 255, 0.68);
+      border-left: 0;
+    }
+
+    .proof-record__media figcaption {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 0.625rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
+      text-align: left;
     }
 
     .proof-record dl {
