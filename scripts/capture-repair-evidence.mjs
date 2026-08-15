@@ -32,9 +32,9 @@ const phaseProgressTargets = Object.freeze({
   signal: 0.48,
   aperture: 0.68,
   need: 0.68,
-  find: 0.84,
+  find: 0.70,
   test: 0.56,
-  prove: 0.38,
+  prove: 0.16,
 });
 
 const profiles = Object.freeze({
@@ -312,7 +312,7 @@ async function assertStateComposition(page, phase) {
       const headingBox = heading.getBoundingClientRect();
       const recordBox = record.getBoundingClientRect();
       return {
-        heading: headingBox.bottom > 0 && headingBox.top < window.innerHeight,
+        heading: headingBox.top >= 64 && headingBox.bottom <= window.innerHeight,
         record: recordBox.bottom > 0 && recordBox.top < window.innerHeight,
       };
     });

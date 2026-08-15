@@ -69,7 +69,12 @@ async function analyzeImage(page, filePath, regions, includeGrid = false) {
         return {
           dark: luminance <= 0.16,
           magenta: hue >= 300 && hue <= 350 && saturation >= 0.28 && maximum >= 0.16,
-          warm: hue >= 5 && hue <= 38 && saturation >= 0.28 && maximum >= 0.16,
+          warm:
+            hue >= 5 &&
+            hue <= 38 &&
+            saturation >= 0.28 &&
+            maximum >= 0.2 &&
+            luminance >= 0.17,
         };
       }
 

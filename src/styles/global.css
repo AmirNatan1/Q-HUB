@@ -1087,7 +1087,11 @@
     width: min(100%, var(--content-max));
     min-height: 100svh;
     margin-inline: auto;
-    padding: calc(var(--header-height) + clamp(2rem, 6vh, 5.5rem)) calc(var(--page-gutter) + clamp(0rem, 2vw, 2rem)) clamp(5.8rem, 8vh, 7.5rem);
+    padding:
+      calc(var(--header-height) + clamp(2rem, 6vh, 5.5rem))
+      max(calc(var(--page-gutter) + clamp(0rem, 2vw, 2rem)), 10.5rem)
+      clamp(5.8rem, 8vh, 7.5rem)
+      calc(var(--page-gutter) + clamp(0rem, 2vw, 2rem));
   }
 
   .act--signal {
@@ -1974,6 +1978,15 @@
       color: var(--ink);
       background: rgba(232, 230, 223, 0.98);
       border-color: var(--line-light);
+    }
+
+    html[data-active-phase="prove"] .phase-index a {
+      color: rgba(11, 10, 13, 0.72);
+    }
+
+    html[data-active-phase="prove"] .phase-index a:hover,
+    html[data-active-phase="prove"] .phase-index a[aria-current="step"] {
+      color: var(--ink);
     }
 
     .experience-stage::after {

@@ -97,6 +97,14 @@ function expectFiniteState(state: LayerState, phase: Phase): void {
   }
 }
 
+async function horizontalGap(leftTarget: Locator, rightTarget: Locator): Promise<number> {
+  const [leftBox, rightBox] = await Promise.all([leftTarget.boundingBox(), rightTarget.boundingBox()]);
+  expect(leftBox, 'Readable content must have a rendered box.').not.toBeNull();
+  expect(rightBox, 'The fixed phase index must have a rendered box.').not.toBeNull();
+  if (!leftBox || !rightBox) return Number.NEGATIVE_INFINITY;
+  return rightBox.x - (leftBox.x + leftBox.width);
+}
+
 test.describe('Phase 1 visual grammar repair contract', () => {
   test.use({ viewport: { width: 1440, height: 900 } });
 
@@ -277,6 +285,45 @@ test.describe('Phase 1 visual grammar repair contract', () => {
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
   });
 
+  test('R8 desktop phase index preserves a positive gap from NEED and PROVE copy', async ({ page }) => {
+    const runtimeFailures = captureRuntimeFailures(page);
+    await preparePage(page);
+    const phaseIndex = page.locator('.phase-index');
+    await expect(phaseIndex).toBeVisible();
+
+    await activatePhase(page, 'need');
+    const needRows = page.locator('.need-terms > div');
+    await expect(needRows).toHaveCount(3);
+    for (let index = 0; index < await needRows.count(); index += 1) {
+      const row = needRows.nth(index);
+      await expect(row).toBeVisible();
+      expect(
+        await horizontalGap(row, phaseIndex),
+        `NEED row ${index + 1} must not run beneath the fixed phase index.`,
+      ).toBeGreaterThanOrEqual(8);
+    }
+
+    await activatePhase(page, 'prove');
+    const proofStatus = page.locator('.proof-record > header > span');
+    await proofStatus.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () =>
+            document.documentElement.getAttribute('data-active-phase') ??
+            document.body.getAttribute('data-active-phase'),
+        ),
+      )
+      .toBe('prove');
+    await expect(proofStatus).toBeVisible();
+    expect(
+      await horizontalGap(proofStatus, phaseIndex),
+      'The PROVE content-status label must not run beneath the fixed phase index.',
+    ).toBeGreaterThanOrEqual(8);
+
+    expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+  });
+
   test('R9 has no visually rendered word-like copy hidden inside aria-hidden decoration', async ({ page }) => {
     const runtimeFailures = captureRuntimeFailures(page);
     await preparePage(page);
@@ -423,6 +470,98 @@ test.describe('Phase 1 visual grammar repair contract', () => {
         expect(reading.fontSize, `${phase} microcopy is too small: “${reading.text}”.`).toBeGreaterThanOrEqual(11);
         expect(reading.contrast, `${phase} microcopy is below 4.5:1: “${reading.text}”.`).toBeGreaterThanOrEqual(4.5);
       }
+    }
+
+    expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+  });
+
+  test('R9 mobile PROVE keeps every inactive phase control visible, focusable, and AA', async ({ page }) => {
+    const runtimeFailures = captureRuntimeFailures(page);
+    await page.setViewportSize({ width: 390, height: 844 });
+    await preparePage(page);
+    await activatePhase(page, 'prove');
+
+    const rail = page.locator('.phase-index');
+    await expect(rail).toBeVisible();
+    const inactiveLinks = page.locator('.phase-index a:not([aria-current="step"])');
+    await expect(inactiveLinks).toHaveCount(5);
+
+    const contrastReadings = await page.evaluate(() => {
+      type Color = [number, number, number, number];
+
+      const parseColor = (value: string): Color => {
+        const components = value.match(/[\d.]+/g)?.map(Number);
+        if (!components || components.length < 3) {
+          throw new Error(`Unable to parse resolved color: ${value}`);
+        }
+        return [components[0]!, components[1]!, components[2]!, components[3] ?? 1];
+      };
+      const composite = (foreground: Color, background: Color): Color => {
+        const alpha = foreground[3] + background[3] * (1 - foreground[3]);
+        return [
+          (foreground[0] * foreground[3] + background[0] * background[3] * (1 - foreground[3])) / alpha,
+          (foreground[1] * foreground[3] + background[1] * background[3] * (1 - foreground[3])) / alpha,
+          (foreground[2] * foreground[3] + background[2] * background[3] * (1 - foreground[3])) / alpha,
+          alpha,
+        ];
+      };
+      const linear = (channel: number): number => {
+        const normalized = channel / 255;
+        return normalized <= 0.04045
+          ? normalized / 12.92
+          : ((normalized + 0.055) / 1.055) ** 2.4;
+      };
+      const luminance = (color: Color): number =>
+        linear(color[0]) * 0.2126 + linear(color[1]) * 0.7152 + linear(color[2]) * 0.0722;
+      const ratio = (foreground: Color, background: Color): number => {
+        const renderedForeground = composite(foreground, background);
+        const lighter = Math.max(luminance(renderedForeground), luminance(background));
+        const darker = Math.min(luminance(renderedForeground), luminance(background));
+        return (lighter + 0.05) / (darker + 0.05);
+      };
+
+      const phaseIndex = document.querySelector<HTMLElement>('.phase-index');
+      const proveSurface = document.querySelector<HTMLElement>('.act--prove');
+      if (!phaseIndex || !proveSurface) throw new Error('Missing resolved PROVE rail surfaces.');
+      const surface = parseColor(getComputedStyle(proveSurface).backgroundColor);
+      const railBackground = composite(
+        parseColor(getComputedStyle(phaseIndex).backgroundColor),
+        surface,
+      );
+
+      return Array.from(
+        document.querySelectorAll<HTMLAnchorElement>('.phase-index a:not([aria-current="step"])'),
+      ).map((link) => {
+        const style = getComputedStyle(link);
+        const rect = link.getBoundingClientRect();
+        return {
+          contrast: ratio(parseColor(style.color), railBackground),
+          href: link.getAttribute('href'),
+          label: link.textContent?.trim().replace(/\s+/g, ' ') ?? '',
+          tabIndex: link.tabIndex,
+          visible:
+            style.display !== 'none' &&
+            style.visibility !== 'hidden' &&
+            Number.parseFloat(style.opacity) > 0.01 &&
+            rect.width > 0 &&
+            rect.height > 0 &&
+            rect.left >= -1 &&
+            rect.right <= window.innerWidth + 1 &&
+            rect.top >= -1 &&
+            rect.bottom <= window.innerHeight + 1,
+        };
+      });
+    });
+
+    for (const [index, reading] of contrastReadings.entries()) {
+      expect(reading.visible, `Inactive mobile phase control ${index + 1} must remain visible.`).toBe(true);
+      expect(reading.href, `Inactive mobile phase control ${index + 1} must remain a link.`).toMatch(/^#/);
+      expect(reading.tabIndex, `Inactive mobile phase control ${index + 1} must remain focusable.`).toBeGreaterThanOrEqual(0);
+      expect(reading.contrast, `Inactive mobile phase control “${reading.label}” is below 4.5:1.`).toBeGreaterThanOrEqual(4.5);
+
+      const link = inactiveLinks.nth(index);
+      await link.focus();
+      await expect(link).toBeFocused();
     }
 
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
