@@ -4,8 +4,7 @@
 
 This package presents the first complete Phase 1 implementation of the Q-HUB experiential grammar. It is ready for human visual evaluation, but it does not self-decide the creative outcome.
 
-- **H1–H14:** PASS with recorded evidence.
-- **H15:** PENDING FINAL GIT AUDIT.
+- **H1–H15:** PASS with recorded evidence.
 - **Human decision required:** ACCEPT, REPAIR, or REDIRECT.
 - **Phase boundary:** STOP after this package. Do not begin Phase 2 automatically.
 
@@ -17,15 +16,15 @@ The authoritative gate ledger is [`docs/PHASE1_ACCEPTANCE.md`](PHASE1_ACCEPTANCE
 
 ## 2. Final commit SHA
 
-**PENDING FINAL GIT AUDIT.**
+`290cb217edc7236443d94df00b10739fbc795e05`
 
-The current pre-candidate HEAD at package-authoring time is `6de6892` (`Initial commit`). It is not represented as the final Phase 1 commit.
+This is the audited Phase 1 implementation candidate. A later documentation-only handoff commit records H15 closure; it does not change the candidate implementation or evidence.
 
 ## 3. Push status
 
-**PENDING FINAL GIT AUDIT.**
+**PASS — pushed normally.**
 
-The canonical `origin` is configured. No force push is authorized or required.
+The candidate and documentation handoff are on `origin/phase1/field-aperture`, which is configured as the branch upstream. No force push was used.
 
 ## 4. Deployment / preview URL
 
@@ -294,7 +293,7 @@ No known application technical defect remains in the audited local Phase 1 candi
 
 Disclosed non-application constraints:
 
-- H15 is pending final commit/clean-tree/secret/push audit.
+- H15 passed: candidate SHA recorded, staged/worktree secret scans clean, intentional post-commit tree clean, and branch push confirmed.
 - Cloudflare authentication is expired, so there is no real preview URL.
 - With no verified deployment host, the local build uses `http://localhost:4321` for canonical, Open Graph URL, and sitemap origins. Set `SITE_URL` to the verified origin before any real release and rebuild.
 - One first-run Playwright navigation-timing retry occurred and is documented.

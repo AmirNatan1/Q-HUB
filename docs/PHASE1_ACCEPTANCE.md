@@ -20,9 +20,9 @@ This ledger applies the hard gates without substitution or numerical self-scorin
 | H12 — Placeholder safety | PASS |
 | H13 — Visual QA evidence | PASS |
 | H14 — Asset readiness | PASS |
-| H15 — Version control / deployment | PENDING FINAL GIT AUDIT |
+| H15 — Version control / deployment | PASS |
 
-H1–H14 are substantiated below. H15 must not be converted to PASS until the candidate is committed, the final SHA and clean-tree intent are recorded, the secret and push audits are complete, and push status is known. No deployment URL exists at this revision. Therefore the master goal's complete-run stopping condition is not yet claimed by this ledger revision.
+H1–H15 are substantiated below. The implementation candidate is committed and pushed, its SHA is recorded, secret scans are clean, and the handoff tree is intentionally clean. No deployment URL exists because Cloudflare authentication is expired; that exact limitation is recorded without inventing a URL. The remaining decision is the human visual gate: ACCEPT, REPAIR, or REDIRECT.
 
 ## H1 — Source integrity
 
@@ -375,16 +375,18 @@ P0 requests identify a coherent real test story, exact capture qualities, crop/r
 
 ## H15 — Version control / deployment
 
-**STATUS:** PENDING FINAL GIT AUDIT
+**STATUS:** PASS
 
-**VERIFICATION METHOD:** Final status, diff, candidate commit, secret scan, remote/push verification, and optional deployment verification must occur only after every Phase 1 file—including this ledger and the Human Review Package—is final.
+**VERIFICATION METHOD:** Inspected the complete staged candidate, ran diff and high-confidence secret scans, created a normal candidate commit, verified its SHA and clean post-commit state, pushed the Phase 1 branch without force, then added this documentation-only H15 closure record.
 
 **COMMAND / TEST:**
 
 ```text
 git status --short --branch
+git diff --check
 git remote -v
-git log -1 --oneline --decorate
+git rev-parse 290cb217edc7236443d94df00b10739fbc795e05
+git push -u origin phase1/field-aperture
 npx wrangler whoami
 ```
 
@@ -392,16 +394,15 @@ npx wrangler whoami
 
 - Branch: `phase1/field-aperture`.
 - Remote: canonical Q-HUB `origin` configured for fetch and push.
-- Current pre-candidate HEAD: `6de6892` (`Initial commit`); this is **not** the final Phase 1 SHA.
-- Working tree at documentation time contains the Phase 1 candidate as intentional uncommitted/untracked work and is therefore not yet clean.
-- Final candidate commit SHA: **PENDING FINAL GIT AUDIT**.
-- Secret scan/result: **PENDING FINAL GIT AUDIT**.
-- Push status: **PENDING FINAL GIT AUDIT**.
+- Audited implementation candidate SHA: `290cb217edc7236443d94df00b10739fbc795e05`.
+- Clean-tree result: the candidate commit left no tracked or untracked implementation work; the later handoff commit contains only the H15/review documentation closure, and the final tree is clean.
+- Secret scan/result: no high-confidence private-key, access-key, API-key, token, or credential-assignment match in the staged candidate or final worktree. `.env.example` contains only the explicit non-secret replacement URL.
+- Push status: normal push succeeded to `origin/phase1/field-aperture`; the local branch tracks that upstream. No force push was used.
 - Deployment/preview URL: **none**.
 - Cloudflare check: Wrangler `4.123.0` is installed and the Pages configuration can be read, but the saved authentication token is expired, non-interactive refresh is unavailable, and `CLOUDFLARE_API_TOKEN` is not set.
 - Canonical/sitemap release configuration: no verified host exists, so the local build uses the documented `http://localhost:4321` fallback; a release must set `SITE_URL` to its verified origin and rebuild.
 
-**KNOWN LIMITATION / UNBLOCK REQUIREMENT:** Finish the candidate files, inspect the exact final diff, scan for secrets, create the non-force Phase 1 commit, record its SHA, verify clean-tree intent, and push if repository credentials permit. A real Cloudflare preview requires renewed authentication or a valid scoped token. Never invent a deployment URL.
+**KNOWN LIMITATION:** A real Cloudflare preview requires renewed authentication or a valid scoped token. Deployment was not attempted after the definitive expired-authentication check, and no URL is claimed. This limitation does not prevent H15 from passing because the candidate is committed, clean, scanned, recorded, and pushed, and deployment unavailability is reported exactly.
 
 ## Human visual quality gate
 

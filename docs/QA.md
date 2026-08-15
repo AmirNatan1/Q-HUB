@@ -7,10 +7,10 @@ This record covers the Phase 0 foundation and the Phase 1 homepage journey throu
 - **Audit date:** 2026-08-15
 - **Repository:** Q-HUB
 - **Branch under audit:** `phase1/field-aperture`
-- **Final commit:** PENDING FINAL GIT AUDIT
+- **Audited implementation candidate:** `290cb217edc7236443d94df00b10739fbc795e05`
 - **Environment:** Windows; Node `v24.18.0`; npm `11.16.0`; Playwright `1.62.1`; Git `2.53.0.windows.3`
 - **Browsers used:** Playwright Chromium for automated gates; the Codex in-app Chromium browser for live inspection and review captures
-- **Current evidence outcome:** functional, publication, responsive, accessibility, bundle, fallback, and visual checks pass. Version-control closure is intentionally pending the final git audit.
+- **Current evidence outcome:** H1–H15 pass with functional, publication, responsive, accessibility, bundle, fallback, visual, and version-control evidence. Human visual direction remains intentionally undecided.
 
 ## Exact verification commands and results
 
@@ -251,7 +251,7 @@ The screenshots are viewport evidence. They are not physical-device photographs 
 - A first fully parallel e2e run required one navigation-timing retry, as recorded above.
 - Deployment is unavailable because the saved Cloudflare authentication is expired and no usable non-interactive API token is present. This does not create a local application defect, but it prevents a real preview URL.
 - Because no verified production host exists, the local build intentionally falls back to `http://localhost:4321` for canonical, Open Graph URL, and sitemap origins. A real release must set `SITE_URL` to the verified deployment origin and rebuild; `.env.example` records the requirement.
-- Final working-tree cleanliness, candidate commit SHA, secret scan, and push state remain PENDING FINAL GIT AUDIT.
+- Version-control closure passed: the audited implementation candidate is `290cb217edc7236443d94df00b10739fbc795e05`; staged/worktree secret scans found no high-confidence credentials; the candidate was clean after commit; and the branch was pushed normally to `origin/phase1/field-aperture`. The subsequent handoff commit changes only the H15/review documentation.
 
 ## Phase 2 boundary
 
