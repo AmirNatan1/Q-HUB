@@ -11,10 +11,10 @@ The human accepted the frozen Phase 1 visual grammar on **2026-08-15** and suppl
 - Phase 2 implementation candidate SHA: `d88f2020851325890e8951d88373475243ef9d1a`
 - Implementation candidate push: **CONFIRMED** — normally pushed to `origin/phase2/maradin-field-evidence` with upstream set; no force push
 - Frozen source tree at evidence start: **CLEAN**
-- Final evidence/documentation closure commit SHA: **PENDING FINAL H15 CLOSURE**
-- Final evidence/documentation push and clean-tree status: **PENDING FINAL H15 CLOSURE**
+- Final evidence/documentation closure commit SHA: `939b2b3386e468dc995e70bce054bce8b7e44e4a`
+- Final evidence/documentation push and clean-tree status: **CONFIRMED** — normally pushed to `origin/phase2/maradin-field-evidence`; clean tree immediately after push; no force push
 - Deployment/preview: **UNAVAILABLE** — Wrangler reports expired non-interactive authentication; no remote preview or production deployment was attempted or claimed
-- Technical result: **P2-1 through P2-9 PASS; P2-10 awaits final H15 evidence/documentation closure**
+- Technical result: **P2-1 through P2-10 PASS**
 - Human creative decision: **UNDECIDED**
 
 ## Approved source and publication boundary
@@ -73,7 +73,7 @@ The brand-guide filename/current-pack date is 2026-06-04, while embedded PDF cre
 | P2-7 Accessibility | One H1, valid landmarks/headings, keyboard/touch, contrast over actual media, static reduced motion, zero critical/serious axe findings | **PASS** | 20 axe snapshots report 0 critical/serious findings; responsive, keyboard/touch, static-mode, transition, and actual-media-background contrast checks pass. |
 | P2-8 Performance | No production dependency added; source film absent; lazy media; bundle delta within target; Lighthouse thresholds and CLS=0 | **PASS** | Total gzip 7,961 bytes; initial gzip 3,917 bytes; both raw/gzip deltas are +581/+236 bytes; Lighthouse is 100/100/100/100 desktop and mobile with CLS 0. |
 | P2-9 Human-review evidence | Exactly 7 desktop, 6 mobile, 3 fallback PNGs, one 1440×900 journey WebM, manifest hashes/bytes, and visual QA | **PASS** | Candidate-bound manifest contains the exact inventory; all 16 frames were inspected at original resolution and the complete journey WebM hash/bytes verify. Human creative judgment remains undecided. |
-| P2-10 Version control/release | Intentional clean tree; candidate committed and normally pushed; no secrets; no merge/main or production deployment | **PENDING FINAL H15 CLOSURE** | Implementation candidate is committed, scanned, clean at evidence start, and normally pushed. Final evidence/documentation closure commit, final push, and final clean-tree proof remain pending. |
+| P2-10 Version control/release | Intentional clean tree; candidate committed and normally pushed; no secrets; no merge/main or production deployment | **PASS** | Implementation candidate `d88f2020851325890e8951d88373475243ef9d1a` and evidence/documentation closure `939b2b3386e468dc995e70bce054bce8b7e44e4a` were scanned, committed, and normally pushed without force. The tree was clean immediately after the closure push. No merge or deployment occurred. |
 
 ## Refreshed master-goal H1–H15 ledger
 
@@ -95,7 +95,7 @@ The master-goal hard gates remain authoritative. Phase 2 refreshes them against 
 | H12 — Placeholder safety | **PASS** | Resolved homepage placeholders are removed; later-phase development records/shells remain machine-detectable and denied; placeholder release tests pass 2/2. |
 | H13 — Visual QA evidence | **PASS** | Exact 7 desktop, 6 mobile, and 3 fallback PNGs plus one 1440×900 WebM are candidate-bound; all 16 frames were inspected at original resolution. Human creative judgment remains undecided. |
 | H14 — Asset readiness | **PASS** | FIELD-001, TEST-001, PROVE-001, CONTENT-001, and BRAND-001 are resolved with exact provenance; `FONT-001` is a narrow actionable follow-up and later P1/P2 requests remain documented. |
-| H15 — Version control / deployment | **PENDING FINAL H15 CLOSURE** | Implementation candidate `d88f2020851325890e8951d88373475243ef9d1a` is clean-at-evidence-start, scanned, committed, and normally pushed without force. Final evidence/docs closure commit SHA, final push, and final clean-tree proof remain pending. Remote preview is unavailable due expired non-interactive Cloudflare auth; no deployment was attempted. |
+| H15 — Version control / deployment | **PASS** | Implementation candidate `d88f2020851325890e8951d88373475243ef9d1a` and evidence/docs closure `939b2b3386e468dc995e70bce054bce8b7e44e4a` were scanned, committed, and normally pushed without force; the tree was clean immediately after the closure push. Remote preview is unavailable due expired non-interactive Cloudflare auth; no deployment was attempted. |
 
 ## Final command ledger
 
@@ -112,7 +112,7 @@ These results are source-bound to implementation candidate `d88f2020851325890e89
 | `npm run evidence:phase2` | **PASS** — exact 7 desktop, 6 mobile, 3 fallback PNGs, one WebM, and manifest. |
 | High-confidence secret scan | **PASS** — 0 secret signatures and 0 credential-assignment matches. |
 | Prohibited-source/public-output scan | **PASS** — 0 protected/prohibited matches and 0 authoring-only source files in `dist`. |
-| `git status --short` after final evidence/docs commit and push | **PENDING FINAL H15 CLOSURE** |
+| `git status --short` after evidence/docs closure commit and push | **PASS** — no output immediately after the normal closure push. |
 
 ## Final metrics and evidence identity
 

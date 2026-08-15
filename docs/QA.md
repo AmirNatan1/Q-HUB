@@ -360,5 +360,5 @@ All 16 PNG frames were inspected at original resolution. Hierarchy, focal crops,
 - Cloudflare remote preview is unavailable. `npx wrangler whoami` reports: “Not logged in. Your auth token has expired and could not be refreshed, and the environment is non-interactive.” Its external log write also failed with sandbox `EPERM`. No remote preview or production deployment was attempted or claimed; only local production-preview evidence exists.
 - Browser evidence is Chromium/local-lab coverage rather than physical-device, Safari, Firefox, field telemetry, or dedicated screen-reader testing.
 - No known application technical defect remains. Human creative judgment remains undecided.
-- The implementation candidate was normally pushed with upstream set and no force. The final evidence/documentation closure commit SHA, final push, and final clean-tree proof are **PENDING FINAL H15 CLOSURE**.
+- The implementation candidate `d88f2020851325890e8951d88373475243ef9d1a` and evidence/documentation closure `939b2b3386e468dc995e70bce054bce8b7e44e4a` were normally pushed with upstream set and no force. The tree was clean immediately after the closure push; H15 passes.
 - No supporting-route redesign, broader Proof library, second story, ACT 07/08/09 work, main merge, or production deployment is part of this checkpoint.
