@@ -1,5 +1,7 @@
 # Phase 1 Human Review Package
 
+> Historical baseline package. The current candidate is `3d03033d05910ee9c27c5eb050fecccbabebaaf8`: R1–R12 and refreshed H1–H14 pass, while final H15 evidence/docs closure remains pending. Use [PHASE1_REPAIR_REVIEW_PACKAGE.md](PHASE1_REPAIR_REVIEW_PACKAGE.md) and [PHASE1_REPAIR_ACCEPTANCE.md](PHASE1_REPAIR_ACCEPTANCE.md); where this file conflicts, those repair records control.
+
 ## Review status
 
 This package presents the first complete Phase 1 implementation of the Q-HUB experiential grammar. It is ready for human visual evaluation, but it does not self-decide the creative outcome.

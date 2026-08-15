@@ -109,6 +109,38 @@ function startPreview(port) {
   return child;
 }
 
+async function readSourceHead() {
+  return new Promise((resolve, reject) => {
+    let output = "";
+    let errorOutput = "";
+    const child = spawn("git", ["rev-parse", "HEAD"], {
+      cwd: rootDirectory,
+      stdio: ["ignore", "pipe", "pipe"],
+      windowsHide: true
+    });
+
+    child.stdout.on("data", (chunk) => {
+      output += chunk.toString();
+    });
+    child.stderr.on("data", (chunk) => {
+      errorOutput += chunk.toString();
+    });
+    child.once("error", reject);
+    child.once("exit", (code) => {
+      const sourceHead = output.trim();
+      if (code !== 0 || !/^[0-9a-f]{40}$/u.test(sourceHead)) {
+        reject(
+          new Error(
+            `Unable to record Lighthouse source HEAD: ${errorOutput.trim() || `exit ${code}`}`
+          )
+        );
+        return;
+      }
+      resolve(sourceHead);
+    });
+  });
+}
+
 async function waitForPreview(url, child, timeoutMs = 30_000) {
   const deadline = Date.now() + timeoutMs;
 
@@ -117,7 +149,7 @@ async function waitForPreview(url, child, timeoutMs = 30_000) {
       throw new Error(`Unable to start Astro preview: ${previewSpawnError.message}`);
     }
 
-    if (child && child.exitCode !== null) {
+    if (child && child.exitCode !== null && child.exitCode !== 0) {
       throw new Error(
         `Astro preview exited before it became ready (exit ${child.exitCode}).\n${previewLog.trim()}`
       );
@@ -371,6 +403,7 @@ async function main() {
 
   const summary = {
     generatedAt: new Date().toISOString(),
+    sourceHead: await readSourceHead(),
     measuredUrl: url,
     buildInput: "dist/index.html",
     results

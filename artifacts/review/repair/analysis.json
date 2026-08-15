@@ -1,0 +1,243 @@
+{
+  "generatedAt": "2026-08-15T12:58:42.652Z",
+  "status": "PASS",
+  "methodology": {
+    "decoder": "Chromium canvas ImageData",
+    "samplingStridePixels": 2,
+    "signalRoi": "Background-safe bands exclude intentional pink headline typography and the phase rail.",
+    "thickCore": "Magenta samples whose eight radius-3px neighbors also classify as magenta.",
+    "note": "Pixel measurements support, but do not replace, human visual inspection."
+  },
+  "signal": {
+    "before": {
+      "file": "artifacts/review/desktop-signal.jpg",
+      "sha256": "9d7370aba276d0e410c391ba0a45056eff0963fbf4b1837d22648e163dcf0d39",
+      "width": 1425,
+      "height": 891,
+      "sampled": 115951,
+      "magentaPercent": 32.791,
+      "thickMagentaPercent": 19.471,
+      "warmPercent": 0.028,
+      "darkPercent": 65.74,
+      "spatialGrid": []
+    },
+    "after": {
+      "file": "artifacts/review/repair/desktop-signal.png",
+      "sha256": "bdcdc8d64dc5afbb835aba7e3d4d44538708a6d2c74ea52e7c8c5a461ea39267",
+      "width": 1440,
+      "height": 900,
+      "sampled": 117895,
+      "magentaPercent": 0.09,
+      "thickMagentaPercent": 0,
+      "warmPercent": 0,
+      "darkPercent": 96.522,
+      "spatialGrid": []
+    },
+    "checks": {
+      "magentaAtMostHalfBaseline": true,
+      "magentaAtMost15Point7Percent": true,
+      "thickCoreAtMost35PercentBaseline": true,
+      "thickCoreAtMost6Point4Percent": true,
+      "darkSpaceGainsTenPoints": true,
+      "darkSpaceAtLeast68Point1Percent": true
+    }
+  },
+  "aperture": {
+    "before": {
+      "file": "artifacts/review/desktop-aperture.jpg",
+      "sha256": "a5f62fa03588e555ba20e50e6505ecf3c4a5ae98d3e707d645ad26db2ca8e6b1",
+      "width": 1425,
+      "height": 891,
+      "sampled": 122460,
+      "magentaPercent": 32.387,
+      "thickMagentaPercent": 19.4,
+      "warmPercent": 0.911,
+      "darkPercent": 68.601,
+      "spatialGrid": [
+        {
+          "column": 0,
+          "row": 0,
+          "warmPercent": 0,
+          "darkPercent": 73.606
+        },
+        {
+          "column": 1,
+          "row": 0,
+          "warmPercent": 0,
+          "darkPercent": 71.209
+        },
+        {
+          "column": 2,
+          "row": 0,
+          "warmPercent": 0.057,
+          "darkPercent": 62.452
+        },
+        {
+          "column": 3,
+          "row": 0,
+          "warmPercent": 0,
+          "darkPercent": 77.655
+        },
+        {
+          "column": 0,
+          "row": 1,
+          "warmPercent": 24.733,
+          "darkPercent": 50.583
+        },
+        {
+          "column": 1,
+          "row": 1,
+          "warmPercent": 6.589,
+          "darkPercent": 59.922
+        },
+        {
+          "column": 2,
+          "row": 1,
+          "warmPercent": 3.084,
+          "darkPercent": 68.411
+        },
+        {
+          "column": 3,
+          "row": 1,
+          "warmPercent": 0.859,
+          "darkPercent": 69.471
+        },
+        {
+          "column": 0,
+          "row": 2,
+          "warmPercent": 0,
+          "darkPercent": 76.089
+        },
+        {
+          "column": 1,
+          "row": 2,
+          "warmPercent": 0,
+          "darkPercent": 64.419
+        },
+        {
+          "column": 2,
+          "row": 2,
+          "warmPercent": 0.191,
+          "darkPercent": 72.479
+        },
+        {
+          "column": 3,
+          "row": 2,
+          "warmPercent": 0,
+          "darkPercent": 61.392
+        }
+      ]
+    },
+    "after": {
+      "file": "artifacts/review/repair/desktop-aperture.png",
+      "sha256": "127ff149e117b9bf85b6a48f6518756ed062f07764390503803a9abdd4d81926",
+      "width": 1440,
+      "height": 900,
+      "sampled": 124188,
+      "magentaPercent": 0.002,
+      "thickMagentaPercent": 0,
+      "warmPercent": 18.511,
+      "darkPercent": 66.761,
+      "spatialGrid": [
+        {
+          "column": 0,
+          "row": 0,
+          "warmPercent": 0,
+          "darkPercent": 95.993
+        },
+        {
+          "column": 1,
+          "row": 0,
+          "warmPercent": 0,
+          "darkPercent": 98.792
+        },
+        {
+          "column": 2,
+          "row": 0,
+          "warmPercent": 0.449,
+          "darkPercent": 99.532
+        },
+        {
+          "column": 3,
+          "row": 0,
+          "warmPercent": 20.543,
+          "darkPercent": 54.167
+        },
+        {
+          "column": 0,
+          "row": 1,
+          "warmPercent": 23.605,
+          "darkPercent": 67.622
+        },
+        {
+          "column": 1,
+          "row": 1,
+          "warmPercent": 7.537,
+          "darkPercent": 87.294
+        },
+        {
+          "column": 2,
+          "row": 1,
+          "warmPercent": 23.755,
+          "darkPercent": 58.549
+        },
+        {
+          "column": 3,
+          "row": 1,
+          "warmPercent": 49.466,
+          "darkPercent": 36.47
+        },
+        {
+          "column": 0,
+          "row": 2,
+          "warmPercent": 0,
+          "darkPercent": 97.303
+        },
+        {
+          "column": 1,
+          "row": 2,
+          "warmPercent": 0.609,
+          "darkPercent": 98.39
+        },
+        {
+          "column": 2,
+          "row": 2,
+          "warmPercent": 12.978,
+          "darkPercent": 70.487
+        },
+        {
+          "column": 3,
+          "row": 2,
+          "warmPercent": 47.94,
+          "darkPercent": 31.124
+        }
+      ]
+    },
+    "warmDominantCells": 2,
+    "darkDominantCells": 9,
+    "checks": {
+      "warmFieldAtLeast12Percent": true,
+      "warmFieldAtLeastFourTimesBaseline": true,
+      "thickMagentaAtMost4Percent": true,
+      "atLeastTwoWarmDominantCells": true,
+      "atLeastTwoDarkDominantCells": true
+    }
+  },
+  "prove": {
+    "after": {
+      "file": "artifacts/review/repair/desktop-prove.png",
+      "sha256": "e4b6da6ef8e505c900c686ec6122a4c107f380597074737fd2d9ecde3260793b",
+      "width": 1440,
+      "height": 900,
+      "sampled": 269446,
+      "magentaPercent": 0,
+      "thickMagentaPercent": 0,
+      "warmPercent": 0.1,
+      "darkPercent": 2.58,
+      "spatialGrid": []
+    },
+    "checks": {
+      "magentaAtMostPoint1Percent": true
+    }
+  }
+}

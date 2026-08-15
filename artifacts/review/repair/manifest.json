@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-15T12:58:33.900Z",
+  "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8",
+  "source": "isolated-astro-preview",
+  "baseUrl": "http://127.0.0.1:51785",
+  "phaseProgressTargets": {
+    "signal": 0.48,
+    "aperture": 0.68,
+    "need": 0.68,
+    "find": 0.7,
+    "test": 0.56,
+    "prove": 0.16
+  },
+  "baselinePolicy": "Original artifacts/review/*.jpg files are read and hashed only; never modified.",
+  "baselineIntegrity": "verified-unchanged-after-capture",
+  "baselines": [
+    {
+      "file": "artifacts/review/desktop-signal.jpg",
+      "sha256": "9d7370aba276d0e410c391ba0a45056eff0963fbf4b1837d22648e163dcf0d39",
+      "bytes": 170721
+    },
+    {
+      "file": "artifacts/review/desktop-aperture.jpg",
+      "sha256": "a5f62fa03588e555ba20e50e6505ecf3c4a5ae98d3e707d645ad26db2ca8e6b1",
+      "bytes": 162596
+    },
+    {
+      "file": "artifacts/review/desktop-need.jpg",
+      "sha256": "adb12e57c2abee2b393478e8c3386289f31f211b6bcf3d8891f687e65f0afa7c",
+      "bytes": 118607
+    },
+    {
+      "file": "artifacts/review/desktop-find.jpg",
+      "sha256": "9395cb75c32f90c2829957b171d4aae0c9f73beb10acd8bbc31858073dc496f1",
+      "bytes": 121949
+    },
+    {
+      "file": "artifacts/review/desktop-test.jpg",
+      "sha256": "1849bcf58287309010be67b192b9dcfbddd7fcd027ed41196643945a46c66bac",
+      "bytes": 141865
+    },
+    {
+      "file": "artifacts/review/desktop-prove.jpg",
+      "sha256": "8c1444db37b2174d384c63f4ee1a7e8c2ebc01e2f60c1bb2d678567a4674fa0f",
+      "bytes": 74662
+    },
+    {
+      "file": "artifacts/review/mobile-signal.jpg",
+      "sha256": "887cb9c5e510d84adde8345b4dcaef066297c8323807530a088706aa96ee10ef",
+      "bytes": 29463
+    },
+    {
+      "file": "artifacts/review/mobile-aperture.jpg",
+      "sha256": "db22b1202164f6fb65f7e5c6c0e780078a67d97942b87e0ce43eda3b6fcdcf60",
+      "bytes": 56609
+    },
+    {
+      "file": "artifacts/review/mobile-need.jpg",
+      "sha256": "3d0686bae7aabc89a09ae31cdaf1846d0bf2c4e3baa6f28f807f06f860ec966e",
+      "bytes": 46063
+    },
+    {
+      "file": "artifacts/review/mobile-find.jpg",
+      "sha256": "a22b36eff42a20e379783334184d7657d153e03e20a44f61d2aab33a10523ff7",
+      "bytes": 41452
+    },
+    {
+      "file": "artifacts/review/mobile-test.jpg",
+      "sha256": "ae52a498b7ca834835fd38bab793c119d1643fd7bd4da1ca6fa75443dbae272d",
+      "bytes": 49698
+    },
+    {
+      "file": "artifacts/review/mobile-prove.jpg",
+      "sha256": "478eb2ea5dc4dfe22db382f55566acd17e4dd6b5e383030a49a24163e1b3b894",
+      "bytes": 33336
+    },
+    {
+      "file": "artifacts/review/reduced-motion-aperture.jpg",
+      "sha256": "0ddfe1f605f6a49bce7bf920cf43605e277c4623fd154b731dfb61572d5d9774",
+      "bytes": 94460
+    },
+    {
+      "file": "artifacts/review/no-webgl-aperture.jpg",
+      "sha256": "afe33d97a758b7a52ed35b2d09ff9e0682a828073442853aa14139a087ccaf09",
+      "bytes": 81807
+    }
+  ],
+  "captures": [
+    {
+      "file": "artifacts/review/repair/desktop-signal.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "activePhase": "signal",
+      "renderMode": "webgl-enhanced",
+      "findStep": null,
+      "targetProgress": 0.48,
+      "actualProgress": 0.4803,
+      "scrollY": 238,
+      "sha256": "bdcdc8d64dc5afbb835aba7e3d4d44538708a6d2c74ea52e7c8c5a461ea39267",
+      "bytes": 741088,
+      "timestamp": "2026-08-15T12:58:10.799Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/desktop-aperture.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "activePhase": "aperture",
+      "renderMode": "webgl-enhanced",
+      "findStep": null,
+      "targetProgress": 0.68,
+      "actualProgress": 0.6799,
+      "scrollY": 2095,
+      "sha256": "127ff149e117b9bf85b6a48f6518756ed062f07764390503803a9abdd4d81926",
+      "bytes": 1162740,
+      "timestamp": "2026-08-15T12:58:11.799Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/desktop-need.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "activePhase": "need",
+      "renderMode": "webgl-enhanced",
+      "findStep": null,
+      "targetProgress": 0.68,
+      "actualProgress": 0.6803,
+      "scrollY": 3577,
+      "sha256": "8c987f306556740d0f3c6b9afcc6df89cc4c20c67c37d84ee4034de841198e38",
+      "bytes": 819169,
+      "timestamp": "2026-08-15T12:58:12.758Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/desktop-find.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "activePhase": "find",
+      "renderMode": "webgl-enhanced",
+      "findStep": "selection",
+      "targetProgress": 0.7,
+      "actualProgress": 0.7,
+      "scrollY": 5157,
+      "sha256": "1167f752cf651972b5725db0951f61e6559223beca3ad7cc4792ad1b50c87071",
+      "bytes": 852302,
+      "timestamp": "2026-08-15T12:58:14.089Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/desktop-test.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "activePhase": "test",
+      "renderMode": "webgl-enhanced",
+      "findStep": null,
+      "targetProgress": 0.56,
+      "actualProgress": 0.5598,
+      "scrollY": 6575,
+      "sha256": "7cc7db7ec524b1c1a1ea4bd34b493806b16ecaa31cbd6e18053c075350025e48",
+      "bytes": 1217086,
+      "timestamp": "2026-08-15T12:58:15.627Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/desktop-prove.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "activePhase": "prove",
+      "renderMode": "webgl-enhanced",
+      "findStep": null,
+      "targetProgress": 0.16,
+      "actualProgress": 0.1602,
+      "scrollY": 7582,
+      "sha256": "e4b6da6ef8e505c900c686ec6122a4c107f380597074737fd2d9ecde3260793b",
+      "bytes": 102102,
+      "timestamp": "2026-08-15T12:58:15.798Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/mobile-signal.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "activePhase": "signal",
+      "renderMode": "dom-fallback-ready",
+      "findStep": null,
+      "targetProgress": 0.48,
+      "actualProgress": 0.4803,
+      "scrollY": 203,
+      "sha256": "b344db263b2605ee6a461991da0e16b7ff5bcc649d02f6829ff6bafd1d1370ca",
+      "bytes": 246971,
+      "timestamp": "2026-08-15T12:58:16.851Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/mobile-aperture.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "activePhase": "aperture",
+      "renderMode": "dom-fallback-ready",
+      "findStep": null,
+      "targetProgress": 0.68,
+      "actualProgress": 0.6803,
+      "scrollY": 1837,
+      "sha256": "a6ada6c41edcb9218d94b405872aa4dea44c6a7ab8ec999018542ff18ca75d80",
+      "bytes": 323552,
+      "timestamp": "2026-08-15T12:58:17.167Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/mobile-need.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "activePhase": "need",
+      "renderMode": "dom-fallback-ready",
+      "findStep": null,
+      "targetProgress": 0.68,
+      "actualProgress": 0.6804,
+      "scrollY": 3157,
+      "sha256": "4c3fca72a0134082a69e3d8338aa26a080d275bb276a8ab79ecfc97e6c962fcc",
+      "bytes": 247217,
+      "timestamp": "2026-08-15T12:58:17.428Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/mobile-find.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "activePhase": "find",
+      "renderMode": "dom-fallback-ready",
+      "findStep": "selection",
+      "targetProgress": 0.7,
+      "actualProgress": 0.7003,
+      "scrollY": 4596,
+      "sha256": "cd1c9abaee59a55e2a7798fb83d8c955b637d3aa4c1c9342cff79e82c0acf7c3",
+      "bytes": 255643,
+      "timestamp": "2026-08-15T12:58:17.689Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/mobile-test.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "activePhase": "test",
+      "renderMode": "dom-fallback-ready",
+      "findStep": null,
+      "targetProgress": 0.56,
+      "actualProgress": 0.5602,
+      "scrollY": 5937,
+      "sha256": "e624ad4b668a43d53473868fe2439495dfcf3c1544a1935ad23f6b9ec0310ee5",
+      "bytes": 319159,
+      "timestamp": "2026-08-15T12:58:17.937Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/mobile-prove.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "activePhase": "prove",
+      "renderMode": "dom-fallback-ready",
+      "findStep": null,
+      "targetProgress": 0.16,
+      "actualProgress": 0.1599,
+      "scrollY": 6913,
+      "sha256": "5f54feea77e9d740440a2dac115ef83ad9874e4b0e91ac8f22c7c9f699edca7b",
+      "bytes": 40623,
+      "timestamp": "2026-08-15T12:58:18.041Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/desktop-aperture-reduced-motion.png",
+      "profile": "desktop",
+      "mode": "reduced-motion",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "activePhase": "aperture",
+      "renderMode": "reduced-motion",
+      "findStep": null,
+      "targetProgress": 0.68,
+      "actualProgress": 0.6804,
+      "scrollY": 1082,
+      "sha256": "a037248f42a0ac90969f53455238a9f61b19be8184fbf8c74fc9b0bf2b90060a",
+      "bytes": 1187714,
+      "timestamp": "2026-08-15T12:58:19.771Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    },
+    {
+      "file": "artifacts/review/repair/desktop-aperture-no-webgl.png",
+      "profile": "desktop",
+      "mode": "no-webgl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "activePhase": "aperture",
+      "renderMode": "no-webgl-fallback",
+      "findStep": null,
+      "targetProgress": 0.68,
+      "actualProgress": 0.6799,
+      "scrollY": 2095,
+      "sha256": "fb5b12da747ed367d25855d0f842d82e797fbd047c32db1095ceda96160e62d8",
+      "bytes": 1159090,
+      "timestamp": "2026-08-15T12:58:21.605Z",
+      "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+    }
+  ],
+  "video": {
+    "status": "captured",
+    "file": "artifacts/review/repair/desktop-journey.webm",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "sha256": "6ae95078848af7e30e297232642def5032005a8adee4f4824c43ef99cdf1340a",
+    "bytes": 1594206,
+    "timestamp": "2026-08-15T12:58:33.897Z",
+    "sourceHead": "3d03033d05910ee9c27c5eb050fecccbabebaaf8"
+  }
+}

@@ -1,5 +1,7 @@
 # Phase 1 Acceptance Ledger
 
+> Historical baseline ledger. For current candidate `3d03033d05910ee9c27c5eb050fecccbabebaaf8`, R1–R12 and refreshed H1–H14 pass; final H15 evidence/docs closure remains pending. [PHASE1_REPAIR_ACCEPTANCE.md](PHASE1_REPAIR_ACCEPTANCE.md) supersedes this file for current identity, evidence, and status.
+
 ## Ledger status
 
 This ledger applies the hard gates without substitution or numerical self-scoring. Evidence is current as of 2026-08-15.

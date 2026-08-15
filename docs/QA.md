@@ -256,3 +256,53 @@ The screenshots are viewport evidence. They are not physical-device photographs 
 ## Phase 2 boundary
 
 No Phase 2 real-media integration was performed. The approved-asset retrieval order is maintained in [`docs/ASSET_REQUESTS.md`](ASSET_REQUESTS.md), and the current procedural/placeholder layers must remain until publication-approved replacements are supplied.
+
+## 2026-08-15 — Phase 1 visual-grammar repair QA
+
+This dated section supersedes earlier candidate, evidence-count, bundle, Lighthouse, video, and defect-status statements in this file. The detailed current records are [PHASE1_REPAIR_ACCEPTANCE.md](PHASE1_REPAIR_ACCEPTANCE.md) and [PHASE1_REPAIR_REVIEW_PACKAGE.md](PHASE1_REPAIR_REVIEW_PACKAGE.md).
+
+### Candidate and evidence identity
+
+- Accepted baseline: `290cb217edc7236443d94df00b10739fbc795e05`.
+- Prior documentation handoff: `9e10f5b2d9c70b4388933bd81bae6d2ac8747ca0`.
+- Frozen repair candidate: `3d03033d05910ee9c27c5eb050fecccbabebaaf8`.
+- Branch/upstream: `phase1/visual-grammar-repair` → `origin/phase1/visual-grammar-repair`; candidate push was normal, without force.
+- Current gate status: R1–R12 and refreshed H1–H14 PASS; H15 final evidence/docs closure remains pending.
+- [Repair manifest](../artifacts/review/repair/manifest.json): generated `2026-08-15T12:58:33.900Z`, source-bound to the frozen candidate, baseline integrity verified unchanged after capture.
+- [Pixel analysis](../artifacts/review/repair/analysis.json): generated `2026-08-15T12:58:42.652Z`, status PASS.
+- Evidence inventory: 14 baseline records, 14 repaired PNG captures, and one 1,594,206-byte desktop WebM; all 29 recorded files match their SHA-256 and byte count.
+
+Visual inspection covered all six baseline desktop JPEG/repaired desktop PNG pairs, all six repaired 390×844 mobile PNGs, reduced-motion and no-WebGL APERTURE PNGs, and sampled frames through the complete 1440×900 WebM. SIGNAL now has 96.522% dark space, 0.090% magenta, and 0% thick magenta core. APERTURE has 18.511% warm field, 0.002% magenta, 2 warm-dominant cells, and 9 dark-dominant cells. PROVE has 0% magenta. Desktop NEED/PROVE content clears the phase rail; mobile PROVE controls are visible, focusable, and contrast-tested.
+
+### Fresh command results
+
+| Command | Result |
+| --- | --- |
+| `npm run check` | Exit 0; Astro 34 files / 0 diagnostics; lint 0 findings; Vitest 4 files / 20 tests; build 11 pages. |
+| `npm run release:placeholders` | Exit 0; 1 file / 2 tests. |
+| `npm run bundle:check` | Exit 0. Total JS 20,271 bytes (19.8 KiB) raw / 7,725 (7.5 KiB) gzip; initial 8,598 (8.4 KiB) / 3,681 (3.6 KiB); lazy engine 11,673 (11.4 KiB) / 4,044 (3.9 KiB); Three/R3F absent. |
+| `npm run test:e2e` | 28/28 expected; no unexpected, flaky, or skipped tests. The focused repair-grammar suite passes 10/10. The `NO_COLOR`/`FORCE_COLOR` line is a runner warning. |
+| `npm run lighthouse` | Exit 0; summary generated `2026-08-15T13:00:45.959Z` with embedded source HEAD. |
+
+Lighthouse reports desktop/mobile 100/100/100/100 for Performance/Accessibility/Best Practices/SEO. Desktop LCP is 0.3s, TBT 0ms, CLS 0. Mobile LCP is 1.0s, TBT 0ms, CLS 0. These are local initial-page lab results, not field telemetry; all-state/transition accessibility is separately evidenced below.
+
+### Accessibility finding, repair, and reinspection
+
+The audit found transient contrast failures under the earlier interpolated readable-UI palette and moderate `region` findings for visible HUD/notice text outside a landmark. The repair switches readable UI discretely between resolved phase palettes and makes the experience HUD an explicitly named `aside`.
+
+- The 28-test suite scans all six settled phases at 1440×900 and 390×844. Every state has zero critical/serious axe violations, zero `region` violations, and no visible HUD text outside a named region.
+- The suite samples desktop TEST → PROVE and mobile APERTURE → NEED at +0, +180, +520, and +900ms; every sample passes.
+- An independent audit directly sampled APERTURE → PROVE at +24, +120, +360, +760, and +1200ms on both viewports—10 samples—with zero critical/serious and zero moderate-region findings.
+- The same independent audit sampled PROVE → APERTURE at +24, +360, +760, and +1200ms on both viewports with the same clean result.
+- The independent audit restored the earlier `688cb7b` declarations in-browser and reproduced the original failure, confirming that the current clean result comes from the repair rather than an insensitive probe.
+
+H9, R1, R9, and R10 now pass. Keyboard/focus, forced colors, reduced motion, semantic canvas equivalence, stable microcopy, actual-background FIND text, and mobile PROVE controls remain green.
+
+### Current limitations and closure
+
+- Approved Phase 2 documentary footage/stills, factual proof data, official identity, fonts, final colors, and favicon are still unavailable. All development content/media and route shells remain machine-marked and non-factual.
+- Testing remains Chromium-centric; no physical device, Safari, Firefox, broad GPU, or dedicated screen-reader session is claimed.
+- `CLOUDFLARE_API_TOKEN` and `SITE_URL` are unset. Wrangler 4.123.0 reports expired non-interactive authentication; no deployment was attempted and no URL exists. Canonical/Open Graph/sitemap origins remain on the documented localhost fallback until a verified host is supplied.
+- The candidate push is confirmed. The final evidence/docs commit SHA, final secret scan, clean-tree confirmation, and final normal push remain pending root closure; H15 is not yet claimed complete.
+
+**STOP. Do not begin Phase 2.** Complete H15, then return the repaired experience to human review for **ACCEPT**, **REPAIR**, or **REDIRECT**.
