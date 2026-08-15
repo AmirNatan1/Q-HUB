@@ -26,8 +26,8 @@ function captureRuntimeFailures(page: Page): string[] {
   return failures;
 }
 
-async function preparePage(page: Page): Promise<void> {
-  await page.goto('/');
+async function preparePage(page: Page, url = '/'): Promise<void> {
+  await page.goto(url);
   await page.addStyleTag({
     content: `
       *, *::before, *::after {
@@ -55,6 +55,25 @@ async function activatePhase(page: Page, phase: Phase): Promise<Locator> {
     )
     .toBe(phase);
   return section;
+}
+
+async function activateFindSelection(page: Page): Promise<void> {
+  await page.evaluate(() => {
+    const section = document.querySelector<HTMLElement>('section[data-experience-phase="find"]');
+    if (!section) throw new Error('Missing FIND section.');
+    const bounds = section.getBoundingClientRect();
+    const absoluteTop = bounds.top + window.scrollY;
+    const target = absoluteTop + section.offsetHeight * 0.82 - window.innerHeight * 0.48;
+    window.scrollTo({ top: target, behavior: 'instant' });
+  });
+  await expect
+    .poll(() =>
+      page.evaluate(() => ({
+        phase: document.documentElement.dataset.activePhase,
+        step: document.documentElement.dataset.findStep,
+      })),
+    )
+    .toEqual({ phase: 'find', step: 'selection' });
 }
 
 async function opacity(locator: Locator): Promise<number> {
@@ -562,6 +581,235 @@ test.describe('Phase 1 visual grammar repair contract', () => {
       const link = inactiveLinks.nth(index);
       await link.focus();
       await expect(link).toBeFocused();
+    }
+
+    expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+  });
+
+  test('R9 FIND sequence text keeps effective AA contrast at mobile and desktop selection', async ({ page }) => {
+    const runtimeFailures = captureRuntimeFailures(page);
+
+    for (const viewport of [
+      { label: 'mobile', width: 390, height: 844 },
+      { label: 'desktop', width: 1440, height: 900 },
+    ]) {
+      await page.setViewportSize({ width: viewport.width, height: viewport.height });
+      await preparePage(page);
+      await activateFindSelection(page);
+
+      const textMetrics = await page.evaluate(() => {
+        const parseColor = (value: string): [number, number, number, number] => {
+          const components = value.match(/[\d.]+/g)?.map(Number);
+          if (!components || components.length < 3) {
+            throw new Error(`Unable to parse FIND text color: ${value}`);
+          }
+          return [components[0]!, components[1]!, components[2]!, components[3] ?? 1];
+        };
+
+        return Array.from(
+          document.querySelectorAll<HTMLElement>(
+            '.find-sequence li > span, .find-sequence li > strong, .find-sequence li > small',
+          ),
+        ).map((element) => {
+          const range = document.createRange();
+          range.selectNodeContents(element);
+          const rect = range.getBoundingClientRect();
+          const color = parseColor(getComputedStyle(element).color);
+          let effectiveOpacity = 1;
+          let current: Element | null = element;
+          while (current && current !== document.documentElement) {
+            effectiveOpacity *= Number.parseFloat(getComputedStyle(current).opacity) || 0;
+            current = current.parentElement;
+          }
+          color[3] *= effectiveOpacity;
+          return {
+            color,
+            rect: {
+              bottom: rect.bottom,
+              left: rect.left,
+              right: rect.right,
+              top: rect.top,
+            },
+            text: element.textContent?.trim().replace(/\s+/g, ' ') ?? '',
+          };
+        });
+      });
+      expect(textMetrics, `${viewport.label} FIND must expose all three labels per step.`).toHaveLength(9);
+
+      const concealText = await page.addStyleTag({
+        content: `
+          .find-sequence li > span,
+          .find-sequence li > strong,
+          .find-sequence li > small {
+            visibility: hidden !important;
+          }
+        `,
+      });
+      const background = await page.screenshot({ animations: 'disabled' });
+      await concealText.evaluate((element) => {
+        element.parentNode?.removeChild(element);
+      });
+      const deviceScaleFactor = await page.evaluate(() => window.devicePixelRatio);
+
+      const contrastReadings = await page.evaluate(
+        async ({ dataUrl, deviceScaleFactor: scale, metrics }) => {
+          type Color = [number, number, number, number];
+
+          const image = await new Promise<HTMLImageElement>((resolve, reject) => {
+            const candidate = new Image();
+            candidate.onload = () => resolve(candidate);
+            candidate.onerror = () => reject(new Error('Unable to decode FIND background evidence.'));
+            candidate.src = dataUrl;
+          });
+          const canvas = document.createElement('canvas');
+          canvas.width = image.naturalWidth;
+          canvas.height = image.naturalHeight;
+          const context = canvas.getContext('2d', { willReadFrequently: true });
+          if (!context) throw new Error('Unable to sample FIND background evidence.');
+          context.drawImage(image, 0, 0);
+          const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+
+          const composite = (foreground: Color, background: Color): Color => {
+            const alpha = foreground[3] + background[3] * (1 - foreground[3]);
+            return [
+              (foreground[0] * foreground[3] + background[0] * background[3] * (1 - foreground[3])) / alpha,
+              (foreground[1] * foreground[3] + background[1] * background[3] * (1 - foreground[3])) / alpha,
+              (foreground[2] * foreground[3] + background[2] * background[3] * (1 - foreground[3])) / alpha,
+              alpha,
+            ];
+          };
+          const linear = (channel: number): number => {
+            const normalized = channel / 255;
+            return normalized <= 0.04045
+              ? normalized / 12.92
+              : ((normalized + 0.055) / 1.055) ** 2.4;
+          };
+          const luminance = (color: Color): number =>
+            linear(color[0]) * 0.2126 + linear(color[1]) * 0.7152 + linear(color[2]) * 0.0722;
+          const ratio = (foreground: Color, backdrop: Color): number => {
+            const rendered = composite(foreground, backdrop);
+            const lighter = Math.max(luminance(rendered), luminance(backdrop));
+            const darker = Math.min(luminance(rendered), luminance(backdrop));
+            return (lighter + 0.05) / (darker + 0.05);
+          };
+
+          return metrics.map((metric) => {
+            const left = Math.max(0, Math.floor(metric.rect.left * scale));
+            const right = Math.min(canvas.width, Math.ceil(metric.rect.right * scale));
+            const top = Math.max(0, Math.floor(metric.rect.top * scale));
+            const bottom = Math.min(canvas.height, Math.ceil(metric.rect.bottom * scale));
+            const ratios: number[] = [];
+            const stride = Math.max(1, Math.round(scale * 2));
+            for (let y = top; y < bottom; y += stride) {
+              for (let x = left; x < right; x += stride) {
+                const offset = (y * canvas.width + x) * 4;
+                const backdrop: Color = [
+                  pixels[offset]!,
+                  pixels[offset + 1]!,
+                  pixels[offset + 2]!,
+                  (pixels[offset + 3] ?? 255) / 255,
+                ];
+                ratios.push(ratio(metric.color, backdrop));
+              }
+            }
+            ratios.sort((leftRatio, rightRatio) => leftRatio - rightRatio);
+            const lowTailIndex = Math.floor(Math.max(0, ratios.length - 1) * 0.05);
+            return {
+              contrast: ratios[lowTailIndex] ?? 0,
+              samples: ratios.length,
+              text: metric.text,
+            };
+          });
+        },
+        {
+          dataUrl: `data:image/png;base64,${background.toString('base64')}`,
+          deviceScaleFactor,
+          metrics: textMetrics,
+        },
+      );
+
+      for (const reading of contrastReadings) {
+        expect(reading.samples, `${viewport.label} FIND “${reading.text}” needs actual-background samples.`).toBeGreaterThan(20);
+        expect(
+          reading.contrast,
+          `${viewport.label} FIND “${reading.text}” falls below effective 4.5:1 contrast.`,
+        ).toBeGreaterThanOrEqual(4.5);
+      }
+    }
+
+    expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+  });
+
+  test('R9 named responsive microcopy never resolves below 11.2px', async ({ page }) => {
+    const runtimeFailures = captureRuntimeFailures(page);
+
+    for (const width of [390, 430]) {
+      await page.setViewportSize({ width, height: width === 390 ? 844 : 932 });
+      await preparePage(page);
+      await activatePhase(page, 'need');
+      const sizes = await page.locator('.need-terms dd').evaluateAll((elements) =>
+        elements.map((element) => Number.parseFloat(getComputedStyle(element).fontSize)),
+      );
+      expect(sizes).toHaveLength(3);
+      for (const [index, size] of sizes.entries()) {
+        expect(size, `${width}px NEED term ${index + 1} resolves below 11.2px.`).toBeGreaterThanOrEqual(11.2);
+      }
+    }
+
+    await page.setViewportSize({ width: 768, height: 1024 });
+    await preparePage(page);
+    const phaseSizes = await page.locator('.phase-index a').evaluateAll((elements) =>
+      elements.map((element) => Number.parseFloat(getComputedStyle(element).fontSize)),
+    );
+    expect(phaseSizes).toHaveLength(6);
+    for (const [index, size] of phaseSizes.entries()) {
+      expect(size, `768px phase control ${index + 1} resolves below 11.2px.`).toBeGreaterThanOrEqual(11.2);
+    }
+
+    expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+  });
+
+  test('H13 desktop APERTURE status boxes remain clear in normal, reduced, and no-WebGL modes', async ({ page }) => {
+    const runtimeFailures = captureRuntimeFailures(page);
+    const modes = [
+      { label: 'normal', reducedMotion: 'no-preference' as const, url: '/' },
+      { label: 'reduced motion', reducedMotion: 'reduce' as const, url: '/' },
+      { label: 'no WebGL', reducedMotion: 'no-preference' as const, url: '/?webgl=off' },
+    ];
+
+    for (const mode of modes) {
+      await page.emulateMedia({ reducedMotion: mode.reducedMotion });
+      await preparePage(page, mode.url);
+      await activatePhase(page, 'aperture');
+
+      const notice = page.locator('.field-media__notice');
+      await expect(notice).toBeVisible();
+      const noticeBox = await notice.boundingBox();
+      expect(noticeBox, `${mode.label} APERTURE notice must have a rendered box.`).not.toBeNull();
+      if (!noticeBox) continue;
+
+      const statusBoxes = page.locator('.stage-frame p');
+      await expect(statusBoxes).toHaveCount(2);
+      let visibleStatuses = 0;
+      for (let index = 0; index < await statusBoxes.count(); index += 1) {
+        const status = statusBoxes.nth(index);
+        if (!(await status.isVisible())) continue;
+        visibleStatuses += 1;
+        const statusBox = await status.boundingBox();
+        expect(statusBox, `${mode.label} APERTURE status ${index + 1} must have a rendered box.`).not.toBeNull();
+        if (!statusBox) continue;
+        const horizontalOverlap =
+          Math.min(noticeBox.x + noticeBox.width, statusBox.x + statusBox.width) -
+          Math.max(noticeBox.x, statusBox.x);
+        const verticalOverlap =
+          Math.min(noticeBox.y + noticeBox.height, statusBox.y + statusBox.height) -
+          Math.max(noticeBox.y, statusBox.y);
+        expect(
+          horizontalOverlap > 0 && verticalOverlap > 0,
+          `${mode.label} APERTURE notice overlaps stage status ${index + 1}.`,
+        ).toBe(false);
+      }
+      expect(visibleStatuses, `${mode.label} APERTURE needs a visible stage status box.`).toBeGreaterThan(0);
     }
 
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);

@@ -633,7 +633,7 @@
     position: absolute;
     z-index: 9;
     right: calc(var(--page-gutter) + clamp(0rem, 2vw, 2rem));
-    bottom: 2rem;
+    bottom: 4.75rem;
     max-width: 19rem;
     padding: 0.65rem 0.8rem;
     color: var(--paper-bright);
@@ -1315,8 +1315,8 @@
     grid-template-columns: 3rem minmax(7rem, 0.75fr) 1fr;
     gap: 1rem;
     border-bottom: 1px solid var(--line-dark);
-    color: rgba(243, 241, 235, 0.6);
-    opacity: 0.58;
+    color: rgba(243, 241, 235, 0.68);
+    opacity: 1;
     transition:
       color var(--duration-state) var(--ease-field),
       opacity var(--duration-state) ease,
@@ -1958,7 +1958,7 @@
       gap: 0.16rem;
       padding: 0.35rem 0.1rem;
       color: rgba(243, 241, 235, 0.72);
-      font-size: clamp(0.6rem, 1.8vw, 0.66rem);
+      font-size: clamp(0.7rem, 1.8vw, 0.74rem);
       line-height: 1;
       text-align: center;
     }
@@ -2170,7 +2170,7 @@
     }
 
     .need-terms dd {
-      font-size: clamp(0.58rem, 2vw, 0.72rem);
+      font-size: clamp(0.7rem, 2vw, 0.76rem);
     }
 
     .act--find {
