@@ -26,6 +26,7 @@ const priorJourneyPath = path.join(reviewDirectory, "phase2", "desktop-journey.w
 const expectedPriorJourneySha256 = "2aca51553494f9aa0a56e472c70f21c6d75404679bb07c98706fb10abda4d4c7";
 const expectedBranch = "phase2/maradin-field-evidence";
 const host = "127.0.0.1";
+const astroCliPath = path.join(rootDirectory, "node_modules", "astro", "bin", "astro.mjs");
 
 const desktopViewport = Object.freeze({ width: 1440, height: 900 });
 const mobileViewport = Object.freeze({ width: 390, height: 844 });
@@ -334,12 +335,14 @@ async function reservePort() {
 }
 
 function startPreview(port) {
-  const child = npmProcess(
-    ["run", "preview", "--", "--host", host, "--port", String(port)],
+  const child = spawn(
+    process.execPath,
+    [astroCliPath, "preview", "--host", host, "--port", String(port)],
     {
       cwd: rootDirectory,
       env: { ...process.env },
       stdio: ["ignore", "pipe", "pipe"],
+      windowsHide: true,
     },
   );
   const remember = (chunk) => {
@@ -372,7 +375,12 @@ async function waitForPreview(url, timeoutMs = 45_000) {
 
 async function stopPreview() {
   if (!previewProcess?.pid || previewProcess.exitCode !== null) return;
-  if (process.platform === "win32") {
+  previewProcess.kill();
+  for (let attempt = 0; attempt < 30; attempt += 1) {
+    if (previewProcess.exitCode !== null) return;
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  if (process.platform === "win32" && previewProcess.exitCode === null) {
     await new Promise((resolve) => {
       const child = spawn(
         "taskkill",
@@ -384,11 +392,6 @@ async function stopPreview() {
     });
     return;
   }
-  previewProcess.kill("SIGTERM");
-  await Promise.race([
-    new Promise((resolve) => previewProcess.once("exit", resolve)),
-    new Promise((resolve) => setTimeout(resolve, 3_000)),
-  ]);
   if (previewProcess.exitCode === null) previewProcess.kill("SIGKILL");
 }
 
@@ -531,9 +534,15 @@ function monitorPage(page) {
   return errors;
 }
 
-async function prepareAppPage(page, url, { freezeTransitions = true } = {}) {
+async function prepareAppPage(
+  page,
+  url,
+  { freezeTransitions = true, requireApplicationState = true } = {},
+) {
   await page.goto(url, { waitUntil: "networkidle" });
-  await page.waitForFunction(() => document.documentElement.dataset.js === "true");
+  if (requireApplicationState) {
+    await page.waitForFunction(() => document.documentElement.dataset.js === "true");
+  }
   if (await page.locator("astro-dev-toolbar").count()) {
     throw new Error("Astro dev toolbar detected. Repair evidence must use an isolated production preview.");
   }
@@ -1499,7 +1508,7 @@ async function auditVisibleWorkflowLanguage(baseUrl) {
   const routes = [];
   try {
     for (const route of workflowAuditRoutes) {
-      await prepareAppPage(page, `${baseUrl}${route}`);
+      await prepareAppPage(page, `${baseUrl}${route}`, { requireApplicationState: false });
       const main = page.locator("main");
       const visibleText = await main.innerText();
       const html = await page.content();
