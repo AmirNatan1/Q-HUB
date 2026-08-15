@@ -342,7 +342,10 @@ function startPreview(port) {
     [astroCliPath, "preview", "--host", host, "--port", String(port)],
     {
       cwd: rootDirectory,
-      env: { ...process.env },
+      // Astro backgrounds preview automatically when it detects an agent. The
+      // capture harness must own the foreground process so an early CLI exit
+      // cannot be mistaken for a failed or detached evidence server.
+      env: { ...process.env, ASTRO_PREVIEW_BACKGROUND: "1" },
       stdio: ["ignore", "pipe", "pipe"],
       windowsHide: true,
     },
