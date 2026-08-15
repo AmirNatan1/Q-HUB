@@ -1100,7 +1100,15 @@ async function proveMediaPositions(page) {
   const supporting = result.images.find((image) => image.subject === "field-vehicle");
   const primary = result.images.find((image) => image.subject === "projected-stop-symbol");
   const minimumVehicleColorRatio = (page.viewportSize()?.width ?? 1_440) <= 832 ? 0.02 : 0.015;
-  if (!primary || primary.subjectColorRatio < 0.1) {
+  if (
+    !primary
+    || primary.subjectColorRatio < 0.1
+    || !primary.subjectVisibility
+    || primary.subjectVisibility.visibleSourceRatio < 0.85
+    || primary.subjectVisibility.projectedWidth < 100
+    || primary.subjectVisibility.projectedHeight < 40
+    || primary.subjectVisibility.captionOverlapRatio > 0.01
+  ) {
     throw new Error(`PROVE stop-symbol crop lacks its measured subject signature: ${JSON.stringify(primary)}.`);
   }
   if (!supporting || supporting.figureWidthRatio < 0.35) {

@@ -41,6 +41,72 @@ async function posterPath(video: Locator): Promise<string> {
   });
 }
 
+async function measureSubjectVisibility(
+  image: Locator,
+  region: { xMin: number; yMin: number; xMax: number; yMax: number },
+) {
+  return image.evaluate((element, subjectRegion) => {
+    if (!(element instanceof HTMLImageElement)) throw new Error('Expected PROVE evidence image.');
+    const rect = element.getBoundingClientRect();
+    const figure = element.closest('figure');
+    const caption = figure?.querySelector('figcaption');
+    if (!(caption instanceof HTMLElement)) throw new Error('Expected PROVE evidence caption.');
+    const captionRect = caption.getBoundingClientRect();
+    const style = getComputedStyle(element);
+    const coordinates = style.objectPosition.match(/-?[\d.]+%/g)?.map(Number.parseFloat) ?? [];
+    const positionX = coordinates[0] ?? 50;
+    const positionY = coordinates[1] ?? 50;
+    const scale = Math.max(rect.width / element.naturalWidth, rect.height / element.naturalHeight);
+    const renderedWidth = element.naturalWidth * scale;
+    const renderedHeight = element.naturalHeight * scale;
+    const offsetX = (rect.width - renderedWidth) * positionX / 100;
+    const offsetY = (rect.height - renderedHeight) * positionY / 100;
+    const crop = {
+      xMin: Math.max(0, -offsetX / scale),
+      yMin: Math.max(0, -offsetY / scale),
+      xMax: Math.min(element.naturalWidth, (rect.width - offsetX) / scale),
+      yMax: Math.min(element.naturalHeight, (rect.height - offsetY) / scale),
+    };
+    const visible = {
+      xMin: Math.max(subjectRegion.xMin, crop.xMin),
+      yMin: Math.max(subjectRegion.yMin, crop.yMin),
+      xMax: Math.min(subjectRegion.xMax, crop.xMax),
+      yMax: Math.min(subjectRegion.yMax, crop.yMax),
+    };
+    const visibleWidth = Math.max(0, visible.xMax - visible.xMin);
+    const visibleHeight = Math.max(0, visible.yMax - visible.yMin);
+    const regionArea =
+      (subjectRegion.xMax - subjectRegion.xMin) * (subjectRegion.yMax - subjectRegion.yMin);
+    const projected = {
+      left: rect.left + offsetX + visible.xMin * scale,
+      top: rect.top + offsetY + visible.yMin * scale,
+      right: rect.left + offsetX + visible.xMax * scale,
+      bottom: rect.top + offsetY + visible.yMax * scale,
+    };
+    const projectedWidth = Math.max(0, projected.right - projected.left);
+    const projectedHeight = Math.max(0, projected.bottom - projected.top);
+    const captionOverlapWidth = Math.max(
+      0,
+      Math.min(projected.right, captionRect.right) - Math.max(projected.left, captionRect.left),
+    );
+    const captionOverlapHeight = Math.max(
+      0,
+      Math.min(projected.bottom, captionRect.bottom) - Math.max(projected.top, captionRect.top),
+    );
+    return {
+      captionOverlapRatio:
+        projectedWidth * projectedHeight > 0
+          ? (captionOverlapWidth * captionOverlapHeight) / (projectedWidth * projectedHeight)
+          : 1,
+      naturalHeight: element.naturalHeight,
+      naturalWidth: element.naturalWidth,
+      projectedHeight,
+      projectedWidth,
+      visibleSourceRatio: regionArea > 0 ? (visibleWidth * visibleHeight) / regionArea : 0,
+    };
+  }, region);
+}
+
 async function expectNativeDocumentaryVideo(
   video: Locator,
   sourcePath: string,
@@ -709,6 +775,10 @@ test.describe('Phase 2 approved field-media contract', () => {
 
     for (const viewport of [
       { label: 'desktop', width: 1440, height: 900 },
+      { label: 'tablet', width: 768, height: 1024 },
+      { label: 'tablet-boundary', width: 545, height: 900 },
+      { label: 'stacked-boundary', width: 544, height: 900 },
+      { label: 'mobile-large', width: 430, height: 932 },
       { label: 'mobile', width: 390, height: 844 },
     ]) {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
@@ -793,6 +863,10 @@ test.describe('Phase 2 approved field-media contract', () => {
           }),
         };
       });
+      const primaryVisibility = await measureSubjectVisibility(
+        primary,
+        { xMin: 550, yMin: 600, xMax: 1320, yMax: 1070 },
+      );
       const vehicleVisibility = await supporting.evaluate(
         (element, region) => {
           if (!(element instanceof HTMLImageElement)) throw new Error('Expected PROVE vehicle image.');
@@ -877,6 +951,12 @@ test.describe('Phase 2 approved field-media contract', () => {
         expect(coordinates).toHaveLength(2);
         expect(image.objectPosition).not.toBe('50% 50%');
       }
+      expect(primaryVisibility.naturalWidth).toBe(1920);
+      expect(primaryVisibility.naturalHeight).toBe(1080);
+      expect(primaryVisibility.visibleSourceRatio).toBeGreaterThanOrEqual(0.85);
+      expect(primaryVisibility.projectedWidth).toBeGreaterThanOrEqual(100);
+      expect(primaryVisibility.projectedHeight).toBeGreaterThanOrEqual(40);
+      expect(primaryVisibility.captionOverlapRatio).toBeLessThanOrEqual(0.01);
       expect(vehicleVisibility.naturalWidth).toBe(2160);
       expect(vehicleVisibility.naturalHeight).toBe(3840);
       expect(vehicleVisibility.visibleSourceRatio).toBeGreaterThanOrEqual(0.95);
@@ -885,14 +965,18 @@ test.describe('Phase 2 approved field-media contract', () => {
       expect(vehicleVisibility.captionOverlapRatio).toBeLessThanOrEqual(0.01);
       expect(
         state.images.find((image) => image.subject === 'projected-stop-symbol')?.subjectColorRatio,
-      ).toBeGreaterThanOrEqual(0.1);
+      ).toBeGreaterThanOrEqual(viewport.width > 544 && viewport.width <= 832 ? 0.06 : 0.1);
       expect(
         state.images.find((image) => image.subject === 'field-vehicle')?.subjectColorRatio,
-      ).toBeGreaterThanOrEqual(viewport.label === 'mobile' ? 0.02 : 0.015);
+      ).toBeGreaterThanOrEqual(
+        viewport.width <= 544 ? 0.02 : viewport.width <= 832 ? 0.008 : 0.015,
+      );
       positions[viewport.label] = state.images.map((image) => image.objectPosition);
     }
 
     expect(positions.mobile).not.toEqual(positions.desktop);
+    expect(positions.tablet).not.toEqual(positions.mobile);
+    expect(positions['tablet-boundary']).not.toEqual(positions['stacked-boundary']);
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
   });
 

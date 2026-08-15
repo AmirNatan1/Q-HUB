@@ -2441,34 +2441,33 @@
 
     .proof-record__media {
       min-height: 0;
-      height: clamp(9rem, 38vw, 10.5rem);
-      grid-template-columns: minmax(0, 1fr);
-      grid-template-rows: 1.5rem repeat(2, minmax(0, 1fr));
+      height: clamp(13rem, 28vw, 14rem);
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr) auto;
     }
 
     .proof-record__image--primary {
       grid-column: 1;
-      grid-row: 2;
-      object-position: 48% 90%;
+      grid-row: 1;
+      object-position: 48% 100%;
     }
 
     .proof-record__image--supporting {
-      grid-column: 1;
-      grid-row: 3;
-      object-position: 50% 48%;
-      border-top: 1px solid rgba(255, 255, 255, 0.68);
-      border-left: 0;
+      grid-column: 2;
+      grid-row: 1;
+      object-position: 54% 58%;
+      border-top: 0;
+      border-left: 1px solid rgba(255, 255, 255, 0.68);
     }
 
     .proof-record__media figcaption {
-      grid-column: 1;
-      grid-row: 1;
-      display: flex;
-      align-items: center;
-      padding: 0 0.625rem;
-      font-size: 0.62rem;
-      letter-spacing: 0.04em;
-      text-align: left;
+      grid-column: 1 / -1;
+      grid-row: 2;
+      display: block;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-align: right;
     }
 
     .proof-record dl {
@@ -2498,6 +2497,39 @@
     .route-shell__copy h1,
     .not-found h1 {
       font-size: clamp(3.5rem, 16vw, 7rem);
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .proof-record__media {
+      height: clamp(9rem, 38vw, 13rem);
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: 1.5rem repeat(2, minmax(0, 1fr));
+    }
+
+    .proof-record__image--primary {
+      grid-column: 1;
+      grid-row: 2;
+      object-position: 48% 90%;
+    }
+
+    .proof-record__image--supporting {
+      grid-column: 1;
+      grid-row: 3;
+      object-position: 50% 48%;
+      border-top: 1px solid rgba(255, 255, 255, 0.68);
+      border-left: 0;
+    }
+
+    .proof-record__media figcaption {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 0.625rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
+      text-align: left;
     }
   }
 
