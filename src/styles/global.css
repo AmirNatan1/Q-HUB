@@ -244,10 +244,7 @@
     color: var(--paper-bright);
     background: rgba(11, 10, 13, 0.96);
     border-bottom: 1px solid var(--line-dark);
-    transition:
-      color var(--duration-state) var(--ease-field),
-      background-color var(--duration-state) var(--ease-field),
-      border-color var(--duration-state) var(--ease-field);
+    transition: none;
   }
 
   .wordmark {
@@ -291,7 +288,7 @@
     font-size: 0.7rem;
     letter-spacing: 0.055em;
     text-transform: uppercase;
-    transition: color var(--duration-fast) ease;
+    transition: none;
   }
 
   .nav-disclosure nav a > span {
@@ -349,9 +346,7 @@
     font-size: 0.7rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    transition:
-      color var(--duration-fast) ease,
-      transform var(--duration-fast) var(--ease-field);
+    transition: transform var(--duration-fast) var(--ease-field);
   }
 
   .phase-index a span:first-child {
@@ -647,15 +642,12 @@
     opacity: 0;
     pointer-events: none;
     text-transform: uppercase;
-    transition:
-      opacity var(--duration-state) ease,
-      visibility 0s linear var(--duration-state);
+    transition: none;
   }
 
   html[data-active-phase="aperture"] .field-media__notice {
     visibility: visible;
     opacity: 1;
-    transition-delay: 0s;
   }
 
   .signal-trajectories {
@@ -905,7 +897,7 @@
     letter-spacing: 0.065em;
     line-height: 1.4;
     text-transform: uppercase;
-    transition: color var(--duration-state) ease;
+    transition: none;
   }
 
   .stage-frame p {

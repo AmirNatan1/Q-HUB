@@ -2,6 +2,14 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 
 const phases = ['signal', 'aperture', 'need', 'find', 'test', 'prove'] as const;
+type Phase = (typeof phases)[number];
+
+const accessibilityViewports = [
+  { name: 'desktop', width: 1440, height: 900 },
+  { name: 'mobile', width: 390, height: 844 },
+] as const;
+const settledTransitionMs = 1_200;
+const transitionSampleDelaysMs = [0, 180, 520, 900] as const;
 
 function captureRuntimeFailures(page: Page): string[] {
   const failures: string[] = [];
@@ -12,6 +20,87 @@ function captureRuntimeFailures(page: Page): string[] {
   return failures;
 }
 
+async function activatePhase(page: Page, phase: Phase): Promise<void> {
+  await page.locator(`section[data-experience-phase="${phase}"]`).evaluate((element) => {
+    element.scrollIntoView({ block: 'center', behavior: 'instant' });
+  });
+  await expect
+    .poll(() => page.evaluate(() => document.documentElement.dataset.activePhase))
+    .toBe(phase);
+}
+
+async function settlePhase(page: Page, phase: Phase): Promise<void> {
+  await activatePhase(page, phase);
+  await page.waitForTimeout(settledTransitionMs);
+}
+
+function formatViolations(
+  violations: Awaited<ReturnType<AxeBuilder['analyze']>>['violations'],
+): string {
+  return violations
+    .map(
+      (violation) =>
+        `${violation.id} (${violation.impact ?? 'unknown'}): ${violation.help}\n${violation.nodes
+          .map((node) => `  ${node.target.join(' ')}: ${node.failureSummary ?? ''}`)
+          .join('\n')}`,
+    )
+    .join('\n\n');
+}
+
+async function expectAccessibleSnapshot(page: Page, context: string): Promise<void> {
+  const results = await new AxeBuilder({ page }).analyze();
+  const blocking = results.violations.filter(
+    (violation) => violation.impact === 'critical' || violation.impact === 'serious',
+  );
+  const regionViolations = results.violations.filter((violation) => violation.id === 'region');
+
+  expect(blocking, `${context}\n${formatViolations(blocking)}`).toEqual([]);
+  expect(
+    regionViolations,
+    `${context}: visible HUD, notice, stage, and page text must remain inside a landmark.\n${formatViolations(regionViolations)}`,
+  ).toEqual([]);
+
+  const visibleHudTextOutsideLandmark = await page.locator('.experience-hud p').evaluateAll((nodes) =>
+    nodes
+      .filter((node) => {
+        const element = node as HTMLElement;
+        const style = getComputedStyle(element);
+        const bounds = element.getBoundingClientRect();
+        return (
+          (element.textContent ?? '').trim().length > 0 &&
+          style.display !== 'none' &&
+          style.visibility !== 'hidden' &&
+          Number.parseFloat(style.opacity) > 0 &&
+          bounds.width > 0 &&
+          bounds.height > 0 &&
+          bounds.right > 0 &&
+          bounds.bottom > 0 &&
+          bounds.left < window.innerWidth &&
+          bounds.top < window.innerHeight
+        );
+      })
+      .filter((node) => !node.closest('aside[aria-label], [role="region"][aria-label]'))
+      .map((node) => (node.textContent ?? '').trim()),
+  );
+  expect(
+    visibleHudTextOutsideLandmark,
+    `${context}: visible HUD text outside an explicitly named landmark.`,
+  ).toEqual([]);
+}
+
+async function sampleTransition(
+  page: Page,
+  source: Phase,
+  target: Phase,
+  delayMs: number,
+  context: string,
+): Promise<void> {
+  await settlePhase(page, source);
+  await activatePhase(page, target);
+  if (delayMs > 0) await page.waitForTimeout(delayMs);
+  await expectAccessibleSnapshot(page, `${context} at +${delayMs}ms`);
+}
+
 test.describe('accessibility release gate', () => {
   test('has valid landmarks, headings, names, and non-canvas equivalents', async ({ page }) => {
     const runtimeFailures = captureRuntimeFailures(page);
@@ -20,6 +109,7 @@ test.describe('accessibility release gate', () => {
     await expect(page.locator('body > header')).toHaveCount(1);
     await expect(page.locator('main')).toHaveCount(1);
     await expect(page.locator('nav[aria-label="Primary"]')).toHaveCount(1);
+    await expect(page.locator('aside.experience-hud[aria-label="Experience status"]')).toHaveCount(1);
     await expect(page.locator('main h1')).toHaveCount(1);
 
     const headingLevels = await page.locator('main h1, main h2, main h3, main h4, main h5, main h6').evaluateAll((headings) =>
@@ -148,26 +238,50 @@ test.describe('accessibility release gate', () => {
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
   });
 
-  test('has zero critical or serious axe violations', async ({ page }) => {
+  for (const viewport of accessibilityViewports) {
+    test(`${viewport.name} has zero critical or serious axe violations in every settled phase`, async ({ page }) => {
+      const runtimeFailures = captureRuntimeFailures(page);
+      await page.setViewportSize({ width: viewport.width, height: viewport.height });
+      await page.goto('/');
+
+      for (const phase of phases) {
+        await settlePhase(page, phase);
+        await expectAccessibleSnapshot(
+          page,
+          `${viewport.name} ${viewport.width}x${viewport.height}, settled ${phase.toUpperCase()}`,
+        );
+      }
+
+      expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+    });
+  }
+
+  test('desktop transition into PROVE remains accessible throughout material settlement', async ({ page }) => {
     const runtimeFailures = captureRuntimeFailures(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/');
 
-    const results = await new AxeBuilder({ page }).analyze();
-    const blocking = results.violations.filter(
-      (violation) => violation.impact === 'critical' || violation.impact === 'serious',
-    );
+    for (const delayMs of transitionSampleDelaysMs) {
+      await sampleTransition(page, 'test', 'prove', delayMs, 'desktop TEST → PROVE');
+    }
 
-    expect(
-      blocking,
-      blocking
-        .map(
-          (violation) =>
-            `${violation.id} (${violation.impact}): ${violation.help}\n${violation.nodes
-              .map((node) => `  ${node.target.join(' ')}: ${node.failureSummary ?? ''}`)
-              .join('\n')}`,
-        )
-        .join('\n\n'),
-    ).toEqual([]);
+    expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+  });
+
+  test('mobile APERTURE notice exit remains accessible throughout material settlement', async ({ page }) => {
+    const runtimeFailures = captureRuntimeFailures(page);
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/');
+
+    for (const delayMs of transitionSampleDelaysMs) {
+      await settlePhase(page, 'aperture');
+      await expect(page.locator('.field-media__notice')).toBeVisible();
+      await activatePhase(page, 'need');
+      if (delayMs > 0) await page.waitForTimeout(delayMs);
+      await expect(page.locator('.field-media__notice')).toBeHidden();
+      await expectAccessibleSnapshot(page, `mobile APERTURE → NEED at +${delayMs}ms`);
+    }
+
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
   });
 });
