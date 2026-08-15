@@ -2,6 +2,7 @@ import { defineConfig } from '@playwright/test';
 
 const port = Number.parseInt(process.env.PORT ?? '4321', 10);
 const baseURL = `http://127.0.0.1:${port}`;
+const externalServer = process.env.PLAYWRIGHT_EXTERNAL_SERVER === '1';
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -24,10 +25,12 @@ export default defineConfig({
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
   },
-  webServer: {
-    command: `npm run dev -- --host 127.0.0.1 --port ${port}`,
-    url: baseURL,
-    reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
-  },
+  ...(!externalServer && {
+    webServer: {
+      command: `npm run dev -- --host 127.0.0.1 --port ${port}`,
+      url: baseURL,
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+    },
+  }),
 });
