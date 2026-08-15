@@ -1,0 +1,77 @@
+{
+  "generatedAt": "2026-08-15T10:32:26.892Z",
+  "measuredUrl": "http://127.0.0.1:60010/",
+  "buildInput": "dist/index.html",
+  "results": [
+    {
+      "profile": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp": {
+          "numericValue": 314.33820000000003,
+          "displayValue": "0.3 s"
+        },
+        "tbt": {
+          "numericValue": 0,
+          "displayValue": "0 ms"
+        },
+        "cls": {
+          "numericValue": 0,
+          "displayValue": "0"
+        }
+      },
+      "thresholds": {
+        "performance": 0.9,
+        "accessibility": 0.95,
+        "best-practices": 0.95,
+        "seo": 0.95,
+        "cls": 0.05
+      },
+      "failures": [],
+      "artifacts": {
+        "json": "artifacts/lighthouse/desktop-homepage.json",
+        "html": "artifacts/lighthouse/desktop-homepage.html"
+      }
+    },
+    {
+      "profile": "mobile",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp": {
+          "numericValue": 911.2869000000001,
+          "displayValue": "0.9 s"
+        },
+        "tbt": {
+          "numericValue": 0,
+          "displayValue": "0 ms"
+        },
+        "cls": {
+          "numericValue": 0,
+          "displayValue": "0"
+        }
+      },
+      "thresholds": {
+        "performance": 0.85,
+        "accessibility": 0.95,
+        "best-practices": 0.95,
+        "seo": 0.95,
+        "cls": 0.05
+      },
+      "failures": [],
+      "artifacts": {
+        "json": "artifacts/lighthouse/mobile-homepage.json",
+        "html": "artifacts/lighthouse/mobile-homepage.html"
+      }
+    }
+  ]
+}

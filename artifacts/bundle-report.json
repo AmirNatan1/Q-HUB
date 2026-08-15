@@ -1,0 +1,79 @@
+{
+  "generatedAt": "2026-08-15T10:42:10.892Z",
+  "inspectedEntry": "dist/index.html",
+  "initialHtml": {
+    "scripts": [
+      {
+        "kind": "external",
+        "type": "module",
+        "src": "/_astro/page.DVKH9UCq.js",
+        "localFile": "_astro/page.DVKH9UCq.js"
+      },
+      {
+        "kind": "inline",
+        "type": "module",
+        "bytes": 258,
+        "staticImports": [],
+        "dynamicImports": []
+      },
+      {
+        "kind": "external",
+        "type": "module",
+        "src": "/_astro/index.astro_astro_type_script_index_0_lang.BjmKTKDG.js",
+        "localFile": "_astro/index.astro_astro_type_script_index_0_lang.BjmKTKDG.js"
+      }
+    ],
+    "modulePreloads": []
+  },
+  "totals": {
+    "javascriptAssets": 3,
+    "rawBytes": 14592,
+    "gzipBytes": 6113,
+    "initialRawBytes": 7812,
+    "initialGzipBytes": 3379
+  },
+  "composition": [
+    {
+      "file": "_astro/field-engine._83NkYh5.js",
+      "tier": "lazy",
+      "rawBytes": 6780,
+      "gzipBytes": 2734,
+      "staticImports": [],
+      "dynamicImports": []
+    },
+    {
+      "file": "_astro/index.astro_astro_type_script_index_0_lang.BjmKTKDG.js",
+      "tier": "initial",
+      "rawBytes": 5322,
+      "gzipBytes": 2261,
+      "staticImports": [],
+      "dynamicImports": [
+        "_astro/field-engine._83NkYh5.js"
+      ]
+    },
+    {
+      "file": "_astro/page.DVKH9UCq.js",
+      "tier": "initial",
+      "rawBytes": 2490,
+      "gzipBytes": 1118,
+      "staticImports": [],
+      "dynamicImports": []
+    }
+  ],
+  "runtimeDetection": {
+    "three": {
+      "installedInDependencyTree": false,
+      "detectedInAssets": false,
+      "detectedInInitialCriticalPath": false,
+      "detectedAssets": [],
+      "initialAssets": []
+    },
+    "r3f": {
+      "installedInDependencyTree": false,
+      "detectedInAssets": false,
+      "detectedInInitialCriticalPath": false,
+      "detectedAssets": [],
+      "initialAssets": []
+    }
+  }
+}

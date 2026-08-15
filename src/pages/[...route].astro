@@ -1,0 +1,40 @@
+---
+import RouteShell from "@/components/RouteShell.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+type RouteRecord = {
+  route: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+};
+
+export function getStaticPaths() {
+  const routes: RouteRecord[] = [
+    { route: "proof", eyebrow: "Evidence architecture", title: "Proof", description: "A future record system for approved field evidence, test context, and next-step decisions." },
+    { route: "industry", eyebrow: "For operating organizations", title: "Begin with the need", description: "This route is prepared for an approved industry journey and practical entry points." },
+    { route: "startups", eyebrow: "For technology companies", title: "Enter the field", description: "This route is prepared for an approved technology-company journey and suitability criteria." },
+    { route: "programs", eyebrow: "Program architecture", title: "Programs", description: "An index for approved SPARK and CHAMP program information." },
+    { route: "programs/spark", eyebrow: "Program shell", title: "SPARK", description: "Approved program detail and media will be introduced after the Phase 1 visual review." },
+    { route: "programs/champ", eyebrow: "Program shell", title: "CHAMP", description: "Approved program detail and media will be introduced after the Phase 1 visual review." },
+    { route: "network", eyebrow: "Relationship architecture", title: "Network", description: "A future view of approved organizations with precise, non-interchangeable relationship labels." },
+    { route: "about", eyebrow: "Operating model", title: "About Quantum", description: "This route is prepared for approved company, people, and operating-model content." },
+    { route: "contact", eyebrow: "Practical entry", title: "Enter the field", description: "Approved contact paths for industrial needs and relevant technologies will be added here." }
+  ];
+
+  return routes.map((record) => ({
+    params: { route: record.route },
+    props: record
+  }));
+}
+
+const record = Astro.props as RouteRecord;
+---
+
+<BaseLayout
+  title={record.title}
+  description={record.description}
+  theme="light"
+>
+  <RouteShell {...record} />
+</BaseLayout>

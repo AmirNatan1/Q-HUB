@@ -1,0 +1,227 @@
+---
+import ExperienceStage from "@/components/ExperienceStage.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import {
+  developmentProofFields,
+  findSequence,
+  homepageActs,
+} from "@/content/homepage";
+
+const [signal, aperture, need, find, test, prove] = homepageActs;
+if (!signal || !aperture || !need || !find || !test || !prove) {
+  throw new Error("The six approved homepage acts are required.");
+}
+---
+
+<BaseLayout
+  title="Quantum Hub"
+  description="Quantum Hub turns industrial needs into field evidence through technology search, practical testing, and proof."
+>
+  <ExperienceStage />
+
+  <nav class="phase-index" aria-label="Experience phases">
+    <ol>
+      {homepageActs.map((act) => (
+        <li>
+          <a href={`#${act.phase}`} data-phase-link={act.phase}>
+            <span>{act.act}</span>
+            <span>{act.label}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+
+  <main id="main-content" class="experience" data-experience>
+    <section
+      id="signal"
+      class="act act--signal"
+      data-experience-phase="signal"
+      aria-labelledby="signal-title"
+    >
+      <div class="act__inner act__inner--signal">
+        <p class="act-number"><span>Act</span> {signal.act} / {signal.label}</p>
+        <h1 id="signal-title" class="display display--hero">
+          <span>{signal.title[0]}</span>
+          <span>{signal.title[1]}</span>
+        </h1>
+        <div class="signal-footer">
+          <p class="editorial-draft">
+            <span>Editorial draft</span>
+            {signal.supporting}
+          </p>
+          <a class="scroll-cue" href="#aperture">
+            <span>Trace the signal</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="aperture"
+      class="act act--aperture"
+      data-experience-phase="aperture"
+      aria-labelledby="aperture-title"
+    >
+      <div class="act__inner act__inner--aperture">
+        <div class="aperture-copy">
+          <p class="act-number"><span>Act</span> {aperture.act} / {aperture.label}</p>
+          <h2 id="aperture-title" class="display display--aperture">
+            <span>{aperture.title[0]}</span>
+            <span>{aperture.title[1]}</span>
+          </h2>
+          <p class="editorial-draft">
+            <span>Editorial draft / interaction cue</span>
+            {aperture.supporting}
+          </p>
+        </div>
+        <div class="aperture-readout" aria-label="Field aperture concept">
+          <p><span>Layer 01</span> Abstract signal</p>
+          <p><span>Layer 02</span> Field surface</p>
+          <p><span>State</span> Resolution in progress</p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="need"
+      class="act act--need"
+      data-experience-phase="need"
+      aria-labelledby="need-title"
+    >
+      <div class="act__inner act__inner--need">
+        <p class="act-number"><span>Act</span> {need.act} / {need.label}</p>
+        <div class="need-composition">
+          <p class="need-label">Industrial starting point</p>
+          <h2 id="need-title" class="display display--need">
+            <span>{need.title[0]}</span>
+            <span>{need.title[1]}</span>
+          </h2>
+          <p class="editorial-draft editorial-draft--vertical">
+            <span>Editorial draft</span>
+            {need.supporting}
+          </p>
+        </div>
+        <dl class="need-terms">
+          <div><dt>01</dt><dd>Constraint</dd></div>
+          <div><dt>02</dt><dd>Operational requirement</dd></div>
+          <div><dt>03</dt><dd>Selection pressure</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section
+      id="find"
+      class="act act--find"
+      data-experience-phase="find"
+      aria-labelledby="find-title"
+    >
+      <div class="act__inner act__inner--find">
+        <header class="find-heading">
+          <p class="act-number"><span>Act</span> {find.act} / {find.label}</p>
+          <h2 id="find-title" class="display display--find">
+            <span>{find.title[0]}</span>
+            <span>{find.title[1]}</span>
+          </h2>
+          <p class="editorial-draft">
+            <span>Editorial draft</span>
+            {find.supporting}
+          </p>
+        </header>
+
+        <ol class="find-sequence">
+          {findSequence.map((item, index) => (
+            <li class:list={{ "is-selected": index === findSequence.length - 1 }}>
+              <span>{item.index}</span>
+              <strong>{item.label}</strong>
+              <small>{item.description}</small>
+            </li>
+          ))}
+        </ol>
+
+        <aside class="development-selection" data-development-placeholder="selection">
+          <p>Demonstrative placeholder</p>
+          <strong>Selected signal</strong>
+          <span>No company, result, or relationship implied.</span>
+        </aside>
+      </div>
+    </section>
+
+    <section
+      id="test"
+      class="act act--test"
+      data-experience-phase="test"
+      aria-labelledby="test-title"
+    >
+      <div class="act__inner act__inner--test">
+        <header class="test-heading">
+          <p class="act-number"><span>Act</span> {test.act} / {test.label}</p>
+          <h2 id="test-title" class="display display--test">
+            <span>{test.title[0]}</span>
+            <span>{test.title[1]}</span>
+          </h2>
+        </header>
+
+        <div class="test-boundary" data-development-placeholder="field-test-structure">
+          <p class="test-boundary__statement">{test.supporting}</p>
+          <dl>
+            <div><dt>Environment</dt><dd>Approved context pending</dd></div>
+            <div><dt>Location</dt><dd>Approved location pending</dd></div>
+            <div><dt>Observation</dt><dd>Approved evidence pending</dd></div>
+          </dl>
+          <p class="placeholder-flag">Development structure / no test result represented</p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="prove"
+      class="act act--prove"
+      data-experience-phase="prove"
+      aria-labelledby="prove-title"
+    >
+      <div class="act__inner act__inner--prove">
+        <header class="prove-heading">
+          <p class="act-number"><span>Act</span> {prove.act} / {prove.label}</p>
+          <h2 id="prove-title" class="display display--prove">
+            <span>{prove.title[0]}</span>
+            <span>{prove.title[1]}</span>
+          </h2>
+          <p>{prove.supporting}</p>
+        </header>
+
+        <article class="proof-record" data-development-placeholder="proof-record">
+          <header>
+            <div>
+              <p>Proof / development structure</p>
+              <h3>Development Proof Record</h3>
+            </div>
+            <span>Content status / pending approval</span>
+          </header>
+          <dl>
+            {developmentProofFields.map((field, index) => (
+              <div>
+                <dt><span>{String(index + 1).padStart(2, "0")}</span>{field.label}</dt>
+                <dd>{field.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <footer>
+            <p>No factual outcome is represented in this development record.</p>
+            <a href="/proof/">View proof architecture <span aria-hidden="true">↗</span></a>
+          </footer>
+        </article>
+
+        <footer class="experience-end">
+          <p>Phase 1 / Signature experiential grammar</p>
+          <p>Human visual review required before Phase 2.</p>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    import "@/scripts/experience-controller";
+  </script>
+</BaseLayout>

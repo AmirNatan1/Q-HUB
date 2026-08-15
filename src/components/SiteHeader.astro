@@ -1,0 +1,61 @@
+---
+const pathname = Astro.url.pathname;
+const links = [
+  { href: "/proof/", label: "Proof" },
+  { href: "/industry/", label: "Industry" },
+  { href: "/startups/", label: "Startups" },
+  { href: "/programs/", label: "Programs" },
+  { href: "/network/", label: "Network" },
+  { href: "/about/", label: "About" },
+  { href: "/contact/", label: "Contact" }
+];
+---
+
+<header class="site-header" data-site-header>
+  <a class="wordmark" href="/" aria-label="Quantum Hub home">
+    <span>QUANTUM</span>
+    <span aria-hidden="true">/</span>
+    <span>HUB</span>
+  </a>
+
+  <details class="nav-disclosure" open data-nav-disclosure>
+    <summary aria-label="Toggle primary navigation">
+      <span class="nav-disclosure__label">Index</span>
+      <span class="nav-disclosure__glyph" aria-hidden="true"></span>
+    </summary>
+    <nav aria-label="Primary">
+      <ol>
+        {links.map((link, index) => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={pathname === link.href ? "page" : undefined}
+            >
+              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  </details>
+</header>
+
+<script>
+  const disclosure = document.querySelector<HTMLDetailsElement>("[data-nav-disclosure]");
+  const mobile = window.matchMedia("(max-width: 52rem)");
+
+  const syncDisclosure = () => {
+    if (!disclosure) return;
+    disclosure.open = !mobile.matches;
+  };
+
+  syncDisclosure();
+  mobile.addEventListener("change", syncDisclosure);
+
+  disclosure?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (mobile.matches) disclosure.open = false;
+    });
+  });
+</script>

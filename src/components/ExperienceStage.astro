@@ -1,0 +1,38 @@
+---
+import FieldMedia from "./FieldMedia.astro";
+---
+
+<div class="experience-stage" data-experience-stage aria-hidden="true">
+  <FieldMedia />
+  <canvas class="signal-canvas" data-signal-canvas></canvas>
+
+  <div class="signal-architecture">
+    <span class="signal-architecture__axis signal-architecture__axis--x"></span>
+    <span class="signal-architecture__axis signal-architecture__axis--y"></span>
+    <span class="signal-architecture__orbit signal-architecture__orbit--one"></span>
+    <span class="signal-architecture__orbit signal-architecture__orbit--two"></span>
+    <span class="signal-architecture__trace signal-architecture__trace--one"></span>
+    <span class="signal-architecture__trace signal-architecture__trace--two"></span>
+    <span class="signal-architecture__trace signal-architecture__trace--three"></span>
+    <span class="signal-architecture__selected"></span>
+  </div>
+
+  <div class="aperture aperture--primary"></div>
+  <div class="aperture aperture--secondary"></div>
+  <div class="aperture aperture--edge"></div>
+
+  <div class="constraint-system">
+    <span class="constraint-system__rail constraint-system__rail--left"></span>
+    <span class="constraint-system__rail constraint-system__rail--right"></span>
+    <span class="constraint-system__pressure"></span>
+  </div>
+
+  <div class="evidence-plane">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="stage-frame">
+    <p>QH / FIELD APERTURE</p>
+    <p data-stage-status>ABSTRACTION / ACTIVE</p>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  role="img"
+  aria-labelledby="title"
+  data-development-media="true"
+>
+  <title id="title">Field aperture</title>
+  <rect width="64" height="64" fill="#0b0a0d" />
+  <path d="M7 17 56 8 44 57 12 46Z" fill="none" stroke="#f1468f" stroke-width="4" />
+  <circle cx="36" cy="31" r="14" fill="#f15a24" />
+  <path d="m26 38 11-18 8 23Z" fill="#28cbb1" />
+</svg>
