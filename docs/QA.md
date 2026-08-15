@@ -267,7 +267,7 @@ This dated section supersedes earlier candidate, evidence-count, bundle, Lightho
 - Prior documentation handoff: `9e10f5b2d9c70b4388933bd81bae6d2ac8747ca0`.
 - Frozen repair candidate: `3d03033d05910ee9c27c5eb050fecccbabebaaf8`.
 - Branch/upstream: `phase1/visual-grammar-repair` → `origin/phase1/visual-grammar-repair`; candidate push was normal, without force.
-- Current gate status: R1–R12 and refreshed H1–H14 PASS; H15 final evidence/docs closure remains pending.
+- Current gate status: R1–R12 and refreshed H1–H15 PASS.
 - [Repair manifest](../artifacts/review/repair/manifest.json): generated `2026-08-15T12:58:33.900Z`, source-bound to the frozen candidate, baseline integrity verified unchanged after capture.
 - [Pixel analysis](../artifacts/review/repair/analysis.json): generated `2026-08-15T12:58:42.652Z`, status PASS.
 - Evidence inventory: 14 baseline records, 14 repaired PNG captures, and one 1,594,206-byte desktop WebM; all 29 recorded files match their SHA-256 and byte count.
@@ -303,6 +303,6 @@ H9, R1, R9, and R10 now pass. Keyboard/focus, forced colors, reduced motion, sem
 - Approved Phase 2 documentary footage/stills, factual proof data, official identity, fonts, final colors, and favicon are still unavailable. All development content/media and route shells remain machine-marked and non-factual.
 - Testing remains Chromium-centric; no physical device, Safari, Firefox, broad GPU, or dedicated screen-reader session is claimed.
 - `CLOUDFLARE_API_TOKEN` and `SITE_URL` are unset. Wrangler 4.123.0 reports expired non-interactive authentication; no deployment was attempted and no URL exists. Canonical/Open Graph/sitemap origins remain on the documented localhost fallback until a verified host is supplied.
-- The candidate push is confirmed. The final evidence/docs commit SHA, final secret scan, clean-tree confirmation, and final normal push remain pending root closure; H15 is not yet claimed complete.
+- The candidate push is confirmed. Evidence/docs closure commit `0bdf3631ff9f29394a25ed89fdcd745827aff52e` was followed by a clean-tree check, 0 high-confidence secret/token matches, 0 credential-assignment matches, an independent clean source/public-output audit, and a normal push to `origin/phase1/visual-grammar-repair`. No force push was used; H15 passes.
 
-**STOP. Do not begin Phase 2.** Complete H15, then return the repaired experience to human review for **ACCEPT**, **REPAIR**, or **REDIRECT**.
+**STOP. Do not begin Phase 2.** Return the repaired experience to human review for **ACCEPT**, **REPAIR**, or **REDIRECT**.

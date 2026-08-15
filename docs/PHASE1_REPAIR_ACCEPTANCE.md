@@ -14,7 +14,7 @@ The repaired visual evidence is generated from the frozen candidate. Baseline im
 
 | Repair gate | Status | Determination |
 | --- | --- | --- |
-| R1 — H1–H15 remain passing | **PASS** | H9 is repaired and all-state/transition axe coverage passes; H15 candidate push is confirmed while final evidence/docs closure remains pending. |
+| R1 — H1–H15 remain passing | **PASS** | H9 is repaired and all-state/transition axe coverage passes; H15 is closed by the normally pushed candidate and evidence/docs commits, clean scans, and clean-tree verification. |
 | R2 — SIGNAL density/negative space | **PASS** | Thick magenta substrate removed; measured magenta and thick-core reductions are material. |
 | R3 — APERTURE two-world composition | **PASS** | Static desktop, reduced-motion, and no-WebGL PNGs show distinct dark signal and warm field materials. |
 | R4 — NEED loss of freedom | **PASS** | Distribution resolves to three compressed authored channels inside pressure rails. |
@@ -27,7 +27,7 @@ The repaired visual evidence is generated from the frozen candidate. Baseline im
 | R11 — Performance headroom | **PASS** | Latest source-bound Lighthouse profiles both score 100 Performance and exceed required thresholds. |
 | R12 — Complete repair evidence | **PASS** | Six desktop PNGs, six mobile PNGs, two APERTURE fallback PNGs, and one desktop WebM exist and hash-match the manifest. |
 
-R1–R12 pass for the frozen implementation candidate. H15's final evidence/docs commit, secret scan, clean-tree confirmation, and final normal push remain explicitly pending root closure.
+R1–R12 and refreshed H1–H15 pass. The implementation candidate and evidence/docs closure are committed and normally pushed; the final documentation-only status record does not alter the frozen implementation or evidence.
 
 ## R1 — Refreshed H1–H15
 
@@ -255,9 +255,9 @@ The Lighthouse summary was generated at 2026-08-15T13:00:45.959Z and embeds sour
 
 ### H15 — Version control / deployment
 
-**STATUS:** **PENDING FINAL ROOT CLOSURE**
+**STATUS:** PASS
 
-**VERIFICATION METHOD:** Candidate commit identity, branch/remote/auth inspection, then final commit, secret check, clean-tree check, and normal push by the root agent.
+**VERIFICATION METHOD:** Candidate and closure commit identity, branch/remote/auth inspection, high-confidence secret and prohibited-source scans, clean-tree verification, and normal pushes.
 
 **COMMAND / TEST:**
 
@@ -266,9 +266,13 @@ The Lighthouse summary was generated at 2026-08-15T13:00:45.959Z and embeds sour
     git remote -v
     git branch -vv
     npx wrangler whoami
-    [ROOT: final secret scan command]
-    [ROOT: final commit command]
-    [ROOT: final push command]
+    npm run test:unit
+    rg -n --hidden -g "!.git/**" -g "!node_modules/**" -g "!artifacts/review/**" "(-----BEGIN (RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----|AKIA[0-9A-Z]{16}|ASIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{36,255}|github_pat_[A-Za-z0-9_]{22,255}|sk-[A-Za-z0-9]{20,})" .
+    rg -n --hidden -g "!.git/**" -g "!node_modules/**" "(?i)(api[_-]?key|access[_-]?token|auth[_-]?token|client[_-]?secret|password|passwd|secret)\s*[:=]\s*['\"][^'\"]{8,}['\"]" .
+    rg -n "sourceReferenceInternal|internal://" dist
+    git rev-parse 0bdf3631ff9f29394a25ed89fdcd745827aff52e
+    git ls-remote origin refs/heads/phase1/visual-grammar-repair
+    git status --porcelain
 
 **CURRENT EVIDENCE:**
 
@@ -276,15 +280,16 @@ The Lighthouse summary was generated at 2026-08-15T13:00:45.959Z and embeds sour
 - Frozen repaired implementation candidate: 3d03033d05910ee9c27c5eb050fecccbabebaaf8.
 - Canonical origin is configured for fetch/push.
 - Candidate 3d03033d05910ee9c27c5eb050fecccbabebaaf8 was pushed normally to `origin/phase1/visual-grammar-repair`; no force push was used.
-- Final evidence/docs commit SHA: **PENDING — ROOT TO RECORD AFTER COMMIT**.
-- Final secret scan: **PENDING — ROOT TO RECORD**.
-- Final clean working tree: **PENDING — ROOT TO VERIFY AFTER COMMIT**.
-- Final evidence/docs push status: **PENDING — ROOT TO VERIFY AFTER FINAL COMMIT; no force push**.
+- Evidence/docs closure commit SHA: 0bdf3631ff9f29394a25ed89fdcd745827aff52e.
+- Final high-confidence secret scan: **PASS** — 0 private-key/token signatures and 0 credential-assignment matches; the independent audit also found 0 such findings in current files or Git history.
+- Final source/public scan: **PASS** — prohibited historical source strings occur only in the authorized policy text, and `dist` contains 0 internal-reference or unsafe placeholder payload leaks.
+- Clean working tree at closure commit: **PASS** — 0 entries after commit and scan.
+- Evidence/docs push status: **CONFIRMED** — 0bdf3631ff9f29394a25ed89fdcd745827aff52e was pushed normally to `origin/phase1/visual-grammar-repair`; no force push.
 - Deployment/preview URL: **none**. No deployment was attempted.
 - Cloudflare auth: CLOUDFLARE_API_TOKEN is unset; Wrangler 4.123.0 reports not logged in, with an expired saved token that cannot refresh non-interactively.
 - SITE_URL is unset. Until a verified host is supplied, local canonical/Open Graph/sitemap origins use the documented localhost fallback.
 
-**KNOWN LIMITATION:** Candidate push is confirmed, but H15 cannot pass until the final evidence/docs work is committed, scanned, the resulting tree is clean, and that final commit is pushed normally. Deployment also requires renewed Cloudflare authentication and a verified host; no URL is claimed.
+**KNOWN LIMITATION:** Deployment requires renewed Cloudflare authentication and a verified host; no URL is claimed. The documentation-only status record that cites the already-pushed closure commit is verified separately as the final repository HEAD to avoid a self-referential SHA claim.
 
 ## R2 — SIGNAL density and negative space
 
@@ -427,4 +432,4 @@ Exact paths, modes, positions, hashes, and comparison links are in [PHASE1_REPAI
 
 **STOP. DO NOT PROCEED TO PHASE 2.**
 
-R1–R12 and refreshed H1–H14 pass. H15 awaits only the root agent’s final evidence/docs commit, secret scan, clean-tree verification, and push record. After that closure, the repaired grammar must return to human review for **ACCEPT**, **REPAIR**, or **REDIRECT**.
+R1–R12 and refreshed H1–H15 pass. The repaired grammar now returns to human review for **ACCEPT**, **REPAIR**, or **REDIRECT**.

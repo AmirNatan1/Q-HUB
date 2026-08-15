@@ -1,6 +1,6 @@
 # Phase 1 Acceptance Ledger
 
-> Historical baseline ledger. For current candidate `3d03033d05910ee9c27c5eb050fecccbabebaaf8`, R1–R12 and refreshed H1–H14 pass; final H15 evidence/docs closure remains pending. [PHASE1_REPAIR_ACCEPTANCE.md](PHASE1_REPAIR_ACCEPTANCE.md) supersedes this file for current identity, evidence, and status.
+> Historical baseline ledger. For current candidate `3d03033d05910ee9c27c5eb050fecccbabebaaf8`, R1–R12 and refreshed H1–H15 pass; evidence/docs closure is recorded at `0bdf3631ff9f29394a25ed89fdcd745827aff52e`. [PHASE1_REPAIR_ACCEPTANCE.md](PHASE1_REPAIR_ACCEPTANCE.md) supersedes this file for current identity, evidence, and status.
 
 ## Ledger status
 

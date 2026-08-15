@@ -8,8 +8,8 @@ This package records the human-directed Phase 1 visual-grammar repair. It does n
 - Prior documentation handoff: `9e10f5b2d9c70b4388933bd81bae6d2ac8747ca0`.
 - Frozen repaired implementation candidate: `3d03033d05910ee9c27c5eb050fecccbabebaaf8`.
 - Branch/upstream: `phase1/visual-grammar-repair` → `origin/phase1/visual-grammar-repair`; the candidate was pushed normally with no force push.
-- Current gate result: **R1–R12 and refreshed H1–H14 PASS; H15 awaits final evidence/docs repository closure.**
-- Repository closure: the final evidence/docs commit, secret scan, clean-tree check, and final normal push remain for the root agent.
+- Current gate result: **R1–R12 and refreshed H1–H15 PASS.**
+- Repository closure: evidence/docs commit `0bdf3631ff9f29394a25ed89fdcd745827aff52e` was scanned from a clean tree and pushed normally; this final status record changes documentation only.
 - Human decision after closure: **ACCEPT, REPAIR, or REDIRECT**.
 - Phase boundary: **STOP. Do not begin Phase 2.**
 
@@ -25,7 +25,7 @@ The homepage is still one SIGNAL → APERTURE → NEED → FIND → TEST → PRO
 
 | Requirement | Status | Evidence-backed determination |
 | --- | --- | --- |
-| R1 | PASS | The H9 transition defect is repaired and regression-covered; H15 candidate push is confirmed while final evidence/docs closure remains. |
+| R1 | PASS | The H9 transition defect is repaired and regression-covered; H15 candidate and evidence/docs closure commits are scanned, clean, and normally pushed. |
 | R2 | PASS | SIGNAL magenta falls 32.791% → 0.090%; thick core 19.471% → 0%; dark space rises 65.740% → 96.522%. |
 | R3 | PASS | APERTURE magenta falls 32.387% → 0.002%; warm field rises 0.911% → 18.511%; 2 grid cells are warm-dominant and 9 dark-dominant. |
 | R4 | PASS | NEED resolves open distribution into three authored channels under rails/constraint. |
@@ -164,7 +164,7 @@ Temporary media is limited to the machine-marked procedural DOM/CSS/SVG field su
 - Mobile intentionally uses the DOM/SVG fallback-ready grammar rather than WebGL.
 - The WebM is compressed automation evidence, not editorial motion capture.
 - Browser/device coverage is Chromium-centric and excludes physical devices, Safari, Firefox, broad GPU conditions, and a dedicated screen-reader session.
-- No known application technical defect remains in the frozen implementation candidate; final repository closure is still pending.
+- No known application technical defect remains in the frozen implementation candidate; repository closure is complete.
 - There is no deployed preview. `CLOUDFLARE_API_TOKEN` is unset; Wrangler 4.123.0 reports that the saved authentication is expired and cannot refresh non-interactively. No deployment was attempted and no URL exists.
 - `SITE_URL` is unset. Until a verified host is supplied, canonical, Open Graph, and sitemap origins use the documented localhost fallback; those production URLs remain pending.
 
@@ -177,14 +177,15 @@ Principal candidate changes are in `src/components/ExperienceStage.astro`, `src/
 ## H15 closure fields
 
 - Candidate push: **CONFIRMED** — `3d03033d05910ee9c27c5eb050fecccbabebaaf8` is on `origin/phase1/visual-grammar-repair`; no force push.
-- Final evidence/docs commit SHA: **PENDING — ROOT TO RECORD**.
-- Final high-confidence secret scan: **PENDING — ROOT TO RECORD**.
-- Final clean working tree: **PENDING — ROOT TO VERIFY AFTER COMMIT**.
-- Final evidence/docs push: **PENDING — ROOT TO VERIFY; no force push**.
+- Evidence/docs closure commit SHA: **CONFIRMED** — `0bdf3631ff9f29394a25ed89fdcd745827aff52e`.
+- Final high-confidence secret scan: **PASS** — 0 private-key/token signatures and 0 credential-assignment matches; independent history/workspace audit also clean.
+- Final prohibited-source/public-output scan: **PASS** — only authorized policy references remain; no internal authoring reference or unsafe placeholder payload appears in `dist`.
+- Clean working tree at closure commit: **PASS** — 0 entries.
+- Evidence/docs push: **CONFIRMED** — normal push to `origin/phase1/visual-grammar-repair`; no force push.
 - Deployment URL: **NONE** — authentication and verified host are unavailable; no deployment attempted.
 
 ## Stop condition
 
 **STOP. DO NOT PROCEED TO PHASE 2.**
 
-R1–R12 and refreshed H1–H14 pass. Finish the final H15 evidence/docs commit, secret scan, clean-tree check, and normal push, then return this package to human review for exactly one decision: **ACCEPT**, **REPAIR**, or **REDIRECT**.
+R1–R12 and refreshed H1–H15 pass. Return this package to human review for exactly one decision: **ACCEPT**, **REPAIR**, or **REDIRECT**.
