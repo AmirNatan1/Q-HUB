@@ -4,34 +4,103 @@ import FieldMedia from "./FieldMedia.astro";
 
 <div class="experience-stage" data-experience-stage aria-hidden="true">
   <FieldMedia />
-  <canvas class="signal-canvas" data-signal-canvas></canvas>
+  <canvas class="signal-canvas" data-signal-canvas aria-hidden="true"></canvas>
 
-  <div class="signal-architecture">
-    <span class="signal-architecture__axis signal-architecture__axis--x"></span>
-    <span class="signal-architecture__axis signal-architecture__axis--y"></span>
-    <span class="signal-architecture__orbit signal-architecture__orbit--one"></span>
-    <span class="signal-architecture__orbit signal-architecture__orbit--two"></span>
-    <span class="signal-architecture__trace signal-architecture__trace--one"></span>
-    <span class="signal-architecture__trace signal-architecture__trace--two"></span>
-    <span class="signal-architecture__trace signal-architecture__trace--three"></span>
-    <span class="signal-architecture__selected"></span>
-  </div>
+  <svg
+    class="signal-trajectories"
+    data-signal-trajectories
+    viewBox="0 0 1600 1000"
+    preserveAspectRatio="xMidYMid slice"
+    aria-hidden="true"
+  >
+    <defs>
+      <linearGradient id="trajectory-fade" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="currentColor" stop-opacity="0" />
+        <stop offset="0.2" stop-color="currentColor" stop-opacity="0.72" />
+        <stop offset="0.76" stop-color="currentColor" stop-opacity="0.82" />
+        <stop offset="1" stop-color="currentColor" stop-opacity="0" />
+      </linearGradient>
+      <linearGradient id="selected-fade" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="currentColor" stop-opacity="0" />
+        <stop offset="0.34" stop-color="currentColor" stop-opacity="0.42" />
+        <stop offset="0.78" stop-color="currentColor" stop-opacity="1" />
+        <stop offset="1" stop-color="currentColor" stop-opacity="0.12" />
+      </linearGradient>
+    </defs>
 
-  <div class="aperture aperture--primary"></div>
-  <div class="aperture aperture--secondary"></div>
-  <div class="aperture aperture--edge"></div>
+    <g class="trajectory-plane trajectory-plane--far" data-trajectory-plane="far">
+      <path class="trajectory trajectory--distribution" pathLength="1" d="M-120 186 C180 78 420 170 714 118 S1190 182 1720 62" />
+      <path class="trajectory trajectory--distribution" pathLength="1" d="M-80 286 C244 218 474 276 778 226 S1260 246 1688 186" />
+      <path class="trajectory trajectory--distribution" pathLength="1" d="M-110 846 C222 734 486 810 742 726 S1190 666 1710 574" />
+      <path class="trajectory trajectory--distribution trajectory--vertical" pathLength="1" d="M1384 -80 C1300 220 1408 392 1308 614 S1288 860 1212 1080" />
+    </g>
 
-  <div class="constraint-system">
+    <g class="trajectory-plane trajectory-plane--near" data-trajectory-plane="near">
+      <path class="trajectory trajectory--distribution" pathLength="1" d="M560 -90 C694 128 862 194 1046 306 S1352 522 1710 482" />
+      <path class="trajectory trajectory--distribution" pathLength="1" d="M968 -90 C1042 142 1186 218 1424 286 S1620 394 1714 476" />
+      <path class="trajectory trajectory--distribution" pathLength="1" d="M-100 712 C178 616 396 680 616 604 S1034 488 1288 334" />
+    </g>
+
+    <g class="trajectory-channels" data-trajectory-role="channels">
+      <path class="trajectory trajectory--channel" pathLength="1" d="M-80 174 C300 176 560 242 824 402 S1034 466 1126 486" />
+      <path class="trajectory trajectory--channel" pathLength="1" d="M-80 512 C292 492 566 470 824 474 S1038 482 1126 486" />
+      <path class="trajectory trajectory--channel" pathLength="1" d="M-80 858 C286 802 548 710 812 594 S1032 514 1126 486" />
+    </g>
+
+    <g class="trajectory-candidates" data-trajectory-role="candidates">
+      <path class="trajectory trajectory--candidate" pathLength="1" d="M824 402 L1016 434 L1126 486" />
+      <path class="trajectory trajectory--candidate" pathLength="1" d="M824 474 L1026 506 L1126 486" />
+      <path class="trajectory trajectory--candidate" pathLength="1" d="M812 594 L1004 550 L1126 486" />
+      <circle class="signal-point signal-point--candidate" cx="824" cy="402" r="4" />
+      <circle class="signal-point signal-point--candidate" cx="824" cy="474" r="4" />
+      <circle class="signal-point signal-point--candidate" cx="812" cy="594" r="4" />
+      <circle class="signal-point signal-point--candidate" cx="1016" cy="434" r="3" />
+      <circle class="signal-point signal-point--candidate" cx="1026" cy="506" r="3" />
+      <circle class="signal-point signal-point--candidate" cx="1004" cy="550" r="3" />
+    </g>
+
+    <g class="trajectory-selection" data-trajectory-role="selected">
+      <path class="trajectory trajectory--selected" pathLength="1" d="M-90 858 C286 802 548 710 812 594 S1032 514 1126 486 S1460 474 1690 440" />
+      <circle class="signal-point signal-point--selected" cx="1126" cy="486" r="7" />
+      <path class="selection-reticle" d="M1100 486 H1152 M1126 460 V512" />
+    </g>
+
+    <g class="trajectory-points" data-trajectory-role="points">
+      <circle class="signal-point" cx="298" cy="137" r="3" />
+      <circle class="signal-point" cx="684" cy="126" r="3" />
+      <circle class="signal-point" cx="1128" cy="154" r="4" />
+      <circle class="signal-point" cx="1462" cy="202" r="3" />
+      <circle class="signal-point" cx="246" cy="824" r="3" />
+      <circle class="signal-point" cx="640" cy="754" r="4" />
+      <circle class="signal-point" cx="1456" cy="626" r="3" />
+    </g>
+  </svg>
+
+  <div class="aperture aperture--primary" aria-hidden="true"></div>
+  <div class="aperture aperture--secondary" aria-hidden="true"></div>
+  <div class="aperture aperture--edge" aria-hidden="true"></div>
+
+  <div class="constraint-system" aria-hidden="true">
     <span class="constraint-system__rail constraint-system__rail--left"></span>
     <span class="constraint-system__rail constraint-system__rail--right"></span>
     <span class="constraint-system__pressure"></span>
   </div>
 
-  <div class="evidence-plane">
+  <div class="evidence-plane" aria-hidden="true">
     <span></span><span></span><span></span><span></span><span></span><span></span>
   </div>
+</div>
 
-  <div class="stage-frame">
+<div class="experience-hud">
+  <p
+    class="field-media__notice"
+    data-readable-microcopy
+    data-development-media="true"
+  >
+    Development field surface / approved Quantum media pending
+  </p>
+
+  <div class="stage-frame" data-readable-microcopy>
     <p>QH / FIELD APERTURE</p>
     <p data-stage-status>ABSTRACTION / ACTIVE</p>
   </div>

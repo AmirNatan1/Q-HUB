@@ -19,29 +19,70 @@ const fragmentSource = `
   uniform float u_phase;
   uniform float u_aperture;
   uniform float u_progress;
+  uniform float u_pixel_ratio;
+  uniform float u_signal;
+  uniform float u_freedom;
+  uniform float u_selection;
+  uniform float u_material;
+  uniform float u_settlement;
+  uniform vec4 u_keepout;
 
-  float hash21(vec2 point) {
-    point = fract(point * vec2(123.34, 345.45));
-    point += dot(point, point + 34.345);
-    return fract(point.x * point.y);
+  float strokeAA(float distanceValue, float widthPixels) {
+    float pixel = u_pixel_ratio / max(u_resolution.y, 1.0);
+    float halfWidth = widthPixels * pixel * 0.5;
+    return 1.0 - smoothstep(halfWidth, halfWidth + pixel * 1.15, abs(distanceValue));
   }
 
-  float valueNoise(vec2 point) {
-    vec2 cell = floor(point);
-    vec2 local = fract(point);
-    local = local * local * (3.0 - 2.0 * local);
-    float a = hash21(cell);
-    float b = hash21(cell + vec2(1.0, 0.0));
-    float c = hash21(cell + vec2(0.0, 1.0));
-    float d = hash21(cell + vec2(1.0, 1.0));
-    return mix(mix(a, b, local.x), mix(c, d, local.x), local.y);
+  float freedomGate(float threshold) {
+    return smoothstep(threshold - 0.055, threshold + 0.055, u_freedom);
   }
 
-  float lineField(vec2 point, float scale, float speed) {
-    vec2 warped = point * scale;
-    float drift = valueNoise(warped * 0.34 + u_time * speed);
-    float trace = abs(sin(warped.x * 0.72 + warped.y * 0.48 + drift * 5.2));
-    return 1.0 - smoothstep(0.015, 0.12, trace);
+  float selectedPathY(float x) {
+    return -0.08 + sin(x * 2.35 + 0.6) * 0.018;
+  }
+
+  float trajectory(
+    vec2 point,
+    float lane,
+    float amplitude,
+    float frequency,
+    float phaseOffset,
+    float widthPixels
+  ) {
+    float freedom = clamp(u_freedom, 0.0, 1.0);
+    float spread = mix(0.18, 1.0, freedom);
+    float amplitudeScale = mix(0.12, 1.0, freedom);
+    float drift = u_time * 0.028;
+    float curve = lane * spread;
+    curve += sin(point.x * frequency + phaseOffset + drift) * amplitude * amplitudeScale;
+    curve += sin(point.x * frequency * 2.17 - phaseOffset * 0.7 - drift * 0.55)
+      * amplitude * 0.26 * amplitudeScale;
+
+    float convergence = clamp(u_selection, 0.0, 1.0)
+      * smoothstep(-0.62, 0.18, point.x);
+    curve = mix(curve, selectedPathY(point.x), convergence);
+    return strokeAA(point.y - curve, widthPixels);
+  }
+
+  float pointMask(vec2 uv, vec2 center, float radiusPixels) {
+    vec2 deltaPixels = (uv - center) * u_resolution / max(u_pixel_ratio, 1.0);
+    float distancePixels = length(deltaPixels);
+    return 1.0 - smoothstep(radiusPixels, radiusPixels + 1.15, distancePixels);
+  }
+
+  float pointRing(vec2 uv, vec2 center, float radiusPixels) {
+    vec2 deltaPixels = (uv - center) * u_resolution / max(u_pixel_ratio, 1.0);
+    return strokeAA(
+      length(deltaPixels) * u_pixel_ratio / max(u_resolution.y, 1.0)
+        - radiusPixels * u_pixel_ratio / max(u_resolution.y, 1.0),
+      1.0
+    );
+  }
+
+  float rectKeepout(vec2 uv, vec4 rectangle) {
+    vec2 offset = abs(uv - rectangle.xy) - rectangle.zw;
+    float distanceValue = length(max(offset, 0.0)) + min(max(offset.x, offset.y), 0.0);
+    return 1.0 - smoothstep(0.0, 0.028, distanceValue);
   }
 
   void main() {
@@ -53,43 +94,90 @@ const fragmentSource = `
     pointer.x *= u_resolution.x / max(u_resolution.y, 1.0);
     vec2 delta = centered - pointer;
     float distanceToPointer = length(delta);
-    float lens = exp(-distanceToPointer * distanceToPointer * 5.8) * u_aperture;
+    float apertureInfluence = smoothstep(0.10, 0.55, u_aperture);
+    float apertureRadius = mix(0.08, 0.42, clamp(u_aperture, 0.0, 1.0));
+    float normalizedDistance = distanceToPointer / max(apertureRadius, 0.001);
+    float core = (1.0 - smoothstep(0.46, 0.98, normalizedDistance)) * apertureInfluence;
+    float rim = smoothstep(0.42, 0.70, normalizedDistance)
+      * (1.0 - smoothstep(0.90, 1.18, normalizedDistance))
+      * apertureInfluence;
 
-    // The signal field retreats and shears around the aperture instead of using
-    // a simple opacity circle. Two spatial frequencies move at different depth.
-    vec2 retreat = normalize(delta + vec2(0.0001)) * lens * 0.13;
-    vec2 nearPlane = centered + retreat;
-    vec2 farPlane = centered - retreat * 0.36;
-    nearPlane.x += sin(farPlane.y * 7.0 + u_time * 0.16) * 0.018;
+    vec2 direction = normalize(delta + vec2(0.0001));
+    vec2 tangent = vec2(-direction.y, direction.x);
+    vec2 retreat = direction * core * 0.18;
+    vec2 shear = tangent * rim * 0.045;
+    vec2 nearPlane = centered + retreat + shear;
+    vec2 farPlane = centered - retreat * 0.32 - shear * 0.38;
 
-    float broadTrace = lineField(farPlane + vec2(u_time * 0.012, 0.0), 5.2, 0.035);
-    float fineTrace = lineField(nearPlane - vec2(0.0, u_time * 0.016), 11.5, -0.022);
-    float topologyNoise = valueNoise(nearPlane * 7.0 + vec2(u_time * 0.025, 0.0));
-    float topology = 1.0 - smoothstep(0.025, 0.095, abs(fract(topologyNoise * 3.5) - 0.5));
+    float candidateSurvival = mix(1.0, 0.08, clamp(u_selection, 0.0, 1.0));
+    float farSignal = 0.0;
+    farSignal += trajectory(farPlane, -0.38, 0.036, 2.10, 0.45, 0.85)
+      * 0.075 * freedomGate(0.12);
+    farSignal += trajectory(farPlane, 0.36, 0.030, 2.65, 2.10, 0.85)
+      * 0.070 * freedomGate(0.34);
+    farSignal += trajectory(farPlane, -0.24, 0.024, 3.20, 4.15, 0.90)
+      * 0.085 * freedomGate(0.62);
+    farSignal += trajectory(farPlane, 0.24, 0.042, 1.85, 5.30, 0.85)
+      * 0.065 * freedomGate(0.80);
 
-    vec2 nodeCell = fract(nearPlane * 5.5) - 0.5;
-    float node = 1.0 - smoothstep(0.028, 0.085, length(nodeCell));
-    node *= step(0.77, hash21(floor(nearPlane * 5.5)));
+    float midSignal = 0.0;
+    midSignal += trajectory(nearPlane, -0.13, 0.044, 3.55, 1.30, 1.15)
+      * 0.155 * freedomGate(0.16);
+    midSignal += trajectory(nearPlane, 0.14, 0.034, 3.85, 3.60, 1.10)
+      * 0.140 * freedomGate(0.48);
 
-    float signal = broadTrace * 0.38 + fineTrace * 0.64 + topology * 0.2 + node;
-    float selected = exp(-length(centered - vec2(0.19, -0.08)) * 18.0);
-    selected *= smoothstep(2.5, 3.9, u_phase);
+    float privileged = trajectory(nearPlane, 0.015, 0.026, 2.85, 0.05, 1.55) * 0.52;
+    float trajectories = (farSignal + midSignal) * candidateSurvival + privileged;
+
+    float sparsePoints = 0.0;
+    sparsePoints += pointMask(uv, vec2(0.15, 0.22), 1.8) * 0.16 * freedomGate(0.45);
+    sparsePoints += pointMask(uv, vec2(0.84, 0.27), 2.0) * 0.14 * freedomGate(0.70);
+    sparsePoints += pointMask(uv, vec2(0.30, 0.74), 2.1) * 0.18 * freedomGate(0.35);
+    sparsePoints += pointMask(uv, vec2(0.57, 0.64), 2.2) * 0.20 * freedomGate(0.18);
+
+    vec2 selectedCenter = vec2(0.69, 0.42);
+    float selectedCore = pointMask(uv, selectedCenter, 2.8) * clamp(u_selection, 0.0, 1.0);
+    float selectedHalo = pointRing(uv, selectedCenter, 8.0)
+      * 0.10 * clamp(u_selection, 0.0, 1.0);
+
+    float typeKeepout = rectKeepout(uv, u_keepout);
+    trajectories *= 1.0 - typeKeepout * 0.94;
+    sparsePoints *= 1.0 - typeKeepout * 0.98;
+
+    float dropoutWave = 0.5 + 0.5 * sin(
+      centered.x * 91.0 + centered.y * 67.0 + u_progress * 19.0 + u_time * 0.08
+    );
+    float rimContinuity = mix(
+      1.0,
+      smoothstep(0.35, 0.70, dropoutWave),
+      rim * 0.82
+    );
+    float apertureCarve = 1.0 - core * 0.98;
+    float materialConsumption = mix(
+      1.0,
+      0.32,
+      smoothstep(0.68, 1.0, clamp(u_material, 0.0, 1.0))
+    );
+
+    float signal = (trajectories + sparsePoints) * rimContinuity * apertureCarve;
+    signal *= materialConsumption;
+    signal += (selectedCore * 0.44 + selectedHalo) * (1.0 - core * 0.72);
+    signal *= clamp(u_signal, 0.0, 1.0);
+    signal *= 1.0 - clamp(u_settlement, 0.0, 1.0);
 
     vec3 magenta = vec3(0.94, 0.08, 0.56);
     vec3 heat = vec3(1.0, 0.32, 0.08);
     vec3 teal = vec3(0.13, 0.83, 0.71);
     vec3 color = mix(magenta, heat, smoothstep(3.4, 4.4, u_phase));
-    color = mix(color, teal, smoothstep(4.6, 5.1, u_phase));
-    color += selected * heat * 1.3;
+    color = mix(color, teal, clamp(u_settlement, 0.0, 1.0));
+    color = mix(color, heat, clamp(selectedCore + selectedHalo * 2.0, 0.0, 0.72));
 
-    float angularCut = smoothstep(-0.35, 0.5, sin(atan(delta.y, delta.x) * 3.0 + u_progress * 3.14159));
-    float reveal = lens * mix(0.72, 0.94, angularCut);
-    float settled = smoothstep(4.7, 5.2, u_phase);
-    float alpha = signal * (0.6 - reveal * 0.54) * (1.0 - settled * 0.9);
-    alpha += selected * (1.0 - settled) * 0.62;
-    alpha *= smoothstep(1.05, 0.18, length(centered));
+    float edgeFalloff = smoothstep(1.05, 0.18, length(centered));
+    float alpha = clamp(signal * edgeFalloff, 0.0, 0.46);
 
-    gl_FragColor = vec4(color, clamp(alpha, 0.0, 0.86));
+    // The context uses premultiplied-alpha blending. Premultiplication here keeps
+    // fine, low-alpha trajectories from turning into saturated ribbons.
+    gl_FragColor = vec4(color * alpha, alpha);
   }
 `;
 
@@ -156,6 +244,13 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
   const phaseLocation = uniform(gl, program, "u_phase");
   const apertureLocation = uniform(gl, program, "u_aperture");
   const progressLocation = uniform(gl, program, "u_progress");
+  const pixelRatioLocation = uniform(gl, program, "u_pixel_ratio");
+  const signalLocation = uniform(gl, program, "u_signal");
+  const freedomLocation = uniform(gl, program, "u_freedom");
+  const selectionLocation = uniform(gl, program, "u_selection");
+  const materialLocation = uniform(gl, program, "u_material");
+  const settlementLocation = uniform(gl, program, "u_settlement");
+  const keepoutLocation = uniform(gl, program, "u_keepout");
   const buffer = gl.createBuffer();
   if (!buffer) throw new Error("WebGL geometry allocation failed.");
 
@@ -185,16 +280,34 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
   let animationFrame = 0;
   let destroyed = false;
   let drawContinuously = true;
+  let currentPixelRatio = 1;
+  let keepoutPhase = "";
+  let keepoutDirty = true;
+  let keepout = { x: -2, y: -2, halfWidth: 0, halfHeight: 0 };
+
+  const visualDefaults: Record<
+    string,
+    { signal: number; freedom: number; selection: number; settlement: number }
+  > = {
+    signal: { signal: 1, freedom: 0.95, selection: 0, settlement: 0 },
+    aperture: { signal: 0.52, freedom: 0.72, selection: 0, settlement: 0 },
+    need: { signal: 0.24, freedom: 0.34, selection: 0.08, settlement: 0 },
+    find: { signal: 0.24, freedom: 0.24, selection: 0.55, settlement: 0 },
+    test: { signal: 0.035, freedom: 0, selection: 1, settlement: 0 },
+    prove: { signal: 0, freedom: 0, selection: 0, settlement: 1 },
+  };
 
   function resize(): void {
     const mobile = window.matchMedia("(max-width: 48rem)").matches;
     const pixelRatio = Math.min(window.devicePixelRatio || 1, mobile ? 1 : 1.5);
+    currentPixelRatio = pixelRatio;
     const width = Math.max(1, Math.round(canvas.clientWidth * pixelRatio));
     const height = Math.max(1, Math.round(canvas.clientHeight * pixelRatio));
     if (canvas.width !== width || canvas.height !== height) {
       canvas.width = width;
       canvas.height = height;
       gl.viewport(0, 0, width, height);
+      keepoutDirty = true;
     }
   }
 
@@ -202,6 +315,41 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
     const raw = getComputedStyle(document.documentElement).getPropertyValue(name);
     const parsed = Number.parseFloat(raw);
     return Number.isFinite(parsed) ? parsed : fallback;
+  }
+
+  function updateKeepout(activePhase: string): void {
+    const heading = document.querySelector<HTMLElement>(
+      `[data-experience-phase="${activePhase}"] .display`,
+    );
+    if (!heading) {
+      keepout = { x: -2, y: -2, halfWidth: 0, halfHeight: 0 };
+      keepoutPhase = activePhase;
+      keepoutDirty = false;
+      return;
+    }
+
+    const bounds = heading.getBoundingClientRect();
+    const viewportWidth = Math.max(window.innerWidth, 1);
+    const viewportHeight = Math.max(window.innerHeight, 1);
+    const horizontalPadding = 32;
+    const verticalPadding = 24;
+    const left = Math.max(0, bounds.left - horizontalPadding);
+    const right = Math.min(viewportWidth, bounds.right + horizontalPadding);
+    const top = Math.max(0, bounds.top - verticalPadding);
+    const bottom = Math.min(viewportHeight, bounds.bottom + verticalPadding);
+    const normalizedLeft = left / viewportWidth;
+    const normalizedRight = right / viewportWidth;
+    const normalizedBottom = 1 - bottom / viewportHeight;
+    const normalizedTop = 1 - top / viewportHeight;
+
+    keepout = {
+      x: (normalizedLeft + normalizedRight) * 0.5,
+      y: (normalizedBottom + normalizedTop) * 0.5,
+      halfWidth: Math.max(0, (normalizedRight - normalizedLeft) * 0.5),
+      halfHeight: Math.max(0, (normalizedTop - normalizedBottom) * 0.5),
+    };
+    keepoutPhase = activePhase;
+    keepoutDirty = false;
   }
 
   function render(now: number): void {
@@ -213,8 +361,19 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
     pointerCurrent.y += (pointerTarget.y - pointerCurrent.y) * 0.075;
     const activePhase = document.documentElement.dataset.activePhase ?? "signal";
     const currentPhaseIndex = phaseIndex[activePhase] ?? 0;
+    const defaults = visualDefaults[activePhase] ?? visualDefaults.signal;
+    if (!defaults) return;
     const aperture = readCssNumber("--aperture-open", 0.08);
     const progress = readCssNumber("--active-progress", 0);
+    const signalStrength = readCssNumber("--signal-strength", defaults.signal);
+    const freedom = readCssNumber("--trajectory-freedom", defaults.freedom);
+    const selectionFallback =
+      activePhase === "find" ? Math.min(1, 0.08 + progress * 1.08) : defaults.selection;
+    const selection = readCssNumber("--selection-focus", selectionFallback);
+    const material = readCssNumber("--material", activePhase === "test" ? 1 : aperture);
+    const settlementFallback = readCssNumber("--resolution", defaults.settlement);
+    const settlement = readCssNumber("--settlement", settlementFallback);
+    if (keepoutDirty || keepoutPhase !== activePhase) updateKeepout(activePhase);
 
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -225,6 +384,19 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
     gl.uniform1f(phaseLocation, currentPhaseIndex);
     gl.uniform1f(apertureLocation, aperture);
     gl.uniform1f(progressLocation, progress);
+    gl.uniform1f(pixelRatioLocation, currentPixelRatio);
+    gl.uniform1f(signalLocation, signalStrength);
+    gl.uniform1f(freedomLocation, freedom);
+    gl.uniform1f(selectionLocation, selection);
+    gl.uniform1f(materialLocation, material);
+    gl.uniform1f(settlementLocation, settlement);
+    gl.uniform4f(
+      keepoutLocation,
+      keepout.x,
+      keepout.y,
+      keepout.halfWidth,
+      keepout.halfHeight,
+    );
     gl.drawArrays(gl.TRIANGLES, 0, 6);
     canvas.dataset.engine = "ready";
 
@@ -247,6 +419,7 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
   function handlePhase(event: Event): void {
     const customEvent = event as CustomEvent<{ index?: number }>;
     const index = customEvent.detail?.index ?? 0;
+    keepoutDirty = true;
     drawContinuously = index === 0 || index === 1 || index === 3;
     if (!drawContinuously && animationFrame) {
       window.cancelAnimationFrame(animationFrame);
@@ -265,6 +438,7 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
   }
 
   window.addEventListener("resize", scheduleRender, { passive: true });
+  window.addEventListener("scroll", scheduleRender, { passive: true });
   window.addEventListener("pointermove", handlePointer, { passive: true });
   window.addEventListener("qhub:phasechange", handlePhase);
   document.addEventListener("visibilitychange", handleVisibility);
@@ -275,6 +449,7 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
       destroyed = true;
       if (animationFrame) window.cancelAnimationFrame(animationFrame);
       window.removeEventListener("resize", scheduleRender);
+      window.removeEventListener("scroll", scheduleRender);
       window.removeEventListener("pointermove", handlePointer);
       window.removeEventListener("qhub:phasechange", handlePhase);
       document.removeEventListener("visibilitychange", handleVisibility);

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-15T10:32:26.892Z",
-  "measuredUrl": "http://127.0.0.1:60010/",
+  "generatedAt": "2026-08-15T11:44:53.796Z",
+  "measuredUrl": "http://127.0.0.1:50074/",
   "buildInput": "dist/index.html",
   "results": [
     {
@@ -13,7 +13,7 @@
       },
       "metrics": {
         "lcp": {
-          "numericValue": 314.33820000000003,
+          "numericValue": 294.91949999999997,
           "displayValue": "0.3 s"
         },
         "tbt": {
@@ -48,7 +48,7 @@
       },
       "metrics": {
         "lcp": {
-          "numericValue": 911.2869000000001,
+          "numericValue": 918.2837999999999,
           "displayValue": "0.9 s"
         },
         "tbt": {

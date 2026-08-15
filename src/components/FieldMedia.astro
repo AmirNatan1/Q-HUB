@@ -16,19 +16,20 @@
       <pattern id="field-grid" width="48" height="48" patternUnits="userSpaceOnUse">
         <path d="M 48 0 L 0 0 0 48" fill="none" stroke="currentColor" stroke-width="1" />
       </pattern>
-      <linearGradient id="field-fade" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="currentColor" stop-opacity="0" />
-        <stop offset="0.52" stop-color="currentColor" stop-opacity="0.92" />
-        <stop offset="1" stop-color="currentColor" stop-opacity="0.12" />
+      <linearGradient id="field-surface" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="currentColor" stop-opacity="0.04" />
+        <stop offset="0.56" stop-color="currentColor" stop-opacity="0.16" />
+        <stop offset="1" stop-color="currentColor" stop-opacity="0.03" />
       </linearGradient>
     </defs>
-    <rect width="1200" height="720" fill="url(#field-grid)" opacity="0.42" />
-    <path d="M-80 592 C155 470 284 632 505 498 S856 330 1290 438" fill="none" stroke="url(#field-fade)" stroke-width="4" />
-    <path d="M-110 630 C178 508 313 667 528 535 S869 368 1320 470" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4" />
-    <path d="M-40 554 C158 452 298 588 482 465 S810 295 1240 402" fill="none" stroke="currentColor" stroke-width="1" opacity="0.28" />
-    <path d="M710 0 V720 M734 0 V720" stroke="currentColor" stroke-width="1" opacity="0.25" />
-    <circle cx="722" cy="442" r="31" fill="none" stroke="currentColor" stroke-width="2" />
-    <circle cx="722" cy="442" r="7" fill="currentColor" />
+    <rect width="1200" height="720" fill="url(#field-grid)" opacity="0.1" />
+    <path d="M70 590 L558 278 L1126 382 L636 704 Z" fill="url(#field-surface)" stroke="currentColor" stroke-width="1" opacity="0.88" />
+    <path d="M164 589 L603 323 L1037 402" fill="none" stroke="currentColor" stroke-width="1" opacity="0.38" />
+    <path d="M286 607 L646 380 L930 430" fill="none" stroke="currentColor" stroke-width="1" opacity="0.28" />
+    <path d="M424 628 L689 438 L822 458" fill="none" stroke="currentColor" stroke-width="1" opacity="0.2" />
+    <path d="M918 118 V538 M894 514 H942" fill="none" stroke="currentColor" stroke-width="1" opacity="0.58" />
+    <path d="M590 505 L747 477 L918 514" fill="none" stroke="currentColor" stroke-width="2" opacity="0.76" />
+    <circle cx="918" cy="514" r="25" fill="none" stroke="currentColor" stroke-width="1" opacity="0.76" />
+    <circle cx="918" cy="514" r="5" fill="currentColor" />
   </svg>
-  <p class="field-media__notice">Development field surface / approved Quantum media pending</p>
 </div>

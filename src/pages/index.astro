@@ -132,7 +132,10 @@ if (!signal || !aperture || !need || !find || !test || !prove) {
 
         <ol class="find-sequence">
           {findSequence.map((item, index) => (
-            <li class:list={{ "is-selected": index === findSequence.length - 1 }}>
+            <li
+              class:list={{ "is-selected": index === findSequence.length - 1 }}
+              data-find-step={["landscape", "adjacency", "selection"][index]}
+            >
               <span>{item.index}</span>
               <strong>{item.label}</strong>
               <small>{item.description}</small>

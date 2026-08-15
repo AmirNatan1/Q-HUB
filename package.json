@@ -16,7 +16,9 @@
     "check": "npm run typecheck && npm run lint && npm run test:unit && npm run build",
     "release:placeholders": "vitest run tests/placeholder-release.test.ts",
     "bundle:check": "node scripts/check-bundle.mjs",
-    "lighthouse": "node scripts/run-lighthouse.mjs"
+    "lighthouse": "node scripts/run-lighthouse.mjs",
+    "evidence:repair": "node scripts/capture-repair-evidence.mjs",
+    "evidence:analyze": "node scripts/analyze-repair-evidence.mjs"
   },
   "dependencies": {
     "astro": "^7.2.2",

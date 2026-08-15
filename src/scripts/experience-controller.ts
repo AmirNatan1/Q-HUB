@@ -50,6 +50,15 @@ function clamp(value: number, minimum = 0, maximum = 1): number {
   return Math.min(maximum, Math.max(minimum, value));
 }
 
+function interpolate(start: number, end: number, progress: number): number {
+  return start + (end - start) * clamp(progress);
+}
+
+function smoothstep(start: number, end: number, value: number): number {
+  const progress = clamp((value - start) / Math.max(end - start, Number.EPSILON));
+  return progress * progress * (3 - 2 * progress);
+}
+
 function phaseFromSection(section: HTMLElement): ExperiencePhase {
   const candidate = section.dataset.experiencePhase;
   return phases.includes(candidate as ExperiencePhase)
@@ -83,7 +92,11 @@ function setActivePhase(index: number): void {
     new CustomEvent("qhub:phasechange", { detail: { phase, index } }),
   );
 
-  if ((phase === "aperture" || phase === "find") && !reducedMotionEnabled()) {
+  if (
+    finePointerQuery.matches &&
+    (phase === "aperture" || phase === "find") &&
+    !reducedMotionEnabled()
+  ) {
     void ensureFieldEngine();
   }
 }
@@ -131,12 +144,64 @@ function updateStoryState(): void {
 
   let constraint = 0;
   if (phase === "need") constraint = 0.25 + local * 0.75;
-  if (phase === "find") constraint = 0.72 - local * 0.38;
+  if (phase === "find") constraint = 0.26 - local * 0.16;
   if (phase === "test") constraint = 0.85;
   if (phase === "prove") constraint = 0.28;
 
   const resolution = phase === "prove" ? 0.35 + local * 0.65 : 0;
-  const material = phase === "test" ? 0.55 + local * 0.45 : phase === "prove" ? 1 : apertureOpen;
+
+  let signalStrength = 1;
+  let trajectoryFreedom = 0.95;
+  let fieldExposure = interpolate(0.01, 0.025, local);
+  let selectionFocus = 0;
+  let material = 0.04;
+  let settlement = 0;
+
+  if (phase === "aperture") {
+    signalStrength = interpolate(0.72, 0.32, local);
+    trajectoryFreedom = interpolate(0.88, 0.6, local);
+    fieldExposure = interpolate(0.28, 0.96, local);
+    material = fieldExposure;
+  }
+
+  if (phase === "need") {
+    signalStrength = interpolate(0.34, 0.16, local);
+    trajectoryFreedom = interpolate(0.58, 0.2, local);
+    fieldExposure = 0.62;
+    selectionFocus = interpolate(0.05, 0.12, local);
+    material = 0.54;
+  }
+
+  if (phase === "find") {
+    signalStrength = interpolate(0.34, 0.14, local);
+    trajectoryFreedom = interpolate(0.48, 0.08, local);
+    fieldExposure = 0.08;
+    selectionFocus = smoothstep(0.08, 0.88, local);
+    material = 0.08;
+  }
+
+  if (phase === "test") {
+    signalStrength = 0.035;
+    trajectoryFreedom = 0;
+    fieldExposure = 1;
+    selectionFocus = 1;
+    material = 1;
+  }
+
+  if (phase === "prove") {
+    signalStrength = 0;
+    trajectoryFreedom = 0;
+    fieldExposure = 0;
+    selectionFocus = 0;
+    material = 0;
+    settlement = interpolate(0.35, 1, local);
+  }
+
+  if (phase === "find") {
+    root.dataset.findStep = local < 0.33 ? "landscape" : local < 0.67 ? "adjacency" : "selection";
+  } else {
+    delete root.dataset.findStep;
+  }
 
   root.style.setProperty("--story-progress", globalProgress.toFixed(4));
   root.style.setProperty("--active-progress", local.toFixed(4));
@@ -144,6 +209,11 @@ function updateStoryState(): void {
   root.style.setProperty("--constraint", constraint.toFixed(4));
   root.style.setProperty("--resolution", resolution.toFixed(4));
   root.style.setProperty("--material", material.toFixed(4));
+  root.style.setProperty("--field-exposure", fieldExposure.toFixed(4));
+  root.style.setProperty("--signal-strength", signalStrength.toFixed(4));
+  root.style.setProperty("--trajectory-freedom", trajectoryFreedom.toFixed(4));
+  root.style.setProperty("--selection-focus", selectionFocus.toFixed(4));
+  root.style.setProperty("--settlement", settlement.toFixed(4));
 }
 
 function queueStoryUpdate(): void {
