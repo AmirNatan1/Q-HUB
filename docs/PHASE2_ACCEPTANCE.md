@@ -8,13 +8,14 @@ The human accepted the frozen Phase 1 visual grammar on **2026-08-15** and suppl
 - Phase 1 evidence/documentation closure: `0bdf3631ff9f29394a25ed89fdcd745827aff52e`
 - Phase 1 final accepted HEAD used to create the Phase 2 branch: `b0b56d3fa38a41d0d40d24b2a9ab443fbca91a33`
 - Phase 2 branch: `phase2/maradin-field-evidence`
-- Phase 2 candidate SHA: **PENDING FINAL ROOT VERIFICATION**
-- Push status: **PENDING FINAL ROOT VERIFICATION**
-- Working-tree closure: **PENDING FINAL ROOT VERIFICATION**
-- Deployment/preview URL: **PENDING FINAL ROOT VERIFICATION; production deployment is not authorized**
-- Overall acceptance result: **PENDING FINAL ROOT VERIFICATION**
-
-No gate below is marked PASS until the final source-bound command, browser, evidence, and repository-closure run is complete.
+- Phase 2 implementation candidate SHA: `d88f2020851325890e8951d88373475243ef9d1a`
+- Implementation candidate push: **CONFIRMED** — normally pushed to `origin/phase2/maradin-field-evidence` with upstream set; no force push
+- Frozen source tree at evidence start: **CLEAN**
+- Final evidence/documentation closure commit SHA: **PENDING FINAL H15 CLOSURE**
+- Final evidence/documentation push and clean-tree status: **PENDING FINAL H15 CLOSURE**
+- Deployment/preview: **UNAVAILABLE** — Wrangler reports expired non-interactive authentication; no remote preview or production deployment was attempted or claimed
+- Technical result: **P2-1 through P2-9 PASS; P2-10 awaits final H15 evidence/documentation closure**
+- Human creative decision: **UNDECIDED**
 
 ## Approved source and publication boundary
 
@@ -61,46 +62,72 @@ The brand-guide filename/current-pack date is 2026-06-04, while embedded PDF cre
 
 ## Acceptance gates
 
-| Gate | Required determination | Status | Verification / evidence still required |
+| Gate | Required determination | Status | Evidence-backed result |
 | --- | --- | --- | --- |
-| P2-1 Baseline and source integrity | Correct origin/branch/ancestry; no prohibited sources; approved pack complete and hash-verified | **PENDING FINAL ROOT VERIFICATION** | Record final ancestry, prohibited-source scan, and source-pack audit output. |
-| P2-2 Publication safety | Maradin B+approved eligible; unapproved B/C/D/placeholders denied; internal references stripped; protected material absent | **PENDING FINAL ROOT VERIFICATION** | Record final Vitest and `dist` scan results. |
-| P2-3 Homepage narrative | SIGNAL remains Quantum-led; APERTURE → NEED → FIND → TEST → PROVE uses the approved record without changing sequence | **PENDING FINAL ROOT VERIFICATION** | Record final browser assertions and visual inspection. |
-| P2-4 Native media behavior | Near-phase loading, muted/inline playback, posters, inactive pause, static reduced motion, no-WebGL independence, responsive crops | **PENDING FINAL ROOT VERIFICATION** | Record media check, e2e result, and inspected frames. |
-| P2-5 Brand integration | Official masters and exact pink token used; provisional identity/icon removed; no four-industry taxonomy; FONT-001 disclosed | **PENDING FINAL ROOT VERIFICATION** | Record source/output scan and visual inspection. |
-| P2-6 Placeholder boundary | Resolved homepage markers removed; unrelated route/development records remain detectable and denied | **PENDING FINAL ROOT VERIFICATION** | Record placeholder-release result. |
-| P2-7 Accessibility | One H1, valid landmarks/headings, keyboard/touch, contrast over actual media, static reduced motion, zero critical/serious axe findings | **PENDING FINAL ROOT VERIFICATION** | Record settled/transition desktop/mobile axe counts and keyboard results. |
-| P2-8 Performance | No production dependency added; source film absent; lazy media; bundle delta within target; Lighthouse thresholds and CLS=0 | **PENDING FINAL ROOT VERIFICATION** | Record final bundle/media inventory and Lighthouse summary. |
-| P2-9 Human-review evidence | Exactly 7 desktop, 6 mobile, 3 fallback PNGs, one 1440×900 journey WebM, manifest hashes/bytes, and visual QA | **PENDING FINAL ROOT VERIFICATION** | Record manifest path, candidate binding, counts, hashes, and inspected findings. |
-| P2-10 Version control/release | Intentional clean tree; candidate committed and normally pushed; no secrets; no merge/main or production deployment | **PENDING FINAL ROOT VERIFICATION** | Record candidate SHA, push, scans, and clean-tree output. |
+| P2-1 Baseline and source integrity | Correct origin/branch/ancestry; no prohibited sources; approved pack complete and hash-verified | **PASS** | Correct branch/candidate; 13/13 required pack files present; all 9 shipped derivatives hash/byte verified; scans found 0 high-confidence secrets, 0 credential assignments, 0 protected/prohibited `dist` matches, and 0 authoring-only files in `dist`. |
+| P2-2 Publication safety | Maradin B+approved eligible; unapproved B/C/D/placeholders denied; internal references stripped; protected material absent | **PASS** | Vitest passes 31/31 across 5 files; public-output scans are clean; approved JSON/approval/PDF authoring sources are absent from `dist`. |
+| P2-3 Homepage narrative | SIGNAL remains Quantum-led; APERTURE → NEED → FIND → TEST → PROVE uses the approved record without changing sequence | **PASS** | Playwright passes 37/37; all six ordered states remain reachable and the approved story resolves APERTURE through PROVE. |
+| P2-4 Native media behavior | Near-phase loading, muted/inline playback, posters, inactive pause, static reduced motion, no-WebGL independence, responsive crops | **PASS** | Media check validates 9 assets; e2e covers native attributes/lifecycle, reduced motion, no-WebGL, mobile crops, posters, and overflow. |
+| P2-5 Brand integration | Official masters and exact pink token used; provisional identity/icon removed; no four-industry taxonomy; FONT-001 disclosed | **PASS** | Official full/icon masters and palette mapping are present; source/output tests pass; FONT-001 is the sole disclosed material limitation. |
+| P2-6 Placeholder boundary | Resolved homepage markers removed; unrelated route/development records remain detectable and denied | **PASS** | `npm run release:placeholders` passes 2/2 while retaining later-phase development detection. |
+| P2-7 Accessibility | One H1, valid landmarks/headings, keyboard/touch, contrast over actual media, static reduced motion, zero critical/serious axe findings | **PASS** | 20 axe snapshots report 0 critical/serious findings; responsive, keyboard/touch, static-mode, transition, and actual-media-background contrast checks pass. |
+| P2-8 Performance | No production dependency added; source film absent; lazy media; bundle delta within target; Lighthouse thresholds and CLS=0 | **PASS** | Total gzip 7,961 bytes; initial gzip 3,917 bytes; both raw/gzip deltas are +581/+236 bytes; Lighthouse is 100/100/100/100 desktop and mobile with CLS 0. |
+| P2-9 Human-review evidence | Exactly 7 desktop, 6 mobile, 3 fallback PNGs, one 1440×900 journey WebM, manifest hashes/bytes, and visual QA | **PASS** | Candidate-bound manifest contains the exact inventory; all 16 frames were inspected at original resolution and the complete journey WebM hash/bytes verify. Human creative judgment remains undecided. |
+| P2-10 Version control/release | Intentional clean tree; candidate committed and normally pushed; no secrets; no merge/main or production deployment | **PENDING FINAL H15 CLOSURE** | Implementation candidate is committed, scanned, clean at evidence start, and normally pushed. Final evidence/documentation closure commit, final push, and final clean-tree proof remain pending. |
+
+## Refreshed master-goal H1–H15 ledger
+
+The master-goal hard gates remain authoritative. Phase 2 refreshes them against the Maradin candidate rather than replacing them with the Phase 2-specific gates above.
+
+| Hard gate | Status | Phase 2 evidence |
+| --- | --- | --- |
+| H1 — Source integrity | **PASS** | Canonical branch/candidate verified; approved pack is complete 13/13; 9 shipped derivatives are byte-for-byte verified; prohibited/protected scans and secret scans report zero matches. |
+| H2 — Required foundations | **PASS** | Existing architecture, schemas, publication boundary, navigation, metadata, 404, test foundation, and operational documentation remain substantive; Phase 2 acceptance/review ledgers are added. |
+| H3 — Build health | **PASS** | `npm run check` passes: Astro 39 files / 0 diagnostics, ESLint clean, Vitest 31/31, static build 11 pages; Playwright passes 37/37 with no blocking runtime defect. |
+| H4 — Publication safety | **PASS** | B+approved Maradin record is eligible; unsafe classifications/placeholders remain denied; authoring-only sources and protected/prohibited material are absent from `dist`. |
+| H5 — Six-state narrative | **PASS** | SIGNAL, APERTURE, NEED, FIND, TEST, and PROVE remain ordered, present, distinct, and reachable in the 37-test browser suite. |
+| H6 — Observable transformation | **PASS** | Candidate-bound desktop/mobile frames and journey video demonstrate abstraction, real-field reveal, factual constraint, approved selection, physical TEST contact, and settled structured evidence. |
+| H7 — Field Aperture | **PASS** | Desktop pointer enhancement, authored field-side documentary reveal, touch/scroll translation, static reduced-motion split, and no-WebGL media path pass tests and visual inspection. |
+| H8 — Responsive integrity | **PASS** | 390×844, 430×932, 768×1024, 1440×900, and 1920×1080 checks pass, including media crops, controls, overflow, copy, and scroll exit. |
+| H9 — Accessibility | **PASS** | Twenty axe snapshots across settled and transition states report 0 critical/serious findings; heading/landmark, keyboard/touch, static motion, and actual-media-background contrast checks pass. |
+| H10 — Performance | **PASS** | Bundle limits pass; initial gzip delta is +236 bytes, total gzip is 7,961 bytes, no Three/R3F is present, and desktop/mobile Lighthouse is 100/100/100/100 with CLS 0. |
+| H11 — Fallback parity | **PASS** | Normal desktop, mobile/touch, reduced motion, and no-WebGL preserve navigation, all six semantic acts, approved media meaning, and abstraction → field → evidence. |
+| H12 — Placeholder safety | **PASS** | Resolved homepage placeholders are removed; later-phase development records/shells remain machine-detectable and denied; placeholder release tests pass 2/2. |
+| H13 — Visual QA evidence | **PASS** | Exact 7 desktop, 6 mobile, and 3 fallback PNGs plus one 1440×900 WebM are candidate-bound; all 16 frames were inspected at original resolution. Human creative judgment remains undecided. |
+| H14 — Asset readiness | **PASS** | FIELD-001, TEST-001, PROVE-001, CONTENT-001, and BRAND-001 are resolved with exact provenance; `FONT-001` is a narrow actionable follow-up and later P1/P2 requests remain documented. |
+| H15 — Version control / deployment | **PENDING FINAL H15 CLOSURE** | Implementation candidate `d88f2020851325890e8951d88373475243ef9d1a` is clean-at-evidence-start, scanned, committed, and normally pushed without force. Final evidence/docs closure commit SHA, final push, and final clean-tree proof remain pending. Remote preview is unavailable due expired non-interactive Cloudflare auth; no deployment was attempted. |
 
 ## Final command ledger
 
-These are required final commands, not claimed results.
+These results are source-bound to implementation candidate `d88f2020851325890e8951d88373475243ef9d1a`.
 
 | Command | Final result |
 | --- | --- |
-| `npm run check` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run release:placeholders` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run media:check` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run bundle:check` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run test:e2e` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run lighthouse` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run evidence:phase2` | **PENDING FINAL ROOT VERIFICATION** |
-| High-confidence secret scan | **PENDING FINAL ROOT VERIFICATION** |
-| Prohibited-source/public-output scan | **PENDING FINAL ROOT VERIFICATION** |
-| `git status --short` after final commit/push | **PENDING FINAL ROOT VERIFICATION** |
+| `npm run check` | **PASS** — Astro checked 39 files with 0 errors, warnings, or hints; ESLint passed; Vitest passed 31/31 across 5 files; 11 static pages built. |
+| `npm run release:placeholders` | **PASS** — 2/2 tests in 1 file. |
+| `npm run media:check` | **PASS** — 9 public assets; 9,326,266 bytes total, including 8,095,824 video bytes. |
+| `npm run bundle:check` | **PASS** — 20,852 raw / 7,961 gzip total; 9,179 / 3,917 initial; 11,673 / 4,044 lazy. No Three.js/R3F. |
+| `npm run test:e2e` | **PASS** — 37/37 tests. |
+| `npm run lighthouse` | **PASS** — candidate-bound desktop/mobile thresholds passed. |
+| `npm run evidence:phase2` | **PASS** — exact 7 desktop, 6 mobile, 3 fallback PNGs, one WebM, and manifest. |
+| High-confidence secret scan | **PASS** — 0 secret signatures and 0 credential-assignment matches. |
+| Prohibited-source/public-output scan | **PASS** — 0 protected/prohibited matches and 0 authoring-only source files in `dist`. |
+| `git status --short` after final evidence/docs commit and push | **PENDING FINAL H15 CLOSURE** |
 
 ## Final metrics and evidence identity
 
-- Build/typecheck/lint/unit results: **PENDING FINAL ROOT VERIFICATION**
-- Playwright result and axe counts: **PENDING FINAL ROOT VERIFICATION**
-- Desktop Lighthouse scores, LCP/TBT/CLS: **PENDING FINAL ROOT VERIFICATION**
-- Mobile Lighthouse scores, LCP/TBT/CLS: **PENDING FINAL ROOT VERIFICATION**
-- Total/initial/lazy JavaScript bytes and gzip bytes: **PENDING FINAL ROOT VERIFICATION**
-- Public media inventory bytes: **PENDING FINAL ROOT VERIFICATION**
-- Phase 2 evidence manifest, capture hashes, and candidate binding: **PENDING FINAL ROOT VERIFICATION**
-- Known defects after final inspection: **PENDING FINAL ROOT VERIFICATION**
+- Build/typecheck/lint/unit: **PASS** — 39 Astro files with 0 diagnostics; lint clean; 31/31 Vitest tests; 11 static pages.
+- Playwright/accessibility: **PASS** — 37/37 tests. Twenty axe snapshots cover 6 settled phases on desktop and mobile, 4 desktop TEST → PROVE transition samples, and 4 mobile APERTURE → NEED samples; 0 critical/serious findings. Required viewports and actual-media-background contrast pass.
+- Desktop Lighthouse: **PASS** — Performance/Accessibility/Best Practices/SEO `100/100/100/100`; LCP `361.8777 ms`; TBT `0 ms`; CLS `0`.
+- Mobile Lighthouse: **PASS** — Performance/Accessibility/Best Practices/SEO `100/100/100/100`; LCP `1480.38845 ms`; TBT `22 ms`; CLS `0`.
+- JavaScript: **PASS** — total `20,852` raw / `7,961` gzip; initial `9,179` / `3,917`; lazy `11,673` / `4,044`. Frozen Phase 1 total was `20,271` / `7,725` and initial `8,598` / `3,681`, so both raw/gzip deltas are `+581/+236`. Total gzip remains below 10 KiB and the initial gzip delta below approximately 1 KiB.
+- Public media: **PASS** — 9 assets, `9,326,266` bytes total; video bytes `8,095,824`.
+- Evidence: **PASS** — `artifacts/review/phase2/manifest.json` is bound to candidate/source HEAD `d88f2020851325890e8951d88373475243ef9d1a`, correct branch, and a clean evidence-start tree. Package contains 7 desktop 1440×900, 6 mobile 390×844, 3 fallback 1440×900 PNGs, and one 1440×900 WebM; total package bytes including manifest are `11,043,751`.
+- Journey WebM: `2,154,513` bytes; SHA-256 `2aca51553494f9aa0a56e472c70f21c6d75404679bb07c98706fb10abda4d4c7`.
+- Phase 1 evidence integrity: **PASS** — 32 files unchanged; digest `88ffd3ca6965e0fb063d56b6e65979796c017fa3326251b729e7c4228a31f8c5`.
+- Visual technical QA: **PASS** — all 16 frames inspected at original resolution; hierarchy, crops, text plates, brand/third-party marks, and static paths appear intentional; no subtitle contamination or blocking technical visual defect was observed. Human creative judgment remains undecided.
+- Known application technical defects: **NONE**.
+- Remaining limitations: `FONT-001`; remote preview unavailable because Wrangler reports, “Not logged in. Your auth token has expired and could not be refreshed, and the environment is non-interactive.” Its external log write also failed with sandbox `EPERM`. No remote preview or production deploy was attempted.
 
 ## Stop condition
 

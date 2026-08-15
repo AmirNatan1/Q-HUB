@@ -2,16 +2,20 @@
 
 ## Review status
 
-This package is a handoff template for the source-bound final candidate. It does not self-certify visual quality and it does not authorize production release.
+This package presents the verified implementation candidate for human creative review. It does not self-certify visual quality and it does not authorize production release.
 
 - Branch: `phase2/maradin-field-evidence`
 - Frozen Phase 1 implementation candidate: `3d03033d05910ee9c27c5eb050fecccbabebaaf8`
 - Phase 1 documentation/evidence closure: `0bdf3631ff9f29394a25ed89fdcd745827aff52e`
 - Phase 1 accepted branch point: `b0b56d3fa38a41d0d40d24b2a9ab443fbca91a33`
-- Phase 2 candidate SHA: **PENDING FINAL ROOT VERIFICATION**
-- Normal push status: **PENDING FINAL ROOT VERIFICATION**
-- Deployment/preview: **PENDING FINAL ROOT VERIFICATION; no production deployment is authorized**
-- Gate result: **PENDING FINAL ROOT VERIFICATION**
+- Phase 2 implementation candidate SHA: `d88f2020851325890e8951d88373475243ef9d1a`
+- Implementation candidate push: **CONFIRMED** — normal push to `origin/phase2/maradin-field-evidence`, upstream set, no force push
+- Frozen source tree at evidence start: **CLEAN**
+- Evidence/documentation closure commit and final push: **PENDING FINAL H15 CLOSURE**
+- Deployment/preview: **UNAVAILABLE** — expired non-interactive Cloudflare authentication; no remote preview or production deploy attempted
+- Technical gate result: **P2-1 through P2-9 PASS; final H15 evidence/documentation closure pending**
+- Refreshed master-goal hard gates: **H1–H14 PASS; H15 PENDING FINAL H15 CLOSURE**
+- Human creative judgment: **UNDECIDED**
 
 ## What changed
 
@@ -53,7 +57,7 @@ The approved JSON is mapped into `src/content/proof.ts`, filtered before present
 
 ## Evidence inventory
 
-Final evidence must be candidate-bound under `artifacts/review/phase2/`. Every item below is **PENDING FINAL ROOT VERIFICATION** until the manifest exists and its hashes/bytes are checked.
+Final evidence is candidate-bound under `artifacts/review/phase2/`. The manifest records candidate/source HEAD `d88f2020851325890e8951d88373475243ef9d1a`, the correct branch, a clean tree at evidence start, and an Astro production-preview server with development mode disallowed.
 
 Desktop, exact 1440×900:
 
@@ -82,8 +86,12 @@ Fallback, exact 1440×900:
 
 Motion and integrity:
 
-- `desktop-journey.webm` — complete 1440×900 journey: **PENDING FINAL ROOT VERIFICATION**
-- `manifest.json` — exact candidate, capture state/mode/progress, bytes, hashes, and Phase 1 evidence-integrity check: **PENDING FINAL ROOT VERIFICATION**
+- `desktop-journey.webm` — complete 1440×900 journey; 2,154,513 bytes; SHA-256 `2aca51553494f9aa0a56e472c70f21c6d75404679bb07c98706fb10abda4d4c7`
+- `manifest.json` — exact candidate, capture state/mode/progress, bytes, hashes, and Phase 1 evidence-integrity check
+- Total package size including manifest: 11,043,751 bytes
+- Phase 1 evidence integrity: 32 files verified unchanged; digest `88ffd3ca6965e0fb063d56b6e65979796c017fa3326251b729e7c4228a31f8c5`
+
+All 16 PNG frames were inspected at original resolution. Hierarchy, focal crops, text plates, visible marks, reduced-motion/no-WebGL states, and evidence stillness appear intentional. No visible subtitle contamination or blocking technical visual defect remains. This technical inspection does not decide the human creative outcome.
 
 ## Required human inspection
 
@@ -101,32 +109,35 @@ Judge the rendered evidence and journey video for these questions:
 
 ## Final verification results
 
-Root must replace each pending field only with source-bound evidence from the final candidate.
+Results below are source-bound to implementation candidate `d88f2020851325890e8951d88373475243ef9d1a`.
 
 | Item | Result |
 | --- | --- |
-| Build/typecheck/lint/unit | **PENDING FINAL ROOT VERIFICATION** |
-| Publication/source-integrity/placeholder scans | **PENDING FINAL ROOT VERIFICATION** |
-| Media inventory and native-video contract | **PENDING FINAL ROOT VERIFICATION** |
-| Playwright viewport/behavior/accessibility suite | **PENDING FINAL ROOT VERIFICATION** |
-| axe settled-state and transition results | **PENDING FINAL ROOT VERIFICATION** |
-| Bundle raw/gzip totals and Phase 1 delta | **PENDING FINAL ROOT VERIFICATION** |
-| Desktop Lighthouse and web-vital metrics | **PENDING FINAL ROOT VERIFICATION** |
-| Mobile Lighthouse and web-vital metrics | **PENDING FINAL ROOT VERIFICATION** |
-| Evidence manifest counts/hashes/candidate binding | **PENDING FINAL ROOT VERIFICATION** |
-| Final visual QA findings/repairs | **PENDING FINAL ROOT VERIFICATION** |
-| Secret scan and public-output scan | **PENDING FINAL ROOT VERIFICATION** |
-| Candidate SHA, clean tree, normal push | **PENDING FINAL ROOT VERIFICATION** |
-| Real preview URL or exact unavailable limitation | **PENDING FINAL ROOT VERIFICATION** |
+| Build/typecheck/lint/unit | **PASS** — Astro 39 files / 0 diagnostics; ESLint pass; Vitest 5 files / 31 tests; build 11 pages. |
+| Publication/source-integrity/placeholder scans | **PASS** — 13/13 pack files; 9/9 shipped derivatives verified; placeholder 2/2; 0 prohibited/protected/authoring-only `dist` matches. |
+| Media inventory and native-video contract | **PASS** — 9 assets, 9,326,266 bytes total / 8,095,824 video bytes; native lifecycle and fallbacks pass e2e. |
+| Playwright viewport/behavior/accessibility suite | **PASS** — 37/37; required 390×844, 430×932, 768×1024, 1440×900, and 1920×1080 viewports pass. |
+| axe settled-state and transition results | **PASS** — 20 snapshots, 0 critical/serious; 12 settled desktop/mobile states plus 4 desktop TEST → PROVE and 4 mobile APERTURE → NEED samples. Actual-media-background contrast passes. |
+| Bundle raw/gzip totals and Phase 1 delta | **PASS** — total 20,852/7,961; initial 9,179/3,917; lazy 11,673/4,044; total and initial raw/gzip deltas +581/+236; no Three/R3F. |
+| Desktop Lighthouse and web-vital metrics | **PASS** — 100/100/100/100; LCP 361.8777 ms; TBT 0 ms; CLS 0. |
+| Mobile Lighthouse and web-vital metrics | **PASS** — 100/100/100/100; LCP 1480.38845 ms; TBT 22 ms; CLS 0. |
+| Evidence manifest counts/hashes/candidate binding | **PASS** — exact 7 desktop, 6 mobile, 3 fallback PNGs and one WebM; candidate/branch/clean-start binding verified. |
+| Final visual QA findings/repairs | **PASS, TECHNICAL** — 16 frames inspected at original resolution; no blocking technical visual defect. Human creative judgment remains undecided. |
+| Secret scan and public-output scan | **PASS** — 0 high-confidence secret matches, 0 credential assignments, 0 protected/prohibited `dist` matches. |
+| Implementation candidate SHA, clean evidence start, normal push | **PASS** — `d88f2020851325890e8951d88373475243ef9d1a`, normal upstream push, no force. |
+| Evidence/docs closure commit, final push, final clean tree | **PENDING FINAL H15 CLOSURE** |
+| Real preview URL or exact unavailable limitation | **UNAVAILABLE** — Wrangler reports expired non-interactive auth; external log write also hit sandbox `EPERM`; no remote preview or deploy attempted. |
 
-## Known limitations at draft handoff
+## Known limitations
 
 - Licensed Raleway/Comfortaa webfont binaries were not supplied (`FONT-001`).
-- Browser/device coverage, visual defects, Lighthouse stability, and deployment availability must be reported from the final root run; this draft makes no claim about them.
+- Remote preview is unavailable because Cloudflare authentication is expired and cannot refresh non-interactively. Wrangler also could not write its external log because of sandbox `EPERM`. Only local production-preview evidence exists; no remote preview or production deployment was attempted.
+- Testing is Chromium/local-lab evidence rather than physical-device, Safari, Firefox, field telemetry, or dedicated screen-reader testing.
+- No known application technical defect remains. Human creative judgment remains intentionally undecided.
 - Supporting routes remain later-phase shells. No broader Proof library, ACT 07/08/09, second story, merge, or production deployment is included.
 
 ## Stop and decision
 
-Once the final ledger is evidence-complete and the candidate is committed and normally pushed, stop. Human review decides exactly:
+After the final evidence/documentation closure commit, normal push, and clean-tree proof, stop. Human review decides exactly:
 
 **ACCEPT / REPAIR / REDIRECT**

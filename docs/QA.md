@@ -322,27 +322,43 @@ The human subsequently selected **ACCEPT** for the Phase 1 repair and authorized
 
 ### Final command and browser record
 
-All values below are **PENDING FINAL ROOT VERIFICATION**. Earlier Phase 1 results must not be reused as Phase 2 results.
+Results below are source-bound to implementation candidate `d88f2020851325890e8951d88373475243ef9d1a`. Earlier Phase 1 results were not reused as Phase 2 evidence.
 
 | Verification | Phase 2 final result |
 | --- | --- |
-| `npm run check` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run release:placeholders` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run media:check` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run bundle:check` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run test:e2e` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run lighthouse` | **PENDING FINAL ROOT VERIFICATION** |
-| `npm run evidence:phase2` | **PENDING FINAL ROOT VERIFICATION** |
-| Secret/prohibited-source/public-output scans | **PENDING FINAL ROOT VERIFICATION** |
+| `npm run check` | **PASS** — Astro checked 39 files with 0 errors/warnings/hints; ESLint passed; Vitest passed 31/31 across 5 files; build emitted 11 static pages. |
+| `npm run release:placeholders` | **PASS** — 2/2 tests in 1 file. |
+| `npm run media:check` | **PASS** — 9 assets; 9,326,266 bytes total; 8,095,824 video bytes. |
+| `npm run bundle:check` | **PASS** — total 20,852 raw / 7,961 gzip; initial 9,179 / 3,917; lazy 11,673 / 4,044; no Three/R3F. |
+| `npm run test:e2e` | **PASS** — 37/37 tests. Twenty axe snapshots report 0 critical/serious findings. |
+| `npm run lighthouse` | **PASS** — desktop and mobile 100/100/100/100; candidate-bound summary. |
+| `npm run evidence:phase2` | **PASS** — exact required screenshot/video inventory and candidate-bound manifest. |
+| Secret/prohibited-source/public-output scans | **PASS** — 0 high-confidence secrets, 0 credential assignments, 0 protected/prohibited `dist` matches, and 0 authoring-only source files in `dist`. |
+
+Bundle growth from the frozen Phase 1 baseline is controlled: total and initial raw/gzip deltas are both `+581/+236` bytes. Total gzip remains below 10 KiB and the initial gzip delta remains below approximately 1 KiB.
+
+Candidate-bound Lighthouse metrics:
+
+| Profile | Performance | Accessibility | Best Practices | SEO | LCP | TBT | CLS |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Desktop | 100 | 100 | 100 | 100 | 361.8777 ms | 0 ms | 0 |
+| Mobile | 100 | 100 | 100 | 100 | 1480.38845 ms | 22 ms | 0 |
+
+Playwright covers 390×844, 430×932, 768×1024, 1440×900, and 1920×1080. Axe coverage comprises all six settled phases on desktop and mobile plus four TEST → PROVE desktop transition samples and four APERTURE → NEED mobile samples. Actual-media-background contrast passes.
 
 ### Visual evidence and inspection
 
-The final package must contain exactly 7 desktop 1440×900 PNGs, 6 mobile 390×844 PNGs, 3 fallback 1440×900 PNGs, one complete 1440×900 WebM, and a source-bound manifest under `artifacts/review/phase2/`. Capture existence, hashes, byte sizes, candidate binding, Phase 1 evidence integrity, and actual human inspection are **PENDING FINAL ROOT VERIFICATION**.
+`artifacts/review/phase2/manifest.json` is bound to source HEAD/candidate `d88f2020851325890e8951d88373475243ef9d1a`, the correct branch, and a clean tree at evidence start. Capture used an Astro production preview with development mode disallowed. The package contains exactly 7 desktop 1440×900 PNGs, 6 mobile 390×844 PNGs, 3 fallback 1440×900 PNGs, and one complete 1440×900 WebM. Total package bytes including the manifest are 11,043,751.
 
-Inspection must cover footage integration, APERTURE split clarity, Quantum/Maradin hierarchy, third-party-mark subordination, copy/media competition, mobile crops, text contrast on actual frames, TEST physicality, PROVE stillness, reduced motion, no-WebGL composition, compression, and subtitle/frame contamination. Findings and repairs must be written here from the final rendered candidate; none are fabricated in this draft.
+The journey WebM is 2,154,513 bytes with SHA-256 `2aca51553494f9aa0a56e472c70f21c6d75404679bb07c98706fb10abda4d4c7`. Thirty-two Phase 1 evidence files were verified unchanged; inventory digest `88ffd3ca6965e0fb063d56b6e65979796c017fa3326251b729e7c4228a31f8c5`.
 
-### Phase 2 known limitations at draft handoff
+All 16 PNG frames were inspected at original resolution. Hierarchy, focal crops, text plates, visible marks, static reduced-motion/no-WebGL paths, TEST physicality, and PROVE stillness appear intentional. No visible subtitle contamination or blocking technical visual defect remains. This is a technical QA result; human creative judgment remains undecided.
+
+### Phase 2 known limitations and H15 closure
 
 - `FONT-001` remains narrowly unresolved because the approved pack contains no licensed font binaries. No runtime font service is used.
-- Final browser/device coverage, defects, Lighthouse results, bundle delta, deployment availability, candidate SHA, push status, and clean-tree status remain **PENDING FINAL ROOT VERIFICATION**.
+- Cloudflare remote preview is unavailable. `npx wrangler whoami` reports: “Not logged in. Your auth token has expired and could not be refreshed, and the environment is non-interactive.” Its external log write also failed with sandbox `EPERM`. No remote preview or production deployment was attempted or claimed; only local production-preview evidence exists.
+- Browser evidence is Chromium/local-lab coverage rather than physical-device, Safari, Firefox, field telemetry, or dedicated screen-reader testing.
+- No known application technical defect remains. Human creative judgment remains undecided.
+- The implementation candidate was normally pushed with upstream set and no force. The final evidence/documentation closure commit SHA, final push, and final clean-tree proof are **PENDING FINAL H15 CLOSURE**.
 - No supporting-route redesign, broader Proof library, second story, ACT 07/08/09 work, main merge, or production deployment is part of this checkpoint.

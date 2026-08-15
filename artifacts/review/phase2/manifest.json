@@ -1,0 +1,633 @@
+{
+  "schemaVersion": 1,
+  "package": "Q-HUB Phase 2 / Maradin human-review evidence",
+  "generatedAt": "2026-08-15T16:53:44.091Z",
+  "source": {
+    "branch": "phase2/maradin-field-evidence",
+    "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+    "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+    "candidateBasis": "explicit-environment-value",
+    "workingTreeDirtyAtStart": false,
+    "workingTreeChangeCountAtStart": 0
+  },
+  "server": {
+    "type": "external-local-server",
+    "baseUrl": "http://127.0.0.1:4322",
+    "astroDevServerAllowed": false
+  },
+  "contract": {
+    "desktopScreenshots": 7,
+    "mobileScreenshots": 6,
+    "fallbackScreenshots": 3,
+    "journeyVideos": 1,
+    "desktopViewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobileViewport": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "phase1EvidencePolicy": "Every pre-existing review artifact outside artifacts/review/phase2 is read and hashed only; capture aborts if any changes.",
+  "phase1EvidenceIntegrity": {
+    "status": "verified-unchanged-after-capture",
+    "fileCount": 32,
+    "digest": "88ffd3ca6965e0fb063d56b6e65979796c017fa3326251b729e7c4228a31f8c5",
+    "files": [
+      {
+        "file": "artifacts/review/desktop-aperture.jpg",
+        "sha256": "a5f62fa03588e555ba20e50e6505ecf3c4a5ae98d3e707d645ad26db2ca8e6b1",
+        "bytes": 162596
+      },
+      {
+        "file": "artifacts/review/desktop-find.jpg",
+        "sha256": "9395cb75c32f90c2829957b171d4aae0c9f73beb10acd8bbc31858073dc496f1",
+        "bytes": 121949
+      },
+      {
+        "file": "artifacts/review/desktop-need.jpg",
+        "sha256": "adb12e57c2abee2b393478e8c3386289f31f211b6bcf3d8891f687e65f0afa7c",
+        "bytes": 118607
+      },
+      {
+        "file": "artifacts/review/desktop-prove.jpg",
+        "sha256": "8c1444db37b2174d384c63f4ee1a7e8c2ebc01e2f60c1bb2d678567a4674fa0f",
+        "bytes": 74662
+      },
+      {
+        "file": "artifacts/review/desktop-signal.jpg",
+        "sha256": "9d7370aba276d0e410c391ba0a45056eff0963fbf4b1837d22648e163dcf0d39",
+        "bytes": 170721
+      },
+      {
+        "file": "artifacts/review/desktop-test.jpg",
+        "sha256": "1849bcf58287309010be67b192b9dcfbddd7fcd027ed41196643945a46c66bac",
+        "bytes": 141865
+      },
+      {
+        "file": "artifacts/review/mobile-aperture.jpg",
+        "sha256": "db22b1202164f6fb65f7e5c6c0e780078a67d97942b87e0ce43eda3b6fcdcf60",
+        "bytes": 56609
+      },
+      {
+        "file": "artifacts/review/mobile-find.jpg",
+        "sha256": "a22b36eff42a20e379783334184d7657d153e03e20a44f61d2aab33a10523ff7",
+        "bytes": 41452
+      },
+      {
+        "file": "artifacts/review/mobile-need.jpg",
+        "sha256": "3d0686bae7aabc89a09ae31cdaf1846d0bf2c4e3baa6f28f807f06f860ec966e",
+        "bytes": 46063
+      },
+      {
+        "file": "artifacts/review/mobile-prove.jpg",
+        "sha256": "478eb2ea5dc4dfe22db382f55566acd17e4dd6b5e383030a49a24163e1b3b894",
+        "bytes": 33336
+      },
+      {
+        "file": "artifacts/review/mobile-signal.jpg",
+        "sha256": "887cb9c5e510d84adde8345b4dcaef066297c8323807530a088706aa96ee10ef",
+        "bytes": 29463
+      },
+      {
+        "file": "artifacts/review/mobile-test.jpg",
+        "sha256": "ae52a498b7ca834835fd38bab793c119d1643fd7bd4da1ca6fa75443dbae272d",
+        "bytes": 49698
+      },
+      {
+        "file": "artifacts/review/no-webgl-aperture.jpg",
+        "sha256": "afe33d97a758b7a52ed35b2d09ff9e0682a828073442853aa14139a087ccaf09",
+        "bytes": 81807
+      },
+      {
+        "file": "artifacts/review/reduced-motion-aperture.jpg",
+        "sha256": "0ddfe1f605f6a49bce7bf920cf43605e277c4623fd154b731dfb61572d5d9774",
+        "bytes": 94460
+      },
+      {
+        "file": "artifacts/review/repair.zip",
+        "sha256": "7edf5b6d2a527c6010f13b965b0732bd83def58dc2d9b3b0ef80d7164a93e8f0",
+        "bytes": 10237113
+      },
+      {
+        "file": "artifacts/review/repair/analysis.json",
+        "sha256": "29de3ba01b58f31156b7c9c1f8b1c03236e5e9837881dcd0952312195e67bbba",
+        "bytes": 6082
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture-no-webgl.png",
+        "sha256": "fb5b12da747ed367d25855d0f842d82e797fbd047c32db1095ceda96160e62d8",
+        "bytes": 1159090
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture-reduced-motion.png",
+        "sha256": "a037248f42a0ac90969f53455238a9f61b19be8184fbf8c74fc9b0bf2b90060a",
+        "bytes": 1187714
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture.png",
+        "sha256": "127ff149e117b9bf85b6a48f6518756ed062f07764390503803a9abdd4d81926",
+        "bytes": 1162740
+      },
+      {
+        "file": "artifacts/review/repair/desktop-find.png",
+        "sha256": "1167f752cf651972b5725db0951f61e6559223beca3ad7cc4792ad1b50c87071",
+        "bytes": 852302
+      },
+      {
+        "file": "artifacts/review/repair/desktop-journey.webm",
+        "sha256": "6ae95078848af7e30e297232642def5032005a8adee4f4824c43ef99cdf1340a",
+        "bytes": 1594206
+      },
+      {
+        "file": "artifacts/review/repair/desktop-need.png",
+        "sha256": "8c987f306556740d0f3c6b9afcc6df89cc4c20c67c37d84ee4034de841198e38",
+        "bytes": 819169
+      },
+      {
+        "file": "artifacts/review/repair/desktop-prove.png",
+        "sha256": "e4b6da6ef8e505c900c686ec6122a4c107f380597074737fd2d9ecde3260793b",
+        "bytes": 102102
+      },
+      {
+        "file": "artifacts/review/repair/desktop-signal.png",
+        "sha256": "bdcdc8d64dc5afbb835aba7e3d4d44538708a6d2c74ea52e7c8c5a461ea39267",
+        "bytes": 741088
+      },
+      {
+        "file": "artifacts/review/repair/desktop-test.png",
+        "sha256": "7cc7db7ec524b1c1a1ea4bd34b493806b16ecaa31cbd6e18053c075350025e48",
+        "bytes": 1217086
+      },
+      {
+        "file": "artifacts/review/repair/manifest.json",
+        "sha256": "51db084192db08dd970db3979fd3eb99fabdf4a5acd109e697bfb73bc8c39e9f",
+        "bytes": 11688
+      },
+      {
+        "file": "artifacts/review/repair/mobile-aperture.png",
+        "sha256": "a6ada6c41edcb9218d94b405872aa4dea44c6a7ab8ec999018542ff18ca75d80",
+        "bytes": 323552
+      },
+      {
+        "file": "artifacts/review/repair/mobile-find.png",
+        "sha256": "cd1c9abaee59a55e2a7798fb83d8c955b637d3aa4c1c9342cff79e82c0acf7c3",
+        "bytes": 255643
+      },
+      {
+        "file": "artifacts/review/repair/mobile-need.png",
+        "sha256": "4c3fca72a0134082a69e3d8338aa26a080d275bb276a8ab79ecfc97e6c962fcc",
+        "bytes": 247217
+      },
+      {
+        "file": "artifacts/review/repair/mobile-prove.png",
+        "sha256": "5f54feea77e9d740440a2dac115ef83ad9874e4b0e91ac8f22c7c9f699edca7b",
+        "bytes": 40623
+      },
+      {
+        "file": "artifacts/review/repair/mobile-signal.png",
+        "sha256": "b344db263b2605ee6a461991da0e16b7ff5bcc649d02f6829ff6bafd1d1370ca",
+        "bytes": 246971
+      },
+      {
+        "file": "artifacts/review/repair/mobile-test.png",
+        "sha256": "e624ad4b668a43d53473868fe2439495dfcf3c1544a1935ad23f6b9ec0310ee5",
+        "bytes": 319159
+      }
+    ]
+  },
+  "captures": [
+    {
+      "id": "desktop-signal",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/desktop-signal.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "signal",
+      "variant": "settled",
+      "targetProgress": 0.48,
+      "actualProgress": 0.4803,
+      "scrollY": 238,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:09.595Z",
+      "sha256": "6bf6f1a57c96bf05f11965463ce764b300ebe592775c6312710de6d9599e5c04",
+      "bytes": 732008
+    },
+    {
+      "id": "desktop-aperture-early-split",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/desktop-aperture-early-split.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "aperture",
+      "variant": "early-split",
+      "targetProgress": 0.26,
+      "actualProgress": 0.2601,
+      "scrollY": 1396,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:12.720Z",
+      "sha256": "44befcdb32d1f17d3fa87b28d35c9ee7c8460a27b55cb69c4a5e1cc6806ce30b",
+      "bytes": 795043
+    },
+    {
+      "id": "desktop-aperture-media-reveal",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/desktop-aperture-media-reveal.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "aperture",
+      "variant": "media-reveal",
+      "targetProgress": 0.78,
+      "actualProgress": 0.7802,
+      "scrollY": 2262,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:14.861Z",
+      "sha256": "32f1ec10ea0f0571c706674784384e3232334e88fdc6e7aa1839ac66c4212db4",
+      "bytes": 875183
+    },
+    {
+      "id": "desktop-need",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/desktop-need.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "need",
+      "variant": "settled",
+      "targetProgress": 0.68,
+      "actualProgress": 0.6803,
+      "scrollY": 3577,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:16.396Z",
+      "sha256": "6293e1c378dfec36ab3a365053b3f6005b93dda1e184c70fc2000412b0e4d754",
+      "bytes": 880324
+    },
+    {
+      "id": "desktop-find",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/desktop-find.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "find",
+      "variant": "selection",
+      "targetProgress": 0.74,
+      "actualProgress": 0.7401,
+      "scrollY": 5222,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "findStep": "selection",
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:17.871Z",
+      "sha256": "483122a37e52cc0ee9405d2f2d1aae7e9cbd8f9172798cc09f0998aa0f1cdf94",
+      "bytes": 838002
+    },
+    {
+      "id": "desktop-test",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/desktop-test.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "test",
+      "variant": "field-contact",
+      "targetProgress": 0.56,
+      "actualProgress": 0.5598,
+      "scrollY": 6575,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:19.137Z",
+      "sha256": "95405d7fa5b3d858d954a08029c1cbac5baad0fa42218bd3a781a69261ac077e",
+      "bytes": 704763
+    },
+    {
+      "id": "desktop-prove",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/desktop-prove.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "prove",
+      "variant": "evidence-record",
+      "targetProgress": 0.16,
+      "actualProgress": 0.1602,
+      "scrollY": 7666,
+      "renderMode": "webgl-enhanced",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:19.374Z",
+      "sha256": "acc41feaf4c869ef0bc2ccb35bb5ac33e29cd957790a844b66c85245ab76b315",
+      "bytes": 210366
+    },
+    {
+      "id": "mobile-signal",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/mobile-signal.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "signal",
+      "variant": "settled",
+      "targetProgress": 0.48,
+      "actualProgress": 0.4803,
+      "scrollY": 203,
+      "renderMode": "dom-fallback-ready",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:20.611Z",
+      "sha256": "c558ea765881b0539beedeaef50b58c55fdbe8b77ac605c9b898a01442e686ad",
+      "bytes": 250839
+    },
+    {
+      "id": "mobile-aperture",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/mobile-aperture.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "aperture",
+      "variant": "media-reveal",
+      "targetProgress": 0.68,
+      "actualProgress": 0.6803,
+      "scrollY": 1837,
+      "renderMode": "dom-fallback-ready",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:20.992Z",
+      "sha256": "0d55c628c73f91624834a870024000e33b71f159300dc5d73f1e010b04f1f7a1",
+      "bytes": 267179
+    },
+    {
+      "id": "mobile-need",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/mobile-need.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "need",
+      "variant": "settled",
+      "targetProgress": 0.68,
+      "actualProgress": 0.6804,
+      "scrollY": 3157,
+      "renderMode": "dom-fallback-ready",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:21.288Z",
+      "sha256": "8e78fcc151cddbba81ebbdc79b22be9fdb3a3e766fac05fb3b1de5a914d70347",
+      "bytes": 265822
+    },
+    {
+      "id": "mobile-find",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/mobile-find.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "find",
+      "variant": "selection",
+      "targetProgress": 0.74,
+      "actualProgress": 0.7402,
+      "scrollY": 4655,
+      "renderMode": "dom-fallback-ready",
+      "mediaMode": "native-video",
+      "findStep": "selection",
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:21.680Z",
+      "sha256": "7dc78d6288d844bc7a1ec9434a531cfe01d750ffa0308d66df38bc29b9c78b53",
+      "bytes": 251241
+    },
+    {
+      "id": "mobile-test",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/mobile-test.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "test",
+      "variant": "field-contact",
+      "targetProgress": 0.56,
+      "actualProgress": 0.5602,
+      "scrollY": 5937,
+      "renderMode": "dom-fallback-ready",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:22.145Z",
+      "sha256": "6f3ee7fa814ca24d3b00ed90c922326f1220247f1a17b915d8d5318aa90ae69a",
+      "bytes": 196996
+    },
+    {
+      "id": "mobile-prove",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/mobile-prove.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "prove",
+      "variant": "evidence-record",
+      "targetProgress": 0.16,
+      "actualProgress": 0.1598,
+      "scrollY": 7022,
+      "renderMode": "dom-fallback-ready",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:22.273Z",
+      "sha256": "8ae50c086814bb25c29def3e8c3998407c263e343f4889ef5444278dd90055a7",
+      "bytes": 83975
+    },
+    {
+      "id": "fallback-reduced-motion-aperture",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/fallback-reduced-motion-aperture.png",
+      "profile": "fallback",
+      "mode": "reduced-motion",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "aperture",
+      "variant": "static-media-reveal",
+      "targetProgress": 0.68,
+      "actualProgress": 0.6804,
+      "scrollY": 1082,
+      "renderMode": "reduced-motion",
+      "mediaMode": "static-posters",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:24.044Z",
+      "sha256": "8edb722cfb6c16579b43d92eeb5d70b34f56e860a2449c962776a9697987d71e",
+      "bytes": 797862
+    },
+    {
+      "id": "fallback-reduced-motion-test",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/fallback-reduced-motion-test.png",
+      "profile": "fallback",
+      "mode": "reduced-motion",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "test",
+      "variant": "static-field-contact",
+      "targetProgress": 0.56,
+      "actualProgress": 0.5604,
+      "scrollY": 3715,
+      "renderMode": "reduced-motion",
+      "mediaMode": "static-posters",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:25.278Z",
+      "sha256": "e65c9f394067f2671b1c6460b977abfecc82e13984b5ef93dff1ec1d3e133117",
+      "bytes": 776800
+    },
+    {
+      "id": "fallback-no-webgl-aperture",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase2/fallback-no-webgl-aperture.png",
+      "profile": "fallback",
+      "mode": "no-webgl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "aperture",
+      "variant": "media-reveal",
+      "targetProgress": 0.72,
+      "actualProgress": 0.7201,
+      "scrollY": 2162,
+      "renderMode": "no-webgl-fallback",
+      "mediaMode": "native-video",
+      "findStep": null,
+      "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+      "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+      "capturedAt": "2026-08-15T16:53:27.086Z",
+      "sha256": "23224eecbf235cf91dd8057bf0958b171b70ad2681e4b2bfeb5cbedd6092327b",
+      "bytes": 941895
+    }
+  ],
+  "journey": {
+    "id": "desktop-complete-journey",
+    "kind": "video",
+    "file": "artifacts/review/phase2/desktop-journey.webm",
+    "profile": "desktop",
+    "mode": "normal",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "phase": "complete-journey",
+    "phaseSequence": [
+      {
+        "phase": "signal",
+        "progress": 0.34
+      },
+      {
+        "phase": "aperture",
+        "progress": 0.22
+      },
+      {
+        "phase": "aperture",
+        "progress": 0.78
+      },
+      {
+        "phase": "need",
+        "progress": 0.68
+      },
+      {
+        "phase": "find",
+        "progress": 0.74
+      },
+      {
+        "phase": "test",
+        "progress": 0.56
+      },
+      {
+        "phase": "prove",
+        "progress": 0.16
+      }
+    ],
+    "sourceHead": "d88f2020851325890e8951d88373475243ef9d1a",
+    "sourceCandidate": "d88f2020851325890e8951d88373475243ef9d1a",
+    "capturedAt": "2026-08-15T16:53:43.984Z",
+    "sha256": "2aca51553494f9aa0a56e472c70f21c6d75404679bb07c98706fb10abda4d4c7",
+    "bytes": 2154513
+  }
+}
