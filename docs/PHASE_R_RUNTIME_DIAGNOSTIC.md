@@ -5,8 +5,8 @@ This record compares deterministic local production-preview journeys before and 
 ## Candidate binding and method
 
 - Accepted Phase 3 baseline HEAD: `ff78e2d911960bb2c05d7404966bbf688d0764e9`
-- Phase R implementation candidate HEAD: `f072efb3c3d281c2af02b685afdb6b9e82e073ec`
-- Candidate source tree: `43c6640a4e8dc1d7db87f6c98266c507953cb8b6`
+- Phase R implementation candidate HEAD: `fb0f269b04cbcccc007873d53c335891683fe83f`
+- Candidate source tree: `72df67973cdcb08db7d146ba193593e2fedfc1f8`
 - Branch: `redirect/quantum-presence-startup-magnet`
 - Browser: bundled Chromium `151.0.7922.34`
 - Build input: fresh `npm run build`, followed by an isolated `astro preview`
@@ -19,7 +19,7 @@ Command:
 
 ```powershell
 $env:PHASE_R_RUNTIME_STAGE = "candidate"
-$env:PHASE_R_RUNTIME_CANDIDATE_SHA = "f072efb3c3d281c2af02b685afdb6b9e82e073ec"
+$env:PHASE_R_RUNTIME_CANDIDATE_SHA = "fb0f269b04cbcccc007873d53c335891683fe83f"
 npm run runtime:phase-r
 ```
 
@@ -40,40 +40,40 @@ Machine artifacts:
 
 | Metric | Phase 3 baseline | Phase R candidate | Direction |
 | --- | ---: | ---: | --- |
-| Journey duration | 14,780.7 ms | 11,795.3 ms | 2,985.4 ms shorter |
-| rAF samples | 202 | 518 | more observable frame opportunities |
+| Journey duration | 14,780.7 ms | 11,755.3 ms | 3,025.4 ms shorter |
+| rAF samples | 202 | 532 | more observable frame opportunities |
 | rAF p50 | 83.300 ms | 16.700 ms | 66.600 ms lower |
-| rAF p95 | 165.865 ms | 50.000 ms | 115.865 ms lower |
-| rAF p99 | 233.300 ms | 66.700 ms | 166.600 ms lower |
+| rAF p95 | 165.865 ms | 49.900 ms | 115.965 ms lower |
+| rAF p99 | 233.300 ms | 61.485 ms | 171.815 ms lower |
 | Intervals >33.3 ms | 137 | 100 | 37 fewer |
-| Intervals >50 ms | 124 | 14 | 110 fewer |
-| Maximum interval | 233.400 ms | 100.000 ms | 133.400 ms lower |
-| Long tasks | 10 | 9 | 1 fewer |
-| Long-task total | 573 ms | 561 ms | 12 ms lower |
-| Long-task maximum | 82 ms | 86 ms | 4 ms higher |
+| Intervals >50 ms | 124 | 11 | 113 fewer |
+| Maximum interval | 233.400 ms | 100.100 ms | 133.300 ms lower |
+| Long tasks | 10 | 5 | 5 fewer |
+| Long-task total | 573 ms | 364 ms | 209 ms lower |
+| Long-task maximum | 82 ms | 83 ms | 1 ms higher |
 | Page / console errors | 0 | 0 | unchanged |
 | Offscreen video playback samples | 0 | 0 | unchanged |
 
-Duration-normalized desktop rates make the unequal six-act and seven-act journeys easier to compare: intervals over 33.3 ms fell from `9.269/s` to `8.478/s`; intervals over 50 ms fell from `8.389/s` to `1.187/s`. Long-task count density rose from `0.677/s` to `0.763/s`, and long-task time rose from `38.767 ms/s` to `47.561 ms/s`. Those long-task density regressions remain disclosed even though overall frame pacing improved materially.
+Duration-normalized desktop rates make the unequal six-act and seven-act journeys easier to compare: intervals over 33.3 ms fell from `9.269/s` to `8.507/s`; intervals over 50 ms fell from `8.389/s` to `0.936/s`. Long-task count density fell from `0.677/s` to `0.425/s`, and long-task time fell from `38.767 ms/s` to `30.965 ms/s`. The one-millisecond increase in the maximum individual long task remains disclosed even though overall frame pacing and long-task density improved materially.
 
 ### Mobile
 
 | Metric | Phase 3 baseline | Phase R candidate | Direction |
 | --- | ---: | ---: | --- |
-| Journey duration | 8,100.0 ms | 8,131.5 ms | 31.5 ms longer |
-| rAF samples | 329 | 486 | more observable frame opportunities |
+| Journey duration | 8,100.0 ms | 8,337.2 ms | 237.2 ms longer |
+| rAF samples | 329 | 489 | more observable frame opportunities |
 | rAF p50 | 16.700 ms | 16.700 ms | unchanged |
-| rAF p95 | 50.000 ms | 16.775 ms | 33.225 ms lower |
-| rAF p99 | 66.700 ms | 16.800 ms | 49.900 ms lower |
-| Intervals >33.3 ms | 99 | 1 | 98 fewer |
+| rAF p95 | 50.000 ms | 16.800 ms | 33.200 ms lower |
+| rAF p99 | 66.700 ms | 33.300 ms | 33.400 ms lower |
+| Intervals >33.3 ms | 99 | 10 | 89 fewer |
 | Intervals >50 ms | 7 | 0 | 7 fewer |
-| Maximum interval | 116.700 ms | 33.300 ms | 83.400 ms lower |
+| Maximum interval | 116.700 ms | 33.400 ms | 83.300 ms lower |
 | Long tasks | 0 | 0 | unchanged |
 | Page / console errors | 0 | 0 | unchanged |
 | WebGL draws | 0 | 0 | mobile remains DOM/CSS/SVG by default |
 | Offscreen video playback samples | 0 | 0 | unchanged |
 
-Duration-normalized mobile intervals over 33.3 ms fell from `12.222/s` to `0.123/s`; intervals over 50 ms fell from `0.864/s` to `0/s`.
+Duration-normalized mobile intervals over 33.3 ms fell from `12.222/s` to `1.199/s`; intervals over 50 ms fell from `0.864/s` to `0/s`.
 
 ## Runtime lifecycle findings
 
@@ -83,19 +83,19 @@ The candidate initializes the optional custom WebGL engine only on the desktop p
 | --- | ---: | --- |
 | PRESENCE | 9 | Continuous drawing observed and permitted while active. |
 | ACCESS | 0 | No continuous rendering. |
-| STARTUP | 6 | Transient event-driven draws were still arriving during the first post-scroll window; this probe classifies any delta above 2 as continuous. |
-| METHOD | 2 | No continuous rendering by the probe threshold. |
+| STARTUP | 7 | Transient event-driven draws were still arriving during the first post-scroll window; this probe classifies any delta above 2 as continuous. |
+| METHOD | 0 | No continuous rendering. |
 | ACTIVITY | 0 | No continuous rendering. |
 | EVIDENCE | 0 | No continuous rendering. |
 | ACTION | 0 | No continuous rendering. |
 
-The STARTUP sample is not concealed. Source inspection shows that the engine's permanent animation-frame loop is enabled only when the active phase is PRESENCE; STARTUP and METHOD use scheduled one-shot draws in response to scroll, pointer, resize, or state changes. The candidate-bound browser lifecycle case separately verifies that draws stop after METHOD settles, while inactive, while hidden, and after teardown. The six draws above therefore record short post-scroll/state-update activity, not evidence of an indefinite STARTUP loop. A future probe can add a longer quiet lead-in before labeling this window, but Phase R does not change the committed implementation merely to improve the label.
+The STARTUP sample is not concealed. Source inspection shows that the engine's permanent animation-frame loop is enabled only when the active phase is PRESENCE; STARTUP and METHOD use scheduled one-shot draws in response to scroll, pointer, resize, or state changes. The candidate-bound browser lifecycle case separately verifies that draws stop after METHOD settles, while inactive, while hidden, and after teardown. The seven draws above therefore record short post-scroll/state-update activity, not evidence of an indefinite STARTUP loop. A future probe can add a longer quiet lead-in before labeling this window, but Phase R does not change the committed implementation merely to improve the label.
 
 The candidate homepage contains no video elements, so media sample sets are empty and offscreen playback remains zero. The browser exposed coarse fixed 10 MB heap counters at start and end; the reported zero delta is not treated as a precise memory finding.
 
 ## Historical evidence integrity
 
-Git tree comparison proves that `artifacts/review/` is identical between accepted Phase 3 HEAD `ff78e2d...` and candidate `f072efb...`: 82 tracked files totaling 39,090,932 bytes, with no name, mode, blob, or byte change.
+Git tree comparison proves that the pre-Phase-R historical evidence within `artifacts/review/` is identical between accepted Phase 3 HEAD `ff78e2d...` and candidate `fb0f269...`: 82 tracked files totaling 39,090,932 bytes, with no name, mode, blob, or byte change.
 
 The candidate runtime runner independently hashed the same 82-file set before and after build/measurement and recorded digest `9c36b1fe1606733ae08b361df674d91833414196b3583cd31cddaf43c455f1bf` using sorted `file\0sha256\0bytes` records.
 
@@ -103,7 +103,7 @@ The earlier baseline aggregate recorded 83 files / 41,764,241 bytes / digest `4d
 
 ## Release interpretation and limitations
 
-The candidate materially improves local synthetic desktop and mobile frame pacing, preserves zero application errors, keeps mobile free of WebGL, and stops permanent rendering outside active PRESENCE. It does not show a significant overall synthetic regression, but the desktop long-task maximum and duration-normalized long-task density are worse and remain visible above.
+The candidate materially improves local synthetic desktop and mobile frame pacing, preserves zero application errors, keeps mobile free of WebGL, and stops permanent rendering outside active PRESENCE. It does not show a significant overall synthetic regression. The one-millisecond increase in the maximum desktop long task and the transient STARTUP draw window remain visible above.
 
 The measurement is Chromium/headless/SwiftShader lab evidence. It is not physical-GPU, Safari, Firefox, screen-reader, field-telemetry, or ordinary-device evidence. The baseline and candidate also traverse different six-act and seven-act page shapes, so raw totals are supplemented with normalized rates rather than treated as perfectly like-for-like workloads.
 
