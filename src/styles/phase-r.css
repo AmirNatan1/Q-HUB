@@ -600,12 +600,15 @@ html[data-active-phase="action"] .quantum-stage {
 }
 
 .partner-plane--founding.partner-plane--1 img {
-  top: 12%;
-  left: 79%;
-  width: min(58vw, 52rem);
-  height: clamp(11rem, 26vh, 19rem);
+  z-index: 1;
+  inset: -12%;
+  width: 124%;
+  height: 124%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.36;
   mix-blend-mode: multiply;
-  transform: translateX(-50%) scale(1.08);
+  transform: none;
 }
 
 .partner-plane--founding.partner-plane--2 {
@@ -1681,6 +1684,17 @@ html[data-render-mode="reduced-motion"] .quantum-stage__canvas {
     justify-self: center;
     mix-blend-mode: normal;
     transform: none;
+  }
+
+  .partner-plane--founding.partner-plane--1 img {
+    position: absolute;
+    inset: -6% -30%;
+    width: 160%;
+    height: 112%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.34;
+    mix-blend-mode: multiply;
   }
 
   .partner-plane strong,
