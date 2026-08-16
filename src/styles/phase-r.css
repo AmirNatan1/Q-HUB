@@ -1693,6 +1693,15 @@ html[data-render-mode="reduced-motion"] [data-partner-id="bazan-group"] {
   grid-template-columns: 1fr;
 }
 
+html[data-render-mode="reduced-motion"] [data-partner-id="bazan-group"],
+html[data-render-mode="reduced-motion"] [data-partner-id="talcar"] {
+  color: var(--r-ink);
+}
+
+html[data-render-mode="reduced-motion"] [data-partner-id="taavura-livnat-group"] {
+  color: #183c34;
+}
+
 html[data-render-mode="reduced-motion"] [data-partner-id="talcar"] img,
 html[data-render-mode="reduced-motion"] [data-partner-id="bazan-group"] img {
   display: none;
