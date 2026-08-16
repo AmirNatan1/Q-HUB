@@ -1,6 +1,6 @@
 # Phase R technical acceptance ledger
 
-Phase R is technically closed against the strategic-reorientation contract, subject to the final version-control equality step recorded under R-14. This ledger does **not** make the human creative decision.
+Phase R is technically closed against the strategic-reorientation contract, including the version-control equality result recorded under R-14. This ledger does **not** make the human creative decision.
 
 ## Candidate lineage
 
@@ -12,6 +12,7 @@ Phase R is technically closed against the strategic-reorientation contract, subj
 - Runtime/bundle closure: `a29d7350aaee25cfead0c4893a90c9a245363655`
 - Lighthouse/evidence input candidate: `aeed95e9c0fda4fa6deaf79a1c214b4dd7be5edb`
 - Evidence candidate tree: `71f34ffedfbec15eb70593f97472ae85de1b2256`
+- Evidence/docs closure: `5096f38c0c68d81542860c59be02df2e89329bb9`
 
 The interrupted takeover began with HEAD `f072efb...`, a deleted tracked runtime diagnostic, and three untracked but complete runtime JSON files. Those files were reconciled before modification. Candidate-bound artifacts invalidated by later source fixes were preserved locally under ignored `artifacts/recovery/` paths and remain recoverable from Git history.
 
@@ -132,11 +133,11 @@ The interrupted takeover began with HEAD `f072efb...`, a deleted tracked runtime
 
 ## R-14 — Version control
 
-**Status: PENDING final documentation commit and normal push.**
+**Status: PASS.**
 
-- Verification completed so far: intentional Phase R diff reviewed from accepted Phase 3; no force operation, merge, or deploy performed; the post-evidence/documentation `npm run release:secrets` scan passed with 121 candidate text files checked and 111 binary/oversize files skipped.
-- Remaining exact steps: stage only the final Phase R evidence and required documents; rerun `npm run release:secrets`; inspect the staged diff; commit; push `redirect/quantum-presence-startup-magnet` normally; verify clean worktree and `HEAD == @{u} == git ls-remote origin refs/heads/redirect/quantum-presence-startup-magnet`; update this line with the closure result.
-- Limitation: R-14 cannot truthfully be marked PASS until the live remote equality check completes.
+- Verification: intentional Phase R diff reviewed from accepted Phase 3; the post-evidence/documentation `npm run release:secrets` scan passed with 121 candidate text files checked and 111 binary/oversize files skipped; closure commit `5096f38...` was pushed normally with `git push -u origin redirect/quantum-presence-startup-magnet`; `git rev-parse HEAD`, `git rev-parse @{u}`, and `git ls-remote origin refs/heads/redirect/quantum-presence-startup-magnet` all returned `5096f38c0c68d81542860c59be02df2e89329bb9`; the worktree was clean.
+- Evidence: no force push, main merge, production deployment, or later-phase work occurred. This docs-only status record is followed by one normal handoff push and a repeat clean/equality check reported to the reviewer.
+- Limitation: remote equality is a point-in-time repository check, not a deployment or branch-preview verification.
 
 ## Interrupted-run disclosures
 
