@@ -9,9 +9,10 @@ import { fileURLToPath } from "node:url";
 const rootDirectory = fileURLToPath(new URL("..", import.meta.url));
 const distDirectory = path.join(rootDirectory, "dist");
 const indexPath = path.join(distDirectory, "index.html");
-const reportPath = path.join(rootDirectory, "artifacts", "bundle-report.json");
-const acceptedPhase2Baseline = Object.freeze({
-  sourceCandidate: "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+const reportPath = path.join(rootDirectory, "artifacts", "bundle-phase-r-report.json");
+const acceptedPhase3Baseline = Object.freeze({
+  sourceCandidate: "ff78e2d911960bb2c05d7404966bbf688d0764e9",
+  implementationCandidate: "70d8b5cc193311b9548c49399dde6a014583e13a",
   totalRawBytes: 20_852,
   totalGzipBytes: 7_961,
   initialRawBytes: 9_179,
@@ -19,6 +20,77 @@ const acceptedPhase2Baseline = Object.freeze({
   lazyRawBytes: 11_673,
   lazyGzipBytes: 4_044
 });
+const forbiddenRuntimeDefinitions = Object.freeze([
+  {
+    key: "react",
+    label: "React / React DOM",
+    packages: ["react", "react-dom"],
+    patterns: [
+      /node_modules[\\/](?:react|react-dom)(?:[\\/]|\b)/i,
+      /react(?:-dom)?\.production(?:\.min)?\.js\b/i,
+      /\b__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED\b/,
+      /\breact\.(?:element|fragment|portal|transitional\.element)\b/i
+    ]
+  },
+  {
+    key: "three",
+    label: "Three.js",
+    packages: ["three"],
+    patterns: [
+      /node_modules[\\/]three(?:[\\/]|\b)/i,
+      /\bthree\.module(?:\.min)?\.js\b/i,
+      /\bWebGLRenderer\b/,
+      /\bWebGLProgram\b/
+    ]
+  },
+  {
+    key: "r3f",
+    label: "React Three Fiber",
+    packages: ["@react-three/fiber"],
+    patterns: [
+      /node_modules[\\/]@react-three[\\/]fiber(?:[\\/]|\b)/i,
+      /@react-three\/fiber/i,
+      /react-three-fiber/i
+    ]
+  },
+  {
+    key: "gsap",
+    label: "GSAP / ScrollTrigger",
+    packages: ["gsap"],
+    patterns: [
+      /node_modules[\\/]gsap(?:[\\/]|\b)/i,
+      /\b(?:GreenSock|ScrollTrigger)\b/,
+      /\bgsap(?:\.min)?\.js\b/i
+    ]
+  },
+  {
+    key: "heavyRuntimes",
+    label: "heavy animation, 3D, carousel, router, or smooth-scroll runtime",
+    packages: [
+      "@babylonjs/core",
+      "@barba/core",
+      "@studio-freight/lenis",
+      "@tanstack/react-router",
+      "animejs",
+      "babylonjs",
+      "barba.js",
+      "framer-motion",
+      "lenis",
+      "locomotive-scroll",
+      "lottie-web",
+      "motion",
+      "pixi.js",
+      "react-router",
+      "react-router-dom",
+      "smooth-scroll",
+      "swiper"
+    ],
+    patterns: [
+      /node_modules[\\/](?:@babylonjs[\\/]core|@barba[\\/]core|@studio-freight[\\/]lenis|@tanstack[\\/]react-router|animejs|babylonjs|barba\.js|framer-motion|lenis|locomotive-scroll|lottie-web|motion|pixi\.js|react-router(?:-dom)?|smooth-scroll|swiper)(?:[\\/]|\b)/i,
+      /\b(?:LocomotiveScroll|lottie-web|framer-motion|Babylon\.js|PIXI\.Application)\b/i
+    ]
+  }
+]);
 
 function normalizePath(filePath) {
   return filePath.replaceAll("\\", "/");
@@ -92,20 +164,34 @@ function traverse(roots, graph, includeDynamic) {
   return visited;
 }
 
-async function packagePresence() {
+async function packagePresence(definitions) {
   try {
-    const packageLock = JSON.parse(
-      await readFile(path.join(rootDirectory, "package-lock.json"), "utf8")
+    const [packageManifest, packageLock] = await Promise.all([
+      readFile(path.join(rootDirectory, "package.json"), "utf8").then(JSON.parse),
+      readFile(path.join(rootDirectory, "package-lock.json"), "utf8").then(JSON.parse)
+    ]);
+    const directProductionDependencies = new Set(
+      Object.keys(packageManifest.dependencies ?? {})
     );
     const packagePaths = Object.keys(packageLock.packages ?? {}).map(normalizePath);
-    return {
-      three: packagePaths.some((entry) => entry.endsWith("node_modules/three")),
-      r3f: packagePaths.some((entry) =>
-        entry.endsWith("node_modules/@react-three/fiber")
-      )
-    };
-  } catch {
-    return { three: null, r3f: null };
+    return Object.fromEntries(definitions.map((definition) => [
+      definition.key,
+      {
+        directProductionDependency: definition.packages.some((packageName) =>
+          directProductionDependencies.has(packageName)
+        ),
+        installedInDependencyTree: definition.packages.some((packageName) =>
+          packagePaths.some((entry) => entry.endsWith(`node_modules/${packageName}`))
+        ),
+        packageNames: definition.packages
+      }
+    ]));
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error);
+    throw new Error(
+      `Unable to inspect package.json and package-lock.json for forbidden Phase R runtimes: ${detail}`,
+      { cause: error }
+    );
   }
 }
 
@@ -251,24 +337,32 @@ async function main() {
   }
   composition.sort((left, right) => right.rawBytes - left.rawBytes);
 
-  const installed = await packagePresence();
-  const three = {
-    installedInDependencyTree: installed.three,
-    ...detectRuntime(searchableAssets, initialFiles, [
-      /node_modules[\\/]three(?:[\\/]|\b)/i,
-      /\bthree\.module(?:\.min)?\.js\b/i,
-      /\bWebGLRenderer\b/,
-      /\bWebGLProgram\b/
+  const installed = await packagePresence(forbiddenRuntimeDefinitions);
+  const runtimeDetection = Object.fromEntries(
+    forbiddenRuntimeDefinitions.map((definition) => [
+      definition.key,
+      {
+        label: definition.label,
+        ...installed[definition.key],
+        ...detectRuntime(searchableAssets, initialFiles, definition.patterns)
+      }
     ])
-  };
-  const r3f = {
-    installedInDependencyTree: installed.r3f,
-    ...detectRuntime(searchableAssets, initialFiles, [
-      /node_modules[\\/]@react-three[\\/]fiber(?:[\\/]|\b)/i,
-      /@react-three\/fiber/i,
-      /react-three-fiber/i
-    ])
-  };
+  );
+
+  const rawBytes = composition.reduce((sum, asset) => sum + asset.rawBytes, 0);
+  const gzipBytes = composition.reduce((sum, asset) => sum + asset.gzipBytes, 0);
+  const initialRawBytes = composition
+    .filter((asset) => asset.tier === "initial")
+    .reduce((sum, asset) => sum + asset.rawBytes, 0);
+  const initialGzipBytes = composition
+    .filter((asset) => asset.tier === "initial")
+    .reduce((sum, asset) => sum + asset.gzipBytes, 0);
+  const lazyRawBytes = composition
+    .filter((asset) => asset.tier === "lazy")
+    .reduce((sum, asset) => sum + asset.rawBytes, 0);
+  const lazyGzipBytes = composition
+    .filter((asset) => asset.tier === "lazy")
+    .reduce((sum, asset) => sum + asset.gzipBytes, 0);
 
   const report = {
     generatedAt: new Date().toISOString(),
@@ -276,35 +370,27 @@ async function main() {
     initialHtml: { scripts, modulePreloads },
     totals: {
       javascriptAssets: composition.length,
-      rawBytes: composition.reduce((sum, asset) => sum + asset.rawBytes, 0),
-      gzipBytes: composition.reduce((sum, asset) => sum + asset.gzipBytes, 0),
-      initialRawBytes: composition
-        .filter((asset) => asset.tier === "initial")
-        .reduce((sum, asset) => sum + asset.rawBytes, 0),
-      initialGzipBytes: composition
-        .filter((asset) => asset.tier === "initial")
-        .reduce((sum, asset) => sum + asset.gzipBytes, 0)
+      rawBytes,
+      gzipBytes,
+      initialRawBytes,
+      initialGzipBytes,
+      lazyRawBytes,
+      lazyGzipBytes
     },
     composition,
-    runtimeDetection: { three, r3f }
+    runtimeDetection
   };
 
-  const lazyRawBytes = composition
-    .filter((asset) => asset.tier === "lazy")
-    .reduce((sum, asset) => sum + asset.rawBytes, 0);
-  const lazyGzipBytes = composition
-    .filter((asset) => asset.tier === "lazy")
-    .reduce((sum, asset) => sum + asset.gzipBytes, 0);
-  report.acceptedPhase2Baseline = acceptedPhase2Baseline;
-  report.phase3Delta = {
-    totalRawBytes: report.totals.rawBytes - acceptedPhase2Baseline.totalRawBytes,
-    totalGzipBytes: report.totals.gzipBytes - acceptedPhase2Baseline.totalGzipBytes,
+  report.acceptedPhase3Baseline = acceptedPhase3Baseline;
+  report.phaseRDelta = {
+    totalRawBytes: report.totals.rawBytes - acceptedPhase3Baseline.totalRawBytes,
+    totalGzipBytes: report.totals.gzipBytes - acceptedPhase3Baseline.totalGzipBytes,
     initialRawBytes:
-      report.totals.initialRawBytes - acceptedPhase2Baseline.initialRawBytes,
+      report.totals.initialRawBytes - acceptedPhase3Baseline.initialRawBytes,
     initialGzipBytes:
-      report.totals.initialGzipBytes - acceptedPhase2Baseline.initialGzipBytes,
-    lazyRawBytes: lazyRawBytes - acceptedPhase2Baseline.lazyRawBytes,
-    lazyGzipBytes: lazyGzipBytes - acceptedPhase2Baseline.lazyGzipBytes
+      report.totals.initialGzipBytes - acceptedPhase3Baseline.initialGzipBytes,
+    lazyRawBytes: lazyRawBytes - acceptedPhase3Baseline.lazyRawBytes,
+    lazyGzipBytes: lazyGzipBytes - acceptedPhase3Baseline.lazyGzipBytes
   };
 
   await mkdir(path.dirname(reportPath), { recursive: true });
@@ -334,19 +420,17 @@ async function main() {
     `Totals: ${formatBytes(report.totals.rawBytes)} raw / ${formatBytes(report.totals.gzipBytes)} gzip; initial ${formatBytes(report.totals.initialRawBytes)} raw / ${formatBytes(report.totals.initialGzipBytes)} gzip`
   );
   console.log(
-    `Phase 3 delta from accepted Phase 2 candidate ${acceptedPhase2Baseline.sourceCandidate}: `
-      + `${report.phase3Delta.totalRawBytes >= 0 ? "+" : ""}${report.phase3Delta.totalRawBytes} raw / `
-      + `${report.phase3Delta.totalGzipBytes >= 0 ? "+" : ""}${report.phase3Delta.totalGzipBytes} gzip; `
-      + `initial ${report.phase3Delta.initialRawBytes >= 0 ? "+" : ""}${report.phase3Delta.initialRawBytes} raw / `
-      + `${report.phase3Delta.initialGzipBytes >= 0 ? "+" : ""}${report.phase3Delta.initialGzipBytes} gzip`
+    `Phase R delta from accepted Phase 3 baseline ${acceptedPhase3Baseline.sourceCandidate}: `
+      + `${report.phaseRDelta.totalRawBytes >= 0 ? "+" : ""}${report.phaseRDelta.totalRawBytes} raw / `
+      + `${report.phaseRDelta.totalGzipBytes >= 0 ? "+" : ""}${report.phaseRDelta.totalGzipBytes} gzip; `
+      + `initial ${report.phaseRDelta.initialRawBytes >= 0 ? "+" : ""}${report.phaseRDelta.initialRawBytes} raw / `
+      + `${report.phaseRDelta.initialGzipBytes >= 0 ? "+" : ""}${report.phaseRDelta.initialGzipBytes} gzip`
   );
 
-  for (const [label, result] of [
-    ["Three.js", three],
-    ["React Three Fiber", r3f]
-  ]) {
+  for (const definition of forbiddenRuntimeDefinitions) {
+    const result = runtimeDetection[definition.key];
     console.log(
-      `${label}: dependency=${result.installedInDependencyTree ?? "unknown"}; emitted=${result.detectedInAssets}; initial-critical=${result.detectedInInitialCriticalPath}`
+      `${definition.label}: direct-production=${result.directProductionDependency ?? "unknown"}; dependency-tree=${result.installedInDependencyTree ?? "unknown"}; emitted=${result.detectedInAssets}; initial-critical=${result.detectedInInitialCriticalPath}`
     );
     if (result.detectedAssets.length) {
       console.log(`  detected assets: ${result.detectedAssets.join(", ")}`);
@@ -355,8 +439,16 @@ async function main() {
 
   console.log(`\nMachine-readable report: ${normalizePath(path.relative(rootDirectory, reportPath))}`);
 
-  if (three.detectedInInitialCriticalPath || r3f.detectedInInitialCriticalPath) {
-    throw new Error("Three.js or React Three Fiber was detected in the initial critical JavaScript path.");
+  const forbiddenFindings = forbiddenRuntimeDefinitions.filter((definition) => {
+    const result = runtimeDetection[definition.key];
+    return result.directProductionDependency
+      || result.installedInDependencyTree
+      || result.detectedInAssets;
+  });
+  if (forbiddenFindings.length > 0) {
+    throw new Error(
+      `Phase R forbids production heavy runtimes; detected: ${forbiddenFindings.map((definition) => definition.label).join(", ")}.`
+    );
   }
 }
 

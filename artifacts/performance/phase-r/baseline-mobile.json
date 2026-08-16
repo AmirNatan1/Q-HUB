@@ -1,0 +1,318 @@
+{
+  "profile": "mobile",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "configuredDeviceScaleFactor": 1,
+  "measuredDevicePixelRatio": 1,
+  "browserVersion": "151.0.7922.34",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+  "durationMs": 8100,
+  "journeyPhases": [
+    "signal",
+    "aperture",
+    "need",
+    "find",
+    "test",
+    "prove"
+  ],
+  "frames": {
+    "samples": 329,
+    "p50Ms": 16.7,
+    "p95Ms": 50,
+    "p99Ms": 66.7,
+    "over33_3Ms": 99,
+    "over50Ms": 7,
+    "maxMs": 116.7
+  },
+  "longTasks": {
+    "supported": true,
+    "count": 0,
+    "totalDurationMs": 0,
+    "maxDurationMs": 0,
+    "entries": []
+  },
+  "errors": [],
+  "webglDrawCallsByPhase": {},
+  "mediaSamplesByPhase": {
+    "signal": {
+      "samples": 36,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "aperture": {
+      "samples": 24,
+      "playingSamples": 12,
+      "offscreenPlayingSamples": 0
+    },
+    "need": {
+      "samples": 24,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "find": {
+      "samples": 26,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "test": {
+      "samples": 24,
+      "playingSamples": 12,
+      "offscreenPlayingSamples": 0
+    },
+    "prove": {
+      "samples": 26,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    }
+  },
+  "offscreenVideoPlayback": {
+    "sampleCount": 0,
+    "samples": []
+  },
+  "memory": {
+    "exposed": true,
+    "start": {
+      "jsHeapSizeLimit": 3760000000,
+      "totalJSHeapSize": 10000000,
+      "usedJSHeapSize": 10000000
+    },
+    "end": {
+      "jsHeapSizeLimit": 3760000000,
+      "totalJSHeapSize": 10000000,
+      "usedJSHeapSize": 10000000
+    },
+    "usedJSHeapDelta": 0
+  },
+  "checkpoints": [
+    {
+      "expectedPhase": "signal",
+      "activePhase": "signal",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 203,
+      "canvas": {
+        "clientWidth": 390,
+        "clientHeight": 844,
+        "width": 300,
+        "height": 150,
+        "engine": null
+      },
+      "videos": [
+        {
+          "mediaPhase": "aperture",
+          "paused": true,
+          "ended": false,
+          "playing": false,
+          "visible": true,
+          "readyState": 0,
+          "networkState": 3,
+          "preload": "none",
+          "hasCurrentSource": false
+        },
+        {
+          "mediaPhase": "test",
+          "paused": true,
+          "ended": false,
+          "playing": false,
+          "visible": false,
+          "readyState": 0,
+          "networkState": 3,
+          "preload": "none",
+          "hasCurrentSource": false
+        }
+      ]
+    },
+    {
+      "expectedPhase": "aperture",
+      "activePhase": "aperture",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 1519,
+      "canvas": {
+        "clientWidth": 390,
+        "clientHeight": 844,
+        "width": 300,
+        "height": 150,
+        "engine": null
+      },
+      "videos": [
+        {
+          "mediaPhase": "aperture",
+          "paused": false,
+          "ended": false,
+          "playing": true,
+          "visible": true,
+          "readyState": 4,
+          "networkState": 1,
+          "preload": "none",
+          "hasCurrentSource": true
+        },
+        {
+          "mediaPhase": "test",
+          "paused": true,
+          "ended": false,
+          "playing": false,
+          "visible": false,
+          "readyState": 0,
+          "networkState": 3,
+          "preload": "none",
+          "hasCurrentSource": false
+        }
+      ]
+    },
+    {
+      "expectedPhase": "need",
+      "activePhase": "need",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 2894,
+      "canvas": {
+        "clientWidth": 390,
+        "clientHeight": 844,
+        "width": 300,
+        "height": 150,
+        "engine": null
+      },
+      "videos": [
+        {
+          "mediaPhase": "aperture",
+          "paused": true,
+          "ended": false,
+          "playing": false,
+          "visible": true,
+          "readyState": 4,
+          "networkState": 1,
+          "preload": "none",
+          "hasCurrentSource": true
+        },
+        {
+          "mediaPhase": "test",
+          "paused": true,
+          "ended": false,
+          "playing": false,
+          "visible": false,
+          "readyState": 0,
+          "networkState": 3,
+          "preload": "none",
+          "hasCurrentSource": false
+        }
+      ]
+    },
+    {
+      "expectedPhase": "find",
+      "activePhase": "find",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 4252,
+      "canvas": {
+        "clientWidth": 390,
+        "clientHeight": 844,
+        "width": 300,
+        "height": 150,
+        "engine": null
+      },
+      "videos": [
+        {
+          "mediaPhase": "aperture",
+          "paused": true,
+          "ended": false,
+          "playing": false,
+          "visible": true,
+          "readyState": 4,
+          "networkState": 1,
+          "preload": "none",
+          "hasCurrentSource": true
+        },
+        {
+          "mediaPhase": "test",
+          "paused": true,
+          "ended": false,
+          "playing": false,
+          "visible": false,
+          "readyState": 0,
+          "networkState": 3,
+          "preload": "none",
+          "hasCurrentSource": false
+        }
+      ]
+    },
+    {
+      "expectedPhase": "test",
+      "activePhase": "test",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 5781,
+      "canvas": {
+        "clientWidth": 390,
+        "clientHeight": 844,
+        "width": 300,
+        "height": 150,
+        "engine": null
+      },
+      "videos": [
+        {
+          "mediaPhase": "aperture",
+          "paused": true,
+          "ended": false,
+          "playing": false,
+          "visible": true,
+          "readyState": 4,
+          "networkState": 1,
+          "preload": "none",
+          "hasCurrentSource": true
+        },
+        {
+          "mediaPhase": "test",
+          "paused": false,
+          "ended": false,
+          "playing": true,
+          "visible": true,
+          "readyState": 4,
+          "networkState": 1,
+          "preload": "none",
+          "hasCurrentSource": true
+        }
+      ]
+    },
+    {
+      "expectedPhase": "prove",
+      "activePhase": "prove",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 7615,
+      "canvas": {
+        "clientWidth": 390,
+        "clientHeight": 844,
+        "width": 300,
+        "height": 150,
+        "engine": null
+      },
+      "videos": [
+        {
+          "mediaPhase": "aperture",
+          "paused": true,
+          "ended": false,
+          "playing": false,
+          "visible": true,
+          "readyState": 4,
+          "networkState": 1,
+          "preload": "none",
+          "hasCurrentSource": true
+        },
+        {
+          "mediaPhase": "test",
+          "paused": true,
+          "ended": false,
+          "playing": false,
+          "visible": false,
+          "readyState": 4,
+          "networkState": 1,
+          "preload": "none",
+          "hasCurrentSource": true
+        }
+      ]
+    }
+  ]
+}

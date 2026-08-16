@@ -13,7 +13,7 @@ const rootDirectory = fileURLToPath(new URL("..", import.meta.url));
 const distIndex = path.join(rootDirectory, "dist", "index.html");
 const artifactDirectory = process.env.LIGHTHOUSE_ARTIFACT_DIRECTORY
   ? path.resolve(process.env.LIGHTHOUSE_ARTIFACT_DIRECTORY)
-  : path.join(rootDirectory, "artifacts", "lighthouse", "phase3");
+  : path.join(rootDirectory, "artifacts", "lighthouse", "phase-r");
 const host = "127.0.0.1";
 const categories = ["performance", "accessibility", "best-practices", "seo"];
 const routeTargets = Object.freeze([
@@ -440,7 +440,7 @@ async function main() {
   }
 
   console.log(
-    `\nLighthouse thresholds passed for all Phase 3 routes. Reports: ${artifactDirectory}`
+    `\nLighthouse thresholds passed for all Phase R routes. Reports: ${artifactDirectory}`
   );
 }
 

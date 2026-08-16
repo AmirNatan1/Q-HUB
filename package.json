@@ -14,10 +14,14 @@
     "test:e2e": "node scripts/run-playwright.mjs",
     "test:e2e:update": "node scripts/run-playwright.mjs --update-snapshots",
     "check": "npm run typecheck && npm run lint && npm run test:unit && npm run build",
+    "test:source-integrity": "vitest run tests/source-integrity.test.ts",
     "release:placeholders": "vitest run tests/placeholder-release.test.ts",
     "release:phase3-output": "node tests/support/check-phase3-built-output.mjs",
+    "release:phase-r-output": "node tests/support/check-phase-r-built-output.mjs",
+    "release:phase-r": "npm run build && npm run test:source-integrity && npm run release:placeholders && npm run release:phase-r-output && npm run bundle:check",
     "bundle:check": "node scripts/check-bundle.mjs",
     "lighthouse": "node scripts/run-lighthouse.mjs",
+    "runtime:phase-r": "node scripts/measure-phase-r-runtime.mjs",
     "evidence:repair": "node scripts/capture-repair-evidence.mjs",
     "evidence:analyze": "node scripts/analyze-repair-evidence.mjs",
     "evidence:phase2": "node scripts/capture-phase2-evidence.mjs",
@@ -26,6 +30,8 @@
     "evidence:phase2:repair:plan": "node scripts/capture-phase2-repair-evidence.mjs --plan",
     "evidence:phase3": "node scripts/capture-phase3-evidence.mjs",
     "evidence:phase3:plan": "node scripts/capture-phase3-evidence.mjs --plan",
+    "evidence:phase-r": "node scripts/capture-phase-r-evidence.mjs",
+    "evidence:phase-r:plan": "node scripts/capture-phase-r-evidence.mjs --plan",
     "media:check": "node scripts/check-phase2-media.mjs"
   },
   "dependencies": {

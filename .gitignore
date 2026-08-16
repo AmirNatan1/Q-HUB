@@ -6,6 +6,7 @@ test-results/
 .lighthouseci/
 artifacts/*
 !artifacts/bundle-report.json
+!artifacts/bundle-phase-r-report.json
 !artifacts/phase2-media-report.json
 !artifacts/lighthouse/
 artifacts/lighthouse/*
@@ -13,6 +14,12 @@ artifacts/lighthouse/*
 !artifacts/lighthouse/phase3/
 artifacts/lighthouse/phase3/*
 !artifacts/lighthouse/phase3/summary.json
+!artifacts/lighthouse/phase-r/
+artifacts/lighthouse/phase-r/*
+!artifacts/lighthouse/phase-r/summary.json
+!artifacts/performance/
+!artifacts/performance/phase-r/
+!artifacts/performance/phase-r/**
 !artifacts/review/
 !artifacts/review/**
 artifacts/review/*.zip
@@ -20,6 +27,7 @@ coverage/
 .env
 .env.*
 !.env.example
+.codex-input/
 *.log
 .DS_Store
 Thumbs.db
