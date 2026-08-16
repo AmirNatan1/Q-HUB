@@ -6,9 +6,9 @@ This record compares deterministic local production-preview journeys for the acc
 
 - Accepted Phase 3 baseline HEAD: `ff78e2d911960bb2c05d7404966bbf688d0764e9`
 - Pre-repair Phase R implementation candidate: `65907148bafec7cfe02f6c6d73154e3269f5d0e0`
-- Final repaired implementation commit: `325f72d46b65376327c006c0e5d8a37c11d76e75`
-- Runtime measurement candidate HEAD: `e3340ad90d1d76dc5cb6bf4b5e37d3bf31df4b19`
-- Runtime candidate source tree: `bd9fe135e109cd8e8aef82c679a48d5686dc74ff`
+- Final repaired implementation commit: `8fe8f0a07199c07098dbfade6ba5d6506b249b03`
+- Runtime measurement candidate HEAD: `953881b5cc0317dda0f6751407e180fc9ef0359f`
+- Runtime candidate source tree: `15983c6b7c5428f649129975fb3cca0e94503031`
 - Branch: `redirect/quantum-presence-startup-magnet`
 - Browser: bundled Chromium `151.0.7922.34`
 - Build input: fresh `npm run build`, followed by an isolated `astro preview`
@@ -21,11 +21,11 @@ Command:
 
 ```powershell
 $env:PHASE_R_RUNTIME_STAGE = "candidate"
-$env:PHASE_R_RUNTIME_CANDIDATE_SHA = "e3340ad90d1d76dc5cb6bf4b5e37d3bf31df4b19"
+$env:PHASE_R_RUNTIME_CANDIDATE_SHA = "953881b5cc0317dda0f6751407e180fc9ef0359f"
 npm run runtime:phase-r
 ```
 
-The first repair attempt stopped before measurement because the fail-closed runner refused to overwrite the pre-repair files. Those three files were moved without byte changes to `artifacts/performance/phase-r-pre-repair-6590714/`. A first repair diagnostic bound to `b4d4471b...` was then generated and preserved at `artifacts/performance/phase-r-repair-intermediate-b4d4471/`. After visual inspection required a final Taavura territory refinement, the current runner regenerated the canonical candidate files from the final clean source. It completed both profiles, shut down its isolated processes, atomically promoted its outputs, and reverified HEAD, tree, branch, and output-only status.
+The first repair attempt stopped before measurement because the fail-closed runner refused to overwrite the pre-repair files. Those three files were moved without byte changes to `artifacts/performance/phase-r-pre-repair-6590714/`. Subsequent candidate-bound diagnostics were preserved under explicit `phase-r-repair-intermediate-*` directories when visual inspection required the Taavura environmental crop and then the reduced-motion contrast repair. The current runner regenerated the canonical files from the final clean source, completed both profiles, shut down its isolated processes, atomically promoted its outputs, and reverified HEAD, tree, branch, and output-only status.
 
 Machine artifacts:
 
@@ -33,34 +33,35 @@ Machine artifacts:
 - Final repaired candidate: `artifacts/performance/phase-r/candidate-*.json`
 - Pre-repair candidate: `artifacts/performance/phase-r-pre-repair-6590714/candidate-*.json`
 - First repair diagnostic: `artifacts/performance/phase-r-repair-intermediate-b4d4471/candidate-*.json`
+- Pre-fallback final diagnostic: `artifacts/performance/phase-r-repair-intermediate-e3340ad/candidate-*.json`
 - Preserved pre-repair archive: `artifacts/performance/phase-r.zip`
 
 ## Desktop results
 
 | Metric | Phase 3 baseline | Pre-repair Phase R | Final repaired Phase R | Final versus pre-repair |
 | --- | ---: | ---: | ---: | --- |
-| Journey duration | 14,780.7 ms | 11,809.4 ms | 11,656.3 ms | 153.1 ms shorter |
-| rAF samples | 202 | 529 | 514 | 15 fewer |
+| Journey duration | 14,780.7 ms | 11,809.4 ms | 11,694.0 ms | 115.4 ms shorter |
+| rAF samples | 202 | 529 | 510 | 19 fewer |
 | rAF p50 | 83.300 ms | 16.700 ms | 16.700 ms | unchanged |
-| rAF p95 | 165.865 ms | 50.000 ms | 49.900 ms | 0.100 ms lower |
-| rAF p99 | 233.300 ms | 66.600 ms | 66.700 ms | 0.100 ms higher |
-| Intervals >33.3 ms | 137 | 104 | 103 | 1 fewer |
-| Intervals >50 ms | 124 | 11 | 12 | 1 more |
-| Maximum interval | 233.400 ms | 133.300 ms | 99.900 ms | 33.400 ms lower |
+| rAF p95 | 165.865 ms | 50.000 ms | 50.000 ms | unchanged |
+| rAF p99 | 233.300 ms | 66.600 ms | 65.115 ms | 1.485 ms lower |
+| Intervals >33.3 ms | 137 | 104 | 105 | 1 more |
+| Intervals >50 ms | 124 | 11 | 10 | 1 fewer |
+| Maximum interval | 233.400 ms | 133.300 ms | 100.100 ms | 33.200 ms lower |
 | Long tasks | 10 | 4 | 5 | 1 more |
-| Long-task total | 573 ms | 306 ms | 331 ms | 25 ms higher |
-| Long-task maximum | 82 ms | 115 ms | 85 ms | 30 ms lower |
+| Long-task total | 573 ms | 306 ms | 356 ms | 50 ms higher |
+| Long-task maximum | 82 ms | 115 ms | 86 ms | 29 ms lower |
 | Page / console errors | 0 | 0 | 0 | unchanged |
 | Offscreen video playback samples | 0 | 0 | 0 | unchanged |
 
 Duration-normalized Phase 3 / pre-repair / final rates were:
 
-- intervals over 33.3 ms: `9.270/s` / `8.810/s` / `8.840/s`;
-- intervals over 50 ms: `8.390/s` / `0.930/s` / `1.030/s`;
+- intervals over 33.3 ms: `9.270/s` / `8.810/s` / `8.980/s`;
+- intervals over 50 ms: `8.390/s` / `0.930/s` / `0.850/s`;
 - long-task count: `0.680/s` / `0.340/s` / `0.430/s`;
-- long-task time: `38.770 ms/s` / `25.910 ms/s` / `28.400 ms/s`.
+- long-task time: `38.770 ms/s` / `25.910 ms/s` / `30.440 ms/s`.
 
-The final repair keeps the large Phase 3-to-Phase-R frame-pacing improvement, shortens the journey, and lowers the worst pre-repair long task from 115 ms to 85 ms. It records one additional long task, 25 ms more aggregate long-task time, one additional interval over 50 ms, and slightly higher normalized rates than the pre-repair run. Those small synthetic regressions are disclosed rather than hidden as run variance.
+The final repair keeps the large Phase 3-to-Phase-R frame-pacing improvement, shortens the journey, lowers the worst pre-repair long task from 115 ms to 86 ms, and records one fewer interval over 50 ms. It records one additional long task, 50 ms more aggregate long-task time, one additional interval over 33.3 ms, and slightly higher normalized long-task rates than the pre-repair run. Those mixed results are disclosed rather than hidden as run variance.
 
 The first repair diagnostic recorded 11 long tasks / 652 ms total / 92 ms maximum and `10.686/s` intervals over 33.3 ms. That superseded diagnostic is retained because it motivated the narrower final refinement and rerun; it is not cited as final evidence.
 
@@ -68,12 +69,12 @@ The first repair diagnostic recorded 11 long tasks / 652 ms total / 92 ms maximu
 
 | Metric | Phase 3 baseline | Pre-repair Phase R | Final repaired Phase R | Final versus pre-repair |
 | --- | ---: | ---: | ---: | --- |
-| Journey duration | 8,100.0 ms | 8,431.9 ms | 8,456.0 ms | 24.1 ms longer |
-| rAF samples | 329 | 484 | 495 | 11 more |
+| Journey duration | 8,100.0 ms | 8,431.9 ms | 8,248.2 ms | 183.7 ms shorter |
+| rAF samples | 329 | 484 | 489 | 5 more |
 | rAF p50 | 16.700 ms | 16.700 ms | 16.700 ms | unchanged |
 | rAF p95 | 50.000 ms | 16.800 ms | 16.800 ms | unchanged |
-| rAF p99 | 66.700 ms | 33.400 ms | 33.300 ms | 0.100 ms lower |
-| Intervals >33.3 ms | 99 | 16 | 9 | 7 fewer |
+| rAF p99 | 66.700 ms | 33.400 ms | 18.768 ms | 14.632 ms lower |
+| Intervals >33.3 ms | 99 | 16 | 4 | 12 fewer |
 | Intervals >50 ms | 7 | 0 | 0 | unchanged |
 | Maximum interval | 116.700 ms | 33.400 ms | 33.400 ms | unchanged |
 | Long tasks | 0 | 0 | 0 | unchanged |
@@ -81,7 +82,7 @@ The first repair diagnostic recorded 11 long tasks / 652 ms total / 92 ms maximu
 | WebGL draws | 0 | 0 | 0 | mobile remains DOM/CSS/SVG by default |
 | Offscreen video playback samples | 0 | 0 | 0 | unchanged |
 
-Duration-normalized mobile intervals over 33.3 ms were `12.220/s` for Phase 3, `1.900/s` pre-repair, and `1.060/s` final. Intervals over 50 ms remained `0/s` for both Phase R candidates.
+Duration-normalized mobile intervals over 33.3 ms were `12.220/s` for Phase 3, `1.900/s` pre-repair, and `0.485/s` final. Intervals over 50 ms remained `0/s` for both Phase R candidates.
 
 ## Runtime lifecycle findings
 
@@ -89,23 +90,23 @@ The final candidate initializes the optional custom WebGL engine only on desktop
 
 | Final checkpoint | Draw delta during 280 ms settled window | Interpretation |
 | --- | ---: | --- |
-| PRESENCE | 11 | Continuous drawing observed and permitted while active. |
+| PRESENCE | 10 | Continuous drawing observed and permitted while active. |
 | ACCESS | 0 | No continuous rendering. |
 | STARTUP | 7 | Transient event-driven draws were still arriving during the first post-scroll window. |
-| METHOD | 4 | Transient one-shot draws were still arriving during the first post-scroll window. |
+| METHOD | 1 | One-shot work settled below the probe's continuous-render threshold. |
 | ACTIVITY | 0 | No continuous rendering. |
 | EVIDENCE | 0 | No continuous rendering. |
 | ACTION | 0 | No continuous rendering. |
 
-Total desktop draw calls by act were PRESENCE `88`, STARTUP `15`, and METHOD `23`; other acts recorded none. The pre-repair run recorded `76`, `14`, and `20`, respectively. Source and browser lifecycle tests continue to show that the permanent animation-frame loop is eligible only during active PRESENCE; STARTUP and METHOD use bounded one-shot draws for scroll, pointer, resize, or state changes. Inactive, hidden, and torn-down states stop rendering. The nonzero STARTUP and METHOD quiet-window deltas are therefore retained as a timing/lifecycle limitation, not relabeled as zero.
+Total desktop draw calls by act were PRESENCE `78`, STARTUP `14`, and METHOD `22`; other acts recorded none. The pre-repair run recorded `76`, `14`, and `20`, respectively. Source and browser lifecycle tests continue to show that the permanent animation-frame loop is eligible only during active PRESENCE; STARTUP and METHOD use bounded one-shot draws for scroll, pointer, resize, or state changes. Inactive, hidden, and torn-down states stop rendering. The nonzero STARTUP quiet-window delta remains a timing/lifecycle limitation, not relabeled as zero.
 
 The homepage contains no video elements, so media sample sets are empty and offscreen playback remains zero. Chromium exposed coarse fixed 10 MB heap counters at start and end; the recorded zero delta is not treated as a precise memory conclusion.
 
 ## Historical evidence integrity
 
-The runtime runner hashed 133 pre-existing files under `artifacts/review/`, totaling 68,042,804 bytes, before and after measurement. The sorted `file\0sha256\0bytes` digest remained `a3e6f488b288711758cb09a51713ada0c5ed9d42cb7c83c5ee61e616a6c275ca`.
+The runtime runner hashed 158 pre-existing files under `artifacts/review/`, totaling 78,353,262 bytes, before and after measurement. The sorted `file\0sha256\0bytes` digest remained `e65a804806f57091891a840ba77ab2903527658948d45b3d2411ca92af6eded5`.
 
-That inventory includes the preserved pre-repair package, its archive, and the candidate-bound intermediate review package whose inspection exposed the remaining Taavura panel effect. Aggregate digests from earlier closure moments are not asserted to be equal because the preserved inventory intentionally grew. Each runner proves byte stability across its own measurement, while Git history and explicit candidate-named directories retain prior packages.
+That inventory includes the preserved pre-repair package, its archive, and candidate-bound intermediate packages whose inspection exposed the Taavura panel effect and reduced-motion contrast regression. Aggregate digests from earlier closure moments are not asserted to be equal because the preserved inventory intentionally grew. Each runner proves byte stability across its own measurement, while Git history and explicit candidate-named directories retain prior packages.
 
 ## Interpretation and limitations
 

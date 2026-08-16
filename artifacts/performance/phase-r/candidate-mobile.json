@@ -1,0 +1,222 @@
+{
+  "profile": "mobile",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "configuredDeviceScaleFactor": 1,
+  "measuredDevicePixelRatio": 1,
+  "browserVersion": "151.0.7922.34",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+  "durationMs": 8248.2,
+  "journeyPhases": [
+    "presence",
+    "access",
+    "startup",
+    "method",
+    "activity",
+    "evidence",
+    "action"
+  ],
+  "frames": {
+    "samples": 489,
+    "p50Ms": 16.7,
+    "p95Ms": 16.8,
+    "p99Ms": 18.768,
+    "over33_3Ms": 4,
+    "over50Ms": 0,
+    "maxMs": 33.4
+  },
+  "longTasks": {
+    "supported": true,
+    "count": 0,
+    "totalDurationMs": 0,
+    "maxDurationMs": 0,
+    "entries": []
+  },
+  "errors": [],
+  "webglDrawCallsByPhase": {},
+  "mediaSamplesByPhase": {
+    "presence": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "access": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "startup": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "method": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "activity": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "evidence": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "action": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    }
+  },
+  "offscreenVideoPlayback": {
+    "sampleCount": 0,
+    "samples": []
+  },
+  "memory": {
+    "exposed": true,
+    "start": {
+      "jsHeapSizeLimit": 3760000000,
+      "totalJSHeapSize": 10000000,
+      "usedJSHeapSize": 10000000
+    },
+    "end": {
+      "jsHeapSizeLimit": 3760000000,
+      "totalJSHeapSize": 10000000,
+      "usedJSHeapSize": 10000000
+    },
+    "usedJSHeapDelta": 0
+  },
+  "checkpoints": [
+    {
+      "expectedPhase": "presence",
+      "activePhase": "presence",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 0,
+      "canvas": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "width": 300,
+        "height": 150,
+        "engine": null,
+        "settledWindowMs": 280,
+        "settledDrawDelta": 0,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "access",
+      "activePhase": "access",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 2020,
+      "canvas": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "width": 300,
+        "height": 150,
+        "engine": null,
+        "settledWindowMs": 280,
+        "settledDrawDelta": 0,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "startup",
+      "activePhase": "startup",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 4263,
+      "canvas": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "width": 300,
+        "height": 150,
+        "engine": null,
+        "settledWindowMs": 280,
+        "settledDrawDelta": 0,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "method",
+      "activePhase": "method",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 5215,
+      "canvas": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "width": 300,
+        "height": 150,
+        "engine": null,
+        "settledWindowMs": 280,
+        "settledDrawDelta": 0,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "activity",
+      "activePhase": "activity",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 6515,
+      "canvas": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "width": 300,
+        "height": 150,
+        "engine": null,
+        "settledWindowMs": 280,
+        "settledDrawDelta": 0,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "evidence",
+      "activePhase": "evidence",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 7833,
+      "canvas": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "width": 300,
+        "height": 150,
+        "engine": null,
+        "settledWindowMs": 280,
+        "settledDrawDelta": 0,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "action",
+      "activePhase": "action",
+      "renderMode": "dom-fallback-ready",
+      "devicePixelRatio": 1,
+      "scrollY": 8698,
+      "canvas": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "width": 300,
+        "height": 150,
+        "engine": null,
+        "settledWindowMs": 280,
+        "settledDrawDelta": 0,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    }
+  ]
+}
