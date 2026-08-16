@@ -1363,7 +1363,7 @@ async function waitForResolvedReviewState(page, stop) {
         return section instanceof HTMLElement
           && section.dataset.activityState === id
           && root.dataset.activityState === id
-          && normalized === label
+          && normalized.toLocaleUpperCase("en-US") === label
           && visible(signal)
           && visible(geometry);
       }
@@ -1402,7 +1402,7 @@ function assertResolvedReviewSnapshot(snapshot, stop) {
     }
   } else if (
     snapshot.activityState !== stop.activityState
-    || snapshot.activitySignal?.text !== stop.reviewLabel
+    || snapshot.activitySignal?.text.toLocaleUpperCase("en-US") !== stop.reviewLabel
     || !snapshot.activitySignal?.visible
     || !snapshot.activityGeometry?.visible
   ) {
