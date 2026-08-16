@@ -1,0 +1,403 @@
+---
+import ProofMedia from "@/components/ProofMedia.astro";
+import type { ProofRecord } from "@/content/schema";
+
+interface Props {
+  record: ProofRecord;
+}
+
+const { record } = Astro.props;
+const titleId = `proof-index-${record.slug}`;
+const recordHref = `/proof/${record.slug}/`;
+const images = record.media.filter((asset) => asset.kind === "image");
+const preview = images[1] ?? images[0];
+const subject = [record.startup?.name, record.operatingOrganization?.name]
+  .filter(Boolean)
+  .join(" × ");
+const tags = [...record.domains, ...(record.environmentTags ?? [])]
+  .filter((tag, index, values) => values.indexOf(tag) === index);
+---
+
+<article
+  class="index-record"
+  aria-labelledby={titleId}
+  data-proof-index-record={record.slug}
+  data-proof-row
+  data-proof-inspection="active"
+  data-inspection-state="active"
+>
+  <div class="index-record__rule" aria-hidden="true"><span></span></div>
+
+  <div class="index-record__identity">
+    <p class="index-record__code">{record.recordCode ?? "Field record"}</p>
+    <p class="index-record__context">
+      {record.program ? `${record.program.name} / Field record` : "Field record"}
+    </p>
+    <h2 id={titleId}>{record.title}</h2>
+    {subject && <p class="index-record__subject">{subject}</p>}
+    <p class="index-record__summary">{record.summary}</p>
+    <a class="index-record__action" href={recordHref} data-proof-record-link>
+      Open field record <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  {preview && (
+    <div class="index-record__preview">
+      <ProofMedia
+        asset={preview}
+        role="preview"
+        caption="Documentary field evidence"
+      />
+    </div>
+  )}
+
+  <div class="index-record__inspection" aria-label="Record details">
+    {record.fieldCondition && (
+      <div class="index-record__condition">
+        <p>Field condition</p>
+        <p>{record.fieldCondition}</p>
+      </div>
+    )}
+
+    <dl>
+      {record.program && (
+        <div>
+          <dt>Program</dt>
+          <dd>{record.program.name}</dd>
+        </div>
+      )}
+      {record.operatingOrganization && (
+        <div>
+          <dt>Operating organization</dt>
+          <dd>{record.operatingOrganization.name}</dd>
+        </div>
+      )}
+      {record.evidence && (
+        <div>
+          <dt>Evidence</dt>
+          <dd>Field observations documented</dd>
+        </div>
+      )}
+      {record.nextStep && (
+        <div>
+          <dt>Next step</dt>
+          <dd>Documented in record</dd>
+        </div>
+      )}
+    </dl>
+
+    {tags.length > 0 && (
+      <ul aria-label="Domains and operating environment">
+        {tags.map((tag) => <li>{tag}</li>)}
+      </ul>
+    )}
+  </div>
+</article>
+
+<style>
+  .index-record {
+    position: relative;
+    display: grid;
+    width: 100%;
+    grid-template-columns: minmax(17rem, 0.88fr) minmax(24rem, 1.28fr);
+    color: var(--ink);
+    background: var(--paper-bright);
+    border-top: 1px solid rgba(11, 10, 13, 0.7);
+    border-bottom: 1px solid rgba(11, 10, 13, 0.7);
+    isolation: isolate;
+  }
+
+  .index-record__rule {
+    position: absolute;
+    z-index: 3;
+    top: -1px;
+    right: 0;
+    left: 0;
+    height: 0.3rem;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .index-record__rule span {
+    display: block;
+    width: 36%;
+    height: 100%;
+    background: var(--prove-deep);
+    transform-origin: left;
+    transition: width 420ms var(--ease-field);
+  }
+
+  .index-record__identity {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(1.5rem, 3.6vw, 4rem);
+    border-right: 1px solid var(--line-light);
+  }
+
+  .index-record__code,
+  .index-record__context,
+  .index-record__inspection dt,
+  .index-record__condition > p:first-child {
+    color: var(--prove-deep);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.07em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .index-record__context {
+    margin-top: 0.45rem;
+    color: rgba(11, 10, 13, 0.58);
+  }
+
+  .index-record h2 {
+    max-width: 10ch;
+    margin-top: clamp(2.6rem, 7vw, 7rem);
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5.4vw, 6.8rem);
+    font-weight: 600;
+    letter-spacing: -0.06em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .index-record__subject {
+    max-width: 28rem;
+    margin-top: 1.25rem;
+    color: var(--prove-deep);
+    font-family: var(--font-subhead);
+    font-size: clamp(0.88rem, 1.1vw, 1.05rem);
+  }
+
+  .index-record__summary {
+    max-width: 35rem;
+    margin-top: clamp(1.5rem, 3vw, 2.8rem);
+    color: rgba(11, 10, 13, 0.68);
+    font-size: clamp(0.92rem, 1.2vw, 1.08rem);
+  }
+
+  .index-record__action {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: auto;
+    padding-top: clamp(2rem, 5vw, 5rem);
+    border-bottom: 1px solid currentColor;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .index-record__preview {
+    min-width: 0;
+    padding: clamp(0.8rem, 1.5vw, 1.5rem);
+    background: #d7d5ce;
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .index-record__preview :global(.proof-media) {
+    height: 100%;
+    min-height: clamp(20rem, 36vw, 39rem);
+  }
+
+  .index-record__preview :global(img) {
+    filter: saturate(0.84) contrast(0.98);
+    transition: filter 420ms var(--ease-field), transform 560ms var(--ease-field);
+  }
+
+  .index-record__inspection {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(17rem, 0.88fr) minmax(24rem, 1.28fr);
+  }
+
+  .index-record__condition {
+    padding: clamp(1.3rem, 2.2vw, 2.4rem) clamp(1.5rem, 3.6vw, 4rem);
+    border-right: 1px solid var(--line-light);
+  }
+
+  .index-record__condition > p:last-child {
+    max-width: 35rem;
+    margin-top: 1rem;
+    color: rgba(11, 10, 13, 0.68);
+  }
+
+  .index-record__inspection dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .index-record__inspection dl > div {
+    min-width: 0;
+    padding: clamp(1rem, 2vw, 1.7rem);
+    border-right: 1px solid var(--line-light);
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .index-record__inspection dl > div:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .index-record__inspection dd {
+    margin-top: 0.7rem;
+    color: rgba(11, 10, 13, 0.68);
+    font-size: 0.88rem;
+  }
+
+  .index-record__inspection ul {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    padding: 1rem clamp(1.5rem, 3.6vw, 4rem);
+    border-top: 1px solid var(--line-light);
+  }
+
+  .index-record__inspection li {
+    padding: 0.35rem 0.65rem;
+    color: rgba(11, 10, 13, 0.72);
+    border: 1px solid rgba(11, 10, 13, 0.34);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+  }
+
+  .index-record:hover .index-record__rule span,
+  .index-record:focus-within .index-record__rule span {
+    width: 100%;
+  }
+
+  .index-record:hover .index-record__preview :global(img),
+  .index-record:focus-within .index-record__preview :global(img) {
+    filter: saturate(1) contrast(1.03);
+    transform: scale(1.012);
+  }
+
+  .index-record__action:hover {
+    color: var(--prove-deep);
+  }
+
+  .index-record__action:focus-visible {
+    outline-color: var(--prove-deep);
+  }
+
+  @media (max-width: 64rem) {
+    .index-record {
+      grid-template-columns: minmax(14rem, 0.8fr) minmax(20rem, 1.2fr);
+    }
+
+    .index-record__identity {
+      padding: clamp(1.4rem, 3vw, 2.4rem);
+    }
+
+    .index-record__inspection {
+      grid-template-columns: minmax(14rem, 0.8fr) minmax(20rem, 1.2fr);
+    }
+
+    .index-record__condition,
+    .index-record__inspection ul {
+      padding-inline: clamp(1.4rem, 3vw, 2.4rem);
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .index-record {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .index-record__identity {
+      min-height: auto;
+      border-right: 0;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .index-record h2 {
+      margin-top: 3rem;
+      font-size: clamp(2.9rem, 12vw, 5.5rem);
+    }
+
+    .index-record__action {
+      width: 100%;
+      margin-top: 2rem;
+      padding-top: 0;
+    }
+
+    .index-record__preview {
+      order: 2;
+      padding: 0.7rem;
+    }
+
+    .index-record__preview :global(.proof-media) {
+      min-height: 0;
+    }
+
+    .index-record__inspection {
+      order: 3;
+      display: block;
+    }
+
+    .index-record__condition {
+      border-right: 0;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .index-record__inspection dl {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .index-record__inspection ul {
+      padding-block: 0.85rem;
+    }
+
+    .index-record__rule span {
+      width: 100%;
+    }
+
+    .index-record__preview :global(img) {
+      filter: none;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 28rem) {
+    .index-record__inspection dl {
+      grid-template-columns: 1fr;
+    }
+
+    .index-record__inspection dl > div,
+    .index-record__inspection dl > div:nth-child(2n) {
+      border-right: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .index-record__rule span,
+    .index-record__preview :global(img) {
+      transition: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .index-record,
+    .index-record__identity,
+    .index-record__preview,
+    .index-record__condition,
+    .index-record__inspection dl > div,
+    .index-record__inspection ul,
+    .index-record__inspection li {
+      border-color: CanvasText;
+    }
+
+    .index-record__rule span {
+      background: Highlight;
+    }
+  }
+</style>

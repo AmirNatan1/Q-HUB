@@ -13,8 +13,18 @@ import {
 describe("pre-release placeholder detection", () => {
   it("keeps intentionally unresolved later-phase content detectable", () => {
     const findings = findDevelopmentPlaceholders(developmentContent);
-    expect(findings).toHaveLength(6);
+    expect(findings).toHaveLength(9);
     expect(findings.every((finding) => finding.id?.startsWith("development-"))).toBe(true);
+    expect(
+      findings
+        .map((finding) => finding.id)
+        .filter((id) => id?.startsWith("development-proof-")),
+    ).toEqual([
+      "development-proof-single",
+      "development-proof-multi-phase",
+      "development-proof-no-outcome",
+      "development-proof-partial",
+    ]);
     expect(() => assertNoDevelopmentPlaceholders(developmentContent)).toThrow(
       /Development placeholders detected/,
     );

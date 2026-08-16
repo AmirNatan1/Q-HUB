@@ -1,5 +1,13 @@
 # Publication policy
 
+## Phase 3 nested Proof boundary
+
+Public Proof routing uses only records returned by the publication layer. The same eligible collection owns `/proof`, generated `/proof/[slug]` paths, sitemap entries, metadata, and related-record links. A denied parent therefore cannot leak through an alternate output surface.
+
+Proof phases and evidence items are filtered independently with the same A/B + explicit approval rule as their parent. An eligible parent does not confer eligibility on a child. Ineligible nested items are removed, eligible nested items are recursively stripped of `sourceReferenceInternal`, and empty nested collections are omitted from the public value. Development fixtures remain D, unapproved, and route-ineligible.
+
+Production-output verification scans generated HTML, JavaScript, metadata, and the sitemap for denied fixture IDs, denied test sentinels, and internal provenance keys. The current public Proof set contains only the approved Maradin record.
+
 ## Phase 2 approved-public application
 
 The Maradin Dynamic Ground Projection record is a concrete **B + approved** case. Explicit user approval is dated **2026-08-15**. It is parsed and filtered before homepage presentation; changing `publicApproved` to false, changing classification to C/D, or marking it as a development placeholder must deny it.

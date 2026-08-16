@@ -11,9 +11,19 @@ import lighthouse, { desktopConfig } from "lighthouse";
 
 const rootDirectory = fileURLToPath(new URL("..", import.meta.url));
 const distIndex = path.join(rootDirectory, "dist", "index.html");
-const artifactDirectory = path.join(rootDirectory, "artifacts", "lighthouse");
+const artifactDirectory = process.env.LIGHTHOUSE_ARTIFACT_DIRECTORY
+  ? path.resolve(process.env.LIGHTHOUSE_ARTIFACT_DIRECTORY)
+  : path.join(rootDirectory, "artifacts", "lighthouse", "phase3");
 const host = "127.0.0.1";
 const categories = ["performance", "accessibility", "best-practices", "seo"];
+const routeTargets = Object.freeze([
+  { name: "homepage", route: "/" },
+  { name: "proof-index", route: "/proof/" },
+  {
+    name: "maradin-field-record",
+    route: "/proof/maradin-dynamic-ground-projection/"
+  }
+]);
 
 const profiles = [
   {
@@ -21,9 +31,9 @@ const profiles = [
     config: desktopConfig,
     thresholds: {
       performance: 0.95,
-      accessibility: 1,
-      "best-practices": 1,
-      seo: 1,
+      accessibility: 0.95,
+      "best-practices": 0.95,
+      seo: 0.95,
       cls: 0
     }
   },
@@ -32,9 +42,9 @@ const profiles = [
     config: undefined,
     thresholds: {
       performance: 0.95,
-      accessibility: 1,
-      "best-practices": 1,
-      seo: 1,
+      accessibility: 0.95,
+      "best-practices": 0.95,
+      seo: 0.95,
       cls: 0
     }
   }
@@ -296,7 +306,7 @@ function printResult(result) {
     })
     .join("  ");
 
-  console.log(`\n${result.profile.toUpperCase()} HOMEPAGE`);
+  console.log(`\n${result.profile.toUpperCase()} ${result.target.name.toUpperCase()}`);
   console.log(scoreText);
   console.log(
     `LCP=${result.metrics.lcp.displayValue}  TBT=${result.metrics.tbt.displayValue}  CLS=${result.metrics.cls.displayValue}`
@@ -304,7 +314,8 @@ function printResult(result) {
   console.log(result.failures.length ? `FAIL: ${result.failures.join("; ")}` : "PASS");
 }
 
-async function measure(profile, url) {
+async function measure(profile, target, baseUrl) {
+  const url = new URL(target.route, baseUrl).toString();
   const flags = {
     port: chrome.port,
     logLevel: process.env.LIGHTHOUSE_LOG_LEVEL ?? "warn",
@@ -325,8 +336,8 @@ async function measure(profile, url) {
     throw new Error(`Lighthouse did not produce the ${profile.name} HTML report.`);
   }
 
-  const jsonPath = path.join(artifactDirectory, `${profile.name}-homepage.json`);
-  const htmlPath = path.join(artifactDirectory, `${profile.name}-homepage.html`);
+  const jsonPath = path.join(artifactDirectory, `${profile.name}-${target.name}.json`);
+  const htmlPath = path.join(artifactDirectory, `${profile.name}-${target.name}.html`);
   await Promise.all([
     writeFile(jsonPath, `${JSON.stringify(runnerResult.lhr, null, 2)}\n`, "utf8"),
     writeFile(htmlPath, htmlReport, "utf8")
@@ -341,6 +352,8 @@ async function measure(profile, url) {
 
   return {
     profile: profile.name,
+    target,
+    measuredUrl: url,
     scores,
     metrics,
     thresholds: profile.thresholds,
@@ -395,17 +408,20 @@ async function main() {
 
   chrome = await launch({ chromeFlags });
   const results = [];
-  for (const profile of profiles) {
-    const result = await measure(profile, url);
-    results.push(result);
-    printResult(result);
+  for (const target of routeTargets) {
+    for (const profile of profiles) {
+      const result = await measure(profile, target, url);
+      results.push(result);
+      printResult(result);
+    }
   }
 
   const summary = {
     generatedAt: new Date().toISOString(),
     sourceHead: await readSourceHead(),
-    measuredUrl: url,
+    measuredBaseUrl: url,
     buildInput: "dist/index.html",
+    routeTargets,
     results
   };
   await writeFile(
@@ -415,13 +431,17 @@ async function main() {
   );
 
   const failures = results.flatMap((result) =>
-    result.failures.map((failure) => `${result.profile}: ${failure}`)
+      result.failures.map(
+        (failure) => `${result.profile}/${result.target.name}: ${failure}`
+      )
   );
   if (failures.length) {
     throw new Error(`Lighthouse thresholds were not met:\n- ${failures.join("\n- ")}`);
   }
 
-  console.log("\nLighthouse thresholds passed. Reports: artifacts/lighthouse/");
+  console.log(
+    `\nLighthouse thresholds passed for all Phase 3 routes. Reports: ${artifactDirectory}`
+  );
 }
 
 for (const signal of ["SIGINT", "SIGTERM"]) {

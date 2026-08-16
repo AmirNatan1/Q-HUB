@@ -10,6 +10,15 @@ const rootDirectory = fileURLToPath(new URL("..", import.meta.url));
 const distDirectory = path.join(rootDirectory, "dist");
 const indexPath = path.join(distDirectory, "index.html");
 const reportPath = path.join(rootDirectory, "artifacts", "bundle-report.json");
+const acceptedPhase2Baseline = Object.freeze({
+  sourceCandidate: "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+  totalRawBytes: 20_852,
+  totalGzipBytes: 7_961,
+  initialRawBytes: 9_179,
+  initialGzipBytes: 3_917,
+  lazyRawBytes: 11_673,
+  lazyGzipBytes: 4_044
+});
 
 function normalizePath(filePath) {
   return filePath.replaceAll("\\", "/");
@@ -280,6 +289,24 @@ async function main() {
     runtimeDetection: { three, r3f }
   };
 
+  const lazyRawBytes = composition
+    .filter((asset) => asset.tier === "lazy")
+    .reduce((sum, asset) => sum + asset.rawBytes, 0);
+  const lazyGzipBytes = composition
+    .filter((asset) => asset.tier === "lazy")
+    .reduce((sum, asset) => sum + asset.gzipBytes, 0);
+  report.acceptedPhase2Baseline = acceptedPhase2Baseline;
+  report.phase3Delta = {
+    totalRawBytes: report.totals.rawBytes - acceptedPhase2Baseline.totalRawBytes,
+    totalGzipBytes: report.totals.gzipBytes - acceptedPhase2Baseline.totalGzipBytes,
+    initialRawBytes:
+      report.totals.initialRawBytes - acceptedPhase2Baseline.initialRawBytes,
+    initialGzipBytes:
+      report.totals.initialGzipBytes - acceptedPhase2Baseline.initialGzipBytes,
+    lazyRawBytes: lazyRawBytes - acceptedPhase2Baseline.lazyRawBytes,
+    lazyGzipBytes: lazyGzipBytes - acceptedPhase2Baseline.lazyGzipBytes
+  };
+
   await mkdir(path.dirname(reportPath), { recursive: true });
   await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, "utf8");
 
@@ -305,6 +332,13 @@ async function main() {
   }
   console.log(
     `Totals: ${formatBytes(report.totals.rawBytes)} raw / ${formatBytes(report.totals.gzipBytes)} gzip; initial ${formatBytes(report.totals.initialRawBytes)} raw / ${formatBytes(report.totals.initialGzipBytes)} gzip`
+  );
+  console.log(
+    `Phase 3 delta from accepted Phase 2 candidate ${acceptedPhase2Baseline.sourceCandidate}: `
+      + `${report.phase3Delta.totalRawBytes >= 0 ? "+" : ""}${report.phase3Delta.totalRawBytes} raw / `
+      + `${report.phase3Delta.totalGzipBytes >= 0 ? "+" : ""}${report.phase3Delta.totalGzipBytes} gzip; `
+      + `initial ${report.phase3Delta.initialRawBytes >= 0 ? "+" : ""}${report.phase3Delta.initialRawBytes} raw / `
+      + `${report.phase3Delta.initialGzipBytes >= 0 ? "+" : ""}${report.phase3Delta.initialGzipBytes} gzip`
   );
 
   for (const [label, result] of [

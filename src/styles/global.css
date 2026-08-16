@@ -1813,6 +1813,14 @@
     border-color: var(--line-light);
   }
 
+  html[data-theme="light"] .wordmark__asset--on-dark {
+    display: none;
+  }
+
+  html[data-theme="light"] .wordmark__asset--on-light.wordmark__asset--full {
+    display: block;
+  }
+
   html[data-theme="light"] .wordmark span:nth-child(2) {
     color: var(--prove-deep);
   }
@@ -1820,6 +1828,11 @@
   html[data-theme="light"] .nav-disclosure nav a,
   html[data-theme="light"] .nav-disclosure nav a > span {
     color: rgba(11, 10, 13, 0.65);
+  }
+
+  html[data-theme="light"] .nav-disclosure nav a:hover,
+  html[data-theme="light"] .nav-disclosure nav a[aria-current="page"] {
+    color: var(--ink);
   }
 
   .route-shell,
@@ -1994,6 +2007,19 @@
     }
 
     html[data-active-phase="prove"] .wordmark__asset--icon.wordmark__asset--on-light {
+      display: block;
+      max-height: 2.7rem;
+    }
+
+    html[data-theme="light"] .wordmark__asset--icon.wordmark__asset--on-dark {
+      display: none;
+    }
+
+    html[data-theme="light"] .wordmark__asset--on-light.wordmark__asset--full {
+      display: none;
+    }
+
+    html[data-theme="light"] .wordmark__asset--icon.wordmark__asset--on-light {
       display: block;
       max-height: 2.7rem;
     }

@@ -1,5 +1,13 @@
 # Content model
 
+## Phase 3 variable Proof records
+
+The Phase 2 Proof schema is extended, not replaced. Optional `recordCode`, `recordStructure`, `phases`, `evidenceItems`, and `environmentTags` support a reusable Evidence Index and Field Record renderer while preserving the approved Maradin record. `recordStructure` distinguishes `single-test` from `multi-phase`; missing date, location, decision, next step, metrics, media, or chapters remain genuinely absent.
+
+Each nested phase and evidence item is substantive governed content. It independently carries classification, explicit approval, and optional internal provenance, and is filtered before the public parent is returned. Parent eligibility never publishes an ineligible child. Four unmistakable D/unapproved development fixtures validate single-test, multi-phase, no-outcome, and partial shapes without creating routes or public output.
+
+Index dimensions are data capabilities, not current controls. A visible factual filter interface may be considered only once at least three public-eligible records exist; the current one-record index exposes no dead filtering UI.
+
 ## Phase 2 approved Proof record
 
 `src/content/proof.ts` now parses the approved Maradin record with `proofRecordSchema`, passes it through the existing deny-by-default publication filter, and exports only the eligible public value. `src/content/homepage.ts` derives NEED, FIND, TEST, PROVE, and the compact Proof fields from that filtered record; corporate facts are not duplicated in Astro presentation templates.

@@ -283,7 +283,10 @@ if (
           </dl>
           <footer>
             <p>{operatingOrganization.name} / {program.name} / comparative field evidence</p>
-            <a href="/proof/">View proof architecture <span aria-hidden="true">↗</span></a>
+            <a
+              href={`/proof/${maradinProofRecord.slug}/`}
+              data-proof-handoff
+            >Open field record <span aria-hidden="true">↗</span></a>
           </footer>
         </article>
 

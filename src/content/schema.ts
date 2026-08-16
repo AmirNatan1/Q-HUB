@@ -132,6 +132,48 @@ export const mediaAssetSchema = z
 
 export type MediaAsset = z.infer<typeof mediaAssetSchema>;
 
+const nestedPublicationFieldsShape = {
+  classification: publicationClassificationSchema,
+  publicApproved: z.boolean(),
+  sourceReferenceInternal: nonEmptyTextSchema.optional(),
+} as const;
+
+export const proofPhaseSchema = z
+  .object({
+    ...nestedPublicationFieldsShape,
+    id: identifierSchema,
+    label: nonEmptyTextSchema,
+    summary: nonEmptyTextSchema,
+    status: z.enum(["completed", "ongoing", "planned"]).optional(),
+    date: isoDateSchema.optional(),
+    media: z.array(mediaAssetSchema).min(1).optional(),
+  })
+  .strict();
+
+export type ProofPhase = z.infer<typeof proofPhaseSchema>;
+
+export const proofEvidenceItemSchema = z
+  .object({
+    ...nestedPublicationFieldsShape,
+    id: identifierSchema,
+    label: nonEmptyTextSchema,
+    summary: nonEmptyTextSchema.optional(),
+    value: nonEmptyTextSchema.optional(),
+    media: mediaAssetSchema.optional(),
+  })
+  .strict()
+  .superRefine((item, context) => {
+    if (item.summary === undefined && item.value === undefined) {
+      context.addIssue({
+        code: "custom",
+        message: "Proof evidence items require a summary or value.",
+        path: ["summary"],
+      });
+    }
+  });
+
+export type ProofEvidenceItem = z.infer<typeof proofEvidenceItemSchema>;
+
 export const proofRecordSchema = z
   .object({
     ...publicationFieldsShape,
@@ -140,6 +182,8 @@ export const proofRecordSchema = z
     slug: slugSchema,
     title: nonEmptyTextSchema,
     summary: nonEmptyTextSchema,
+    recordCode: nonEmptyTextSchema.optional(),
+    recordStructure: z.enum(["single-test", "multi-phase"]).optional(),
     startup: namedReferenceSchema.optional(),
     operatingOrganization: namedReferenceSchema.optional(),
     relationshipLabels: z.array(relationshipLabelSchema).default([]),
@@ -148,19 +192,32 @@ export const proofRecordSchema = z
     fieldCondition: nonEmptyTextSchema.optional(),
     technology: nonEmptyTextSchema.optional(),
     environment: nonEmptyTextSchema.optional(),
+    environmentTags: z.array(nonEmptyTextSchema).min(1).optional(),
     test: nonEmptyTextSchema.optional(),
     evidence: nonEmptyTextSchema.optional(),
+    evidenceItems: z.array(proofEvidenceItemSchema).min(1).optional(),
     decision: nonEmptyTextSchema.optional(),
     nextStep: nonEmptyTextSchema.optional(),
     date: isoDateSchema.optional(),
     location: nonEmptyTextSchema.optional(),
     media: z.array(mediaAssetSchema).default([]),
     heroMedia: mediaAssetSchema.optional(),
+    phases: z.array(proofPhaseSchema).min(1).optional(),
     featured: z.boolean().default(false),
     relatedProof: z.array(identifierSchema).default([]),
   })
   .strict()
-  .superRefine(enforcePlaceholderSafety);
+  .superRefine((record, context) => {
+    enforcePlaceholderSafety(record, context);
+
+    if (record.recordStructure === "multi-phase" && !record.phases) {
+      context.addIssue({
+        code: "custom",
+        message: "Multi-phase Proof records require at least one phase.",
+        path: ["phases"],
+      });
+    }
+  });
 
 export type ProofRecord = z.infer<typeof proofRecordSchema>;
 

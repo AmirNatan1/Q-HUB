@@ -1,6 +1,9 @@
+import { publicProofRecords } from "../content/proof";
+
 const routes = [
   "/",
   "/proof/",
+  ...publicProofRecords.map((record) => `/proof/${record.slug}/`),
   "/industry/",
   "/startups/",
   "/programs/",

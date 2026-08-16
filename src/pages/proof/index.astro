@@ -1,0 +1,245 @@
+---
+import ProofIndexRow from "@/components/ProofIndexRow.astro";
+import { publicProofRecords } from "@/content/proof";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+if (publicProofRecords.length === 0) {
+  throw new Error("The Proof index requires at least one public-eligible field record.");
+}
+---
+
+<BaseLayout
+  title="Evidence from the field"
+  description="Field records of technologies tested under real operating conditions—what was tested, what was observed, and what happened next."
+  theme="light"
+>
+  <main id="main-content" class="proof-index" data-proof-index>
+    <header class="proof-index__opening">
+      <div class="proof-index__register" aria-hidden="true">
+        <span>QH / PROOF</span>
+        <span>Evidence index</span>
+      </div>
+      <div class="proof-index__title">
+        <p class="proof-index__eyebrow">Proof</p>
+        <h1>Evidence from the field.</h1>
+      </div>
+      <p class="proof-index__introduction">
+        Field records of technologies tested under real operating conditions—what was tested,
+        what was observed, and what happened next.
+      </p>
+    </header>
+
+    <section class="proof-index__records" aria-label="Field records">
+      {publicProofRecords.map((record) => <ProofIndexRow record={record} />)}
+    </section>
+
+    <footer class="proof-index__ending">
+      <p><span>Find</span> → <span>Test</span> → <span>Prove</span></p>
+      <a href="/#prove">Return to PROVE <span aria-hidden="true">↗</span></a>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style>
+  .proof-index {
+    position: relative;
+    min-height: 100svh;
+    overflow: clip;
+    padding: var(--header-height) var(--page-gutter) 0;
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  .proof-index::before,
+  .proof-index::after {
+    position: absolute;
+    z-index: 0;
+    top: var(--header-height);
+    bottom: 0;
+    width: 1px;
+    background: var(--line-light);
+    content: "";
+    pointer-events: none;
+  }
+
+  .proof-index::before {
+    left: calc(var(--page-gutter) + 25%);
+  }
+
+  .proof-index::after {
+    right: calc(var(--page-gutter) + 25%);
+  }
+
+  .proof-index__opening,
+  .proof-index__records,
+  .proof-index__ending {
+    position: relative;
+    z-index: 1;
+  }
+
+  .proof-index__opening {
+    display: grid;
+    min-height: min(50rem, 86svh);
+    align-content: center;
+    grid-template-columns: minmax(11rem, 0.35fr) minmax(24rem, 1.05fr) minmax(16rem, 0.6fr);
+    gap: clamp(1.5rem, 4vw, 5rem);
+    padding: clamp(4rem, 10vh, 8rem) 0;
+    border-bottom: 1px solid rgba(11, 10, 13, 0.7);
+  }
+
+  .proof-index__register {
+    display: grid;
+    align-self: start;
+    gap: 0.45rem;
+    color: rgba(11, 10, 13, 0.58);
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.065em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .proof-index__register span:first-child,
+  .proof-index__eyebrow {
+    color: var(--prove-deep);
+  }
+
+  .proof-index__title {
+    min-width: 0;
+  }
+
+  .proof-index__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+  }
+
+  .proof-index h1 {
+    max-width: 10ch;
+    margin-top: clamp(2.2rem, 5vh, 4rem);
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 8.2vw, 11rem);
+    font-weight: 600;
+    letter-spacing: -0.07em;
+    line-height: 0.82;
+    text-wrap: balance;
+    text-transform: uppercase;
+  }
+
+  .proof-index__introduction {
+    max-width: 27rem;
+    align-self: end;
+    padding-bottom: 0.7rem;
+    color: rgba(11, 10, 13, 0.68);
+    font-size: clamp(1rem, 1.45vw, 1.32rem);
+    line-height: 1.42;
+  }
+
+  .proof-index__records {
+    padding: clamp(4rem, 10vw, 10rem) 0;
+  }
+
+  .proof-index__ending {
+    display: flex;
+    min-height: 11rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    border-top: 1px solid rgba(11, 10, 13, 0.7);
+    font-family: var(--font-mono);
+    font-size: 0.69rem;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+
+  .proof-index__ending p {
+    color: rgba(11, 10, 13, 0.6);
+  }
+
+  .proof-index__ending p span:last-child {
+    color: var(--prove-deep);
+  }
+
+  .proof-index__ending a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .proof-index__ending a:hover {
+    color: var(--prove-deep);
+  }
+
+  .proof-index__ending a:focus-visible {
+    outline-color: var(--prove-deep);
+  }
+
+  @media (max-width: 64rem) {
+    .proof-index__opening {
+      grid-template-columns: minmax(9rem, 0.28fr) minmax(22rem, 1fr) minmax(14rem, 0.52fr);
+      gap: clamp(1.5rem, 3vw, 3rem);
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .proof-index::before {
+      left: 33.333%;
+    }
+
+    .proof-index::after {
+      right: 33.333%;
+    }
+
+    .proof-index__opening {
+      min-height: min(45rem, calc(100svh - var(--header-height)));
+      align-content: space-between;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: clamp(3.5rem, 8vh, 6rem) 0;
+    }
+
+    .proof-index__register {
+      grid-template-columns: 1fr auto;
+    }
+
+    .proof-index h1 {
+      margin-top: 2.5rem;
+      font-size: clamp(3.7rem, 15vw, 7rem);
+    }
+
+    .proof-index__introduction {
+      max-width: 31rem;
+      align-self: auto;
+      padding-bottom: 0;
+    }
+
+    .proof-index__records {
+      padding: clamp(3rem, 10vw, 5rem) 0;
+    }
+  }
+
+  @media (max-width: 32rem) {
+    .proof-index__ending {
+      min-height: 10rem;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .proof-index::before,
+    .proof-index::after {
+      background: CanvasText;
+    }
+
+    .proof-index__opening,
+    .proof-index__ending {
+      border-color: CanvasText;
+    }
+  }
+</style>

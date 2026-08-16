@@ -1,5 +1,13 @@
 # Design System
 
+## Phase 3 Proof language
+
+Proof continues the resolved side of the homepage: warm/off-white evidence planes, Quantum dark gray, and teal as the semantic color of documented evidence. Teal does not mean commercial success. Pink remains limited to an existing semantic need rather than becoming a second Proof accent system.
+
+The Evidence Index uses full-width ruled records, precise alignment, documentary media, editorial scale, and deliberate whitespace. It avoids rounded cards, shadows, glass, logo grids, fake metrics, and empty-library theater. The Field Record uses a numbered semantic spine and distinct documentary chapters. Optional content disappears completely rather than leaving `N/A`, `TBD`, empty frames, or disabled placeholders.
+
+The one-record index begins visually resolved and remains complete without hover. Hover and keyboard focus provide equivalent inspection emphasis; mobile exposes the media, metadata, and action directly in normal flow. Proof retains the existing type-family tokens and performant fallbacks while `FONT-001` remains unresolved by instruction.
+
 ## Phase 2 brand and real-field authority
 
 Phase 2 preserves the accepted Phase 1 trajectory grammar while replacing only the homepage material that the approved Maradin record resolves. Official Quantum SVG masters now own the navigation identity and favicon. The signal/live token maps to exact Quantum pink `#D82B72`; the constraint/field role maps to approved salmon `#F67783`; approved dark gray `#515151`, blue `#4E5DFF`, light gray `#E6E6E6`, and white `#FFFFFF` are available only for controlled semantic use. PROVE retains its established teal evidence role so the live-to-evidence distinction remains legible.

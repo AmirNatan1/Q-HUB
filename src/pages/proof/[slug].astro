@@ -1,0 +1,37 @@
+---
+import FieldRecord from "@/components/FieldRecord.astro";
+import { publicProofRecords } from "@/content/proof";
+import type { ProofRecord } from "@/content/schema";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+interface Props {
+  record: ProofRecord;
+}
+
+export function getStaticPaths() {
+  return publicProofRecords.map((record) => ({
+    params: { slug: record.slug },
+    props: { record },
+  }));
+}
+
+const { record } = Astro.props;
+---
+
+<BaseLayout
+  title={`${record.title} — Field Record`}
+  description={record.summary}
+  theme="light"
+>
+  <main id="main-content" class="field-record-page">
+    <FieldRecord record={record} />
+  </main>
+</BaseLayout>
+
+<style>
+  .field-record-page {
+    min-height: 100svh;
+    color: var(--ink);
+    background: var(--paper);
+  }
+</style>

@@ -1,5 +1,11 @@
 # Motion System
 
+## Phase 3 Proof motion
+
+Proof is a settled document experience. Its restrained vocabulary is inspect, align, reveal, lock, and settle. Native hover/focus styling may clarify the selected Evidence Index row, but no content or action depends on motion, JavaScript, cursor precision, or hover. Field Records preserve ordinary vertical scrolling, with no pinned chapters, scroll hijacking, parallax sequence, autoplay requirement, or client-side page transition.
+
+Reduced motion is the same complete evidence document with non-essential transitions resolved. Meaning never depends on film playback: approved images/posters and semantic DOM copy remain sufficient. The accepted homepage controller and media lifecycle are not expanded by the Proof routes.
+
 ## Phase 2 documentary-media contract
 
 Real media enters the accepted grammar without becoming a second animation system. SIGNAL remains abstract. During APERTURE, the procedural field scaffold recedes while the approved Maradin film gains authority inside the existing field-side mask. NEED and FIND retain the accepted constraint and convergence physics. TEST places its approved film inside the existing enclosure. PROVE uses still images and structured evidence, with less motion than TEST.

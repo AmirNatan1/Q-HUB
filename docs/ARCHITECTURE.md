@@ -1,5 +1,13 @@
 # Architecture
 
+## Phase 3 Proof system
+
+Phase 3 promotes `/proof` from a route shell to a static Evidence Index and generates `/proof/[slug]` pages only from the deny-by-default public Proof collection. The index, static paths, metadata, sitemap entries, and record presentation share the same filtered source. The current eligible set produces exactly one Field Record route: `/proof/maradin-dynamic-ground-projection`.
+
+Proof pages remain semantic Astro HTML and CSS. They add no production dependency, client router, realtime engine, or required browser controller. The index inspection treatment is complete in its default state and responds to native hover/focus styling; mobile and reduced-motion modes use the same ordinary document flow. Native approved media retains intrinsic dimensions and lazy non-critical loading. The accepted homepage runtime is unchanged except for the PROVE link to the Field Record.
+
+The reusable record renderer omits unsupported chapters rather than emitting empty UI. Nested phases and evidence items pass independent publication gates before rendering, and internal provenance is recursively removed. These rules let single-test, multi-phase, no-outcome, and partial records share one route architecture without pretending that evidence is a commercial outcome.
+
 ## Phase 2 continuation
 
 Phase 2 preserves the accepted static-first Astro 7 / strict-TypeScript architecture. A schema-validated, publication-filtered Maradin Proof record now owns the factual homepage story. Astro renders that semantic record before enhancement; approved documentary media and the official SVG identity are presentation assets, not new application runtimes.
@@ -36,10 +44,11 @@ Internal source references remain in authoring records only and are stripped bef
 
 ## Route contract
 
-Phase 1 fully authors only the homepage. Supporting routes are semantic shells so the information architecture and navigation are testable:
+Phase 1 fully authored the homepage. Phase 3 fully authors the Proof routes; other supporting routes remain semantic shells so the information architecture and navigation are testable:
 
 - / — experiential homepage
-- /proof and /proof/[slug] — future evidence records
+- /proof — Evidence Index
+- /proof/[slug] — public-eligible Field Records
 - /industry — industrial organizations
 - /startups — technology companies
 - /programs, /programs/spark, /programs/champ

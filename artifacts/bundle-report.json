@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T21:14:38.668Z",
+  "generatedAt": "2026-08-16T06:46:47.736Z",
   "inspectedEntry": "dist/index.html",
   "initialHtml": {
     "scripts": [
@@ -75,5 +75,22 @@
       "detectedAssets": [],
       "initialAssets": []
     }
+  },
+  "acceptedPhase2Baseline": {
+    "sourceCandidate": "eb8ca7de932d7b52a74026b66150f1e9c215438c",
+    "totalRawBytes": 20852,
+    "totalGzipBytes": 7961,
+    "initialRawBytes": 9179,
+    "initialGzipBytes": 3917,
+    "lazyRawBytes": 11673,
+    "lazyGzipBytes": 4044
+  },
+  "phase3Delta": {
+    "totalRawBytes": 0,
+    "totalGzipBytes": 0,
+    "initialRawBytes": 0,
+    "initialGzipBytes": 0,
+    "lazyRawBytes": 0,
+    "lazyGzipBytes": 0
   }
 }

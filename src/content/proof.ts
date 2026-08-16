@@ -8,6 +8,8 @@ const maradinProofCandidate = proofRecordSchema.parse({
   title: "Dynamic Ground Projection",
   summary:
     "A real-world field test of Maradin's MEMS-based laser scanning technology for vehicle-to-road visual communication.",
+  recordCode: "QH / PROOF 001",
+  recordStructure: "single-test",
   startup: {
     id: "maradin",
     name: "Maradin",
@@ -28,10 +30,26 @@ const maradinProofCandidate = proofRecordSchema.parse({
     "Maradin MEMS-based laser scanning dynamic ground projection.",
   environment:
     "Vehicle-mounted field testing across multiple projector positions, road surfaces, lighting conditions and weather conditions.",
+  environmentTags: [
+    "vehicle-mounted",
+    "road surfaces",
+    "lighting conditions",
+    "weather conditions",
+  ],
   test:
     "More than 60 real-world scenarios were evaluated across varying power outputs, weather conditions, road surfaces and lighting. A 15-person team evaluated brightness, image distortion and clarity on a 0–5 scale.",
   evidence:
     "The POC produced comparative field evidence across those real-world conditions. Exact internal KPI tables and proprietary measurement data remain non-public.",
+  evidenceItems: [
+    {
+      id: "maradin-comparative-field-evidence",
+      label: "Comparative field evidence",
+      summary:
+        "The POC produced comparative field evidence across those real-world conditions.",
+      classification: "B",
+      publicApproved: true,
+    },
+  ],
   nextStep:
     "Following an EcoMotion 2023 showcase, Maradin was selected for Hyundai's OI Lounge exhibition in Korea. A more advanced iteration was then integrated into the vehicle's front grille for that event.",
   heroMedia: {

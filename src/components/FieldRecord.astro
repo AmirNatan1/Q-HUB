@@ -1,0 +1,1045 @@
+---
+import ProofMedia from "@/components/ProofMedia.astro";
+import type { ProofRecord } from "@/content/schema";
+
+interface Props {
+  record: ProofRecord;
+}
+
+const { record } = Astro.props;
+const phases = record.phases ?? [];
+const evidenceItems = record.evidenceItems ?? [];
+const recordImages = record.media.filter((asset) => asset.kind === "image");
+const heroImage = record.heroMedia?.kind === "image"
+  ? record.heroMedia
+  : recordImages[0];
+const supportingImages = recordImages.filter((asset) => asset.id !== heroImage?.id);
+const evidenceImage = supportingImages[0];
+const contextImage = supportingImages[1];
+const testVideo = record.media.find((asset) => asset.kind === "video")
+  ?? (record.heroMedia?.kind === "video" ? record.heroMedia : undefined);
+const subject = [record.startup?.name, record.operatingOrganization?.name]
+  .filter(Boolean)
+  .join(" × ");
+const environmentTags = record.environmentTags ?? [];
+
+const hasTest = Boolean(record.test || phases.length > 0);
+const hasEvidence = Boolean(record.evidence || evidenceItems.length > 0);
+const hasOutcome = Boolean(record.decision || record.nextStep);
+const outcomeKey = record.decision && record.nextStep
+  ? "decision-next-step"
+  : record.decision
+    ? "decision"
+    : "next-step";
+const outcomeLabel = record.decision && record.nextStep
+  ? "Decision / next step"
+  : record.decision
+    ? "Decision"
+    : "Next step";
+
+const sections = [
+  record.fieldCondition && { id: "field-condition", code: "01", label: "Field condition" },
+  record.technology && { id: "technology", code: "02", label: "Technology" },
+  record.environment && { id: "environment", code: "03", label: "Environment" },
+  hasTest && { id: "test", code: "04", label: "Test" },
+  hasEvidence && { id: "evidence", code: "05", label: "Evidence" },
+  hasOutcome && { id: outcomeKey, code: "06", label: outcomeLabel },
+].filter((section): section is { id: string; code: string; label: string } => Boolean(section));
+---
+
+<article
+  class="field-record"
+  data-field-record={record.slug}
+  data-proof-record-page={record.slug}
+>
+  <header class="record-opening">
+    <div class="record-opening__copy">
+      <div class="record-opening__register">
+        <p>{record.recordCode ?? "Field record"}</p>
+        <p>{record.program ? `${record.program.name} / FIELD RECORD` : "FIELD RECORD"}</p>
+      </div>
+      <h1>{record.title}</h1>
+      {subject && <p class="record-opening__subject">{subject}</p>}
+      <p class="record-opening__summary">{record.summary}</p>
+
+      {(record.domains.length > 0 || environmentTags.length > 0) && (
+        <ul class="record-opening__tags" aria-label="Domains and operating environment">
+          {[...record.domains, ...environmentTags]
+            .filter((tag, index, values) => values.indexOf(tag) === index)
+            .map((tag) => <li>{tag}</li>)}
+        </ul>
+      )}
+    </div>
+
+    {heroImage && (
+      <div class="record-opening__media">
+        <ProofMedia
+          asset={heroImage}
+          role="hero"
+          caption="Primary field document"
+          priority
+        />
+      </div>
+    )}
+  </header>
+
+  {sections.length > 0 && (
+    <nav class="record-index" aria-label="Field record sections" data-proof-section-index>
+      <p>Record spine</p>
+      <ol>
+        {sections.map((section) => (
+          <li>
+            <a href={`#${section.id}`}>
+              <span>{section.code}</span>
+              <span>{section.label}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )}
+
+  <div class="record-body">
+    {record.fieldCondition && (
+      <section
+        id="field-condition"
+        class="record-chapter record-chapter--condition"
+        aria-labelledby="field-condition-title"
+        data-proof-chapter="field-condition"
+        data-proof-section="field-condition"
+      >
+        <header>
+          <p>01 / Field input</p>
+          <h2 id="field-condition-title">Field condition</h2>
+        </header>
+        <div class="record-chapter__content">
+          <p class="record-chapter__statement">{record.fieldCondition}</p>
+        </div>
+      </section>
+    )}
+
+    {record.technology && (
+      <section
+        id="technology"
+        class="record-chapter record-chapter--technology"
+        aria-labelledby="technology-title"
+        data-proof-chapter="technology"
+        data-proof-section="technology"
+      >
+        <header>
+          <p>02 / Introduced system</p>
+          <h2 id="technology-title">Technology</h2>
+        </header>
+        <div class="record-chapter__content record-chapter__content--technology">
+          <p class="record-chapter__statement">{record.technology}</p>
+          {record.startup && (
+            <dl class="technology-register">
+              <div>
+                <dt>Technology company</dt>
+                <dd>{record.startup.name}</dd>
+              </div>
+              {record.operatingOrganization && (
+                <div>
+                  <dt>Operating organization</dt>
+                  <dd>{record.operatingOrganization.name}</dd>
+                </div>
+              )}
+              {record.program && (
+                <div>
+                  <dt>Program</dt>
+                  <dd>{record.program.name}</dd>
+                </div>
+              )}
+            </dl>
+          )}
+        </div>
+      </section>
+    )}
+
+    {record.environment && (
+      <section
+        id="environment"
+        class="record-chapter record-chapter--environment"
+        aria-labelledby="environment-title"
+        data-proof-chapter="environment"
+        data-proof-section="environment"
+      >
+        <header>
+          <p>03 / Real field</p>
+          <h2 id="environment-title">Environment</h2>
+        </header>
+        <div class="record-chapter__content record-chapter__content--media">
+          <div class="record-chapter__text">
+            <p class="record-chapter__statement">{record.environment}</p>
+            {environmentTags.length > 0 && (
+              <ul class="descriptor-list" aria-label="Environment descriptors">
+                {environmentTags.map((tag) => <li>{tag}</li>)}
+              </ul>
+            )}
+          </div>
+          {contextImage && (
+            <ProofMedia
+              asset={contextImage}
+              role="context"
+              caption={contextImage.caption ?? contextImage.alt}
+            />
+          )}
+        </div>
+      </section>
+    )}
+
+    {hasTest && (
+      <section
+        id="test"
+        class="record-chapter record-chapter--test"
+        aria-labelledby="test-title"
+        data-proof-chapter="test"
+        data-proof-section="test"
+      >
+        <header>
+          <p>04 / Material contact</p>
+          <h2 id="test-title">Test</h2>
+        </header>
+        <div class="record-chapter__content record-chapter__content--test">
+          {record.test && <p class="record-chapter__statement">{record.test}</p>}
+          {testVideo && (
+            <ProofMedia
+              asset={testVideo}
+              role="test"
+              poster={heroImage}
+              caption={testVideo.caption ?? testVideo.alt}
+            />
+          )}
+          {phases.length > 0 && (
+            <ol class="phase-register" aria-label="Test phases">
+              {phases.map((phase, index) => (
+                <li>
+                  <div class="phase-register__heading">
+                    <p>{String(index + 1).padStart(2, "0")}</p>
+                    <h3>{phase.label}</h3>
+                    {phase.status && <p>{phase.status}</p>}
+                  </div>
+                  <p>{phase.summary}</p>
+                  {phase.date && <time datetime={phase.date}>{phase.date}</time>}
+                  {phase.media?.[0] && (
+                    <ProofMedia
+                      asset={phase.media[0]}
+                      role="support"
+                      caption={phase.media[0].caption ?? phase.media[0].alt}
+                    />
+                  )}
+                </li>
+              ))}
+            </ol>
+          )}
+        </div>
+      </section>
+    )}
+
+    {hasEvidence && (
+      <section
+        id="evidence"
+        class="record-chapter record-chapter--evidence"
+        aria-labelledby="evidence-title"
+        data-proof-chapter="evidence"
+        data-proof-section="evidence"
+      >
+        <header>
+          <p>05 / Documented observation</p>
+          <h2 id="evidence-title">Evidence</h2>
+        </header>
+        <div class="record-chapter__content record-chapter__content--evidence">
+          <div class="evidence-copy">
+            <p class="evidence-copy__label">What evidence exists</p>
+            {record.evidence && <p class="record-chapter__statement">{record.evidence}</p>}
+
+            {evidenceItems.length > 0 && (
+              <ul class="evidence-register" aria-label="Evidence items">
+                {evidenceItems.map((item) => (
+                  <li>
+                    <h3>{item.label}</h3>
+                    {item.value && <p class="evidence-register__value">{item.value}</p>}
+                    {item.summary && <p>{item.summary}</p>}
+                    {item.media && (
+                      <ProofMedia
+                        asset={item.media}
+                        role="support"
+                        caption={item.media.caption ?? item.media.alt}
+                      />
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {evidenceImage && (
+            <ProofMedia
+              asset={evidenceImage}
+              role="evidence"
+              caption={evidenceImage.caption ?? evidenceImage.alt}
+            />
+          )}
+        </div>
+      </section>
+    )}
+
+    {hasOutcome && (
+      <section
+        id={outcomeKey}
+        class="record-chapter record-chapter--outcome"
+        aria-labelledby="outcome-title"
+        data-proof-chapter={outcomeKey}
+        data-proof-section={outcomeKey}
+      >
+        <header>
+          <p>06 / After evidence</p>
+          <h2 id="outcome-title">{outcomeLabel}</h2>
+        </header>
+        <div class="record-chapter__content record-chapter__content--outcome">
+          {record.decision && record.nextStep ? (
+            <div class="outcome-register">
+              <section aria-labelledby="decision-subtitle">
+                <h3 id="decision-subtitle">Decision</h3>
+                <p>{record.decision}</p>
+              </section>
+              <section aria-labelledby="next-step-subtitle">
+                <h3 id="next-step-subtitle">Next step</h3>
+                <p>{record.nextStep}</p>
+              </section>
+            </div>
+          ) : (
+            <p class="record-chapter__statement">{record.decision ?? record.nextStep}</p>
+          )}
+        </div>
+      </section>
+    )}
+  </div>
+
+  <footer class="record-ending">
+    <p><span>Evidence</span> informs what happens next. It does not imply an outcome.</p>
+    <a href="/proof/">Back to evidence index <span aria-hidden="true">↗</span></a>
+  </footer>
+</article>
+
+<style>
+  .field-record {
+    width: 100%;
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  .record-opening {
+    position: relative;
+    display: grid;
+    min-height: 100svh;
+    grid-template-columns: minmax(20rem, 0.82fr) minmax(28rem, 1.18fr);
+    padding-top: var(--header-height);
+    border-bottom: 1px solid rgba(11, 10, 13, 0.7);
+  }
+
+  .record-opening::before {
+    position: absolute;
+    z-index: 2;
+    top: var(--header-height);
+    right: 0;
+    left: 0;
+    height: 0.35rem;
+    background: linear-gradient(90deg, var(--prove-deep) 0 36%, var(--prove) 36% 44%, transparent 44%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .record-opening__copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(4rem, 9vw, 9rem) var(--page-gutter) clamp(3rem, 6vw, 6rem);
+    border-right: 1px solid var(--line-light);
+  }
+
+  .record-opening__register {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--prove-deep);
+    font-family: var(--font-mono);
+    font-size: 0.69rem;
+    letter-spacing: 0.07em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .record-opening h1 {
+    max-width: 9ch;
+    margin-top: clamp(3rem, 8vh, 6rem);
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 6.5vw, 8.8rem);
+    font-weight: 600;
+    letter-spacing: -0.065em;
+    line-height: 0.86;
+    text-transform: uppercase;
+  }
+
+  .record-opening__subject {
+    margin-top: clamp(1.5rem, 3vh, 2.5rem);
+    color: var(--prove-deep);
+    font-family: var(--font-subhead);
+    font-size: clamp(0.98rem, 1.4vw, 1.3rem);
+  }
+
+  .record-opening__summary {
+    max-width: 39rem;
+    margin-top: clamp(1.7rem, 3.5vh, 3rem);
+    color: rgba(11, 10, 13, 0.68);
+    font-size: clamp(0.96rem, 1.2vw, 1.12rem);
+    line-height: 1.55;
+  }
+
+  .record-opening__tags,
+  .descriptor-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: clamp(2rem, 4vh, 3.5rem);
+  }
+
+  .record-opening__tags li,
+  .descriptor-list li {
+    padding: 0.35rem 0.65rem;
+    color: rgba(11, 10, 13, 0.7);
+    border: 1px solid rgba(11, 10, 13, 0.32);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.045em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .record-opening__media {
+    display: grid;
+    min-width: 0;
+    align-items: center;
+    padding: clamp(1rem, 2.4vw, 2.5rem);
+    background: #d6d4cd;
+  }
+
+  .record-opening__media :global(.proof-media) {
+    min-height: min(68vh, 52rem);
+  }
+
+  .record-index {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.35fr) minmax(0, 1.65fr);
+    padding-inline: var(--page-gutter);
+    border-bottom: 1px solid rgba(11, 10, 13, 0.7);
+  }
+
+  .record-index > p {
+    display: flex;
+    min-height: 4.75rem;
+    align-items: center;
+    color: var(--prove-deep);
+    border-right: 1px solid var(--line-light);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .record-index ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  }
+
+  .record-index li {
+    min-width: 0;
+    border-right: 1px solid var(--line-light);
+  }
+
+  .record-index li:last-child {
+    border-right: 0;
+  }
+
+  .record-index a {
+    display: grid;
+    min-height: 4.75rem;
+    align-content: center;
+    gap: 0.2rem;
+    padding: 0.65rem clamp(0.6rem, 1.2vw, 1rem);
+    color: rgba(11, 10, 13, 0.7);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.035em;
+    line-height: 1.25;
+    text-transform: uppercase;
+    transition: color var(--duration-fast) ease, background-color var(--duration-fast) ease;
+  }
+
+  .record-index a span:first-child {
+    color: var(--prove-deep);
+  }
+
+  .record-index a:hover {
+    color: var(--ink);
+    background: rgba(40, 203, 177, 0.12);
+  }
+
+  .record-index a:focus-visible {
+    outline-color: var(--prove-deep);
+    outline-offset: -3px;
+  }
+
+  .record-body {
+    width: 100%;
+  }
+
+  .record-chapter {
+    display: grid;
+    min-height: min(50rem, 86svh);
+    grid-template-columns: minmax(15rem, 0.42fr) minmax(0, 1.58fr);
+    scroll-margin-top: calc(var(--header-height) + 1rem);
+    border-bottom: 1px solid rgba(11, 10, 13, 0.7);
+  }
+
+  .record-chapter > header {
+    padding: clamp(3rem, 6vw, 6rem) var(--page-gutter);
+    border-right: 1px solid var(--line-light);
+  }
+
+  .record-chapter > header p,
+  .evidence-copy__label,
+  .technology-register dt,
+  .phase-register__heading > p,
+  .phase-register time,
+  .outcome-register h3 {
+    color: var(--prove-deep);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.065em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .record-chapter h2 {
+    max-width: 7ch;
+    margin-top: clamp(2.5rem, 8vh, 6.5rem);
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5.5vw, 7.5rem);
+    font-weight: 600;
+    letter-spacing: -0.06em;
+    line-height: 0.88;
+    text-transform: uppercase;
+  }
+
+  .record-chapter__content {
+    display: grid;
+    min-width: 0;
+    align-content: center;
+    padding: clamp(3rem, 7vw, 8rem) clamp(1.5rem, 5vw, 6rem);
+  }
+
+  .record-chapter__statement {
+    max-width: 38ch;
+    color: rgba(11, 10, 13, 0.8);
+    font-family: var(--font-display);
+    font-size: clamp(1.45rem, 2.7vw, 3.5rem);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .record-chapter--technology {
+    background: var(--paper-bright);
+  }
+
+  .record-chapter__content--technology {
+    align-content: space-between;
+    gap: clamp(3rem, 8vh, 7rem);
+  }
+
+  .technology-register {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    border-top: 1px solid var(--line-light);
+    border-left: 1px solid var(--line-light);
+  }
+
+  .technology-register > div {
+    min-height: 7.5rem;
+    padding: 1rem;
+    border-right: 1px solid var(--line-light);
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .technology-register dd {
+    margin-top: 1.7rem;
+    color: rgba(11, 10, 13, 0.72);
+  }
+
+  .record-chapter__content--media {
+    grid-template-columns: minmax(15rem, 0.8fr) minmax(22rem, 1.2fr);
+    gap: clamp(2rem, 4vw, 5rem);
+  }
+
+  .record-chapter__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .record-chapter__content--media :global(.proof-media) {
+    align-self: center;
+  }
+
+  .record-chapter--test {
+    color: var(--paper-bright);
+    background: var(--ink-soft);
+  }
+
+  .record-chapter--test > header {
+    border-color: var(--line-dark);
+  }
+
+  .record-chapter--test > header > p,
+  .phase-register__heading > p,
+  .phase-register time {
+    color: var(--prove);
+  }
+
+  .record-chapter--test .record-chapter__statement {
+    color: var(--paper-bright);
+  }
+
+  .record-chapter__content--test {
+    align-content: center;
+    grid-template-columns: minmax(16rem, 0.75fr) minmax(25rem, 1.25fr);
+    gap: clamp(2rem, 5vw, 6rem);
+  }
+
+  .record-chapter__content--test :global(.proof-media) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .phase-register {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 1px;
+    margin-top: clamp(2rem, 5vh, 4rem);
+    background: var(--line-dark);
+    border: 1px solid var(--line-dark);
+  }
+
+  .phase-register > li {
+    display: grid;
+    grid-template-columns: minmax(11rem, 0.42fr) minmax(0, 1.58fr);
+    gap: 1.2rem;
+    padding: clamp(1rem, 2vw, 1.8rem);
+    color: var(--paper-bright);
+    background: var(--ink-soft);
+  }
+
+  .phase-register__heading {
+    display: grid;
+    align-content: start;
+    grid-template-columns: auto 1fr;
+    gap: 0.45rem 0.8rem;
+  }
+
+  .phase-register__heading h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .phase-register__heading > p:last-child {
+    grid-column: 2;
+  }
+
+  .phase-register > li > p {
+    color: var(--paper-dim);
+  }
+
+  .phase-register time {
+    grid-column: 2;
+  }
+
+  .phase-register :global(.proof-media) {
+    grid-column: 2;
+    margin-top: 1rem;
+  }
+
+  .record-chapter--evidence {
+    background: var(--paper-bright);
+  }
+
+  .record-chapter__content--evidence {
+    grid-template-columns: minmax(18rem, 0.85fr) minmax(22rem, 1.15fr);
+    gap: clamp(2rem, 5vw, 6rem);
+  }
+
+  .evidence-copy {
+    align-self: center;
+  }
+
+  .evidence-copy__label {
+    margin-bottom: clamp(1.8rem, 4vh, 3.5rem);
+  }
+
+  .evidence-register {
+    display: grid;
+    gap: 1px;
+    margin-top: clamp(2rem, 5vh, 4rem);
+    background: var(--line-light);
+    border: 1px solid var(--line-light);
+  }
+
+  .evidence-register > li {
+    padding: 1rem;
+    background: var(--paper-bright);
+  }
+
+  .evidence-register h3 {
+    color: var(--prove-deep);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+
+  .evidence-register p {
+    margin-top: 0.7rem;
+    color: rgba(11, 10, 13, 0.68);
+  }
+
+  .evidence-register__value {
+    color: var(--ink) !important;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+
+  .evidence-register :global(.proof-media) {
+    margin-top: 1rem;
+  }
+
+  .record-chapter--outcome {
+    min-height: min(42rem, 72svh);
+    background: rgba(40, 203, 177, 0.09);
+  }
+
+  .record-chapter__content--outcome {
+    position: relative;
+  }
+
+  .record-chapter__content--outcome::before {
+    position: absolute;
+    top: clamp(3rem, 7vw, 8rem);
+    bottom: clamp(3rem, 7vw, 8rem);
+    left: 0;
+    width: 0.35rem;
+    background: var(--prove-deep);
+    content: "";
+  }
+
+  .outcome-register {
+    display: grid;
+    gap: 1px;
+    background: var(--line-light);
+    border: 1px solid var(--line-light);
+  }
+
+  .outcome-register > section {
+    padding: clamp(1.2rem, 3vw, 2.5rem);
+    background: var(--paper);
+  }
+
+  .outcome-register p {
+    max-width: 48rem;
+    margin-top: 1rem;
+    color: rgba(11, 10, 13, 0.74);
+    font-size: var(--step-1);
+  }
+
+  .record-ending {
+    display: flex;
+    min-height: 13rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: clamp(2rem, 5vw, 5rem) var(--page-gutter);
+    color: rgba(11, 10, 13, 0.66);
+    background: var(--paper-bright);
+  }
+
+  .record-ending p {
+    max-width: 34rem;
+  }
+
+  .record-ending p span {
+    color: var(--prove-deep);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .record-ending a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 1px solid currentColor;
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+
+  .record-ending a:hover {
+    color: var(--prove-deep);
+  }
+
+  .record-ending a:focus-visible {
+    outline-color: var(--prove-deep);
+  }
+
+  @media (max-width: 70rem) {
+    .record-opening {
+      grid-template-columns: minmax(18rem, 0.88fr) minmax(24rem, 1.12fr);
+    }
+
+    .record-opening__copy {
+      padding-inline: clamp(1.5rem, 3vw, 3rem);
+    }
+
+    .record-chapter {
+      grid-template-columns: minmax(13rem, 0.38fr) minmax(0, 1.62fr);
+    }
+
+    .record-chapter > header {
+      padding-inline: clamp(1.5rem, 3vw, 3rem);
+    }
+
+    .record-chapter__content {
+      padding-inline: clamp(1.5rem, 4vw, 4rem);
+    }
+  }
+
+  @media (max-width: 52rem) {
+    .record-opening {
+      min-height: auto;
+      grid-template-columns: 1fr;
+      padding-top: var(--header-height);
+    }
+
+    .record-opening__copy {
+      min-height: min(42rem, calc(100svh - var(--header-height)));
+      padding: clamp(3.5rem, 9vh, 6rem) var(--page-gutter) 3rem;
+      border-right: 0;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .record-opening h1 {
+      margin-top: clamp(2.8rem, 8vh, 5rem);
+      font-size: clamp(3.5rem, 12vw, 7rem);
+    }
+
+    .record-opening__media {
+      padding: 0.8rem;
+    }
+
+    .record-opening__media :global(.proof-media) {
+      min-height: 0;
+    }
+
+    .record-index {
+      display: block;
+      padding-inline: var(--page-gutter);
+    }
+
+    .record-index > p {
+      min-height: 3.5rem;
+      border-right: 0;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .record-index ol {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .record-index li:nth-child(3n) {
+      border-right: 0;
+    }
+
+    .record-index li:nth-child(n + 4) {
+      border-top: 1px solid var(--line-light);
+    }
+
+    .record-index a {
+      min-height: 4rem;
+    }
+
+    .record-chapter {
+      display: block;
+      min-height: auto;
+    }
+
+    .record-chapter > header {
+      min-height: 16rem;
+      padding: 3rem var(--page-gutter);
+      border-right: 0;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .record-chapter h2 {
+      margin-top: 3rem;
+      font-size: clamp(3rem, 12vw, 6rem);
+    }
+
+    .record-chapter__content {
+      min-height: 23rem;
+      padding: clamp(3rem, 9vw, 5rem) var(--page-gutter);
+    }
+
+    .record-chapter__content--media,
+    .record-chapter__content--test,
+    .record-chapter__content--evidence {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .record-chapter__content--test :global(.proof-media) {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .phase-register {
+      grid-column: 1;
+    }
+
+    .record-chapter__content--outcome::before {
+      top: 0;
+      right: var(--page-gutter);
+      bottom: auto;
+      left: var(--page-gutter);
+      width: auto;
+      height: 0.3rem;
+    }
+  }
+
+  @media (max-width: 34rem) {
+    .record-opening__register {
+      display: grid;
+      justify-content: start;
+    }
+
+    .record-opening h1 {
+      max-width: 10ch;
+      font-size: clamp(3.2rem, 15vw, 5rem);
+    }
+
+    .record-opening__summary {
+      font-size: 0.95rem;
+    }
+
+    .record-index {
+      padding-inline: 0;
+    }
+
+    .record-index > p {
+      padding-inline: var(--page-gutter);
+    }
+
+    .record-index ol {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .record-index li,
+    .record-index li:nth-child(3n) {
+      border-right: 1px solid var(--line-light);
+      border-top: 1px solid var(--line-light);
+    }
+
+    .record-index li:nth-child(2n) {
+      border-right: 0;
+    }
+
+    .record-index a {
+      padding-inline: var(--page-gutter);
+    }
+
+    .record-chapter > header {
+      min-height: 14rem;
+    }
+
+    .record-chapter__content {
+      min-height: 20rem;
+    }
+
+    .record-chapter__statement {
+      font-size: clamp(1.35rem, 6.5vw, 2.2rem);
+    }
+
+    .technology-register {
+      grid-template-columns: 1fr;
+    }
+
+    .phase-register > li {
+      grid-template-columns: 1fr;
+    }
+
+    .phase-register time,
+    .phase-register :global(.proof-media) {
+      grid-column: 1;
+    }
+
+    .record-ending {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .record-index a {
+      transition: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .record-opening,
+    .record-opening__copy,
+    .record-index,
+    .record-index > p,
+    .record-index li,
+    .record-chapter,
+    .record-chapter > header,
+    .technology-register,
+    .technology-register > div,
+    .phase-register,
+    .evidence-register,
+    .outcome-register {
+      border-color: CanvasText;
+    }
+
+    .record-opening::before,
+    .record-chapter__content--outcome::before {
+      background: Highlight;
+    }
+
+    .record-chapter--test {
+      color: Canvas;
+      background: CanvasText;
+    }
+
+    .record-chapter--test .record-chapter__statement {
+      color: Canvas;
+    }
+  }
+</style>

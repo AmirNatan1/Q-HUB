@@ -15,6 +15,7 @@
     "test:e2e:update": "node scripts/run-playwright.mjs --update-snapshots",
     "check": "npm run typecheck && npm run lint && npm run test:unit && npm run build",
     "release:placeholders": "vitest run tests/placeholder-release.test.ts",
+    "release:phase3-output": "node tests/support/check-phase3-built-output.mjs",
     "bundle:check": "node scripts/check-bundle.mjs",
     "lighthouse": "node scripts/run-lighthouse.mjs",
     "evidence:repair": "node scripts/capture-repair-evidence.mjs",
@@ -23,6 +24,8 @@
     "evidence:phase2:plan": "node scripts/capture-phase2-evidence.mjs --plan",
     "evidence:phase2:repair": "node scripts/capture-phase2-repair-evidence.mjs",
     "evidence:phase2:repair:plan": "node scripts/capture-phase2-repair-evidence.mjs --plan",
+    "evidence:phase3": "node scripts/capture-phase3-evidence.mjs",
+    "evidence:phase3:plan": "node scripts/capture-phase3-evidence.mjs --plan",
     "media:check": "node scripts/check-phase2-media.mjs"
   },
   "dependencies": {

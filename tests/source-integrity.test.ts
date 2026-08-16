@@ -51,6 +51,8 @@ const allowedPolicyReferences = new Set([
   'AGENTS.md',
   'docs/MASTER_GOAL.md',
   'docs/PHASE1_ACCEPTANCE.md',
+  // This immutable authority file must name the prohibited sources it forbids; implementation and public output remain scanned.
+  'docs/PHASE3_PROOF_SYSTEM_GOAL.md',
   'docs/PUBLICATION_POLICY.md',
 ]);
 

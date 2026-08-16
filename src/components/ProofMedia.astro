@@ -1,0 +1,161 @@
+---
+import type { MediaAsset } from "@/content/schema";
+
+interface Props {
+  asset: MediaAsset;
+  role: "preview" | "hero" | "context" | "test" | "evidence" | "support";
+  caption?: string;
+  poster?: MediaAsset | undefined;
+  priority?: boolean;
+}
+
+const {
+  asset,
+  role,
+  caption,
+  poster,
+  priority = false,
+} = Astro.props;
+
+const dimensions = {
+  width: asset.width,
+  height: asset.height,
+};
+---
+
+<figure class:list={["proof-media", `proof-media--${role}`]} data-proof-media-role={role}>
+  {asset.kind === "image" ? (
+    <img
+      src={asset.src}
+      alt={asset.alt}
+      {...dimensions}
+      loading={priority ? "eager" : "lazy"}
+      decoding="async"
+      fetchpriority={priority ? "high" : "auto"}
+    />
+  ) : asset.kind === "video" ? (
+    <video
+      {...dimensions}
+      controls
+      muted
+      playsinline
+      preload="none"
+      poster={poster?.src}
+      aria-label={asset.alt}
+    >
+      <source src={asset.src} type="video/mp4" />
+      <p>{asset.alt}</p>
+    </video>
+  ) : null}
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .proof-media {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    color: var(--paper-bright);
+    background: var(--brand-gray);
+  }
+
+  .proof-media img,
+  .proof-media video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .proof-media figcaption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0.65rem 0.8rem;
+    color: var(--paper-bright);
+    background: rgba(11, 10, 13, 0.88);
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.055em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .proof-media--preview,
+  .proof-media--hero {
+    aspect-ratio: 16 / 9;
+  }
+
+  .proof-media--preview img,
+  .proof-media--hero img,
+  .proof-media--evidence img {
+    object-position: 50% 100%;
+  }
+
+  .proof-media--context {
+    aspect-ratio: 16 / 10;
+  }
+
+  .proof-media--context img {
+    object-position: 54% 56%;
+  }
+
+  .proof-media--test {
+    aspect-ratio: 16 / 9;
+  }
+
+  .proof-media--test video {
+    object-position: 55% 50%;
+  }
+
+  .proof-media--evidence,
+  .proof-media--support {
+    aspect-ratio: 16 / 10;
+  }
+
+  @media (max-width: 40rem) {
+    .proof-media figcaption {
+      position: static;
+      min-height: 2.75rem;
+      display: flex;
+      align-items: center;
+      padding: 0.55rem 0.7rem;
+      font-size: 0.62rem;
+    }
+
+    .proof-media--preview,
+    .proof-media--hero,
+    .proof-media--test,
+    .proof-media--evidence,
+    .proof-media--support,
+    .proof-media--context {
+      aspect-ratio: auto;
+    }
+
+    .proof-media img,
+    .proof-media video {
+      aspect-ratio: 16 / 10;
+    }
+
+    .proof-media--preview img,
+    .proof-media--hero img,
+    .proof-media--evidence img {
+      object-position: 49% 92%;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .proof-media {
+      border: 1px solid CanvasText;
+    }
+
+    .proof-media figcaption {
+      color: Canvas;
+      background: CanvasText;
+    }
+  }
+</style>
