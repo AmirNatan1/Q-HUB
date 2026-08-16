@@ -1,0 +1,282 @@
+{
+  "profile": "desktop",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "configuredDeviceScaleFactor": 1,
+  "measuredDevicePixelRatio": 1,
+  "browserVersion": "151.0.7922.34",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+  "durationMs": 11884.5,
+  "journeyPhases": [
+    "presence",
+    "access",
+    "startup",
+    "method",
+    "activity",
+    "evidence",
+    "action"
+  ],
+  "frames": {
+    "samples": 482,
+    "p50Ms": 16.7,
+    "p95Ms": 50,
+    "p99Ms": 66.7,
+    "over33_3Ms": 127,
+    "over50Ms": 16,
+    "maxMs": 100
+  },
+  "longTasks": {
+    "supported": true,
+    "count": 11,
+    "totalDurationMs": 652,
+    "maxDurationMs": 92,
+    "entries": [
+      {
+        "startTime": 39.09999996423721,
+        "duration": 92,
+        "name": "self"
+      },
+      {
+        "startTime": 132.0999999642372,
+        "duration": 55,
+        "name": "self"
+      },
+      {
+        "startTime": 382,
+        "duration": 60,
+        "name": "self"
+      },
+      {
+        "startTime": 1403.0999999642372,
+        "duration": 51,
+        "name": "self"
+      },
+      {
+        "startTime": 2786.899999976158,
+        "duration": 52,
+        "name": "self"
+      },
+      {
+        "startTime": 5689.399999976158,
+        "duration": 65,
+        "name": "self"
+      },
+      {
+        "startTime": 5869.899999976158,
+        "duration": 51,
+        "name": "self"
+      },
+      {
+        "startTime": 6452.899999976158,
+        "duration": 54,
+        "name": "self"
+      },
+      {
+        "startTime": 7649.799999952316,
+        "duration": 61,
+        "name": "self"
+      },
+      {
+        "startTime": 7711.799999952316,
+        "duration": 57,
+        "name": "self"
+      },
+      {
+        "startTime": 7783.799999952316,
+        "duration": 54,
+        "name": "self"
+      }
+    ]
+  },
+  "errors": [],
+  "webglDrawCallsByPhase": {
+    "presence": 77,
+    "startup": 15,
+    "method": 20
+  },
+  "mediaSamplesByPhase": {
+    "presence": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "access": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "startup": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "method": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "activity": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "evidence": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    },
+    "action": {
+      "samples": 0,
+      "playingSamples": 0,
+      "offscreenPlayingSamples": 0
+    }
+  },
+  "offscreenVideoPlayback": {
+    "sampleCount": 0,
+    "samples": []
+  },
+  "memory": {
+    "exposed": true,
+    "start": {
+      "jsHeapSizeLimit": 3760000000,
+      "totalJSHeapSize": 10000000,
+      "usedJSHeapSize": 10000000
+    },
+    "end": {
+      "jsHeapSizeLimit": 3760000000,
+      "totalJSHeapSize": 10000000,
+      "usedJSHeapSize": 10000000
+    },
+    "usedJSHeapDelta": 0
+  },
+  "checkpoints": [
+    {
+      "expectedPhase": "presence",
+      "activePhase": "presence",
+      "renderMode": "webgl-enhanced",
+      "devicePixelRatio": 1,
+      "scrollY": 389,
+      "canvas": {
+        "clientWidth": 1440,
+        "clientHeight": 900,
+        "width": 1440,
+        "height": 900,
+        "engine": "ready",
+        "settledWindowMs": 280,
+        "settledDrawDelta": 8,
+        "continuousDrawObserved": true
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "access",
+      "activePhase": "access",
+      "renderMode": "webgl-enhanced",
+      "devicePixelRatio": 1,
+      "scrollY": 2704,
+      "canvas": {
+        "clientWidth": 1440,
+        "clientHeight": 900,
+        "width": 1440,
+        "height": 900,
+        "engine": "ready",
+        "settledWindowMs": 280,
+        "settledDrawDelta": 0,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "startup",
+      "activePhase": "startup",
+      "renderMode": "webgl-enhanced",
+      "devicePixelRatio": 1,
+      "scrollY": 5050,
+      "canvas": {
+        "clientWidth": 1440,
+        "clientHeight": 900,
+        "width": 1440,
+        "height": 900,
+        "engine": "ready",
+        "settledWindowMs": 280,
+        "settledDrawDelta": 8,
+        "continuousDrawObserved": true
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "method",
+      "activePhase": "method",
+      "renderMode": "webgl-enhanced",
+      "devicePixelRatio": 1,
+      "scrollY": 7520,
+      "canvas": {
+        "clientWidth": 1440,
+        "clientHeight": 900,
+        "width": 1440,
+        "height": 900,
+        "engine": "ready",
+        "settledWindowMs": 280,
+        "settledDrawDelta": 2,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "activity",
+      "activePhase": "activity",
+      "renderMode": "webgl-enhanced",
+      "devicePixelRatio": 1,
+      "scrollY": 9827,
+      "canvas": {
+        "clientWidth": 1440,
+        "clientHeight": 900,
+        "width": 1440,
+        "height": 900,
+        "engine": "ready",
+        "settledWindowMs": 280,
+        "settledDrawDelta": 0,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "evidence",
+      "activePhase": "evidence",
+      "renderMode": "webgl-enhanced",
+      "devicePixelRatio": 1,
+      "scrollY": 11605,
+      "canvas": {
+        "clientWidth": 1440,
+        "clientHeight": 900,
+        "width": 1440,
+        "height": 900,
+        "engine": "ready",
+        "settledWindowMs": 280,
+        "settledDrawDelta": 0,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    },
+    {
+      "expectedPhase": "action",
+      "activePhase": "action",
+      "renderMode": "webgl-enhanced",
+      "devicePixelRatio": 1,
+      "scrollY": 13058,
+      "canvas": {
+        "clientWidth": 1440,
+        "clientHeight": 900,
+        "width": 1440,
+        "height": 900,
+        "engine": "ready",
+        "settledWindowMs": 280,
+        "settledDrawDelta": 0,
+        "continuousDrawObserved": false
+      },
+      "videos": []
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate",
+  "generatedAt": "2026-08-16T18:25:27.126Z",
+  "sourceHead": "b4d4471b422231dfd558381486473be2d0c23263",
+  "sourceTree": "77c406637a477da17bb997a3947111b9bc602010",
+  "branch": "redirect/quantum-presence-startup-magnet",
+  "expectedCandidateBranch": "redirect/quantum-presence-startup-magnet",
+  "candidateBasis": "explicit-environment-value-equal-to-clean-head",
+  "candidateEnvironment": {
+    "name": "PHASE_R_RUNTIME_CANDIDATE_SHA",
+    "provided": true,
+    "equalsHead": true
+  },
+  "statusPorcelainAtStart": "",
+  "buildInput": "fresh npm run build production output",
+  "measuredBaseUrl": "http://127.0.0.1:50291/",
+  "browserVersion": "151.0.7922.34",
+  "profiles": [
+    {
+      "profile": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "devicePixelRatio": 1,
+      "durationMs": 11884.5,
+      "journeyPhases": [
+        "presence",
+        "access",
+        "startup",
+        "method",
+        "activity",
+        "evidence",
+        "action"
+      ],
+      "frames": {
+        "samples": 482,
+        "p50Ms": 16.7,
+        "p95Ms": 50,
+        "p99Ms": 66.7,
+        "over33_3Ms": 127,
+        "over50Ms": 16,
+        "maxMs": 100
+      },
+      "longTasks": {
+        "supported": true,
+        "count": 11,
+        "totalDurationMs": 652,
+        "maxDurationMs": 92,
+        "entries": [
+          {
+            "startTime": 39.09999996423721,
+            "duration": 92,
+            "name": "self"
+          },
+          {
+            "startTime": 132.0999999642372,
+            "duration": 55,
+            "name": "self"
+          },
+          {
+            "startTime": 382,
+            "duration": 60,
+            "name": "self"
+          },
+          {
+            "startTime": 1403.0999999642372,
+            "duration": 51,
+            "name": "self"
+          },
+          {
+            "startTime": 2786.899999976158,
+            "duration": 52,
+            "name": "self"
+          },
+          {
+            "startTime": 5689.399999976158,
+            "duration": 65,
+            "name": "self"
+          },
+          {
+            "startTime": 5869.899999976158,
+            "duration": 51,
+            "name": "self"
+          },
+          {
+            "startTime": 6452.899999976158,
+            "duration": 54,
+            "name": "self"
+          },
+          {
+            "startTime": 7649.799999952316,
+            "duration": 61,
+            "name": "self"
+          },
+          {
+            "startTime": 7711.799999952316,
+            "duration": 57,
+            "name": "self"
+          },
+          {
+            "startTime": 7783.799999952316,
+            "duration": 54,
+            "name": "self"
+          }
+        ]
+      },
+      "errorCount": 0,
+      "webglDrawCallsByPhase": {
+        "presence": 77,
+        "startup": 15,
+        "method": 20
+      },
+      "offscreenVideoPlaybackSamples": 0,
+      "memory": {
+        "exposed": true,
+        "start": {
+          "jsHeapSizeLimit": 3760000000,
+          "totalJSHeapSize": 10000000,
+          "usedJSHeapSize": 10000000
+        },
+        "end": {
+          "jsHeapSizeLimit": 3760000000,
+          "totalJSHeapSize": 10000000,
+          "usedJSHeapSize": 10000000
+        },
+        "usedJSHeapDelta": 0
+      }
+    },
+    {
+      "profile": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "devicePixelRatio": 1,
+      "durationMs": 8210.8,
+      "journeyPhases": [
+        "presence",
+        "access",
+        "startup",
+        "method",
+        "activity",
+        "evidence",
+        "action"
+      ],
+      "frames": {
+        "samples": 491,
+        "p50Ms": 16.7,
+        "p95Ms": 16.8,
+        "p99Ms": 16.8,
+        "over33_3Ms": 1,
+        "over50Ms": 0,
+        "maxMs": 33.3
+      },
+      "longTasks": {
+        "supported": true,
+        "count": 0,
+        "totalDurationMs": 0,
+        "maxDurationMs": 0,
+        "entries": []
+      },
+      "errorCount": 0,
+      "webglDrawCallsByPhase": {},
+      "offscreenVideoPlaybackSamples": 0,
+      "memory": {
+        "exposed": true,
+        "start": {
+          "jsHeapSizeLimit": 3760000000,
+          "totalJSHeapSize": 10000000,
+          "usedJSHeapSize": 10000000
+        },
+        "end": {
+          "jsHeapSizeLimit": 3760000000,
+          "totalJSHeapSize": 10000000,
+          "usedJSHeapSize": 10000000
+        },
+        "usedJSHeapDelta": 0
+      }
+    }
+  ],
+  "historicalReviewEvidence": {
+    "count": 83,
+    "bytes": 48205089,
+    "digestAlgorithm": "sha256(file\\0sha256\\0bytes joined by newline, sorted by file)",
+    "digest": "bb279d9ee2bdc1121ca73de4e2e592f6fe6430b5574742e68a1d0d424ba0ed07"
+  },
+  "repositoryBinding": {
+    "requiredForStage": true,
+    "headAndTreeUnchangedAfterBuildAndMeasurement": true,
+    "cleanTrackedAndUntrackedTreeAtStart": true,
+    "beforePromotion": {
+      "head": "b4d4471b422231dfd558381486473be2d0c23263",
+      "tree": "77c406637a477da17bb997a3947111b9bc602010",
+      "branch": "redirect/quantum-presence-startup-magnet",
+      "statusPorcelain": "",
+      "allowedOutputPaths": [],
+      "unexpectedStatusLines": []
+    },
+    "afterPromotionVerification": "HEAD/tree/branch must still match and status may contain only the exact three promoted runtime outputs before successful exit.",
+    "atomicOutputPolicy": "All profile and summary JSON files are validated in ignored staging and promoted as one rollback-protected set."
+  }
+}
