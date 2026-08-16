@@ -2243,10 +2243,38 @@ html[data-render-mode="reduced-motion"] .partner-plane--founding.partner-plane--
   transform: none;
 }
 
-html[data-render-mode="reduced-motion"] .partner-plane::before {
-  inset: 0;
-  width: auto;
-  height: auto;
+html[data-render-mode="reduced-motion"] .partner-plane--strategic.partner-plane--1 {
+  color: var(--r-paper-bright);
+  background: #0b090f;
+}
+
+html[data-render-mode="reduced-motion"] .partner-plane--strategic.partner-plane--2 {
+  color: var(--r-paper-bright);
+  background: #1d202b;
+}
+
+html[data-render-mode="reduced-motion"] .partner-plane--strategic.partner-plane--3 {
+  color: var(--r-ink);
+  background: var(--r-paper-bright);
+}
+
+html[data-render-mode="reduced-motion"] .partner-plane--founding.partner-plane--1 {
+  color: #183c34;
+  background:
+    linear-gradient(105deg, transparent 0 61%, rgba(246, 119, 131, 0.42) 61% 100%),
+    #c8ff33;
+}
+
+html[data-render-mode="reduced-motion"] .partner-plane--founding.partner-plane--2 {
+  color: var(--r-ink);
+  background:
+    linear-gradient(126deg, rgba(246, 119, 131, 0.22), transparent 46%),
+    var(--r-paper-bright);
+}
+
+html[data-render-mode="reduced-motion"] .partner-plane::before,
+html[data-render-mode="reduced-motion"] .partner-plane::after {
+  display: none;
 }
 
 html[data-render-mode="reduced-motion"] .partner-territory li + li {
