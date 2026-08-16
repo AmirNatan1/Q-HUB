@@ -1,6 +1,6 @@
 # Phase R human creative repair — technical acceptance ledger
 
-Phase R received the human disposition **REPAIR**, not redirect. This ledger records the tightly scoped repair pass and its technical evidence. It does **not** make the next human creative decision.
+Phase R received a controlled creative **REPAIR**, followed by **REPAIR — human review evidence / pacing only**. This ledger records the frozen repaired production implementation and its superseding evidence package. It does **not** make the next human creative decision.
 
 ## Candidate lineage
 
@@ -10,11 +10,13 @@ Phase R received the human disposition **REPAIR**, not redirect. This ledger rec
 - Pre-repair branch HEAD: `36bbc56c9d71881fd8bc2ba63ac59e87a4dac3d7`
 - Human-reviewed Phase R implementation candidate: `65907148bafec7cfe02f6c6d73154e3269f5d0e0`
 - Repaired production implementation candidate: `8fe8f0a07199c07098dbfade6ba5d6506b249b03`
+- Pacing-repair starting HEAD: `204f45dd74ede348663dbb22617ed8ac1ca9d51e`
 - Runtime measurement candidate / record closure: `953881b5cc0317dda0f6751407e180fc9ef0359f` / `e1f9e8672a288f1cc0a12c01fd1d9297de645c6e`
 - Lighthouse measurement candidate / record closure: `a56362f5f359424bbbfa5682cdefe763c5d7e5d4` / `9bc1cb1a8742c1d240b5b49de3894293fc80bbae`
-- Review-package capture candidate / tree: `a6645381b0e3cebcb050e38b8aec6a11aefbdaf3` / `3592b0b33f31230773a9d57023bb01ec46bf5924`
+- Superseded creative-repair review capture: `a6645381b0e3cebcb050e38b8aec6a11aefbdaf3`
+- Final pacing review capture candidate / tree: `b3bc2d6567c6ecce48faaa8d9770461ee4be152c` / `3f242e09a52f41b3bad8cb91c64dd89bd48622fe`
 
-The final implementation candidate is `8fe8f0a...`. Later candidates add only candidate-bound diagnostics, evidence, documentation, or the fail-closed evidence-staging correction; they do not alter the production homepage output.
+The final implementation candidate is `8fe8f0a...`. Later candidates add only candidate-bound diagnostics, evidence, documentation, or fail-closed evidence tooling. A fresh build from `b3bc2d6...` is byte-identical to the repaired-production output: 35 files, 9,648,819 bytes, digest `a36927e5b183e8a6271bf84de10bdf7fec073f6976cb057e0c95d7e36c81e240`.
 
 ## Authorized repair scope
 
@@ -45,10 +47,10 @@ The seven-act order, homepage copy, sparse density rules, partner order/taxonomy
 | `npm run check` | **PASS** — Astro typecheck 0 errors/warnings/hints; ESLint passed; Vitest 50/50; build emitted 12 static routes. |
 | `npm run test:e2e` | **PASS** — 93/93 Chromium cases at the configured four-worker cap. |
 | `npm run release:phase-r` | **PASS** — 7 acts, 5 partners, 15 homepage-linked public files; Phase 3 output preserved at 2 Proof routes, 4 media files, and 20 browser-facing text artifacts; bundle and secret gates passed. |
-| `npm run release:secrets` after final evidence | **PASS** — 135 candidate text files checked; 184 binary/oversize files skipped. |
+| `npm run release:secrets` after final evidence | **PASS** — 136 candidate text files checked; 208 binary/oversize files skipped. |
 | `npm run lighthouse` | **PASS** — six candidate-bound audits; every category at least 96; every CLS 0. |
 | `npm run runtime:phase-r` | **PASS as local synthetic evidence** — final desktop/mobile candidate files, lifecycle record, and disclosed mixed desktop deltas. |
-| `npm run evidence:phase-r` | **PASS** — exactly 23 PNGs, one complete 1440×900 WebM, and one manifest. |
+| `npm run evidence:phase-r` | **PASS** — exactly 23 PNGs, one complete 1440×900 WebM, one manifest, and nine fail-closed resolved-review ranges. |
 
 The 93-case browser suite covers the required 390×844, 430×932, 768×1024, 1440×900, and 1920×1080 viewports; exact act order and partner taxonomy; copy density; homepage Maradin omission; Proof index and Maradin record; horizontal overflow; keyboard/focus; axe; reduced motion; no WebGL; no JavaScript; forced colors; runtime lifecycle; and the four new visual-contract assertions.
 
@@ -91,15 +93,17 @@ All six audits meet the ≥95 category floor and CLS ≤0.05 contract. Scores ar
 
 ## Human review evidence
 
-The package at `artifacts/review/phase-r/` contains exactly 25 files: 23 PNGs, one WebM, and one manifest. The PNGs total 5,044,520 bytes. The complete package totals 11,351,859 bytes.
+The package at `artifacts/review/phase-r/` contains exactly 25 files: 23 PNGs, one WebM, and one manifest. The PNGs total 5,044,055 bytes. The complete package totals 12,500,820 bytes.
 
-- WebM: 1440×900; 81.64 seconds; 6,223,307 bytes; SHA-256 `72a91a9257212e0c496de3485c295b6ecb035934de968498304d342b1729f9c1`.
-- Manifest: 84,032 bytes; SHA-256 `3fa3c26c339b54c0870393b59c0257e7653b78460ee96f209bd49e98fca29abc`.
-- Candidate binding: `a6645381b0e3cebcb050e38b8aec6a11aefbdaf3`, tree `3592b0b33f31230773a9d57023bb01ec46bf5924`.
+- WebM: 1440×900; 78.28 seconds; 7,308,074 bytes; SHA-256 `7fed975b13673148b4038c5b6cb804d0b6ce4d9cbf7dcb566ca5e0691b86625f`.
+- Manifest: 148,691 bytes; SHA-256 `fc79824c3df2b2c2b09ea3e69f46f0bb188f35feaa1fcb2674954369e4c0f5f6`.
+- Candidate binding: `b3bc2d6567c6ecce48faaa8d9770461ee4be152c`, tree `3f242e09a52f41b3bad8cb91c64dd89bd48622fe`.
 - Capture monitoring: zero console, page, or request errors.
-- Historical evidence: 158 files, 78,353,262 bytes, digest `e65a804806f57091891a840ba77ab2903527658948d45b3d2411ca92af6eded5`, unchanged across final capture/promotion.
+- Historical evidence: 182 files, 80,590,964 bytes, digest `e141f398c3d3e1e0c9e74fb4a6c19fcf358f3c34473ff526f5dbfba6c1a06c46`, unchanged across final capture/promotion.
 
-All 23 PNGs were inspected individually. The final WebM was played in real time from 0.00 to 81.64 seconds without seeking and reached `ended: true` at the natural page end. Additional decoded-frame inspection across partner transitions, all three Field Crossing states, METHOD, ACTIVITY, EVIDENCE, and ACTION found no objective blank frame, text collision, fallback regression, or incomplete ending. This verifies package readability and the specific repair intent; it is not creative ACCEPT.
+Resolved partner ranges are VDL Group `10.323–12.731s`, Hyundai Motor Group `15.013–17.416s`, Bazan Group `19.767–22.172s`, Taavura–Livnat Group `24.508–26.913s`, and Talcar `29.266–31.681s`. Resolved ACTIVITY ranges are FIELD TESTING `54.098–56.301s`, PROGRAMS `58.293–60.501s`, PARTNER ENGAGEMENT `62.482–64.687s`, and GLOBAL ECOSYSTEM `66.601–68.817s`. Every range exceeds the two-second minimum and has a distinct decoded-frame signature.
+
+All 23 PNGs were inspected individually. The final WebM was played continuously in real time from 0.00 to 78.28 seconds without seeking and reached `ended: true` at the natural page end. Start, midpoint, and end frames from all nine explicit ranges were re-inspected; every required identity/label remains resolved throughout its dwell with no objective blank frame, text collision, unexpected clipping, or incomplete ending. This verifies package readability and coverage; it is not creative ACCEPT.
 
 ## Diagnostic and repair disclosures
 
@@ -107,6 +111,8 @@ All 23 PNGs were inspected individually. The final WebM was played in real time 
 - Mandatory visual inspection of the first repair package found Taavura still reading as a logo rectangle. That candidate was preserved, the identity was integrated into a full field, and the package was regenerated.
 - Inspection of the next package found reduced-motion partner surfaces transparent and low contrast. That candidate was preserved; the resolved territories were restored and the full source/QA/runtime/Lighthouse/evidence sequence was rerun.
 - Two otherwise complete review captures failed only at the final OneDrive directory promotion with `EPERM`. The capture runner remained fail-closed, left no partial canonical package, and was narrowly corrected to stage beside the destination before the successful final capture.
+- The first pacing-only invocation was rejected before build because the supplied full candidate SHA was incorrect. The next invocation built successfully but timed out on ACTIVITY state verification because title-case DOM labels were compared to uppercase review labels. A production-preview probe confirmed all nine visual states were already resolved; the tooling comparison was normalized without changing production.
+- The first corrected recapture built successfully but stopped before browser capture because the repository-owned diagnostic Astro preview (PID 35864) occupied the runner's isolated port. The exact repo-owned preview was stopped through Astro's scoped command and the unchanged committed candidate then captured successfully. No failed pacing invocation promoted a partial canonical package.
 - Candidate-bound pre-repair and intermediate runtime, Lighthouse, and review artifacts are preserved under explicit candidate/intermediate directories and Git history; they are not presented as final evidence.
 - The earlier unconstrained ten-worker browser diagnostic from the original Phase R run suffered host resource-starvation timeouts. It remains disclosed and is not counted as a pass.
 

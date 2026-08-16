@@ -709,7 +709,9 @@ The human disposition on Phase R implementation candidate `65907148bafec7cfe02f6
 - Final repaired production implementation: `8fe8f0a07199c07098dbfade6ba5d6506b249b03`.
 - Runtime measurement / closure: `953881b5cc0317dda0f6751407e180fc9ef0359f` / `e1f9e8672a288f1cc0a12c01fd1d9297de645c6e`.
 - Lighthouse measurement / closure: `a56362f5f359424bbbfa5682cdefe763c5d7e5d4` / `9bc1cb1a8742c1d240b5b49de3894293fc80bbae`.
-- Final review capture source / tree: `a6645381b0e3cebcb050e38b8aec6a11aefbdaf3` / `3592b0b33f31230773a9d57023bb01ec46bf5924`.
+- Pacing-repair starting HEAD: `204f45dd74ede348663dbb22617ed8ac1ca9d51e`.
+- Superseded creative-repair review capture: `a6645381b0e3cebcb050e38b8aec6a11aefbdaf3`.
+- Final pacing review capture source / tree: `b3bc2d6567c6ecce48faaa8d9770461ee4be152c` / `3f242e09a52f41b3bad8cb91c64dd89bd48622fe`.
 
 ### Final gate record
 
@@ -718,10 +720,10 @@ The human disposition on Phase R implementation candidate `65907148bafec7cfe02f6
 | `npm run check` | **PASS** — Astro 0 errors/warnings/hints; ESLint passed; Vitest 50/50; 12 static routes built. |
 | `npm run test:e2e` | **PASS** — 93/93 Chromium cases at the configured four-worker cap. |
 | `npm run release:phase-r` | **PASS** — 7 acts, 5 partners, 15 homepage-linked public files; Phase 3 output 2 routes / 4 media / 20 browser-facing text artifacts; bundle and secret gates passed. |
-| Final `npm run release:secrets` | **PASS** — 135 candidate text files checked; 184 binary/oversize files skipped. |
+| Final `npm run release:secrets` | **PASS** — 136 candidate text files checked; 208 binary/oversize files skipped. |
 | `npm run runtime:phase-r` | **PASS as synthetic evidence** — final desktop/mobile candidate artifacts, zero application errors, mobile WebGL off, lifecycle disclosures retained. |
 | `npm run lighthouse` | **PASS** — all six route/profile audits meet category ≥95 and CLS 0. |
-| `npm run evidence:phase-r` | **PASS** — exactly 23 PNGs, one 1440×900 WebM, and one manifest. |
+| `npm run evidence:phase-r` | **PASS** — exactly 23 PNGs, one 1440×900 WebM, one manifest, and nine fail-closed resolved-review ranges. |
 
 The browser suite includes the four added repair assertions: PROVE resolves as spatial registration without completion UI; all four ACTIVITY states have unique geometry signatures; Field Crossing has round/compressed/rectilinear aspect-ratio states on desktop and mobile; and the focused partner surface is screen-scale and borderless. Existing responsive, overflow, axe, keyboard/focus, reduced-motion, no-WebGL, no-JavaScript, forced-colors, publication, Proof, and runtime lifecycle coverage remains in the 93-case total.
 
@@ -741,11 +743,17 @@ Lighthouse exact results (Performance / Accessibility / Best Practices / SEO): h
 
 ### Review evidence and inspection
 
-The final `artifacts/review/phase-r/` package is bound to `a6645381...`, contains exactly 23 PNGs, one WebM, and one manifest, and totals 11,351,859 bytes. The 1440×900 WebM is 81.64 seconds, 6,223,307 bytes, SHA-256 `72a91a9257212e0c496de3485c295b6ecb035934de968498304d342b1729f9c1`. The 84,032-byte manifest hash is `3fa3c26c339b54c0870393b59c0257e7653b78460ee96f209bd49e98fca29abc`; it records zero console/page/request errors. All 158 historical review files remained unchanged during final capture (78,353,262 bytes; digest `e65a804806f57091891a840ba77ab2903527658948d45b3d2411ca92af6eded5`).
+The final `artifacts/review/phase-r/` package is bound to `b3bc2d6567c6ecce48faaa8d9770461ee4be152c`, tree `3f242e09a52f41b3bad8cb91c64dd89bd48622fe`. It contains exactly 23 PNGs, one WebM, and one manifest, and totals 12,500,820 bytes. The 1440×900 WebM is 78.28 seconds, 7,308,074 bytes, SHA-256 `7fed975b13673148b4038c5b6cb804d0b6ce4d9cbf7dcb566ca5e0691b86625f`. The 148,691-byte manifest hash is `fc79824c3df2b2c2b09ea3e69f46f0bb188f35feaa1fcb2674954369e4c0f5f6`; it records zero console/page/request errors. All 182 historical review files remained unchanged during final capture (80,590,964 bytes; digest `e141f398c3d3e1e0c9e74fb4a6c19fcf358f3c34473ff526f5dbfba6c1a06c46`).
 
-All 23 PNGs were inspected individually. The complete WebM played in real time from 0.00 seconds to its natural 81.64-second `ended: true` state without seeking. Decoded-frame inspection confirmed the round → compressed → rectilinear Field Crossing, edge-to-edge partner transitions, spatial PROVE resolution, ACTIVITY choreography, and complete ACTION ending. This is a technical/evidence statement, not creative acceptance.
+All 23 PNGs were inspected individually. The complete WebM played continuously in real time from 0.00 seconds to its natural 78.28-second `ended: true` state without seeking and without a mid-playback wait, stall, error, pause, or seek. Start, midpoint, and end frames inside every explicit resolved range were then individually inspected.
+
+Partner ranges are VDL Group `10.323–12.731s`, Hyundai Motor Group `15.013–17.416s`, Bazan Group `19.767–22.172s`, Taavura–Livnat Group `24.508–26.913s`, and Talcar `29.266–31.681s`. ACTIVITY ranges are FIELD TESTING `54.098–56.301s`, PROGRAMS `58.293–60.501s`, PARTNER ENGAGEMENT `62.482–64.687s`, and GLOBAL ECOSYSTEM `66.601–68.817s`. Every range exceeds the two-second minimum, remains visually resolved across all three inspected points, and has a distinct decoded-frame signature. No objective blank frame, text collision, unexpected clipping, or incomplete ending was found. This is a technical/evidence statement, not creative acceptance.
+
+Production remained unchanged. A fresh build from the evidence-capture candidate contains the same 35 files and 9,648,819 bytes as the repaired-production baseline, with the exact same SHA-256 inventory digest `a36927e5b183e8a6271bf84de10bdf7fec073f6976cb057e0c95d7e36c81e240`. Public HTML/CSS/JavaScript, copy, publication output, bundle composition, runtime implementation, and dependency boundary are unchanged, so the existing repaired-candidate runtime and six Lighthouse audits remain applicable.
 
 Earlier review packages were preserved because visual inspection exposed a Taavura logo rectangle and then a reduced-motion partner contrast regression. Both were repaired before the final package. Two subsequent capture attempts completed rendering but failed final OneDrive promotion with `EPERM`; fail-closed behavior left no partial canonical package, and a narrow sibling-staging correction produced the successful final package. The historical original Phase R unconstrained ten-worker resource-starvation diagnostic also remains disclosed and is not counted as a pass.
+
+The superseded 81.64-second review package was moved byte-identically to `artifacts/review/phase-r-pacing-superseded-204f45d/` before the new capture. During the pacing-only pass, an incorrect supplied candidate SHA caused one immediate pre-build rejection; the next capture built but timed out because title-case ACTIVITY labels were compared to uppercase review labels. A production probe showed all nine states were already resolved, so only the tooling comparison was normalized. The first corrected retry then stopped before browser capture because the repository-owned diagnostic Astro preview, PID 35864, occupied the isolated port; that exact preview was stopped through Astro's scoped command and the unchanged clean candidate captured successfully. No failed invocation promoted a partial canonical package.
 
 ### Limitations and boundary
 

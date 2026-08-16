@@ -1,20 +1,25 @@
-# Phase R human creative repair — review package
+# Phase R human creative repair — final pacing review package
 
 ## Review status
 
-The human disposition on the original Phase R candidate was **REPAIR**, not redirect. The strategic architecture remains accepted directionally. This package isolates the repaired versions of PROVE, ACTIVITY, Field Crossing, and Partner Field for another human decision. Codex does not approve its own creative outcome.
+The human disposition after the controlled creative repair was **REPAIR — human review evidence / pacing only**, not redirect. The repaired production implementation is frozen and remains accepted directionally. This superseding package changes only review capture/tooling so every partner territory and every ACTIVITY state receives a resolved, judgeable dwell. Codex does not approve its own creative outcome.
 
 - Branch: `redirect/quantum-presence-startup-magnet`
 - Pre-repair branch HEAD: `36bbc56c9d71881fd8bc2ba63ac59e87a4dac3d7`
 - Human-reviewed candidate: `65907148bafec7cfe02f6c6d73154e3269f5d0e0`
 - Repaired production implementation: `8fe8f0a07199c07098dbfade6ba5d6506b249b03`
-- Review-package source: `a6645381b0e3cebcb050e38b8aec6a11aefbdaf3`
-- Review-package source tree: `3592b0b33f31230773a9d57023bb01ec46bf5924`
+- Pacing-repair starting HEAD: `204f45dd74ede348663dbb22617ed8ac1ca9d51e`
+- Review-package source: `b3bc2d6567c6ecce48faaa8d9770461ee4be152c`
+- Review-package source tree: `3f242e09a52f41b3bad8cb91c64dd89bd48622fe`
 - [Manifest](../artifacts/review/phase-r/manifest.json)
 - [Runtime diagnostic](PHASE_R_RUNTIME_DIAGNOSTIC.md)
 - [Technical acceptance ledger](PHASE_R_ACCEPTANCE.md)
 
 No Cloudflare branch preview was deployed or tested. Human ordinary-hardware testing remains outstanding.
+
+## Evidence-pacing correction
+
+Production HTML, CSS, JavaScript, content, runtime behavior, and public output were not changed. The native-scroll capture choreography now settles sequentially on VDL Group, Hyundai Motor Group, Bazan Group, Taavura–Livnat Group, and Talcar, then on FIELD TESTING, PROGRAMS, PARTNER ENGAGEMENT, and GLOBAL ECOSYSTEM. Each checkpoint has a minimum two-second resolved dwell, manifest-bound video range, decoded-frame verification, and fail-closed state/visibility/geometry checks.
 
 ## What changed
 
@@ -38,7 +43,7 @@ PRESENCE, EVIDENCE, ACTION, public copy, seven-act order, Proof architecture/rou
 
 ## Recommended review order
 
-1. Play [desktop-phase-r-journey.webm](../artifacts/review/phase-r/desktop-phase-r-journey.webm) from its first frame to natural end without scrubbing. Focus on partner continuity, Field Crossing morphology, METHOD resolution, ACTIVITY conditions, pacing, and dead zones.
+1. Play [desktop-phase-r-journey.webm](../artifacts/review/phase-r/desktop-phase-r-journey.webm) from its first frame to natural end without scrubbing. Explicitly judge all five partner territories and all four ACTIVITY conditions, then review Field Crossing morphology, METHOD resolution, pacing, and dead zones.
 2. Inspect the 12 desktop PNGs, especially Partner Field, STARTUP, METHOD PROVE, and ACTIVITY.
 3. Inspect all 7 mobile PNGs as an independently composed touch/scroll sequence.
 4. Inspect reduced motion, no WebGL, keyboard focus, and forced colors for meaningful resolved states.
@@ -82,19 +87,24 @@ The [review directory](../artifacts/review/phase-r/) contains exactly 25 files: 
 
 ### Journey and manifest
 
-- `desktop-phase-r-journey.webm`: 1440×900; 81.64 seconds; 6,223,307 bytes; SHA-256 `72a91a9257212e0c496de3485c295b6ecb035934de968498304d342b1729f9c1`.
-- `manifest.json`: 84,032 bytes; SHA-256 `3fa3c26c339b54c0870393b59c0257e7653b78460ee96f209bd49e98fca29abc`; exact candidate/tree/branch binding, inventory, hashes, byte counts, dimensions, duration, timeline, zero-error disclosure, and historical-evidence integrity.
-- Total PNG bytes: 5,044,520. Total package bytes: 11,351,859.
-- Historical evidence: 158 files, 78,353,262 bytes, digest `e65a804806f57091891a840ba77ab2903527658948d45b3d2411ca92af6eded5`, unchanged across the final capture and promotion.
+- `desktop-phase-r-journey.webm`: 1440×900; 78.28 seconds; 7,308,074 bytes; SHA-256 `7fed975b13673148b4038c5b6cb804d0b6ce4d9cbf7dcb566ca5e0691b86625f`.
+- `manifest.json`: 148,691 bytes; SHA-256 `fc79824c3df2b2c2b09ea3e69f46f0bb188f35feaa1fcb2674954369e4c0f5f6`; exact candidate/tree/branch binding, inventory, hashes, byte counts, dimensions, duration, nine resolved-review ranges, decoded-frame checks, zero-error disclosure, and historical-evidence integrity.
+- Total PNG bytes: 5,044,055. Total package bytes: 12,500,820.
+- Historical evidence: 182 files, 80,590,964 bytes, digest `e141f398c3d3e1e0c9e74fb4a6c19fcf358f3c34473ff526f5dbfba6c1a06c46`, unchanged across the final capture and promotion.
+
+Resolved video ranges:
+
+- VDL Group `10.323–12.731s`; Hyundai Motor Group `15.013–17.416s`; Bazan Group `19.767–22.172s`; Taavura–Livnat Group `24.508–26.913s`; Talcar `29.266–31.681s`.
+- FIELD TESTING `54.098–56.301s`; PROGRAMS `58.293–60.501s`; PARTNER ENGAGEMENT `62.482–64.687s`; GLOBAL ECOSYSTEM `66.601–68.817s`.
 
 ## Inspection record
 
-All 23 final PNGs were individually inspected. The complete WebM was played in real time from 0.00 seconds until its natural 81.64-second `ended: true` state without seeking. Representative decoded frames across the recording were also inspected to resolve the following questions:
+All 23 final PNGs were individually inspected. The complete WebM was played in real time from 0.00 seconds until its natural 78.28-second `ended: true` state without seeking. Start, midpoint, and end frames inside all nine resolved review ranges were then individually inspected. They confirm stable identity/label visibility throughout every dwell, distinct nonblank compositions, readable relationship labels, no objective text collision or unexpected clipping, and continuation to the natural ACTION ending.
 
 - PROVE contains no checkmark, form, table, dashboard, success badge, or fake data; the prior TEST traces resolve into a spatial evidence plane.
-- The ACTIVITY source and visual-contract tests expose four distinct geometry signatures; the recorded transition shows the cadence and meeting-field states rather than one unchanged background.
+- The recording visibly settles on all four ACTIVITY labels and their distinct geometry conditions, including GLOBAL ECOSYSTEM before the EVIDENCE continuation.
 - Field Crossing visibly presents a round entry, compressed threshold state, and rectilinear exit.
-- Desktop partner transitions are edge-to-edge territories; the final Taavura state no longer contains the earlier isolated logo rectangle.
+- The recording visibly settles on all five desktop partner territories; VDL and Bazan are no longer fleeting review samples, and the final Taavura state contains no earlier isolated logo rectangle.
 - Mobile, reduced motion, no WebGL, keyboard focus, and forced colors are legible; the earlier reduced-motion contrast defect is absent.
 - The journey reaches ACTION and the natural page end; no objective blank/decode failure, collision, or blocking dead zone was found.
 
@@ -111,7 +121,9 @@ This inspection establishes that the specific repair intent is implemented and t
 
 ## Preserved diagnostic history
 
-Intermediate packages were intentionally retained because inspection found and corrected (1) a Taavura identity rectangle and (2) low-contrast transparent reduced-motion partner surfaces. Two complete capture attempts later failed only during OneDrive's final directory rename with `EPERM`; fail-closed promotion prevented partial canonical evidence, and the runner was narrowly corrected to stage beside the destination. The earlier original Phase R ten-worker resource-starvation diagnostic also remains disclosed. None is represented as the final pass.
+Intermediate packages were intentionally retained because inspection found and corrected (1) a Taavura identity rectangle and (2) low-contrast transparent reduced-motion partner surfaces. Two complete capture attempts later failed only during OneDrive's final directory rename with `EPERM`; fail-closed promotion prevented partial canonical evidence, and the runner was narrowly corrected to stage beside the destination. The superseded 81.64-second pacing package is preserved under `artifacts/review/phase-r-pacing-superseded-204f45d/`.
+
+During this pacing-only closure, one invocation was rejected immediately because an incorrect candidate SHA was supplied; a subsequent capture timed out because title-case DOM labels were compared to uppercase review labels; and the first corrected retry stopped before browser capture because the repository-owned diagnostic preview still occupied its isolated port. The label comparison was normalized, PID 35864 was verified as this repository's Astro preview and stopped through Astro's scoped command, and the unchanged clean candidate then captured successfully. None of the failed invocations produced or promoted a canonical partial package. The earlier original Phase R ten-worker resource-starvation diagnostic also remains disclosed. None is represented as the final pass.
 
 ## Known limitations
 
