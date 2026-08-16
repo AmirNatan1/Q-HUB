@@ -432,6 +432,36 @@ async function waitForVisibleImages(page) {
   }), undefined, { timeout: 15_000 });
 }
 
+async function settleVisiblePaint(page) {
+  await page.locator("[data-site-header]").waitFor({ state: "visible" });
+  await waitForVisibleImages(page);
+  await page.evaluate(async () => {
+    const visibleImages = Array.from(document.images).filter((image) => {
+      const bounds = image.getBoundingClientRect();
+      return bounds.bottom > 0
+        && bounds.right > 0
+        && bounds.top < window.innerHeight
+        && bounds.left < window.innerWidth
+        && getComputedStyle(image).display !== "none"
+        && getComputedStyle(image).visibility !== "hidden";
+    });
+    await Promise.all(visibleImages.map(async (image) => {
+      if (typeof image.decode !== "function") return;
+      try {
+        await image.decode();
+      } catch {
+        if (!image.complete || image.naturalWidth === 0) {
+          throw new Error(`Visible image did not decode: ${image.currentSrc || image.src}`);
+        }
+      }
+    }));
+  });
+  await page.evaluate(() => new Promise((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(resolve));
+  }));
+  await page.waitForTimeout(250);
+}
+
 async function positionCapture(page, definition) {
   if (definition.action === "top") {
     await page.evaluate(() => window.scrollTo(0, 0));
@@ -467,7 +497,7 @@ async function positionCapture(page, definition) {
       const top = element.getBoundingClientRect().top + window.scrollY;
       const isCombinedOpening = element.getAttribute("data-proof-section") === "field-condition";
       const offset = isCombinedOpening
-        ? Math.min(80, window.innerHeight * 0.09)
+        ? Math.min(250, window.innerHeight * 0.28)
         : -Math.min(112, window.innerHeight * 0.12);
       window.scrollTo(0, Math.max(0, top + offset));
     });
@@ -508,7 +538,7 @@ async function captureOne(baseUrl, definition, source) {
     await page.evaluate(() => new Promise((resolve) => {
       requestAnimationFrame(() => requestAnimationFrame(resolve));
     }));
-    await waitForVisibleImages(page);
+    await settleVisiblePaint(page);
     const state = await page.evaluate(() => ({
       viewport: { width: window.innerWidth, height: window.innerHeight },
       scrollY: Math.round(window.scrollY),
@@ -538,7 +568,6 @@ async function captureOne(baseUrl, definition, source) {
       path: filePath,
       type: "png",
       fullPage: false,
-      animations: "disabled",
     });
     return {
       id: definition.id,
