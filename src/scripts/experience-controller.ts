@@ -136,6 +136,26 @@ function setSubstates(phase: ExperiencePhase, local: number): void {
   } else if (phase !== "method") {
     delete root.dataset.methodState;
   }
+
+  const activitySection = document.querySelector<HTMLElement>(
+    '[data-experience-phase="activity"]',
+  );
+  if (activitySection && phase === "activity") {
+    const activityStates = [
+      "field-testing",
+      "programs",
+      "partner-engagement",
+      "global-ecosystem",
+    ] as const;
+    const state = activityStates[Math.min(
+      activityStates.length - 1,
+      Math.floor(clamp(local) * activityStates.length),
+    )] ?? activityStates[0];
+    activitySection.dataset.activityState = state;
+    root.dataset.activityState = state;
+  } else if (phase !== "activity") {
+    delete root.dataset.activityState;
+  }
 }
 
 function setActivePhase(index: number): void {

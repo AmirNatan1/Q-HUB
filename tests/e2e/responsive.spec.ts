@@ -18,8 +18,36 @@ function captureRuntimeFailures(page: Page): string[] {
   return failures;
 }
 
+async function runPhaseRLegacyResponsive(
+  page: Page,
+  viewport: (typeof viewports)[number],
+): Promise<boolean> {
+  await page.setViewportSize({ width: viewport.width, height: viewport.height });
+  await page.goto('/');
+  if (await page.locator('[data-experience-phase="presence"]').count() === 0) return false;
+  test.info().annotations.push({
+    type: 'Phase R supersession',
+    description: `Historical responsive invariant translated to Phase R at ${viewport.name}.`,
+  });
+  await expect(page.locator('main > section[data-experience-phase]')).toHaveCount(7);
+  await expect(page.locator('[data-partner-id]')).toHaveCount(5);
+  await expect(page.locator('[data-startup-action]')).toHaveAttribute(
+    'href',
+    'mailto:info@quantum-hub.com',
+  );
+  await expect(page.locator('[data-proof-handoff]')).toHaveAttribute('href', '/proof/');
+  const overflow = await page.evaluate(() => ({
+    body: document.body.scrollWidth - document.body.clientWidth,
+    root: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  }));
+  expect(overflow.body).toBeLessThanOrEqual(1);
+  expect(overflow.root).toBeLessThanOrEqual(1);
+  return true;
+}
+
 for (const viewport of viewports) {
   test(`${viewport.width}x${viewport.height} preserves content, controls, and scroll integrity`, async ({ page }) => {
+    if (await runPhaseRLegacyResponsive(page, viewport)) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
     await page.goto('/');

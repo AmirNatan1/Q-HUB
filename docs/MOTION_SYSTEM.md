@@ -1,5 +1,70 @@
 # Motion System
 
+## Phase R motion system — current contract
+
+Phase R concentrates motion into a few consequential transformations and replaces the older six-state homepage choreography as the current `/` experience. The public sequence is:
+
+`PRESENCE → ACCESS → STARTUP → METHOD → ACTIVITY → EVIDENCE → ACTION`
+
+Motion communicates institutional arrival, industrial access, field crossing, material contact, activity, and resolution. It does not decorate every sentence, simulate scale, or make the canvas the product.
+
+### Signature choreography
+
+| Moment | State contract | Motion meaning |
+| --- | --- | --- |
+| Quantum Presence Reveal | `[data-presence-state]` resolves from `origin` to `resolved`. | Sparse signal, type, and negative space move from controlled origin to an inevitable Quantum proposition. |
+| Partner Field | `[data-partner-state]` advances through `opening`, `strategic`, and `founding`; root `[data-partner-focus]` selects the sole visible organization from the semantic order carried by `[data-partner-sequence]`. | Quantum-origin space becomes a serious industrial ecosystem. Each organization receives a borderless screen-scale identity territory rather than entering as an equal tile or remaining behind the next focus. |
+| Field Crossing | `[data-crossing-state]` advances through `outside`, `threshold`, and `field`. | One round signal is compressed by a substantial boundary and resolves as a rectilinear field probe while the authored material region gains authority. Motion changes shape and material, not only position or color; repeating grids are absent. |
+| Compressed FIND → TEST → PROVE | `[data-method-state]` advances through `find`, `test`, and `prove`. | FIND distributes paths and points toward selection; TEST introduces a hard vertical threshold and contact deformation; PROVE becomes a structured paper record and resolved check. Every pair changes non-color geometry. |
+| Activity progression | `[data-activity-state]` advances through `field-testing`, `programs`, `partner-engagement`, and `global-ecosystem`; the matching `[data-activity-signal]` is exposed. | One large, contained category signal occupies the composition per local scroll quarter. All four are reached without overlap, crop, or an invented activity feed. |
+
+EVIDENCE settles into a calm document field. ACTION removes visual ambiguity and makes the working engagement path decisive. None of the seven acts requires a perpetual loop.
+
+The state names and data attributes are stable. Internal scroll thresholds and interpolation values may be tuned for pacing without changing the semantic contract or tests that observe resolved states.
+
+### Input translation
+
+- **Native scroll:** drives act selection, local act progress, and all required state transitions. Scrolling is never hijacked, trapped, or smoothed by a library.
+- **Fine pointer:** may add sparse depth in PRESENCE, STARTUP, and METHOD. Pointer work is coalesced into animation frames, cannot block links or copy, and never carries unique meaning.
+- **Touch/mobile:** uses normal vertical flow and authored CSS/SVG states. It does not emulate a mouse aperture and does not initialize WebGL by default.
+- **Keyboard:** actions and conventional navigation respond immediately; motion does not delay or replace native focus behavior.
+
+### DOM/CSS/SVG and WebGL relationship
+
+The semantic DOM is the source of all public meaning. The persistent stage and Field Crossing/method instruments are decorative and `aria-hidden`. CSS and authored SVG provide the baseline material sequence in every mode. The canvas is an optional visual reinforcement, never an information surface.
+
+The client controller imports only the client-safe phase literals from `src/content/experience.ts`. It sets root/section state attributes and CSS variables from scroll or pointer input. The custom `field-engine.ts` module is dynamically imported only for a fine-pointer, non-reduced, WebGL-enabled visit that intentionally enters an eligible realtime act.
+
+Current lifecycle rules:
+
+- eligible WebGL acts are PRESENCE, STARTUP, and METHOD;
+- continuous drawing is limited to active PRESENCE;
+- other eligible state changes schedule one-shot frames rather than a permanent loop;
+- `requestAnimationFrame` coalesces scroll and pointer updates;
+- hidden documents and ineligible/inactive acts stop drawing;
+- DPR is capped at `1.25`;
+- resize marks geometry/heading keepout for recomputation;
+- `pagehide`/destroy cancels frames, removes listeners, and releases buffer/program resources;
+- `?webgl=off`, runtime failure, reduced motion, touch/mobile, and no JavaScript retain the DOM/CSS/SVG experience.
+
+### Authored accessibility modes
+
+**Reduced motion** resolves sections into normal document flow, disables decorative realtime work, shows both partner groups and all five identities as prominent asymmetric territories, and expands all four Activity signals into a non-overlapping readable flow. Low-contrast Talcar/Bazan images may be suppressed while their approved typographic names remain large. FIND/TEST/PROVE retain their semantic words and authored static hierarchy, and every heading/action remains. This is a designed resolved experience, not blanket content deletion.
+
+**Forced colors** removes the decorative stage, Field Crossing/method instruments, evidence ornament, and partner imagery. It restores system surfaces, all organization names and relationship labels, all four Activity labels, system link treatment, borders, and visible focus. Meaning and actions remain in semantic HTML.
+
+**No JavaScript** expands all acts, all five partner identities, all four Activity labels, and the resolved Quantum proposition into authored SVG/CSS reading order.
+
+**No WebGL** retains the same scroll-driven state hooks and semantic DOM with authored CSS/SVG geometry. The canvas is absent, but Partner Field focus, Field Crossing, METHOD, ACTIVITY, copy, and actions remain operative. Enhancement failure must be visually intentional and silent: no blank opening, blocked control, or missing act.
+
+### Performance and review gate
+
+Transforms and opacity are preferred to paint-heavy filters or giant clipping effects. No new animation framework, smooth-scroll runtime, React, Three.js/R3F, or GSAP is part of this system. Synthetic frame evidence, lifecycle assertions, bundle inspection, and Lighthouse support release review, but human-perceived smoothness on ordinary hardware remains a distinct release criterion. A passing synthetic run is not final runtime acceptance.
+
+## Historical Phase 1–3 motion record
+
+The following sections preserve the earlier trajectory physics, documentary-media lifecycle, and Proof motion decisions. The Phase 1 six-state homepage choreography and Phase 2 Maradin-led homepage media sequence are superseded for `/`; the principles of state-driven motion, native scroll, authored fallback, reduced motion, and lifecycle discipline remain applicable.
+
 ## Phase 3 Proof motion
 
 Proof is a settled document experience. Its restrained vocabulary is inspect, align, reveal, lock, and settle. Native hover/focus styling may clarify the selected Evidence Index row, but no content or action depends on motion, JavaScript, cursor precision, or hover. Field Records preserve ordinary vertical scrolling, with no pinned chapters, scroll hijacking, parallax sequence, autoplay requirement, or client-side page transition.

@@ -29,6 +29,18 @@ const protectedOutputTokens = [
   ...deniedProofIds,
   'sourceReferenceInternal',
   'internal://',
+  'Exact internal KPI tables',
+  'proprietary measurement data',
+  'remain non-public',
+] as const;
+const conciseEvidenceSentence =
+  'The POC produced comparative field evidence across those real-world conditions.';
+const maradinDomains = ['automotive', 'mobility', 'human-machine communication'] as const;
+const maradinEnvironmentTags = [
+  'vehicle-mounted',
+  'road surfaces',
+  'lighting conditions',
+  'weather conditions',
 ] as const;
 
 function captureRuntimeFailures(page: Page): string[] {
@@ -61,6 +73,25 @@ async function expectNoHorizontalOverflow(page: Page, context: string): Promise<
 
   expect(overflow.body, `${context}: body must not overflow horizontally.`).toBeLessThanOrEqual(1);
   expect(overflow.root, `${context}: root must not overflow horizontally.`).toBeLessThanOrEqual(1);
+}
+
+async function expectOpaqueSiteHeader(page: Page, context: string): Promise<void> {
+  const header = page.locator('[data-site-header]');
+  await expect(header, `${context}: fixed site header is required.`).toBeVisible();
+  const background = await header.evaluate((element) => {
+    const backgroundColor = getComputedStyle(element).backgroundColor;
+    const functionalColor = backgroundColor.match(/^rgba?\(([^)]+)\)$/i);
+    const channels = functionalColor?.[1]
+      ?.split(/[\s,/]+/)
+      .filter(Boolean) ?? [];
+    const alpha = channels.length >= 4 ? Number.parseFloat(channels[3]!) : 1;
+    return { alpha, backgroundColor };
+  });
+
+  expect(
+    background.alpha,
+    `${context}: ${background.backgroundColor} allows scrolled content to contaminate the fixed header.`,
+  ).toBe(1);
 }
 
 async function expectHorizontalGeometry(
@@ -299,6 +330,7 @@ for (const viewport of requiredViewports) {
     const link = record.locator('a[data-proof-record-link]');
 
     await expect(index).toBeVisible();
+    await expectOpaqueSiteHeader(page, `${viewport.name} /proof`);
     await expectHeadingContract(page, `${viewport.name} /proof`);
     await expect(index.locator('h1')).toContainText(/evidence from the field/i);
     await expect(record).toHaveCount(1);
@@ -354,8 +386,25 @@ for (const viewport of requiredViewports) {
 
     const record = page.locator('article[data-proof-record-page]');
     await expect(record).toBeVisible();
+    await expectOpaqueSiteHeader(page, `${viewport.name} Maradin record`);
     await expectHeadingContract(page, `${viewport.name} Maradin record`);
     await expect(record.locator('h1')).toHaveText('Dynamic Ground Projection');
+
+    const openingTags = record.locator('.record-opening__tags li');
+    await expect(openingTags).toHaveCount(maradinDomains.length);
+    expect(await openingTags.allTextContents()).toEqual([...maradinDomains]);
+
+    const environmentTags = record.locator(
+      'section[data-proof-section="environment"] .descriptor-list li',
+    );
+    await expect(environmentTags).toHaveCount(maradinEnvironmentTags.length);
+    expect(await environmentTags.allTextContents()).toEqual([...maradinEnvironmentTags]);
+
+    const evidenceChapter = record.locator('section[data-proof-section="evidence"]');
+    await expect(
+      evidenceChapter.getByText(conciseEvidenceSentence, { exact: true }),
+    ).toHaveCount(1);
+    await expect(evidenceChapter.locator('.evidence-register')).toHaveCount(0);
 
     for (const chapterName of proofChapters) {
       const chapter = record.locator(`section[data-proof-section="${chapterName}"]`);
@@ -557,6 +606,19 @@ test('homepage preserves its six-state journey and adds only the deliberate PROV
   const runtimeFailures = captureRuntimeFailures(page);
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
+
+  if (await page.locator('[data-experience-phase="presence"]').count()) {
+    const handoff = page.locator('a[data-proof-handoff]');
+    await expect(handoff).toHaveCount(1);
+    await handoff.evaluate((element) => element.scrollIntoView({ block: 'center', behavior: 'instant' }));
+    await expect(handoff).toHaveAttribute('href', new RegExp(`^${proofIndexPath}/?$`));
+    await expect(handoff).toBeVisible();
+    await expect(handoff).toContainText(/proof/i);
+    await expectVisibleFocus(handoff, 'homepage Proof handoff');
+    await expectNoHorizontalOverflow(page, 'homepage with Proof handoff');
+    expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
+    return;
+  }
 
   const phases = await page.locator('main section[data-experience-phase]').evaluateAll((sections) =>
     sections.map((section) => section.getAttribute('data-experience-phase')),

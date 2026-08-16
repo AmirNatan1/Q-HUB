@@ -24,8 +24,68 @@ async function activePhase(page: Page): Promise<string | null> {
   );
 }
 
+async function activatePhaseRAct(page: Page, act: string, progress = 0.5): Promise<void> {
+  await page.locator(`[data-experience-phase="${act}"]`).evaluate(
+    (element, requestedProgress) => {
+      const bounds = element.getBoundingClientRect();
+      const viewportHeight = Math.max(window.innerHeight, 1);
+      const top = bounds.top + window.scrollY;
+      window.scrollTo({
+        top: Math.max(
+          0,
+          top - viewportHeight * 0.48
+            + Math.max(bounds.height, viewportHeight) * requestedProgress,
+        ),
+        behavior: 'instant',
+      });
+    },
+    progress,
+  );
+  await expect.poll(() => activePhase(page)).toBe(act);
+}
+
+async function runPhaseRLegacyExperience(
+  page: Page,
+  invariant: 'journey' | 'composition' | 'pointer',
+): Promise<boolean> {
+  const failures = captureRuntimeFailures(page);
+  await page.goto('/');
+  if (await page.locator('[data-experience-phase="presence"]').count() === 0) return false;
+  test.info().annotations.push({
+    type: 'Phase R supersession',
+    description: `Historical six-state experience invariant translated to Phase R: ${invariant}.`,
+  });
+
+  const acts = ['presence', 'access', 'startup', 'method', 'activity', 'evidence', 'action'];
+  const sections = page.locator('main > section[data-experience-phase]');
+  await expect(sections).toHaveCount(acts.length);
+  expect(await sections.evaluateAll((nodes) =>
+    nodes.map((node) => node.getAttribute('data-experience-phase')),
+  )).toEqual(acts);
+
+  if (invariant === 'journey') {
+    for (const act of acts) {
+      await activatePhaseRAct(page, act);
+    }
+  } else if (invariant === 'composition') {
+    await expect(page.locator('[data-partner-field]')).toHaveCount(1);
+    await expect(page.locator('[data-field-crossing]')).toHaveCount(1);
+    await expect(page.locator('[data-method-word]')).toHaveText(['find.', 'test.', 'prove.']);
+    await expect(page.locator('[data-proof-handoff]')).toHaveAttribute('href', '/proof/');
+  } else {
+    await page.mouse.move(920, 420);
+    await expect(page.locator('[data-signal-canvas]')).toHaveAttribute('data-engine', 'ready');
+    await page.mouse.move(420, 640, { steps: 8 });
+    await expect(page.locator('main')).toBeVisible();
+  }
+
+  expect(failures, failures.join('\n')).toEqual([]);
+  return true;
+}
+
 test.describe('six-state homepage experience', () => {
   test('all semantic states exist in narrative order and are reachable', async ({ page }) => {
+    if (await runPhaseRLegacyExperience(page, 'journey')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.goto('/');
     await expect(page.locator('nav[aria-label="Primary"]')).toBeVisible();
@@ -50,6 +110,7 @@ test.describe('six-state homepage experience', () => {
   });
 
   test('each state resolves to a distinct visual composition', async ({ page }) => {
+    if (await runPhaseRLegacyExperience(page, 'composition')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.goto('/');
 
@@ -104,6 +165,7 @@ test.describe('six-state homepage experience', () => {
   });
 
   test('the aperture responds to pointer exploration without blocking content', async ({ page }) => {
+    if (await runPhaseRLegacyExperience(page, 'pointer')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.goto('/');
 

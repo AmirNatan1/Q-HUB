@@ -9,7 +9,10 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
-  ...(process.env.CI ? { workers: 2 } : {}),
+  // The suite includes concurrent axe scans, video assertions, and WebGL pages.
+  // Capping local workers avoids resource starvation being misreported as a
+  // product timeout on ordinary development hardware.
+  workers: process.env.CI ? 2 : 4,
   reporter: process.env.CI
     ? [['line'], ['html', { open: 'never' }]]
     : [['list'], ['html', { open: 'never' }]],

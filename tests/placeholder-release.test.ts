@@ -1,14 +1,24 @@
 import { describe, expect, it } from "vitest";
 import { developmentContent } from "../src/content/development";
-import {
-  findSelection,
-  homepageActs,
-  homepageProofFields,
-} from "../src/content/homepage";
+import * as homepageModule from "../src/content/homepage";
 import {
   assertNoDevelopmentPlaceholders,
   findDevelopmentPlaceholders,
 } from "../src/content/publication";
+import {
+  publicPartnerOrganizations,
+  sparkProgram,
+} from "../src/content/strategic";
+
+type LegacyHomepageCompatibility = {
+  findSelection: unknown;
+  homepageProofFields: readonly unknown[];
+};
+
+const { homepageActs } = homepageModule;
+const { findSelection, homepageProofFields } = homepageModule as
+  typeof homepageModule & LegacyHomepageCompatibility;
+const phaseRHomepage = homepageActs[0]?.phase === "presence";
 
 describe("pre-release placeholder detection", () => {
   it("keeps intentionally unresolved later-phase content detectable", () => {
@@ -31,6 +41,25 @@ describe("pre-release placeholder detection", () => {
   });
 
   it("keeps resolved homepage production content free of placeholders", () => {
+    if (phaseRHomepage) {
+      const resolvedHomepageContent = {
+        homepageActs,
+        homepageCopyDensityReport: homepageModule.homepageCopyDensityReport,
+        activitySignals: homepageModule.activitySignals,
+        publicPartnerOrganizations,
+        sparkProgram,
+      };
+
+      expect(findDevelopmentPlaceholders(resolvedHomepageContent)).toEqual([]);
+      expect(() =>
+        assertNoDevelopmentPlaceholders(resolvedHomepageContent),
+      ).not.toThrow();
+      expect(JSON.stringify(resolvedHomepageContent)).not.toMatch(
+        /approved content pending|development proof record/i,
+      );
+      return;
+    }
+
     const resolvedHomepageContent = {
       homepageActs,
       homepageProofFields,

@@ -1,5 +1,93 @@
 # Content model
 
+## Phase R homepage model — current contract
+
+Phase R adds a governed Quantum-led homepage layer without replacing the six established record families or the Phase 3 Proof schema. Homepage copy, partner eligibility, publication eligibility, and presentation remain separate concerns.
+
+### Client-safe experience constants
+
+`src/content/experience.ts` is the only homepage experience module intended for direct browser-runtime import. It contains:
+
+```text
+presence, access, startup, method, activity, evidence, action
+```
+
+and the derived `ExperiencePhase` type. It contains no governed organization/program/Proof objects, source references, approval notes, or asset provenance. Browser code discovers approved rendered content through semantic DOM and stable data attributes instead of importing authoring collections.
+
+### Homepage acts
+
+`homepageActSchema` validates one record for each of the seven phases. Each act carries:
+
+- stable `id`;
+- one `phase` from the client-safe seven-value enum;
+- two-digit `act` from `01` through `07`;
+- editorial `label`;
+- one or two non-empty title lines;
+- optional short support line;
+- optional action with a local path or approved `mailto:` destination;
+- `classification`, `publicApproved`, and `developmentPlaceholder`.
+
+`src/content/homepage.ts` parses candidate acts, passes them through `filterPublicRecords`, freezes the resulting public collection, and fails if all seven approved acts do not survive. Presentation consumes `homepageActs`; it does not duplicate corporate facts in Astro templates.
+
+The same module exposes the current public constants `proofIndexHref`, `workWithQuantumHref`, `methodStates`, and `activitySignals`. `activitySignals` is a closed set of category-level labels, not an activity feed or a factual record count.
+
+The copy-density helper records the current design ceilings:
+
+| Measure | Ceiling |
+| --- | ---: |
+| Primary statement | 10 words |
+| Support line | 20 words |
+| Public paragraph | 24 words |
+| Settled narrative | 35 words |
+| Mobile-visible narrative | 28 words |
+
+These are presentation release constraints over public strings, not a mechanism for hiding required semantic content.
+
+### Strategic partner subtype
+
+`strategicPartnerSchema` narrows `networkOrganizationSchema` for the Phase R Partner Field:
+
+- `contentType: "network-organization"`;
+- `kind: "industrial"`;
+- exactly one relationship in a one-item tuple;
+- relationship limited to `founding-partner` or `strategic-partner`;
+- required approved `logo` media record;
+- `summary` prohibited;
+- the standard classification, approval, placeholder, and optional internal provenance fields.
+
+The approved public records are:
+
+| Public collection | Members |
+| --- | --- |
+| `foundingPartners` | Taavura–Livnat Group; Talcar |
+| `strategicPartners` | VDL Group; Hyundai Motor Group; Bazan Group |
+
+All five candidates are classification B, explicitly approved, and non-placeholder. `publicPartnerOrganizations` contains only the filtered values. Relationship-specific arrays derive from the exact tuple and must not be independently hand-authored.
+
+### SPARK program proposition
+
+The concise startup proposition is a governed `programRecordSchema` value with `id/slug: "spark"`, family `SPARK`, audience `suitable startups`, classification B, explicit approval, and no development placeholder. `sparkProgram` is exported only after publication filtering. Homepage support copy derives from its public `summary`; the presentation layer does not create guarantee language around it.
+
+### Publication and serialization flow
+
+1. Map only human-approved public-safe source values into typed authoring candidates.
+2. Preserve internal provenance only in authoring fields.
+3. Parse with the applicable Zod schema.
+4. Apply the shared A/B + approved + non-placeholder publication gate.
+5. Recursively strip `sourceReferenceInternal` from the returned public value.
+6. Render filtered values as semantic HTML.
+7. Let browser runtime operate on client-safe phase constants and rendered data attributes only.
+
+Raw source packs and approval/provenance files are not client payloads. Hiding an internal field with CSS, omitting it from one component, or importing an unfiltered object into a browser entry is not publication control.
+
+### Proof continuity
+
+The Phase 3 variable Proof model remains intact and retains its one currently eligible record. Phase R changes only the homepage handoff to `/proof/` and permits narrow presentation cleanup. It does not add a record shape, change Maradin’s facts, create a decision/outcome, or change parent/nested eligibility.
+
+## Historical Phase 2–3 content record
+
+The sections below preserve the earlier Proof modeling and approval history. Their Maradin-derived homepage state mapping is superseded for `/`; the schema families, optionality rules, nested filtering, missing-data discipline, development fixtures, and authoring flow remain current.
+
 ## Phase 3 variable Proof records
 
 The Phase 2 Proof schema is extended, not replaced. Optional `recordCode`, `recordStructure`, `phases`, `evidenceItems`, and `environmentTags` support a reusable Evidence Index and Field Record renderer while preserving the approved Maradin record. `recordStructure` distinguishes `single-test` from `multi-phase`; missing date, location, decision, next step, metrics, media, or chapters remain genuinely absent.

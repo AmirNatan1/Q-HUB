@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T11:36:12.253Z",
+  "generatedAt": "2026-08-16T12:39:42.547Z",
   "inspectedEntry": "dist/index.html",
   "initialHtml": {
     "scripts": [
@@ -19,18 +19,18 @@
       {
         "kind": "external",
         "type": "module",
-        "src": "/_astro/index.astro_astro_type_script_index_0_lang.DoszqGo0.js",
-        "localFile": "_astro/index.astro_astro_type_script_index_0_lang.DoszqGo0.js"
+        "src": "/_astro/index.astro_astro_type_script_index_0_lang.88H1QhcT.js",
+        "localFile": "_astro/index.astro_astro_type_script_index_0_lang.88H1QhcT.js"
       }
     ],
     "modulePreloads": []
   },
   "totals": {
     "javascriptAssets": 3,
-    "rawBytes": 22074,
-    "gzipBytes": 8197,
-    "initialRawBytes": 10460,
-    "initialGzipBytes": 4188,
+    "rawBytes": 22400,
+    "gzipBytes": 8299,
+    "initialRawBytes": 10786,
+    "initialGzipBytes": 4290,
     "lazyRawBytes": 11614,
     "lazyGzipBytes": 4009
   },
@@ -44,10 +44,10 @@
       "dynamicImports": []
     },
     {
-      "file": "_astro/index.astro_astro_type_script_index_0_lang.DoszqGo0.js",
+      "file": "_astro/index.astro_astro_type_script_index_0_lang.88H1QhcT.js",
       "tier": "initial",
-      "rawBytes": 7970,
-      "gzipBytes": 3070,
+      "rawBytes": 8296,
+      "gzipBytes": 3172,
       "staticImports": [],
       "dynamicImports": [
         "_astro/field-engine.BA5GPryA.js"
@@ -152,10 +152,10 @@
     "lazyGzipBytes": 4044
   },
   "phaseRDelta": {
-    "totalRawBytes": 1222,
-    "totalGzipBytes": 236,
-    "initialRawBytes": 1281,
-    "initialGzipBytes": 271,
+    "totalRawBytes": 1548,
+    "totalGzipBytes": 338,
+    "initialRawBytes": 1607,
+    "initialGzipBytes": 373,
     "lazyRawBytes": -59,
     "lazyGzipBytes": -35
   }

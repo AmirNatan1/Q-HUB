@@ -16,7 +16,12 @@ const protectedOutputTokens = [
   ...deniedProofIds,
   'sourceReferenceInternal',
   'internal://',
+  'Exact internal KPI tables',
+  'proprietary measurement data',
+  'remain non-public',
 ];
+const conciseEvidenceSentence =
+  'The POC produced comparative field evidence across those real-world conditions.';
 const browserTextExtensions = new Set(['.css', '.html', '.js', '.json', '.map', '.mjs', '.xml']);
 
 function filesWithin(directory) {
@@ -73,6 +78,12 @@ if (!proofIndexHtml.includes('/proof/maradin-dynamic-ground-projection')) {
 }
 if (!maradinHtml.includes('Dynamic Ground Projection')) {
   throw new Error('The built Maradin field record is missing its approved title.');
+}
+const conciseEvidenceCount = maradinHtml.split(conciseEvidenceSentence).length - 1;
+if (conciseEvidenceCount !== 1) {
+  throw new Error(
+    `The built Maradin field record must contain the concise Evidence statement exactly once; found ${conciseEvidenceCount}.`,
+  );
 }
 
 const mediaPaths = [...new Set(

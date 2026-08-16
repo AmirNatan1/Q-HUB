@@ -322,6 +322,7 @@ function installRuntimeProbe() {
     stoppedAt: 0,
     lastFrameAt: 0,
     frameIntervals: [],
+    longTaskSupported: false,
     longTasks: [],
     drawCallsByPhase: {},
     mediaSamplesByPhase: {},
@@ -402,8 +403,9 @@ function installRuntimeProbe() {
       }
     });
     observer.observe({ type: "longtask", buffered: false });
+    state.longTaskSupported = true;
   } catch {
-    // Long Task API is optional; support is recorded by the empty result.
+    // Long Task API is optional; support is recorded independently of results.
   }
 
   const originalDrawArrays = WebGLRenderingContext.prototype.drawArrays;
@@ -437,6 +439,9 @@ function installRuntimeProbe() {
       state.sampler = 0;
       state.memoryEnd = memory();
       return structuredClone(state);
+    },
+    drawSnapshot() {
+      return structuredClone(state.drawCallsByPhase);
     },
   };
 }
@@ -488,9 +493,19 @@ async function checkpoint(page, expectedPhase) {
   await page.waitForFunction((phaseName) => (
     document.documentElement.dataset.activePhase === phaseName
   ), expectedPhase, { timeout: 8_000 });
+  const drawCallsBeforeSettledWindow = await page.evaluate(
+    () => window.__phaseRRuntime.drawSnapshot(),
+  );
   await page.waitForTimeout(280);
-  return page.evaluate((phaseName) => {
+  const drawCallsAfterSettledWindow = await page.evaluate(
+    () => window.__phaseRRuntime.drawSnapshot(),
+  );
+  return page.evaluate(({ phaseName, drawCallsBefore, drawCallsAfter }) => {
     const canvas = document.querySelector("[data-signal-canvas]");
+    const settledDrawDelta = Math.max(
+      0,
+      (drawCallsAfter[phaseName] ?? 0) - (drawCallsBefore[phaseName] ?? 0),
+    );
     const videos = Array.from(document.querySelectorAll("video")).map((video) => {
       const bounds = video.getBoundingClientRect();
       const visible = bounds.bottom > 0
@@ -523,10 +538,17 @@ async function checkpoint(page, expectedPhase) {
         width: canvas.width,
         height: canvas.height,
         engine: canvas.dataset.engine ?? null,
+        settledWindowMs: 280,
+        settledDrawDelta,
+        continuousDrawObserved: settledDrawDelta > 2,
       } : null,
       videos,
     };
-  }, expectedPhase);
+  }, {
+    phaseName: expectedPhase,
+    drawCallsBefore: drawCallsBeforeSettledWindow,
+    drawCallsAfter: drawCallsAfterSettledWindow,
+  });
 }
 
 async function measureProfile(baseUrl, profile, browserVersion) {
@@ -603,7 +625,7 @@ async function measureProfile(baseUrl, profile, browserVersion) {
       journeyPhases: phases.map((entry) => entry.phase),
       frames: frameSummary(probe.frameIntervals),
       longTasks: {
-        supported: typeof probe.longTasks !== "undefined",
+        supported: probe.longTaskSupported,
         count: probe.longTasks.length,
         totalDurationMs: Math.round(probe.longTasks.reduce((sum, task) => sum + task.duration, 0) * 1000) / 1000,
         maxDurationMs: Math.round(Math.max(0, ...probe.longTasks.map((task) => task.duration)) * 1000) / 1000,

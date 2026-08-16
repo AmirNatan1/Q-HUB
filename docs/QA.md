@@ -1,3 +1,217 @@
+# Quality Assurance
+
+## Phase R verification contract — current
+
+This section defines how the current seven-act homepage is verified. It is a test contract, not a result ledger. Candidate-specific totals, scores, hashes, artifact inventories, defects, preview URLs, and acceptance status belong only in the Phase R acceptance, runtime-diagnostic, and Human Review Package documents after the commands actually run against a bound candidate.
+
+The homepage under test is:
+
+`PRESENCE → ACCESS → STARTUP → METHOD → ACTIVITY → EVIDENCE → ACTION`
+
+The older Phase 1–3 command results later in this file are preserved historical evidence. They must not be reused as Phase R results.
+
+### Required command families
+
+Run from the repository root against a production candidate. Record the exact exit code and fresh output in the Phase R acceptance ledger; do not copy historical totals.
+
+```text
+npm run check
+```
+
+This is the integrated typecheck, lint, unit-test, and production-build gate.
+
+```text
+npx vitest run tests/strategic-content.test.ts tests/phase-r-homepage-content.test.ts tests/homepage-content.test.ts tests/publication.test.ts tests/content-output.test.ts
+npm run test:source-integrity
+npm run release:placeholders
+```
+
+These cover the exact partner taxonomy, governed SPARK proposition, seven-act/copy-density model, publication denial and provenance stripping, homepage/Proof output intent, prohibited sources, and placeholder release boundary.
+
+After a fresh build:
+
+```text
+npm run release:phase-r-output
+npm run bundle:check
+```
+
+The built-output gate must scan the homepage and its linked public files for the exact seven-act order, five approved partners and relationships, local assets, safe actions, Maradin de-centering, denied strings, internal provenance, Drive identifiers, placeholders, and direct-record handoff. It intentionally does not treat the deeper Proof route’s approved record-specific content as a homepage leak.
+
+The combined production-output command is:
+
+```text
+npm run release:phase-r
+```
+
+The bundle report must state the exact Phase R-versus-accepted-Phase-3 raw and
+gzip deltas, split initial and lazy JavaScript, and justify any growth. Release
+acceptance expects no new production dependency and rejects React, Three.js,
+React Three Fiber, GSAP, or another unapproved heavy runtime. The same gate must
+inventory public media and reject hidden external hotlinks.
+
+The candidate secret scan is:
+
+```text
+npm run release:secrets
+```
+
+It scans every tracked or non-ignored candidate text file and fails closed on
+recognized private-key or access-token material. Run it again after final
+evidence and documentation are staged and before the closure commit.
+
+Browser behavior is exercised with:
+
+```text
+npm run test:e2e
+```
+
+`playwright.config.ts` caps the local suite at four workers and CI at two workers. The current full release run passed `89/89` at the four-worker local cap. An earlier unconstrained ten-worker diagnostic produced resource-starvation timeouts; that run is not counted as a pass and must remain disclosed in the final ledger. Any later failure or retry must likewise be recorded rather than silently replaced by a passing total.
+
+Candidate runtime measurement on the current Windows/PowerShell environment uses:
+
+```powershell
+$env:PHASE_R_RUNTIME_STAGE = "candidate"
+$env:PHASE_R_RUNTIME_CANDIDATE_SHA = (git rev-parse HEAD).Trim()
+npm run runtime:phase-r
+```
+
+The runner requires the exact `redirect/quantum-presence-startup-magnet`
+branch and a clean committed tracked/untracked tree, performs a fresh production
+build, and measures fixed `1440×900` desktop and `390×844` mobile profiles. The
+runtime artifact must record the deterministic browser/version, viewport,
+journey duration, frame intervals, long-frame counts, errors, WebGL activity,
+effective canvas resolution/DPR, media activity, available memory signal, and
+whether Long Task observation was actually supported. Lifecycle checkpoints
+must record the settled draw delta and whether continuous drawing was observed.
+Compare the six-act baseline with the seven-act candidate using normalized
+rates as well as raw totals, and reject a significant regression. Synthetic
+measurements are local lab evidence, not physical-device or human runtime
+acceptance.
+
+Candidate-bound Lighthouse uses a clean committed Phase R HEAD and an explicit full SHA:
+
+```powershell
+$env:PHASE_R_LIGHTHOUSE_CANDIDATE_SHA = (git rev-parse HEAD).Trim()
+npm run lighthouse
+```
+
+The runner requires the exact Phase R branch and a clean committed
+tracked/untracked tree. It performs six audits: `/`, `/proof/`, and
+`/proof/maradin-dynamic-ground-projection/`, each on desktop and mobile. Every
+Performance, Accessibility, Best Practices, and SEO score must be at least 95,
+and CLS must be at most 0.05. Do not document a score until the generated Phase
+R summary exists and is bound to the candidate. Lighthouse is not a substitute
+for human smoothness review.
+
+Candidate-bound review evidence must be captured from a clean committed HEAD on
+`redirect/quantum-presence-startup-magnet`, with no pre-existing
+`artifacts/review/phase-r/` package:
+
+```powershell
+$env:PHASE_R_EVIDENCE_CANDIDATE_SHA = (git rev-parse HEAD).Trim()
+npm run evidence:phase-r
+```
+
+The capture must produce exactly 23 required PNGs, the complete 1440×900
+`desktop-phase-r-journey.webm`, and the candidate-bound `manifest.json`. The
+manifest must record the WebM duration, byte count, SHA-256, and candidate SHA. The
+script must reject a mismatched SHA, a dirty tree, an unexpected branch, a
+partial inventory, changed historical review evidence, or a journey outside
+the required duration/resolution contract. Visual inspection of all PNGs and
+the complete WebM remains mandatory after the automated capture passes.
+
+### Stable homepage selector contract
+
+Tests should observe semantic state, not private timing thresholds or incidental CSS geometry.
+
+| Purpose | Stable selector / value |
+| --- | --- |
+| Experience root | `[data-experience]` |
+| Seven acts | `[data-experience-phase]` with exact ordered values `presence`, `access`, `startup`, `method`, `activity`, `evidence`, `action` |
+| Active act | `html[data-active-phase]` and the active section’s `[data-active]` |
+| Presence reveal | `[data-presence-state="origin"]`, `[data-presence-state="resolved"]` |
+| Partner choreography | `[data-partner-state="opening"]`, `[data-partner-state="strategic"]`, `[data-partner-state="founding"]`, `html[data-partner-focus]`, and `[data-partner-sequence]` |
+| Partner semantics | `[data-partner-field]`, `[data-partner-id]`, `[data-partner-relationship="founding-partner"]`, `[data-partner-relationship="strategic-partner"]` |
+| Field Crossing | `[data-crossing-state="outside"]`, `[data-crossing-state="threshold"]`, `[data-crossing-state="field"]` |
+| Method | `[data-method-state="find"]`, `[data-method-state="test"]`, `[data-method-state="prove"]`, `[data-method-word]` |
+| Activity progression | `[data-activity-state="field-testing"]`, `[data-activity-state="programs"]`, `[data-activity-state="partner-engagement"]`, `[data-activity-state="global-ecosystem"]`, and matching `[data-activity-signal]` values |
+| JavaScript marker | `html[data-js="true"]`; its absence is the authored unenhanced mode |
+| Rendering mode | `html[data-render-mode]` with pre-enhancement/no-JavaScript `static`, `dom-fallback-ready`, `webgl-enhanced`, `no-webgl-fallback`, or `reduced-motion`; optional canvas `[data-engine="ready"]` |
+| Input mode | `html[data-input-mode="pointer"]` or `html[data-input-mode="touch-scroll"]` |
+| Canvas surface | `[data-signal-canvas]` |
+| Heading keepout | `[data-stage-keepout]` |
+| Startup action | `[data-startup-action]` |
+| Proof handoff | `[data-proof-handoff]` with `href="/proof/"` |
+| Final action | `[data-work-with-quantum]` with `href="mailto:info@quantum-hub.com"` |
+
+Internal scroll thresholds, pixel coordinates, opacity values, and generated bundle filenames are not stable public selectors. Tests may inspect them for a narrowly measured behavior, but should not make the semantic suite brittle around them.
+
+### Required homepage behavior coverage
+
+- Assert exactly seven semantic sections in the required order and one clear page `h1`.
+- Reach every act through ordinary scrolling; navigation and actions remain usable throughout.
+- Exercise all four signature state systems: Presence Reveal, Partner Field, Field Crossing, and FIND/TEST/PROVE.
+- Assert exact partner membership and taxonomy: Taavura–Livnat Group and Talcar founding; VDL Group, Hyundai Motor Group, and Bazan Group strategic.
+- Assert every desktop partner focus resolves as the sole borderless screen-scale identity; assert mobile renders five large sequential identity territories without overlap or overflow.
+- Assert partner source paths are local, the reference composite is not rendered, and no unapproved description, metric, link, or provenance is serialized.
+- Assert the concise SPARK proposition and a working startup-facing action without guarantee language.
+- Assert safe activity categories without counts, event facts, unapproved company/project names, or fake feed entries; each local scroll quarter must expose exactly one complete signal and the full progression must reach all four.
+- Assert Field Crossing produces three materially distinct signal shapes and material states with no repeating-gradient grid.
+- Assert FIND, TEST, and PROVE are pairwise distinct in non-color instrument geometry.
+- Assert the homepage public output and metadata omit the denied Maradin/project-specific string set while `/proof/` and the eligible Field Record remain functional.
+- Assert the principal evidence CTA targets `/proof/`, never the direct record slug.
+- Run the copy-density helper against settled public strings; do not satisfy it by visually hiding essential content.
+- Assert no uncaught page exceptions or application console errors in all tested modes.
+
+### Phase R visual-contract suite
+
+`tests/e2e/phase-r-visual-contract.spec.ts` contains seven browser cases that make the repaired choreography measurable without snapshotting incidental pixels:
+
+- at `1440×900`, each partner focus is the sole visible identity territory at least `55vw × 42vh`, and every identity is borderless;
+- at `390×844`, all five partner territories remain at least `82vw × 38vh`, occupy ordinary vertical flow, do not overlap, and do not create horizontal overflow;
+- FIND, TEST, and PROVE produce three unique geometries, with every pair changing materially beyond color;
+- desktop and mobile ACTIVITY show one high-opacity, uncropped signal at a time, never overlap `QUANTUM IN MOTION`, and expose all four signals over the deterministic progression;
+- reduced motion shows all four Activity signals as ordinary, non-overlapping readable flow at desktop and mobile sizes;
+- Field Crossing produces unique `outside`, `threshold`, and `field` signal/material signatures and rejects every `repeating-linear-gradient` or `repeating-radial-gradient` descendant.
+
+### Mode and viewport matrix
+
+The browser suite must cover at minimum `390×844`, `430×932`, `768×1024`, `1440×900`, and `1920×1080`, with no unintended horizontal overflow.
+
+| Mode | Required assertions |
+| --- | --- |
+| Desktop/fine pointer | All acts reachable; pointer enriches only eligible moments; links/copy stay operable; lazy engine does not gate the experience. |
+| Mobile/touch | Five sequential non-overlapping full-width partner identities; one contained Activity signal at a time; 44px touch-target intent; no hover-only meaning; no default canvas engine; no overflow. |
+| Reduced motion | Real media query and `?motion=reduce` QA override both retain all acts, five prominent partners, both relationship groups, all four Activity signals in readable flow, and every action; no decorative loop. |
+| No WebGL | `?webgl=off` retains complete DOM/CSS/SVG meaning and actions; canvas engine is absent. |
+| No JavaScript | Browser context with JavaScript disabled exposes the complete reading order, resolved presence line, five partner identities/relationships, method words, all four activity categories, and actions. |
+| Forced colors | Decorative stage/logo images/instruments may disappear; system text, all organization names and relationships, all four Activity labels, borders, links, actions, and visible focus remain. |
+| Hidden/inactive | Visibility and phase changes stop continuous rendering outside active PRESENCE; teardown removes runtime work cleanly. |
+
+### Accessibility assertions
+
+- One `main`, one clear `h1`, valid section heading order, and named navigation.
+- Semantic partner grouping plus textual organization names and exact relationship labels.
+- Decorative canvas/SVG/field instruments hidden from assistive technology; no essential text only in canvas.
+- Keyboard reachability, visible focus, no trap, conventional link behavior, and no hover-only content.
+- WCAG AA contrast in settled and sampled transition states; do not assume accent colors are readable text colors.
+- Axe with zero critical/serious application findings across representative desktop/mobile acts and transitions.
+- Reduced-motion and forced-colors checks use actual emulated media states, not only CSS source inspection.
+
+### Proof regression boundary
+
+Phase R must keep `/proof/` and the current eligible Field Record behavior intact while testing only the authorized cleanup: no duplicated Evidence statement, no public internal-withholding explanation, restrained opening metadata, no header underlap, and an index-level homepage handoff. The suite must still prove the eligible record set, nested publication filtering, metadata/sitemap boundary, and absence of denied fixtures/internal provenance. It must not create or expect a second public record.
+
+### Visual and human review
+
+Automated screenshots must cover the required desktop/mobile acts,
+reduced-motion Partner Field, no-WebGL METHOD, keyboard-focus primary startup
+action, forced-colors representative state, and the complete journey required
+by the Phase R review specification. Inspect original-resolution output for
+hierarchy, partner scale, line breaks, clipping, overlap, fallback quality, and
+the signature moments plus the authored Activity progression. Automated pass/fail does not answer the creative
+questions or establish human-perceived smoothness.
+
 # Phase 1 QA Record
 
 ## Scope and candidate

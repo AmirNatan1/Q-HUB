@@ -10,6 +10,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import "@/styles/phase-r.css";
 
 const [presence, access, startup, method, activity, evidence, action] = homepageActs;
+const activityStateIds = [
+  "field-testing",
+  "programs",
+  "partner-engagement",
+  "global-ecosystem",
+] as const;
 
 if (!presence || !access || !startup || !method || !activity || !evidence || !action) {
   throw new Error("The seven approved Phase R homepage acts are required.");
@@ -121,6 +127,7 @@ if (!presence || !access || !startup || !method || !activity || !evidence || !ac
       id="activity"
       class="phase-r-act phase-r-act--activity"
       data-experience-phase="activity"
+      data-activity-state="field-testing"
       aria-labelledby="activity-title"
     >
       <div class="phase-r-act__sticky phase-r-activity">
@@ -129,7 +136,12 @@ if (!presence || !access || !startup || !method || !activity || !evidence || !ac
         </h2>
         <ul class="activity-signals" aria-label="Quantum activity">
           {activitySignals.map((signal, index) => (
-            <li style={`--activity-index: ${index}`}>{signal}</li>
+            <li
+              data-activity-signal={activityStateIds[index]}
+              style={`--activity-index: ${index}`}
+            >
+              {signal}
+            </li>
           ))}
         </ul>
       </div>

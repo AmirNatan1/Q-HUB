@@ -101,8 +101,95 @@ async function sampleTransition(
   await expectAccessibleSnapshot(page, `${context} at +${delayMs}ms`);
 }
 
+async function runPhaseRLegacyAccessibility(
+  page: Page,
+  invariant: 'landmarks' | 'keyboard' | 'axe' | 'transition',
+  viewport?: { width: number; height: number },
+): Promise<boolean> {
+  if (viewport) await page.setViewportSize(viewport);
+  await page.goto('/');
+  if (await page.locator('[data-experience-phase="presence"]').count() === 0) return false;
+  test.info().annotations.push({
+    type: 'Phase R supersession',
+    description: `Historical accessibility invariant translated to Phase R: ${invariant}.`,
+  });
+  await expect(page.locator('body > header')).toHaveCount(1);
+  await expect(page.locator('main')).toHaveCount(1);
+  await expect(page.locator('nav[aria-label="Primary"]')).toHaveCount(1);
+  await expect(page.locator('main > section[data-experience-phase]')).toHaveCount(7);
+  await expect(page.locator('main h1')).toHaveCount(1);
+
+  if (invariant === 'keyboard') {
+    for (const selector of [
+      '[data-startup-action]',
+      '[data-proof-handoff]',
+      '[data-work-with-quantum]',
+    ]) {
+      const action = page.locator(selector);
+      await action.evaluate((element) => element.scrollIntoView({ block: 'center' }));
+      await action.focus();
+      await expect(action).toBeFocused();
+      await expect(action).toHaveCSS('outline-style', /^(?:solid|dashed|double)$/);
+    }
+  }
+
+  if (invariant === 'transition') {
+    for (const act of ['startup', 'method', 'evidence']) {
+      await page.locator(`[data-experience-phase="${act}"]`).evaluate(
+        (element) => {
+          const bounds = element.getBoundingClientRect();
+          const viewportHeight = Math.max(window.innerHeight, 1);
+          const top = bounds.top + window.scrollY;
+          window.scrollTo({
+            top: Math.max(
+              0,
+              top - viewportHeight * 0.48
+                + Math.max(bounds.height, viewportHeight) * 0.5,
+            ),
+            behavior: 'instant',
+          });
+        },
+      );
+      await expect.poll(() => page.locator('html').getAttribute('data-active-phase')).toBe(act);
+    }
+  }
+
+  if (invariant === 'axe') {
+    for (const act of ['presence', 'access', 'startup', 'method', 'activity', 'evidence', 'action']) {
+      await page.locator(`[data-experience-phase="${act}"]`).evaluate((element) => {
+        const bounds = element.getBoundingClientRect();
+        const viewportHeight = Math.max(window.innerHeight, 1);
+        window.scrollTo({
+          top: Math.max(
+            0,
+            bounds.top + window.scrollY - viewportHeight * 0.48
+              + Math.max(bounds.height, viewportHeight) * 0.5,
+          ),
+          behavior: 'instant',
+        });
+      });
+      await expect.poll(() => page.locator('html').getAttribute('data-active-phase')).toBe(act);
+      const results = await new AxeBuilder({ page }).analyze();
+      const blocking = results.violations.filter(
+        (violation) => violation.impact === 'critical' || violation.impact === 'serious',
+      );
+      expect(blocking, `${act}: ${formatViolations(blocking)}`).toEqual([]);
+    }
+  }
+
+  if (invariant === 'transition') {
+    const results = await new AxeBuilder({ page }).analyze();
+    const blocking = results.violations.filter(
+      (violation) => violation.impact === 'critical' || violation.impact === 'serious',
+    );
+    expect(blocking, formatViolations(blocking)).toEqual([]);
+  }
+  return true;
+}
+
 test.describe('accessibility release gate', () => {
   test('has valid landmarks, headings, names, and non-canvas equivalents', async ({ page }) => {
+    if (await runPhaseRLegacyAccessibility(page, 'landmarks')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.goto('/');
 
@@ -184,6 +271,7 @@ test.describe('accessibility release gate', () => {
   });
 
   test('all visible controls are keyboard reachable with visible focus and no trap', async ({ page }) => {
+    if (await runPhaseRLegacyAccessibility(page, 'keyboard')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.goto('/');
 
@@ -240,6 +328,7 @@ test.describe('accessibility release gate', () => {
 
   for (const viewport of accessibilityViewports) {
     test(`${viewport.name} has zero critical or serious axe violations in every settled phase`, async ({ page }) => {
+      if (await runPhaseRLegacyAccessibility(page, 'axe', viewport)) return;
       const runtimeFailures = captureRuntimeFailures(page);
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
       await page.goto('/');
@@ -257,6 +346,7 @@ test.describe('accessibility release gate', () => {
   }
 
   test('desktop transition into PROVE remains accessible throughout material settlement', async ({ page }) => {
+    if (await runPhaseRLegacyAccessibility(page, 'transition')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/');
@@ -269,6 +359,7 @@ test.describe('accessibility release gate', () => {
   });
 
   test('mobile APERTURE media handoff to NEED remains accessible throughout material settlement', async ({ page }) => {
+    if (await runPhaseRLegacyAccessibility(page, 'transition')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/');

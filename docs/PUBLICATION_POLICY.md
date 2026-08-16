@@ -1,5 +1,60 @@
 # Publication policy
 
+## Phase R homepage publication boundary — current contract
+
+Phase R changes homepage emphasis, not the deny-by-default publication model. Every substantive homepage act, strategic organization, program proposition, and Proof record must still be sourced, classified, explicitly approved, schema-valid, publication-filtered, and stripped of internal provenance before public presentation. The four activity signals are a separately closed set of approved category-level constants, not factual activity records.
+
+### Exact approved partner taxonomy
+
+The Phase R Partner Field may publish exactly these organization/relationship pairs under the current approval:
+
+| Relationship | Approved organization | Local public identity asset |
+| --- | --- | --- |
+| Founding Partner | Taavura–Livnat Group | `/media/partners/taavura-livnat-group.jpg` |
+| Founding Partner | Talcar | `/media/partners/talcar.png` |
+| Strategic Partner | VDL Group | `/media/partners/vdl-group.png` |
+| Strategic Partner | Hyundai Motor Group | `/media/partners/hyundai-motor-group-white.png` |
+| Strategic Partner | Bazan Group | `/media/partners/bazan-group.png` |
+
+Each is modeled as a classification **B**, `publicApproved: true`, non-placeholder network-organization record with `kind: "industrial"` and exactly one relationship tuple: `founding-partner` or `strategic-partner`. The Phase R subtype requires an approved local logo asset and intentionally disallows a partner summary. The relationship may not be upgraded, flattened, swapped, or inferred.
+
+The Partner Field may show the exact relationship label, organization name, and approved identity asset. It may not add partner descriptions, statistics, private metrics, invented clickthrough links, or a generic “trusted by” claim. Identity files are local production assets; they are not hotlinked. The supplied composite remains reference-only and must not be shipped as the public partner experience. Marks must not be recolored, traced, AI-recreated, distorted, or combined into an invented identity. A typographic organization name is the safe fallback when a supplied mark is unsuitable for a composition.
+
+### Approved SPARK proposition
+
+The concise public proposition is governed as a classification **B**, approved, non-placeholder program record:
+
+> SPARK connects suitable startups with partners to design and execute real-world POCs.
+
+It supports a startup-facing invitation but guarantees none of the following: acceptance, access to any particular organization, a POC, procurement, investment, deployment, adoption, scaling, commercial success, a contract, or any other outcome. The working public contact boundary is `info@quantum-hub.com`; Phase R does not authorize additional personal/private contact data or a fake form endpoint.
+
+### Homepage-safe content
+
+- Homepage acts are governed records and only publication-filtered A/B + approved values may render.
+- Safe activity language is category-level only: FIELD TESTING, PROGRAMS, PARTNER ENGAGEMENT, and GLOBAL ECOSYSTEM.
+- No internal board count, pipeline number, conversion rate, private partner metric, confidential project detail, unapproved POC/project, defense-specific material, contract language, unsupported outcome, or internal-deck image may enter public output.
+- Raw source-pack files, Drive IDs, approval/provenance documents, and `sourceReferenceInternal` remain authoring-only.
+- `src/content/experience.ts` is the browser-safe runtime boundary and contains only public phase literals/types. Governed partner/program records stay in server/build-time content modules and reach the browser only as filtered semantic HTML.
+- Public-output scans must include linked HTML, JavaScript, metadata, and local assets, not only the visible Astro template.
+
+### Maradin and Proof boundary
+
+Maradin remains the current eligible deeper Proof record. It does not define the homepage. Public homepage copy, metadata, and the principal evidence action must not expose the record name, slug, project technology, scenario/team counts, or other record-specific facts. The evidence action targets `/proof/`; a visitor reaches the named record only by intentionally entering Proof.
+
+Phase R preserves the Phase 3 Proof eligibility and factual scope. Only these presentation cleanups are authorized:
+
+1. remove redundant Evidence copy;
+2. remove public prose explaining that private/internal KPI material is withheld;
+3. reduce opening metadata/tag clutter without deleting governed fields;
+4. repair header/content underlap;
+5. replace the direct homepage record handoff with `/proof/`.
+
+This boundary does not authorize a second public record, a changed Maradin fact, an invented decision or outcome, or altered publication eligibility.
+
+## Historical Phase 2–3 publication record
+
+The sections below preserve prior approval applications and test history. Their Maradin-led homepage application is superseded for `/`; their A–D eligibility matrix, recursive provenance stripping, placeholder denial, and nested Proof governance remain fully operative.
+
 ## Phase 3 nested Proof boundary
 
 Public Proof routing uses only records returned by the publication layer. The same eligible collection owns `/proof`, generated `/proof/[slug]` paths, sitemap entries, metadata, and related-record links. A denied parent therefore cannot leak through an alternate output surface.

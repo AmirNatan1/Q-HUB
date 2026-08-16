@@ -1,5 +1,75 @@
 # Architecture
 
+## Phase R homepage architecture — current contract
+
+The current homepage is a static-first Astro document whose center of gravity is Quantum, not one Proof record. Phase R supersedes the older homepage-specific six-state/method-heavy architecture described later in this file. The Phase 1–3 records remain historical evidence and continue to govern the preserved Proof subsystem and shared safety boundaries.
+
+The implemented public sequence is one continuous seven-act document:
+
+`PRESENCE → ACCESS → STARTUP → METHOD → ACTIVITY → EVIDENCE → ACTION`
+
+`src/pages/index.astro` emits all seven `<section>` elements, their headings, partner names and relationships, activity categories, and actions before enhancement. The shared stage is decorative and `aria-hidden`. JavaScript may publish visual state, but it does not create essential content or navigation.
+
+### Layer and module boundary
+
+1. **Client-safe experience constants:** `src/content/experience.ts` contains only the seven public phase literals and the derived `ExperiencePhase` type. Browser runtime imports this narrow module, not governed partner, program, Proof, or provenance-bearing authoring records.
+2. **Governed homepage content:** `src/content/homepage.ts` validates act copy and actions, filters all seven records through the publication layer, exposes the copy-density audit, and composes only approved values from `src/content/strategic.ts`.
+3. **Governed strategic content:** `src/content/strategic.ts` validates the five approved organization records and the concise SPARK program proposition, then exports only publication-filtered public values.
+4. **Semantic presentation:** `src/pages/index.astro` and `src/components/PartnerField.astro` render the seven-act reading order, exact partner taxonomy and sequence, four activity signals, and stable state hooks before enhancement. `src/components/QuantumStage.astro` supplies decorative SVG/CSS geometry and the optional canvas surface.
+5. **Progressive enhancement:** `src/scripts/experience-controller.ts` converts native scroll and optional fine-pointer input into stable state attributes and CSS variables. `src/scripts/field-engine.ts` is a small, dynamically imported custom WebGL enhancement.
+6. **Authored modes:** `src/styles/phase-r.css` owns desktop, mobile, no-JavaScript, reduced-motion, no-WebGL, and forced-colors presentation without changing the publication boundary.
+
+Server/build-time presentation code may consume publication-filtered records. A browser entry must consume only client-safe constants, already-rendered DOM, and public state attributes. `sourceReferenceInternal`, raw source-pack data, Drive identifiers, and unfiltered authoring objects must never cross the client boundary.
+
+### Stable experience contract
+
+The seven sections expose these values in exact order:
+
+| Act | Section selector | Authored substate selector |
+| --- | --- | --- |
+| PRESENCE | `[data-experience-phase="presence"]` | `data-presence-state` is `origin` or `resolved` |
+| ACCESS | `[data-experience-phase="access"]` | `data-partner-state` is `opening`, `strategic`, or `founding`; root `data-partner-focus` identifies the sole active screen-scale organization; each identity carries `data-partner-sequence` |
+| STARTUP | `[data-experience-phase="startup"]` | `data-crossing-state` is `outside`, `threshold`, or `field` on the section and root while active |
+| METHOD | `[data-experience-phase="method"]` | `data-method-state` is `find`, `test`, or `prove` on the section and root while active |
+| ACTIVITY | `[data-experience-phase="activity"]` | `data-activity-state` is `field-testing`, `programs`, `partner-engagement`, or `global-ecosystem` on the section and root while active; list items carry the matching `data-activity-signal` |
+| EVIDENCE | `[data-experience-phase="evidence"]` | active phase plus `[data-proof-handoff]` |
+| ACTION | `[data-experience-phase="action"]` | active phase plus `[data-work-with-quantum]` |
+
+The document root publishes `data-active-phase`, `data-render-mode`, and `data-input-mode`. These attributes are the behavior/test contract; internal progress thresholds and visual CSS variables are implementation details. The CTA hooks `[data-startup-action]`, `[data-proof-handoff]`, and `[data-work-with-quantum]` remain stable release selectors.
+
+The current visual contract consumes those states materially: desktop ACCESS exposes exactly one borderless screen-scale identity at a time; STARTUP deforms one round signal into a compressed threshold form and then a rectilinear field probe against authored material planes; METHOD changes non-color geometry from distributed search to a hard contact threshold to a structured evidence document; ACTIVITY exposes exactly one category signal per scroll quarter. Reduced-motion and unenhanced modes expand sequenced content into readable normal flow instead of leaving inactive content hidden.
+
+The old persistent textual phase rail is not part of the current presentation. Conventional site navigation, semantic document order, native scrolling, and the opening scroll cue provide orientation; runtime support for an optional `[data-phase-link]` is nonessential and does not imply a visible rail.
+
+### Enhancement and fallback lifecycle
+
+- Native vertical scroll is the only required progression mechanism; there is no scroll hijack or client router.
+- Scroll and pointer work is coalesced through `requestAnimationFrame`. Pointer input is used only for fine-pointer, non-reduced modes and only in realtime phases.
+- The WebGL module is imported only after intentional eligible interaction in PRESENCE, STARTUP, or METHOD. ACCESS partner choreography remains DOM/CSS/SVG.
+- Default mobile/touch, reduced motion, `?webgl=off`, WebGL failure, and no JavaScript keep the canvas out of the meaning path.
+- The custom engine caps DPR at `1.25`, renders continuously only while PRESENCE is active, schedules one-shot frames for other eligible state changes, stops while inactive or when the document is hidden, and releases listeners and GL resources on teardown.
+- A calculated heading keepout protects active display copy from nonessential signal geometry.
+- Enhancement failure sets a fallback render mode; it must not blank the page, remove an action, or block scroll.
+
+### Authored mode behavior
+
+| Mode | Current architecture |
+| --- | --- |
+| Desktop/fine pointer | Semantic document plus sparse optional pointer response and lazy custom WebGL in the three eligible acts. |
+| Mobile/touch | Natural document flow, five non-overlapping full-width partner identity territories, CSS/SVG Field Crossing and method states, one contained Activity signal at a time, and no default WebGL. |
+| Reduced motion | Static resolved compositions, all five prominent partners and both relationships visible in normal flow, all four Activity signals expanded into readable flow, all seven acts/actions retained, and no decorative realtime loop. Low-contrast partner artwork may yield to the approved typographic organization name rather than weakening identity. |
+| Forced colors | Decorative stage, partner images, and instruments are removed; system colors, textual organization identities, relationship labels, all Activity labels, borders, focus, and actions remain. |
+| No JavaScript | Complete semantic reading order expands all partner identities and Activity labels in authored DOM/CSS/SVG flow. |
+| No WebGL | The same scroll-driven state hooks and semantic DOM remain operative with authored CSS/SVG geometry; the canvas is absent and no essential state waits for it. |
+
+### Proof boundary
+
+`/proof/` and the publication-filtered `/proof/[slug]/` architecture remain Phase 3 systems. The homepage’s principal evidence action targets `/proof/`, never the current record slug. Phase R allows only narrow Proof presentation cleanup: redundant Evidence copy, public internal-withholding explanations, opening tag clutter, header underlap, and the homepage handoff. It does not authorize another record, factual expansion, a new decision/outcome, or changed eligibility.
+
+## Historical Phase 1–3 architecture record
+
+The sections below preserve the architecture decisions and measured context of the earlier phases. Their six-state homepage and Maradin-led homepage descriptions are superseded for the current `/` experience; their static-first, publication, accessibility, fallback, and Proof contracts remain applicable unless the Phase R contract above explicitly changes them.
+
 ## Phase 3 Proof system
 
 Phase 3 promotes `/proof` from a route shell to a static Evidence Index and generates `/proof/[slug]` pages only from the deny-by-default public Proof collection. The index, static paths, metadata, sitemap entries, and record presentation share the same filtered source. The current eligible set produces exactly one Field Record route: `/proof/maradin-dynamic-ground-projection`.

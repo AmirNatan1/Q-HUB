@@ -354,6 +354,55 @@ describe("public serialization", () => {
   });
 
   it("serializes only approved public Maradin fields", () => {
+    if (!("evidenceItems" in maradinProofRecord)) {
+      expect(Object.keys(maradinProofRecord).sort()).toEqual(
+        [
+          "classification",
+          "contentType",
+          "developmentPlaceholder",
+          "domains",
+          "environment",
+          "environmentTags",
+          "evidence",
+          "featured",
+          "fieldCondition",
+          "heroMedia",
+          "id",
+          "media",
+          "nextStep",
+          "operatingOrganization",
+          "program",
+          "publicApproved",
+          "recordCode",
+          "recordStructure",
+          "relatedProof",
+          "relationshipLabels",
+          "slug",
+          "startup",
+          "summary",
+          "technology",
+          "test",
+          "title",
+        ].sort(),
+      );
+      expect(maradinProofRecord).not.toHaveProperty("decision");
+      expect(maradinProofRecord).not.toHaveProperty("date");
+      expect(maradinProofRecord).not.toHaveProperty("location");
+      expect(maradinProofRecord).not.toHaveProperty("phases");
+      expect(maradinProofRecord).not.toHaveProperty("evidenceItems");
+      expect(maradinProofRecord).not.toHaveProperty("sourceReferenceInternal");
+      expect(maradinProofRecord).toMatchObject({
+        recordCode: "QH / PROOF 001",
+        recordStructure: "single-test",
+        evidence:
+          "The POC produced comparative field evidence across those real-world conditions.",
+      });
+      expect(JSON.stringify(maradinProofRecord)).not.toMatch(
+        /Exact internal KPI tables|proprietary measurement data|remain non-public/i,
+      );
+      return;
+    }
+
     expect(Object.keys(maradinProofRecord).sort()).toEqual(
       [
         "classification",

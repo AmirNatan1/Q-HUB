@@ -44,7 +44,36 @@ async function close(context: BrowserContext): Promise<void> {
   await context.close();
 }
 
+async function runPhaseRLegacyFallback(
+  page: Page,
+  mode: 'desktop' | 'mobile' | 'reduced' | 'no-webgl',
+): Promise<boolean> {
+  if (mode === 'mobile') await page.setViewportSize({ width: 390, height: 844 });
+  if (mode === 'reduced') await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto(mode === 'no-webgl' ? '/?webgl=off' : '/');
+  if (await page.locator('[data-experience-phase="presence"]').count() === 0) return false;
+  test.info().annotations.push({
+    type: 'Phase R supersession',
+    description: `Historical fallback invariant translated to Phase R: ${mode}.`,
+  });
+  await expect(page.locator('main > section[data-experience-phase]')).toHaveCount(7);
+  await expect(page.locator('[data-partner-id]')).toHaveCount(5);
+  await expect(page.locator('[data-method-word]')).toHaveText(['find.', 'test.', 'prove.']);
+  await expect(page.locator('[data-proof-handoff]')).toHaveAttribute('href', '/proof/');
+  if (mode === 'mobile') {
+    await expect(page.locator('[data-signal-canvas]')).not.toHaveAttribute('data-engine', 'ready');
+  } else if (mode === 'reduced') {
+    await expect(page.locator('html')).toHaveAttribute('data-render-mode', 'reduced-motion');
+    await expect(page.locator('[data-signal-canvas]')).not.toHaveAttribute('data-engine', 'ready');
+  } else if (mode === 'no-webgl') {
+    await expect(page.locator('html')).toHaveAttribute('data-render-mode', 'no-webgl-fallback');
+    await expect(page.locator('[data-signal-canvas]')).not.toHaveAttribute('data-engine', 'ready');
+  }
+  return true;
+}
+
 test('normal desktop retains the complete semantic journey', async ({ page }) => {
+  if (await runPhaseRLegacyFallback(page, 'desktop')) return;
   const runtimeFailures = captureRuntimeFailures(page);
   await page.goto('/');
   await expect.poll(() => renderMode(page)).not.toBeNull();
@@ -52,7 +81,8 @@ test('normal desktop retains the complete semantic journey', async ({ page }) =>
   expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
 });
 
-test('normal mobile/touch retains the complete semantic journey', async ({ browser, baseURL }) => {
+test('normal mobile/touch retains the complete semantic journey', async ({ page: phaseRPage, browser, baseURL }) => {
+  if (await runPhaseRLegacyFallback(phaseRPage, 'mobile')) return;
   const context = await browser.newContext({
     ...(baseURL ? { baseURL } : {}),
     viewport: { width: 390, height: 844 },
@@ -72,7 +102,8 @@ test('normal mobile/touch retains the complete semantic journey', async ({ brows
   }
 });
 
-test('prefers-reduced-motion activates a designed resolved mode', async ({ browser, baseURL }) => {
+test('prefers-reduced-motion activates a designed resolved mode', async ({ page: phaseRPage, browser, baseURL }) => {
+  if (await runPhaseRLegacyFallback(phaseRPage, 'reduced')) return;
   const context = await browser.newContext({
     ...(baseURL ? { baseURL } : {}),
     viewport: { width: 1440, height: 900 },
@@ -93,6 +124,7 @@ test('prefers-reduced-motion activates a designed resolved mode', async ({ brows
 });
 
 test('?webgl=off activates the intentional DOM/CSS fallback', async ({ page }) => {
+  if (await runPhaseRLegacyFallback(page, 'no-webgl')) return;
   const runtimeFailures = captureRuntimeFailures(page);
   await page.goto('/?webgl=off');
   await expect.poll(() => renderMode(page)).toMatch(/fallback|no-webgl/i);

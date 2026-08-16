@@ -14,8 +14,8 @@ import {
           class={`partner-plane partner-plane--strategic partner-plane--${index + 1}`}
           data-partner-id={partner.id}
           data-partner-relationship="strategic-partner"
+          data-partner-sequence={index + 1}
         >
-          <span class="partner-plane__relationship">Strategic Partner</span>
           {partner.logo && (
             <img
               src={partner.logo.src}
@@ -41,8 +41,8 @@ import {
           class={`partner-plane partner-plane--founding partner-plane--${index + 1}`}
           data-partner-id={partner.id}
           data-partner-relationship="founding-partner"
+          data-partner-sequence={strategicPartners.length + index + 1}
         >
-          <span class="partner-plane__relationship">Founding Partner</span>
           {partner.logo && (
             <img
               src={partner.logo.src}

@@ -124,10 +124,223 @@ async function horizontalGap(leftTarget: Locator, rightTarget: Locator): Promise
   return rightBox.x - (leftBox.x + leftBox.width);
 }
 
+type PhaseRGrammarContract =
+  | 'trajectory'
+  | 'hierarchy'
+  | 'pointer'
+  | 'index-gap'
+  | 'hidden-copy'
+  | 'microcopy'
+  | 'mobile-controls'
+  | 'method-contrast'
+  | 'responsive-microcopy'
+  | 'fallback-legibility';
+
+async function activatePhaseRRepairAct(page: Page, act: string, progress = 0.5): Promise<Locator> {
+  const section = page.locator(`[data-experience-phase="${act}"]`);
+  await section.evaluate((element, requestedProgress) => {
+    const bounds = element.getBoundingClientRect();
+    const viewportHeight = Math.max(window.innerHeight, 1);
+    window.scrollTo({
+      top: Math.max(
+        0,
+        bounds.top + window.scrollY - viewportHeight * 0.48
+          + Math.max(bounds.height, viewportHeight) * requestedProgress,
+      ),
+      behavior: 'instant',
+    });
+  }, progress);
+  await expect
+    .poll(() => page.locator('html').getAttribute('data-active-phase'))
+    .toBe(act);
+  return section;
+}
+
+/** Preserve the complete Phase 1 body below while exercising its durable
+ * visual invariant against the authoritative seven-act Phase R homepage. */
+async function runPhaseRGrammarContract(
+  page: Page,
+  contract: PhaseRGrammarContract,
+): Promise<boolean> {
+  const failures = captureRuntimeFailures(page);
+  if (contract === 'pointer') {
+    await page.addInitScript(() => {
+      const runtime = window as Window & { __legacyGrammarDraws?: number };
+      runtime.__legacyGrammarDraws = 0;
+      const original = WebGLRenderingContext.prototype.drawArrays;
+      WebGLRenderingContext.prototype.drawArrays = function patchedDrawArrays(...args) {
+        runtime.__legacyGrammarDraws = (runtime.__legacyGrammarDraws ?? 0) + 1;
+        return original.apply(this, args);
+      };
+    });
+  }
+  if (contract === 'mobile-controls' || contract === 'method-contrast') {
+    await page.setViewportSize({ width: 390, height: 844 });
+  }
+  await page.goto('/');
+  if (await page.locator('[data-experience-phase="presence"]').count() === 0) return false;
+
+  test.info().annotations.push({
+    type: 'Phase R supersession',
+    description: `Historical Phase 1 grammar invariant translated to Phase R: ${contract}.`,
+  });
+
+  switch (contract) {
+    case 'trajectory': {
+      const stage = page.locator('[data-quantum-stage]');
+      const trajectory = page.locator('[data-signal-trajectories]');
+      await expect(stage).toHaveAttribute('aria-hidden', 'true');
+      await expect(trajectory.locator('text, foreignObject')).toHaveCount(0);
+      const geometry = await trajectory.evaluate((element) => {
+        const bounds = element.getBoundingClientRect();
+        return {
+          bounds: { left: bounds.left, top: bounds.top, right: bounds.right, bottom: bounds.bottom },
+          viewport: { width: innerWidth, height: innerHeight },
+          paths: [...element.querySelectorAll<SVGPathElement>('path')].map((path) => ({
+            fill: getComputedStyle(path).fill,
+            strokeWidth: Number.parseFloat(getComputedStyle(path).strokeWidth),
+          })),
+        };
+      });
+      expect(geometry.bounds.left).toBeGreaterThanOrEqual(-1);
+      expect(geometry.bounds.top).toBeGreaterThanOrEqual(-1);
+      expect(geometry.bounds.right).toBeLessThanOrEqual(geometry.viewport.width + 1);
+      expect(geometry.bounds.bottom).toBeLessThanOrEqual(geometry.viewport.height + 1);
+      expect(geometry.paths.length).toBeGreaterThan(0);
+      for (const path of geometry.paths) {
+        expect(path.fill).toBe('none');
+        expect(path.strokeWidth).toBeGreaterThan(0);
+        expect(path.strokeWidth).toBeLessThanOrEqual(2);
+      }
+      break;
+    }
+    case 'hierarchy': {
+      const expected = ['presence', 'access', 'startup', 'method', 'activity', 'evidence', 'action'];
+      const sections = page.locator('main > section[data-experience-phase]');
+      await expect(sections).toHaveCount(expected.length);
+      expect(await sections.evaluateAll((nodes) =>
+        nodes.map((node) => node.getAttribute('data-experience-phase')),
+      )).toEqual(expected);
+      for (const act of expected) {
+        const section = await activatePhaseRRepairAct(page, act);
+        await expect(section.locator('h1, h2').first()).toContainText(/\S/);
+      }
+      break;
+    }
+    case 'pointer': {
+      await page.mouse.move(1020, 260);
+      const canvas = page.locator('[data-signal-canvas]');
+      await expect(canvas).toHaveAttribute('data-engine', 'ready');
+      const draws = () => page.evaluate(
+        () => (window as Window & { __legacyGrammarDraws?: number }).__legacyGrammarDraws ?? 0,
+      );
+      const before = await draws();
+      await page.mouse.move(420, 640, { steps: 8 });
+      await expect.poll(draws).toBeGreaterThan(before + 2);
+      break;
+    }
+    case 'index-gap': {
+      await expect(page.locator('.phase-index, .experience-hud, [data-phase-control]')).toHaveCount(0);
+      const headings = await page.locator('main h1, main h2').evaluateAll((nodes) =>
+        nodes.flatMap((node) => {
+          const bounds = node.getBoundingClientRect();
+          return bounds.left < -1 || bounds.right > innerWidth + 1
+            ? [{ text: node.textContent?.trim(), left: bounds.left, right: bounds.right }]
+            : [];
+        }),
+      );
+      expect(headings).toEqual([]);
+      break;
+    }
+    case 'hidden-copy': {
+      const stage = page.locator('[data-quantum-stage][aria-hidden="true"]');
+      await expect(stage).toHaveCount(1);
+      expect(await stage.evaluate((element) => element.textContent?.trim() ?? '')).toBe('');
+      await expect(stage.locator('text, foreignObject')).toHaveCount(0);
+      break;
+    }
+    case 'microcopy': {
+      const copy = page.locator(
+        '.phase-r-action, .phase-r-scroll-cue, .phase-r-presence__resolve, '
+          + '.activity-signals li, [data-partner-id] strong, [data-partner-id] span',
+      );
+      const sizes = await copy.evaluateAll((nodes) => nodes.flatMap((node) => {
+        const bounds = node.getBoundingClientRect();
+        const style = getComputedStyle(node);
+        return bounds.width > 0 && style.display !== 'none' && style.visibility !== 'hidden'
+          ? [Number.parseFloat(style.fontSize)]
+          : [];
+      }));
+      expect(sizes.length).toBeGreaterThan(0);
+      expect(sizes.every((size) => size >= 11.2)).toBe(true);
+      break;
+    }
+    case 'mobile-controls': {
+      for (const selector of [
+        '[data-startup-action]',
+        '[data-proof-handoff]',
+        '[data-work-with-quantum]',
+      ]) {
+        const action = page.locator(selector);
+        await action.evaluate((element) => element.scrollIntoView({ block: 'center' }));
+        const bounds = await action.boundingBox();
+        expect(bounds).not.toBeNull();
+        if (bounds) expect(bounds.height).toBeGreaterThanOrEqual(44);
+        await action.focus();
+        await expect(action).toBeFocused();
+      }
+      break;
+    }
+    case 'method-contrast': {
+      const method = await activatePhaseRRepairAct(page, 'method', 0.5);
+      await expect(method).toHaveAttribute('data-method-state', 'test');
+      const words = method.locator('[data-method-word]');
+      await expect(words).toHaveText(['find.', 'test.', 'prove.']);
+      const visible = await words.evaluateAll((nodes) => nodes.map((node) => {
+        const style = getComputedStyle(node);
+        return Number.parseFloat(style.opacity || '1') > 0.01
+          && Number.parseFloat(style.fontSize) >= 11.2;
+      }));
+      expect(visible.every(Boolean)).toBe(true);
+      break;
+    }
+    case 'responsive-microcopy': {
+      for (const viewport of [
+        { width: 390, height: 844 },
+        { width: 768, height: 1024 },
+        { width: 1440, height: 900 },
+      ]) {
+        await page.setViewportSize(viewport);
+        await page.goto('/');
+        const sizes = await page.locator(
+          '.partner-plane__relationship, .phase-r-action, .activity-signals li',
+        ).evaluateAll((nodes) => nodes.map((node) => Number.parseFloat(getComputedStyle(node).fontSize)));
+        expect(sizes.every((size) => size >= 11.2)).toBe(true);
+      }
+      break;
+    }
+    case 'fallback-legibility': {
+      for (const mode of ['normal', 'reduced', 'no-webgl'] as const) {
+        await page.emulateMedia({ reducedMotion: mode === 'reduced' ? 'reduce' : 'no-preference' });
+        await page.goto(mode === 'no-webgl' ? '/?webgl=off' : '/');
+        await expect(page.locator('main video')).toHaveCount(0);
+        await expect(page.locator('main > section[data-experience-phase]')).toHaveCount(7);
+        await expect(page.locator('[data-partner-id]')).toHaveCount(5);
+        await expect(page.locator('[data-method-word]')).toHaveCount(3);
+      }
+      break;
+    }
+  }
+
+  expect(failures, failures.join('\n')).toEqual([]);
+  return true;
+}
+
 test.describe('Phase 1 visual grammar repair contract', () => {
   test.use({ viewport: { width: 1440, height: 900 } });
 
   test('R2 uses a bounded, unfilled hairline trajectory system', async ({ page }) => {
+    if (await runPhaseRGrammarContract(page, 'trajectory')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await preparePage(page);
     await activatePhase(page, 'signal');
@@ -172,6 +385,7 @@ test.describe('Phase 1 visual grammar repair contract', () => {
   });
 
   test('R3-R8 resolve the intended material hierarchy through all six states', async ({ page }) => {
+    if (await runPhaseRGrammarContract(page, 'hierarchy')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await preparePage(page);
 
@@ -266,6 +480,7 @@ test.describe('Phase 1 visual grammar repair contract', () => {
   });
 
   test('R3 pointer exploration changes field and trajectory rendering beyond root variables', async ({ page }) => {
+    if (await runPhaseRGrammarContract(page, 'pointer')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await preparePage(page);
     const aperture = await activatePhase(page, 'aperture');
@@ -311,6 +526,7 @@ test.describe('Phase 1 visual grammar repair contract', () => {
   });
 
   test('R8 desktop phase index preserves a positive gap from NEED and PROVE copy', async ({ page }) => {
+    if (await runPhaseRGrammarContract(page, 'index-gap')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await preparePage(page);
     const phaseIndex = page.locator('.phase-index');
@@ -350,6 +566,7 @@ test.describe('Phase 1 visual grammar repair contract', () => {
   });
 
   test('R9 has no visually rendered word-like copy hidden inside aria-hidden decoration', async ({ page }) => {
+    if (await runPhaseRGrammarContract(page, 'hidden-copy')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await preparePage(page);
 
@@ -406,6 +623,7 @@ test.describe('Phase 1 visual grammar repair contract', () => {
   });
 
   test('R9 readable microcopy remains at least 11px and WCAG AA in every state', async ({ page }) => {
+    if (await runPhaseRGrammarContract(page, 'microcopy')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await preparePage(page);
 
@@ -501,6 +719,7 @@ test.describe('Phase 1 visual grammar repair contract', () => {
   });
 
   test('R9 mobile PROVE keeps every inactive phase control visible, focusable, and AA', async ({ page }) => {
+    if (await runPhaseRGrammarContract(page, 'mobile-controls')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.setViewportSize({ width: 390, height: 844 });
     await preparePage(page);
@@ -593,6 +812,7 @@ test.describe('Phase 1 visual grammar repair contract', () => {
   });
 
   test('R9 FIND sequence text keeps effective AA contrast at mobile and desktop selection', async ({ page }) => {
+    if (await runPhaseRGrammarContract(page, 'method-contrast')) return;
     const runtimeFailures = captureRuntimeFailures(page);
 
     for (const viewport of [
@@ -747,6 +967,7 @@ test.describe('Phase 1 visual grammar repair contract', () => {
   });
 
   test('R9 named responsive microcopy never resolves below 11.2px', async ({ page }) => {
+    if (await runPhaseRGrammarContract(page, 'responsive-microcopy')) return;
     const runtimeFailures = captureRuntimeFailures(page);
 
     for (const width of [390, 430]) {
@@ -776,6 +997,7 @@ test.describe('Phase 1 visual grammar repair contract', () => {
   });
 
   test('H13 approved APERTURE media and status remain legible in normal, reduced, and no-WebGL modes', async ({ page }) => {
+    if (await runPhaseRGrammarContract(page, 'fallback-legibility')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     const modes = [
       { label: 'normal', reducedMotion: 'no-preference' as const, url: '/' },

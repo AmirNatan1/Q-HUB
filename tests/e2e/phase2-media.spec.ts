@@ -314,8 +314,199 @@ async function expectActualPlateContrast(
   }
 }
 
+type PhaseRMediaContract =
+  | 'journey'
+  | 'editorial'
+  | 'media-free'
+  | 'field-boundary'
+  | 'field-visibility'
+  | 'reduced'
+  | 'no-webgl'
+  | 'subtitle-free'
+  | 'brand-masters'
+  | 'mobile-assets'
+  | 'proof-handoff'
+  | 'media-contrast'
+  | 'evidence-claims';
+
+async function activatePhaseRAct(page: Page, act: string, progress = 0.5): Promise<Locator> {
+  const section = page.locator(`[data-experience-phase="${act}"]`);
+  await section.evaluate((element, requestedProgress) => {
+    const bounds = element.getBoundingClientRect();
+    const viewportHeight = Math.max(window.innerHeight, 1);
+    window.scrollTo({
+      top: Math.max(
+        0,
+        bounds.top + window.scrollY - viewportHeight * 0.48
+          + Math.max(bounds.height, viewportHeight) * requestedProgress,
+      ),
+      behavior: 'instant',
+    });
+  }, progress);
+  await expect.poll(() => activePhase(page)).toBe(act);
+  return section;
+}
+
+/**
+ * Phase R supersedes the six-state homepage media hierarchy. Each historical
+ * test keeps its original body below for an older build, while this branch
+ * exercises the durable equivalent on the seven-act homepage.
+ */
+async function runPhaseRMediaContract(
+  page: Page,
+  contract: PhaseRMediaContract,
+): Promise<boolean> {
+  const failures = captureRuntimeFailures(page);
+  if (contract === 'reduced') await page.emulateMedia({ reducedMotion: 'reduce' });
+  if (contract === 'mobile-assets') await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(contract === 'no-webgl' ? '/?webgl=off' : '/');
+  if (await page.locator('[data-experience-phase="presence"]').count() === 0) return false;
+
+  test.info().annotations.push({
+    type: 'Phase R supersession',
+    description: `Historical Phase 2 media invariant translated to Phase R: ${contract}.`,
+  });
+
+  switch (contract) {
+    case 'journey': {
+      const sections = page.locator('main > section[data-experience-phase]');
+      await expect(sections).toHaveCount(7);
+      await expect.poll(() => sections.evaluateAll((nodes) =>
+        nodes.map((node) => node.getAttribute('data-experience-phase')),
+      )).toEqual(['presence', 'access', 'startup', 'method', 'activity', 'evidence', 'action']);
+      await expect(page.locator('main h1')).toContainText(/quantum\s*hub/i);
+      await expect(page.locator('.phase-index, .experience-hud')).toHaveCount(0);
+      break;
+    }
+    case 'editorial': {
+      const publicText = (await page.locator('main').innerText()).toLowerCase();
+      for (const denied of [
+        'publicapproved',
+        'sourcereferenceinternal',
+        'classification a',
+        'classification b',
+        'approved for publication',
+        'private kpi',
+      ]) expect(publicText).not.toContain(denied);
+      await expect(page.locator('.activity-signals li')).toHaveCount(4);
+      await expect(page.locator('[data-proof-handoff]')).toHaveAttribute('href', '/proof/');
+      break;
+    }
+    case 'media-free': {
+      await expect(page.locator('main video, main audio, main source, main picture')).toHaveCount(0);
+      const loadedMedia = await page.evaluate(() => performance.getEntriesByType('resource')
+        .filter((entry) => /\.(?:mp4|webm|mov)(?:$|[?#])/i.test(entry.name))
+        .map((entry) => entry.name));
+      expect(loadedMedia).toEqual([]);
+      break;
+    }
+    case 'field-boundary': {
+      const startup = await activatePhaseRAct(page, 'startup', 0.5);
+      const [sticky, crossing] = await Promise.all([
+        startup.locator('.phase-r-startup').boundingBox(),
+        startup.locator('[data-field-crossing]').boundingBox(),
+      ]);
+      expect(sticky).not.toBeNull();
+      expect(crossing).not.toBeNull();
+      if (sticky && crossing) {
+        expect(crossing.x).toBeGreaterThanOrEqual(sticky.x - 1);
+        expect(crossing.y).toBeGreaterThanOrEqual(sticky.y - 1);
+        expect(crossing.x + crossing.width).toBeLessThanOrEqual(sticky.x + sticky.width + 1);
+        expect(crossing.y + crossing.height).toBeLessThanOrEqual(sticky.y + sticky.height + 1);
+      }
+      break;
+    }
+    case 'field-visibility': {
+      const startup = await activatePhaseRAct(page, 'startup', 0.84);
+      await expect(startup).toHaveAttribute('data-crossing-state', 'field');
+      await expect(startup.locator('[data-field-crossing]')).toBeVisible();
+      await expect(startup.locator('h2, p, a')).toHaveCount(3);
+      await expect(page.locator('main video')).toHaveCount(0);
+      break;
+    }
+    case 'reduced': {
+      await expect(page.locator('html')).toHaveAttribute('data-render-mode', 'reduced-motion');
+      await expect(page.locator('[data-signal-canvas]')).not.toHaveAttribute('data-engine', 'ready');
+      await expect(page.locator('main video, main audio')).toHaveCount(0);
+      await expect(page.locator('[data-partner-id]')).toHaveCount(5);
+      break;
+    }
+    case 'no-webgl': {
+      await expect(page.locator('html')).toHaveAttribute('data-render-mode', 'no-webgl-fallback');
+      await expect(page.locator('[data-signal-canvas]')).not.toHaveAttribute('data-engine', 'ready');
+      await expect(page.locator('main > section[data-experience-phase]')).toHaveCount(7);
+      await expect(page.locator('[data-method-word]')).toHaveText(['find.', 'test.', 'prove.']);
+      break;
+    }
+    case 'subtitle-free': {
+      await expect(page.locator('main video, main track, main source')).toHaveCount(0);
+      expect((await page.locator('main').innerText()).toLowerCase()).not.toContain('subtitle');
+      break;
+    }
+    case 'brand-masters': {
+      const sources = await page.locator('.wordmark img').evaluateAll((images) =>
+        images.map((image) => image.getAttribute('src')),
+      );
+      expect(sources).toEqual([
+        '/brand/quantum-full-logo-white.svg',
+        '/brand/quantum-full-logo-colors.svg',
+        '/brand/quantum-icon-white.svg',
+        '/brand/quantum-icon-color.svg',
+      ]);
+      await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', /quantum-icon/i);
+      break;
+    }
+    case 'mobile-assets': {
+      const geometry = await page.evaluate(() => ({
+        documentWidth: document.documentElement.scrollWidth,
+        viewportWidth: document.documentElement.clientWidth,
+        images: [...document.querySelectorAll<HTMLElement>('[data-partner-id] img')].map((image) => {
+          const bounds = image.getBoundingClientRect();
+          return { left: bounds.left, right: bounds.right, width: bounds.width };
+        }),
+      }));
+      expect(geometry.documentWidth).toBeLessThanOrEqual(geometry.viewportWidth);
+      for (const image of geometry.images) {
+        expect(image.left).toBeGreaterThanOrEqual(-1);
+        expect(image.right).toBeLessThanOrEqual(geometry.viewportWidth + 1);
+        expect(image.width).toBeGreaterThan(0);
+      }
+      break;
+    }
+    case 'proof-handoff': {
+      await expect(page.locator('main figure, main video')).toHaveCount(0);
+      await expect(page.locator('[data-proof-handoff]')).toHaveAttribute('href', '/proof/');
+      await expect(page.locator('main a[href*="maradin" i]')).toHaveCount(0);
+      break;
+    }
+    case 'media-contrast': {
+      await expect(page.locator('main video')).toHaveCount(0);
+      const sizes = await page.locator('.partner-plane__relationship').evaluateAll((nodes) =>
+        nodes.map((node) => Number.parseFloat(getComputedStyle(node).fontSize)),
+      );
+      expect(sizes.every((size) => size >= 11.2)).toBe(true);
+      break;
+    }
+    case 'evidence-claims': {
+      const text = (await page.locator('main').innerText()).toLowerCase();
+      for (const denied of ['guaranteed', 'procurement', 'deployment confirmed', 'commercial result']) {
+        expect(text).not.toContain(denied);
+      }
+      await expect(page.locator('[data-experience-phase="evidence"]')).toContainText(
+        /real field.*documented evidence/is,
+      );
+      await expect(page.locator('[data-proof-handoff]')).toHaveAttribute('href', '/proof/');
+      break;
+    }
+  }
+
+  expect(failures, failures.join('\n')).toEqual([]);
+  return true;
+}
+
 test.describe('Phase 2 approved field-media contract', () => {
   test('keeps all six phases ordered and reachable while SIGNAL stays Quantum-led', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'journey')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.goto('/');
 
@@ -343,6 +534,7 @@ test.describe('Phase 2 approved field-media contract', () => {
   });
 
   test('public presentation uses editorial labels instead of publication workflow language', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'editorial')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     const routes = [
       '/',
@@ -380,6 +572,7 @@ test.describe('Phase 2 approved field-media contract', () => {
   });
 
   test('APERTURE owns the approved lazy native video and does not request MP4 on first paint', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'media-free')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     const mp4Requests: string[] = [];
     page.on('request', (request) => {
@@ -418,6 +611,7 @@ test.describe('Phase 2 approved field-media contract', () => {
   });
 
   test('TEST keeps its approved documentary video inside the accepted physical boundary', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'field-boundary')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.goto('/');
     await activatePhase(page, 'test');
@@ -445,6 +639,7 @@ test.describe('Phase 2 approved field-media contract', () => {
   });
 
   test('TEST leaves at least half of the documentary frame unobstructed on desktop and mobile', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'field-visibility')) return;
     const runtimeFailures = captureRuntimeFailures(page);
 
     for (const viewport of [
@@ -499,7 +694,8 @@ test.describe('Phase 2 approved field-media contract', () => {
     expect(runtimeFailures, runtimeFailures.join('\n')).toEqual([]);
   });
 
-  test('reduced motion never plays or loops documentary footage and renders approved posters', async ({ browser, baseURL }) => {
+  test('reduced motion never plays or loops documentary footage and renders approved posters', async ({ page: phaseRPage, browser, baseURL }) => {
+    if (await runPhaseRMediaContract(phaseRPage, 'reduced')) return;
     const context = await browser.newContext({
       ...(baseURL ? { baseURL } : {}),
       viewport: { width: 1440, height: 900 },
@@ -579,6 +775,7 @@ test.describe('Phase 2 approved field-media contract', () => {
   });
 
   test('no-WebGL fallback reaches every phase with approved APERTURE media intact', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'no-webgl')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.goto('/?webgl=off');
     await expect(page.locator('html')).toHaveAttribute('data-render-mode', 'no-webgl-fallback');
@@ -599,6 +796,7 @@ test.describe('Phase 2 approved field-media contract', () => {
   });
 
   test('APERTURE excludes the baked subtitle band across required viewports and no-WebGL', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'subtitle-free')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     const profiles = [
       { label: 'desktop-wide', width: 1920, height: 1080, query: '' },
@@ -658,6 +856,7 @@ test.describe('Phase 2 approved field-media contract', () => {
   });
 
   test('uses the supplied official Quantum logo masters and icon favicon', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'brand-masters')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.goto('/');
 
@@ -689,6 +888,7 @@ test.describe('Phase 2 approved field-media contract', () => {
   });
 
   test('mobile media uses authored focal positions without horizontal overflow', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'mobile-assets')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/');
@@ -770,6 +970,7 @@ test.describe('Phase 2 approved field-media contract', () => {
   });
 
   test('PROVE uses separate authored focal crops for the stop symbol and field vehicle', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'proof-handoff')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     const positions: Record<string, string[]> = {};
 
@@ -981,6 +1182,7 @@ test.describe('Phase 2 approved field-media contract', () => {
   });
 
   test('APERTURE and TEST text plates retain actual-background AA contrast over real media', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'media-contrast')) return;
     const runtimeFailures = captureRuntimeFailures(page);
 
     for (const viewport of [
@@ -1019,6 +1221,7 @@ test.describe('Phase 2 approved field-media contract', () => {
   });
 
   test('PROVE renders the approved evidence fields and next step without a commercial outcome claim', async ({ page }) => {
+    if (await runPhaseRMediaContract(page, 'evidence-claims')) return;
     const runtimeFailures = captureRuntimeFailures(page);
     await page.goto('/');
     const prove = await activatePhase(page, 'prove');

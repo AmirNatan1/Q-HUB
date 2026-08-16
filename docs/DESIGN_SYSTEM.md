@@ -1,5 +1,69 @@
 # Design System
 
+## Phase R strategic design system — current contract
+
+Phase R makes Quantum the protagonist and replaces the older method-heavy homepage hierarchy with a seven-act institutional journey. The accepted Phase 1 signal restraint, official identity, publication discipline, and Phase 3 Proof language remain available; the former SIGNAL → APERTURE → NEED → FIND → TEST → PROVE homepage composition is historical rather than the current public page structure.
+
+The governing tension remains **precision instrument × industrial documentary**, with more monument and less HUD. Premium comes from scale, silence, negative space, exact typography, material transitions, and a small number of authored moments. It does not come from information density, generic cards, decorative effects, or fabricated magnitude.
+
+### Seven-act visual progression
+
+| Act | Required visual role |
+| --- | --- |
+| PRESENCE | Near-black authority, giant Quantum typography, extraordinary negative space, and one restrained signal reveal. The institution enters before any process or project. |
+| ACCESS | A cinematic Partner Field resolves one borderless, screen-scale organization identity at a time. Strategic and founding relationships remain semantic and exact; the act is never a grid, marquee, carousel, sponsor wall, or “trusted by” strip. |
+| STARTUP | A material Field Crossing changes one round abstract signal into a compressed threshold form and then a rectilinear field probe. A substantial contact boundary and large industrial planes replace repeating-grid or decorative-dot treatment. |
+| METHOD | FIND is distributed search and selection, TEST is a hard vertical threshold with contact deformation, and PROVE is a structured paper/evidence record with a resolved check. The three states differ by authored geometry, not color alone. |
+| ACTIVITY | FIELD TESTING → PROGRAMS → PARTNER ENGAGEMENT → GLOBAL ECOSYSTEM advances one large category signal at a time without becoming an activity feed or unsupported factual timeline. |
+| EVIDENCE | Warm/off-white evidence planes, dark ink, teal structure, and visual calm hand the visitor toward the deeper Proof index. Teal signifies documented evidence, not commercial success. |
+| ACTION | A dark, decisive closing field gives the startup-facing action scale without turning into a generic contact block. |
+
+### Phase R role tokens
+
+The Phase R stylesheet maps the current visual roles through `--r-void`, `--r-ink`, `--r-paper`, `--r-paper-bright`, `--r-muted`, `--r-line`, `--r-signal`, `--r-field`, `--r-evidence`, `--r-gutter`, `--r-max`, and `--r-header`. The approved role colors remain signal pink `#D82B72`, field/contact salmon `#F67783`, and evidence teal `#22BDA5`. These colors communicate state; they are not interchangeable decoration.
+
+Shared global type, focus, touch-target, spacing, depth, and motion tokens still govern components. Phase-specific tokens must not fork accessibility or identity rules. Display type may be monumental, but readable supporting copy, relationship labels, actions, and focus indicators retain practical size and contrast.
+
+### Partner Field grammar
+
+- Show all five approved organizations with exact semantic relationship groupings.
+- Use relationship label → organization identity → scale/motion.
+- Desktop exposes the root-focused organization as the sole visible borderless screen-scale identity; inactive identities do not remain as a card wall behind it.
+- Mobile presents five sequential, non-overlapping, full-width identity moments in ordinary vertical flow.
+- Reduced motion presents all identities as a prominent asymmetric sequence of broad identity bands and territories, without hiding either relationship group or collapsing them into a logo grid. If the Talcar or Bazan artwork lacks safe contrast in the resolved composition, the approved typographic organization name remains large while that decorative image is suppressed.
+- Forced colors removes logo imagery and preserves organization names and relationship labels in system colors.
+- Logo art remains unmodified: no recoloring, tracing, AI recreation, distortion, invented combined mark, or shipped composite reference.
+- If a supplied mark is unsuitable for a background, use the approved organization name typographically.
+- Do not add company descriptions, statistics, invented links, or generic partner-card furniture.
+
+### Copy, hierarchy, and composition
+
+- One settled act has one dominant statement, at most one short support line, and only essential relationship or category labels.
+- Primary statements normally remain at or below 10 words; support lines at or below 20; public paragraphs at or below 24; settled narrative at or below 35; mobile-visible narrative at or below 28.
+- The visual system must communicate before explanatory prose expands.
+- Keep display copy inside a protected stage keepout. Signal geometry may frame type but must not cross it merely to create activity.
+- Keep conventional navigation legible and separate from scrolled content. Experimental composition never obscures how to use the site.
+- Reserve stage and identity dimensions to avoid layout shifts.
+- POCs and Proof media do not become full-homepage wallpaper or redefine Quantum’s identity.
+
+### Authored inclusion modes
+
+- **Desktop:** broad negative space, one focused screen-scale partner identity, sparse optional pointer depth, and materially distinct Field Crossing/method transitions.
+- **Tablet:** reduced overlap and density with the same semantic order and no clipping.
+- **Mobile:** ordinary vertical flow, full-width partner identities, concise line lengths, no hover requirement, no horizontal overflow, and no default WebGL.
+- **Reduced motion:** strong resolved static compositions for all seven acts; five prominent partners remain in sequence and all four Activity labels become a readable document flow; no blank states, hidden relationships, or removed actions.
+- **Forced colors:** system surfaces, text, borders, links, and focus replace decorative color/material layers; partner names carry identity when images are suppressed, and all Activity labels remain visible.
+- **No JavaScript:** DOM/CSS/SVG expands every partner identity and Activity label into a complete authored reading order.
+- **No WebGL:** the same scroll-driven Partner Field, Field Crossing, METHOD, and ACTIVITY state progression remains legible through DOM/CSS/SVG; canvas absence removes no meaning.
+
+### Phase R rejected patterns
+
+Do not use a logo wall, card grid, sponsor strip, repeating cyber grid, fake activity feed, fake metric, fake scale claim, glassmorphism, generic gradient wallpaper, neon cyberpunk, perpetual particle field, floating 3D blob, testimonial carousel, smooth-scroll takeover, technical readout forest, or project-specific homepage fact panel.
+
+## Historical Phase 1–3 design record
+
+The following sections preserve earlier design decisions and review context. Their static-first, identity, evidence, accessibility, and signal-restraint principles remain useful. Their Maradin-led homepage material sequence and six public homepage states are superseded for `/` by the Phase R contract above.
+
 ## Phase 3 Proof language
 
 Proof continues the resolved side of the homepage: warm/off-white evidence planes, Quantum dark gray, and teal as the semantic color of documented evidence. Teal does not mean commercial success. Pink remains limited to an existing semantic need rather than becoming a second Proof accent system.

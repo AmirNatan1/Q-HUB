@@ -35,6 +35,9 @@ describe('public-output boundary', () => {
     expect(serialized).toContain('Dynamic Ground Projection');
     expect(serialized).toContain('Hyundai CRADLE TLV');
     privateKeys.forEach((key) => expect(serialized).not.toContain(key));
+    expect(serialized).not.toMatch(
+      /Exact internal KPI tables|proprietary measurement data|remain non-public/i,
+    );
   });
 
   it('keeps internal source metadata out of presentation code and generated artifacts', () => {
