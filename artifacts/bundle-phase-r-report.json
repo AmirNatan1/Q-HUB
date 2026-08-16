@@ -1,0 +1,162 @@
+{
+  "generatedAt": "2026-08-16T11:36:12.253Z",
+  "inspectedEntry": "dist/index.html",
+  "initialHtml": {
+    "scripts": [
+      {
+        "kind": "external",
+        "type": "module",
+        "src": "/_astro/page.DVKH9UCq.js",
+        "localFile": "_astro/page.DVKH9UCq.js"
+      },
+      {
+        "kind": "inline",
+        "type": "module",
+        "bytes": 258,
+        "staticImports": [],
+        "dynamicImports": []
+      },
+      {
+        "kind": "external",
+        "type": "module",
+        "src": "/_astro/index.astro_astro_type_script_index_0_lang.DoszqGo0.js",
+        "localFile": "_astro/index.astro_astro_type_script_index_0_lang.DoszqGo0.js"
+      }
+    ],
+    "modulePreloads": []
+  },
+  "totals": {
+    "javascriptAssets": 3,
+    "rawBytes": 22074,
+    "gzipBytes": 8197,
+    "initialRawBytes": 10460,
+    "initialGzipBytes": 4188,
+    "lazyRawBytes": 11614,
+    "lazyGzipBytes": 4009
+  },
+  "composition": [
+    {
+      "file": "_astro/field-engine.BA5GPryA.js",
+      "tier": "lazy",
+      "rawBytes": 11614,
+      "gzipBytes": 4009,
+      "staticImports": [],
+      "dynamicImports": []
+    },
+    {
+      "file": "_astro/index.astro_astro_type_script_index_0_lang.DoszqGo0.js",
+      "tier": "initial",
+      "rawBytes": 7970,
+      "gzipBytes": 3070,
+      "staticImports": [],
+      "dynamicImports": [
+        "_astro/field-engine.BA5GPryA.js"
+      ]
+    },
+    {
+      "file": "_astro/page.DVKH9UCq.js",
+      "tier": "initial",
+      "rawBytes": 2490,
+      "gzipBytes": 1118,
+      "staticImports": [],
+      "dynamicImports": []
+    }
+  ],
+  "runtimeDetection": {
+    "react": {
+      "label": "React / React DOM",
+      "directProductionDependency": false,
+      "installedInDependencyTree": false,
+      "packageNames": [
+        "react",
+        "react-dom"
+      ],
+      "detectedInAssets": false,
+      "detectedInInitialCriticalPath": false,
+      "detectedAssets": [],
+      "initialAssets": []
+    },
+    "three": {
+      "label": "Three.js",
+      "directProductionDependency": false,
+      "installedInDependencyTree": false,
+      "packageNames": [
+        "three"
+      ],
+      "detectedInAssets": false,
+      "detectedInInitialCriticalPath": false,
+      "detectedAssets": [],
+      "initialAssets": []
+    },
+    "r3f": {
+      "label": "React Three Fiber",
+      "directProductionDependency": false,
+      "installedInDependencyTree": false,
+      "packageNames": [
+        "@react-three/fiber"
+      ],
+      "detectedInAssets": false,
+      "detectedInInitialCriticalPath": false,
+      "detectedAssets": [],
+      "initialAssets": []
+    },
+    "gsap": {
+      "label": "GSAP / ScrollTrigger",
+      "directProductionDependency": false,
+      "installedInDependencyTree": false,
+      "packageNames": [
+        "gsap"
+      ],
+      "detectedInAssets": false,
+      "detectedInInitialCriticalPath": false,
+      "detectedAssets": [],
+      "initialAssets": []
+    },
+    "heavyRuntimes": {
+      "label": "heavy animation, 3D, carousel, router, or smooth-scroll runtime",
+      "directProductionDependency": false,
+      "installedInDependencyTree": false,
+      "packageNames": [
+        "@babylonjs/core",
+        "@barba/core",
+        "@studio-freight/lenis",
+        "@tanstack/react-router",
+        "animejs",
+        "babylonjs",
+        "barba.js",
+        "framer-motion",
+        "lenis",
+        "locomotive-scroll",
+        "lottie-web",
+        "motion",
+        "pixi.js",
+        "react-router",
+        "react-router-dom",
+        "smooth-scroll",
+        "swiper"
+      ],
+      "detectedInAssets": false,
+      "detectedInInitialCriticalPath": false,
+      "detectedAssets": [],
+      "initialAssets": []
+    }
+  },
+  "acceptedPhase3Baseline": {
+    "sourceCandidate": "ff78e2d911960bb2c05d7404966bbf688d0764e9",
+    "implementationCandidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+    "totalRawBytes": 20852,
+    "totalGzipBytes": 7961,
+    "initialRawBytes": 9179,
+    "initialGzipBytes": 3917,
+    "lazyRawBytes": 11673,
+    "lazyGzipBytes": 4044
+  },
+  "phaseRDelta": {
+    "totalRawBytes": 1222,
+    "totalGzipBytes": 236,
+    "initialRawBytes": 1281,
+    "initialGzipBytes": 271,
+    "lazyRawBytes": -59,
+    "lazyGzipBytes": -35
+  }
+}

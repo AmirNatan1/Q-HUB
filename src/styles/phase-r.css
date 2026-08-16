@@ -464,7 +464,7 @@ html[data-active-phase="action"] .quantum-stage {
 .partner-plane__relationship {
   color: rgba(250, 248, 242, 0.64);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1136,9 +1136,7 @@ html:not([data-js="true"]) .phase-r-access__heading {
 }
 
 html:not([data-js="true"]) .partner-field {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
-  gap: clamp(1.5rem, 4vw, 4rem);
+  display: block;
   height: auto;
 }
 
@@ -1149,12 +1147,17 @@ html:not([data-js="true"]) .partner-territory h3 {
 }
 
 html:not([data-js="true"]) .partner-territory h3 {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.25rem;
+  padding: 0;
+  background: transparent;
 }
 
 html:not([data-js="true"]) .partner-territory ul {
-  display: grid;
-  gap: 0.7rem;
+  display: block;
+}
+
+html:not([data-js="true"]) .partner-territory + .partner-territory {
+  margin-top: clamp(2.5rem, 7vw, 6rem);
 }
 
 html:not([data-js="true"]) .partner-plane,
@@ -1166,13 +1169,40 @@ html:not([data-js="true"]) .partner-plane--founding.partner-plane--2 {
   position: relative;
   inset: auto;
   display: grid;
-  width: 100%;
-  height: 9.75rem;
-  grid-template-columns: minmax(7rem, 0.8fr) minmax(0, 1fr);
+  width: min(78%, 58rem);
+  min-height: 8.5rem;
+  height: auto;
+  grid-template-columns: minmax(8rem, 0.7fr) minmax(0, 1fr);
   grid-template-rows: auto 1fr;
-  column-gap: 1rem;
+  column-gap: clamp(1rem, 3vw, 3rem);
   align-items: center;
-  padding: 1rem;
+  margin: 0;
+  padding: clamp(1rem, 2vw, 1.6rem) 0;
+  overflow: visible;
+  color: var(--r-paper-bright);
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(250, 248, 242, 0.28);
+}
+
+html:not([data-js="true"]) .partner-territory li + li {
+  margin-top: 0.5rem;
+}
+
+html:not([data-js="true"]) .partner-territory--strategic li:nth-child(2) {
+  margin-left: 10%;
+}
+
+html:not([data-js="true"]) .partner-territory--strategic li:nth-child(3) {
+  margin-left: 20%;
+}
+
+html:not([data-js="true"]) .partner-territory--founding li:first-child {
+  margin-left: 8%;
+}
+
+html:not([data-js="true"]) .partner-territory--founding li:last-child {
+  margin-left: 18%;
 }
 
 html:not([data-js="true"]) .partner-plane__relationship {
@@ -1287,17 +1317,15 @@ html[data-render-mode="reduced-motion"] .phase-r-act--access[data-partner-state=
 }
 
 html[data-render-mode="reduced-motion"] .partner-territory ul {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.7rem;
+  display: block;
 }
 
 html[data-render-mode="reduced-motion"] .partner-territory + .partner-territory {
-  margin-top: 1.2rem;
+  margin-top: clamp(2.5rem, 7vw, 6rem);
 }
 
 html[data-render-mode="reduced-motion"] .partner-territory--founding ul {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: block;
 }
 
 html[data-render-mode="reduced-motion"] .partner-plane,
@@ -1309,15 +1337,42 @@ html[data-render-mode="reduced-motion"] .partner-plane--founding.partner-plane--
   position: relative;
   inset: auto;
   display: grid;
-  width: 100%;
-  height: 9.75rem;
-  grid-template-columns: minmax(7rem, 0.8fr) minmax(0, 1fr);
+  width: min(78%, 58rem);
+  min-height: 8.5rem;
+  height: auto;
+  grid-template-columns: minmax(8rem, 0.7fr) minmax(0, 1fr);
   grid-template-rows: auto 1fr;
-  column-gap: 1rem;
+  column-gap: clamp(1rem, 3vw, 3rem);
   align-items: center;
-  padding: 1rem;
+  margin: 0;
+  padding: clamp(1rem, 2vw, 1.6rem) 0;
+  overflow: visible;
+  color: var(--r-paper-bright);
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(250, 248, 242, 0.28);
   opacity: 1;
   transform: none;
+}
+
+html[data-render-mode="reduced-motion"] .partner-territory li + li {
+  margin-top: 0.5rem;
+}
+
+html[data-render-mode="reduced-motion"] .partner-territory--strategic li:nth-child(2) {
+  margin-left: 10%;
+}
+
+html[data-render-mode="reduced-motion"] .partner-territory--strategic li:nth-child(3) {
+  margin-left: 20%;
+}
+
+html[data-render-mode="reduced-motion"] .partner-territory--founding li:first-child {
+  margin-left: 8%;
+}
+
+html[data-render-mode="reduced-motion"] .partner-territory--founding li:last-child {
+  margin-left: 18%;
 }
 
 html[data-render-mode="reduced-motion"] .partner-plane__relationship {
@@ -1366,7 +1421,45 @@ html[data-render-mode="reduced-motion"] .phase-r-display--method [data-method-wo
 
   html[data-render-mode="reduced-motion"] .partner-territory ul,
   html[data-render-mode="reduced-motion"] .partner-territory--founding ul {
-    grid-template-columns: 1fr;
+    display: block;
+  }
+
+  html[data-render-mode="reduced-motion"] .partner-plane,
+  html[data-render-mode="reduced-motion"] .partner-plane--strategic.partner-plane--1,
+  html[data-render-mode="reduced-motion"] .partner-plane--strategic.partner-plane--2,
+  html[data-render-mode="reduced-motion"] .partner-plane--strategic.partner-plane--3,
+  html[data-render-mode="reduced-motion"] .partner-plane--founding.partner-plane--1,
+  html[data-render-mode="reduced-motion"] .partner-plane--founding.partner-plane--2 {
+    width: 100%;
+    margin-left: 0;
+    grid-template-columns: minmax(6rem, 0.55fr) minmax(0, 1fr);
+  }
+
+  html[data-render-mode="reduced-motion"] .partner-territory li,
+  html[data-render-mode="reduced-motion"] .partner-territory--strategic li:nth-child(2),
+  html[data-render-mode="reduced-motion"] .partner-territory--strategic li:nth-child(3),
+  html[data-render-mode="reduced-motion"] .partner-territory--founding li:first-child,
+  html[data-render-mode="reduced-motion"] .partner-territory--founding li:last-child {
+    margin-left: 0;
+  }
+
+  html:not([data-js="true"]) .partner-plane,
+  html:not([data-js="true"]) .partner-plane--strategic.partner-plane--1,
+  html:not([data-js="true"]) .partner-plane--strategic.partner-plane--2,
+  html:not([data-js="true"]) .partner-plane--strategic.partner-plane--3,
+  html:not([data-js="true"]) .partner-plane--founding.partner-plane--1,
+  html:not([data-js="true"]) .partner-plane--founding.partner-plane--2 {
+    width: 100%;
+    margin-left: 0;
+    grid-template-columns: minmax(6rem, 0.55fr) minmax(0, 1fr);
+  }
+
+  html:not([data-js="true"]) .partner-territory li,
+  html:not([data-js="true"]) .partner-territory--strategic li:nth-child(2),
+  html:not([data-js="true"]) .partner-territory--strategic li:nth-child(3),
+  html:not([data-js="true"]) .partner-territory--founding li:first-child,
+  html:not([data-js="true"]) .partner-territory--founding li:last-child {
+    margin-left: 0;
   }
 }
 

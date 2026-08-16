@@ -202,10 +202,52 @@ const extraLabelsByPhase: Partial<
   access: [
     "Founding Partners",
     "Strategic Partners",
-    ...publicPartnerOrganizations.map((partner) => partner.name),
+    ...publicPartnerOrganizations.flatMap((partner) => [
+      partner.relationshipLabels[0] === "founding-partner"
+        ? "Founding Partner"
+        : "Strategic Partner",
+      partner.name,
+    ]),
   ],
   activity: activitySignals,
 };
+
+const accessAct = homepageActs.find((act) => act.phase === "access");
+if (!accessAct) throw new Error("The Phase R ACCESS act is required.");
+
+const strategicPartnerCopy = publicPartnerOrganizations
+  .filter((partner) => partner.relationshipLabels[0] === "strategic-partner")
+  .flatMap((partner) => ["Strategic Partner", partner.name]);
+const foundingPartnerCopy = publicPartnerOrganizations
+  .filter((partner) => partner.relationshipLabels[0] === "founding-partner")
+  .flatMap((partner) => ["Founding Partner", partner.name]);
+
+export const accessMobileCopyStates = Object.freeze({
+  opening: Object.freeze([accessAct.title.join(" ")]),
+  strategic: Object.freeze([
+    accessAct.title.join(" "),
+    "Strategic Partners",
+    ...strategicPartnerCopy,
+  ]),
+  founding: Object.freeze([
+    "Founding Partners",
+    ...foundingPartnerCopy,
+  ]),
+});
+
+export const accessMobileCopyStateReport = Object.freeze(
+  Object.entries(accessMobileCopyStates).map(([state, strings]) => {
+    const visibleWords = strings.reduce(
+      (total, value) => total + countPublicWords(value),
+      0,
+    );
+    return Object.freeze({
+      state,
+      visibleWords,
+      pass: visibleWords <= homepageCopyCeilings.mobileVisibleWords,
+    });
+  }),
+);
 
 export const homepageCopyDensityReport = Object.freeze(
   homepageActs.map((act) => auditHomepageCopyDensity({
@@ -215,6 +257,9 @@ export const homepageCopyDensityReport = Object.freeze(
     ...(act.action ? { action: act.action.label } : {}),
     ...(extraLabelsByPhase[act.phase]
       ? { essentialLabels: extraLabelsByPhase[act.phase] }
+      : {}),
+    ...(act.phase === "access"
+      ? { mobileVisible: accessMobileCopyStates.strategic }
       : {}),
   })),
 );
