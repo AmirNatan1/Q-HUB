@@ -22,6 +22,9 @@ const subject = [record.startup?.name, record.operatingOrganization?.name]
   .filter(Boolean)
   .join(" × ");
 const environmentTags = record.environmentTags ?? [];
+const openingTags = record.domains
+  .filter((tag, index, values) => values.indexOf(tag) === index)
+  .slice(0, 3);
 
 const hasTest = Boolean(record.test || phases.length > 0);
 const hasEvidence = Boolean(record.evidence || evidenceItems.length > 0);
@@ -62,11 +65,9 @@ const sections = [
       {subject && <p class="record-opening__subject">{subject}</p>}
       <p class="record-opening__summary">{record.summary}</p>
 
-      {(record.domains.length > 0 || environmentTags.length > 0) && (
-        <ul class="record-opening__tags" aria-label="Domains and operating environment">
-          {[...record.domains, ...environmentTags]
-            .filter((tag, index, values) => values.indexOf(tag) === index)
-            .map((tag) => <li>{tag}</li>)}
+      {openingTags.length > 0 && (
+        <ul class="record-opening__tags" aria-label="Domains">
+          {openingTags.map((tag) => <li>{tag}</li>)}
         </ul>
       )}
     </div>

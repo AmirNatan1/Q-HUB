@@ -260,7 +260,7 @@
     justify-content: space-between;
     padding: 0 var(--page-gutter);
     color: var(--paper-bright);
-    background: rgba(11, 10, 13, 0.96);
+    background: var(--ink);
     border-bottom: 1px solid var(--line-dark);
     transition: none;
   }
@@ -406,7 +406,7 @@
 
   html[data-active-phase="prove"] .site-header {
     color: var(--ink);
-    background: rgba(232, 230, 223, 0.97);
+    background: var(--paper);
     border-color: var(--line-light);
   }
 
@@ -1809,7 +1809,7 @@
 
   html[data-theme="light"] .site-header {
     color: var(--ink);
-    background: rgba(232, 230, 223, 0.97);
+    background: var(--paper);
     border-color: var(--line-light);
   }
 
