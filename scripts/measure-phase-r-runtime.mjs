@@ -2,7 +2,16 @@
 
 import { execFile, spawn } from "node:child_process";
 import { createHash } from "node:crypto";
-import { access, mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import {
+  access,
+  mkdir,
+  mkdtemp,
+  readFile,
+  readdir,
+  rename,
+  rm,
+  writeFile,
+} from "node:fs/promises";
 import { createServer } from "node:net";
 import path from "node:path";
 import process from "node:process";
@@ -16,6 +25,8 @@ const outputDirectory = path.join(rootDirectory, "artifacts", "performance", "ph
 const reviewDirectory = path.join(rootDirectory, "artifacts", "review");
 const astroCliPath = path.join(rootDirectory, "node_modules", "astro", "bin", "astro.mjs");
 const host = "127.0.0.1";
+const expectedCandidateBranch = "redirect/quantum-presence-startup-magnet";
+const candidateShaEnvironmentName = "PHASE_R_RUNTIME_CANDIDATE_SHA";
 const stage = process.env.PHASE_R_RUNTIME_STAGE?.trim() || "baseline";
 const allowedStages = new Set(["baseline", "candidate"]);
 const profiles = Object.freeze([
@@ -38,6 +49,9 @@ const profiles = Object.freeze([
 let previewProcess;
 let browser;
 let shutdownPromise;
+let stagingDirectory;
+let promotedTargets = [];
+let outputCommitted = false;
 
 function relative(filePath) {
   return path.relative(rootDirectory, filePath).split(path.sep).join("/");
@@ -54,6 +68,121 @@ async function git(args) {
     maxBuffer: 4 * 1024 * 1024,
   });
   return stdout.trim();
+}
+
+function runtimeOutputNames() {
+  return [
+    `${stage}-desktop.json`,
+    `${stage}-mobile.json`,
+    `${stage}-summary.json`,
+  ];
+}
+
+function runtimeOutputPaths() {
+  return runtimeOutputNames().map((name) => path.join(outputDirectory, name));
+}
+
+async function repositoryState() {
+  const [head, tree, branch, status] = await Promise.all([
+    git(["rev-parse", "HEAD"]),
+    git(["rev-parse", "HEAD^{tree}"]),
+    git(["branch", "--show-current"]),
+    git(["status", "--porcelain=v1", "--untracked-files=all"]),
+  ]);
+  if (!/^[0-9a-f]{40}$/iu.test(head) || !/^[0-9a-f]{40}$/iu.test(tree)) {
+    throw new Error(`Unable to resolve full repository HEAD/tree identities (${head}/${tree}).`);
+  }
+  return { head, tree, branch, status };
+}
+
+async function sourceMetadata() {
+  const source = await repositoryState();
+  if (stage !== "candidate") {
+    return {
+      ...source,
+      expectedBranch: null,
+      candidateEnvironmentName: null,
+      candidateEnvironmentProvided: false,
+      candidateBasis: "baseline-working-state-recorded-without-clean-candidate-enforcement",
+    };
+  }
+
+  if (source.branch !== expectedCandidateBranch) {
+    throw new Error(
+      `Phase R candidate runtime requires branch ${expectedCandidateBranch}; received ${source.branch || "detached HEAD"}.`,
+    );
+  }
+  if (source.status) {
+    throw new Error(
+      `Phase R candidate runtime requires a clean tracked/untracked working tree:\n${source.status}`,
+    );
+  }
+
+  const explicitCandidate = process.env[candidateShaEnvironmentName]?.trim();
+  if (!explicitCandidate) {
+    throw new Error(
+      `Phase R candidate runtime requires ${candidateShaEnvironmentName}=<full clean HEAD SHA>.`,
+    );
+  }
+  if (!/^[0-9a-f]{40}$/iu.test(explicitCandidate)) {
+    throw new Error(`${candidateShaEnvironmentName} must be a full 40-character SHA.`);
+  }
+  if (explicitCandidate.toLowerCase() !== source.head.toLowerCase()) {
+    throw new Error(
+      `${candidateShaEnvironmentName} ${explicitCandidate} does not equal HEAD ${source.head}.`,
+    );
+  }
+
+  return {
+    ...source,
+    expectedBranch: expectedCandidateBranch,
+    candidateEnvironmentName: candidateShaEnvironmentName,
+    candidateEnvironmentProvided: true,
+    candidateBasis: "explicit-environment-value-equal-to-clean-head",
+  };
+}
+
+function statusPath(line) {
+  const value = line.slice(3).replaceAll("\\", "/");
+  const renameSeparator = " -> ";
+  return value.includes(renameSeparator) ? value.split(renameSeparator).at(-1) : value;
+}
+
+function unexpectedStatusLines(status, allowedAbsolutePaths = []) {
+  const allowed = new Set(allowedAbsolutePaths.map(relative));
+  return status
+    .split(/\r?\n/u)
+    .filter(Boolean)
+    .filter((line) => !allowed.has(statusPath(line)));
+}
+
+async function verifyCandidateUnchanged(source, checkpoint, allowedOutputPaths = []) {
+  if (stage !== "candidate") return null;
+  const current = await repositoryState();
+  if (
+    current.head !== source.head
+    || current.tree !== source.tree
+    || current.branch !== source.branch
+  ) {
+    throw new Error(
+      `Phase R candidate HEAD/tree/branch changed ${checkpoint}: `
+      + `${current.head}/${current.tree}/${current.branch || "detached HEAD"}.`,
+    );
+  }
+  const unexpected = unexpectedStatusLines(current.status, allowedOutputPaths);
+  if (unexpected.length) {
+    throw new Error(
+      `Repository changed outside the exact runtime outputs ${checkpoint}:\n${unexpected.join("\n")}`,
+    );
+  }
+  return {
+    head: current.head,
+    tree: current.tree,
+    branch: current.branch,
+    statusPorcelain: current.status,
+    allowedOutputPaths: allowedOutputPaths.map(relative),
+    unexpectedStatusLines: [],
+  };
 }
 
 async function listFilesRecursively(directory) {
@@ -507,12 +636,7 @@ function windowIsFinite(value) {
 }
 
 async function assertOutputAvailable() {
-  const targets = [
-    path.join(outputDirectory, `${stage}-desktop.json`),
-    path.join(outputDirectory, `${stage}-mobile.json`),
-    path.join(outputDirectory, `${stage}-summary.json`),
-  ];
-  for (const target of targets) {
+  for (const target of runtimeOutputPaths()) {
     try {
       await access(target);
       throw new Error(`Refusing to overwrite existing runtime evidence: ${relative(target)}.`);
@@ -525,19 +649,99 @@ async function assertOutputAvailable() {
   }
 }
 
+async function prepareStagingDirectory() {
+  const artifactsDirectory = path.join(rootDirectory, "artifacts");
+  await mkdir(artifactsDirectory, { recursive: true });
+  stagingDirectory = await mkdtemp(
+    path.join(artifactsDirectory, `.phase-r-runtime-${stage}-staging-`),
+  );
+}
+
+async function assertStagedOutputSet() {
+  if (!stagingDirectory) throw new Error("Runtime staging directory is unavailable.");
+  const received = (await readdir(stagingDirectory, { withFileTypes: true }))
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name)
+    .sort();
+  const expected = runtimeOutputNames().sort();
+  if (JSON.stringify(received) !== JSON.stringify(expected)) {
+    throw new Error(
+      `Runtime staging set is incomplete. Expected ${expected.join(", ")}; received ${received.join(", ")}.`,
+    );
+  }
+  for (const name of received) {
+    JSON.parse(await readFile(path.join(stagingDirectory, name), "utf8"));
+  }
+}
+
+async function promoteStagedOutputs() {
+  if (!stagingDirectory) throw new Error("Runtime staging directory is unavailable.");
+  await mkdir(outputDirectory, { recursive: true });
+  await assertOutputAvailable();
+  try {
+    for (const name of runtimeOutputNames()) {
+      const target = path.join(outputDirectory, name);
+      await rename(path.join(stagingDirectory, name), target);
+      promotedTargets.push(target);
+    }
+  } catch (error) {
+    const rollbackErrors = [];
+    for (const target of [...promotedTargets].reverse()) {
+      try {
+        await rename(target, path.join(stagingDirectory, path.basename(target)));
+      } catch (rollbackError) {
+        rollbackErrors.push(rollbackError);
+      }
+    }
+    promotedTargets = [];
+    if (rollbackErrors.length) {
+      throw new AggregateError(
+        [error, ...rollbackErrors],
+        "Runtime output promotion failed and could not be fully rolled back.",
+        { cause: error },
+      );
+    }
+    throw error;
+  }
+}
+
+async function discardUncommittedOutputs() {
+  const errors = [];
+  if (!outputCommitted && stagingDirectory) {
+    for (const target of [...promotedTargets].reverse()) {
+      try {
+        await rename(target, path.join(stagingDirectory, path.basename(target)));
+      } catch (error) {
+        if (!(error && typeof error === "object" && "code" in error && error.code === "ENOENT")) {
+          errors.push(error);
+        }
+      }
+    }
+  }
+  promotedTargets = [];
+  if (stagingDirectory) {
+    try {
+      await rm(stagingDirectory, { recursive: true, force: true });
+    } catch (error) {
+      errors.push(error);
+    }
+    stagingDirectory = undefined;
+  }
+  if (errors.length) {
+    throw new AggregateError(errors, "Unable to discard incomplete runtime outputs.");
+  }
+}
+
 async function main() {
   if (!allowedStages.has(stage)) {
     throw new Error(`PHASE_R_RUNTIME_STAGE must be baseline or candidate; received ${stage}.`);
   }
-  await mkdir(outputDirectory, { recursive: true });
   await assertOutputAvailable();
+  const source = await sourceMetadata();
   const historicalEvidence = await historicalEvidenceInventory();
-  const [sourceHead, branch, statusPorcelain] = await Promise.all([
-    git(["rev-parse", "HEAD"]),
-    git(["branch", "--show-current"]),
-    git(["status", "--porcelain=v1", "--untracked-files=all"]),
-  ]);
+  await prepareStagingDirectory();
   await runNpm(["run", "build"]);
+  await verifyCandidateUnchanged(source, "after the fresh production build");
   const port = await reservePort();
   const baseUrl = `http://${host}:${port}/`;
   previewProcess = startPreview(port);
@@ -548,20 +752,33 @@ async function main() {
   for (const profile of profiles) {
     const result = await measureProfile(baseUrl, profile, browserVersion);
     results.push(result);
-    const target = path.join(outputDirectory, `${stage}-${profile.name}.json`);
+    const target = path.join(stagingDirectory, `${stage}-${profile.name}.json`);
     await writeFile(target, `${JSON.stringify(result, null, 2)}\n`, "utf8");
   }
+  await shutdown();
   const historicalEvidenceAfter = await historicalEvidenceInventory();
   if (historicalEvidence.digest !== historicalEvidenceAfter.digest) {
     throw new Error("Historical review evidence changed during runtime measurement.");
   }
+  const repositoryBeforePromotion = await verifyCandidateUnchanged(
+    source,
+    "after both runtime profiles and process shutdown",
+  );
   const summary = {
     schemaVersion: 1,
     stage,
     generatedAt: new Date().toISOString(),
-    sourceHead,
-    branch,
-    statusPorcelainAtStart: statusPorcelain,
+    sourceHead: source.head,
+    sourceTree: source.tree,
+    branch: source.branch,
+    expectedCandidateBranch: source.expectedBranch,
+    candidateBasis: source.candidateBasis,
+    candidateEnvironment: {
+      name: source.candidateEnvironmentName,
+      provided: source.candidateEnvironmentProvided,
+      equalsHead: stage === "candidate" ? true : null,
+    },
+    statusPorcelainAtStart: source.status,
     buildInput: "fresh npm run build production output",
     measuredBaseUrl: baseUrl,
     browserVersion,
@@ -584,21 +801,54 @@ async function main() {
       digestAlgorithm: historicalEvidence.digestAlgorithm,
       digest: historicalEvidence.digest,
     },
+    repositoryBinding: {
+      requiredForStage: stage === "candidate",
+      headAndTreeUnchangedAfterBuildAndMeasurement: stage === "candidate" ? true : null,
+      cleanTrackedAndUntrackedTreeAtStart: stage === "candidate" ? true : null,
+      beforePromotion: repositoryBeforePromotion,
+      afterPromotionVerification:
+        stage === "candidate"
+          ? "HEAD/tree/branch must still match and status may contain only the exact three promoted runtime outputs before successful exit."
+          : "not-required-for-baseline",
+      atomicOutputPolicy:
+        "All profile and summary JSON files are validated in ignored staging and promoted as one rollback-protected set.",
+    },
   };
   await writeFile(
-    path.join(outputDirectory, `${stage}-summary.json`),
+    path.join(stagingDirectory, `${stage}-summary.json`),
     `${JSON.stringify(summary, null, 2)}\n`,
     "utf8",
   );
+  await assertStagedOutputSet();
+  await verifyCandidateUnchanged(source, "immediately before runtime output promotion");
+  await promoteStagedOutputs();
+  const repositoryAfterPromotion = await verifyCandidateUnchanged(
+    source,
+    "after runtime output promotion",
+    runtimeOutputPaths(),
+  );
+  outputCommitted = true;
+  await rm(stagingDirectory, { recursive: true, force: true });
+  stagingDirectory = undefined;
   console.log(JSON.stringify(summary, null, 2));
+  if (repositoryAfterPromotion) {
+    console.log(
+      `Candidate binding verified after promotion: ${repositoryAfterPromotion.head}/${repositoryAfterPromotion.tree}.`,
+    );
+  }
 }
 
 for (const signal of ["SIGINT", "SIGTERM"]) {
-  process.once(signal, () => void shutdown().finally(() => process.exit(signal === "SIGINT" ? 130 : 143)));
+  process.once(signal, () => {
+    void shutdown()
+      .then(discardUncommittedOutputs)
+      .finally(() => process.exit(signal === "SIGINT" ? 130 : 143));
+  });
 }
 
 try {
   await main();
 } finally {
   await shutdown();
+  await discardUncommittedOutputs();
 }

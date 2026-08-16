@@ -1,21 +1,36 @@
 #!/usr/bin/env node
 
-import { spawn } from "node:child_process";
-import { access, mkdir, writeFile } from "node:fs/promises";
+import { execFile, spawn } from "node:child_process";
+import { createHash } from "node:crypto";
+import {
+  access,
+  mkdir,
+  mkdtemp,
+  readFile,
+  readdir,
+  rename,
+  rm,
+  writeFile
+} from "node:fs/promises";
 import { createServer } from "node:net";
 import path from "node:path";
 import process from "node:process";
+import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import { launch } from "chrome-launcher";
 import lighthouse, { desktopConfig } from "lighthouse";
 
+const execFileAsync = promisify(execFile);
 const rootDirectory = fileURLToPath(new URL("..", import.meta.url));
 const distIndex = path.join(rootDirectory, "dist", "index.html");
 const artifactDirectory = process.env.LIGHTHOUSE_ARTIFACT_DIRECTORY
   ? path.resolve(process.env.LIGHTHOUSE_ARTIFACT_DIRECTORY)
   : path.join(rootDirectory, "artifacts", "lighthouse", "phase-r");
 const host = "127.0.0.1";
+const expectedBranch = "redirect/quantum-presence-startup-magnet";
+const candidateShaEnvironmentName = "PHASE_R_LIGHTHOUSE_CANDIDATE_SHA";
 const categories = ["performance", "accessibility", "best-practices", "seo"];
+const requiredAuditCount = 6;
 const routeTargets = Object.freeze([
   { name: "homepage", route: "/" },
   { name: "proof-index", route: "/proof/" },
@@ -55,9 +70,177 @@ let previewLog = "";
 let previewSpawnError;
 let chrome;
 let shutdownPromise;
+let stagingDirectory;
+let promotedTargets = [];
+let outputCommitted = false;
 
 function rememberPreviewOutput(chunk) {
   previewLog = `${previewLog}${chunk.toString()}`.slice(-20_000);
+}
+
+function relative(filePath) {
+  return path.relative(rootDirectory, filePath).split(path.sep).join("/");
+}
+
+function sha256(bytes) {
+  return createHash("sha256").update(bytes).digest("hex");
+}
+
+async function git(args) {
+  const { stdout } = await execFileAsync("git", args, {
+    cwd: rootDirectory,
+    windowsHide: true,
+    maxBuffer: 8 * 1024 * 1024
+  });
+  return stdout.trim();
+}
+
+async function repositoryState() {
+  const [head, tree, branch, status] = await Promise.all([
+    git(["rev-parse", "HEAD"]),
+    git(["rev-parse", "HEAD^{tree}"]),
+    git(["branch", "--show-current"]),
+    git(["status", "--porcelain=v1", "--untracked-files=all"])
+  ]);
+  if (!/^[0-9a-f]{40}$/iu.test(head) || !/^[0-9a-f]{40}$/iu.test(tree)) {
+    throw new Error(`Unable to resolve full repository HEAD/tree identities (${head}/${tree}).`);
+  }
+  return { head, tree, branch, status };
+}
+
+async function sourceMetadata() {
+  const source = await repositoryState();
+  if (source.branch !== expectedBranch) {
+    throw new Error(
+      `Phase R Lighthouse requires branch ${expectedBranch}; received ${source.branch || "detached HEAD"}.`
+    );
+  }
+  if (source.status) {
+    throw new Error(
+      `Phase R Lighthouse requires a clean tracked/untracked working tree:\n${source.status}`
+    );
+  }
+  const explicitCandidate = process.env[candidateShaEnvironmentName]?.trim();
+  if (!explicitCandidate) {
+    throw new Error(
+      `Phase R Lighthouse requires ${candidateShaEnvironmentName}=<full clean HEAD SHA>.`
+    );
+  }
+  if (!/^[0-9a-f]{40}$/iu.test(explicitCandidate)) {
+    throw new Error(`${candidateShaEnvironmentName} must be a full 40-character SHA.`);
+  }
+  if (explicitCandidate.toLowerCase() !== source.head.toLowerCase()) {
+    throw new Error(
+      `${candidateShaEnvironmentName} ${explicitCandidate} does not equal HEAD ${source.head}.`
+    );
+  }
+  return {
+    ...source,
+    expectedBranch,
+    candidateEnvironmentName: candidateShaEnvironmentName,
+    candidateBasis: "explicit-environment-value-equal-to-clean-head"
+  };
+}
+
+function reportNames() {
+  return [
+    ...routeTargets.flatMap((target) => profiles.flatMap((profile) => [
+      `${profile.name}-${target.name}.json`,
+      `${profile.name}-${target.name}.html`
+    ])),
+    "summary.json"
+  ];
+}
+
+function reportPaths() {
+  return reportNames().map((name) => path.join(artifactDirectory, name));
+}
+
+function statusPath(line) {
+  const value = line.slice(3).replaceAll("\\", "/");
+  const renameSeparator = " -> ";
+  return value.includes(renameSeparator) ? value.split(renameSeparator).at(-1) : value;
+}
+
+function unexpectedStatusLines(status, allowedAbsolutePaths = []) {
+  const allowed = new Set(allowedAbsolutePaths
+    .filter((filePath) => path.isAbsolute(filePath) && filePath.startsWith(rootDirectory))
+    .map(relative));
+  return status
+    .split(/\r?\n/u)
+    .filter(Boolean)
+    .filter((line) => !allowed.has(statusPath(line)));
+}
+
+async function verifyCandidateUnchanged(source, checkpoint, allowedOutputPaths = []) {
+  const current = await repositoryState();
+  if (
+    current.head !== source.head
+    || current.tree !== source.tree
+    || current.branch !== source.branch
+  ) {
+    throw new Error(
+      `Phase R Lighthouse HEAD/tree/branch changed ${checkpoint}: `
+      + `${current.head}/${current.tree}/${current.branch || "detached HEAD"}.`
+    );
+  }
+  const unexpected = unexpectedStatusLines(current.status, allowedOutputPaths);
+  if (unexpected.length) {
+    throw new Error(
+      `Repository changed outside the exact Lighthouse outputs ${checkpoint}:\n${unexpected.join("\n")}`
+    );
+  }
+  return {
+    head: current.head,
+    tree: current.tree,
+    branch: current.branch,
+    statusPorcelain: current.status,
+    allowedOutputPaths: allowedOutputPaths
+      .filter((filePath) => filePath.startsWith(rootDirectory))
+      .map(relative),
+    unexpectedStatusLines: []
+  };
+}
+
+async function listFilesRecursively(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = [];
+  for (const entry of entries) {
+    const absolute = path.join(directory, entry.name);
+    if (entry.isDirectory()) files.push(...await listFilesRecursively(absolute));
+    else if (entry.isFile()) files.push(absolute);
+  }
+  return files;
+}
+
+async function directoryInventory(directory) {
+  const files = (await listFilesRecursively(directory)).sort((left, right) => (
+    relative(left).localeCompare(relative(right))
+  ));
+  const inventory = await Promise.all(files.map(async (filePath) => {
+    const bytes = await readFile(filePath);
+    return {
+      file: path.relative(directory, filePath).split(path.sep).join("/"),
+      bytes: bytes.length,
+      sha256: sha256(bytes)
+    };
+  }));
+  const digestInput = inventory
+    .map((entry) => `${entry.file}\0${entry.sha256}\0${entry.bytes}`)
+    .join("\n");
+  return {
+    count: inventory.length,
+    bytes: inventory.reduce((sum, entry) => sum + entry.bytes, 0),
+    digestAlgorithm: "sha256(file\\0sha256\\0bytes joined by newline, sorted by file)",
+    digest: sha256(Buffer.from(digestInput)),
+    inventory
+  };
+}
+
+function inventoriesEqual(left, right) {
+  return left.digest === right.digest
+    && left.count === right.count
+    && left.bytes === right.bytes;
 }
 
 async function findAvailablePort() {
@@ -82,6 +265,28 @@ async function findAvailablePort() {
 
         resolve(port);
       });
+    });
+  });
+}
+
+async function runNpm(args) {
+  await new Promise((resolve, reject) => {
+    const command = process.platform === "win32"
+      ? process.env.ComSpec ?? "cmd.exe"
+      : "npm";
+    const commandArgs = process.platform === "win32"
+      ? ["/d", "/s", "/c", ["npm", ...args].join(" ")]
+      : args;
+    const child = spawn(command, commandArgs, {
+      cwd: rootDirectory,
+      env: { ...process.env },
+      stdio: "inherit",
+      windowsHide: true
+    });
+    child.once("error", reject);
+    child.once("exit", (code) => {
+      if (code === 0) resolve();
+      else reject(new Error(`npm ${args.join(" ")} exited with code ${code}.`));
     });
   });
 }
@@ -117,38 +322,6 @@ function startPreview(port) {
     rememberPreviewOutput(error.message);
   });
   return child;
-}
-
-async function readSourceHead() {
-  return new Promise((resolve, reject) => {
-    let output = "";
-    let errorOutput = "";
-    const child = spawn("git", ["rev-parse", "HEAD"], {
-      cwd: rootDirectory,
-      stdio: ["ignore", "pipe", "pipe"],
-      windowsHide: true
-    });
-
-    child.stdout.on("data", (chunk) => {
-      output += chunk.toString();
-    });
-    child.stderr.on("data", (chunk) => {
-      errorOutput += chunk.toString();
-    });
-    child.once("error", reject);
-    child.once("exit", (code) => {
-      const sourceHead = output.trim();
-      if (code !== 0 || !/^[0-9a-f]{40}$/u.test(sourceHead)) {
-        reject(
-          new Error(
-            `Unable to record Lighthouse source HEAD: ${errorOutput.trim() || `exit ${code}`}`
-          )
-        );
-        return;
-      }
-      resolve(sourceHead);
-    });
-  });
 }
 
 async function waitForPreview(url, child, timeoutMs = 30_000) {
@@ -259,6 +432,103 @@ async function shutdown() {
   await shutdownPromise;
 }
 
+async function assertOutputsAvailable() {
+  for (const target of reportPaths()) {
+    try {
+      await access(target);
+      throw new Error(`Refusing to overwrite existing Lighthouse evidence: ${relative(target)}.`);
+    } catch (error) {
+      if (error instanceof Error && error.message.startsWith("Refusing")) throw error;
+      if (!(error && typeof error === "object" && "code" in error && error.code === "ENOENT")) {
+        throw error;
+      }
+    }
+  }
+}
+
+async function prepareStagingDirectory() {
+  const stagingParent = path.dirname(artifactDirectory);
+  await mkdir(stagingParent, { recursive: true });
+  stagingDirectory = await mkdtemp(
+    path.join(stagingParent, ".phase-r-lighthouse-staging-")
+  );
+}
+
+async function assertStagedOutputSet() {
+  if (!stagingDirectory) throw new Error("Lighthouse staging directory is unavailable.");
+  const received = (await readdir(stagingDirectory, { withFileTypes: true }))
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name)
+    .sort();
+  const expected = reportNames().sort();
+  if (JSON.stringify(received) !== JSON.stringify(expected)) {
+    throw new Error(
+      `Lighthouse staging set is incomplete. Expected ${expected.join(", ")}; received ${received.join(", ")}.`
+    );
+  }
+  for (const name of received.filter((name) => name.endsWith(".json"))) {
+    JSON.parse(await readFile(path.join(stagingDirectory, name), "utf8"));
+  }
+}
+
+async function promoteStagedOutputs() {
+  if (!stagingDirectory) throw new Error("Lighthouse staging directory is unavailable.");
+  await mkdir(artifactDirectory, { recursive: true });
+  await assertOutputsAvailable();
+  try {
+    for (const name of reportNames()) {
+      const target = path.join(artifactDirectory, name);
+      await rename(path.join(stagingDirectory, name), target);
+      promotedTargets.push(target);
+    }
+  } catch (error) {
+    const rollbackErrors = [];
+    for (const target of [...promotedTargets].reverse()) {
+      try {
+        await rename(target, path.join(stagingDirectory, path.basename(target)));
+      } catch (rollbackError) {
+        rollbackErrors.push(rollbackError);
+      }
+    }
+    promotedTargets = [];
+    if (rollbackErrors.length) {
+      throw new AggregateError(
+        [error, ...rollbackErrors],
+        "Lighthouse output promotion failed and could not be fully rolled back.",
+        { cause: error }
+      );
+    }
+    throw error;
+  }
+}
+
+async function discardUncommittedOutputs() {
+  const errors = [];
+  if (!outputCommitted && stagingDirectory) {
+    for (const target of [...promotedTargets].reverse()) {
+      try {
+        await rename(target, path.join(stagingDirectory, path.basename(target)));
+      } catch (error) {
+        if (!(error && typeof error === "object" && "code" in error && error.code === "ENOENT")) {
+          errors.push(error);
+        }
+      }
+    }
+  }
+  promotedTargets = [];
+  if (stagingDirectory) {
+    try {
+      await rm(stagingDirectory, { recursive: true, force: true });
+    } catch (error) {
+      errors.push(error);
+    }
+    stagingDirectory = undefined;
+  }
+  if (errors.length) {
+    throw new AggregateError(errors, "Unable to discard incomplete Lighthouse outputs.");
+  }
+}
+
 function categoryScores(lhr) {
   return Object.fromEntries(
     categories.map((category) => [category, lhr.categories[category]?.score ?? null])
@@ -336,8 +606,11 @@ async function measure(profile, target, baseUrl) {
     throw new Error(`Lighthouse did not produce the ${profile.name} HTML report.`);
   }
 
-  const jsonPath = path.join(artifactDirectory, `${profile.name}-${target.name}.json`);
-  const htmlPath = path.join(artifactDirectory, `${profile.name}-${target.name}.html`);
+  if (!stagingDirectory) throw new Error("Lighthouse staging directory is unavailable.");
+  const jsonName = `${profile.name}-${target.name}.json`;
+  const htmlName = `${profile.name}-${target.name}.html`;
+  const jsonPath = path.join(stagingDirectory, jsonName);
+  const htmlPath = path.join(stagingDirectory, htmlName);
   await Promise.all([
     writeFile(jsonPath, `${JSON.stringify(runnerResult.lhr, null, 2)}\n`, "utf8"),
     writeFile(htmlPath, htmlReport, "utf8")
@@ -359,42 +632,39 @@ async function measure(profile, target, baseUrl) {
     thresholds: profile.thresholds,
     failures: evaluate(profile, scores, metrics),
     artifacts: {
-      json: path.relative(rootDirectory, jsonPath).replaceAll("\\", "/"),
-      html: path.relative(rootDirectory, htmlPath).replaceAll("\\", "/")
+      json: relative(path.join(artifactDirectory, jsonName)),
+      html: relative(path.join(artifactDirectory, htmlName))
     }
   };
 }
 
 async function main() {
-  try {
-    await access(distIndex);
-  } catch {
+  if (process.env.LIGHTHOUSE_REUSE_URL) {
     throw new Error(
-      "dist/index.html is missing. This runner does not build the site; run `npm run build` first."
+      "Phase R candidate Lighthouse refuses LIGHTHOUSE_REUSE_URL because an external preview cannot be proven to serve the fresh HEAD-bound dist build."
     );
   }
 
-  await mkdir(artifactDirectory, { recursive: true });
-  const reuseUrl = process.env.LIGHTHOUSE_REUSE_URL;
-  let url;
-
-  if (reuseUrl) {
-    const parsedUrl = new URL(reuseUrl);
-    const localHosts = new Set(["127.0.0.1", "localhost", "[::1]"]);
-    if (!localHosts.has(parsedUrl.hostname) || !/^https?:$/.test(parsedUrl.protocol)) {
-      throw new Error("LIGHTHOUSE_REUSE_URL must be an HTTP(S) loopback URL.");
-    }
-
-    url = parsedUrl.toString();
-    await waitForPreview(url);
-    console.log(`Reusing the existing local production preview at ${url}`);
-  } else {
-    const port = await findAvailablePort();
-    url = `http://${host}:${port}/`;
-    previewProcess = startPreview(port);
-    await waitForPreview(url, previewProcess);
-    console.log(`Measuring the existing production build at ${url}`);
+  await assertOutputsAvailable();
+  const source = await sourceMetadata();
+  await prepareStagingDirectory();
+  const buildStartedAt = new Date().toISOString();
+  await runNpm(["run", "build"]);
+  const buildFinishedAt = new Date().toISOString();
+  try {
+    await access(distIndex);
+  } catch {
+    throw new Error("Fresh npm run build completed without producing dist/index.html.");
   }
+  await verifyCandidateUnchanged(source, "after the fresh production build");
+  const distAfterBuild = await directoryInventory(path.join(rootDirectory, "dist"));
+  if (!distAfterBuild.count) throw new Error("Fresh production build produced an empty dist directory.");
+
+  const port = await findAvailablePort();
+  const url = `http://${host}:${port}/`;
+  previewProcess = startPreview(port);
+  await waitForPreview(url, previewProcess);
+  console.log(`Measuring the fresh candidate-bound production build at ${url}`);
 
   const chromeFlags = [
     "--headless=new",
@@ -415,17 +685,64 @@ async function main() {
       printResult(result);
     }
   }
+  if (results.length !== requiredAuditCount) {
+    throw new Error(
+      `Phase R Lighthouse requires exactly ${requiredAuditCount} audits; received ${results.length}.`
+    );
+  }
+
+  await shutdown();
+  const distAfterAudits = await directoryInventory(path.join(rootDirectory, "dist"));
+  if (!inventoriesEqual(distAfterBuild, distAfterAudits)) {
+    throw new Error(
+      `dist changed during the six Lighthouse audits (${distAfterBuild.digest} -> ${distAfterAudits.digest}).`
+    );
+  }
+  const repositoryBeforePromotion = await verifyCandidateUnchanged(
+    source,
+    "after all six audits and managed-process shutdown"
+  );
 
   const summary = {
+    schemaVersion: 2,
     generatedAt: new Date().toISOString(),
-    sourceHead: await readSourceHead(),
+    sourceHead: source.head,
+    sourceTree: source.tree,
+    branch: source.branch,
+    expectedBranch: source.expectedBranch,
+    candidateBasis: source.candidateBasis,
+    candidateEnvironment: {
+      name: source.candidateEnvironmentName,
+      provided: true,
+      equalsHead: true
+    },
     measuredBaseUrl: url,
-    buildInput: "dist/index.html",
+    buildInput: "fresh npm run build executed by this runner before preview startup",
+    buildBinding: {
+      startedAt: buildStartedAt,
+      finishedAt: buildFinishedAt,
+      sourceHead: source.head,
+      sourceTree: source.tree,
+      distDigestAlgorithm: distAfterBuild.digestAlgorithm,
+      distDigest: distAfterBuild.digest,
+      distFileCount: distAfterBuild.count,
+      distBytes: distAfterBuild.bytes,
+      unchangedThroughAllSixAudits: true
+    },
+    repositoryBinding: {
+      cleanTrackedAndUntrackedTreeAtStart: true,
+      headTreeBranchAndStatusUnchangedAfterBuildAndAudits: true,
+      beforePromotion: repositoryBeforePromotion,
+      afterPromotionVerification:
+        "HEAD/tree/branch must still match and status may contain only exact promoted Lighthouse outputs before successful exit.",
+      atomicOutputPolicy:
+        "All twelve HTML/JSON reports and summary JSON are validated in staging and promoted as one rollback-protected set."
+    },
     routeTargets,
     results
   };
   await writeFile(
-    path.join(artifactDirectory, "summary.json"),
+    path.join(stagingDirectory, "summary.json"),
     `${JSON.stringify(summary, null, 2)}\n`,
     "utf8"
   );
@@ -439,14 +756,39 @@ async function main() {
     throw new Error(`Lighthouse thresholds were not met:\n- ${failures.join("\n- ")}`);
   }
 
+  await assertStagedOutputSet();
+  await verifyCandidateUnchanged(source, "immediately before Lighthouse output promotion");
+  const distBeforePromotion = await directoryInventory(path.join(rootDirectory, "dist"));
+  if (!inventoriesEqual(distAfterBuild, distBeforePromotion)) {
+    throw new Error("dist changed after audit verification and before output promotion.");
+  }
+  await promoteStagedOutputs();
+  const repositoryAfterPromotion = await verifyCandidateUnchanged(
+    source,
+    "after Lighthouse output promotion",
+    reportPaths()
+  );
+  const distAfterPromotion = await directoryInventory(path.join(rootDirectory, "dist"));
+  if (!inventoriesEqual(distAfterBuild, distAfterPromotion)) {
+    throw new Error("dist changed during Lighthouse output promotion.");
+  }
+  outputCommitted = true;
+  await rm(stagingDirectory, { recursive: true, force: true });
+  stagingDirectory = undefined;
+
   console.log(
     `\nLighthouse thresholds passed for all Phase R routes. Reports: ${artifactDirectory}`
+  );
+  console.log(
+    `Candidate binding verified after promotion: ${repositoryAfterPromotion.head}/${repositoryAfterPromotion.tree}; dist ${distAfterBuild.digest}.`
   );
 }
 
 for (const signal of ["SIGINT", "SIGTERM"]) {
   process.once(signal, () => {
-    void shutdown().finally(() => process.exit(signal === "SIGINT" ? 130 : 143));
+    void shutdown()
+      .then(discardUncommittedOutputs)
+      .finally(() => process.exit(signal === "SIGINT" ? 130 : 143));
   });
 }
 
@@ -457,4 +799,5 @@ try {
   process.exitCode = 1;
 } finally {
   await shutdown();
+  await discardUncommittedOutputs();
 }

@@ -1,9 +1,18 @@
 import type { ExperiencePhase } from "@/content/experience";
 
+type FieldStoryState = {
+  material: number;
+  progress: number;
+  selection: number;
+  settlement: number;
+  signal: number;
+};
+
 type FieldEngine = {
   destroy: () => void;
   setPhase: (phase: ExperiencePhase) => void;
   setPointer: (x: number, y: number) => void;
+  setStoryState: (state: FieldStoryState) => void;
   setVisible: (visible: boolean) => void;
 };
 
@@ -308,6 +317,13 @@ export function startFieldEngine(
     evidence: { signal: 0, freedom: 0, selection: 0, settlement: 1 },
     action: { signal: 0, freedom: 0, selection: 0, settlement: 1 },
   };
+  let visualState: FieldStoryState = {
+    material: 0,
+    progress: 0,
+    selection: visualDefaults[initialPhase].selection,
+    settlement: visualDefaults[initialPhase].settlement,
+    signal: visualDefaults[initialPhase].signal,
+  };
 
   function resize(): void {
     const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.25);
@@ -320,16 +336,6 @@ export function startFieldEngine(
       gl.viewport(0, 0, width, height);
       keepoutDirty = true;
     }
-  }
-
-  function readCssNumber(
-    styles: CSSStyleDeclaration,
-    name: string,
-    fallback: number,
-  ): number {
-    const raw = styles.getPropertyValue(name);
-    const parsed = Number.parseFloat(raw);
-    return Number.isFinite(parsed) ? parsed : fallback;
   }
 
   function updateKeepout(activePhase: string): void {
@@ -375,20 +381,17 @@ export function startFieldEngine(
     pointerCurrent.y += (pointerTarget.y - pointerCurrent.y) * 0.075;
     const currentPhaseIndex = phaseIndex[activePhase];
     const defaults = visualDefaults[activePhase];
-    const rootStyles = getComputedStyle(document.documentElement);
-    const progress = readCssNumber(rootStyles, "--active-progress", 0);
+    const progress = visualState.progress;
     const aperture = activePhase === "presence"
       ? 0.12 + progress * 0.18
       : activePhase === "startup"
         ? 0.34
         : 0.1;
-    const signalStrength = readCssNumber(rootStyles, "--signal-strength", defaults.signal);
+    const signalStrength = visualState.signal;
     const freedom = defaults.freedom;
-    const selectionFallback =
-      activePhase === "method" ? Math.min(1, 0.08 + progress * 1.08) : defaults.selection;
-    const selection = readCssNumber(rootStyles, "--selection-focus", selectionFallback);
-    const material = readCssNumber(rootStyles, "--material", aperture);
-    const settlement = readCssNumber(rootStyles, "--settlement", defaults.settlement);
+    const selection = visualState.selection;
+    const material = visualState.material;
+    const settlement = visualState.settlement;
     if (keepoutDirty || keepoutPhase !== activePhase) updateKeepout(activePhase);
 
     gl.clearColor(0, 0, 0, 0);
@@ -462,12 +465,30 @@ export function startFieldEngine(
         return;
       }
       activePhase = phase;
+      const defaults = visualDefaults[phase];
+      visualState = {
+        material: phase === "startup" ? 0.34 : 0,
+        progress: 0,
+        selection: defaults.selection,
+        settlement: defaults.settlement,
+        signal: defaults.signal,
+      };
       keepoutDirty = true;
       syncContinuousMode();
     },
     setPointer: (x, y) => {
       pointerTarget.x = x;
       pointerTarget.y = y;
+      scheduleRender();
+    },
+    setStoryState: (state) => {
+      visualState = {
+        material: Math.min(1, Math.max(0, state.material)),
+        progress: Math.min(1, Math.max(0, state.progress)),
+        selection: Math.min(1, Math.max(0, state.selection)),
+        settlement: Math.min(1, Math.max(0, state.settlement)),
+        signal: Math.min(1, Math.max(0, state.signal)),
+      };
       scheduleRender();
     },
     setVisible: (nextVisible) => {

@@ -3,10 +3,19 @@ import {
   type ExperiencePhase,
 } from "@/content/experience";
 
+interface FieldStoryState {
+  material: number;
+  progress: number;
+  selection: number;
+  settlement: number;
+  signal: number;
+}
+
 interface RuntimeFieldEngine {
   destroy: () => void;
   setPhase: (phase: ExperiencePhase) => void;
   setPointer: (x: number, y: number) => void;
+  setStoryState: (state: FieldStoryState) => void;
   setVisible: (visible: boolean) => void;
 }
 
@@ -34,7 +43,17 @@ let pointerFrame = 0;
 let activeIndex = -1;
 let engine: RuntimeFieldEngine | undefined;
 let engineLoadPromise: Promise<void> | undefined;
+let engineLoadGeneration = 0;
 let latestPointer = { x: 0.68, y: 0.46 };
+let latestFieldState: FieldStoryState = {
+  material: 0,
+  progress: 0,
+  selection: 0.05,
+  settlement: 0,
+  signal: 1,
+};
+let runtimeMounted = false;
+let permanentlyDestroyed = false;
 
 root.dataset.js = "true";
 root.dataset.inputMode = finePointerQuery.matches ? "pointer" : "touch-scroll";
@@ -144,19 +163,27 @@ function setActivePhase(index: number): void {
 }
 
 function updateStoryState(): void {
+  if (!runtimeMounted || permanentlyDestroyed) return;
   storyFrame = 0;
   const viewportHeight = Math.max(window.innerHeight, 1);
   const marker = viewportHeight * 0.48;
   let nearestIndex = 0;
   let nearestDistance = Number.POSITIVE_INFINITY;
 
-  sections.forEach((section, index) => {
-    const bounds = section.getBoundingClientRect();
+  const measurements = sections.map((section) => ({
+    section,
+    bounds: section.getBoundingClientRect(),
+  }));
+
+  measurements.forEach(({ bounds }, index) => {
     const centerDistance = Math.abs(bounds.top + bounds.height / 2 - marker);
     if (centerDistance < nearestDistance) {
       nearestDistance = centerDistance;
       nearestIndex = index;
     }
+  });
+
+  measurements.forEach(({ section, bounds }) => {
     const localProgress = clamp(
       (marker - bounds.top) / Math.max(bounds.height, viewportHeight),
     );
@@ -164,9 +191,9 @@ function updateStoryState(): void {
   });
 
   setActivePhase(nearestIndex);
-  const activeSection = sections[nearestIndex];
-  if (!activeSection) return;
-  const bounds = activeSection.getBoundingClientRect();
+  const activeMeasurement = measurements[nearestIndex];
+  if (!activeMeasurement) return;
+  const { section: activeSection, bounds } = activeMeasurement;
   const local = clamp((marker - bounds.top) / Math.max(bounds.height, viewportHeight));
   const phase = phaseFromSection(activeSection);
   const globalProgress = clamp(
@@ -209,10 +236,19 @@ function updateStoryState(): void {
   root.style.setProperty("--selection-focus", selectionFocus.toFixed(4));
   root.style.setProperty("--material", material.toFixed(4));
   root.style.setProperty("--settlement", settlement.toFixed(4));
+  latestFieldState = {
+    material,
+    progress: local,
+    selection: selectionFocus,
+    settlement,
+    signal: signalStrength,
+  };
+  engine?.setStoryState(latestFieldState);
   setSubstates(phase, local);
 }
 
 function queueStoryUpdate(): void {
+  if (!runtimeMounted || permanentlyDestroyed) return;
   if (!storyFrame) storyFrame = window.requestAnimationFrame(updateStoryState);
 }
 
@@ -227,6 +263,7 @@ function applyPointer(): void {
 }
 
 function updatePointer(event: PointerEvent): void {
+  if (!runtimeMounted || permanentlyDestroyed) return;
   if (!finePointerQuery.matches || reducedMotionEnabled()) return;
   const activePhase = root.dataset.activePhase as ExperiencePhase | undefined;
   if (!activePhase || !realtimePhases.has(activePhase)) return;
@@ -238,15 +275,38 @@ function updatePointer(event: PointerEvent): void {
   void ensureFieldEngine(activePhase);
 }
 
-async function loadFieldEngine(initialPhase: ExperiencePhase): Promise<void> {
-  if (!canvas || webglDisabled || reducedMotionEnabled() || !finePointerQuery.matches) return;
+async function loadFieldEngine(
+  initialPhase: ExperiencePhase,
+  generation: number,
+): Promise<void> {
+  if (
+    permanentlyDestroyed
+    || !runtimeMounted
+    || !canvas
+    || webglDisabled
+    || reducedMotionEnabled()
+    || !finePointerQuery.matches
+  ) return;
   try {
     const { startFieldEngine } = await import("./field-engine");
-    engine = startFieldEngine(canvas, initialPhase);
+    const currentPhase = root.dataset.activePhase as ExperiencePhase | undefined;
+    if (
+      generation !== engineLoadGeneration
+      || permanentlyDestroyed
+      || !runtimeMounted
+      || webglDisabled
+      || reducedMotionEnabled()
+      || !finePointerQuery.matches
+      || !currentPhase
+      || !realtimePhases.has(currentPhase)
+    ) return;
+    engine = startFieldEngine(canvas, currentPhase ?? initialPhase);
     engine.setPointer(latestPointer.x, latestPointer.y);
-    engine.setVisible(!document.hidden && realtimePhases.has(initialPhase));
+    engine.setStoryState(latestFieldState);
+    engine.setVisible(!document.hidden && realtimePhases.has(currentPhase));
     root.dataset.renderMode = "webgl-enhanced";
   } catch {
+    if (generation !== engineLoadGeneration || !runtimeMounted || permanentlyDestroyed) return;
     root.dataset.renderMode = "no-webgl-fallback";
     root.dataset.enhancementFailure = "field-engine";
   }
@@ -263,11 +323,17 @@ function ensureFieldEngine(phase: ExperiencePhase): Promise<void> {
   ) {
     return Promise.resolve();
   }
-  engineLoadPromise ??= loadFieldEngine(phase);
+  if (!engineLoadPromise) {
+    const generation = engineLoadGeneration;
+    engineLoadPromise = loadFieldEngine(phase, generation).finally(() => {
+      if (generation === engineLoadGeneration && !engine) engineLoadPromise = undefined;
+    });
+  }
   return engineLoadPromise;
 }
 
 function initializeMode(): void {
+  engineLoadGeneration += 1;
   engine?.destroy();
   engine = undefined;
   engineLoadPromise = undefined;
@@ -281,40 +347,83 @@ function initializeMode(): void {
 }
 
 function handleVisibility(): void {
+  if (!runtimeMounted || permanentlyDestroyed) return;
   const phase = root.dataset.activePhase as ExperiencePhase | undefined;
   engine?.setVisible(Boolean(phase && !document.hidden && realtimePhases.has(phase)));
   if (!document.hidden) queueStoryUpdate();
 }
 
-function destroy(): void {
-  if (storyFrame) window.cancelAnimationFrame(storyFrame);
-  if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
-  engine?.destroy();
-  engine = undefined;
-}
-
-window.addEventListener("scroll", queueStoryUpdate, { passive: true });
-window.addEventListener("resize", queueStoryUpdate, { passive: true });
-window.addEventListener("pointermove", updatePointer, { passive: true });
-window.addEventListener("pageshow", queueStoryUpdate, { passive: true });
-window.addEventListener("pagehide", destroy, { once: true });
-document.addEventListener("visibilitychange", handleVisibility);
-reducedMotionQuery.addEventListener("change", () => {
+function handleReducedMotionChange(): void {
+  if (!runtimeMounted || permanentlyDestroyed) return;
   initializeMode();
   queueStoryUpdate();
-});
-finePointerQuery.addEventListener("change", () => {
+}
+
+function handleFinePointerChange(): void {
+  if (!runtimeMounted || permanentlyDestroyed) return;
   root.dataset.inputMode = finePointerQuery.matches ? "pointer" : "touch-scroll";
   if (!finePointerQuery.matches) initializeMode();
-});
+  queueStoryUpdate();
+}
 
-phaseLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    const phase = link.dataset.phaseLink as ExperiencePhase | undefined;
-    const index = phase ? experiencePhases.indexOf(phase) : -1;
-    if (index >= 0) setActivePhase(index);
+const phaseLinkHandlers = new Map<HTMLAnchorElement, () => void>();
+
+function mountRuntime(): void {
+  if (runtimeMounted || permanentlyDestroyed) return;
+  runtimeMounted = true;
+  window.addEventListener("scroll", queueStoryUpdate, { passive: true });
+  window.addEventListener("resize", queueStoryUpdate, { passive: true });
+  window.addEventListener("pointermove", updatePointer, { passive: true });
+  document.addEventListener("visibilitychange", handleVisibility);
+  reducedMotionQuery.addEventListener("change", handleReducedMotionChange);
+  finePointerQuery.addEventListener("change", handleFinePointerChange);
+  phaseLinks.forEach((link) => {
+    const handler = () => {
+      const phase = link.dataset.phaseLink as ExperiencePhase | undefined;
+      const index = phase ? experiencePhases.indexOf(phase) : -1;
+      if (index >= 0) setActivePhase(index);
+    };
+    phaseLinkHandlers.set(link, handler);
+    link.addEventListener("click", handler);
   });
-});
+  initializeMode();
+  updateStoryState();
+}
 
-initializeMode();
-updateStoryState();
+function unmountRuntime(): void {
+  if (!runtimeMounted) return;
+  runtimeMounted = false;
+  if (storyFrame) window.cancelAnimationFrame(storyFrame);
+  if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
+  storyFrame = 0;
+  pointerFrame = 0;
+  window.removeEventListener("scroll", queueStoryUpdate);
+  window.removeEventListener("resize", queueStoryUpdate);
+  window.removeEventListener("pointermove", updatePointer);
+  document.removeEventListener("visibilitychange", handleVisibility);
+  reducedMotionQuery.removeEventListener("change", handleReducedMotionChange);
+  finePointerQuery.removeEventListener("change", handleFinePointerChange);
+  phaseLinkHandlers.forEach((handler, link) => link.removeEventListener("click", handler));
+  phaseLinkHandlers.clear();
+  engineLoadGeneration += 1;
+  engine?.destroy();
+  engine = undefined;
+  engineLoadPromise = undefined;
+}
+
+function handlePageHide(event: PageTransitionEvent): void {
+  unmountRuntime();
+  if (!event.persisted) {
+    permanentlyDestroyed = true;
+    window.removeEventListener("pagehide", handlePageHide);
+    window.removeEventListener("pageshow", handlePageShow);
+  }
+}
+
+function handlePageShow(event: PageTransitionEvent): void {
+  if (event.persisted) mountRuntime();
+}
+
+window.addEventListener("pagehide", handlePageHide);
+window.addEventListener("pageshow", handlePageShow);
+mountRuntime();
