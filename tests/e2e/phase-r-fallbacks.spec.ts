@@ -182,6 +182,25 @@ test('reduced motion resolves all meaning and never initializes WebGL or long-ru
       'Reduced motion must resolve every partner identity rather than await choreography.',
     ).toBe(true);
 
+    const lightTerritoryNameColors = await page
+      .locator(
+        '[data-partner-id="bazan-group"] strong, [data-partner-id="taavura-livnat-group"] strong, [data-partner-id="talcar"] strong',
+      )
+      .evaluateAll((nodes) =>
+        nodes.map((node) => ({
+          id: node.closest<HTMLElement>('[data-partner-id]')?.dataset.partnerId,
+          color: getComputedStyle(node).color,
+        })),
+      );
+    expect(
+      lightTerritoryNameColors,
+      'Reduced motion must keep partner names dark against the three pale identity territories.',
+    ).toEqual([
+      { id: 'bazan-group', color: 'rgb(17, 16, 20)' },
+      { id: 'taavura-livnat-group', color: 'rgb(24, 60, 52)' },
+      { id: 'talcar', color: 'rgb(17, 16, 20)' },
+    ]);
+
     await page.waitForTimeout(120);
     const longRunningAnimations = await page.locator('main').evaluate((main) =>
       main.getAnimations({ subtree: true }).flatMap((animation) => {
