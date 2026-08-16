@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-16T15:20:50.559Z",
-  "sourceHead": "a29d7350aaee25cfead0c4893a90c9a245363655",
-  "sourceTree": "8816071e172eeb0a6a94ddd5667eb3c426b6e5b5",
+  "generatedAt": "2026-08-16T18:31:21.241Z",
+  "sourceHead": "9e49b1dac8e8bec1937812f54b7292490dba38f0",
+  "sourceTree": "3598d82d41453f82e6f96f765b2e1086f4572719",
   "branch": "redirect/quantum-presence-startup-magnet",
   "expectedBranch": "redirect/quantum-presence-startup-magnet",
   "candidateBasis": "explicit-environment-value-equal-to-clean-head",
@@ -11,25 +11,25 @@
     "provided": true,
     "equalsHead": true
   },
-  "measuredBaseUrl": "http://127.0.0.1:50157/",
+  "measuredBaseUrl": "http://127.0.0.1:60630/",
   "buildInput": "fresh npm run build executed by this runner before preview startup",
   "buildBinding": {
-    "startedAt": "2026-08-16T15:19:24.206Z",
-    "finishedAt": "2026-08-16T15:19:43.607Z",
-    "sourceHead": "a29d7350aaee25cfead0c4893a90c9a245363655",
-    "sourceTree": "8816071e172eeb0a6a94ddd5667eb3c426b6e5b5",
+    "startedAt": "2026-08-16T18:29:50.009Z",
+    "finishedAt": "2026-08-16T18:30:06.165Z",
+    "sourceHead": "9e49b1dac8e8bec1937812f54b7292490dba38f0",
+    "sourceTree": "3598d82d41453f82e6f96f765b2e1086f4572719",
     "distDigestAlgorithm": "sha256(file\\0sha256\\0bytes joined by newline, sorted by file)",
-    "distDigest": "3835587dd8946acb33091000c5897aec1d1a81b9dbebea8f572614c2d0634ad7",
+    "distDigest": "6e91c1f53af2b4c107cbb119b80a20e69903240f4e1c0a648bf393a504625f55",
     "distFileCount": 35,
-    "distBytes": 9628501,
+    "distBytes": 9647854,
     "unchangedThroughAllSixAudits": true
   },
   "repositoryBinding": {
     "cleanTrackedAndUntrackedTreeAtStart": true,
     "headTreeBranchAndStatusUnchangedAfterBuildAndAudits": true,
     "beforePromotion": {
-      "head": "a29d7350aaee25cfead0c4893a90c9a245363655",
-      "tree": "8816071e172eeb0a6a94ddd5667eb3c426b6e5b5",
+      "head": "9e49b1dac8e8bec1937812f54b7292490dba38f0",
+      "tree": "3598d82d41453f82e6f96f765b2e1086f4572719",
       "branch": "redirect/quantum-presence-startup-magnet",
       "statusPorcelain": "",
       "allowedOutputPaths": [],
@@ -59,7 +59,7 @@
         "name": "homepage",
         "route": "/"
       },
-      "measuredUrl": "http://127.0.0.1:50157/",
+      "measuredUrl": "http://127.0.0.1:60630/",
       "scores": {
         "performance": 1,
         "accessibility": 1,
@@ -68,7 +68,7 @@
       },
       "metrics": {
         "lcp": {
-          "numericValue": 415.349,
+          "numericValue": 419.6957,
           "displayValue": "0.4 s"
         },
         "tbt": {
@@ -89,8 +89,8 @@
       },
       "failures": [],
       "artifacts": {
-        "json": "artifacts/lighthouse/phase-r/desktop-homepage.json",
-        "html": "artifacts/lighthouse/phase-r/desktop-homepage.html"
+        "json": "artifacts/lighthouse/phase-r-repair/desktop-homepage.json",
+        "html": "artifacts/lighthouse/phase-r-repair/desktop-homepage.html"
       }
     },
     {
@@ -99,7 +99,7 @@
         "name": "homepage",
         "route": "/"
       },
-      "measuredUrl": "http://127.0.0.1:50157/",
+      "measuredUrl": "http://127.0.0.1:60630/",
       "scores": {
         "performance": 1,
         "accessibility": 1,
@@ -108,12 +108,12 @@
       },
       "metrics": {
         "lcp": {
-          "numericValue": 1665.76965,
+          "numericValue": 1704.63045,
           "displayValue": "1.7 s"
         },
         "tbt": {
-          "numericValue": 0,
-          "displayValue": "0 ms"
+          "numericValue": 55,
+          "displayValue": "60 ms"
         },
         "cls": {
           "numericValue": 0,
@@ -129,8 +129,8 @@
       },
       "failures": [],
       "artifacts": {
-        "json": "artifacts/lighthouse/phase-r/mobile-homepage.json",
-        "html": "artifacts/lighthouse/phase-r/mobile-homepage.html"
+        "json": "artifacts/lighthouse/phase-r-repair/mobile-homepage.json",
+        "html": "artifacts/lighthouse/phase-r-repair/mobile-homepage.html"
       }
     },
     {
@@ -139,7 +139,7 @@
         "name": "proof-index",
         "route": "/proof/"
       },
-      "measuredUrl": "http://127.0.0.1:50157/proof/",
+      "measuredUrl": "http://127.0.0.1:60630/proof/",
       "scores": {
         "performance": 1,
         "accessibility": 1,
@@ -148,7 +148,7 @@
       },
       "metrics": {
         "lcp": {
-          "numericValue": 299.88295,
+          "numericValue": 308.24575000000004,
           "displayValue": "0.3 s"
         },
         "tbt": {
@@ -169,8 +169,8 @@
       },
       "failures": [],
       "artifacts": {
-        "json": "artifacts/lighthouse/phase-r/desktop-proof-index.json",
-        "html": "artifacts/lighthouse/phase-r/desktop-proof-index.html"
+        "json": "artifacts/lighthouse/phase-r-repair/desktop-proof-index.json",
+        "html": "artifacts/lighthouse/phase-r-repair/desktop-proof-index.html"
       }
     },
     {
@@ -179,7 +179,7 @@
         "name": "proof-index",
         "route": "/proof/"
       },
-      "measuredUrl": "http://127.0.0.1:50157/proof/",
+      "measuredUrl": "http://127.0.0.1:60630/proof/",
       "scores": {
         "performance": 1,
         "accessibility": 1,
@@ -188,7 +188,7 @@
       },
       "metrics": {
         "lcp": {
-          "numericValue": 1241.2361,
+          "numericValue": 1232.8783,
           "displayValue": "1.2 s"
         },
         "tbt": {
@@ -209,8 +209,8 @@
       },
       "failures": [],
       "artifacts": {
-        "json": "artifacts/lighthouse/phase-r/mobile-proof-index.json",
-        "html": "artifacts/lighthouse/phase-r/mobile-proof-index.html"
+        "json": "artifacts/lighthouse/phase-r-repair/mobile-proof-index.json",
+        "html": "artifacts/lighthouse/phase-r-repair/mobile-proof-index.html"
       }
     },
     {
@@ -219,7 +219,7 @@
         "name": "maradin-field-record",
         "route": "/proof/maradin-dynamic-ground-projection/"
       },
-      "measuredUrl": "http://127.0.0.1:50157/proof/maradin-dynamic-ground-projection/",
+      "measuredUrl": "http://127.0.0.1:60630/proof/maradin-dynamic-ground-projection/",
       "scores": {
         "performance": 1,
         "accessibility": 1,
@@ -228,7 +228,7 @@
       },
       "metrics": {
         "lcp": {
-          "numericValue": 455.7206,
+          "numericValue": 465.93280000000004,
           "displayValue": "0.5 s"
         },
         "tbt": {
@@ -249,8 +249,8 @@
       },
       "failures": [],
       "artifacts": {
-        "json": "artifacts/lighthouse/phase-r/desktop-maradin-field-record.json",
-        "html": "artifacts/lighthouse/phase-r/desktop-maradin-field-record.html"
+        "json": "artifacts/lighthouse/phase-r-repair/desktop-maradin-field-record.json",
+        "html": "artifacts/lighthouse/phase-r-repair/desktop-maradin-field-record.html"
       }
     },
     {
@@ -259,7 +259,7 @@
         "name": "maradin-field-record",
         "route": "/proof/maradin-dynamic-ground-projection/"
       },
-      "measuredUrl": "http://127.0.0.1:50157/proof/maradin-dynamic-ground-projection/",
+      "measuredUrl": "http://127.0.0.1:60630/proof/maradin-dynamic-ground-projection/",
       "scores": {
         "performance": 0.99,
         "accessibility": 1,
@@ -268,7 +268,7 @@
       },
       "metrics": {
         "lcp": {
-          "numericValue": 1991.5570000000002,
+          "numericValue": 1974.3377,
           "displayValue": "2.0 s"
         },
         "tbt": {
@@ -289,8 +289,8 @@
       },
       "failures": [],
       "artifacts": {
-        "json": "artifacts/lighthouse/phase-r/mobile-maradin-field-record.json",
-        "html": "artifacts/lighthouse/phase-r/mobile-maradin-field-record.html"
+        "json": "artifacts/lighthouse/phase-r-repair/mobile-maradin-field-record.json",
+        "html": "artifacts/lighthouse/phase-r-repair/mobile-maradin-field-record.html"
       }
     }
   ]
