@@ -10,6 +10,9 @@ artifacts/*
 !artifacts/lighthouse/
 artifacts/lighthouse/*
 !artifacts/lighthouse/summary.json
+!artifacts/lighthouse/phase3/
+artifacts/lighthouse/phase3/*
+!artifacts/lighthouse/phase3/summary.json
 !artifacts/review/
 !artifacts/review/**
 artifacts/review/*.zip

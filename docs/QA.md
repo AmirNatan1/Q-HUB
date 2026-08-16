@@ -421,3 +421,65 @@ Measured repair results pass their deterministic boundaries: APERTURE excludes t
 - Supporting routes and later acts remain out of scope.
 
 R2-A through R2-D, P2-1 through P2-10, and H1 through H15 pass against the committed candidate and verified closure. The independent original-resolution visual audit also passes. No merge or deployment occurred. Stop here for **ACCEPT / REPAIR / REDIRECT**.
+
+## 2026-08-16 — Phase 3 Proof system QA — candidate stage
+
+The authoritative Phase 3 ledger is [PHASE3_ACCEPTANCE.md](PHASE3_ACCEPTANCE.md); the visual inventory and unanswered creative questions are in [PHASE3_REVIEW_PACKAGE.md](PHASE3_REVIEW_PACKAGE.md). This section records measured technical results only.
+
+### Candidate and scope
+
+- Branch: `phase3/proof-system`.
+- Phase 2 final handoff ancestor: `e1a21642d0cab50a81510f934e6e7f41425fc851`.
+- Phase 3 feature commit: `7af011e486c28d098467cffbed088ce55480a16e`.
+- Phase 3 implementation/evidence candidate: `70d8b5cc193311b9548c49399dde6a014583e13a`.
+- Public Proof routes: `/proof/` and `/proof/maradin-dynamic-ground-projection/` only.
+- Public Proof records: Maradin only.
+- No second story, unrelated route completion, later act, main merge, or deployment is included.
+
+### Verification results
+
+| Command / check | Result |
+| --- | --- |
+| `npm run check` | **PASS** — Astro checked 49 files with 0 errors, warnings, or hints; ESLint passed; Vitest passed 39/39 across 5 files; 12 static pages built. |
+| `npm run release:placeholders` | **PASS** — 2/2 placeholder-release tests. |
+| `npm run release:phase3-output` | **PASS** — exactly 2 Proof HTML routes, 4 approved media assets, and 19 browser-facing text artifacts; denied fixtures and internal provenance absent. |
+| Focused publication/source/content/homepage tests | **PASS** — 37/37. |
+| `npm run test:e2e -- tests/e2e/phase3-proof.spec.ts --workers=1` | **PASS** — 19/19 across both routes and all required viewport behaviors. |
+| `npm run test:e2e -- --workers=1` | **PASS** — 60/60 sequential full-suite cases. |
+| Phase 3 axe gates | **PASS** — zero critical/serious findings on index and record, desktop and mobile. |
+| `npm run bundle:check` | **PASS** — total 20,852 raw / 7,961 gzip; initial 9,179 / 3,917; lazy 11,673 / 4,044; exact Phase 3 delta 0; no Three.js/R3F. |
+| `npm run media:check` | **PASS** — 9 approved assets, 9,326,266 bytes total, 8,095,824 video bytes; source film not reintroduced. |
+| `npm run lighthouse` | **PASS** — all six homepage/index/record desktop/mobile runs score 100/100/100/100; TBT 0 ms and CLS 0. |
+| `npm run evidence:phase3` | **PASS** — exact 14-PNG inventory plus manifest, candidate-bound and historical-evidence preserving. |
+| Secret/prohibited-source/public-output scans | **PASS** — zero high-confidence secret, credential-assignment, protected-source, denied-fixture, or internal-provenance matches. |
+
+The first unconstrained 10-worker full Playwright diagnostic passed 50 tests and timed out 10 existing WebGL-heavy homepage cases under concurrent GPU/readback and teardown saturation. This was not hidden or counted as a release pass. The complete sequential rerun passed 60/60 and is the closure result.
+
+### Candidate-bound Lighthouse
+
+Source HEAD is `70d8b5cc193311b9548c49399dde6a014583e13a`. The tracked summary is `artifacts/lighthouse/phase3/summary.json`.
+
+| Route | Profile | Performance | Accessibility | Best Practices | SEO | LCP | TBT | CLS |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `/` | Desktop | 100 | 100 | 100 | 100 | 0.4 s | 0 ms | 0 |
+| `/` | Mobile | 100 | 100 | 100 | 100 | 1.1 s | 0 ms | 0 |
+| `/proof/` | Desktop | 100 | 100 | 100 | 100 | 0.3 s | 0 ms | 0 |
+| `/proof/` | Mobile | 100 | 100 | 100 | 100 | 1.2 s | 0 ms | 0 |
+| Maradin Field Record | Desktop | 100 | 100 | 100 | 100 | 0.5 s | 0 ms | 0 |
+| Maradin Field Record | Mobile | 100 | 100 | 100 | 100 | 1.9 s | 0 ms | 0 |
+
+### Visual evidence and integrity
+
+`artifacts/review/phase3/manifest.json` is bound to candidate `70d8b5cc193311b9548c49399dde6a014583e13a`, the correct branch, and a clean candidate tree at capture start. The package contains exactly 14 PNGs plus the manifest (15 files, 2,747,640 bytes). Nine captures are 1440×900 and five are 390×844. The manifest is 23,324 bytes with SHA-256 `ebe02fca90fdabe9af7313d32bf90f73044054fd476c2289147ec61fb3e41d98`.
+
+All 14 PNG hashes, byte counts, and dimensions independently match the manifest. All 68 historical review files remain byte-for-byte unchanged (50,036,884 bytes; digest `eb769e01a6001bb37aadac4fc60842db819eea7a21c64e8d28b7b24dee0fc104`). Every PNG was inspected at original resolution. A capture-only paint race found in an initial uncommitted set was repaired before the final candidate-bound set; the final technical audit passes 14/14 with all headers and approved media rendered.
+
+### Known limitations and pending closure
+
+- Creative quality is not self-approved. The human review questions remain unanswered.
+- Browser coverage is Chromium/local-lab rather than physical-device, Safari, Firefox, field telemetry, or dedicated screen-reader testing.
+- Lighthouse is local production-preview lab evidence.
+- The optional navigation/scroll WebM was not produced.
+- `FONT-001` remains the accepted unresolved Phase 2 limitation.
+- Remote preview and production deployment are not authorized. No preview URL is claimed.
+- P3-12 remains pending only the evidence/docs closure commit, normal push, local/upstream/remote equality, and final clean-tree check. No force, merge, or deploy has occurred.

@@ -203,7 +203,7 @@ This is the Phase 2 retrieval manifest. Supply assets directly from Quantum’s 
 
 ### PROOF-002 — Proof-record media packages
 
-- **Route / scene:** Future /proof and /proof/[slug]
+- **Route / scene:** Implemented `/proof` system; future additional `/proof/[slug]` records
 - **Purpose:** Populate the evidence system with coherent field documents rather than marketing case-study cards.
 - **Asset type:** Three or more record-specific media packages, each with hero image/video, six supporting stills, captions, and approved Proof data
 - **Ideal subject matter:** For each record: condition, technology, environment, test setup/action, observation/evidence, and next-step context, all from the same real engagement.

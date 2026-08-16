@@ -1,0 +1,662 @@
+{
+  "schemaVersion": 1,
+  "package": "Q-HUB Phase 3 Proof system human-review evidence",
+  "generatedAt": "2026-08-16T07:15:44.151Z",
+  "source": {
+    "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+    "branch": "phase3/proof-system",
+    "expectedBranch": "phase3/proof-system",
+    "workingTreeCleanAtStart": true,
+    "statusPorcelainAtStart": "",
+    "candidateBasis": "explicit-environment-value-equal-to-head"
+  },
+  "server": {
+    "type": "isolated-astro-production-preview",
+    "baseUrl": "http://127.0.0.1:61014/",
+    "developmentServerAllowed": false
+  },
+  "contract": {
+    "desktopScreenshots": 7,
+    "mobileScreenshots": 5,
+    "reducedMotionScreenshots": 1,
+    "keyboardFocusScreenshots": 1,
+    "desktopViewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobileViewport": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "historicalEvidenceIntegrity": {
+    "status": "verified-unchanged-after-capture",
+    "fileCount": 68,
+    "totalBytes": 50036884,
+    "digest": "eb769e01a6001bb37aadac4fc60842db819eea7a21c64e8d28b7b24dee0fc104",
+    "files": [
+      {
+        "file": "artifacts/review/desktop-aperture.jpg",
+        "sha256": "a5f62fa03588e555ba20e50e6505ecf3c4a5ae98d3e707d645ad26db2ca8e6b1",
+        "bytes": 162596
+      },
+      {
+        "file": "artifacts/review/desktop-find.jpg",
+        "sha256": "9395cb75c32f90c2829957b171d4aae0c9f73beb10acd8bbc31858073dc496f1",
+        "bytes": 121949
+      },
+      {
+        "file": "artifacts/review/desktop-need.jpg",
+        "sha256": "adb12e57c2abee2b393478e8c3386289f31f211b6bcf3d8891f687e65f0afa7c",
+        "bytes": 118607
+      },
+      {
+        "file": "artifacts/review/desktop-prove.jpg",
+        "sha256": "8c1444db37b2174d384c63f4ee1a7e8c2ebc01e2f60c1bb2d678567a4674fa0f",
+        "bytes": 74662
+      },
+      {
+        "file": "artifacts/review/desktop-signal.jpg",
+        "sha256": "9d7370aba276d0e410c391ba0a45056eff0963fbf4b1837d22648e163dcf0d39",
+        "bytes": 170721
+      },
+      {
+        "file": "artifacts/review/desktop-test.jpg",
+        "sha256": "1849bcf58287309010be67b192b9dcfbddd7fcd027ed41196643945a46c66bac",
+        "bytes": 141865
+      },
+      {
+        "file": "artifacts/review/mobile-aperture.jpg",
+        "sha256": "db22b1202164f6fb65f7e5c6c0e780078a67d97942b87e0ce43eda3b6fcdcf60",
+        "bytes": 56609
+      },
+      {
+        "file": "artifacts/review/mobile-find.jpg",
+        "sha256": "a22b36eff42a20e379783334184d7657d153e03e20a44f61d2aab33a10523ff7",
+        "bytes": 41452
+      },
+      {
+        "file": "artifacts/review/mobile-need.jpg",
+        "sha256": "3d0686bae7aabc89a09ae31cdaf1846d0bf2c4e3baa6f28f807f06f860ec966e",
+        "bytes": 46063
+      },
+      {
+        "file": "artifacts/review/mobile-prove.jpg",
+        "sha256": "478eb2ea5dc4dfe22db382f55566acd17e4dd6b5e383030a49a24163e1b3b894",
+        "bytes": 33336
+      },
+      {
+        "file": "artifacts/review/mobile-signal.jpg",
+        "sha256": "887cb9c5e510d84adde8345b4dcaef066297c8323807530a088706aa96ee10ef",
+        "bytes": 29463
+      },
+      {
+        "file": "artifacts/review/mobile-test.jpg",
+        "sha256": "ae52a498b7ca834835fd38bab793c119d1643fd7bd4da1ca6fa75443dbae272d",
+        "bytes": 49698
+      },
+      {
+        "file": "artifacts/review/no-webgl-aperture.jpg",
+        "sha256": "afe33d97a758b7a52ed35b2d09ff9e0682a828073442853aa14139a087ccaf09",
+        "bytes": 81807
+      },
+      {
+        "file": "artifacts/review/phase2-repair.zip",
+        "sha256": "54317dd19ff5775fe259f613614f90e3b41366297bb7420f3b0ebe828a38d43b",
+        "bytes": 13693592
+      },
+      {
+        "file": "artifacts/review/phase2-repair/baseline-aperture-subtitle-9-40s.png",
+        "sha256": "191ee6b5667645f01d8810d017bb83f1b9c256df4a2b36be20bd60453e594ec8",
+        "bytes": 566790
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-0-17s.png",
+        "sha256": "353a400bee1459d4be7e8fe1f8d6c2d3a103d68b5e9cf1a4ab04d009090fcbf3",
+        "bytes": 737933
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-1-84s.png",
+        "sha256": "e54e9a54299e9461738f72a94c21ae94ea8e6b116f55fe0ab63eee3898b7729d",
+        "bytes": 815086
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-2-57s.png",
+        "sha256": "ca686496d53609cae6d637367ce17d914a60e327a2c95832efe36315550470bc",
+        "bytes": 997841
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-2-81s.png",
+        "sha256": "6a54e54ccc9b0cc39b9bc9a64e584efe36dbf21878327fb078ddf625d2b94b07",
+        "bytes": 989883
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-2-95s.png",
+        "sha256": "8d12c313a4c4da1c18648ca2e8e8686df02eb7960580e68efd5b8d339b336fe4",
+        "bytes": 932824
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-3-15s.png",
+        "sha256": "c23ea4bc6898743bf8e48dd95fa4d692b6a8a75528c1b8dd5c94e70b1e2518b2",
+        "bytes": 959049
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-3-20s.png",
+        "sha256": "861d908af124f7017cccd24d3d5b1a4a37b7bc49eb23399576e1f67704e5a06d",
+        "bytes": 925172
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-need.png",
+        "sha256": "3aa3e7877817ef7453b8a74d23757dc3fefa5f2e5dc87c425d553d309675531b",
+        "bytes": 846715
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-prove.png",
+        "sha256": "564359ec50ebcb762b6b9310911421f4edc24f261bf5bdd498bc726c640783ad",
+        "bytes": 381457
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-repair-journey.webm",
+        "sha256": "885fb328a4ac59d6f70e8d1771ebe092ed218b7538bdc0e8f583c67988b92c89",
+        "bytes": 2381607
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-test-0-70s.png",
+        "sha256": "673d47da251c6613c9010e51e4752441d7aa011ee44788e2f9c016e6facc169b",
+        "bytes": 859168
+      },
+      {
+        "file": "artifacts/review/phase2-repair/fallback-no-webgl-aperture-3-05s.png",
+        "sha256": "179a29e705de63cf2555aac7716ce4263aed3e126e13932abdc9ace278958c71",
+        "bytes": 994166
+      },
+      {
+        "file": "artifacts/review/phase2-repair/fallback-reduced-motion-aperture.png",
+        "sha256": "7303f636d80917fe47fda04e5434e0c674e16ec295582e1b50ceb1afd138150c",
+        "bytes": 783907
+      },
+      {
+        "file": "artifacts/review/phase2-repair/manifest.json",
+        "sha256": "033716c3b6c7b50ad774e33bc6526ac4ee92a0f8fa4c026febce0a4ac57bb124",
+        "bytes": 54431
+      },
+      {
+        "file": "artifacts/review/phase2-repair/mobile-aperture-3-05s.png",
+        "sha256": "d7de7d969e1cfef158fd9d2a1a41ce2c8ba1dd849261dd12f42367d294169dd4",
+        "bytes": 204247
+      },
+      {
+        "file": "artifacts/review/phase2-repair/mobile-prove.png",
+        "sha256": "30b2e79c0f4ac78c1442ebb1be719bfb8057bc4d1c5c95fde427560b7ed3a769",
+        "bytes": 105513
+      },
+      {
+        "file": "artifacts/review/phase2-repair/mobile-test-0-70s.png",
+        "sha256": "b0c3a04fbcb46116ca94329e4ac17a11efa32e356b80a295a1e75ae64885f7a9",
+        "bytes": 254032
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-aperture-early-split.png",
+        "sha256": "44befcdb32d1f17d3fa87b28d35c9ee7c8460a27b55cb69c4a5e1cc6806ce30b",
+        "bytes": 795043
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-aperture-media-reveal.png",
+        "sha256": "32f1ec10ea0f0571c706674784384e3232334e88fdc6e7aa1839ac66c4212db4",
+        "bytes": 875183
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-find.png",
+        "sha256": "483122a37e52cc0ee9405d2f2d1aae7e9cbd8f9172798cc09f0998aa0f1cdf94",
+        "bytes": 838002
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-journey.webm",
+        "sha256": "2aca51553494f9aa0a56e472c70f21c6d75404679bb07c98706fb10abda4d4c7",
+        "bytes": 2154513
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-need.png",
+        "sha256": "6293e1c378dfec36ab3a365053b3f6005b93dda1e184c70fc2000412b0e4d754",
+        "bytes": 880324
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-prove.png",
+        "sha256": "acc41feaf4c869ef0bc2ccb35bb5ac33e29cd957790a844b66c85245ab76b315",
+        "bytes": 210366
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-signal.png",
+        "sha256": "6bf6f1a57c96bf05f11965463ce764b300ebe592775c6312710de6d9599e5c04",
+        "bytes": 732008
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-test.png",
+        "sha256": "95405d7fa5b3d858d954a08029c1cbac5baad0fa42218bd3a781a69261ac077e",
+        "bytes": 704763
+      },
+      {
+        "file": "artifacts/review/phase2/fallback-no-webgl-aperture.png",
+        "sha256": "23224eecbf235cf91dd8057bf0958b171b70ad2681e4b2bfeb5cbedd6092327b",
+        "bytes": 941895
+      },
+      {
+        "file": "artifacts/review/phase2/fallback-reduced-motion-aperture.png",
+        "sha256": "8edb722cfb6c16579b43d92eeb5d70b34f56e860a2449c962776a9697987d71e",
+        "bytes": 797862
+      },
+      {
+        "file": "artifacts/review/phase2/fallback-reduced-motion-test.png",
+        "sha256": "e65c9f394067f2671b1c6460b977abfecc82e13984b5ef93dff1ec1d3e133117",
+        "bytes": 776800
+      },
+      {
+        "file": "artifacts/review/phase2/manifest.json",
+        "sha256": "bc782bd6cf30fe56043715f0a6eb3fd38c23baae2f700454fd022a530073b7f6",
+        "bytes": 20940
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-aperture.png",
+        "sha256": "0d55c628c73f91624834a870024000e33b71f159300dc5d73f1e010b04f1f7a1",
+        "bytes": 267179
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-find.png",
+        "sha256": "7dc78d6288d844bc7a1ec9434a531cfe01d750ffa0308d66df38bc29b9c78b53",
+        "bytes": 251241
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-need.png",
+        "sha256": "8e78fcc151cddbba81ebbdc79b22be9fdb3a3e766fac05fb3b1de5a914d70347",
+        "bytes": 265822
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-prove.png",
+        "sha256": "8ae50c086814bb25c29def3e8c3998407c263e343f4889ef5444278dd90055a7",
+        "bytes": 83975
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-signal.png",
+        "sha256": "c558ea765881b0539beedeaef50b58c55fdbe8b77ac605c9b898a01442e686ad",
+        "bytes": 250839
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-test.png",
+        "sha256": "6f3ee7fa814ca24d3b00ed90c922326f1220247f1a17b915d8d5318aa90ae69a",
+        "bytes": 196996
+      },
+      {
+        "file": "artifacts/review/reduced-motion-aperture.jpg",
+        "sha256": "0ddfe1f605f6a49bce7bf920cf43605e277c4623fd154b731dfb61572d5d9774",
+        "bytes": 94460
+      },
+      {
+        "file": "artifacts/review/repair/analysis.json",
+        "sha256": "29de3ba01b58f31156b7c9c1f8b1c03236e5e9837881dcd0952312195e67bbba",
+        "bytes": 6082
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture-no-webgl.png",
+        "sha256": "fb5b12da747ed367d25855d0f842d82e797fbd047c32db1095ceda96160e62d8",
+        "bytes": 1159090
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture-reduced-motion.png",
+        "sha256": "a037248f42a0ac90969f53455238a9f61b19be8184fbf8c74fc9b0bf2b90060a",
+        "bytes": 1187714
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture.png",
+        "sha256": "127ff149e117b9bf85b6a48f6518756ed062f07764390503803a9abdd4d81926",
+        "bytes": 1162740
+      },
+      {
+        "file": "artifacts/review/repair/desktop-find.png",
+        "sha256": "1167f752cf651972b5725db0951f61e6559223beca3ad7cc4792ad1b50c87071",
+        "bytes": 852302
+      },
+      {
+        "file": "artifacts/review/repair/desktop-journey.webm",
+        "sha256": "6ae95078848af7e30e297232642def5032005a8adee4f4824c43ef99cdf1340a",
+        "bytes": 1594206
+      },
+      {
+        "file": "artifacts/review/repair/desktop-need.png",
+        "sha256": "8c987f306556740d0f3c6b9afcc6df89cc4c20c67c37d84ee4034de841198e38",
+        "bytes": 819169
+      },
+      {
+        "file": "artifacts/review/repair/desktop-prove.png",
+        "sha256": "e4b6da6ef8e505c900c686ec6122a4c107f380597074737fd2d9ecde3260793b",
+        "bytes": 102102
+      },
+      {
+        "file": "artifacts/review/repair/desktop-signal.png",
+        "sha256": "bdcdc8d64dc5afbb835aba7e3d4d44538708a6d2c74ea52e7c8c5a461ea39267",
+        "bytes": 741088
+      },
+      {
+        "file": "artifacts/review/repair/desktop-test.png",
+        "sha256": "7cc7db7ec524b1c1a1ea4bd34b493806b16ecaa31cbd6e18053c075350025e48",
+        "bytes": 1217086
+      },
+      {
+        "file": "artifacts/review/repair/manifest.json",
+        "sha256": "51db084192db08dd970db3979fd3eb99fabdf4a5acd109e697bfb73bc8c39e9f",
+        "bytes": 11688
+      },
+      {
+        "file": "artifacts/review/repair/mobile-aperture.png",
+        "sha256": "a6ada6c41edcb9218d94b405872aa4dea44c6a7ab8ec999018542ff18ca75d80",
+        "bytes": 323552
+      },
+      {
+        "file": "artifacts/review/repair/mobile-find.png",
+        "sha256": "cd1c9abaee59a55e2a7798fb83d8c955b637d3aa4c1c9342cff79e82c0acf7c3",
+        "bytes": 255643
+      },
+      {
+        "file": "artifacts/review/repair/mobile-need.png",
+        "sha256": "4c3fca72a0134082a69e3d8338aa26a080d275bb276a8ab79ecfc97e6c962fcc",
+        "bytes": 247217
+      },
+      {
+        "file": "artifacts/review/repair/mobile-prove.png",
+        "sha256": "5f54feea77e9d740440a2dac115ef83ad9874e4b0e91ac8f22c7c9f699edca7b",
+        "bytes": 40623
+      },
+      {
+        "file": "artifacts/review/repair/mobile-signal.png",
+        "sha256": "b344db263b2605ee6a461991da0e16b7ff5bcc649d02f6829ff6bafd1d1370ca",
+        "bytes": 246971
+      },
+      {
+        "file": "artifacts/review/repair/mobile-test.png",
+        "sha256": "e624ad4b668a43d53473868fe2439495dfcf3c1544a1935ad23f6b9ec0310ee5",
+        "bytes": 319159
+      }
+    ]
+  },
+  "captures": [
+    {
+      "id": "desktop-proof-index-opening",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/desktop-proof-index-opening.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/proof/",
+      "state": "settled",
+      "section": "opening",
+      "scrollY": 0,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:26.582Z",
+      "sha256": "1caca230a3d9bde2e0fa8c490e350a86a8e85ec7a759308173d7901dce9b79b8",
+      "bytes": 47264
+    },
+    {
+      "id": "desktop-proof-index-active",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/desktop-proof-index-active.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/proof/",
+      "state": "inspection-active",
+      "section": "index-record",
+      "scrollY": 1029,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:28.411Z",
+      "sha256": "b749cb8e4b1d9974181c21a2e22b7f4ef06da7193c76e8ce86c01aaf8a49c723",
+      "bytes": 566437
+    },
+    {
+      "id": "desktop-record-opening",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/desktop-record-opening.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/proof/maradin-dynamic-ground-projection/",
+      "state": "settled",
+      "section": "opening",
+      "scrollY": 0,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:29.889Z",
+      "sha256": "de5c20542ef40b710610e4159792c6fe03e1ad729cd34195dce9b0c5df349dc4",
+      "bytes": 378629
+    },
+    {
+      "id": "desktop-record-field-condition-technology",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/desktop-record-field-condition-technology.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/proof/maradin-dynamic-ground-projection/",
+      "state": "settled",
+      "section": "field-condition-technology",
+      "scrollY": 1227,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:31.171Z",
+      "sha256": "7faf5fe8362c6a265248a27a2116835f0f84ce15b31ea196157fa85b340e1dba",
+      "bytes": 63589
+    },
+    {
+      "id": "desktop-record-test",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/desktop-record-test.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/proof/maradin-dynamic-ground-projection/",
+      "state": "settled",
+      "section": "test",
+      "scrollY": 3191,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:32.622Z",
+      "sha256": "3a1131c2ddd1e6c5f099d8b3e331accdc3b0f8d7a5a42618f48b785765630486",
+      "bytes": 232250
+    },
+    {
+      "id": "desktop-record-evidence",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/desktop-record-evidence.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/proof/maradin-dynamic-ground-projection/",
+      "state": "settled",
+      "section": "evidence",
+      "scrollY": 3965,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:33.938Z",
+      "sha256": "775f283bfcb4f51060ff7534f7968927127849e73db179136cc1c50234345afc",
+      "bytes": 293314
+    },
+    {
+      "id": "desktop-record-next-step",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/desktop-record-next-step.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/proof/maradin-dynamic-ground-projection/",
+      "state": "settled",
+      "section": "next-step-record-ending",
+      "scrollY": 4739,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:35.132Z",
+      "sha256": "d44537ab938f5166316c92c99eb048dcc4e7d7b068129abcb290ac90dffe959b",
+      "bytes": 62952
+    },
+    {
+      "id": "mobile-proof-index",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/mobile-proof-index.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/proof/",
+      "state": "settled",
+      "section": "index",
+      "scrollY": 0,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:36.215Z",
+      "sha256": "f33fdf409557d4300a69396a52a0f6895fa9a47543f0381dbb61618298b69dcf",
+      "bytes": 20531
+    },
+    {
+      "id": "mobile-record-opening",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/mobile-record-opening.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/proof/maradin-dynamic-ground-projection/",
+      "state": "settled",
+      "section": "opening",
+      "scrollY": 0,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:37.429Z",
+      "sha256": "654ee9fb233baa4b70e61c3a12c835d6c33985842efb233697b7cb4fe9bc2b6d",
+      "bytes": 52446
+    },
+    {
+      "id": "mobile-record-test",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/mobile-record-test.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/proof/maradin-dynamic-ground-projection/",
+      "state": "settled",
+      "section": "test",
+      "scrollY": 3384,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:38.756Z",
+      "sha256": "32379c610878eea74de03275d44e8be15355149c42a590accceb6e98296ae657",
+      "bytes": 117279
+    },
+    {
+      "id": "mobile-record-evidence",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/mobile-record-evidence.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/proof/maradin-dynamic-ground-projection/",
+      "state": "settled",
+      "section": "evidence",
+      "scrollY": 4178,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:39.998Z",
+      "sha256": "eb88b766de419588e2ab52561fffaa6e1dc182ef6dcc9e8143b7d1d2603d13c2",
+      "bytes": 75004
+    },
+    {
+      "id": "mobile-record-next-step",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/mobile-record-next-step.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/proof/maradin-dynamic-ground-projection/",
+      "state": "settled",
+      "section": "next-step",
+      "scrollY": 5139,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:41.239Z",
+      "sha256": "96fd768dfd5aab4b09e6c1ddc6ce62622c036f20a03450059c52583b539eab2d",
+      "bytes": 39924
+    },
+    {
+      "id": "reduced-motion-record",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/reduced-motion-record.png",
+      "profile": "desktop",
+      "mode": "reduced-motion",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/proof/maradin-dynamic-ground-projection/",
+      "state": "settled",
+      "section": "evidence",
+      "scrollY": 3965,
+      "focusedHref": null,
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:42.576Z",
+      "sha256": "775f283bfcb4f51060ff7534f7968927127849e73db179136cc1c50234345afc",
+      "bytes": 293314
+    },
+    {
+      "id": "keyboard-focus-proof-index",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase3/keyboard-focus-proof-index.png",
+      "profile": "desktop",
+      "mode": "keyboard-focus",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/proof/",
+      "state": "keyboard-focus",
+      "section": "index-record",
+      "scrollY": 1151,
+      "focusedHref": "/proof/maradin-dynamic-ground-projection/",
+      "candidate": "70d8b5cc193311b9548c49399dde6a014583e13a",
+      "capturedAt": "2026-08-16T07:15:44.077Z",
+      "sha256": "876c1c6c481d7a3855810d90e2b73522edfa9f4b1df4d7c9a888a04b06620117",
+      "bytes": 481383
+    }
+  ]
+}

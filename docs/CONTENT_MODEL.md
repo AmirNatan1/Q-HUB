@@ -8,7 +8,7 @@ Each nested phase and evidence item is substantive governed content. It independ
 
 Index dimensions are data capabilities, not current controls. A visible factual filter interface may be considered only once at least three public-eligible records exist; the current one-record index exposes no dead filtering UI.
 
-## Phase 2 approved Proof record
+## Current approved Proof record
 
 `src/content/proof.ts` now parses the approved Maradin record with `proofRecordSchema`, passes it through the existing deny-by-default publication filter, and exports only the eligible public value. `src/content/homepage.ts` derives NEED, FIND, TEST, PROVE, and the compact Proof fields from that filtered record; corporate facts are not duplicated in Astro presentation templates.
 
@@ -52,7 +52,7 @@ Media references accept images, video, audio, models, and documents. Every media
 
 ## Development content
 
-`src/content/development.ts` contains unmistakable non-factual records for all six families. They use neutral labels such as “Development Proof Record” and “Approved content pending.” They do not contain invented organizations, people, dates, outcomes, measurements, quotes, or metrics.
+`src/content/development.ts` contains unmistakable non-factual records for all six families. Its four structural Proof fixtures use stable `development-proof-*` identifiers and explicit development-placeholder language. They do not contain invented organizations, people, dates, outcomes, measurements, quotes, or metrics.
 
 Development records must always be:
 
@@ -62,7 +62,7 @@ Development records must always be:
 
 The schemas reject a placeholder marked with public-safe metadata. The publication layer excludes placeholders regardless, and `assertNoDevelopmentPlaceholders` is the pre-release failure mechanism.
 
-Phase 2 resolves the homepage selection, field-test structure, Proof record, documentary-media notice, and identity placeholders only. The six deliberately non-public development-record families and later-phase supporting route shells remain machine-identifiable. Release tests distinguish those intentional future records from the now production-eligible homepage material.
+Phase 3 resolves the Evidence Index, the Maradin Field Record, and the homepage handoff while retaining the six deliberately non-public development-record families and unrelated route shells as machine-identifiable placeholders. Release tests distinguish those intentional future records from the production-eligible homepage and Proof material.
 
 ## Authoring flow
 
