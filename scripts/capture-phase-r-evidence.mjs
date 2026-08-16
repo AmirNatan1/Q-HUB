@@ -74,6 +74,123 @@ const expectedPartnerRecords = Object.freeze([
     relationship: "founding-partner",
   },
 ]);
+const minimumResolvedReviewDwellMs = 2_000;
+const partnerReviewStops = Object.freeze([
+  {
+    id: "partner-vdl-resolved",
+    phase: "access",
+    progress: 0.32,
+    state: "strategic",
+    partnerFocus: "vdl-group",
+    reviewCategory: "partner",
+    reviewId: "vdl-group",
+    reviewLabel: "VDL Group",
+    scrollMs: 1_250,
+    dwellMs: 2_400,
+  },
+  {
+    id: "partner-hyundai-resolved",
+    phase: "access",
+    progress: 0.45,
+    state: "strategic",
+    partnerFocus: "hyundai-motor-group",
+    reviewCategory: "partner",
+    reviewId: "hyundai-motor-group",
+    reviewLabel: "Hyundai Motor Group",
+    scrollMs: 1_250,
+    dwellMs: 2_400,
+  },
+  {
+    id: "partner-bazan-resolved",
+    phase: "access",
+    progress: 0.58,
+    state: "strategic",
+    partnerFocus: "bazan-group",
+    reviewCategory: "partner",
+    reviewId: "bazan-group",
+    reviewLabel: "Bazan Group",
+    scrollMs: 1_250,
+    dwellMs: 2_400,
+  },
+  {
+    id: "partner-taavura-resolved",
+    phase: "access",
+    progress: 0.71,
+    state: "founding",
+    partnerFocus: "taavura-livnat-group",
+    reviewCategory: "partner",
+    reviewId: "taavura-livnat-group",
+    reviewLabel: "Taavura–Livnat Group",
+    scrollMs: 1_250,
+    dwellMs: 2_400,
+  },
+  {
+    id: "partner-talcar-resolved",
+    phase: "access",
+    progress: 0.89,
+    state: "founding",
+    partnerFocus: "talcar",
+    reviewCategory: "partner",
+    reviewId: "talcar",
+    reviewLabel: "Talcar",
+    scrollMs: 1_250,
+    dwellMs: 2_400,
+  },
+]);
+const activityReviewStops = Object.freeze([
+  {
+    id: "activity-field-testing-resolved",
+    phase: "activity",
+    progress: 0.12,
+    state: "field-testing",
+    activityState: "field-testing",
+    reviewCategory: "activity",
+    reviewId: "field-testing",
+    reviewLabel: "FIELD TESTING",
+    scrollMs: 1_150,
+    dwellMs: 2_200,
+  },
+  {
+    id: "activity-programs-resolved",
+    phase: "activity",
+    progress: 0.37,
+    state: "programs",
+    activityState: "programs",
+    reviewCategory: "activity",
+    reviewId: "programs",
+    reviewLabel: "PROGRAMS",
+    scrollMs: 1_150,
+    dwellMs: 2_200,
+  },
+  {
+    id: "activity-partner-engagement-resolved",
+    phase: "activity",
+    progress: 0.62,
+    state: "partner-engagement",
+    activityState: "partner-engagement",
+    reviewCategory: "activity",
+    reviewId: "partner-engagement",
+    reviewLabel: "PARTNER ENGAGEMENT",
+    scrollMs: 1_150,
+    dwellMs: 2_200,
+  },
+  {
+    id: "activity-global-ecosystem-resolved",
+    phase: "activity",
+    progress: 0.87,
+    state: "global-ecosystem",
+    activityState: "global-ecosystem",
+    reviewCategory: "activity",
+    reviewId: "global-ecosystem",
+    reviewLabel: "GLOBAL ECOSYSTEM",
+    scrollMs: 1_150,
+    dwellMs: 2_200,
+  },
+]);
+const requiredReviewCoverage = Object.freeze([
+  ...partnerReviewStops,
+  ...activityReviewStops,
+]);
 
 const desktopScreenshotNames = Object.freeze([
   "desktop-presence-opening.png",
@@ -417,20 +534,19 @@ const journeyDefinition = Object.freeze({
   mode: "normal",
   viewport: desktopViewport,
   minimumDurationSeconds: 30,
-  maximumDurationSeconds: 120,
+  maximumDurationSeconds: 150,
   initialDwellMs: 1_200,
   stops: Object.freeze([
     { id: "presence-resolved", phase: "presence", progress: 0.62, state: "resolved", scrollMs: 1_000, dwellMs: 1_000 },
     { id: "partner-opening", phase: "access", progress: 0.12, state: "opening", scrollMs: 1_000, dwellMs: 1_200 },
-    { id: "partner-strategic", phase: "access", progress: 0.48, state: "strategic", scrollMs: 1_300, dwellMs: 1_800 },
-    { id: "partner-founding", phase: "access", progress: 0.82, state: "founding", scrollMs: 1_400, dwellMs: 1_800 },
+    ...partnerReviewStops,
     { id: "field-crossing-outside", phase: "startup", progress: 0.18, state: "outside", scrollMs: 1_200, dwellMs: 900 },
     { id: "field-crossing-threshold", phase: "startup", progress: 0.47, state: "threshold", scrollMs: 900, dwellMs: 1_200 },
     { id: "field-crossing-field", phase: "startup", progress: 0.76, state: "field", scrollMs: 1_100, dwellMs: 1_400 },
     { id: "method-find", phase: "method", progress: 0.18, state: "find", scrollMs: 1_200, dwellMs: 1_300 },
     { id: "method-test", phase: "method", progress: 0.5, state: "test", scrollMs: 1_200, dwellMs: 1_500 },
     { id: "method-prove", phase: "method", progress: 0.82, state: "prove", scrollMs: 1_300, dwellMs: 1_500 },
-    { id: "activity", phase: "activity", progress: 0.5, state: null, scrollMs: 1_200, dwellMs: 1_400 },
+    ...activityReviewStops,
     { id: "evidence", phase: "evidence", progress: 0.5, state: null, scrollMs: 1_200, dwellMs: 1_500 },
     { id: "action", phase: "action", progress: 0.5, state: null, scrollMs: 1_200, dwellMs: 1_800 },
   ]),
@@ -520,8 +636,7 @@ function validateStaticContract() {
     }
   }
   const requiredJourneyStates = [
-    "partner-strategic",
-    "partner-founding",
+    ...requiredReviewCoverage.map((stop) => stop.id),
     "field-crossing-threshold",
     "field-crossing-field",
     "method-find",
@@ -534,6 +649,25 @@ function validateStaticContract() {
   for (const stopId of requiredJourneyStates) {
     if (!journeyStopIds.has(stopId)) {
       throw new Error(`Phase R journey omits required milestone ${stopId}.`);
+    }
+  }
+  for (const required of requiredReviewCoverage) {
+    const stop = journeyDefinition.stops.find((candidate) => candidate.id === required.id);
+    if (!stop) {
+      throw new Error(`Phase R journey omits human-review state ${required.reviewLabel}.`);
+    }
+    if (stop.dwellMs < minimumResolvedReviewDwellMs) {
+      throw new Error(
+        `Phase R journey gives ${required.reviewLabel} only ${stop.dwellMs}ms resolved dwell; `
+          + `${minimumResolvedReviewDwellMs}ms is required.`,
+      );
+    }
+    if (
+      stop.reviewCategory !== required.reviewCategory
+      || stop.reviewId !== required.reviewId
+      || stop.reviewLabel !== required.reviewLabel
+    ) {
+      throw new Error(`Phase R journey review metadata differs for ${required.id}.`);
     }
   }
 }
@@ -1146,10 +1280,12 @@ async function waitForPhaseState(page, phase, targetProgress, expectedState) {
         ? section.dataset.presenceState
         : requestedPhase === "access"
           ? section.dataset.partnerState
-          : requestedPhase === "startup"
-            ? section.dataset.crossingState
-            : requestedPhase === "method"
-              ? section.dataset.methodState
+        : requestedPhase === "startup"
+          ? section.dataset.crossingState
+          : requestedPhase === "method"
+            ? section.dataset.methodState
+            : requestedPhase === "activity"
+              ? section.dataset.activityState
               : null;
       return root.dataset.activePhase === requestedPhase
         && Math.abs(actualProgress - requestedProgress) <= 0.03
@@ -1165,6 +1301,115 @@ async function waitForPhaseState(page, phase, targetProgress, expectedState) {
   await page.evaluate(() => new Promise((resolve) => {
     requestAnimationFrame(() => requestAnimationFrame(resolve));
   }));
+}
+
+async function waitForResolvedReviewState(page, stop) {
+  if (!stop.reviewCategory) return;
+  await page.waitForFunction(
+    ({ category, id, label, state }) => {
+      const root = document.documentElement;
+      const visible = (element, minimumOpacity = 0.95) => {
+        if (!(element instanceof HTMLElement)) return false;
+        const bounds = element.getBoundingClientRect();
+        const style = getComputedStyle(element);
+        return bounds.width > 0
+          && bounds.height > 0
+          && bounds.bottom > 0
+          && bounds.right > 0
+          && bounds.top < window.innerHeight
+          && bounds.left < window.innerWidth
+          && style.display !== "none"
+          && style.visibility !== "hidden"
+          && Number.parseFloat(style.opacity || "1") >= minimumOpacity;
+      };
+      if (category === "partner") {
+        const section = document.querySelector('[data-experience-phase="access"]');
+        const territory = document.querySelector(`[data-partner-id="${CSS.escape(id)}"]`);
+        if (!(section instanceof HTMLElement) || !(territory instanceof HTMLElement)) return false;
+        const bounds = territory.getBoundingClientRect();
+        const intersectionWidth = Math.max(
+          0,
+          Math.min(bounds.right, window.innerWidth) - Math.max(bounds.left, 0),
+        );
+        const intersectionHeight = Math.max(
+          0,
+          Math.min(bounds.bottom, window.innerHeight) - Math.max(bounds.top, 0),
+        );
+        const coverage = (intersectionWidth * intersectionHeight)
+          / Math.max(window.innerWidth * window.innerHeight, 1);
+        const style = getComputedStyle(territory);
+        const transform = style.transform === "none"
+          ? new DOMMatrixReadOnly()
+          : new DOMMatrixReadOnly(style.transform);
+        const identity = territory.querySelector("strong");
+        const relationship = territory.closest(".partner-territory")?.querySelector("h3");
+        return root.dataset.partnerFocus === id
+          && section.dataset.partnerState === state
+          && style.visibility === "visible"
+          && Number.parseFloat(style.opacity || "1") >= 0.98
+          && Math.abs(transform.m41) < 1
+          && Math.abs(transform.m42) < 1
+          && Math.abs(transform.m11 - 1) < 0.01
+          && Math.abs(transform.m22 - 1) < 0.01
+          && coverage >= 0.75
+          && visible(identity)
+          && visible(relationship, 0.7);
+      }
+      if (category === "activity") {
+        const section = document.querySelector('[data-experience-phase="activity"]');
+        const signal = document.querySelector(`[data-activity-signal="${CSS.escape(id)}"]`);
+        const geometry = document.querySelector(`[data-activity-geometry="${CSS.escape(id)}"]`);
+        const normalized = (signal?.textContent ?? "").replace(/\s+/gu, " ").trim();
+        return section instanceof HTMLElement
+          && section.dataset.activityState === id
+          && root.dataset.activityState === id
+          && normalized === label
+          && visible(signal)
+          && visible(geometry);
+      }
+      return false;
+    },
+    {
+      category: stop.reviewCategory,
+      id: stop.reviewId,
+      label: stop.reviewLabel,
+      state: stop.state,
+    },
+    { timeout: 8_000 },
+  );
+  await page.evaluate(() => new Promise((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(resolve));
+  }));
+  await page.waitForTimeout(180);
+}
+
+function assertResolvedReviewSnapshot(snapshot, stop) {
+  if (!stop.reviewCategory) return;
+  if (stop.reviewCategory === "partner") {
+    const partner = snapshot.focusedPartner;
+    if (
+      snapshot.partnerFocus !== stop.partnerFocus
+      || partner?.id !== stop.reviewId
+      || !partner.surface?.visible
+      || partner.surface.opacity < 0.98
+      || partner.surface.viewportCoverageRatio < 0.75
+      || !partner.identity?.visible
+      || !partner.relationshipLabel?.visible
+    ) {
+      throw new Error(
+        `Journey did not visibly settle partner ${stop.reviewLabel}: ${JSON.stringify(snapshot)}.`,
+      );
+    }
+  } else if (
+    snapshot.activityState !== stop.activityState
+    || snapshot.activitySignal?.text !== stop.reviewLabel
+    || !snapshot.activitySignal?.visible
+    || !snapshot.activityGeometry?.visible
+  ) {
+    throw new Error(
+      `Journey did not visibly settle activity ${stop.reviewLabel}: ${JSON.stringify(snapshot)}.`,
+    );
+  }
 }
 
 async function positionAt(page, definition) {
@@ -1529,11 +1774,79 @@ async function journeySnapshot(page) {
         ? section.dataset.presenceState
         : phase === "access"
           ? section.dataset.partnerState
-          : phase === "startup"
+        : phase === "startup"
             ? section.dataset.crossingState
             : phase === "method"
               ? section.dataset.methodState
-              : null
+              : phase === "activity"
+                ? section.dataset.activityState
+                : null
+      : null;
+    const normalizedText = (value) => (value ?? "").replace(/\s+/gu, " ").trim();
+    const describeElement = (element) => {
+      if (!(element instanceof HTMLElement)) return null;
+      const bounds = element.getBoundingClientRect();
+      const style = getComputedStyle(element);
+      const intersectionWidth = Math.max(
+        0,
+        Math.min(bounds.right, window.innerWidth) - Math.max(bounds.left, 0),
+      );
+      const intersectionHeight = Math.max(
+        0,
+        Math.min(bounds.bottom, window.innerHeight) - Math.max(bounds.top, 0),
+      );
+      return {
+        text: normalizedText(element.textContent),
+        bounds: {
+          left: bounds.left,
+          top: bounds.top,
+          right: bounds.right,
+          bottom: bounds.bottom,
+          width: bounds.width,
+          height: bounds.height,
+        },
+        viewportCoverageRatio:
+          (intersectionWidth * intersectionHeight)
+          / Math.max(window.innerWidth * window.innerHeight, 1),
+        display: style.display,
+        visibility: style.visibility,
+        opacity: Number.parseFloat(style.opacity || "1"),
+        transform: style.transform,
+        visible: bounds.width > 0
+          && bounds.height > 0
+          && intersectionWidth > 0
+          && intersectionHeight > 0
+          && style.display !== "none"
+          && style.visibility !== "hidden"
+          && Number.parseFloat(style.opacity || "1") > 0.75,
+      };
+    };
+    const partnerFocus = root.dataset.partnerFocus ?? null;
+    const focusedPartnerElement = partnerFocus
+      ? document.querySelector(`[data-partner-id="${CSS.escape(partnerFocus)}"]`)
+      : null;
+    const focusedPartner = focusedPartnerElement instanceof HTMLElement
+      ? {
+          id: focusedPartnerElement.dataset.partnerId ?? null,
+          relationship: focusedPartnerElement.dataset.partnerRelationship ?? null,
+          surface: describeElement(focusedPartnerElement),
+          identity: describeElement(focusedPartnerElement.querySelector("strong")),
+          logo: describeElement(focusedPartnerElement.querySelector("img")),
+          relationshipLabel: describeElement(
+            focusedPartnerElement.closest(".partner-territory")?.querySelector("h3"),
+          ),
+        }
+      : null;
+    const activityState = root.dataset.activityState ?? null;
+    const activitySignal = activityState
+      ? describeElement(
+          document.querySelector(`[data-activity-signal="${CSS.escape(activityState)}"]`),
+        )
+      : null;
+    const activityGeometry = activityState
+      ? describeElement(
+          document.querySelector(`[data-activity-geometry="${CSS.escape(activityState)}"]`),
+        )
       : null;
     const maximumScrollY = Math.max(
       document.documentElement.scrollHeight - window.innerHeight,
@@ -1557,6 +1870,11 @@ async function journeySnapshot(page) {
         && ending.top < window.innerHeight,
       ),
       renderMode: root.dataset.renderMode ?? "unknown",
+      partnerFocus,
+      focusedPartner,
+      activityState,
+      activitySignal,
+      activityGeometry,
     };
   });
 }
@@ -1683,6 +2001,121 @@ async function probeVideoArtifact(videoPath, expectedViewport) {
   }
 }
 
+async function probeResolvedCoverageFrames(videoPath, reviewCoverage) {
+  const bytes = await readFile(videoPath);
+  const context = await browser.newContext({
+    viewport: desktopViewport,
+    deviceScaleFactor: 1,
+    colorScheme: "dark",
+  });
+  const page = await context.newPage();
+  const issues = monitorPage(page);
+  try {
+    await loadStandaloneVideo(page, bytes, "phase-r-review-coverage-probe");
+    const frames = await page.locator("#phase-r-review-coverage-probe").evaluate(
+      async (element, coverage) => {
+        if (!(element instanceof HTMLVideoElement)) {
+          throw new Error("Expected Phase R review-coverage video probe.");
+        }
+        const seek = async (target) => {
+          element.pause();
+          if (Math.abs(element.currentTime - target) > 0.01) {
+            await new Promise((resolve, reject) => {
+              const timeout = window.setTimeout(
+                () => reject(new Error("Timed out seeking Phase R review coverage.")),
+                10_000,
+              );
+              element.addEventListener("seeked", () => {
+                window.clearTimeout(timeout);
+                resolve(undefined);
+              }, { once: true });
+              element.currentTime = target;
+            });
+          }
+          let decodedFrame = false;
+          if (typeof element.requestVideoFrameCallback === "function") {
+            const framePromise = new Promise((resolve) => {
+              element.requestVideoFrameCallback(() => {
+                decodedFrame = true;
+                resolve(undefined);
+              });
+            });
+            await element.play();
+            await Promise.race([
+              framePromise,
+              new Promise((resolve) => window.setTimeout(resolve, 2_000)),
+            ]);
+          } else {
+            await element.play();
+            await new Promise((resolve) => window.setTimeout(resolve, 300));
+            decodedFrame = element.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA;
+          }
+          element.pause();
+          return decodedFrame;
+        };
+        const canvas = document.createElement("canvas");
+        canvas.width = 160;
+        canvas.height = 100;
+        const drawing = canvas.getContext("2d", { willReadFrequently: true });
+        if (!drawing) throw new Error("Unable to create Phase R video coverage canvas.");
+        const samples = [];
+        for (const item of coverage) {
+          const target = (item.videoRange.startSeconds + item.videoRange.endSeconds) / 2;
+          const decodedFrame = await seek(target);
+          drawing.drawImage(element, 0, 0, canvas.width, canvas.height);
+          const pixels = drawing.getImageData(0, 0, canvas.width, canvas.height).data;
+          let minimumLuminance = 255;
+          let maximumLuminance = 0;
+          let signature = 2_166_136_261;
+          for (let index = 0; index < pixels.length; index += 4) {
+            const red = pixels[index] ?? 0;
+            const green = pixels[index + 1] ?? 0;
+            const blue = pixels[index + 2] ?? 0;
+            const luminance = Math.round(red * 0.2126 + green * 0.7152 + blue * 0.0722);
+            minimumLuminance = Math.min(minimumLuminance, luminance);
+            maximumLuminance = Math.max(maximumLuminance, luminance);
+            signature ^= red;
+            signature = Math.imul(signature, 16_777_619);
+            signature ^= green;
+            signature = Math.imul(signature, 16_777_619);
+            signature ^= blue;
+            signature = Math.imul(signature, 16_777_619);
+          }
+          samples.push({
+            category: item.category,
+            id: item.id,
+            label: item.label,
+            targetSeconds: target,
+            actualSeconds: element.currentTime,
+            decodedFrame,
+            luminanceRange: maximumLuminance - minimumLuminance,
+            pixelSignature: (signature >>> 0).toString(16).padStart(8, "0"),
+          });
+        }
+        return samples;
+      },
+      reviewCoverage,
+    );
+    if (
+      frames.some((frame) => !frame.decodedFrame || frame.luminanceRange < 32)
+      || new Set(frames.map((frame) => frame.pixelSignature)).size !== frames.length
+    ) {
+      throw new Error(
+        `Journey review coverage contains blank, undecoded, or duplicate resolved frames: `
+          + `${JSON.stringify(frames)}.`,
+      );
+    }
+    assertNoApplicationIssues(issues, "journey-review-coverage-probe");
+    return frames.map((frame) => ({
+      ...frame,
+      targetSeconds: round(frame.targetSeconds, 3),
+      actualSeconds: round(frame.actualSeconds, 3),
+    }));
+  } finally {
+    await context.close();
+  }
+}
+
 async function recordDesktopJourney(baseUrl, source) {
   const videoStagingDirectory = path.join(stagingDirectory, ".video");
   await mkdir(videoStagingDirectory);
@@ -1696,12 +2129,15 @@ async function recordDesktopJourney(baseUrl, source) {
     ...contextOptions(definition),
     recordVideo: { dir: videoStagingDirectory, size: desktopViewport },
   });
+  const recordingStartedAt = process.hrtime.bigint();
+  const recordingElapsedMs = () => Number(process.hrtime.bigint() - recordingStartedAt) / 1_000_000;
   const page = await context.newPage();
   const issues = monitorPage(page);
   let video;
   const timeline = [];
   let journeyElapsedMs;
   let finalState;
+  let recordingCloseRequestedAtMs;
   try {
     await prepareAppPage(page, baseUrl, definition, { freezeTransitions: false });
     video = page.video();
@@ -1714,6 +2150,7 @@ async function recordDesktopJourney(baseUrl, source) {
       requestAnimationFrame(() => requestAnimationFrame(resolve));
     }));
     const journeyStartedAt = await page.evaluate(() => performance.now());
+    const journeyStartedAtRecordingMs = recordingElapsedMs();
     const initialState = await journeySnapshot(page);
     if (
       initialState.scrollY !== 0
@@ -1722,7 +2159,7 @@ async function recordDesktopJourney(baseUrl, source) {
     ) {
       throw new Error(`Journey must begin at scrollY 0 in PRESENCE: ${JSON.stringify(initialState)}.`);
     }
-    timeline.push({
+    const initialTimelineEntry = {
       id: "journey-opening",
       requestedPhase: "presence",
       requestedProgress: null,
@@ -1731,10 +2168,27 @@ async function recordDesktopJourney(baseUrl, source) {
       requestedDwellMs: journeyDefinition.initialDwellMs,
       reachedAtMs: 0,
       observed: initialState,
-    });
+      recordingTiming: {
+        transitionStartedAtMs: round(journeyStartedAtRecordingMs, 3),
+        resolvedAtMs: round(journeyStartedAtRecordingMs, 3),
+        dwellEndedAtMs: null,
+        resolvedDwellMs: null,
+      },
+    };
+    timeline.push(initialTimelineEntry);
     await page.waitForTimeout(journeyDefinition.initialDwellMs);
+    const initialDwellEndedAtRecordingMs = recordingElapsedMs();
+    initialTimelineEntry.recordingTiming.dwellEndedAtMs = round(
+      initialDwellEndedAtRecordingMs,
+      3,
+    );
+    initialTimelineEntry.recordingTiming.resolvedDwellMs = round(
+      initialDwellEndedAtRecordingMs - journeyStartedAtRecordingMs,
+      3,
+    );
 
     for (const stop of journeyDefinition.stops) {
+      const transitionStartedAtRecordingMs = recordingElapsedMs();
       const destination = await targetScrollY(page, stop.phase, stop.progress);
       await animateScroll(page, destination, stop.scrollMs);
       await waitForPhaseState(page, stop.phase, stop.progress, stop.state);
@@ -1743,7 +2197,11 @@ async function recordDesktopJourney(baseUrl, source) {
         const pointerY = stop.phase === "startup" ? 520 : 414;
         await page.mouse.move(pointerX, pointerY, { steps: 12 });
       }
+      await waitForResolvedReviewState(page, stop);
+      const resolvedAtRecordingMs = recordingElapsedMs();
       await page.waitForTimeout(stop.dwellMs);
+      const dwellEndedAtRecordingMs = recordingElapsedMs();
+      const resolvedDwellMs = dwellEndedAtRecordingMs - resolvedAtRecordingMs;
       const observed = await journeySnapshot(page);
       const reachedAt = await page.evaluate(() => performance.now());
       if (
@@ -1752,6 +2210,12 @@ async function recordDesktopJourney(baseUrl, source) {
         || (stop.state !== null && observed.substate !== stop.state)
       ) {
         throw new Error(`Journey failed milestone ${stop.id}: ${JSON.stringify(observed)}.`);
+      }
+      assertResolvedReviewSnapshot(observed, stop);
+      if (stop.reviewCategory && resolvedDwellMs < minimumResolvedReviewDwellMs) {
+        throw new Error(
+          `Journey gave ${stop.reviewLabel} only ${round(resolvedDwellMs, 3)}ms resolved dwell.`,
+        );
       }
       timeline.push({
         id: stop.id,
@@ -1762,6 +2226,15 @@ async function recordDesktopJourney(baseUrl, source) {
         requestedDwellMs: stop.dwellMs,
         reachedAtMs: round(reachedAt - journeyStartedAt, 3),
         observed,
+        reviewCategory: stop.reviewCategory ?? null,
+        reviewId: stop.reviewId ?? null,
+        reviewLabel: stop.reviewLabel ?? null,
+        recordingTiming: {
+          transitionStartedAtMs: round(transitionStartedAtRecordingMs, 3),
+          resolvedAtMs: round(resolvedAtRecordingMs, 3),
+          dwellEndedAtMs: round(dwellEndedAtRecordingMs, 3),
+          resolvedDwellMs: round(resolvedDwellMs, 3),
+        },
       });
     }
 
@@ -1781,6 +2254,7 @@ async function recordDesktopJourney(baseUrl, source) {
     if (!finalState.naturalEnd || finalState.phase !== "action" || !finalState.finalActionVisible) {
       throw new Error(`Journey did not reach the natural ACTION ending: ${JSON.stringify(finalState)}.`);
     }
+    const naturalEndResolvedAtRecordingMs = recordingElapsedMs();
     timeline.push({
       id: "natural-page-end",
       requestedPhase: "action",
@@ -1790,9 +2264,16 @@ async function recordDesktopJourney(baseUrl, source) {
       requestedDwellMs: journeyDefinition.naturalEndDwellMs,
       reachedAtMs: round(journeyElapsedMs, 3),
       observed: finalState,
+      recordingTiming: {
+        transitionStartedAtMs: round(naturalEndResolvedAtRecordingMs, 3),
+        resolvedAtMs: round(naturalEndResolvedAtRecordingMs, 3),
+        dwellEndedAtMs: round(naturalEndResolvedAtRecordingMs, 3),
+        resolvedDwellMs: 0,
+      },
     });
     assertNoApplicationIssues(issues, "desktop-phase-r-journey");
   } finally {
+    recordingCloseRequestedAtMs = recordingElapsedMs();
     await context.close();
   }
 
@@ -1815,6 +2296,76 @@ async function recordDesktopJourney(baseUrl, source) {
   if (phaseOrder.some((phase) => !observedPhases.has(phase))) {
     throw new Error("Journey timeline did not observe every homepage phase.");
   }
+  const videoClockCorrectionMs = probe.durationSeconds * 1_000 - recordingCloseRequestedAtMs;
+  if (!Number.isFinite(videoClockCorrectionMs) || Math.abs(videoClockCorrectionMs) > 2_000) {
+    throw new Error(
+      `Journey video clock differs from the recording clock by `
+        + `${round(videoClockCorrectionMs, 3)}ms.`,
+    );
+  }
+  const videoSeconds = (recordingMs) => round(
+    Math.min(
+      probe.durationSeconds,
+      Math.max(0, (recordingMs + videoClockCorrectionMs) / 1_000),
+    ),
+    3,
+  );
+  const finalizedTimeline = timeline.map((entry) => ({
+    ...entry,
+    videoTiming: {
+      transitionStartSeconds: videoSeconds(entry.recordingTiming.transitionStartedAtMs),
+      resolvedStartSeconds: videoSeconds(entry.recordingTiming.resolvedAtMs),
+      resolvedEndSeconds: videoSeconds(entry.recordingTiming.dwellEndedAtMs),
+      resolvedDwellSeconds: round(entry.recordingTiming.resolvedDwellMs / 1_000, 3),
+    },
+  }));
+  const reviewCoverage = requiredReviewCoverage.map((required) => {
+    const entry = finalizedTimeline.find((candidate) => candidate.id === required.id);
+    if (!entry) throw new Error(`Missing review coverage timeline entry ${required.id}.`);
+    const videoRange = {
+      startSeconds: entry.videoTiming.resolvedStartSeconds,
+      endSeconds: entry.videoTiming.resolvedEndSeconds,
+      durationSeconds: round(
+        entry.videoTiming.resolvedEndSeconds - entry.videoTiming.resolvedStartSeconds,
+        3,
+      ),
+    };
+    if (videoRange.durationSeconds < minimumResolvedReviewDwellMs / 1_000) {
+      throw new Error(
+        `${required.reviewLabel} has only ${videoRange.durationSeconds}s in the video.`,
+      );
+    }
+    return {
+      category: required.reviewCategory,
+      id: required.reviewId,
+      label: required.reviewLabel,
+      timelineId: required.id,
+      requestedProgress: required.progress,
+      requestedState: required.state,
+      observedState: entry.observed.substate,
+      observedPartnerFocus: entry.observed.partnerFocus,
+      observedActivityState: entry.observed.activityState,
+      visualState: required.reviewCategory === "partner"
+        ? entry.observed.focusedPartner
+        : {
+            signal: entry.observed.activitySignal,
+            geometry: entry.observed.activityGeometry,
+          },
+      transitionStartSeconds: entry.videoTiming.transitionStartSeconds,
+      videoRange,
+      minimumResolvedDwellSeconds: minimumResolvedReviewDwellMs / 1_000,
+    };
+  });
+  const reviewFrameProbes = await probeResolvedCoverageFrames(stagedPath, reviewCoverage);
+  const verifiedReviewCoverage = reviewCoverage.map((coverage) => ({
+    ...coverage,
+    videoFrameVerification: reviewFrameProbes.find(
+      (probeFrame) => probeFrame.category === coverage.category && probeFrame.id === coverage.id,
+    ),
+  }));
+  if (verifiedReviewCoverage.some((coverage) => !coverage.videoFrameVerification)) {
+    throw new Error("Journey review coverage is missing decoded midpoint verification.");
+  }
   return {
     id: journeyDefinition.id,
     kind: "video",
@@ -1830,7 +2381,17 @@ async function recordDesktopJourney(baseUrl, source) {
       minimumDurationSeconds: journeyDefinition.minimumDurationSeconds,
       maximumDurationSeconds: journeyDefinition.maximumDurationSeconds,
     },
-    timeline,
+    timeline: finalizedTimeline,
+    reviewCoverage: {
+      status: "verified-nine-resolved-human-review-states",
+      minimumResolvedDwellSeconds: minimumResolvedReviewDwellMs / 1_000,
+      videoClock: {
+        closeRequestedAtMs: round(recordingCloseRequestedAtMs, 3),
+        correctionMs: round(videoClockCorrectionMs, 3),
+      },
+      partners: verifiedReviewCoverage.filter((coverage) => coverage.category === "partner"),
+      activity: verifiedReviewCoverage.filter((coverage) => coverage.category === "activity"),
+    },
     decodeVerification: {
       status: "resolution-duration-and-three-decoded-frames-verified",
       durationSeconds: probe.durationSeconds,
@@ -1975,6 +2536,17 @@ async function main() {
       mobileViewport,
       exactOutputFiles: expectedOutputNames,
       everyCaptureCandidate: source.candidateSha,
+      resolvedHumanReviewCoverage: {
+        minimumResolvedDwellSeconds: minimumResolvedReviewDwellMs / 1_000,
+        partners: partnerReviewStops.map((stop) => ({
+          id: stop.reviewId,
+          label: stop.reviewLabel,
+        })),
+        activity: activityReviewStops.map((stop) => ({
+          id: stop.reviewId,
+          label: stop.reviewLabel,
+        })),
+      },
     },
     historicalEvidenceIntegrity: {
       status: "verified-unchanged-before-and-after-atomic-promotion",
@@ -1995,6 +2567,7 @@ async function main() {
       everyPngSignatureAndDimensionChecked: true,
       screenshotHashesUnique: true,
       videoResolutionDecodeDurationAndNaturalEndChecked: true,
+      nineResolvedHumanReviewStatesDwellAndDecodedFramesChecked: true,
       manifestSelfHashExcludedByDefinition: true,
     },
     applicationMonitoring: {
