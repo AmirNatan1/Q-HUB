@@ -481,5 +481,5 @@ All 14 PNG hashes, byte counts, and dimensions independently match the manifest.
 - Lighthouse is local production-preview lab evidence.
 - The optional navigation/scroll WebM was not produced.
 - `FONT-001` remains the accepted unresolved Phase 2 limitation.
-- Remote preview and production deployment are not authorized. No preview URL is claimed.
-- P3-12 remains pending only the evidence/docs closure commit, normal push, local/upstream/remote equality, and final clean-tree check. No force, merge, or deploy has occurred.
+- Remote preview and production deployment are not authorized. The last accepted Cloudflare authentication check reported exactly: “Not logged in. Your auth token has expired and could not be refreshed, and the environment is non-interactive.” No preview URL is claimed.
+- P3-12 passes through evidence/docs closure `ca92063213e15fbf404fa5669ccb7375ffce3ef1`: it was normally pushed with upstream set, local/upstream/remote equality was exact, and the tree was empty immediately after verification. This final docs-only handoff records that result and is normally pushed before the final report. No force, merge, or deploy occurred.

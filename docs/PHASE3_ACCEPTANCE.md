@@ -10,8 +10,8 @@ This ledger applies only to the Phase 3 Proof system defined by `docs/PHASE3_PRO
 - Phase 2 final handoff ancestor: `e1a21642d0cab50a81510f934e6e7f41425fc851`
 - Phase 3 feature commit: `7af011e486c28d098467cffbed088ce55480a16e`
 - Phase 3 implementation/evidence candidate: `70d8b5cc193311b9548c49399dde6a014583e13a`
-- Evidence/docs closure: pending final version-control closure
-- Final HEAD: pending final version-control closure
+- Evidence/docs closure: `ca92063213e15fbf404fa5669ccb7375ffce3ef1`
+- Final HEAD: final docs-only handoff, reported after its normal push
 
 ## P3-1 — Baseline integrity
 
@@ -147,19 +147,20 @@ This ledger applies only to the Phase 3 Proof system defined by `docs/PHASE3_PRO
 
 ## P3-12 — Version control
 
-**STATUS:** PENDING FINAL NORMAL PUSH
+**STATUS:** PASS
 
 **VERIFICATION METHOD:** Inspect the full diff, rerun release gates and scans, commit review evidence/documentation intentionally, push normally with upstream, verify local/upstream/remote equality, and confirm a clean tree with no merge or deploy.
 
 **COMMAND / TEST:** `git diff --check`; final release commands listed in `docs/QA.md`; high-confidence secret/prohibited-source/public-output scans; `git push -u origin phase3/proof-system`; `git status --short --branch`; `git rev-parse HEAD`; `git rev-parse @{upstream}`; `git ls-remote origin refs/heads/phase3/proof-system`.
 
-**EVIDENCE:** Candidate commits and scans exist locally; no force, merge, or deployment has occurred. Closure SHA, final remote equality, and clean-tree proof will be recorded after the authorized normal push.
+**EVIDENCE:** Feature commit `7af011e486c28d098467cffbed088ce55480a16e`, implementation/evidence candidate `70d8b5cc193311b9548c49399dde6a014583e13a`, and evidence/docs closure `ca92063213e15fbf404fa5669ccb7375ffce3ef1` are intentional commits. The closure was normally pushed with upstream set; local, upstream, and remote refs were all exactly `ca92063213e15fbf404fa5669ccb7375ffce3ef1` immediately after push. Scans are clean. No force, merge, or deployment occurred. This final docs-only handoff records that verified closure and is normally pushed before the final report.
 
-**KNOWN LIMITATION:** Remote preview/deployment is out of scope. The accepted Phase 2 environment reported expired Cloudflare authentication, so no preview URL is claimed.
+**KNOWN LIMITATION:** Remote preview/deployment is out of scope. The last accepted Cloudflare authentication check reported exactly: “Not logged in. Your auth token has expired and could not be refreshed, and the environment is non-interactive.” Phase 3 did not attempt deployment and claims no preview URL.
 
 ## Stop-state checklist
 
-- P3-1 through P3-11: PASS.
-- P3-12: pending only the final evidence/docs commit, normal push, remote-equality check, and clean-tree verification.
+- P3-1 through P3-12: PASS.
+- Evidence/docs closure: normally pushed; local/upstream/remote equality and an empty tree were verified at `ca92063213e15fbf404fa5669ccb7375ffce3ef1`.
+- Final docs-only handoff: limited to recording the verified closure; its final push/equality is reported in the handoff.
 - Human creative decision: deliberately unanswered.
 - No merge or deployment has occurred.

@@ -16,8 +16,8 @@ Maradin is the only public Proof record. Four structural fixtures remain D/unapp
 
 - Feature commit: `7af011e486c28d098467cffbed088ce55480a16e`
 - Implementation/evidence candidate: `70d8b5cc193311b9548c49399dde6a014583e13a`
-- Evidence/docs closure: pending final version-control closure
-- Final HEAD: pending final version-control closure
+- Evidence/docs closure: `ca92063213e15fbf404fa5669ccb7375ffce3ef1`
+- Final HEAD: final docs-only handoff, reported after its normal push
 - Manifest: [`artifacts/review/phase3/manifest.json`](../artifacts/review/phase3/manifest.json)
 - Manifest bytes: 23,324
 - Manifest SHA-256: `ebe02fca90fdabe9af7313d32bf90f73044054fd476c2289147ec61fb3e41d98`
@@ -70,7 +70,7 @@ The normal and reduced-motion Evidence frames are intentionally byte-identical b
 - No public decision, exact date, location, KPI table, proprietary measurement data, or commercial result is available; the record omits them.
 - The current public system has one record. Structural diversity is test-proven with non-public fixtures, not represented as fake public scale.
 - The evidence set and accessibility coverage use local Chromium, not physical devices, Safari, Firefox, dedicated screen readers, or field telemetry.
-- Remote preview and production deployment are not authorized. No preview URL is claimed.
+- Remote preview and production deployment are not authorized. The last accepted Cloudflare authentication check reported exactly: “Not logged in. Your auth token has expired and could not be refreshed, and the environment is non-interactive.” No preview URL is claimed.
 - `FONT-001` remains the accepted unresolved Phase 2 limitation; no unlicensed font or runtime font service was introduced.
 
 ## Human creative review questions
