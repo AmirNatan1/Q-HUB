@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-16T18:50:44.901Z",
+  "sourceHead": "59cb21da1d1c792932fc2b69ff51a9969177b1a0",
+  "sourceTree": "264caa8e63548dc1b27204c013afe2e3222e5f21",
+  "branch": "redirect/quantum-presence-startup-magnet",
+  "expectedBranch": "redirect/quantum-presence-startup-magnet",
+  "candidateBasis": "explicit-environment-value-equal-to-clean-head",
+  "candidateEnvironment": {
+    "name": "PHASE_R_LIGHTHOUSE_CANDIDATE_SHA",
+    "provided": true,
+    "equalsHead": true
+  },
+  "measuredBaseUrl": "http://127.0.0.1:65062/",
+  "buildInput": "fresh npm run build executed by this runner before preview startup",
+  "buildBinding": {
+    "startedAt": "2026-08-16T18:49:03.358Z",
+    "finishedAt": "2026-08-16T18:49:32.915Z",
+    "sourceHead": "59cb21da1d1c792932fc2b69ff51a9969177b1a0",
+    "sourceTree": "264caa8e63548dc1b27204c013afe2e3222e5f21",
+    "distDigestAlgorithm": "sha256(file\\0sha256\\0bytes joined by newline, sorted by file)",
+    "distDigest": "1c69adf79aaf2d8e082d33436a219428e5fd84a7593643194bb47fd745d82b07",
+    "distFileCount": 35,
+    "distBytes": 9648036,
+    "unchangedThroughAllSixAudits": true
+  },
+  "repositoryBinding": {
+    "cleanTrackedAndUntrackedTreeAtStart": true,
+    "headTreeBranchAndStatusUnchangedAfterBuildAndAudits": true,
+    "beforePromotion": {
+      "head": "59cb21da1d1c792932fc2b69ff51a9969177b1a0",
+      "tree": "264caa8e63548dc1b27204c013afe2e3222e5f21",
+      "branch": "redirect/quantum-presence-startup-magnet",
+      "statusPorcelain": "",
+      "allowedOutputPaths": [],
+      "unexpectedStatusLines": []
+    },
+    "afterPromotionVerification": "HEAD/tree/branch must still match and status may contain only exact promoted Lighthouse outputs before successful exit.",
+    "atomicOutputPolicy": "All twelve HTML/JSON reports and summary JSON are validated in staging and promoted as one rollback-protected set."
+  },
+  "routeTargets": [
+    {
+      "name": "homepage",
+      "route": "/"
+    },
+    {
+      "name": "proof-index",
+      "route": "/proof/"
+    },
+    {
+      "name": "maradin-field-record",
+      "route": "/proof/maradin-dynamic-ground-projection/"
+    }
+  ],
+  "results": [
+    {
+      "profile": "desktop",
+      "target": {
+        "name": "homepage",
+        "route": "/"
+      },
+      "measuredUrl": "http://127.0.0.1:65062/",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp": {
+          "numericValue": 468.17315,
+          "displayValue": "0.5 s"
+        },
+        "tbt": {
+          "numericValue": 0,
+          "displayValue": "0 ms"
+        },
+        "cls": {
+          "numericValue": 0,
+          "displayValue": "0"
+        }
+      },
+      "thresholds": {
+        "performance": 0.95,
+        "accessibility": 0.95,
+        "best-practices": 0.95,
+        "seo": 0.95,
+        "cls": 0
+      },
+      "failures": [],
+      "artifacts": {
+        "json": "artifacts/lighthouse/phase-r/desktop-homepage.json",
+        "html": "artifacts/lighthouse/phase-r/desktop-homepage.html"
+      }
+    },
+    {
+      "profile": "mobile",
+      "target": {
+        "name": "homepage",
+        "route": "/"
+      },
+      "measuredUrl": "http://127.0.0.1:65062/",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp": {
+          "numericValue": 1693.7658000000001,
+          "displayValue": "1.7 s"
+        },
+        "tbt": {
+          "numericValue": 54,
+          "displayValue": "50 ms"
+        },
+        "cls": {
+          "numericValue": 0,
+          "displayValue": "0"
+        }
+      },
+      "thresholds": {
+        "performance": 0.95,
+        "accessibility": 0.95,
+        "best-practices": 0.95,
+        "seo": 0.95,
+        "cls": 0
+      },
+      "failures": [],
+      "artifacts": {
+        "json": "artifacts/lighthouse/phase-r/mobile-homepage.json",
+        "html": "artifacts/lighthouse/phase-r/mobile-homepage.html"
+      }
+    },
+    {
+      "profile": "desktop",
+      "target": {
+        "name": "proof-index",
+        "route": "/proof/"
+      },
+      "measuredUrl": "http://127.0.0.1:65062/proof/",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp": {
+          "numericValue": 319.29445,
+          "displayValue": "0.3 s"
+        },
+        "tbt": {
+          "numericValue": 0,
+          "displayValue": "0 ms"
+        },
+        "cls": {
+          "numericValue": 0,
+          "displayValue": "0"
+        }
+      },
+      "thresholds": {
+        "performance": 0.95,
+        "accessibility": 0.95,
+        "best-practices": 0.95,
+        "seo": 0.95,
+        "cls": 0
+      },
+      "failures": [],
+      "artifacts": {
+        "json": "artifacts/lighthouse/phase-r/desktop-proof-index.json",
+        "html": "artifacts/lighthouse/phase-r/desktop-proof-index.html"
+      }
+    },
+    {
+      "profile": "mobile",
+      "target": {
+        "name": "proof-index",
+        "route": "/proof/"
+      },
+      "measuredUrl": "http://127.0.0.1:65062/proof/",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp": {
+          "numericValue": 1225.243,
+          "displayValue": "1.2 s"
+        },
+        "tbt": {
+          "numericValue": 0,
+          "displayValue": "0 ms"
+        },
+        "cls": {
+          "numericValue": 0,
+          "displayValue": "0"
+        }
+      },
+      "thresholds": {
+        "performance": 0.95,
+        "accessibility": 0.95,
+        "best-practices": 0.95,
+        "seo": 0.95,
+        "cls": 0
+      },
+      "failures": [],
+      "artifacts": {
+        "json": "artifacts/lighthouse/phase-r/mobile-proof-index.json",
+        "html": "artifacts/lighthouse/phase-r/mobile-proof-index.html"
+      }
+    },
+    {
+      "profile": "desktop",
+      "target": {
+        "name": "maradin-field-record",
+        "route": "/proof/maradin-dynamic-ground-projection/"
+      },
+      "measuredUrl": "http://127.0.0.1:65062/proof/maradin-dynamic-ground-projection/",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp": {
+          "numericValue": 462.5017,
+          "displayValue": "0.5 s"
+        },
+        "tbt": {
+          "numericValue": 0,
+          "displayValue": "0 ms"
+        },
+        "cls": {
+          "numericValue": 0,
+          "displayValue": "0"
+        }
+      },
+      "thresholds": {
+        "performance": 0.95,
+        "accessibility": 0.95,
+        "best-practices": 0.95,
+        "seo": 0.95,
+        "cls": 0
+      },
+      "failures": [],
+      "artifacts": {
+        "json": "artifacts/lighthouse/phase-r/desktop-maradin-field-record.json",
+        "html": "artifacts/lighthouse/phase-r/desktop-maradin-field-record.html"
+      }
+    },
+    {
+      "profile": "mobile",
+      "target": {
+        "name": "maradin-field-record",
+        "route": "/proof/maradin-dynamic-ground-projection/"
+      },
+      "measuredUrl": "http://127.0.0.1:65062/proof/maradin-dynamic-ground-projection/",
+      "scores": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp": {
+          "numericValue": 1982.1019000000001,
+          "displayValue": "2.0 s"
+        },
+        "tbt": {
+          "numericValue": 0,
+          "displayValue": "0 ms"
+        },
+        "cls": {
+          "numericValue": 0,
+          "displayValue": "0"
+        }
+      },
+      "thresholds": {
+        "performance": 0.95,
+        "accessibility": 0.95,
+        "best-practices": 0.95,
+        "seo": 0.95,
+        "cls": 0
+      },
+      "failures": [],
+      "artifacts": {
+        "json": "artifacts/lighthouse/phase-r/mobile-maradin-field-record.json",
+        "html": "artifacts/lighthouse/phase-r/mobile-maradin-field-record.html"
+      }
+    }
+  ]
+}
