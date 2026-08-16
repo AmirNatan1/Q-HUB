@@ -1,38 +1,52 @@
-# Phase R Human Review Package
+# Phase R human creative repair — review package
 
 ## Review status
 
-The Phase R strategic reorientation is technically packaged for human review. Codex does **not** approve its own creative outcome. The reviewer must decide whether the experience achieves the intended monumental Quantum presence, partner power, startup desire, authored motion, restraint, and perceived smoothness.
+The human disposition on the original Phase R candidate was **REPAIR**, not redirect. The strategic architecture remains accepted directionally. This package isolates the repaired versions of PROVE, ACTIVITY, Field Crossing, and Partner Field for another human decision. Codex does not approve its own creative outcome.
 
 - Branch: `redirect/quantum-presence-startup-magnet`
-- Final implementation candidate: `65907148bafec7cfe02f6c6d73154e3269f5d0e0`
-- Evidence input candidate: `aeed95e9c0fda4fa6deaf79a1c214b4dd7be5edb`
-- Evidence input tree: `71f34ffedfbec15eb70593f97472ae85de1b2256`
-- Manifest: [`../artifacts/review/phase-r/manifest.json`](../artifacts/review/phase-r/manifest.json)
-- Runtime record: [`PHASE_R_RUNTIME_DIAGNOSTIC.md`](PHASE_R_RUNTIME_DIAGNOSTIC.md)
-- Technical ledger: [`PHASE_R_ACCEPTANCE.md`](PHASE_R_ACCEPTANCE.md)
+- Pre-repair branch HEAD: `36bbc56c9d71881fd8bc2ba63ac59e87a4dac3d7`
+- Human-reviewed candidate: `65907148bafec7cfe02f6c6d73154e3269f5d0e0`
+- Repaired production implementation: `8fe8f0a07199c07098dbfade6ba5d6506b249b03`
+- Review-package source: `a6645381b0e3cebcb050e38b8aec6a11aefbdaf3`
+- Review-package source tree: `3592b0b33f31230773a9d57023bb01ec46bf5924`
+- [Manifest](../artifacts/review/phase-r/manifest.json)
+- [Runtime diagnostic](PHASE_R_RUNTIME_DIAGNOSTIC.md)
+- [Technical acceptance ledger](PHASE_R_ACCEPTANCE.md)
 
-No automatic Cloudflare branch-preview URL was verified, so none is claimed. Human testing of the actual branch preview on the owner’s ordinary hardware remains required.
+No Cloudflare branch preview was deployed or tested. Human ordinary-hardware testing remains outstanding.
 
-## Intended experience
+## What changed
 
-The public homepage journey is:
+### PROVE
 
-`PRESENCE → ACCESS → STARTUP → METHOD → ACTIVITY → EVIDENCE → ACTION`
+The checkmark/form metaphor has been removed. TEST observations continue into a clipped editorial evidence plane, where traces register against a common axis and imperfect marks resolve into exact spatial relationships. Judge whether it now reads as field observation becoming organized evidence rather than software confirmation.
 
-Quantum is the protagonist. Partner access is a primary startup-facing value proposition. FIND → TEST → PROVE is Quantum’s generalized method. Activity remains category-level. Evidence hands off principally to `/proof/`. Maradin remains valid only deeper in the accepted Proof system and is not the homepage protagonist.
+### ACTIVITY
+
+The approved labels remain unchanged and exclusive: FIELD TESTING, PROGRAMS, PARTNER ENGAGEMENT, GLOBAL ECOSYSTEM. Their environments now differ through constrained traversal, repeated cadence, meeting fields, and outward expansion. Judge whether the section now feels organizationally active rather than like four labels cycling over one field.
+
+### Field Crossing
+
+The visual sequence now presents a large round possibility, visible compression/contact between constraint plates, and a long rectilinear field probe. Judge whether the morphology communicates round → compressed → rectilinear without explanatory copy.
+
+### Partner Field
+
+Partner taxonomy, order, scale, and identity assets are unchanged. Desktop states use edge-to-edge field material, crop, identity placement, and continuous transitions so the viewport becomes the territory. Mobile uses large sequential territories. Judge whether identity now belongs to the environment rather than appearing printed on a large panel.
+
+PRESENCE, EVIDENCE, ACTION, public copy, seven-act order, Proof architecture/routes, publication controls, Maradin boundary, SPARK proposition, navigation, partner facts, and dependency architecture were deliberately not redesigned.
 
 ## Recommended review order
 
-1. Watch [`desktop-phase-r-journey.webm`](../artifacts/review/phase-r/desktop-phase-r-journey.webm) from the first frame to its natural end without scrubbing. Judge scale, silence, pacing, partner transitions, Field Crossing, method differentiation, activity rhythm, evidence handoff, and final action.
-2. Inspect the 12 desktop captures for resolved composition and signature moments.
-3. Inspect the 7 mobile captures as an authored mobile sequence, not as reduced desktop.
-4. Inspect the 4 accessibility/fallback captures for equivalent meaning, legibility, and usable action.
-5. Test the live branch preview on ordinary hardware when available; local lab evidence is not a substitute.
+1. Play [desktop-phase-r-journey.webm](../artifacts/review/phase-r/desktop-phase-r-journey.webm) from its first frame to natural end without scrubbing. Focus on partner continuity, Field Crossing morphology, METHOD resolution, ACTIVITY conditions, pacing, and dead zones.
+2. Inspect the 12 desktop PNGs, especially Partner Field, STARTUP, METHOD PROVE, and ACTIVITY.
+3. Inspect all 7 mobile PNGs as an independently composed touch/scroll sequence.
+4. Inspect reduced motion, no WebGL, keyboard focus, and forced colors for meaningful resolved states.
+5. When a real Cloudflare branch preview exists, test perceived smoothness on the owner's ordinary hardware; the local package cannot answer that question.
 
-## Exact evidence inventory
+## Exact inventory
 
-The directory [`artifacts/review/phase-r/`](../artifacts/review/phase-r/) contains exactly 25 files: 23 PNGs, one WebM, and one manifest.
+The [review directory](../artifacts/review/phase-r/) contains exactly 25 files: 23 PNGs, one WebM, and one manifest.
 
 ### Desktop — 12 PNGs
 
@@ -51,77 +65,67 @@ The directory [`artifacts/review/phase-r/`](../artifacts/review/phase-r/) contai
 
 ### Mobile — 7 PNGs
 
-1. `mobile-presence.png`
-2. `mobile-partner-field.png`
-3. `mobile-startup-desire.png`
-4. `mobile-method.png`
-5. `mobile-activity.png`
-6. `mobile-evidence.png`
-7. `mobile-action.png`
+13. `mobile-presence.png`
+14. `mobile-partner-field.png`
+15. `mobile-startup-desire.png`
+16. `mobile-method.png`
+17. `mobile-activity.png`
+18. `mobile-evidence.png`
+19. `mobile-action.png`
 
 ### Accessibility and fallback — 4 PNGs
 
-1. `reduced-motion-partner-field.png`
-2. `no-webgl-method.png`
-3. `keyboard-focus-startup-action.png`
-4. `forced-colors-homepage.png`
+20. `reduced-motion-partner-field.png`
+21. `no-webgl-method.png`
+22. `keyboard-focus-startup-action.png`
+23. `forced-colors-homepage.png`
 
-### Motion and manifest
+### Journey and manifest
 
-- `desktop-phase-r-journey.webm` — 1440×900, 48.92 seconds, 4,616,373 bytes, SHA-256 `fc7c2ab74b00d90f3fa1b592b3f72a7da7540970d9916e2ca61f9e0ab0680f4c`.
-- `manifest.json` — candidate/tree/branch binding; byte counts and SHA-256 for every PNG and the WebM; decoded video dimensions/duration; zero capture errors; exact inventory; historical-evidence integrity.
+- `desktop-phase-r-journey.webm`: 1440×900; 81.64 seconds; 6,223,307 bytes; SHA-256 `72a91a9257212e0c496de3485c295b6ecb035934de968498304d342b1729f9c1`.
+- `manifest.json`: 84,032 bytes; SHA-256 `3fa3c26c339b54c0870393b59c0257e7653b78460ee96f209bd49e98fca29abc`; exact candidate/tree/branch binding, inventory, hashes, byte counts, dimensions, duration, timeline, zero-error disclosure, and historical-evidence integrity.
+- Total PNG bytes: 5,044,520. Total package bytes: 11,351,859.
+- Historical evidence: 158 files, 78,353,262 bytes, digest `e65a804806f57091891a840ba77ab2903527658948d45b3d2411ca92af6eded5`, unchanged across the final capture and promotion.
 
-All 23 final PNGs were individually inspected. The WebM was played continuously from 0.00 seconds to its natural 48.92-second end and 25 evenly spaced decoded frames were inspected. This confirms package readability and absence of an objective blank/decode/transition failure; it is not a creative approval.
+## Inspection record
 
-## Technical context for the reviewer
+All 23 final PNGs were individually inspected. The complete WebM was played in real time from 0.00 seconds until its natural 81.64-second `ended: true` state without seeking. Representative decoded frames across the recording were also inspected to resolve the following questions:
 
-- Build/typecheck/lint/unit: PASS; 50/50 unit tests; 12 static pages.
-- Browser suite: PASS; 89/89 at the controlled four-worker local cap.
-- Production/publication gate: PASS; exact seven-act order, five approved relationships, safe SPARK boundary, copy-density controls, no homepage Maradin leak, `/proof/` handoff, denied provenance scans, Phase 3 output preservation, and secret scan.
-- Lighthouse: homepage desktop/mobile 100/100/100/100; Proof index desktop/mobile 100/100/100/100; Maradin Field Record desktop 100/100/100/100 and mobile 99/100/100/100. Every TBT is 0 ms and every CLS is 0.
-- Bundle: 22,400 raw / 8,299 gzip total JS; 10,786 / 4,290 initial; 11,614 / 4,009 lazy. No React, Three.js, R3F, GSAP, or listed heavy runtime.
-- Runtime: local synthetic pacing materially improves versus accepted Phase 3 overall; mobile initializes no WebGL; zero application errors; permanent rendering stops outside active PRESENCE. The 115 ms maximum desktop long task and transient STARTUP post-scroll draw window are disclosed rather than hidden.
-- Historical review evidence: 82 pre-existing tracked files, 39,090,932 bytes, digest `9c36b1fe1606733ae08b361df674d91833414196b3583cd31cddaf43c455f1bf`, unchanged through final promotion.
+- PROVE contains no checkmark, form, table, dashboard, success badge, or fake data; the prior TEST traces resolve into a spatial evidence plane.
+- The ACTIVITY source and visual-contract tests expose four distinct geometry signatures; the recorded transition shows the cadence and meeting-field states rather than one unchanged background.
+- Field Crossing visibly presents a round entry, compressed threshold state, and rectilinear exit.
+- Desktop partner transitions are edge-to-edge territories; the final Taavura state no longer contains the earlier isolated logo rectangle.
+- Mobile, reduced motion, no WebGL, keyboard focus, and forced colors are legible; the earlier reduced-motion contrast defect is absent.
+- The journey reaches ACTION and the natural page end; no objective blank/decode failure, collision, or blocking dead zone was found.
 
-## Recovery findings and resolved defect
+This inspection establishes that the specific repair intent is implemented and the evidence is readable. It is not a human creative acceptance decision.
 
-The interrupted implementation was preserved and reconciled rather than restarted. During mandatory visual inspection, an earlier candidate showed low-contrast white partner names on pale reduced-motion territories. The final implementation corrected CSS specificity, added an exact regression assertion for Bazan, Taavura–Livnat, and Talcar, reran 89/89 browser cases, regenerated all candidate-bound artifacts, and re-inspected the corrected capture.
+## Technical context
 
-An earlier unconstrained ten-worker diagnostic produced host resource-starvation timeouts. It is not represented as a pass. The release result uses the repository’s controlled four-worker policy.
+- Typecheck/lint/unit/build: PASS — 0 Astro errors/warnings/hints; ESLint pass; 50/50 units; 12 static routes.
+- Browser suite: PASS — 93/93 at four workers. The first repair run was 92/93 due a four-pixel reduced-motion overflow; it was fixed before the full passing rerun.
+- Production/publication gate: PASS — exact seven acts, five approved relationships, SPARK and copy-density boundaries, denied provenance, no homepage Maradin leak, `/proof/` handoff, preserved Proof routes, secret scan.
+- Bundle: unchanged at 22,400 raw / 8,299 gzip total JS; 10,786 / 4,290 initial; 11,614 / 4,009 lazy; no React, Three.js, R3F, GSAP, or listed heavy runtime.
+- Runtime: desktop worst long task improved 115 → 86 ms, but long-task count/total rose from 4/306 ms to 5/356 ms. STARTUP retains a transient one-shot post-scroll draw window. Mobile initializes no WebGL and recorded no long tasks or errors.
+- Lighthouse: all six route/profile audits pass ≥95 and CLS 0. Exact scores are in the acceptance ledger; Maradin mobile performance is 96 and Proof-index mobile performance is 99.
+
+## Preserved diagnostic history
+
+Intermediate packages were intentionally retained because inspection found and corrected (1) a Taavura identity rectangle and (2) low-contrast transparent reduced-motion partner surfaces. Two complete capture attempts later failed only during OneDrive's final directory rename with `EPERM`; fail-closed promotion prevented partial canonical evidence, and the runner was narrowly corrected to stage beside the destination. The earlier original Phase R ten-worker resource-starvation diagnostic also remains disclosed. None is represented as the final pass.
 
 ## Known limitations
 
-- No verified Cloudflare branch-preview URL or field telemetry is available.
-- The human owner has not yet tested perceived smoothness on ordinary hardware.
-- Runtime, Lighthouse, and evidence use local headless Chromium/SwiftShader; no physical GPU/device, Safari, Firefox, or mobile Safari run was completed.
-- No manual screen-reader session was completed.
-- The journey WebM is intentionally silent.
-- Lighthouse measures initial route loads and does not replace all-state browser coverage or human motion review.
-- The Phase 3 baseline and Phase R candidate traverse different six-act and seven-act workloads; the runtime record therefore includes normalized rates and does not overstate perfect comparability.
-- The evidence package proves what was rendered by the bound candidate; it does not decide whether the composition is premium, memorable, desirable, or sufficiently sparse.
+- **Cloudflare branch-preview smoothness on the owner's ordinary hardware has not yet been proven.** No deployed preview or manual ordinary-hardware test was performed, so the historical real-world lag is not claimed solved.
+- Evidence, Lighthouse, and runtime are Chromium/headless/local-lab results, not physical-device, Safari, Firefox, field telemetry, or a dedicated screen-reader audit.
+- The WebM is intentionally silent.
+- Automated checks cannot decide whether the repaired moments meet the intended creative bar.
 
-## Required human review questions
+## Human decision questions
 
-1. Does Quantum feel like the protagonist?
-2. Does the first 5–10 seconds project presence rather than explanation?
-3. Is the homepage materially less text-heavy?
-4. Do the partner organizations feel like a major part of Quantum’s value proposition?
-5. Does the partner act avoid a generic logo wall?
-6. Would a strong startup plausibly think “I want access to this”?
-7. Is SPARK’s value understood without a paragraph?
-8. Does FIND → TEST → PROVE now read as Quantum’s general method?
-9. Is Maradin absent as a homepage protagonist?
-10. Does Proof feel like deeper evidence rather than the main site story?
-11. Are the signature animations genuinely memorable?
-12. Is the site still restrained enough to feel premium?
-13. Does mobile feel authored rather than reduced?
-14. Does the complete WebM feel smooth?
-15. Does the Cloudflare branch preview feel smooth on the human owner’s actual hardware?
-16. Is any persistent technical/UI text still visually excessive?
-17. Is the final startup action compelling and obvious?
+- Does PROVE now feel evidentiary, editorial, and spatial rather than procedural UI?
+- Do the four ACTIVITY signals feel like materially different manifestations of an organization in motion?
+- Is round → compression → rectilinear unmistakable in Field Crossing?
+- Do partner identities feel like viewport-scale territories rather than branded panels?
+- Are desktop/mobile pacing, fallbacks, and perceived smoothness acceptable on the reviewer's hardware?
 
-## Human decision
-
-Please return exactly one disposition, with notes if repair or redirect is chosen:
-
-**ACCEPT / REPAIR / REDIRECT**
+Only the human reviewer sets the next disposition. No later phase begins from this package automatically.

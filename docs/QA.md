@@ -698,3 +698,58 @@ All 14 PNG hashes, byte counts, and dimensions independently match the manifest.
 - `FONT-001` remains the accepted unresolved Phase 2 limitation.
 - Remote preview and production deployment are not authorized. The last accepted Cloudflare authentication check reported exactly: “Not logged in. Your auth token has expired and could not be refreshed, and the environment is non-interactive.” No preview URL is claimed.
 - P3-12 passes through evidence/docs closure `ca92063213e15fbf404fa5669ccb7375ffce3ef1`: it was normally pushed with upstream set, local/upstream/remote equality was exact, and the tree was empty immediately after verification. This final docs-only handoff records that result and is normally pushed before the final report. No force, merge, or deploy occurred.
+
+## 2026-08-16 — Phase R human creative repair QA
+
+The human disposition on Phase R implementation candidate `65907148bafec7cfe02f6c6d73154e3269f5d0e0` was **REPAIR**, not redirect. The repair was restricted to PROVE, ACTIVITY, STARTUP Field Crossing, and Partner Field. The accepted seven-act architecture, public copy/facts, Proof system, publication boundary, PRESENCE, EVIDENCE, ACTION, navigation, mobile semantics, and lightweight runtime contract remained frozen.
+
+### Candidate chain
+
+- Pre-repair branch HEAD: `36bbc56c9d71881fd8bc2ba63ac59e87a4dac3d7`.
+- Final repaired production implementation: `8fe8f0a07199c07098dbfade6ba5d6506b249b03`.
+- Runtime measurement / closure: `953881b5cc0317dda0f6751407e180fc9ef0359f` / `e1f9e8672a288f1cc0a12c01fd1d9297de645c6e`.
+- Lighthouse measurement / closure: `a56362f5f359424bbbfa5682cdefe763c5d7e5d4` / `9bc1cb1a8742c1d240b5b49de3894293fc80bbae`.
+- Final review capture source / tree: `a6645381b0e3cebcb050e38b8aec6a11aefbdaf3` / `3592b0b33f31230773a9d57023bb01ec46bf5924`.
+
+### Final gate record
+
+| Verification | Final result |
+| --- | --- |
+| `npm run check` | **PASS** — Astro 0 errors/warnings/hints; ESLint passed; Vitest 50/50; 12 static routes built. |
+| `npm run test:e2e` | **PASS** — 93/93 Chromium cases at the configured four-worker cap. |
+| `npm run release:phase-r` | **PASS** — 7 acts, 5 partners, 15 homepage-linked public files; Phase 3 output 2 routes / 4 media / 20 browser-facing text artifacts; bundle and secret gates passed. |
+| Final `npm run release:secrets` | **PASS** — 135 candidate text files checked; 184 binary/oversize files skipped. |
+| `npm run runtime:phase-r` | **PASS as synthetic evidence** — final desktop/mobile candidate artifacts, zero application errors, mobile WebGL off, lifecycle disclosures retained. |
+| `npm run lighthouse` | **PASS** — all six route/profile audits meet category ≥95 and CLS 0. |
+| `npm run evidence:phase-r` | **PASS** — exactly 23 PNGs, one 1440×900 WebM, and one manifest. |
+
+The browser suite includes the four added repair assertions: PROVE resolves as spatial registration without completion UI; all four ACTIVITY states have unique geometry signatures; Field Crossing has round/compressed/rectilinear aspect-ratio states on desktop and mobile; and the focused partner surface is screen-scale and borderless. Existing responsive, overflow, axe, keyboard/focus, reduced-motion, no-WebGL, no-JavaScript, forced-colors, publication, Proof, and runtime lifecycle coverage remains in the 93-case total.
+
+The first full repair browser run passed 92/93. The one failure exposed a four-pixel reduced-motion desktop Partner Field overflow from an offscreen pseudo-material layer. A temporary overflow diagnostic first used TypeScript generic syntax invalid inside page-evaluated JavaScript; it was corrected, the real source was identified and repaired, the focused case passed, and the full suite then passed 93/93. The 92/93 run is not treated as evidence of product acceptance.
+
+### Bundle
+
+Final JavaScript is unchanged from the pre-repair Phase R candidate: 22,400 raw / 8,299 gzip total, 10,786 / 4,290 initial, and 11,614 / 4,009 lazy. Each pre-repair delta is zero. No production dependency was added; no React, React DOM, Three.js, R3F, GSAP, or listed heavy runtime is present.
+
+### Runtime and Lighthouse
+
+Desktop runtime measured 11,694.0 ms, p50/p95/p99 16.7/50.0/65.115 ms, 105 intervals over 33.3 ms, 10 over 50 ms, five long tasks totaling 356 ms, 86 ms maximum, and zero application errors. Draw totals were 78 PRESENCE, 14 STARTUP, and 22 METHOD; other acts drew zero. Settled deltas were 10/0/7/1/0/0/0. Mobile measured 8,248.2 ms, p50/p95/p99 16.7/16.8/18.768 ms, four intervals over 33.3 ms, none over 50 ms, no long tasks/errors, and no WebGL.
+
+The desktop maximum long task improved from 115 ms pre-repair to 86 ms, while long-task count and total rose from 4/306 ms to 5/356 ms and intervals over 33.3 ms rose by one. STARTUP's transient post-scroll one-shot draw window remains disclosed. The synthetic results do not establish Cloudflare-preview smoothness.
+
+Lighthouse exact results (Performance / Accessibility / Best Practices / SEO): homepage desktop 100/100/100/100 and mobile 100/100/100/100; Proof index desktop 100/100/100/100 and mobile 99/100/100/100; Maradin record desktop 100/100/100/100 and mobile 96/100/100/100. LCP values are 0.4/1.7, 0.4/1.8, and 0.7/2.5 seconds; TBT values are 0/30, 0/0, and 0/0 ms; all CLS values are 0.
+
+### Review evidence and inspection
+
+The final `artifacts/review/phase-r/` package is bound to `a6645381...`, contains exactly 23 PNGs, one WebM, and one manifest, and totals 11,351,859 bytes. The 1440×900 WebM is 81.64 seconds, 6,223,307 bytes, SHA-256 `72a91a9257212e0c496de3485c295b6ecb035934de968498304d342b1729f9c1`. The 84,032-byte manifest hash is `3fa3c26c339b54c0870393b59c0257e7653b78460ee96f209bd49e98fca29abc`; it records zero console/page/request errors. All 158 historical review files remained unchanged during final capture (78,353,262 bytes; digest `e65a804806f57091891a840ba77ab2903527658948d45b3d2411ca92af6eded5`).
+
+All 23 PNGs were inspected individually. The complete WebM played in real time from 0.00 seconds to its natural 81.64-second `ended: true` state without seeking. Decoded-frame inspection confirmed the round → compressed → rectilinear Field Crossing, edge-to-edge partner transitions, spatial PROVE resolution, ACTIVITY choreography, and complete ACTION ending. This is a technical/evidence statement, not creative acceptance.
+
+Earlier review packages were preserved because visual inspection exposed a Taavura logo rectangle and then a reduced-motion partner contrast regression. Both were repaired before the final package. Two subsequent capture attempts completed rendering but failed final OneDrive promotion with `EPERM`; fail-closed behavior left no partial canonical package, and a narrow sibling-staging correction produced the successful final package. The historical original Phase R unconstrained ten-worker resource-starvation diagnostic also remains disclosed and is not counted as a pass.
+
+### Limitations and boundary
+
+- Cloudflare branch-preview smoothness on the owner's ordinary hardware has not yet been proven. No branch preview was deployed or manually tested, and no claim is made that the historical real-world lag is solved.
+- Coverage remains local Chromium/headless/SwiftShader rather than physical-device, Safari, Firefox, field telemetry, or dedicated screen-reader testing.
+- No merge, deployment, or later-phase work is part of this repair closure.
+- Automated PASS is not human ACCEPT. The package returns to the human reviewer for the next Phase R disposition.
