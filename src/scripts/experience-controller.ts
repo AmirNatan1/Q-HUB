@@ -1,4 +1,14 @@
-import type { ExperiencePhase } from "@/content/homepage";
+import {
+  experiencePhases,
+  type ExperiencePhase,
+} from "@/content/experience";
+
+interface RuntimeFieldEngine {
+  destroy: () => void;
+  setPhase: (phase: ExperiencePhase) => void;
+  setPointer: (x: number, y: number) => void;
+  setVisible: (visible: boolean) => void;
+}
 
 const root = document.documentElement;
 const sections = Array.from(
@@ -7,39 +17,24 @@ const sections = Array.from(
 const phaseLinks = Array.from(
   document.querySelectorAll<HTMLAnchorElement>("[data-phase-link]"),
 );
-const stageStatus = document.querySelector<HTMLElement>("[data-stage-status]");
 const canvas = document.querySelector<HTMLCanvasElement>("[data-signal-canvas]");
-const documentaryVideos = Array.from(
-  document.querySelectorAll<HTMLVideoElement>("[data-documentary-video]"),
-);
-
-const phases: ExperiencePhase[] = [
-  "signal",
-  "aperture",
-  "need",
-  "find",
-  "test",
-  "prove",
-];
-
-const statusByPhase: Record<ExperiencePhase, string> = {
-  signal: "ABSTRACTION / ACTIVE",
-  aperture: "FIELD / REVEALING",
-  need: "CONSTRAINT / APPLIED",
-  find: "SEARCH / CONVERGING",
-  test: "FIELD / CONTACT",
-  prove: "EVIDENCE / RESOLVED",
-};
-
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const finePointerQuery = window.matchMedia("(pointer: fine)");
 const modeParameters = new URLSearchParams(window.location.search);
 const webglDisabled = modeParameters.get("webgl") === "off";
 const reducedMotionOverride = modeParameters.get("motion") === "reduce";
-let controllerFrame = 0;
+const realtimePhases = new Set<ExperiencePhase>([
+  "presence",
+  "startup",
+  "method",
+]);
+
+let storyFrame = 0;
+let pointerFrame = 0;
 let activeIndex = -1;
-let engineDestroy: (() => void) | undefined;
+let engine: RuntimeFieldEngine | undefined;
 let engineLoadPromise: Promise<void> | undefined;
+let latestPointer = { x: 0.68, y: 0.46 };
 
 root.dataset.js = "true";
 root.dataset.inputMode = finePointerQuery.matches ? "pointer" : "touch-scroll";
@@ -57,100 +52,99 @@ function interpolate(start: number, end: number, progress: number): number {
   return start + (end - start) * clamp(progress);
 }
 
-function smoothstep(start: number, end: number, value: number): number {
-  const progress = clamp((value - start) / Math.max(end - start, Number.EPSILON));
-  return progress * progress * (3 - 2 * progress);
-}
-
 function phaseFromSection(section: HTMLElement): ExperiencePhase {
   const candidate = section.dataset.experiencePhase;
-  return phases.includes(candidate as ExperiencePhase)
-    ? (candidate as ExperiencePhase)
-    : "signal";
+  return experiencePhases.includes(candidate as ExperiencePhase)
+    ? candidate as ExperiencePhase
+    : "presence";
 }
 
-function prepareDocumentaryVideo(
-  video: HTMLVideoElement,
-  includeMotion: boolean,
-): void {
-  const poster = video.dataset.poster;
-  if (poster && !video.poster) video.poster = poster;
-  if (!includeMotion || video.dataset.mediaLoaded === "true") return;
+function setSubstates(phase: ExperiencePhase, local: number): void {
+  const presenceSection = document.querySelector<HTMLElement>(
+    '[data-experience-phase="presence"]',
+  );
+  if (presenceSection) {
+    presenceSection.dataset.presenceState = local >= 0.42 && phase === "presence"
+      ? "resolved"
+      : "origin";
+  }
 
-  const source = video.querySelector<HTMLSourceElement>("source[data-src]");
-  const sourcePath = source?.dataset.src;
-  if (!source || !sourcePath) return;
-
-  source.src = sourcePath;
-  video.dataset.mediaLoaded = "true";
-  video.load();
-}
-
-function syncDocumentaryMedia(
-  phase: ExperiencePhase,
-  localProgress: number,
-): void {
-  const reduced = reducedMotionEnabled();
-
-  documentaryVideos.forEach((video) => {
-    const mediaPhase = video.dataset.mediaPhase as ExperiencePhase | undefined;
-    const nearAperture =
-      mediaPhase === "aperture" && phase === "signal" && localProgress >= 0.72;
-    const nearTest =
-      mediaPhase === "test" && phase === "find" && localProgress >= 0.62;
-    const shouldPrepare = mediaPhase === phase || nearAperture || nearTest;
-
-    video.muted = true;
-    video.loop = !reduced;
-    if (shouldPrepare) prepareDocumentaryVideo(video, !reduced);
-
-    if (!reduced && mediaPhase === phase) {
-      void video.play().catch(() => undefined);
+  const accessSection = document.querySelector<HTMLElement>(
+    '[data-experience-phase="access"]',
+  );
+  if (accessSection && phase === "access") {
+    const state = local < 0.26 ? "opening" : local < 0.64 ? "strategic" : "founding";
+    accessSection.dataset.partnerState = state;
+    const strategicIds = ["vdl-group", "hyundai-motor-group", "bazan-group"];
+    const foundingIds = ["taavura-livnat-group", "talcar"];
+    if (state === "opening") {
+      delete root.dataset.partnerFocus;
+    } else if (state === "strategic") {
+      const index = Math.min(
+        strategicIds.length - 1,
+        Math.floor(((local - 0.26) / 0.38) * strategicIds.length),
+      );
+      root.dataset.partnerFocus = strategicIds[index] ?? strategicIds[0] ?? "vdl-group";
     } else {
-      video.pause();
+      const index = Math.min(
+        foundingIds.length - 1,
+        Math.floor(((local - 0.64) / 0.36) * foundingIds.length),
+      );
+      root.dataset.partnerFocus = foundingIds[index] ?? foundingIds[0] ?? "taavura-livnat-group";
     }
-  });
+  } else if (phase !== "access") {
+    delete root.dataset.partnerFocus;
+  }
 
-  root.dataset.mediaMode = reduced ? "static-posters" : "native-video";
+  const startupSection = document.querySelector<HTMLElement>(
+    '[data-experience-phase="startup"]',
+  );
+  if (startupSection && phase === "startup") {
+    const state = local < 0.3 ? "outside" : local < 0.64 ? "threshold" : "field";
+    startupSection.dataset.crossingState = state;
+    root.dataset.crossingState = state;
+  } else if (phase !== "startup") {
+    delete root.dataset.crossingState;
+  }
+
+  const methodSection = document.querySelector<HTMLElement>(
+    '[data-experience-phase="method"]',
+  );
+  if (methodSection && phase === "method") {
+    const state = local < 0.34 ? "find" : local < 0.68 ? "test" : "prove";
+    methodSection.dataset.methodState = state;
+    root.dataset.methodState = state;
+  } else if (phase !== "method") {
+    delete root.dataset.methodState;
+  }
 }
 
 function setActivePhase(index: number): void {
-  if (index === activeIndex || !sections[index]) return;
-
-  activeIndex = index;
   const activeSection = sections[index];
   if (!activeSection) return;
   const phase = phaseFromSection(activeSection);
 
-  root.dataset.activePhase = phase;
-  root.style.setProperty("--phase-index", String(index));
-  sections.forEach((section, sectionIndex) => {
-    section.toggleAttribute("data-active", sectionIndex === index);
-  });
-  phaseLinks.forEach((link) => {
-    if (link.dataset.phaseLink === phase) {
-      link.setAttribute("aria-current", "step");
-    } else {
-      link.removeAttribute("aria-current");
-    }
-  });
-
-  if (stageStatus) stageStatus.textContent = statusByPhase[phase];
-  window.dispatchEvent(
-    new CustomEvent("qhub:phasechange", { detail: { phase, index } }),
-  );
-
-  if (
-    finePointerQuery.matches &&
-    (phase === "aperture" || phase === "find") &&
-    !reducedMotionEnabled()
-  ) {
-    void ensureFieldEngine();
+  if (index !== activeIndex) {
+    activeIndex = index;
+    root.dataset.activePhase = phase;
+    sections.forEach((section, sectionIndex) => {
+      section.toggleAttribute("data-active", sectionIndex === index);
+    });
+    phaseLinks.forEach((link) => {
+      if (link.dataset.phaseLink === phase) link.setAttribute("aria-current", "step");
+      else link.removeAttribute("aria-current");
+    });
+    window.dispatchEvent(
+      new CustomEvent("qhub:phasechange", { detail: { phase, index } }),
+    );
   }
+
+  engine?.setPhase(phase);
+  engine?.setVisible(!document.hidden && realtimePhases.has(phase));
 }
 
 function updateStoryState(): void {
-  controllerFrame = 0;
+  storyFrame = 0;
   const viewportHeight = Math.max(window.innerHeight, 1);
   const marker = viewportHeight * 0.48;
   let nearestIndex = 0;
@@ -163,7 +157,6 @@ function updateStoryState(): void {
       nearestDistance = centerDistance;
       nearestIndex = index;
     }
-
     const localProgress = clamp(
       (marker - bounds.top) / Math.max(bounds.height, viewportHeight),
     );
@@ -171,123 +164,87 @@ function updateStoryState(): void {
   });
 
   setActivePhase(nearestIndex);
-
   const activeSection = sections[nearestIndex];
   if (!activeSection) return;
   const bounds = activeSection.getBoundingClientRect();
   const local = clamp((marker - bounds.top) / Math.max(bounds.height, viewportHeight));
   const phase = phaseFromSection(activeSection);
   const globalProgress = clamp(
-    (window.scrollY || document.documentElement.scrollTop) /
-      Math.max(document.documentElement.scrollHeight - viewportHeight, 1),
+    (window.scrollY || document.documentElement.scrollTop)
+      / Math.max(document.documentElement.scrollHeight - viewportHeight, 1),
   );
 
-  let apertureOpen = 0.04;
-  if (phase === "signal") apertureOpen = 0.04 + local * 0.1;
-  if (phase === "aperture") apertureOpen = 0.18 + local * 0.78;
-  if (phase === "need") apertureOpen = 0.82 - local * 0.2;
-  if (phase === "find") apertureOpen = 0.58 + local * 0.16;
-  if (phase === "test") apertureOpen = 0.92;
-  if (phase === "prove") apertureOpen = 0.68 - local * 0.3;
-
-  let constraint = 0;
-  if (phase === "need") constraint = 0.25 + local * 0.75;
-  if (phase === "find") constraint = 0.26 - local * 0.16;
-  if (phase === "test") constraint = 0.85;
-  if (phase === "prove") constraint = 0.28;
-
-  const resolution = phase === "prove" ? 0.35 + local * 0.65 : 0;
-
-  let signalStrength = 1;
-  let trajectoryFreedom = 0.95;
-  let fieldExposure = interpolate(0.01, 0.025, local);
+  let signalStrength = 0;
   let selectionFocus = 0;
-  let material = 0.04;
+  let material = 0;
   let settlement = 0;
 
-  if (phase === "aperture") {
-    signalStrength = interpolate(0.72, 0.32, local);
-    trajectoryFreedom = interpolate(0.88, 0.6, local);
-    fieldExposure = interpolate(0.28, 0.96, local);
-    material = fieldExposure;
-  }
-
-  if (phase === "need") {
-    signalStrength = interpolate(0.34, 0.16, local);
-    trajectoryFreedom = interpolate(0.58, 0.2, local);
-    fieldExposure = 0.62;
-    selectionFocus = interpolate(0.05, 0.12, local);
-    material = 0.54;
-  }
-
-  if (phase === "find") {
-    signalStrength = interpolate(0.34, 0.14, local);
-    trajectoryFreedom = interpolate(0.48, 0.08, local);
-    fieldExposure = 0.08;
-    selectionFocus = smoothstep(0.08, 0.88, local);
-    material = 0.08;
-  }
-
-  if (phase === "test") {
-    signalStrength = 0.035;
-    trajectoryFreedom = 0;
-    fieldExposure = 1;
-    selectionFocus = 1;
-    material = 1;
-  }
-
-  if (phase === "prove") {
-    signalStrength = 0;
-    trajectoryFreedom = 0;
-    fieldExposure = 0;
-    selectionFocus = 0;
-    material = 0;
-    settlement = interpolate(0.35, 1, local);
-  }
-
-  if (phase === "find") {
-    root.dataset.findStep = local < 0.33 ? "landscape" : local < 0.67 ? "adjacency" : "selection";
-  } else {
-    delete root.dataset.findStep;
+  if (phase === "presence") {
+    signalStrength = interpolate(1, 0.58, local);
+    selectionFocus = interpolate(0.05, 0.46, local);
+  } else if (phase === "access") {
+    signalStrength = 0.22;
+    selectionFocus = interpolate(0.25, 0.72, local);
+    material = 0.28;
+  } else if (phase === "startup") {
+    signalStrength = interpolate(0.54, 0.18, local);
+    selectionFocus = interpolate(0.32, 1, local);
+    material = interpolate(0.08, 1, local);
+  } else if (phase === "method") {
+    signalStrength = interpolate(0.48, 0.04, local);
+    selectionFocus = local < 0.68 ? interpolate(0.18, 1, local / 0.68) : 1;
+    material = local < 0.34 ? 0.06 : local < 0.68 ? 0.84 : 0.12;
+    settlement = local >= 0.68 ? interpolate(0.2, 1, (local - 0.68) / 0.32) : 0;
+  } else if (phase === "activity") {
+    signalStrength = 0.2;
+    selectionFocus = 0.52;
+    material = 0.34;
+  } else if (phase === "evidence") {
+    settlement = 1;
   }
 
   root.style.setProperty("--story-progress", globalProgress.toFixed(4));
   root.style.setProperty("--active-progress", local.toFixed(4));
-  root.style.setProperty("--aperture-open", apertureOpen.toFixed(4));
-  root.style.setProperty("--constraint", constraint.toFixed(4));
-  root.style.setProperty("--resolution", resolution.toFixed(4));
-  root.style.setProperty("--material", material.toFixed(4));
-  root.style.setProperty("--field-exposure", fieldExposure.toFixed(4));
   root.style.setProperty("--signal-strength", signalStrength.toFixed(4));
-  root.style.setProperty("--trajectory-freedom", trajectoryFreedom.toFixed(4));
   root.style.setProperty("--selection-focus", selectionFocus.toFixed(4));
+  root.style.setProperty("--material", material.toFixed(4));
   root.style.setProperty("--settlement", settlement.toFixed(4));
-  syncDocumentaryMedia(phase, local);
+  setSubstates(phase, local);
 }
 
 function queueStoryUpdate(): void {
-  if (controllerFrame) return;
-  controllerFrame = window.requestAnimationFrame(updateStoryState);
+  if (!storyFrame) storyFrame = window.requestAnimationFrame(updateStoryState);
+}
+
+function applyPointer(): void {
+  pointerFrame = 0;
+  const { x, y } = latestPointer;
+  root.style.setProperty("--pointer-x", x.toFixed(4));
+  root.style.setProperty("--pointer-y", y.toFixed(4));
+  root.style.setProperty("--pointer-shift-x", `${((x - 0.5) * 24).toFixed(2)}px`);
+  root.style.setProperty("--pointer-shift-y", `${((y - 0.5) * 18).toFixed(2)}px`);
+  engine?.setPointer(x, y);
 }
 
 function updatePointer(event: PointerEvent): void {
   if (!finePointerQuery.matches || reducedMotionEnabled()) return;
-  const x = clamp(event.clientX / Math.max(window.innerWidth, 1));
-  const y = clamp(event.clientY / Math.max(window.innerHeight, 1));
-  root.style.setProperty("--pointer-x", x.toFixed(4));
-  root.style.setProperty("--pointer-y", y.toFixed(4));
-  root.style.setProperty("--pointer-shift-x", `${((x - 0.5) * 34).toFixed(2)}px`);
-  root.style.setProperty("--pointer-shift-y", `${((y - 0.5) * 24).toFixed(2)}px`);
-  void ensureFieldEngine();
+  const activePhase = root.dataset.activePhase as ExperiencePhase | undefined;
+  if (!activePhase || !realtimePhases.has(activePhase)) return;
+  latestPointer = {
+    x: clamp(event.clientX / Math.max(window.innerWidth, 1)),
+    y: clamp(event.clientY / Math.max(window.innerHeight, 1)),
+  };
+  if (!pointerFrame) pointerFrame = window.requestAnimationFrame(applyPointer);
+  void ensureFieldEngine(activePhase);
 }
 
-async function loadFieldEngine(): Promise<void> {
-  if (!canvas || webglDisabled || reducedMotionEnabled()) return;
-
+async function loadFieldEngine(initialPhase: ExperiencePhase): Promise<void> {
+  if (!canvas || webglDisabled || reducedMotionEnabled() || !finePointerQuery.matches) return;
   try {
     const { startFieldEngine } = await import("./field-engine");
-    const engine = startFieldEngine(canvas);
-    engineDestroy = engine.destroy;
+    engine = startFieldEngine(canvas, initialPhase);
+    engine.setPointer(latestPointer.x, latestPointer.y);
+    engine.setVisible(!document.hidden && realtimePhases.has(initialPhase));
     root.dataset.renderMode = "webgl-enhanced";
   } catch {
     root.dataset.renderMode = "no-webgl-fallback";
@@ -295,53 +252,69 @@ async function loadFieldEngine(): Promise<void> {
   }
 }
 
-function ensureFieldEngine(): Promise<void> {
-  if (engineDestroy || webglDisabled || reducedMotionEnabled() || !canvas) {
+function ensureFieldEngine(phase: ExperiencePhase): Promise<void> {
+  if (
+    engine
+    || webglDisabled
+    || reducedMotionEnabled()
+    || !finePointerQuery.matches
+    || !canvas
+    || !realtimePhases.has(phase)
+  ) {
     return Promise.resolve();
   }
-  engineLoadPromise ??= loadFieldEngine();
+  engineLoadPromise ??= loadFieldEngine(phase);
   return engineLoadPromise;
 }
 
 function initializeMode(): void {
-  engineDestroy?.();
-  engineDestroy = undefined;
+  engine?.destroy();
+  engine = undefined;
   engineLoadPromise = undefined;
-
   if (reducedMotionEnabled()) {
     root.dataset.renderMode = "reduced-motion";
-    return;
-  }
-
-  if (webglDisabled) {
+  } else if (webglDisabled) {
     root.dataset.renderMode = "no-webgl-fallback";
-    return;
+  } else {
+    root.dataset.renderMode = "dom-fallback-ready";
   }
+}
 
-  // The essential hero is complete in DOM/CSS. Realtime enhancement starts on
-  // intentional pointer exploration or when scrolling reaches APERTURE/FIND.
-  root.dataset.renderMode = "dom-fallback-ready";
+function handleVisibility(): void {
+  const phase = root.dataset.activePhase as ExperiencePhase | undefined;
+  engine?.setVisible(Boolean(phase && !document.hidden && realtimePhases.has(phase)));
+  if (!document.hidden) queueStoryUpdate();
+}
+
+function destroy(): void {
+  if (storyFrame) window.cancelAnimationFrame(storyFrame);
+  if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
+  engine?.destroy();
+  engine = undefined;
 }
 
 window.addEventListener("scroll", queueStoryUpdate, { passive: true });
 window.addEventListener("resize", queueStoryUpdate, { passive: true });
 window.addEventListener("pointermove", updatePointer, { passive: true });
 window.addEventListener("pageshow", queueStoryUpdate, { passive: true });
+window.addEventListener("pagehide", destroy, { once: true });
+document.addEventListener("visibilitychange", handleVisibility);
 reducedMotionQuery.addEventListener("change", () => {
   initializeMode();
   queueStoryUpdate();
 });
 finePointerQuery.addEventListener("change", () => {
   root.dataset.inputMode = finePointerQuery.matches ? "pointer" : "touch-scroll";
+  if (!finePointerQuery.matches) initializeMode();
 });
 
 phaseLinks.forEach((link) => {
   link.addEventListener("click", () => {
     const phase = link.dataset.phaseLink as ExperiencePhase | undefined;
-    const index = phase ? phases.indexOf(phase) : -1;
+    const index = phase ? experiencePhases.indexOf(phase) : -1;
     if (index >= 0) setActivePhase(index);
   });
 });
 
-updateStoryState();
 initializeMode();
+updateStoryState();

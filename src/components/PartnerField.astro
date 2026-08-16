@@ -1,0 +1,62 @@
+---
+import {
+  foundingPartners,
+  strategicPartners,
+} from "@/content/strategic";
+---
+
+<div class="partner-field" data-partner-field>
+  <section class="partner-territory partner-territory--strategic" aria-labelledby="strategic-partners-title">
+    <h3 id="strategic-partners-title">Strategic Partners</h3>
+    <ul>
+      {strategicPartners.map((partner, index) => (
+        <li
+          class={`partner-plane partner-plane--strategic partner-plane--${index + 1}`}
+          data-partner-id={partner.id}
+          data-partner-relationship="strategic-partner"
+        >
+          <span class="partner-plane__relationship">Strategic Partner</span>
+          {partner.logo && (
+            <img
+              src={partner.logo.src}
+              width={partner.logo.width}
+              height={partner.logo.height}
+              alt=""
+              loading="eager"
+              decoding="async"
+              aria-hidden="true"
+            />
+          )}
+          <strong>{partner.name}</strong>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="partner-territory partner-territory--founding" aria-labelledby="founding-partners-title">
+    <h3 id="founding-partners-title">Founding Partners</h3>
+    <ul>
+      {foundingPartners.map((partner, index) => (
+        <li
+          class={`partner-plane partner-plane--founding partner-plane--${index + 1}`}
+          data-partner-id={partner.id}
+          data-partner-relationship="founding-partner"
+        >
+          <span class="partner-plane__relationship">Founding Partner</span>
+          {partner.logo && (
+            <img
+              src={partner.logo.src}
+              width={partner.logo.width}
+              height={partner.logo.height}
+              alt=""
+              loading="eager"
+              decoding="async"
+              aria-hidden="true"
+            />
+          )}
+          <strong>{partner.name}</strong>
+        </li>
+      ))}
+    </ul>
+  </section>
+</div>

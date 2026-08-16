@@ -1,299 +1,191 @@
 ---
-import ExperienceStage from "@/components/ExperienceStage.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import PartnerField from "@/components/PartnerField.astro";
+import QuantumStage from "@/components/QuantumStage.astro";
 import {
-  findSelection,
-  findSequence,
+  activitySignals,
   homepageActs,
-  homepageProofFields,
+  methodStates,
 } from "@/content/homepage";
-import { maradinProofRecord } from "@/content/proof";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import "@/styles/phase-r.css";
 
-const [signal, aperture, need, find, test, prove] = homepageActs;
-if (!signal || !aperture || !need || !find || !test || !prove) {
-  throw new Error("The six approved homepage acts are required.");
-}
+const [presence, access, startup, method, activity, evidence, action] = homepageActs;
 
-const aperturePoster = maradinProofRecord.media.find(
-  (asset) => asset.id === "maradin-field-aperture-poster",
-);
-const testFilm = maradinProofRecord.media.find(
-  (asset) => asset.id === "maradin-test-contact-video",
-);
-const proveFrame = maradinProofRecord.media.find(
-  (asset) => asset.id === "maradin-prove-field-frame",
-);
-const supportingStill = maradinProofRecord.media.find(
-  (asset) => asset.id === "maradin-real-field-still",
-);
-const { startup, operatingOrganization, program } = maradinProofRecord;
-
-if (
-  !aperturePoster ||
-  !testFilm ||
-  !proveFrame ||
-  !supportingStill ||
-  !startup ||
-  !operatingOrganization ||
-  !program
-) {
-  throw new Error("The approved Maradin homepage record is incomplete.");
+if (!presence || !access || !startup || !method || !activity || !evidence || !action) {
+  throw new Error("The seven approved Phase R homepage acts are required.");
 }
 ---
 
 <BaseLayout
-  title="Quantum Hub"
-  description="Quantum Hub turns industrial needs into field evidence through technology search, practical testing, and proof."
+  title="Where Industry Meets Technology"
+  description="Quantum Hub connects technology with industrial partners, real operating environments, and a path from need to field evidence."
+  initialPhase="presence"
 >
-  <ExperienceStage />
+  <QuantumStage />
 
-  <nav class="phase-index" aria-label="Experience phases">
-    <ol>
-      {homepageActs.map((act) => (
-        <li>
-          <a href={`#${act.phase}`} data-phase-link={act.phase}>
-            <span>{act.act}</span>
-            <span>{act.label}</span>
-          </a>
-        </li>
-      ))}
-    </ol>
-  </nav>
-
-  <main id="main-content" class="experience" data-experience>
+  <main id="main-content" class="phase-r-homepage" data-experience>
     <section
-      id="signal"
-      class="act act--signal"
-      data-experience-phase="signal"
-      aria-labelledby="signal-title"
+      id="presence"
+      class="phase-r-act phase-r-act--presence"
+      data-experience-phase="presence"
+      data-presence-state="origin"
+      aria-labelledby="presence-title"
     >
-      <div class="act__inner act__inner--signal">
-        <p class="act-number"><span>Act</span> {signal.act} / {signal.label}</p>
-        <h1 id="signal-title" class="display display--hero">
-          <span>{signal.title[0]}</span>
-          <span>{signal.title[1]}</span>
+      <div class="phase-r-act__sticky phase-r-presence">
+        <h1 id="presence-title" class="phase-r-display phase-r-display--presence" data-stage-keepout>
+          <span>{presence.title[0]?.split(" ")[0]}</span>
+          <span>{presence.title[0]?.split(" ")[1]}</span>
         </h1>
-        <div class="signal-footer">
-          <p class="phase-copy">
-            <span>Operating logic</span>
-            {signal.supporting}
-          </p>
-          <a class="scroll-cue" href="#aperture">
-            <span>Trace the signal</span>
-            <span aria-hidden="true">↓</span>
-          </a>
-        </div>
+        <p class="phase-r-presence__resolve">{presence.supporting}</p>
+        <a class="phase-r-scroll-cue" href="#access">
+          <span>Enter Quantum</span>
+          <span aria-hidden="true">↓</span>
+        </a>
       </div>
     </section>
 
     <section
-      id="aperture"
-      class="act act--aperture"
-      data-experience-phase="aperture"
-      data-approved-media="maradin-field-aperture"
-      aria-labelledby="aperture-title"
+      id="access"
+      class="phase-r-act phase-r-act--access"
+      data-experience-phase="access"
+      data-partner-state="opening"
+      aria-labelledby="access-title"
     >
-      <div class="act__inner act__inner--aperture">
-        <div class="aperture-copy">
-          <p class="act-number"><span>Act</span> {aperture.act} / {aperture.label}</p>
-          <h2 id="aperture-title" class="display display--aperture">
-            <span>{aperture.title[0]}</span>
-            <span>{aperture.title[1]}</span>
-          </h2>
-          <p class="phase-copy phase-copy--plate">
-            <span>Field record / SPARK</span>
-            {aperture.supporting}
-          </p>
-        </div>
-        <div class="aperture-readout" aria-label="Field aperture transition">
-          <p><span>Layer 01</span> Abstract signal</p>
-          <p><span>Layer 02</span> Maradin field test</p>
-          <p><span>State</span> Real environment emerging</p>
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="need"
-      class="act act--need"
-      data-experience-phase="need"
-      aria-labelledby="need-title"
-    >
-      <div class="act__inner act__inner--need">
-        <p class="act-number"><span>Act</span> {need.act} / {need.label}</p>
-        <div class="need-composition">
-          <p class="need-label">Field condition</p>
-          <h2 id="need-title" class="display display--need">
-            <span>{need.title[0]}</span>
-            <span>{need.title[1]}</span>
-          </h2>
-          <p class="phase-copy phase-copy--vertical">
-            <span>Field condition</span>
-            {need.supporting}
-          </p>
-        </div>
-        <dl class="need-terms">
-          <div><dt>01</dt><dd>Visual clarity</dd></div>
-          <div><dt>02</dt><dd>Nearby road users</dd></div>
-          <div><dt>03</dt><dd>Real conditions</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section
-      id="find"
-      class="act act--find"
-      data-experience-phase="find"
-      aria-labelledby="find-title"
-    >
-      <div class="act__inner act__inner--find">
-        <header class="find-heading">
-          <p class="act-number"><span>Act</span> {find.act} / {find.label}</p>
-          <h2 id="find-title" class="display display--find">
-            <span>{find.title[0]}</span>
-            <span>{find.title[1]}</span>
-          </h2>
-          <p class="phase-copy">
-            <span>Controlled search</span>
-            {find.supporting}
-          </p>
-        </header>
-
-        <ol class="find-sequence">
-          {findSequence.map((item, index) => (
-            <li
-              class:list={{ "is-selected": index === findSequence.length - 1 }}
-              data-find-step={["landscape", "adjacency", "selection"][index]}
-            >
-              <span>{item.index}</span>
-              <strong>{item.label}</strong>
-              <small>{item.description}</small>
-            </li>
-          ))}
-        </ol>
-
-        <aside class="find-selection" aria-label="Selected technology">
-          <p>Selected technology</p>
-          <strong>{findSelection.startup?.name}</strong>
-          <span>{findSelection.method}</span>
-          <span>{findSelection.title}</span>
-        </aside>
-      </div>
-    </section>
-
-    <section
-      id="test"
-      class="act act--test"
-      data-experience-phase="test"
-      aria-labelledby="test-title"
-    >
-      <div class="act__inner act__inner--test">
-        <header class="test-heading">
-          <p class="act-number"><span>Act</span> {test.act} / {test.label}</p>
-          <h2 id="test-title" class="display display--test">
-            <span>{test.title[0]}</span>
-            <span>{test.title[1]}</span>
+      <div class="phase-r-act__sticky phase-r-access">
+        <header class="phase-r-access__heading">
+          <h2 id="access-title" class="phase-r-display phase-r-display--access" data-stage-keepout>
+            {access.title[0]}
           </h2>
         </header>
-
-        <div class="test-boundary" data-approved-media="maradin-test-contact">
-          <video
-            class="test-boundary__media"
-            data-documentary-video
-            data-media-phase="test"
-            data-poster={proveFrame.src}
-            muted
-            playsinline
-            loop
-            preload="none"
-            tabindex="-1"
-            aria-hidden="true"
-          >
-            <source data-src={testFilm.src} type="video/mp4" />
-          </video>
-          <div class="test-boundary__content" data-test-metadata>
-            <p class="test-boundary__identifier">Field test / Maradin × Hyundai CRADLE</p>
-            <dl data-test-facts>
-              <div><dt>Mount</dt><dd>Vehicle-mounted field test</dd></div>
-              <div><dt>Positions</dt><dd>Multiple projector positions</dd></div>
-              <div><dt>Conditions</dt><dd>Road surfaces, light and weather</dd></div>
-              <div><dt>Scenarios</dt><dd>More than 60 real-world scenarios</dd></div>
-            </dl>
-          </div>
-        </div>
+        <PartnerField />
       </div>
     </section>
 
     <section
-      id="prove"
-      class="act act--prove"
-      data-experience-phase="prove"
-      aria-labelledby="prove-title"
+      id="startup"
+      class="phase-r-act phase-r-act--startup"
+      data-experience-phase="startup"
+      data-crossing-state="outside"
+      aria-labelledby="startup-title"
     >
-      <div class="act__inner act__inner--prove">
-        <header class="prove-heading">
-          <p class="act-number"><span>Act</span> {prove.act} / {prove.label}</p>
-          <h2 id="prove-title" class="display display--prove">
-            <span>{prove.title[0]}</span>
-            <span>{prove.title[1]}</span>
+      <div class="phase-r-act__sticky phase-r-startup">
+        <div class="field-crossing" data-field-crossing aria-hidden="true">
+          <span class="field-crossing__signal"></span>
+          <span class="field-crossing__threshold"></span>
+          <span class="field-crossing__field"></span>
+        </div>
+        <div class="phase-r-startup__copy">
+          <h2 id="startup-title" class="phase-r-display phase-r-display--startup" data-stage-keepout>
+            {startup.title.map((line) => <span>{line}</span>)}
           </h2>
-          <p>{prove.supporting}</p>
-        </header>
-
-        <article class="proof-record" data-proof-record={maradinProofRecord.slug}>
-          <header>
-            <div>
-              <p>Proof / field record</p>
-              <h3>{maradinProofRecord.title}</h3>
-            </div>
-            <span>{startup.name} / {program.name}</span>
-          </header>
-
-          <figure class="proof-record__media">
-            <img
-              class="proof-record__image proof-record__image--primary"
-              data-evidence-subject="projected-stop-symbol"
-              src={proveFrame.src}
-              alt={proveFrame.alt}
-              width={proveFrame.width}
-              height={proveFrame.height}
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              class="proof-record__image proof-record__image--supporting"
-              data-evidence-subject="field-vehicle"
-              src={supportingStill.src}
-              alt={supportingStill.alt}
-              width={supportingStill.width}
-              height={supportingStill.height}
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>Field evidence / documentary stills</figcaption>
-          </figure>
-
-          <dl>
-            {homepageProofFields.map((field, index) => (
-              <div>
-                <dt><span>{String(index + 1).padStart(2, "0")}</span>{field.label}</dt>
-                <dd>{field.value}</dd>
-              </div>
-            ))}
-          </dl>
-          <footer>
-            <p>{operatingOrganization.name} / {program.name} / comparative field evidence</p>
+          <p>{startup.supporting}</p>
+          {startup.action && (
             <a
-              href={`/proof/${maradinProofRecord.slug}/`}
-              data-proof-handoff
-            >Open field record <span aria-hidden="true">↗</span></a>
-          </footer>
-        </article>
+              class="phase-r-action"
+              href={startup.action.href}
+              data-startup-action
+            >
+              {startup.action.label}
+              <span aria-hidden="true">↗</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
 
-        <footer class="experience-end">
-          <p>Find / Test / Prove</p>
-          <p>Field evidence makes the next decision possible.</p>
-        </footer>
+    <section
+      id="method"
+      class="phase-r-act phase-r-act--method"
+      data-experience-phase="method"
+      data-method-state="find"
+      aria-labelledby="method-title"
+    >
+      <div class="phase-r-act__sticky phase-r-method">
+        <div class="phase-r-method__copy">
+          <h2 id="method-title" class="phase-r-display phase-r-display--method" data-stage-keepout>
+            {methodStates.map((state) => (
+              <span data-method-word={state}>{state}.</span>
+            ))}
+          </h2>
+          <p>{method.supporting}</p>
+        </div>
+        <div class="method-instrument" aria-hidden="true">
+          <span class="method-instrument__wide"></span>
+          <span class="method-instrument__contact"></span>
+          <span class="method-instrument__record"></span>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="activity"
+      class="phase-r-act phase-r-act--activity"
+      data-experience-phase="activity"
+      aria-labelledby="activity-title"
+    >
+      <div class="phase-r-act__sticky phase-r-activity">
+        <h2 id="activity-title" class="phase-r-display phase-r-display--activity" data-stage-keepout>
+          {activity.title[0]}
+        </h2>
+        <ul class="activity-signals" aria-label="Quantum activity">
+          {activitySignals.map((signal, index) => (
+            <li style={`--activity-index: ${index}`}>{signal}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section
+      id="evidence"
+      class="phase-r-act phase-r-act--evidence"
+      data-experience-phase="evidence"
+      aria-labelledby="evidence-title"
+    >
+      <div class="phase-r-act__sticky phase-r-evidence">
+        <div class="phase-r-evidence__index" aria-hidden="true">
+          <span>01</span><span>02</span><span>03</span><span>04</span>
+        </div>
+        <div class="phase-r-evidence__copy">
+          <h2 id="evidence-title" class="phase-r-display phase-r-display--evidence" data-stage-keepout>
+            {evidence.title.map((line) => <span>{line}</span>)}
+          </h2>
+          {evidence.action && (
+            <a
+              class="phase-r-action phase-r-action--light"
+              href={evidence.action.href}
+              data-proof-handoff
+            >
+              {evidence.action.label}
+              <span aria-hidden="true">↗</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="action"
+      class="phase-r-act phase-r-act--action"
+      data-experience-phase="action"
+      aria-labelledby="action-title"
+    >
+      <div class="phase-r-act__sticky phase-r-ending">
+        <div class="phase-r-ending__copy">
+          <h2 id="action-title" class="phase-r-display phase-r-display--ending" data-stage-keepout>
+            {action.title.map((line) => <span>{line}</span>)}
+          </h2>
+          {action.action && (
+            <a
+              class="phase-r-action phase-r-action--primary"
+              href={action.action.href}
+              data-work-with-quantum
+            >
+              {action.action.label}
+              <span aria-hidden="true">↗</span>
+            </a>
+          )}
+        </div>
+        <p class="phase-r-ending__mark">Quantum Hub</p>
       </div>
     </section>
   </main>

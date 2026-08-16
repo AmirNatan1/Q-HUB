@@ -7,13 +7,15 @@ interface Props {
   description: string;
   theme?: "dark" | "light";
   noindex?: boolean;
+  initialPhase?: string;
 }
 
 const {
   title,
   description,
   theme = "dark",
-  noindex = false
+  noindex = false,
+  initialPhase,
 } = Astro.props;
 
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
@@ -21,7 +23,7 @@ const pageTitle = title === "Quantum Hub" ? title : `${title} — Quantum Hub`;
 ---
 
 <!doctype html>
-<html lang="en" data-theme={theme} data-active-phase="signal" data-render-mode="static">
+<html lang="en" data-theme={theme} data-active-phase={initialPhase} data-render-mode="static">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

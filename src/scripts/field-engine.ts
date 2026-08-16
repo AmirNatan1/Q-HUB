@@ -1,5 +1,10 @@
+import type { ExperiencePhase } from "@/content/experience";
+
 type FieldEngine = {
   destroy: () => void;
+  setPhase: (phase: ExperiencePhase) => void;
+  setPointer: (x: number, y: number) => void;
+  setVisible: (visible: boolean) => void;
 };
 
 const vertexSource = `
@@ -224,7 +229,10 @@ function uniform(
   return location;
 }
 
-export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
+export function startFieldEngine(
+  canvas: HTMLCanvasElement,
+  initialPhase: ExperiencePhase,
+): FieldEngine {
   const context = canvas.getContext("webgl", {
     alpha: true,
     antialias: false,
@@ -266,40 +274,43 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
   gl.enableVertexAttribArray(positionLocation);
   gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
 
-  const phaseIndex: Record<string, number> = {
-    signal: 0,
-    aperture: 1,
-    need: 2,
-    find: 3,
-    test: 4,
-    prove: 5,
+  const phaseIndex: Record<ExperiencePhase, number> = {
+    presence: 0,
+    access: 1,
+    startup: 2,
+    method: 3,
+    activity: 3,
+    evidence: 5,
+    action: 5,
   };
   const pointerTarget = { x: 0.64, y: 0.44 };
   const pointerCurrent = { ...pointerTarget };
   const startedAt = performance.now();
   let animationFrame = 0;
   let destroyed = false;
-  let drawContinuously = true;
+  let activePhase = initialPhase;
+  let visible = true;
+  let drawContinuously = initialPhase === "presence";
   let currentPixelRatio = 1;
   let keepoutPhase = "";
   let keepoutDirty = true;
   let keepout = { x: -2, y: -2, halfWidth: 0, halfHeight: 0 };
 
   const visualDefaults: Record<
-    string,
+    ExperiencePhase,
     { signal: number; freedom: number; selection: number; settlement: number }
   > = {
-    signal: { signal: 1, freedom: 0.95, selection: 0, settlement: 0 },
-    aperture: { signal: 0.52, freedom: 0.72, selection: 0, settlement: 0 },
-    need: { signal: 0.24, freedom: 0.34, selection: 0.08, settlement: 0 },
-    find: { signal: 0.24, freedom: 0.24, selection: 0.55, settlement: 0 },
-    test: { signal: 0.035, freedom: 0, selection: 1, settlement: 0 },
-    prove: { signal: 0, freedom: 0, selection: 0, settlement: 1 },
+    presence: { signal: 1, freedom: 0.9, selection: 0.18, settlement: 0 },
+    access: { signal: 0.22, freedom: 0.5, selection: 0.55, settlement: 0 },
+    startup: { signal: 0.38, freedom: 0.34, selection: 0.78, settlement: 0 },
+    method: { signal: 0.2, freedom: 0.18, selection: 1, settlement: 0.45 },
+    activity: { signal: 0.2, freedom: 0.46, selection: 0.52, settlement: 0 },
+    evidence: { signal: 0, freedom: 0, selection: 0, settlement: 1 },
+    action: { signal: 0, freedom: 0, selection: 0, settlement: 1 },
   };
 
   function resize(): void {
-    const mobile = window.matchMedia("(max-width: 48rem)").matches;
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, mobile ? 1 : 1.5);
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.25);
     currentPixelRatio = pixelRatio;
     const width = Math.max(1, Math.round(canvas.clientWidth * pixelRatio));
     const height = Math.max(1, Math.round(canvas.clientHeight * pixelRatio));
@@ -311,15 +322,19 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
     }
   }
 
-  function readCssNumber(name: string, fallback: number): number {
-    const raw = getComputedStyle(document.documentElement).getPropertyValue(name);
+  function readCssNumber(
+    styles: CSSStyleDeclaration,
+    name: string,
+    fallback: number,
+  ): number {
+    const raw = styles.getPropertyValue(name);
     const parsed = Number.parseFloat(raw);
     return Number.isFinite(parsed) ? parsed : fallback;
   }
 
   function updateKeepout(activePhase: string): void {
     const heading = document.querySelector<HTMLElement>(
-      `[data-experience-phase="${activePhase}"] .display`,
+      `[data-experience-phase="${activePhase}"] [data-stage-keepout]`,
     );
     if (!heading) {
       keepout = { x: -2, y: -2, halfWidth: 0, halfHeight: 0 };
@@ -354,25 +369,26 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
 
   function render(now: number): void {
     animationFrame = 0;
-    if (destroyed || document.hidden) return;
-    resize();
+    if (destroyed || document.hidden || !visible) return;
 
     pointerCurrent.x += (pointerTarget.x - pointerCurrent.x) * 0.075;
     pointerCurrent.y += (pointerTarget.y - pointerCurrent.y) * 0.075;
-    const activePhase = document.documentElement.dataset.activePhase ?? "signal";
-    const currentPhaseIndex = phaseIndex[activePhase] ?? 0;
-    const defaults = visualDefaults[activePhase] ?? visualDefaults.signal;
-    if (!defaults) return;
-    const aperture = readCssNumber("--aperture-open", 0.08);
-    const progress = readCssNumber("--active-progress", 0);
-    const signalStrength = readCssNumber("--signal-strength", defaults.signal);
-    const freedom = readCssNumber("--trajectory-freedom", defaults.freedom);
+    const currentPhaseIndex = phaseIndex[activePhase];
+    const defaults = visualDefaults[activePhase];
+    const rootStyles = getComputedStyle(document.documentElement);
+    const progress = readCssNumber(rootStyles, "--active-progress", 0);
+    const aperture = activePhase === "presence"
+      ? 0.12 + progress * 0.18
+      : activePhase === "startup"
+        ? 0.34
+        : 0.1;
+    const signalStrength = readCssNumber(rootStyles, "--signal-strength", defaults.signal);
+    const freedom = defaults.freedom;
     const selectionFallback =
-      activePhase === "find" ? Math.min(1, 0.08 + progress * 1.08) : defaults.selection;
-    const selection = readCssNumber("--selection-focus", selectionFallback);
-    const material = readCssNumber("--material", activePhase === "test" ? 1 : aperture);
-    const settlementFallback = readCssNumber("--resolution", defaults.settlement);
-    const settlement = readCssNumber("--settlement", settlementFallback);
+      activePhase === "method" ? Math.min(1, 0.08 + progress * 1.08) : defaults.selection;
+    const selection = readCssNumber(rootStyles, "--selection-focus", selectionFallback);
+    const material = readCssNumber(rootStyles, "--material", aperture);
+    const settlement = readCssNumber(rootStyles, "--settlement", defaults.settlement);
     if (keepoutDirty || keepoutPhase !== activePhase) updateKeepout(activePhase);
 
     gl.clearColor(0, 0, 0, 0);
@@ -404,23 +420,13 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
   }
 
   function scheduleRender(): void {
-    if (!animationFrame && !destroyed && !document.hidden) {
+    if (!animationFrame && !destroyed && !document.hidden && visible) {
       animationFrame = window.requestAnimationFrame(render);
     }
   }
 
-  function handlePointer(event: PointerEvent): void {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-    pointerTarget.x = event.clientX / Math.max(window.innerWidth, 1);
-    pointerTarget.y = event.clientY / Math.max(window.innerHeight, 1);
-    scheduleRender();
-  }
-
-  function handlePhase(event: Event): void {
-    const customEvent = event as CustomEvent<{ index?: number }>;
-    const index = customEvent.detail?.index ?? 0;
-    keepoutDirty = true;
-    drawContinuously = index === 0 || index === 1 || index === 3;
+  function syncContinuousMode(): void {
+    drawContinuously = visible && activePhase === "presence";
     if (!drawContinuously && animationFrame) {
       window.cancelAnimationFrame(animationFrame);
       animationFrame = 0;
@@ -429,7 +435,7 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
   }
 
   function handleVisibility(): void {
-    if (document.hidden && animationFrame) {
+    if ((document.hidden || !visible) && animationFrame) {
       window.cancelAnimationFrame(animationFrame);
       animationFrame = 0;
     } else {
@@ -437,21 +443,46 @@ export function startFieldEngine(canvas: HTMLCanvasElement): FieldEngine {
     }
   }
 
-  window.addEventListener("resize", scheduleRender, { passive: true });
+  function handleResize(): void {
+    resize();
+    keepoutDirty = true;
+    scheduleRender();
+  }
+
+  resize();
+  window.addEventListener("resize", handleResize, { passive: true });
   window.addEventListener("scroll", scheduleRender, { passive: true });
-  window.addEventListener("pointermove", handlePointer, { passive: true });
-  window.addEventListener("qhub:phasechange", handlePhase);
   document.addEventListener("visibilitychange", handleVisibility);
   scheduleRender();
 
   return {
+    setPhase: (phase) => {
+      if (phase === activePhase) {
+        scheduleRender();
+        return;
+      }
+      activePhase = phase;
+      keepoutDirty = true;
+      syncContinuousMode();
+    },
+    setPointer: (x, y) => {
+      pointerTarget.x = x;
+      pointerTarget.y = y;
+      scheduleRender();
+    },
+    setVisible: (nextVisible) => {
+      if (visible === nextVisible) {
+        scheduleRender();
+        return;
+      }
+      visible = nextVisible;
+      syncContinuousMode();
+    },
     destroy: () => {
       destroyed = true;
       if (animationFrame) window.cancelAnimationFrame(animationFrame);
-      window.removeEventListener("resize", scheduleRender);
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", scheduleRender);
-      window.removeEventListener("pointermove", handlePointer);
-      window.removeEventListener("qhub:phasechange", handlePhase);
       document.removeEventListener("visibilitychange", handleVisibility);
       gl.deleteBuffer(buffer);
       gl.deleteProgram(program);

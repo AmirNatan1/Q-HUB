@@ -54,18 +54,17 @@ const isCurrent = (href: string) =>
 
   <details class="nav-disclosure" open data-nav-disclosure>
     <summary aria-label="Toggle primary navigation">
-      <span class="nav-disclosure__label">Index</span>
+      <span class="nav-disclosure__label">Menu</span>
       <span class="nav-disclosure__glyph" aria-hidden="true"></span>
     </summary>
     <nav aria-label="Primary">
       <ol>
-        {links.map((link, index) => (
+        {links.map((link) => (
           <li>
             <a
               href={link.href}
               aria-current={isCurrent(link.href) ? "page" : undefined}
             >
-              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
               {link.label}
             </a>
           </li>

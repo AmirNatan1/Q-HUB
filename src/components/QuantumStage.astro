@@ -1,0 +1,43 @@
+<div class="quantum-stage" data-quantum-stage aria-hidden="true">
+  <canvas class="quantum-stage__canvas" data-signal-canvas aria-hidden="true"></canvas>
+
+  <svg
+    class="quantum-stage__signal"
+    data-signal-trajectories
+    viewBox="0 0 1600 1000"
+    preserveAspectRatio="xMidYMid slice"
+    aria-hidden="true"
+  >
+    <defs>
+      <linearGradient id="phase-r-signal-fade" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="currentColor" stop-opacity="0" />
+        <stop offset="0.22" stop-color="currentColor" stop-opacity="0.72" />
+        <stop offset="0.74" stop-color="currentColor" stop-opacity="0.9" />
+        <stop offset="1" stop-color="currentColor" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <g class="quantum-stage__paths quantum-stage__paths--field">
+      <path pathLength="1" d="M-120 238 C258 62 548 196 830 132 S1324 72 1720 218" />
+      <path pathLength="1" d="M-80 746 C294 912 572 744 842 824 S1308 932 1710 730" />
+      <path pathLength="1" d="M-120 516 C264 442 554 570 820 492 S1298 360 1710 492" />
+    </g>
+    <g class="quantum-stage__paths quantum-stage__paths--selected">
+      <path pathLength="1" d="M-90 780 C292 720 518 620 790 520 S1110 428 1690 338" />
+      <circle cx="1088" cy="432" r="6" />
+    </g>
+  </svg>
+
+  <div class="quantum-stage__presence">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="quantum-stage__territories">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="quantum-stage__threshold"></div>
+  <div class="quantum-stage__method">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="quantum-stage__evidence">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
