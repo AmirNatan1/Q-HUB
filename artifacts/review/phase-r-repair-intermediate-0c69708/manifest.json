@@ -1,0 +1,2361 @@
+{
+  "schemaVersion": 1,
+  "package": "Q-HUB Phase R human-review evidence",
+  "generatedAt": "2026-08-16T18:57:22.625Z",
+  "source": {
+    "branch": "redirect/quantum-presence-startup-magnet",
+    "expectedBranch": "redirect/quantum-presence-startup-magnet",
+    "candidateSha": "0c69708255f67ae550aaee6719e062062efc8839",
+    "candidateTree": "f2fa3c6218650a748742ba61aff2f486b259a713",
+    "committedAt": "2026-08-16T21:51:02+03:00",
+    "candidateBasis": "explicit-environment-value-equal-to-clean-head",
+    "candidateEnvironmentProvided": true,
+    "workingTreeCleanAtStart": true,
+    "statusPorcelainAtStart": ""
+  },
+  "commands": {
+    "capture": "node scripts/capture-phase-r-evidence.mjs",
+    "build": "npm run build",
+    "preview": "node node_modules/astro/bin/astro.mjs preview --host 127.0.0.1 --port 59341",
+    "buildDurationMs": 28579
+  },
+  "server": {
+    "type": "isolated-astro-production-preview",
+    "baseUrl": "http://127.0.0.1:59341/",
+    "browser": "Chromium",
+    "browserVersion": "151.0.7922.34",
+    "developmentServerAllowed": false,
+    "astroDevToolbarAllowed": false
+  },
+  "contract": {
+    "screenshotCount": 23,
+    "desktopScreenshots": 12,
+    "mobileScreenshots": 7,
+    "accessibilityAndFallbackScreenshots": 4,
+    "journeyVideos": 1,
+    "desktopViewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobileViewport": {
+      "width": 390,
+      "height": 844
+    },
+    "exactOutputFiles": [
+      "desktop-presence-opening.png",
+      "desktop-presence-resolved.png",
+      "desktop-partner-field-opening.png",
+      "desktop-partner-field-strategic.png",
+      "desktop-partner-field-founding.png",
+      "desktop-startup-desire.png",
+      "desktop-method-find.png",
+      "desktop-method-test.png",
+      "desktop-method-prove.png",
+      "desktop-activity.png",
+      "desktop-evidence-handoff.png",
+      "desktop-action-ending.png",
+      "mobile-presence.png",
+      "mobile-partner-field.png",
+      "mobile-startup-desire.png",
+      "mobile-method.png",
+      "mobile-activity.png",
+      "mobile-evidence.png",
+      "mobile-action.png",
+      "reduced-motion-partner-field.png",
+      "no-webgl-method.png",
+      "keyboard-focus-startup-action.png",
+      "forced-colors-homepage.png",
+      "desktop-phase-r-journey.webm",
+      "manifest.json"
+    ],
+    "everyCaptureCandidate": "0c69708255f67ae550aaee6719e062062efc8839"
+  },
+  "historicalEvidenceIntegrity": {
+    "status": "verified-unchanged-before-and-after-atomic-promotion",
+    "policy": "Every pre-existing artifacts/review file outside phase-r is byte-counted and SHA-256 hashed before capture, after capture, and after promotion.",
+    "fileCount": 133,
+    "totalBytes": 68042804,
+    "beforeDigest": "a3e6f488b288711758cb09a51713ada0c5ed9d42cb7c83c5ee61e616a6c275ca",
+    "afterCaptureDigest": "a3e6f488b288711758cb09a51713ada0c5ed9d42cb7c83c5ee61e616a6c275ca",
+    "afterPromotionDigest": "a3e6f488b288711758cb09a51713ada0c5ed9d42cb7c83c5ee61e616a6c275ca",
+    "files": [
+      {
+        "file": "artifacts/review/desktop-aperture.jpg",
+        "bytes": 162596,
+        "sha256": "a5f62fa03588e555ba20e50e6505ecf3c4a5ae98d3e707d645ad26db2ca8e6b1"
+      },
+      {
+        "file": "artifacts/review/desktop-find.jpg",
+        "bytes": 121949,
+        "sha256": "9395cb75c32f90c2829957b171d4aae0c9f73beb10acd8bbc31858073dc496f1"
+      },
+      {
+        "file": "artifacts/review/desktop-need.jpg",
+        "bytes": 118607,
+        "sha256": "adb12e57c2abee2b393478e8c3386289f31f211b6bcf3d8891f687e65f0afa7c"
+      },
+      {
+        "file": "artifacts/review/desktop-prove.jpg",
+        "bytes": 74662,
+        "sha256": "8c1444db37b2174d384c63f4ee1a7e8c2ebc01e2f60c1bb2d678567a4674fa0f"
+      },
+      {
+        "file": "artifacts/review/desktop-signal.jpg",
+        "bytes": 170721,
+        "sha256": "9d7370aba276d0e410c391ba0a45056eff0963fbf4b1837d22648e163dcf0d39"
+      },
+      {
+        "file": "artifacts/review/desktop-test.jpg",
+        "bytes": 141865,
+        "sha256": "1849bcf58287309010be67b192b9dcfbddd7fcd027ed41196643945a46c66bac"
+      },
+      {
+        "file": "artifacts/review/mobile-aperture.jpg",
+        "bytes": 56609,
+        "sha256": "db22b1202164f6fb65f7e5c6c0e780078a67d97942b87e0ce43eda3b6fcdcf60"
+      },
+      {
+        "file": "artifacts/review/mobile-find.jpg",
+        "bytes": 41452,
+        "sha256": "a22b36eff42a20e379783334184d7657d153e03e20a44f61d2aab33a10523ff7"
+      },
+      {
+        "file": "artifacts/review/mobile-need.jpg",
+        "bytes": 46063,
+        "sha256": "3d0686bae7aabc89a09ae31cdaf1846d0bf2c4e3baa6f28f807f06f860ec966e"
+      },
+      {
+        "file": "artifacts/review/mobile-prove.jpg",
+        "bytes": 33336,
+        "sha256": "478eb2ea5dc4dfe22db382f55566acd17e4dd6b5e383030a49a24163e1b3b894"
+      },
+      {
+        "file": "artifacts/review/mobile-signal.jpg",
+        "bytes": 29463,
+        "sha256": "887cb9c5e510d84adde8345b4dcaef066297c8323807530a088706aa96ee10ef"
+      },
+      {
+        "file": "artifacts/review/mobile-test.jpg",
+        "bytes": 49698,
+        "sha256": "ae52a498b7ca834835fd38bab793c119d1643fd7bd4da1ca6fa75443dbae272d"
+      },
+      {
+        "file": "artifacts/review/no-webgl-aperture.jpg",
+        "bytes": 81807,
+        "sha256": "afe33d97a758b7a52ed35b2d09ff9e0682a828073442853aa14139a087ccaf09"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-action-ending.png",
+        "bytes": 400000,
+        "sha256": "142d57754d66c54d3499d68602ba2a12ef032e72f3380b8834fc1e785dde499a"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-activity.png",
+        "bytes": 311027,
+        "sha256": "e41d71e51d2b8370bcfb60143b32d6bd29211bc83c19a720da390cd03d454b21"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-evidence-handoff.png",
+        "bytes": 40834,
+        "sha256": "761d0c30017d9257493020ac173b86f72931d11adf89e2bf557ff6bf0cf2eec9"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-method-find.png",
+        "bytes": 219661,
+        "sha256": "ff5749bc3cc8e5d22525b4dad8fa5b02da8f7df0e28b0bfad677f85ca81d444f"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-method-prove.png",
+        "bytes": 94187,
+        "sha256": "1ce566d858329658a42a1bbaea5ad49187dab97de104bfd030360f6ec9e4a321"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-method-test.png",
+        "bytes": 264398,
+        "sha256": "17c451f1d74ea227ddb500e578c5b54f5ca1428d812dd682f568c9032a3e8777"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-partner-field-founding.png",
+        "bytes": 400795,
+        "sha256": "4969d61389bd17e4f27f2f97cc63702203c6944fd2bb5cbf15cb3d46219b123f"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-partner-field-opening.png",
+        "bytes": 338010,
+        "sha256": "f3d6aea83c364a3bd001914af03887b3aee2c7effbb1e07c8ea976c0dd8f5224"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-partner-field-strategic.png",
+        "bytes": 314141,
+        "sha256": "d94b8b653448a99a2c390fcaaa08d4964ad0b9d87486ce7f8238a1a03730e2d8"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-phase-r-journey.webm",
+        "bytes": 4616373,
+        "sha256": "fc7c2ab74b00d90f3fa1b592b3f72a7da7540970d9916e2ca61f9e0ab0680f4c"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-presence-opening.png",
+        "bytes": 193258,
+        "sha256": "194324a49e80c3058851445b05ba87340b32368e596b9167c59f48be5da7e216"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-presence-resolved.png",
+        "bytes": 212598,
+        "sha256": "c439d5ae2669ffdb624eb5dd5938cdad0dbcb5e08c5be58a6e5e99fd05dd36b6"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/desktop-startup-desire.png",
+        "bytes": 550418,
+        "sha256": "3ce29cba25aa271a840b5c53e6e51556d5db9b4c3add3f1d8bd36ff821379545"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/forced-colors-homepage.png",
+        "bytes": 45372,
+        "sha256": "4bf8355570cc7af29fd9feec1f408c4c0cb27688b9e359ee6ad028286a542df0"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/keyboard-focus-startup-action.png",
+        "bytes": 549978,
+        "sha256": "08b942bfc892e38752210c5ade9fcf91b4d9c757e170ec298b39c88bb8693754"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/manifest.json",
+        "bytes": 67244,
+        "sha256": "826f313530b3ef87c33287cf6da2599982a3a7fe742a303be8757327e86b1268"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/mobile-action.png",
+        "bytes": 109320,
+        "sha256": "0de61dffe315bc1622c3de824a87d1c9a67a6168db3faa77d97b3f50e14cda3d"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/mobile-activity.png",
+        "bytes": 89998,
+        "sha256": "057a1824f36b283f1d0fe0d319a4ef9293d744f0e09b0d223950b1cd4c9fdcfb"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/mobile-evidence.png",
+        "bytes": 18980,
+        "sha256": "ba03225b81d0959ae25999ff1c2cbb1ea389eb8f1136801557e132fcfea52dbd"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/mobile-method.png",
+        "bytes": 78016,
+        "sha256": "88946743473cacb0187fb24bb629e13127b7f3a636011db65bc9ef8362b0588f"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/mobile-partner-field.png",
+        "bytes": 142645,
+        "sha256": "b7a359c7e6fe1f3688bca929fa10722d1109e30b329fa528d06aa6c33985d8fe"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/mobile-presence.png",
+        "bytes": 60157,
+        "sha256": "be93979485bcd05fdd9f2e8911102757eebebdcdf07252e87660f942b9eb5b29"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/mobile-startup-desire.png",
+        "bytes": 115538,
+        "sha256": "05febd0f421439d956bf2368c61de0d04033ac6386a3d6044805ca4bd2bdd4d0"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/no-webgl-method.png",
+        "bytes": 261851,
+        "sha256": "fc54c1be8237f1cc12fa051f90986a9c75f1065d47ae934b594cedc02ffe7779"
+      },
+      {
+        "file": "artifacts/review/phase-r-pre-repair-6590714/reduced-motion-partner-field.png",
+        "bytes": 367369,
+        "sha256": "70dfd5726b967ac6cf32db7cd36089a91a7608b54cf526c7037729cfbf8c0bc8"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-action-ending.png",
+        "bytes": 400000,
+        "sha256": "142d57754d66c54d3499d68602ba2a12ef032e72f3380b8834fc1e785dde499a"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-activity.png",
+        "bytes": 589870,
+        "sha256": "a5cc2e5266da750f3327a23951f02cc40a85836f4ad7568449ce1ca1cb2c8ce5"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-evidence-handoff.png",
+        "bytes": 40839,
+        "sha256": "f3a7247ff845003038d42664e0aa967a89c62a75d99f6bc29479c80b5a6f30db"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-method-find.png",
+        "bytes": 220249,
+        "sha256": "c9aebd777e5382f7b54351f0f8f0ab3a5b210608c16df910be6924c3a875762d"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-method-prove.png",
+        "bytes": 298043,
+        "sha256": "ece3425c2a28bf7703b880a982ebc65d6f11f2a5e8f07aab0a5c433c28175a1f"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-method-test.png",
+        "bytes": 265105,
+        "sha256": "bbd71dbdf985fa2c9a46142e7deb5dd950cfd37b537f8a41febf7e9ad1b02a13"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-partner-field-founding.png",
+        "bytes": 119268,
+        "sha256": "99ba91e71731efba19d53083a0f5f57d4a1033f22bdc16abc5f90b3273087bc2"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-partner-field-opening.png",
+        "bytes": 337747,
+        "sha256": "0cc6c370f2dbaa098c8f4d4c7e23db926d9c44e825a934fd4de6a8438d415423"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-partner-field-strategic.png",
+        "bytes": 103624,
+        "sha256": "526489c44a51cb8ff879d1b18aed0c417a61f4c5696697a5f8ab337a30dcab79"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-phase-r-journey.webm",
+        "bytes": 4856364,
+        "sha256": "f3887d794126a87c0c326709ce4799db02b782b2b8605c48fdade1c04477531f"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-presence-opening.png",
+        "bytes": 193126,
+        "sha256": "52dd16baca3e98beb1aa0c126e9908ff29aa534070bca23b85d8a1facb1e16f8"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-presence-resolved.png",
+        "bytes": 212654,
+        "sha256": "5b1cb3e727fd56b52464384da0720cc914819ea69b7a7ea8dcf4b1a0b82e14b3"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/desktop-startup-desire.png",
+        "bytes": 528594,
+        "sha256": "c583c9d82ff1d240e946d2db2bc9c3c082ee9fa0568e21f54988e25ccbdfeed0"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/forced-colors-homepage.png",
+        "bytes": 45372,
+        "sha256": "4bf8355570cc7af29fd9feec1f408c4c0cb27688b9e359ee6ad028286a542df0"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/keyboard-focus-startup-action.png",
+        "bytes": 540990,
+        "sha256": "5a3df82f0fb209c6cb1e0bb9de2dfee536083ae5eff0a3bd7b3c24baf43d9fc5"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/manifest.json",
+        "bytes": 72807,
+        "sha256": "5effde37320bead601d757254b6f89cd2b13c427f26787e5b130a78e9ac4d33e"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/mobile-action.png",
+        "bytes": 109297,
+        "sha256": "7ef267bd3d42e36050f2fcea7bb916a0f65f2cbb59541e5e25eeed2bb381fa35"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/mobile-activity.png",
+        "bytes": 59423,
+        "sha256": "794d6aa907ebaa445f1b84d4ef78f6d34e0c2448ce60ea6d1e181807a365848e"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/mobile-evidence.png",
+        "bytes": 18980,
+        "sha256": "6797420e5629f9565f103e6bacf1060c84ee7f88c699cd6c92b7b358d0a8e8d6"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/mobile-method.png",
+        "bytes": 78807,
+        "sha256": "13984c89a839f431176e6881225fd89d57161d3650fb7c5df1e7a2405c068827"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/mobile-partner-field.png",
+        "bytes": 60624,
+        "sha256": "d30cdc7c66620dd78f61c5e7d1b3edc7c0e57c40b8e125f60694300533086711"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/mobile-presence.png",
+        "bytes": 60150,
+        "sha256": "748d4b9022c3611912370c153a05bacbad1bec52e7d586ba0926b7a59da6b2ea"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/mobile-startup-desire.png",
+        "bytes": 131387,
+        "sha256": "a72b3c05aa657182d1f60383cd66a2e7162c4173a9088a1036871fd29ac4ca7f"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/no-webgl-method.png",
+        "bytes": 262565,
+        "sha256": "17a784193f883450001836cf92f949f328aa28fd3ea2ca366c11f8a02ef5fdf8"
+      },
+      {
+        "file": "artifacts/review/phase-r-repair-intermediate-0834859/reduced-motion-partner-field.png",
+        "bytes": 369662,
+        "sha256": "81afc5ccf4665ab2995060dbc4de14313d855f61c1b493bbb34bccc39ec65782"
+      },
+      {
+        "file": "artifacts/review/phase-r.zip",
+        "bytes": 9114157,
+        "sha256": "5a34bf8af7a4212dcb86f4ae6dc86ba759640983538311a6dfbecdf5fdb6aede"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/baseline-aperture-subtitle-9-40s.png",
+        "bytes": 566790,
+        "sha256": "191ee6b5667645f01d8810d017bb83f1b9c256df4a2b36be20bd60453e594ec8"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-0-17s.png",
+        "bytes": 737933,
+        "sha256": "353a400bee1459d4be7e8fe1f8d6c2d3a103d68b5e9cf1a4ab04d009090fcbf3"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-1-84s.png",
+        "bytes": 815086,
+        "sha256": "e54e9a54299e9461738f72a94c21ae94ea8e6b116f55fe0ab63eee3898b7729d"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-2-57s.png",
+        "bytes": 997841,
+        "sha256": "ca686496d53609cae6d637367ce17d914a60e327a2c95832efe36315550470bc"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-2-81s.png",
+        "bytes": 989883,
+        "sha256": "6a54e54ccc9b0cc39b9bc9a64e584efe36dbf21878327fb078ddf625d2b94b07"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-2-95s.png",
+        "bytes": 932824,
+        "sha256": "8d12c313a4c4da1c18648ca2e8e8686df02eb7960580e68efd5b8d339b336fe4"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-3-15s.png",
+        "bytes": 959049,
+        "sha256": "c23ea4bc6898743bf8e48dd95fa4d692b6a8a75528c1b8dd5c94e70b1e2518b2"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-aperture-3-20s.png",
+        "bytes": 925172,
+        "sha256": "861d908af124f7017cccd24d3d5b1a4a37b7bc49eb23399576e1f67704e5a06d"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-need.png",
+        "bytes": 846715,
+        "sha256": "3aa3e7877817ef7453b8a74d23757dc3fefa5f2e5dc87c425d553d309675531b"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-prove.png",
+        "bytes": 381457,
+        "sha256": "564359ec50ebcb762b6b9310911421f4edc24f261bf5bdd498bc726c640783ad"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-repair-journey.webm",
+        "bytes": 2381607,
+        "sha256": "885fb328a4ac59d6f70e8d1771ebe092ed218b7538bdc0e8f583c67988b92c89"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/desktop-test-0-70s.png",
+        "bytes": 859168,
+        "sha256": "673d47da251c6613c9010e51e4752441d7aa011ee44788e2f9c016e6facc169b"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/fallback-no-webgl-aperture-3-05s.png",
+        "bytes": 994166,
+        "sha256": "179a29e705de63cf2555aac7716ce4263aed3e126e13932abdc9ace278958c71"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/fallback-reduced-motion-aperture.png",
+        "bytes": 783907,
+        "sha256": "7303f636d80917fe47fda04e5434e0c674e16ec295582e1b50ceb1afd138150c"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/manifest.json",
+        "bytes": 54431,
+        "sha256": "033716c3b6c7b50ad774e33bc6526ac4ee92a0f8fa4c026febce0a4ac57bb124"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/mobile-aperture-3-05s.png",
+        "bytes": 204247,
+        "sha256": "d7de7d969e1cfef158fd9d2a1a41ce2c8ba1dd849261dd12f42367d294169dd4"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/mobile-prove.png",
+        "bytes": 105513,
+        "sha256": "30b2e79c0f4ac78c1442ebb1be719bfb8057bc4d1c5c95fde427560b7ed3a769"
+      },
+      {
+        "file": "artifacts/review/phase2-repair/mobile-test-0-70s.png",
+        "bytes": 254032,
+        "sha256": "b0c3a04fbcb46116ca94329e4ac17a11efa32e356b80a295a1e75ae64885f7a9"
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-aperture-early-split.png",
+        "bytes": 795043,
+        "sha256": "44befcdb32d1f17d3fa87b28d35c9ee7c8460a27b55cb69c4a5e1cc6806ce30b"
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-aperture-media-reveal.png",
+        "bytes": 875183,
+        "sha256": "32f1ec10ea0f0571c706674784384e3232334e88fdc6e7aa1839ac66c4212db4"
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-find.png",
+        "bytes": 838002,
+        "sha256": "483122a37e52cc0ee9405d2f2d1aae7e9cbd8f9172798cc09f0998aa0f1cdf94"
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-journey.webm",
+        "bytes": 2154513,
+        "sha256": "2aca51553494f9aa0a56e472c70f21c6d75404679bb07c98706fb10abda4d4c7"
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-need.png",
+        "bytes": 880324,
+        "sha256": "6293e1c378dfec36ab3a365053b3f6005b93dda1e184c70fc2000412b0e4d754"
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-prove.png",
+        "bytes": 210366,
+        "sha256": "acc41feaf4c869ef0bc2ccb35bb5ac33e29cd957790a844b66c85245ab76b315"
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-signal.png",
+        "bytes": 732008,
+        "sha256": "6bf6f1a57c96bf05f11965463ce764b300ebe592775c6312710de6d9599e5c04"
+      },
+      {
+        "file": "artifacts/review/phase2/desktop-test.png",
+        "bytes": 704763,
+        "sha256": "95405d7fa5b3d858d954a08029c1cbac5baad0fa42218bd3a781a69261ac077e"
+      },
+      {
+        "file": "artifacts/review/phase2/fallback-no-webgl-aperture.png",
+        "bytes": 941895,
+        "sha256": "23224eecbf235cf91dd8057bf0958b171b70ad2681e4b2bfeb5cbedd6092327b"
+      },
+      {
+        "file": "artifacts/review/phase2/fallback-reduced-motion-aperture.png",
+        "bytes": 797862,
+        "sha256": "8edb722cfb6c16579b43d92eeb5d70b34f56e860a2449c962776a9697987d71e"
+      },
+      {
+        "file": "artifacts/review/phase2/fallback-reduced-motion-test.png",
+        "bytes": 776800,
+        "sha256": "e65c9f394067f2671b1c6460b977abfecc82e13984b5ef93dff1ec1d3e133117"
+      },
+      {
+        "file": "artifacts/review/phase2/manifest.json",
+        "bytes": 20940,
+        "sha256": "bc782bd6cf30fe56043715f0a6eb3fd38c23baae2f700454fd022a530073b7f6"
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-aperture.png",
+        "bytes": 267179,
+        "sha256": "0d55c628c73f91624834a870024000e33b71f159300dc5d73f1e010b04f1f7a1"
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-find.png",
+        "bytes": 251241,
+        "sha256": "7dc78d6288d844bc7a1ec9434a531cfe01d750ffa0308d66df38bc29b9c78b53"
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-need.png",
+        "bytes": 265822,
+        "sha256": "8e78fcc151cddbba81ebbdc79b22be9fdb3a3e766fac05fb3b1de5a914d70347"
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-prove.png",
+        "bytes": 83975,
+        "sha256": "8ae50c086814bb25c29def3e8c3998407c263e343f4889ef5444278dd90055a7"
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-signal.png",
+        "bytes": 250839,
+        "sha256": "c558ea765881b0539beedeaef50b58c55fdbe8b77ac605c9b898a01442e686ad"
+      },
+      {
+        "file": "artifacts/review/phase2/mobile-test.png",
+        "bytes": 196996,
+        "sha256": "6f3ee7fa814ca24d3b00ed90c922326f1220247f1a17b915d8d5318aa90ae69a"
+      },
+      {
+        "file": "artifacts/review/phase3/desktop-proof-index-active.png",
+        "bytes": 566437,
+        "sha256": "b749cb8e4b1d9974181c21a2e22b7f4ef06da7193c76e8ce86c01aaf8a49c723"
+      },
+      {
+        "file": "artifacts/review/phase3/desktop-proof-index-opening.png",
+        "bytes": 47264,
+        "sha256": "1caca230a3d9bde2e0fa8c490e350a86a8e85ec7a759308173d7901dce9b79b8"
+      },
+      {
+        "file": "artifacts/review/phase3/desktop-record-evidence.png",
+        "bytes": 293314,
+        "sha256": "775f283bfcb4f51060ff7534f7968927127849e73db179136cc1c50234345afc"
+      },
+      {
+        "file": "artifacts/review/phase3/desktop-record-field-condition-technology.png",
+        "bytes": 63589,
+        "sha256": "7faf5fe8362c6a265248a27a2116835f0f84ce15b31ea196157fa85b340e1dba"
+      },
+      {
+        "file": "artifacts/review/phase3/desktop-record-next-step.png",
+        "bytes": 62952,
+        "sha256": "d44537ab938f5166316c92c99eb048dcc4e7d7b068129abcb290ac90dffe959b"
+      },
+      {
+        "file": "artifacts/review/phase3/desktop-record-opening.png",
+        "bytes": 378629,
+        "sha256": "de5c20542ef40b710610e4159792c6fe03e1ad729cd34195dce9b0c5df349dc4"
+      },
+      {
+        "file": "artifacts/review/phase3/desktop-record-test.png",
+        "bytes": 232250,
+        "sha256": "3a1131c2ddd1e6c5f099d8b3e331accdc3b0f8d7a5a42618f48b785765630486"
+      },
+      {
+        "file": "artifacts/review/phase3/keyboard-focus-proof-index.png",
+        "bytes": 481383,
+        "sha256": "876c1c6c481d7a3855810d90e2b73522edfa9f4b1df4d7c9a888a04b06620117"
+      },
+      {
+        "file": "artifacts/review/phase3/manifest.json",
+        "bytes": 23324,
+        "sha256": "ebe02fca90fdabe9af7313d32bf90f73044054fd476c2289147ec61fb3e41d98"
+      },
+      {
+        "file": "artifacts/review/phase3/mobile-proof-index.png",
+        "bytes": 20531,
+        "sha256": "f33fdf409557d4300a69396a52a0f6895fa9a47543f0381dbb61618298b69dcf"
+      },
+      {
+        "file": "artifacts/review/phase3/mobile-record-evidence.png",
+        "bytes": 75004,
+        "sha256": "eb88b766de419588e2ab52561fffaa6e1dc182ef6dcc9e8143b7d1d2603d13c2"
+      },
+      {
+        "file": "artifacts/review/phase3/mobile-record-next-step.png",
+        "bytes": 39924,
+        "sha256": "96fd768dfd5aab4b09e6c1ddc6ce62622c036f20a03450059c52583b539eab2d"
+      },
+      {
+        "file": "artifacts/review/phase3/mobile-record-opening.png",
+        "bytes": 52446,
+        "sha256": "654ee9fb233baa4b70e61c3a12c835d6c33985842efb233697b7cb4fe9bc2b6d"
+      },
+      {
+        "file": "artifacts/review/phase3/mobile-record-test.png",
+        "bytes": 117279,
+        "sha256": "32379c610878eea74de03275d44e8be15355149c42a590accceb6e98296ae657"
+      },
+      {
+        "file": "artifacts/review/phase3/reduced-motion-record.png",
+        "bytes": 293314,
+        "sha256": "775f283bfcb4f51060ff7534f7968927127849e73db179136cc1c50234345afc"
+      },
+      {
+        "file": "artifacts/review/reduced-motion-aperture.jpg",
+        "bytes": 94460,
+        "sha256": "0ddfe1f605f6a49bce7bf920cf43605e277c4623fd154b731dfb61572d5d9774"
+      },
+      {
+        "file": "artifacts/review/repair/analysis.json",
+        "bytes": 6082,
+        "sha256": "29de3ba01b58f31156b7c9c1f8b1c03236e5e9837881dcd0952312195e67bbba"
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture-no-webgl.png",
+        "bytes": 1159090,
+        "sha256": "fb5b12da747ed367d25855d0f842d82e797fbd047c32db1095ceda96160e62d8"
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture-reduced-motion.png",
+        "bytes": 1187714,
+        "sha256": "a037248f42a0ac90969f53455238a9f61b19be8184fbf8c74fc9b0bf2b90060a"
+      },
+      {
+        "file": "artifacts/review/repair/desktop-aperture.png",
+        "bytes": 1162740,
+        "sha256": "127ff149e117b9bf85b6a48f6518756ed062f07764390503803a9abdd4d81926"
+      },
+      {
+        "file": "artifacts/review/repair/desktop-find.png",
+        "bytes": 852302,
+        "sha256": "1167f752cf651972b5725db0951f61e6559223beca3ad7cc4792ad1b50c87071"
+      },
+      {
+        "file": "artifacts/review/repair/desktop-journey.webm",
+        "bytes": 1594206,
+        "sha256": "6ae95078848af7e30e297232642def5032005a8adee4f4824c43ef99cdf1340a"
+      },
+      {
+        "file": "artifacts/review/repair/desktop-need.png",
+        "bytes": 819169,
+        "sha256": "8c987f306556740d0f3c6b9afcc6df89cc4c20c67c37d84ee4034de841198e38"
+      },
+      {
+        "file": "artifacts/review/repair/desktop-prove.png",
+        "bytes": 102102,
+        "sha256": "e4b6da6ef8e505c900c686ec6122a4c107f380597074737fd2d9ecde3260793b"
+      },
+      {
+        "file": "artifacts/review/repair/desktop-signal.png",
+        "bytes": 741088,
+        "sha256": "bdcdc8d64dc5afbb835aba7e3d4d44538708a6d2c74ea52e7c8c5a461ea39267"
+      },
+      {
+        "file": "artifacts/review/repair/desktop-test.png",
+        "bytes": 1217086,
+        "sha256": "7cc7db7ec524b1c1a1ea4bd34b493806b16ecaa31cbd6e18053c075350025e48"
+      },
+      {
+        "file": "artifacts/review/repair/manifest.json",
+        "bytes": 11688,
+        "sha256": "51db084192db08dd970db3979fd3eb99fabdf4a5acd109e697bfb73bc8c39e9f"
+      },
+      {
+        "file": "artifacts/review/repair/mobile-aperture.png",
+        "bytes": 323552,
+        "sha256": "a6ada6c41edcb9218d94b405872aa4dea44c6a7ab8ec999018542ff18ca75d80"
+      },
+      {
+        "file": "artifacts/review/repair/mobile-find.png",
+        "bytes": 255643,
+        "sha256": "cd1c9abaee59a55e2a7798fb83d8c955b637d3aa4c1c9342cff79e82c0acf7c3"
+      },
+      {
+        "file": "artifacts/review/repair/mobile-need.png",
+        "bytes": 247217,
+        "sha256": "4c3fca72a0134082a69e3d8338aa26a080d275bb276a8ab79ecfc97e6c962fcc"
+      },
+      {
+        "file": "artifacts/review/repair/mobile-prove.png",
+        "bytes": 40623,
+        "sha256": "5f54feea77e9d740440a2dac115ef83ad9874e4b0e91ac8f22c7c9f699edca7b"
+      },
+      {
+        "file": "artifacts/review/repair/mobile-signal.png",
+        "bytes": 246971,
+        "sha256": "b344db263b2605ee6a461991da0e16b7ff5bcc649d02f6829ff6bafd1d1370ca"
+      },
+      {
+        "file": "artifacts/review/repair/mobile-test.png",
+        "bytes": 319159,
+        "sha256": "e624ad4b668a43d53473868fe2439495dfcf3c1544a1935ad23f6b9ec0310ee5"
+      }
+    ]
+  },
+  "captures": [
+    {
+      "id": "desktop-presence-opening",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-presence-opening.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "presence-opening",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "presence",
+      "targetProgress": 0.27,
+      "actualProgress": 0.2702,
+      "sectionLocalProgress": 0.2702,
+      "expectedState": "origin",
+      "actualState": "origin",
+      "scrollY": 30,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Quantum Hub",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:55:33.972Z",
+      "bytes": 193154,
+      "sha256": "fcd8578a9a4095201cfa7eea422a8da36cf3319dc0fc683b2c53270c6bd1b5d2"
+    },
+    {
+      "id": "desktop-presence-resolved",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-presence-resolved.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "presence-resolved",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "presence",
+      "targetProgress": 0.62,
+      "actualProgress": 0.6199,
+      "sectionLocalProgress": 0.6199,
+      "expectedState": "resolved",
+      "actualState": "resolved",
+      "scrollY": 628,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Quantum Hub",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:55:38.017Z",
+      "bytes": 212932,
+      "sha256": "c0509600d9b9cdd4433752104c6e9f43f559699002f19ee93613e6eba6448446"
+    },
+    {
+      "id": "desktop-partner-field-opening",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-partner-field-opening.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "partner-field-opening",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "access",
+      "targetProgress": 0.12,
+      "actualProgress": 0.1199,
+      "sectionLocalProgress": 0.1199,
+      "expectedState": "opening",
+      "actualState": "opening",
+      "scrollY": 1634,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Access to the field.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:55:40.909Z",
+      "bytes": 337637,
+      "sha256": "1eff3d1b7369da595d1743469b3535750a74f672a31852d040ea0d52c72dd67c"
+    },
+    {
+      "id": "desktop-partner-field-strategic",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-partner-field-strategic.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "partner-field-strategic",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "access",
+      "targetProgress": 0.48,
+      "actualProgress": 0.4801,
+      "sectionLocalProgress": 0.4801,
+      "expectedState": "strategic",
+      "actualState": "strategic",
+      "scrollY": 2704,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": "hyundai-motor-group",
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Access to the field.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [
+          "Strategic Partners",
+          "Hyundai Motor Group"
+        ],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:55:43.520Z",
+      "bytes": 103624,
+      "sha256": "526489c44a51cb8ff879d1b18aed0c417a61f4c5696697a5f8ab337a30dcab79"
+    },
+    {
+      "id": "desktop-partner-field-founding",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-partner-field-founding.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "partner-field-founding",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "access",
+      "targetProgress": 0.82,
+      "actualProgress": 0.8199,
+      "sectionLocalProgress": 0.8199,
+      "expectedState": "founding",
+      "actualState": "founding",
+      "scrollY": 3713,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": "taavura-livnat-group",
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Access to the field.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [
+          "Founding Partners",
+          "Taavura–Livnat Group"
+        ],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:55:46.545Z",
+      "bytes": 232711,
+      "sha256": "cc9b61f12d8617075ad9308dee6d6ec88971e7120c86c00b0990f887c4966718"
+    },
+    {
+      "id": "desktop-startup-desire",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-startup-desire.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "field-crossing-resolved",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "startup",
+      "targetProgress": 0.76,
+      "actualProgress": 0.7598,
+      "sectionLocalProgress": 0.7598,
+      "expectedState": "field",
+      "actualState": "field",
+      "scrollY": 5684,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": "field",
+      "methodState": null,
+      "headingText": "Your technology.Real industrial context.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:55:49.518Z",
+      "bytes": 528572,
+      "sha256": "852d934d8afc13d7e0962149df7e00668eae2b0cc237b85c77fc7d8c64cb3631"
+    },
+    {
+      "id": "desktop-method-find",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-method-find.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "method-find",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "method",
+      "targetProgress": 0.18,
+      "actualProgress": 0.1799,
+      "sectionLocalProgress": 0.1799,
+      "expectedState": "find",
+      "actualState": "find",
+      "scrollY": 6656,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": "find",
+      "headingText": "find.test.prove.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:55:52.171Z",
+      "bytes": 220211,
+      "sha256": "5e707736f9539ee762e0099474e0a36e0e05198bc492f1ceb1dff555c353db5f"
+    },
+    {
+      "id": "desktop-method-test",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-method-test.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "method-test",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "method",
+      "targetProgress": 0.5,
+      "actualProgress": 0.5,
+      "sectionLocalProgress": 0.5,
+      "expectedState": "test",
+      "actualState": "test",
+      "scrollY": 7578,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": "test",
+      "headingText": "find.test.prove.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:55:54.926Z",
+      "bytes": 265103,
+      "sha256": "1545191268589f1c9245d0f4193b9f9e3140b4e42e513072487438050913e113"
+    },
+    {
+      "id": "desktop-method-prove",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-method-prove.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "method-prove",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "method",
+      "targetProgress": 0.82,
+      "actualProgress": 0.8201,
+      "sectionLocalProgress": 0.8201,
+      "expectedState": "prove",
+      "actualState": "prove",
+      "scrollY": 8500,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": "prove",
+      "headingText": "find.test.prove.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:55:57.947Z",
+      "bytes": 298045,
+      "sha256": "d7e2823a320e867a88a64097e443e2e9b825817b66e18c69a3f5c77c82f4b7da"
+    },
+    {
+      "id": "desktop-activity",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-activity.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "activity-field",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "activity",
+      "targetProgress": 0.5,
+      "actualProgress": 0.5,
+      "sectionLocalProgress": 0.5,
+      "expectedState": null,
+      "actualState": null,
+      "scrollY": 9963,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Quantum in motion.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:00.942Z",
+      "bytes": 589870,
+      "sha256": "a5cc2e5266da750f3327a23951f02cc40a85836f4ad7568449ce1ca1cb2c8ce5"
+    },
+    {
+      "id": "desktop-evidence-handoff",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-evidence-handoff.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "evidence-handoff",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "evidence",
+      "targetProgress": 0.5,
+      "actualProgress": 0.5,
+      "sectionLocalProgress": 0.5,
+      "expectedState": null,
+      "actualState": null,
+      "scrollY": 11673,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Real field.Documented evidence.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:03.799Z",
+      "bytes": 40805,
+      "sha256": "0f0a19b962bc7b83b3cb1cfbbc21b87003cf0676e032195a241cb1e2d903ea1e"
+    },
+    {
+      "id": "desktop-action-ending",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/desktop-action-ending.png",
+      "profile": "desktop",
+      "mode": "normal",
+      "variant": "action-ending",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "action",
+      "targetProgress": 0.52,
+      "actualProgress": 0.52,
+      "sectionLocalProgress": 0.52,
+      "expectedState": null,
+      "actualState": null,
+      "scrollY": 13140,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Take your technologyinto the field.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:06.853Z",
+      "bytes": 400000,
+      "sha256": "142d57754d66c54d3499d68602ba2a12ef032e72f3380b8834fc1e785dde499a"
+    },
+    {
+      "id": "mobile-presence",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/mobile-presence.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "variant": "authored-mobile-presence",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pngDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "presence",
+      "targetProgress": 0.58,
+      "actualProgress": 0.5795,
+      "sectionLocalProgress": 0.5795,
+      "expectedState": "resolved",
+      "actualState": "resolved",
+      "scrollY": 84,
+      "renderMode": "dom-fallback-ready",
+      "inputMode": "touch-scroll",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Quantum Hub",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:08.215Z",
+      "bytes": 60150,
+      "sha256": "748d4b9022c3611912370c153a05bacbad1bec52e7d586ba0926b7a59da6b2ea"
+    },
+    {
+      "id": "mobile-partner-field",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/mobile-partner-field.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "variant": "authored-mobile-partner-field",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pngDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "access",
+      "targetProgress": 0.72,
+      "actualProgress": 0.7201,
+      "sectionLocalProgress": 0.7201,
+      "expectedState": "founding",
+      "actualState": "founding",
+      "scrollY": 2936,
+      "renderMode": "dom-fallback-ready",
+      "inputMode": "touch-scroll",
+      "partnerFocus": "taavura-livnat-group",
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Access to the field.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": false,
+        "visiblePartnerNames": [
+          "Founding Partners",
+          "Taavura–Livnat Group"
+        ],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:09.556Z",
+      "bytes": 84167,
+      "sha256": "b6c4e857ac020298ff0a8b1d1811f401bd496802ad506cdd026c8043423801e5"
+    },
+    {
+      "id": "mobile-startup-desire",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/mobile-startup-desire.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "variant": "authored-mobile-field-crossing",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pngDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "startup",
+      "targetProgress": 0.72,
+      "actualProgress": 0.7195,
+      "sectionLocalProgress": 0.7195,
+      "expectedState": "field",
+      "actualState": "field",
+      "scrollY": 4544,
+      "renderMode": "dom-fallback-ready",
+      "inputMode": "touch-scroll",
+      "partnerFocus": null,
+      "crossingState": "field",
+      "methodState": null,
+      "headingText": "Your technology.Real industrial context.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:10.946Z",
+      "bytes": 131387,
+      "sha256": "a72b3c05aa657182d1f60383cd66a2e7162c4173a9088a1036871fd29ac4ca7f"
+    },
+    {
+      "id": "mobile-method",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/mobile-method.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "variant": "authored-mobile-method",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pngDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "method",
+      "targetProgress": 0.5,
+      "actualProgress": 0.5003,
+      "sectionLocalProgress": 0.5003,
+      "expectedState": "test",
+      "actualState": "test",
+      "scrollY": 5236,
+      "renderMode": "dom-fallback-ready",
+      "inputMode": "touch-scroll",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": "test",
+      "headingText": "find.test.prove.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:12.393Z",
+      "bytes": 78858,
+      "sha256": "c6ab52a3b386318312832030106fe98c55662e005f889108dda99c83eb635b82"
+    },
+    {
+      "id": "mobile-activity",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/mobile-activity.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "variant": "authored-mobile-activity",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pngDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "activity",
+      "targetProgress": 0.48,
+      "actualProgress": 0.4803,
+      "sectionLocalProgress": 0.4803,
+      "expectedState": null,
+      "actualState": null,
+      "scrollY": 6530,
+      "renderMode": "dom-fallback-ready",
+      "inputMode": "touch-scroll",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Quantum in motion.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:13.752Z",
+      "bytes": 59423,
+      "sha256": "794d6aa907ebaa445f1b84d4ef78f6d34e0c2448ce60ea6d1e181807a365848e"
+    },
+    {
+      "id": "mobile-evidence",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/mobile-evidence.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "variant": "authored-mobile-evidence",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pngDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "evidence",
+      "targetProgress": 0.46,
+      "actualProgress": 0.4595,
+      "sectionLocalProgress": 0.4595,
+      "expectedState": null,
+      "actualState": null,
+      "scrollY": 7839,
+      "renderMode": "dom-fallback-ready",
+      "inputMode": "touch-scroll",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Real field.Documented evidence.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:15.113Z",
+      "bytes": 18980,
+      "sha256": "6797420e5629f9565f103e6bacf1060c84ee7f88c699cd6c92b7b358d0a8e8d6"
+    },
+    {
+      "id": "mobile-action",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/mobile-action.png",
+      "profile": "mobile",
+      "mode": "normal",
+      "variant": "authored-mobile-action",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pngDimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "action",
+      "targetProgress": 0.44,
+      "actualProgress": 0.4405,
+      "sectionLocalProgress": 0.4405,
+      "expectedState": null,
+      "actualState": null,
+      "scrollY": 8667,
+      "renderMode": "dom-fallback-ready",
+      "inputMode": "touch-scroll",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Take your technologyinto the field.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:16.559Z",
+      "bytes": 109297,
+      "sha256": "7ef267bd3d42e36050f2fcea7bb916a0f65f2cbb59541e5e25eeed2bb381fa35"
+    },
+    {
+      "id": "reduced-motion-partner-field",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/reduced-motion-partner-field.png",
+      "profile": "accessibility",
+      "mode": "reduced-motion",
+      "variant": "resolved-reduced-motion-partner-field",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "access",
+      "targetProgress": 0.72,
+      "actualProgress": 0.7198,
+      "sectionLocalProgress": 0.7198,
+      "expectedState": "founding",
+      "actualState": "founding",
+      "scrollY": 2017,
+      "renderMode": "reduced-motion",
+      "inputMode": "pointer",
+      "partnerFocus": "taavura-livnat-group",
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Access to the field.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": false,
+        "visiblePartnerNames": [
+          "Bazan Group",
+          "Founding Partners",
+          "Taavura–Livnat Group",
+          "Talcar"
+        ],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": true,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:18.293Z",
+      "bytes": 380750,
+      "sha256": "34a346be8f4f53512b4dbbcffaa494dc9afaf4de9ff064330b078b5d25e4b069"
+    },
+    {
+      "id": "no-webgl-method",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/no-webgl-method.png",
+      "profile": "accessibility",
+      "mode": "no-webgl",
+      "variant": "dom-css-method-fallback",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "method",
+      "targetProgress": 0.5,
+      "actualProgress": 0.5,
+      "sectionLocalProgress": 0.5,
+      "expectedState": "test",
+      "actualState": "test",
+      "scrollY": 7578,
+      "renderMode": "no-webgl-fallback",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": "test",
+      "headingText": "find.test.prove.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:19.833Z",
+      "bytes": 262705,
+      "sha256": "186285fbffe39c38a091bae00921d0b7af9a333db945d3f84c31b60ce66d1a6c"
+    },
+    {
+      "id": "keyboard-focus-startup-action",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/keyboard-focus-startup-action.png",
+      "profile": "accessibility",
+      "mode": "keyboard-focus",
+      "variant": "keyboard-focus-primary-startup-action",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "startup",
+      "targetProgress": 0.72,
+      "actualProgress": 0.7201,
+      "sectionLocalProgress": 0.7201,
+      "expectedState": "field",
+      "actualState": "field",
+      "scrollY": 5609,
+      "renderMode": "webgl-enhanced",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": "field",
+      "methodState": null,
+      "headingText": "Your technology.Real industrial context.",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": "mailto:info@quantum-hub.com"
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": false
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:23.148Z",
+      "bytes": 541036,
+      "sha256": "a2283432fe08ae33b1d340a3381920742743e609db26a1255ccdb4f7d48cdb12"
+    },
+    {
+      "id": "forced-colors-homepage",
+      "kind": "screenshot",
+      "file": "artifacts/review/phase-r/forced-colors-homepage.png",
+      "profile": "accessibility",
+      "mode": "forced-colors",
+      "variant": "forced-colors-representative-homepage",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "pngDimensions": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "presence",
+      "targetProgress": 0.62,
+      "actualProgress": 0.6199,
+      "sectionLocalProgress": 0.6199,
+      "expectedState": "resolved",
+      "actualState": "resolved",
+      "scrollY": 628,
+      "renderMode": "dom-fallback-ready",
+      "inputMode": "pointer",
+      "partnerFocus": null,
+      "crossingState": null,
+      "methodState": null,
+      "headingText": "Quantum Hub",
+      "semanticState": {
+        "exactPhaseOrder": true,
+        "singleH1": true,
+        "visibleHeading": true,
+        "visiblePartnerNames": [],
+        "exactPartnerTaxonomy": true,
+        "findTestProvePresent": true,
+        "proofHandoff": "/proof/",
+        "focusedHref": null
+      },
+      "accessibilityState": {
+        "reducedMotion": false,
+        "forcedColors": true
+      },
+      "applicationMonitoring": {
+        "status": "verified-zero-errors",
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "requestErrors": 0
+      },
+      "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+      "capturedAt": "2026-08-16T18:56:24.510Z",
+      "bytes": 45372,
+      "sha256": "4bf8355570cc7af29fd9feec1f408c4c0cb27688b9e359ee6ad028286a542df0"
+    }
+  ],
+  "journey": {
+    "id": "desktop-phase-r-complete-journey",
+    "kind": "video",
+    "file": "artifacts/review/phase-r/desktop-phase-r-journey.webm",
+    "profile": "desktop",
+    "mode": "normal",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "beginsAtScrollY": 0,
+    "naturalEnd": {
+      "phase": "action",
+      "substate": null,
+      "progress": 0.6533,
+      "scrollY": 13320,
+      "maximumScrollY": 13320,
+      "naturalEnd": true,
+      "finalActionVisible": true,
+      "renderMode": "webgl-enhanced"
+    },
+    "realisticPacing": {
+      "status": "verified",
+      "elapsedSeconds": 53.3638,
+      "minimumDurationSeconds": 30,
+      "maximumDurationSeconds": 120
+    },
+    "timeline": [
+      {
+        "id": "journey-opening",
+        "requestedPhase": "presence",
+        "requestedProgress": null,
+        "requestedState": "origin",
+        "requestedScrollMs": 0,
+        "requestedDwellMs": 1200,
+        "reachedAtMs": 0,
+        "observed": {
+          "phase": "presence",
+          "substate": "origin",
+          "progress": 0.2526,
+          "scrollY": 0,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "presence-resolved",
+        "requestedPhase": "presence",
+        "requestedProgress": 0.62,
+        "requestedState": "resolved",
+        "requestedScrollMs": 1000,
+        "requestedDwellMs": 1000,
+        "reachedAtMs": 5227.8,
+        "observed": {
+          "phase": "presence",
+          "substate": "resolved",
+          "progress": 0.6199,
+          "scrollY": 628,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "partner-opening",
+        "requestedPhase": "access",
+        "requestedProgress": 0.12,
+        "requestedState": "opening",
+        "requestedScrollMs": 1000,
+        "requestedDwellMs": 1200,
+        "reachedAtMs": 8207.2,
+        "observed": {
+          "phase": "access",
+          "substate": "opening",
+          "progress": 0.1199,
+          "scrollY": 1634,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "partner-strategic",
+        "requestedPhase": "access",
+        "requestedProgress": 0.48,
+        "requestedState": "strategic",
+        "requestedScrollMs": 1300,
+        "requestedDwellMs": 1800,
+        "reachedAtMs": 12049.4,
+        "observed": {
+          "phase": "access",
+          "substate": "strategic",
+          "progress": 0.4801,
+          "scrollY": 2704,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "partner-founding",
+        "requestedPhase": "access",
+        "requestedProgress": 0.82,
+        "requestedState": "founding",
+        "requestedScrollMs": 1400,
+        "requestedDwellMs": 1800,
+        "reachedAtMs": 15684.8,
+        "observed": {
+          "phase": "access",
+          "substate": "founding",
+          "progress": 0.8199,
+          "scrollY": 3713,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "field-crossing-outside",
+        "requestedPhase": "startup",
+        "requestedProgress": 0.18,
+        "requestedState": "outside",
+        "requestedScrollMs": 1200,
+        "requestedDwellMs": 900,
+        "reachedAtMs": 19615.9,
+        "observed": {
+          "phase": "startup",
+          "substate": "outside",
+          "progress": 0.1799,
+          "scrollY": 4588,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "field-crossing-threshold",
+        "requestedPhase": "startup",
+        "requestedProgress": 0.47,
+        "requestedState": "threshold",
+        "requestedScrollMs": 900,
+        "requestedDwellMs": 1200,
+        "reachedAtMs": 23284.2,
+        "observed": {
+          "phase": "startup",
+          "substate": "threshold",
+          "progress": 0.4698,
+          "scrollY": 5136,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "field-crossing-field",
+        "requestedPhase": "startup",
+        "requestedProgress": 0.76,
+        "requestedState": "field",
+        "requestedScrollMs": 1100,
+        "requestedDwellMs": 1400,
+        "reachedAtMs": 27255.9,
+        "observed": {
+          "phase": "startup",
+          "substate": "field",
+          "progress": 0.7598,
+          "scrollY": 5684,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "method-find",
+        "requestedPhase": "method",
+        "requestedProgress": 0.18,
+        "requestedState": "find",
+        "requestedScrollMs": 1200,
+        "requestedDwellMs": 1300,
+        "reachedAtMs": 31472.1,
+        "observed": {
+          "phase": "method",
+          "substate": "find",
+          "progress": 0.1799,
+          "scrollY": 6656,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "method-test",
+        "requestedPhase": "method",
+        "requestedProgress": 0.5,
+        "requestedState": "test",
+        "requestedScrollMs": 1200,
+        "requestedDwellMs": 1500,
+        "reachedAtMs": 35821.8,
+        "observed": {
+          "phase": "method",
+          "substate": "test",
+          "progress": 0.5,
+          "scrollY": 7578,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "method-prove",
+        "requestedPhase": "method",
+        "requestedProgress": 0.82,
+        "requestedState": "prove",
+        "requestedScrollMs": 1300,
+        "requestedDwellMs": 1500,
+        "reachedAtMs": 40386.1,
+        "observed": {
+          "phase": "method",
+          "substate": "prove",
+          "progress": 0.8201,
+          "scrollY": 8500,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "activity",
+        "requestedPhase": "activity",
+        "requestedProgress": 0.5,
+        "requestedState": null,
+        "requestedScrollMs": 1200,
+        "requestedDwellMs": 1400,
+        "reachedAtMs": 43671.6,
+        "observed": {
+          "phase": "activity",
+          "substate": null,
+          "progress": 0.5,
+          "scrollY": 9963,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "evidence",
+        "requestedPhase": "evidence",
+        "requestedProgress": 0.5,
+        "requestedState": null,
+        "requestedScrollMs": 1200,
+        "requestedDwellMs": 1500,
+        "reachedAtMs": 47142.6,
+        "observed": {
+          "phase": "evidence",
+          "substate": null,
+          "progress": 0.5,
+          "scrollY": 11673,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": false,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "action",
+        "requestedPhase": "action",
+        "requestedProgress": 0.5,
+        "requestedState": null,
+        "requestedScrollMs": 1200,
+        "requestedDwellMs": 1800,
+        "reachedAtMs": 50678.8,
+        "observed": {
+          "phase": "action",
+          "substate": null,
+          "progress": 0.5,
+          "scrollY": 13113,
+          "maximumScrollY": 13320,
+          "naturalEnd": false,
+          "finalActionVisible": true,
+          "renderMode": "webgl-enhanced"
+        }
+      },
+      {
+        "id": "natural-page-end",
+        "requestedPhase": "action",
+        "requestedProgress": null,
+        "requestedState": null,
+        "requestedScrollMs": 1100,
+        "requestedDwellMs": 1500,
+        "reachedAtMs": 53363.8,
+        "observed": {
+          "phase": "action",
+          "substate": null,
+          "progress": 0.6533,
+          "scrollY": 13320,
+          "maximumScrollY": 13320,
+          "naturalEnd": true,
+          "finalActionVisible": true,
+          "renderMode": "webgl-enhanced"
+        }
+      }
+    ],
+    "decodeVerification": {
+      "status": "resolution-duration-and-three-decoded-frames-verified",
+      "durationSeconds": 55.36,
+      "videoWidth": 1440,
+      "videoHeight": 900,
+      "readyState": 4,
+      "decodedFractions": [
+        {
+          "fraction": 0.1,
+          "seconds": 5.552887,
+          "decodedFrame": true
+        },
+        {
+          "fraction": 0.5,
+          "seconds": 27.70002,
+          "decodedFrame": true
+        },
+        {
+          "fraction": 0.9,
+          "seconds": 49.828087,
+          "decodedFrame": true
+        }
+      ]
+    },
+    "applicationMonitoring": {
+      "status": "verified-zero-errors",
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "requestErrors": 0
+    },
+    "sourceCandidate": "0c69708255f67ae550aaee6719e062062efc8839",
+    "capturedAt": "2026-08-16T18:57:22.248Z",
+    "durationSeconds": 55.36,
+    "bytes": 5037246,
+    "sha256": "0d6771edc59a979027f0e34a176f41d292f8ac28c30f4dc7785e69ea833ad316"
+  },
+  "artifactIntegrity": {
+    "scope": "all 23 PNG screenshots and the mandatory journey WebM",
+    "everyArtifactByteCountAndSha256Recorded": true,
+    "everyPngSignatureAndDimensionChecked": true,
+    "screenshotHashesUnique": true,
+    "videoResolutionDecodeDurationAndNaturalEndChecked": true,
+    "manifestSelfHashExcludedByDefinition": true
+  },
+  "applicationMonitoring": {
+    "status": "verified-zero-errors-across-every-page-and-video-capture",
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "requestErrors": 0
+  },
+  "verification": {
+    "cleanTrackedAndUntrackedTreeAtStart": true,
+    "candidateAndBranchUnchangedThroughCapture": true,
+    "exactStagingInventory": true,
+    "atomicStagingPromotion": true,
+    "historicalEvidenceVerifiedAfterPromotionBeforeSuccessfulExit": true
+  },
+  "limitations": [
+    "Evidence is captured from isolated local Astro production preview, not the Cloudflare branch preview.",
+    "Headless Chromium evidence cannot certify smoothness on the human owner's physical hardware or GPU.",
+    "The journey WebM is intentionally silent; it evaluates visual pacing and motion only.",
+    "The manifest cannot self-record its final hash; every PNG, WebM, and pre-existing historical artifact is byte-counted and SHA-256 recorded."
+  ]
+}
