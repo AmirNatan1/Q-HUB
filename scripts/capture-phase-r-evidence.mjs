@@ -727,10 +727,16 @@ async function listFilesRecursively(directory) {
 
 async function historicalEvidenceInventory() {
   try {
+    const stagingLocal = stagingDirectory
+      ? path.relative(reviewDirectory, stagingDirectory)
+      : null;
     const files = (await listFilesRecursively(reviewDirectory))
       .filter((filePath) => {
         const local = path.relative(reviewDirectory, filePath);
-        return local !== "phase-r" && !local.startsWith(`phase-r${path.sep}`);
+        const isPhaseROutput = local === "phase-r" || local.startsWith(`phase-r${path.sep}`);
+        const isActiveStaging = stagingLocal
+          && (local === stagingLocal || local.startsWith(`${stagingLocal}${path.sep}`));
+        return !isPhaseROutput && !isActiveStaging;
       })
       .sort((left, right) => left.localeCompare(right));
     return Promise.all(files.map(async (filePath) => {
@@ -776,9 +782,9 @@ async function prepareStagingDirectory() {
       throw error;
     }
   }
-  await mkdir(artifactsDirectory, { recursive: true });
+  await mkdir(reviewDirectory, { recursive: true });
   stagingDirectory = path.join(
-    artifactsDirectory,
+    reviewDirectory,
     `.phase-r-staging-${process.pid}-${Date.now()}`,
   );
   await mkdir(stagingDirectory);
