@@ -169,10 +169,11 @@ Internal scroll thresholds, pixel coordinates, opacity values, and generated bun
 
 - at `1440×900`, each partner focus is the sole visible identity territory at least `55vw × 42vh`, and every identity is borderless;
 - at `390×844`, all five partner territories remain at least `82vw × 38vh`, occupy ordinary vertical flow, do not overlap, and do not create horizontal overflow;
-- FIND, TEST, and PROVE produce three unique geometries, with every pair changing materially beyond color;
-- desktop and mobile ACTIVITY show one high-opacity, uncropped signal at a time, never overlap `QUANTUM IN MOTION`, and expose all four signals over the deterministic progression;
+- FIND, TEST, and PROVE produce three unique geometries, with every pair changing materially beyond color; repaired PROVE must align three residual observations on a clipped registration plane and expose no checkmark-style border construction;
+- desktop and mobile ACTIVITY show one high-opacity, uncropped signal and exactly one matching `[data-activity-geometry]` at a time, never overlap `QUANTUM IN MOTION`, and expose four unique geometry signatures over the deterministic progression;
 - reduced motion shows all four Activity signals as ordinary, non-overlapping readable flow at desktop and mobile sizes;
-- Field Crossing produces unique `outside`, `threshold`, and `field` signal/material signatures and rejects every `repeating-linear-gradient` or `repeating-radial-gradient` descendant.
+- Field Crossing produces unique `outside`, `threshold`, and `field` signal/material signatures, explicitly proves round → compressed → rectilinear aspect ratios on desktop and mobile, and rejects every `repeating-linear-gradient` or `repeating-radial-gradient` descendant;
+- each focused desktop Partner Field identity covers the viewport, has no border, and owns a real surface rather than a contained transparent panel.
 
 ### Mode and viewport matrix
 

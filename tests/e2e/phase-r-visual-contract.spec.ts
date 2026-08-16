@@ -660,3 +660,143 @@ test('Field Crossing deforms the signal through stateful material without repeat
     ).toBe(true);
   }
 });
+
+test('repaired PROVE resolves TEST observations into a spatial registration plane without completion UI', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  await disableDecorativeTransitions(page);
+  const method = await setActProgress(page, 'method', 0.84);
+  await expect(method).toHaveAttribute('data-method-state', 'prove');
+
+  const repair = await method.locator('.method-instrument').evaluate((instrument) => {
+    const element = instrument as HTMLElement;
+    const before = getComputedStyle(element, '::before');
+    const after = getComputedStyle(element, '::after');
+    const observations = [...element.querySelectorAll<HTMLElement>('.method-instrument__observation')]
+      .map((observation) => {
+        const bounds = observation.getBoundingClientRect();
+        return { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2 };
+      });
+    return {
+      afterBorders: [after.borderRightWidth, after.borderBottomWidth],
+      beforeClip: before.clipPath,
+      observations,
+      registrationOpacity: Number.parseFloat(
+        getComputedStyle(element.querySelector<HTMLElement>('.method-instrument__registration')!).opacity,
+      ),
+    };
+  });
+
+  expect(repair.beforeClip).not.toBe('none');
+  expect(repair.afterBorders).toEqual(['0px', '0px']);
+  expect(repair.observations).toHaveLength(3);
+  expect(Math.max(...repair.observations.map(({ x }) => x)) - Math.min(...repair.observations.map(({ x }) => x)))
+    .toBeLessThanOrEqual(2);
+  expect(new Set(repair.observations.map(({ y }) => Math.round(y))).size).toBe(3);
+  expect(repair.registrationOpacity).toBeGreaterThanOrEqual(0.65);
+});
+
+test('repaired ACTIVITY gives every approved signal a unique spatial condition', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  await disableDecorativeTransitions(page);
+
+  const signatures = new Set<string>();
+  for (const progress of activityProgressSamples) {
+    const activity = await setActProgress(page, 'activity', progress);
+    const state = await activity.getAttribute('data-activity-state');
+    expect(state).toBeTruthy();
+    const geometries = await activity.locator('[data-activity-geometry]').evaluateAll((nodes) =>
+      nodes.map((node) => {
+        const element = node as HTMLElement;
+        const style = getComputedStyle(element);
+        const children = [...element.children].map((child) => {
+          const bounds = child.getBoundingClientRect();
+          const childStyle = getComputedStyle(child);
+          return [
+            Math.round(bounds.left),
+            Math.round(bounds.top),
+            Math.round(bounds.width),
+            Math.round(bounds.height),
+            childStyle.borderRadius,
+            childStyle.clipPath,
+          ];
+        });
+        return {
+          active: style.visibility !== 'hidden' && Number.parseFloat(style.opacity) >= 0.9,
+          id: element.dataset.activityGeometry,
+          signature: JSON.stringify(children),
+        };
+      }),
+    );
+    const active = geometries.filter(({ active }) => active);
+    expect(active).toHaveLength(1);
+    expect(active[0]?.id).toBe(state);
+    signatures.add(active[0]?.signature ?? '');
+  }
+  expect(signatures.size).toBe(4);
+});
+
+test('repaired Field Crossing makes round compression and rectilinear exit unmistakable', async ({ page }) => {
+  for (const viewport of [
+    { width: 1440, height: 900, vertical: false },
+    { width: 390, height: 844, vertical: true },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto('/');
+    await disableDecorativeTransitions(page);
+    const shapes: Record<string, { height: number; radius: string; width: number }> = {};
+    for (const sample of [
+      { progress: 0.16, state: 'outside' },
+      { progress: 0.48, state: 'threshold' },
+      { progress: 0.84, state: 'field' },
+    ] as const) {
+      const startup = await setActProgress(page, 'startup', sample.progress);
+      await expect(startup).toHaveAttribute('data-crossing-state', sample.state);
+      shapes[sample.state] = await startup.locator('.field-crossing__signal').evaluate((signal) => {
+        const bounds = signal.getBoundingClientRect();
+        return { height: bounds.height, radius: getComputedStyle(signal).borderRadius, width: bounds.width };
+      });
+    }
+    const outside = shapes.outside!;
+    const threshold = shapes.threshold!;
+    const field = shapes.field!;
+    expect(outside.width).toBeGreaterThanOrEqual(viewport.vertical ? 100 : 120);
+    expect(Math.abs(outside.width / outside.height - 1)).toBeLessThan(0.06);
+    if (viewport.vertical) {
+      expect(threshold.height / threshold.width).toBeGreaterThan(5);
+      expect(field.height / field.width).toBeGreaterThan(6);
+    } else {
+      expect(threshold.width / threshold.height).toBeGreaterThan(5);
+      expect(field.width / field.height).toBeGreaterThan(8);
+    }
+    expect(field.radius).toBe('0px');
+  }
+});
+
+test('repaired Partner Field identities own the desktop viewport instead of a contained panel', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  await disableDecorativeTransitions(page);
+
+  for (const sample of partnerFocusSamples) {
+    await setActProgress(page, 'access', sample.progress);
+    await expect(page.locator('html')).toHaveAttribute('data-partner-focus', sample.id);
+    const territory = await page.locator(`[data-partner-id="${sample.id}"]`).evaluate((plane) => {
+      const bounds = plane.getBoundingClientRect();
+      const style = getComputedStyle(plane);
+      return {
+        borders: [style.borderTopWidth, style.borderRightWidth, style.borderBottomWidth, style.borderLeftWidth],
+        height: bounds.height,
+        surface: `${style.backgroundColor}|${style.backgroundImage}`,
+        width: bounds.width,
+      };
+    });
+    expect(territory.width).toBeGreaterThanOrEqual(1438);
+    expect(territory.height).toBeGreaterThanOrEqual(880);
+    expect(territory.borders).toEqual(['0px', '0px', '0px', '0px']);
+    expect(territory.surface).not.toBe('rgba(0, 0, 0, 0)|none');
+  }
+});

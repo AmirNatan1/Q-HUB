@@ -11,10 +11,10 @@ The governing tension remains **precision instrument × industrial documentary**
 | Act | Required visual role |
 | --- | --- |
 | PRESENCE | Near-black authority, giant Quantum typography, extraordinary negative space, and one restrained signal reveal. The institution enters before any process or project. |
-| ACCESS | A cinematic Partner Field resolves one borderless, screen-scale organization identity at a time. Strategic and founding relationships remain semantic and exact; the act is never a grid, marquee, carousel, sponsor wall, or “trusted by” strip. |
-| STARTUP | A material Field Crossing changes one round abstract signal into a compressed threshold form and then a rectilinear field probe. A substantial contact boundary and large industrial planes replace repeating-grid or decorative-dot treatment. |
-| METHOD | FIND is distributed search and selection, TEST is a hard vertical threshold with contact deformation, and PROVE is a structured paper/evidence record with a resolved check. The three states differ by authored geometry, not color alone. |
-| ACTIVITY | FIELD TESTING → PROGRAMS → PARTNER ENGAGEMENT → GLOBAL ECOSYSTEM advances one large category signal at a time without becoming an activity feed or unsupported factual timeline. |
+| ACCESS | A cinematic Partner Field resolves one borderless, full-viewport organization territory at a time. Identity crop, environmental material, edge continuity, and extreme scale replace the sensation of a logo mounted on a panel. Strategic and founding relationships remain semantic and exact; the act is never a grid, marquee, carousel, sponsor wall, or “trusted by” strip. |
+| STARTUP | A material Field Crossing changes one large round abstract possibility into a visibly compressed threshold form and then a long rectilinear field probe. Opposing constraint plates, a substantial contact boundary, and directed industrial planes replace repeating-grid or decorative-dot treatment. |
+| METHOD | FIND is distributed search and selection, TEST is a hard vertical threshold with contact deformation, and PROVE carries the same residual observations into a precise spatial registration plane. The three states differ by authored geometry, not color alone; PROVE contains no checkmark or software-confirmation metaphor. |
+| ACTIVITY | FIELD TESTING → PROGRAMS → PARTNER ENGAGEMENT → GLOBAL ECOSYSTEM advances one large category signal at a time with a distinct restrained condition: traversal/contact, staged cadence, shared-field alignment, then expanding reach. It never becomes an activity feed or unsupported factual timeline. |
 | EVIDENCE | Warm/off-white evidence planes, dark ink, teal structure, and visual calm hand the visitor toward the deeper Proof index. Teal signifies documented evidence, not commercial success. |
 | ACTION | A dark, decisive closing field gives the startup-facing action scale without turning into a generic contact block. |
 

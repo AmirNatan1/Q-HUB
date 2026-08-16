@@ -76,6 +76,8 @@ if (!presence || !access || !startup || !method || !activity || !evidence || !ac
     >
       <div class="phase-r-act__sticky phase-r-startup">
         <div class="field-crossing" data-field-crossing aria-hidden="true">
+          <span class="field-crossing__constraint field-crossing__constraint--first"></span>
+          <span class="field-crossing__constraint field-crossing__constraint--second"></span>
           <span class="field-crossing__signal"></span>
           <span class="field-crossing__threshold"></span>
           <span class="field-crossing__field"></span>
@@ -119,6 +121,10 @@ if (!presence || !access || !startup || !method || !activity || !evidence || !ac
           <span class="method-instrument__wide"></span>
           <span class="method-instrument__contact"></span>
           <span class="method-instrument__record"></span>
+          <i class="method-instrument__observation method-instrument__observation--one"></i>
+          <i class="method-instrument__observation method-instrument__observation--two"></i>
+          <i class="method-instrument__observation method-instrument__observation--three"></i>
+          <i class="method-instrument__registration"></i>
         </div>
       </div>
     </section>
@@ -134,6 +140,20 @@ if (!presence || !access || !startup || !method || !activity || !evidence || !ac
         <h2 id="activity-title" class="phase-r-display phase-r-display--activity" data-stage-keepout>
           {activity.title[0]}
         </h2>
+        <div class="activity-instrument" aria-hidden="true">
+          <div class="activity-geometry activity-geometry--field-testing" data-activity-geometry="field-testing">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="activity-geometry activity-geometry--programs" data-activity-geometry="programs">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="activity-geometry activity-geometry--partner-engagement" data-activity-geometry="partner-engagement">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="activity-geometry activity-geometry--global-ecosystem" data-activity-geometry="global-ecosystem">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
         <ul class="activity-signals" aria-label="Quantum activity">
           {activitySignals.map((signal, index) => (
             <li
