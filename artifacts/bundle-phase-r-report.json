@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T19:05:54.963Z",
+  "generatedAt": "2026-08-17T08:10:14.804Z",
   "inspectedEntry": "dist/index.html",
   "initialHtml": {
     "scripts": [
@@ -19,22 +19,32 @@
       {
         "kind": "external",
         "type": "module",
-        "src": "/_astro/index.astro_astro_type_script_index_0_lang.88H1QhcT.js",
-        "localFile": "_astro/index.astro_astro_type_script_index_0_lang.88H1QhcT.js"
+        "src": "/_astro/index.astro_astro_type_script_index_0_lang.CkYh1T-l.js",
+        "localFile": "_astro/index.astro_astro_type_script_index_0_lang.CkYh1T-l.js"
       }
     ],
     "modulePreloads": []
   },
   "totals": {
     "javascriptAssets": 3,
-    "rawBytes": 22400,
-    "gzipBytes": 8299,
-    "initialRawBytes": 10786,
-    "initialGzipBytes": 4290,
+    "rawBytes": 28755,
+    "gzipBytes": 10320,
+    "initialRawBytes": 17141,
+    "initialGzipBytes": 6311,
     "lazyRawBytes": 11614,
     "lazyGzipBytes": 4009
   },
   "composition": [
+    {
+      "file": "_astro/index.astro_astro_type_script_index_0_lang.CkYh1T-l.js",
+      "tier": "initial",
+      "rawBytes": 14651,
+      "gzipBytes": 5193,
+      "staticImports": [],
+      "dynamicImports": [
+        "_astro/field-engine.BA5GPryA.js"
+      ]
+    },
     {
       "file": "_astro/field-engine.BA5GPryA.js",
       "tier": "lazy",
@@ -42,16 +52,6 @@
       "gzipBytes": 4009,
       "staticImports": [],
       "dynamicImports": []
-    },
-    {
-      "file": "_astro/index.astro_astro_type_script_index_0_lang.88H1QhcT.js",
-      "tier": "initial",
-      "rawBytes": 8296,
-      "gzipBytes": 3172,
-      "staticImports": [],
-      "dynamicImports": [
-        "_astro/field-engine.BA5GPryA.js"
-      ]
     },
     {
       "file": "_astro/page.DVKH9UCq.js",
@@ -152,10 +152,10 @@
     "lazyGzipBytes": 4044
   },
   "phaseRDelta": {
-    "totalRawBytes": 1548,
-    "totalGzipBytes": 338,
-    "initialRawBytes": 1607,
-    "initialGzipBytes": 373,
+    "totalRawBytes": 7903,
+    "totalGzipBytes": 2359,
+    "initialRawBytes": 7962,
+    "initialGzipBytes": 2394,
     "lazyRawBytes": -59,
     "lazyGzipBytes": -35
   }

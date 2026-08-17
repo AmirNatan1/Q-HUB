@@ -73,10 +73,20 @@ async function run() {
   const findings = [];
   let scanned = 0;
   let skipped = 0;
+  let missing = 0;
 
   for (const relativePath of candidateFiles()) {
     const absolutePath = path.join(rootDirectory, relativePath);
-    const buffer = await readFile(absolutePath);
+    let buffer;
+    try {
+      buffer = await readFile(absolutePath);
+    } catch (error) {
+      if (error && typeof error === "object" && error.code === "ENOENT") {
+        missing += 1;
+        continue;
+      }
+      throw error;
+    }
     if (buffer.byteLength > maximumTextBytes || buffer.includes(0)) {
       skipped += 1;
       continue;
@@ -105,7 +115,8 @@ async function run() {
   }
 
   console.log(
-    `Secret scan PASS: ${scanned} candidate text files checked; ${skipped} binary/oversize files skipped.`,
+    `Secret scan PASS: ${scanned} candidate text files checked; ${skipped} binary/oversize files skipped; `
+      + `${missing} absent tracked files excluded.`,
   );
 }
 
