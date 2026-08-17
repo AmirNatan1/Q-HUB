@@ -65,7 +65,6 @@ const definitions = [
   ...["access", "startup", "method", "activity"].map((phase) => [
     `mobile-430-${phase}`, "mobile", 430, 932, phase, 0.5, "normal",
   ]),
-  ["reduced-motion-access", "accessibility", 1440, 900, "access", 0.08, "reduced-motion"],
   ["reduced-motion-activity", "accessibility", 390, 844, "activity", 0.5, "reduced-motion"],
   ["no-webgl-method", "accessibility", 1440, 900, "method", 0.5, "no-webgl"],
   ["forced-colors-presence", "accessibility", 1440, 900, "presence", 0.6, "forced-colors"],
