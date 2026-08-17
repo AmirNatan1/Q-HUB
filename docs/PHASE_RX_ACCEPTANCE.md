@@ -59,5 +59,6 @@ The master-goal H1–H15 gates remain authoritative. For R-X, H5–H7 are evalua
 - Second still runner attempt: the same no-JavaScript context remained non-terminating. R-X no-JavaScript remains a browser behavior gate rather than a new still.
 - Third still runner attempt: all 42 selected captures completed with zero application errors and zero overflow; one expected duplicate pair showed normal headless DOM fallback and explicit no-WebGL METHOD were byte-identical.
 - Visual inspection identified the mobile/tablet Field Crossing lane intersecting supporting copy; the lane was moved below copy/action and re-captured successfully.
+- First source-bound R-X runtime attempt: failed closed before build/preview because trimming Git porcelain output removed the preserved deletion's leading status column and the runner misparsed its path. No runtime artifact was written; all three R-X runner parsers were corrected before retry.
 
 Final command totals, bundle bytes, runtime metrics, Lighthouse values, hashes, git equality, and open limitations are added only after the source-bound closure runs.

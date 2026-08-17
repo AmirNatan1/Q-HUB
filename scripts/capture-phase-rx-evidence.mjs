@@ -119,7 +119,9 @@ async function git(args) {
 }
 
 function statusPath(line) {
-  const raw = line.slice(3).replaceAll("\\", "/");
+  const raw = line.trimStart()
+    .replace(/^(?:\?\?|[MADRCU]{1,2})\s+/u, "")
+    .replaceAll("\\", "/");
   return raw.includes(" -> ") ? raw.split(" -> ").at(-1) : raw;
 }
 
