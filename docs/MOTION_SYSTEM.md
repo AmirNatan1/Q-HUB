@@ -22,11 +22,13 @@ EVIDENCE settles into a calm document field. ACTION removes visual ambiguity and
 
 The state names and data attributes are stable. Internal scroll thresholds and interpolation values may be tuned for pacing without changing the semantic contract or tests that observe resolved states.
 
+Phase R-X separates semantic landmarks from visual interpolation. In normal mode, `data-scroll-choreography="continuous"` identifies the contract and each active section publishes numeric `data-progress`. ACCESS identity weights, STARTUP morphology, METHOD instrument geometry, ACTIVITY conditions, and shared-stage handoffs consume that progress directly. Their dominant properties use no time-based CSS catch-up transitions, so forward/reverse wheel input and the visible geometry remain coupled. State thresholds still name meaningful resolved regions for semantics, review, and fallback styling.
+
 ### Input translation
 
-- **Native scroll:** drives act selection, local act progress, and all required state transitions. Scrolling is never hijacked, trapped, or smoothed by a library.
+- **Native scroll:** drives act selection, numeric local progress, dominant geometry, and semantic state landmarks. Scrolling is never intercepted, snapped, given custom momentum, hijacked, trapped, or smoothed by a runtime. CSS anchor-link behavior does not replace wheel input.
 - **Fine pointer:** may add sparse depth in PRESENCE, STARTUP, and METHOD. Pointer work is coalesced into animation frames, cannot block links or copy, and never carries unique meaning.
-- **Touch/mobile:** uses normal vertical flow and authored CSS/SVG states. It does not emulate a mouse aperture and does not initialize WebGL by default.
+- **Touch/mobile:** uses normal vertical flow and authored CSS/SVG states. Partner identities and Activity labels are readable flow sequences; the Field Crossing lane sits below its copy/action. Mobile does not emulate a mouse aperture and does not initialize WebGL by default.
 - **Keyboard:** actions and conventional navigation respond immediately; motion does not delay or replace native focus behavior.
 
 ### DOM/CSS/SVG and WebGL relationship

@@ -8,6 +8,8 @@ The implemented public sequence is one continuous seven-act document:
 
 `PRESENCE → ACCESS → STARTUP → METHOD → ACTIVITY → EVIDENCE → ACTION`
 
+Phase R-X keeps this topology and publication boundary intact. In normal mode the controller marks the root `data-scroll-choreography="continuous"`, publishes each active section's numeric `data-progress`, and writes the dominant ACCESS, STARTUP, METHOD, ACTIVITY, and shared-stage geometry directly from native-scroll progress on the existing animation-frame-coalesced update. Semantic state attributes remain stable landmarks; they no longer act as the sole visual switch. Reduced motion deliberately omits the continuous marker and resolves to the existing authored document flow.
+
 `src/pages/index.astro` emits all seven `<section>` elements, their headings, partner names and relationships, activity categories, and actions before enhancement. The shared stage is decorative and `aria-hidden`. JavaScript may publish visual state, but it does not create essential content or navigation.
 
 ### Layer and module boundary
@@ -35,7 +37,7 @@ The seven sections expose these values in exact order:
 | EVIDENCE | `[data-experience-phase="evidence"]` | active phase plus `[data-proof-handoff]` |
 | ACTION | `[data-experience-phase="action"]` | active phase plus `[data-work-with-quantum]` |
 
-The document root publishes `data-active-phase`, `data-render-mode`, and `data-input-mode`. These attributes are the behavior/test contract; internal progress thresholds and visual CSS variables are implementation details. The CTA hooks `[data-startup-action]`, `[data-proof-handoff]`, and `[data-work-with-quantum]` remain stable release selectors.
+The document root publishes `data-active-phase`, `data-render-mode`, `data-input-mode`, and normal-mode `data-scroll-choreography`. Active sections publish `data-progress`. State/input/mode attributes are the semantic behavior/test contract; numeric progress is a narrow continuous-response diagnostic contract, while individual visual CSS variables remain implementation details. The CTA hooks `[data-startup-action]`, `[data-proof-handoff]`, and `[data-work-with-quantum]` remain stable release selectors.
 
 The current visual contract consumes those states materially: desktop ACCESS exposes exactly one full-viewport, borderless identity territory at a time; STARTUP deforms one large round signal between constraint plates and then into a long rectilinear field probe against directed material planes; METHOD changes non-color geometry from distributed search to a hard contact threshold to aligned observation traces on a spatial registration plane; ACTIVITY exposes exactly one category signal and one unique spatial condition per scroll quarter. Reduced-motion and unenhanced modes expand sequenced content into readable normal flow instead of leaving inactive content hidden.
 
@@ -43,7 +45,7 @@ The old persistent textual phase rail is not part of the current presentation. C
 
 ### Enhancement and fallback lifecycle
 
-- Native vertical scroll is the only required progression mechanism; there is no scroll hijack or client router.
+- Native vertical scroll is the only required progression mechanism; there is no wheel interception, scroll snap, smooth-scroll runtime, custom momentum, scroll hijack, or client router.
 - Scroll and pointer work is coalesced through `requestAnimationFrame`. Pointer input is used only for fine-pointer, non-reduced modes and only in realtime phases.
 - The WebGL module is imported only after intentional eligible interaction in PRESENCE, STARTUP, or METHOD. ACCESS partner choreography remains DOM/CSS/SVG.
 - Default mobile/touch, reduced motion, `?webgl=off`, WebGL failure, and no JavaScript keep the canvas out of the meaning path.
@@ -56,7 +58,7 @@ The old persistent textual phase rail is not part of the current presentation. C
 | Mode | Current architecture |
 | --- | --- |
 | Desktop/fine pointer | Semantic document plus sparse optional pointer response and lazy custom WebGL in the three eligible acts. |
-| Mobile/touch | Natural document flow, five non-overlapping full-width partner identity territories, CSS/SVG Field Crossing and method states, one contained Activity signal at a time, and no default WebGL. |
+| Mobile/touch | Natural document flow, five non-overlapping full-width partner identity territories, a Field Crossing lane below readable copy/action, CSS/SVG method states, all four Activity labels in a bordered normal-flow sequence, and no default WebGL. |
 | Reduced motion | Static resolved compositions, all five prominent partners and both relationships visible in normal flow, all four Activity signals expanded into readable flow, all seven acts/actions retained, and no decorative realtime loop. Low-contrast partner artwork may yield to the approved typographic organization name rather than weakening identity. |
 | Forced colors | Decorative stage, partner images, and instruments are removed; system colors, textual organization identities, relationship labels, all Activity labels, borders, focus, and actions remain. |
 | No JavaScript | Complete semantic reading order expands all partner identities and Activity labels in authored DOM/CSS/SVG flow. |

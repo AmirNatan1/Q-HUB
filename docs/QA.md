@@ -1,5 +1,38 @@
 # Quality Assurance
 
+## Phase R-X integration overlay — current
+
+Phase R-X does not replace the Phase R semantic/publication contract below. It adds a real-use continuity gate for the same seven-act homepage.
+
+Required focused browser command:
+
+```text
+npm run test:e2e:phase-rx
+```
+
+The suite issues repeated real wheel input through ACCESS, STARTUP, METHOD, and ACTIVITY. It verifies that local progress and dominant visual variables advance through tightly spaced input, every act releases naturally, METHOD reverses immediately, wheel events are not prevented, no scroll snap or horizontal overflow appears, and application errors remain zero.
+
+Candidate source-bound evidence/runtime commands:
+
+```powershell
+$env:PHASE_RX_SOURCE_HEAD = (git rev-parse HEAD).Trim()
+$env:PHASE_RX_SOURCE_BRANCH = (git branch --show-current).Trim()
+npm run diagnostic:phase-rx
+node scripts/phase-rx-scroll-diagnostic.mjs --stage=candidate --pace=slow --skip-build
+
+$env:PHASE_RX_RUNTIME_CANDIDATE_SHA = (git rev-parse HEAD).Trim()
+npm run runtime:phase-rx
+
+$env:PHASE_RX_EVIDENCE_CANDIDATE_SHA = (git rev-parse HEAD).Trim()
+npm run evidence:phase-rx
+```
+
+The diagnostic must retain the pre-repair natural-wheel WebM, record matching candidate continuous and slow-review WebMs, and compare visually responsive/dead samples by act. Video-bound frame timings are disclosed as capture-bound. The non-video runtime independently measures `1440×900` wheel and `390×844` touch input, natural-end reachability, phase coverage, frame intervals, long tasks, memory signal when available, input counts, prevented wheel events, render mode, and errors. Source declarations must equal the committed candidate HEAD/branch; the runners may tolerate only generated R-X evidence plus the preserved pre-existing Phase R archive deletion.
+
+Visual evidence covers desktop `1440×900`, wide `1920×1080`, tablet `768×1024`, mobile `390×844` and `430×932`, reduced motion, no WebGL, forced colors, and keyboard focus. JavaScript-disabled semantics remain in the browser behavior suite because the local JavaScript-disabled Chromium screenshot context did not terminate reliably. Every attempt and limitation belongs in `docs/PHASE_RX_ACCEPTANCE.md`.
+
+Production output changed, so the complete Phase R/R-X browser suite, integrated checks, source/publication/output/placeholder/secret/bundle gates, responsive/accessibility/mode matrix, runtime, and all six Lighthouse audits must be rerun. Lighthouse supports but does not decide scroll feel. No Cloudflare validation or deployment is authorized in R-X.
+
 ## Phase R verification contract — current
 
 This section defines how the current seven-act homepage is verified. It is a test contract, not a result ledger. Candidate-specific totals, scores, hashes, artifact inventories, defects, preview URLs, and acceptance status belong only in the Phase R acceptance, runtime-diagnostic, and Human Review Package documents after the commands actually run against a bound candidate.

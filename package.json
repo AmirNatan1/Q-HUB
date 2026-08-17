@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test:unit": "vitest run",
     "test:e2e": "node scripts/run-playwright.mjs",
+    "test:e2e:phase-rx": "node scripts/run-playwright.mjs tests/e2e/phase-rx-continuous-scroll.spec.ts",
     "test:e2e:update": "node scripts/run-playwright.mjs --update-snapshots",
     "check": "npm run typecheck && npm run lint && npm run test:unit && npm run build",
     "test:source-integrity": "vitest run tests/source-integrity.test.ts",
@@ -23,6 +24,8 @@
     "bundle:check": "node scripts/check-bundle.mjs",
     "lighthouse": "node scripts/run-lighthouse.mjs",
     "runtime:phase-r": "node scripts/measure-phase-r-runtime.mjs",
+    "runtime:phase-rx": "node scripts/measure-phase-rx-runtime.mjs",
+    "diagnostic:phase-rx": "node scripts/phase-rx-scroll-diagnostic.mjs --stage=candidate --pace=continuous",
     "evidence:repair": "node scripts/capture-repair-evidence.mjs",
     "evidence:analyze": "node scripts/analyze-repair-evidence.mjs",
     "evidence:phase2": "node scripts/capture-phase2-evidence.mjs",
@@ -33,6 +36,7 @@
     "evidence:phase3:plan": "node scripts/capture-phase3-evidence.mjs --plan",
     "evidence:phase-r": "node scripts/capture-phase-r-evidence.mjs",
     "evidence:phase-r:plan": "node scripts/capture-phase-r-evidence.mjs --plan",
+    "evidence:phase-rx": "node scripts/capture-phase-rx-evidence.mjs",
     "media:check": "node scripts/check-phase2-media.mjs"
   },
   "dependencies": {

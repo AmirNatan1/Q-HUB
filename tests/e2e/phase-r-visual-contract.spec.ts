@@ -1,11 +1,11 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
 
 const partnerFocusSamples = [
-  { id: 'vdl-group', progress: 0.31 },
-  { id: 'hyundai-motor-group', progress: 0.44 },
-  { id: 'bazan-group', progress: 0.57 },
-  { id: 'taavura-livnat-group', progress: 0.69 },
-  { id: 'talcar', progress: 0.84 },
+  { id: 'vdl-group', progress: 0.18 },
+  { id: 'hyundai-motor-group', progress: 0.34 },
+  { id: 'bazan-group', progress: 0.5 },
+  { id: 'taavura-livnat-group', progress: 0.66 },
+  { id: 'talcar', progress: 0.82 },
 ] as const;
 
 const methodSamples = [
@@ -399,13 +399,51 @@ for (const viewport of [
   { name: 'desktop', width: 1440, height: 900 },
   { name: 'mobile', width: 390, height: 844 },
 ] as const) {
-  test(`${viewport.name} Activity exposes one uncropped signal at a time without headline overlap`, async ({
+  test(`${viewport.name} Activity preserves its authored signal composition without headline overlap`, async ({
     page,
   }) => {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
     await page.goto('/');
     await disableDecorativeTransitions(page);
     await expect(page.locator('[data-activity-signal]')).toHaveCount(4);
+
+    if (viewport.name === 'mobile') {
+      await setActProgress(page, 'activity', 0.5);
+      const activity = await readActivitySignals(page);
+      const visibleSignals = activity.signals.filter(({ visible }) => visible);
+      expect(visibleSignals).toHaveLength(4);
+      expect(visibleSignals.map(({ id }) => id)).toEqual([
+        'field-testing',
+        'programs',
+        'partner-engagement',
+        'global-ecosystem',
+      ]);
+      const signalRects = visibleSignals.flatMap((signal) => signal.textRects.map((rect) => ({
+        ...rect,
+        text: signal.text,
+      })));
+      for (const [index, rect] of signalRects.entries()) {
+        expect(rect.left, `${rect.text} is cropped at the left edge.`).toBeGreaterThanOrEqual(-1);
+        expect(rect.right, `${rect.text} is cropped at the right edge.`).toBeLessThanOrEqual(
+          viewport.width + 1,
+        );
+        expect(rect.top, `${rect.text} is clipped beneath the site header.`).toBeGreaterThanOrEqual(
+          activity.headerBottom - 1,
+        );
+        expect(rect.bottom, `${rect.text} is cropped below the viewport.`).toBeLessThanOrEqual(
+          viewport.height + 1,
+        );
+        if (index > 0) {
+          expect(rect.top, `${rect.text} overlaps the preceding Activity signal.`).toBeGreaterThanOrEqual(
+            signalRects[index - 1]!.bottom - 1,
+          );
+        }
+        for (const headingRect of activity.headingRects) {
+          expect(rectIntersectionArea(rect, headingRect)).toBeLessThanOrEqual(1);
+        }
+      }
+      return;
+    }
 
     const exposedSignals: string[] = [];
     for (const progress of activityProgressSamples) {
