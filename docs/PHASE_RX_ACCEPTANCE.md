@@ -25,7 +25,7 @@ This ledger records only commands and evidence actually produced for Phase R-X. 
 | Runtime | Source-bound desktop/mobile metrics disclose frame/long-task/input/error results and historical comparison | Pass — final desktop/mobile source-bound artifacts; zero errors and natural end reached |
 | Lighthouse | Six source-bound audits meet ≥95 categories and CLS ≤0.05, or an exact disclosed blocker remains | Pass — all six; homepage `100/100/100/100` desktop/mobile, lowest category 99, CLS 0 throughout |
 | Evidence | Baseline/candidate WebMs, stills, manifests, hashes, durations, and source identities exist | Pass — 72 canonical files; canonical SHA-256 digest `2124215…a35a42`; 3/3 WebMs played fully |
-| Git | Normal push; local HEAD = upstream = live branch; no unrelated user state consumed | Pending final normal push; inherited user deletion remains preserved and unstaged |
+| Git | Normal push; local HEAD = upstream = live branch; no unrelated user state consumed | Pass for normal push/equality/no unrelated consumption; inherited user deletion remains preserved and unstaged, so literal clean-tree status is unavailable |
 
 ## Hard-gate mapping
 
@@ -47,7 +47,7 @@ The master-goal H1–H15 gates remain authoritative. For R-X, H5–H7 are evalua
 | H12 Placeholder safety | No release-visible temporary content | Pass |
 | H13 Visual QA evidence | Real-browser still/video inspection and defects are recorded | Pass |
 | H14 Asset readiness | No new asset claim; unresolved FONT-001 remains disclosed | Pass with inherited `FONT-001` limitation |
-| H15 Version control/deployment | Branch discipline, equality, and no deployment | Pending final push; no deployment; inherited user deletion preserved |
+| H15 Version control/deployment | Branch discipline, equality, and no deployment | Limited — commit/push/equality/no-deployment requirements pass; literal clean tree is blocked by the required preservation of the pre-existing user deletion |
 
 ## Attempt ledger
 
@@ -76,6 +76,8 @@ The master-goal H1–H15 gates remain authoritative. For R-X, H5–H7 are evalua
 - Final Lighthouse: all six audits passed. Desktop/mobile homepage scored `100/100/100/100` with LCP `0.4/1.7 s`, TBT `0`, CLS `0`; both Proof index profiles scored all 100; field record scored all 100 desktop and `99/100/100/100` mobile, CLS `0`.
 - Full playback review: baseline, final continuous candidate, and final slow candidate all decoded and played through the `ended` event at review speed; `3/3` complete and zero media errors. Nine-frame filmstrips were visually inspected.
 - Final manifest: 72 canonical files and 114 retained non-canonical QA/pre-final files; canonical digest `2124215fcd3c1a88e1de6ba88aee4f3f739eec943b49dab5249e1cc38ca35a42`.
+- Post-package `npm run check`: passed with `71` Astro files at zero diagnostics, ESLint exit zero, `7/7` unit files and `50/50` unit tests passing, and 12 static pages built.
+- First normal closure push created the remote branch. Local HEAD, upstream-tracking HEAD, and live `refs/heads/repair/phase-rx-experience-integration-scroll-fluidity` were independently verified equal at `7d29f67f8f385e3c4772849f95e151a4a4803756`; the final ledger-only commit is pushed and re-verified separately at handoff.
 
 ## Bundle result
 
