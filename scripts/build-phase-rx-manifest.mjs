@@ -118,7 +118,7 @@ async function main() {
     readJson("artifacts/review/phase-rx/candidate-final-continuous-scroll-diagnostic.json"),
     readJson("artifacts/review/phase-rx/candidate-final-slow-review-diagnostic.json"),
     readJson("artifacts/review/phase-rx/candidate-stills-final/manifest.json"),
-    readJson("artifacts/performance/phase-rx/candidate-summary.json"),
+    readJson("artifacts/performance/phase-rx/candidate-final-summary.json"),
     readJson("artifacts/lighthouse/phase-rx-final/summary.json"),
     readJson("artifacts/review/phase-rx/video-review.json"),
   ]);

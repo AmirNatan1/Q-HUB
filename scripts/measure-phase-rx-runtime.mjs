@@ -21,6 +21,12 @@ const expectedBranch = "repair/phase-rx-experience-integration-scroll-fluidity";
 const candidateEnvironmentName = "PHASE_RX_RUNTIME_CANDIDATE_SHA";
 const host = "127.0.0.1";
 const skipBuild = process.argv.includes("--skip-build");
+const labelArgument = process.argv.find((argument) => argument.startsWith("--label="));
+const evidenceLabel = labelArgument?.slice("--label=".length) || null;
+if (evidenceLabel && !/^[a-z0-9][a-z0-9-]*$/u.test(evidenceLabel)) {
+  throw new Error(`Unsafe runtime evidence label: ${evidenceLabel}.`);
+}
+const artifactStem = evidenceLabel ? `candidate-${evidenceLabel}` : "candidate";
 const profiles = [
   { name: "desktop", viewport: { width: 1440, height: 900 }, isMobile: false, hasTouch: false },
   { name: "mobile", viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true },
@@ -454,8 +460,8 @@ function compactHistorical(summary) {
 }
 
 async function main() {
-  const outputPaths = profiles.map((profile) => path.join(outputDirectory, `candidate-${profile.name}.json`));
-  outputPaths.push(path.join(outputDirectory, "candidate-summary.json"));
+  const outputPaths = profiles.map((profile) => path.join(outputDirectory, `${artifactStem}-${profile.name}.json`));
+  outputPaths.push(path.join(outputDirectory, `${artifactStem}-summary.json`));
   const existing = [];
   for (const filePath of outputPaths) if (await exists(filePath)) existing.push(relative(filePath));
   if (existing.length) throw new Error(`Refusing to overwrite runtime evidence: ${existing.join(", ")}.`);
@@ -479,7 +485,7 @@ async function main() {
   }
   const profileArtifacts = [];
   for (const result of results) {
-    const filePath = path.join(outputDirectory, `candidate-${result.profile}.json`);
+    const filePath = path.join(outputDirectory, `${artifactStem}-${result.profile}.json`);
     const bytes = Buffer.from(`${JSON.stringify(result, null, 2)}\n`);
     await writeFile(filePath, bytes);
     profileArtifacts.push({ file: relative(filePath), bytes: bytes.length, sha256: sha256(bytes) });
@@ -491,6 +497,7 @@ async function main() {
   const summary = {
     schemaVersion: 1,
     stage: "candidate",
+    evidenceLabel,
     generatedAt: new Date().toISOString(),
     source,
     buildInput: skipBuild ? "existing fresh production build" : "fresh npm run build production output",
@@ -526,7 +533,7 @@ async function main() {
       "The accepted Phase 3 and Phase R summaries used their historical journey drivers; R-X additionally uses real wheel and touch input.",
     ],
   };
-  const summaryPath = path.join(outputDirectory, "candidate-summary.json");
+  const summaryPath = path.join(outputDirectory, `${artifactStem}-summary.json`);
   await writeFile(summaryPath, `${JSON.stringify(summary, null, 2)}\n`);
   process.stdout.write(`${JSON.stringify({ output: relative(outputDirectory), profiles: summary.profiles }, null, 2)}\n`);
 }
