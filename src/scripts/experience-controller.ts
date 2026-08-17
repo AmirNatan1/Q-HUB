@@ -291,7 +291,7 @@ function setMethodProgress(local: number): void {
       "--method-word-color",
       `${wordColor[0]} ${wordColor[1]} ${wordColor[2]}`,
     );
-    setNumber(word, "--method-word-opacity", 0.14 + weight * 0.86);
+    setNumber(word, "--method-word-opacity", 0.82 + weight * 0.18);
     setLength(word, "--method-word-shift", weight * 0.06, "rem");
   });
 }

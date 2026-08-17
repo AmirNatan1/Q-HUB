@@ -1602,6 +1602,10 @@ html[data-js="true"][data-scroll-choreography="continuous"] .phase-r-access__hea
   opacity: var(--access-heading-opacity, 1);
 }
 
+html[data-js="true"][data-scroll-choreography="continuous"] .phase-r-act--access:not([data-active]) .phase-r-access__heading {
+  opacity: 0;
+}
+
 html[data-js="true"][data-scroll-choreography="continuous"] .phase-r-display--access {
   max-width: 8ch;
   font-size: clamp(4.6rem, 8.6vw, 10rem);
@@ -1627,6 +1631,10 @@ html[data-js="true"][data-scroll-choreography="continuous"] .phase-r-act--access
   transform: translate3d(0, var(--partner-offset, 3.5rem), 0)
     scale(var(--partner-scale, 1.025));
   transition: none;
+}
+
+html[data-js="true"][data-scroll-choreography="continuous"] .phase-r-act--access:not([data-active]) .partner-plane {
+  visibility: hidden;
 }
 
 html[data-js="true"][data-scroll-choreography="continuous"] .phase-r-act--access .partner-plane::before {
@@ -1712,7 +1720,7 @@ html[data-js="true"][data-scroll-choreography="continuous"] .phase-r-display--me
 
 html[data-js="true"][data-scroll-choreography="continuous"] .phase-r-act--method .phase-r-display--method [data-method-word] {
   color: rgb(var(--method-word-color, 250 248 242));
-  opacity: var(--method-word-opacity, 0.14);
+  opacity: var(--method-word-opacity, 0.82);
   transform: translateX(var(--method-word-shift, 0));
   transition: none;
 }
@@ -2302,6 +2310,7 @@ html[data-js="true"][data-scroll-choreography="continuous"] .phase-r-act--activi
 @media (max-width: 48rem) {
   html[data-js="true"][data-scroll-choreography="continuous"] .phase-r-access__heading {
     max-width: 100%;
+    color: var(--r-paper-bright);
     opacity: 1;
   }
 
@@ -3142,11 +3151,17 @@ html[data-render-mode="reduced-motion"] .phase-r-display--method [data-method-wo
   }
 
   .phase-r-access__heading,
+  .phase-r-display--access,
   .partner-territory,
   .partner-territory h3 {
     position: relative;
     inset: auto;
     visibility: visible !important;
+  }
+
+  .phase-r-access__heading,
+  .phase-r-display--access {
+    opacity: 1 !important;
   }
 
   .partner-field {
