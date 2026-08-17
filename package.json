@@ -27,6 +27,8 @@
     "runtime:phase-r": "node scripts/measure-phase-r-runtime.mjs",
     "runtime:phase-rx": "node scripts/measure-phase-rx-runtime.mjs",
     "diagnostic:phase-rx": "node scripts/phase-rx-scroll-diagnostic.mjs --stage=candidate --pace=continuous",
+    "evidence:phase-rx:review-videos": "node scripts/review-phase-rx-videos.mjs",
+    "evidence:phase-rx:manifest": "node scripts/build-phase-rx-manifest.mjs",
     "evidence:repair": "node scripts/capture-repair-evidence.mjs",
     "evidence:analyze": "node scripts/analyze-repair-evidence.mjs",
     "evidence:phase2": "node scripts/capture-phase2-evidence.mjs",

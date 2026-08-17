@@ -32,6 +32,7 @@ const argumentsMap = new Map(
 );
 const stage = argumentsMap.get("stage") ?? "baseline";
 const pace = argumentsMap.get("pace") ?? "continuous";
+const evidenceLabel = argumentsMap.get("label") ?? null;
 const skipBuild = argumentsMap.get("skip-build") === "true";
 const supportedStages = new Set(["baseline", "candidate"]);
 const supportedPaces = new Set(["continuous", "slow"]);
@@ -46,12 +47,19 @@ if (!supportedPaces.has(pace)) {
 if (stage === "baseline" && pace !== "continuous") {
   throw new Error("The baseline evidence contract uses the continuous pace only.");
 }
+if (evidenceLabel && !/^[a-z0-9][a-z0-9-]*$/u.test(evidenceLabel)) {
+  throw new Error(`Unsafe evidence label: ${evidenceLabel}.`);
+}
+if (stage === "baseline" && evidenceLabel) {
+  throw new Error("A labeled diagnostic is supported only for candidate evidence.");
+}
 
+const candidateStem = evidenceLabel ? `candidate-${evidenceLabel}` : "candidate";
 const outputStem = stage === "baseline"
   ? "baseline-continuous-scroll"
   : pace === "slow"
-    ? "candidate-slow-review"
-    : "candidate-continuous-scroll";
+    ? `${candidateStem}-slow-review`
+    : `${candidateStem}-continuous-scroll`;
 const videoPath = path.join(outputDirectory, `${outputStem}.webm`);
 const diagnosticPath = path.join(outputDirectory, `${outputStem}-diagnostic.json`);
 const inputPattern = pace === "slow"
@@ -627,6 +635,7 @@ async function main() {
     schemaVersion: 1,
     stage,
     pace,
+    evidenceLabel,
     generatedAt: new Date().toISOString(),
     viewport,
     inputPattern,
