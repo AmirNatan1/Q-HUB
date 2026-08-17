@@ -109,7 +109,8 @@ async function sourceMetadata() {
     const unexpected = status.split(/\r?\n/u).filter(Boolean).filter((line) => {
       const file = statusPath(line);
       return file !== "artifacts/performance/phase-r.zip"
-        && !file.startsWith("artifacts/review/phase-rx/");
+        && !file.startsWith("artifacts/review/phase-rx/")
+        && !file.startsWith("artifacts/performance/phase-rx/");
     });
     if (unexpected.length) {
       throw new Error(`Candidate diagnostic has unexpected working changes:\n${unexpected.join("\n")}`);
