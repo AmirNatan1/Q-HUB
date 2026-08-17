@@ -23,6 +23,7 @@
     "release:phase-r": "npm run build && npm run test:source-integrity && npm run release:placeholders && npm run release:phase-r-output && npm run release:phase3-output && npm run bundle:check && npm run release:secrets",
     "bundle:check": "node scripts/check-bundle.mjs",
     "lighthouse": "node scripts/run-lighthouse.mjs",
+    "lighthouse:phase-rx": "node scripts/run-lighthouse.mjs",
     "runtime:phase-r": "node scripts/measure-phase-r-runtime.mjs",
     "runtime:phase-rx": "node scripts/measure-phase-rx-runtime.mjs",
     "diagnostic:phase-rx": "node scripts/phase-rx-scroll-diagnostic.mjs --stage=candidate --pace=continuous",

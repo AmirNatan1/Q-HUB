@@ -23,12 +23,18 @@ import lighthouse, { desktopConfig } from "lighthouse";
 const execFileAsync = promisify(execFile);
 const rootDirectory = fileURLToPath(new URL("..", import.meta.url));
 const distIndex = path.join(rootDirectory, "dist", "index.html");
+const phaseRxCandidateShaEnvironmentName = "PHASE_RX_LIGHTHOUSE_CANDIDATE_SHA";
+const phaseRxMode = Boolean(process.env[phaseRxCandidateShaEnvironmentName]?.trim());
 const artifactDirectory = process.env.LIGHTHOUSE_ARTIFACT_DIRECTORY
   ? path.resolve(process.env.LIGHTHOUSE_ARTIFACT_DIRECTORY)
-  : path.join(rootDirectory, "artifacts", "lighthouse", "phase-r");
+  : path.join(rootDirectory, "artifacts", "lighthouse", phaseRxMode ? "phase-rx" : "phase-r");
 const host = "127.0.0.1";
-const expectedBranch = "redirect/quantum-presence-startup-magnet";
-const candidateShaEnvironmentName = "PHASE_R_LIGHTHOUSE_CANDIDATE_SHA";
+const expectedBranch = phaseRxMode
+  ? "repair/phase-rx-experience-integration-scroll-fluidity"
+  : "redirect/quantum-presence-startup-magnet";
+const candidateShaEnvironmentName = phaseRxMode
+  ? phaseRxCandidateShaEnvironmentName
+  : "PHASE_R_LIGHTHOUSE_CANDIDATE_SHA";
 const categories = ["performance", "accessibility", "best-practices", "seo"];
 const requiredAuditCount = 6;
 const routeTargets = Object.freeze([
@@ -115,9 +121,10 @@ async function sourceMetadata() {
       `Phase R Lighthouse requires branch ${expectedBranch}; received ${source.branch || "detached HEAD"}.`
     );
   }
-  if (source.status) {
+  const initialUnexpected = unexpectedStatusLines(source.status);
+  if (initialUnexpected.length) {
     throw new Error(
-      `Phase R Lighthouse requires a clean tracked/untracked working tree:\n${source.status}`
+      `Lighthouse candidate has unexpected working changes:\n${initialUnexpected.join("\n")}`
     );
   }
   const explicitCandidate = process.env[candidateShaEnvironmentName]?.trim();
@@ -157,7 +164,9 @@ function reportPaths() {
 }
 
 function statusPath(line) {
-  const value = line.slice(3).replaceAll("\\", "/");
+  const value = line.trimStart()
+    .replace(/^(?:\?\?|[MADRCU]{1,2})\s+/u, "")
+    .replaceAll("\\", "/");
   const renameSeparator = " -> ";
   return value.includes(renameSeparator) ? value.split(renameSeparator).at(-1) : value;
 }
@@ -169,7 +178,18 @@ function unexpectedStatusLines(status, allowedAbsolutePaths = []) {
   return status
     .split(/\r?\n/u)
     .filter(Boolean)
-    .filter((line) => !allowed.has(statusPath(line)));
+    .filter((line) => {
+      const file = statusPath(line);
+      if (
+        phaseRxMode
+        && (
+          file === "artifacts/performance/phase-r.zip"
+          || file.startsWith("artifacts/review/phase-rx/")
+          || file.startsWith("artifacts/performance/phase-rx/")
+        )
+      ) return false;
+      return !allowed.has(file);
+    });
 }
 
 async function verifyCandidateUnchanged(source, checkpoint, allowedOutputPaths = []) {
