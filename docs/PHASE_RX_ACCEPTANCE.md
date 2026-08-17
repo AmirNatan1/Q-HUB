@@ -14,18 +14,18 @@ This ledger records only commands and evidence actually produced for Phase R-X. 
 
 | Gate | Required result | Candidate result |
 | --- | --- | --- |
-| Scope | Homepage integration only; no supporting-route redesign or publication expansion | Pending final ledger |
-| Native scroll | Real wheel/touch reaches natural page end; no interception, snap, custom momentum, or smooth-scroll runtime | Pending final diagnostic |
-| Continuous response | ACCESS, STARTUP, METHOD, and ACTIVITY geometry changes through tightly spaced forward input; METHOD reverses immediately | Pending final browser result |
-| Spatial integrity | Desktop/wide/tablet/mobile review has no text collision, crop, horizontal overflow, stale residue, or trapped sticky scene | Pending final visual ledger |
-| Semantic contract | Seven ordered acts, one `h1`, exact partners/taxonomy, four Activity labels, safe actions, Proof handoff | Pending final QA |
-| Publication | A/B-approved public output only; no internal provenance, Drive ID, placeholder, secret, denied project expansion, or invented fact | Pending final QA |
-| Accessibility | Keyboard/focus, axe, reduced motion, forced colors, no-WebGL, no-JavaScript, and touch semantics pass | Pending final QA |
-| Build health | Typecheck, lint, unit, production build, output checks, and bundle gate exit zero | Pending final QA |
-| Runtime | Source-bound desktop/mobile metrics disclose frame/long-task/input/error results and historical comparison | Pending final runtime |
-| Lighthouse | Six source-bound audits meet ≥95 categories and CLS ≤0.05, or an exact disclosed blocker remains | Pending final QA |
-| Evidence | Baseline/candidate WebMs, stills, manifests, hashes, durations, and source identities exist | Pending final package |
-| Git | Normal push; local HEAD = upstream = live branch; no unrelated user state consumed | Pending closure |
+| Scope | Homepage integration only; no supporting-route redesign or publication expansion | Pass — homepage controller/CSS plus tests, evidence tooling, release robustness, and docs only; content/routes remain frozen |
+| Native scroll | Real wheel/touch reaches natural page end; no interception, snap, custom momentum, or smooth-scroll runtime | Pass — desktop/mobile reached end and all 7 acts; 125 wheel events, 0 prevented; authored touch path passed |
+| Continuous response | ACCESS, STARTUP, METHOD, and ACTIVITY geometry changes through tightly spaced forward input; METHOD reverses immediately | Pass — R-X browser contract and `95/95` full matrix; aggregate diagnostic dead rate `0.3229 → 0.2021` |
+| Spatial integrity | Desktop/wide/tablet/mobile review has no text collision, crop, horizontal overflow, stale residue, or trapped sticky scene | Pass — 41 final source-bound stills, zero captured issues/overflow; visual inspection complete |
+| Semantic contract | Seven ordered acts, one `h1`, exact partners/taxonomy, four Activity labels, safe actions, Proof handoff | Pass — browser and built-output contracts |
+| Publication | A/B-approved public output only; no internal provenance, Drive ID, placeholder, secret, denied project expansion, or invented fact | Pass — source/publication/placeholder/built-output/secret gates |
+| Accessibility | Keyboard/focus, axe, reduced motion, forced colors, no-WebGL, no-JavaScript, and touch semantics pass | Pass — complete accessibility and fallback matrix included in `95/95` |
+| Build health | Typecheck, lint, unit, production build, output checks, and bundle gate exit zero | Pass — zero Astro diagnostics, ESLint zero, `50/50` unit, 12-page build, integrated release zero |
+| Runtime | Source-bound desktop/mobile metrics disclose frame/long-task/input/error results and historical comparison | Pass — final desktop/mobile source-bound artifacts; zero errors and natural end reached |
+| Lighthouse | Six source-bound audits meet ≥95 categories and CLS ≤0.05, or an exact disclosed blocker remains | Pass — all six; homepage `100/100/100/100` desktop/mobile, lowest category 99, CLS 0 throughout |
+| Evidence | Baseline/candidate WebMs, stills, manifests, hashes, durations, and source identities exist | Pass — 72 canonical files; canonical SHA-256 digest `2124215…a35a42`; 3/3 WebMs played fully |
+| Git | Normal push; local HEAD = upstream = live branch; no unrelated user state consumed | Pending final normal push; inherited user deletion remains preserved and unstaged |
 
 ## Hard-gate mapping
 
@@ -33,21 +33,21 @@ The master-goal H1–H15 gates remain authoritative. For R-X, H5–H7 are evalua
 
 | Hard gate | R-X interpretation | Result |
 | --- | --- | --- |
-| H1 Source integrity | Q-HUB-only implementation; prohibited legacy sources untouched | Pending |
-| H2 Required foundations | Existing Astro/content/publication/accessibility foundations preserved | Pending |
-| H3 Build health | Integrated checks exit zero | Pending |
-| H4 Publication safety | Public eligibility, output, placeholders, and secrets remain fail-closed | Pending |
-| H5 Narrative | Exact seven ordered Phase R acts remain reachable and meaningful | Pending |
-| H6 Observable transformation | Continuous and resolved states are visually distinct | Pending |
-| H7 Field interface | Accepted Partner/Field Crossing/METHOD interface remains complete in DOM/CSS and optional WebGL | Pending |
-| H8 Responsive integrity | Required viewport matrix and authored mobile pass | Pending |
-| H9 Accessibility | Keyboard, focus, axe, reduced motion, forced colors pass | Pending |
-| H10 Performance | Bundle, runtime, Lighthouse, and lifecycle are measured without fabrication | Pending |
-| H11 Fallback parity | no-WebGL, no-JavaScript, reduced motion, and mobile preserve meaning/actions | Pending |
-| H12 Placeholder safety | No release-visible temporary content | Pending |
-| H13 Visual QA evidence | Real-browser still/video inspection and defects are recorded | Pending |
-| H14 Asset readiness | No new asset claim; unresolved FONT-001 remains disclosed | Pending |
-| H15 Version control/deployment | Branch discipline, equality, and no deployment | Pending |
+| H1 Source integrity | Q-HUB-only implementation; prohibited legacy sources untouched | Pass |
+| H2 Required foundations | Existing Astro/content/publication/accessibility foundations preserved | Pass |
+| H3 Build health | Integrated checks exit zero | Pass |
+| H4 Publication safety | Public eligibility, output, placeholders, and secrets remain fail-closed | Pass |
+| H5 Narrative | Exact seven ordered Phase R acts remain reachable and meaningful | Pass |
+| H6 Observable transformation | Continuous and resolved states are visually distinct | Pass |
+| H7 Field interface | Accepted Partner/Field Crossing/METHOD interface remains complete in DOM/CSS and optional WebGL | Pass |
+| H8 Responsive integrity | Required viewport matrix and authored mobile pass | Pass |
+| H9 Accessibility | Keyboard, focus, axe, reduced motion, forced colors pass | Pass |
+| H10 Performance | Bundle, runtime, Lighthouse, and lifecycle are measured without fabrication | Pass with headless/host limitations disclosed |
+| H11 Fallback parity | no-WebGL, no-JavaScript, reduced motion, and mobile preserve meaning/actions | Pass |
+| H12 Placeholder safety | No release-visible temporary content | Pass |
+| H13 Visual QA evidence | Real-browser still/video inspection and defects are recorded | Pass |
+| H14 Asset readiness | No new asset claim; unresolved FONT-001 remains disclosed | Pass with inherited `FONT-001` limitation |
+| H15 Version control/deployment | Branch discipline, equality, and no deployment | Pending final push; no deployment; inherited user deletion preserved |
 
 ## Attempt ledger
 
@@ -69,5 +69,27 @@ The master-goal H1–H15 gates remain authoritative. For R-X, H5–H7 are evalua
 - Final complete Phase R/R-X browser matrix after accessibility closure: passed `95/95` in `54.6s`.
 - Integrated `npm run check`: passed with `69` Astro files reporting zero diagnostics, ESLint exit zero, `7/7` unit files and `50/50` unit tests passing, and `12` static pages built.
 - Integrated `release:phase-r` retry: passed build, `2/2` source-integrity tests, `2/2` placeholder tests, Phase R output (`7` acts, `5` partners, `15` public files), Phase 3 output (`2` Proof routes, `4` media assets, `20` browser-facing text artifacts), bundle, and secret gates. The secret scan checked `154` candidate text files, skipped `314` binary/oversize files, and explicitly excluded the one preserved absent tracked ZIP.
+- First final runtime declaration attempt rejected before build because the manually supplied full SHA did not equal HEAD; no artifact was written. The exact HEAD declaration was then used for every final source-bound run.
+- Final candidate runtime: desktop and mobile both reached the natural page end and all seven acts with zero errors. Desktop recorded p50/p95/p99 `16.7/49.945/66.7 ms`, two long tasks (`214 ms` total), and 125 wheel events with zero prevented. Mobile recorded `16.7/16.8/16.8 ms`, zero long tasks, and 141 touch input events.
+- Final continuous WebM: `14.32 s`, `1,607,518` bytes, SHA-256 `e9d79fcd0bfa20762c4dbe26be16613f24e1b719e0cf228ecc6976dbeb04aaf4`, zero page/console errors. Final slow WebM: `28.64 s`, `3,148,212` bytes, SHA-256 `529f268e113a884d0b73dbae4c562860c3685636d41714dd97ae40ee969ff3f1`, zero errors.
+- Final visual package: 41 source-bound captures across desktop/wide/tablet/mobile/modes, all with zero captured application issues and zero horizontal overflow. Human-readable spot inspection covered ACCESS, STARTUP, METHOD, ACTIVITY, mobile translations, and forced colors.
+- Final Lighthouse: all six audits passed. Desktop/mobile homepage scored `100/100/100/100` with LCP `0.4/1.7 s`, TBT `0`, CLS `0`; both Proof index profiles scored all 100; field record scored all 100 desktop and `99/100/100/100` mobile, CLS `0`.
+- Full playback review: baseline, final continuous candidate, and final slow candidate all decoded and played through the `ended` event at review speed; `3/3` complete and zero media errors. Nine-frame filmstrips were visually inspected.
+- Final manifest: 72 canonical files and 114 retained non-canonical QA/pre-final files; canonical digest `2124215fcd3c1a88e1de6ba88aee4f3f739eec943b49dab5249e1cc38ca35a42`.
 
-Final command totals, bundle bytes, runtime metrics, Lighthouse values, hashes, git equality, and open limitations are added only after the source-bound closure runs.
+## Bundle result
+
+- total JavaScript: `28,755` raw / `10,318` gzip bytes
+- initial JavaScript: `17,141` raw / `6,309` gzip bytes
+- lazy JavaScript: `11,614` raw / `4,009` gzip bytes
+- accepted Phase 3 delta: `+7,903` raw / `+2,357` gzip total; `+7,962` raw / `+2,392` gzip initial
+- React, React DOM, Three.js, R3F, GSAP, smooth-scroll and other heavy runtime detection: all false
+
+## Open limitations
+
+- Headless/local evidence cannot certify physical display, GPU, trackpad, or Cloudflare behavior; human review and any later preview remain separate decisions.
+- METHOD's diagnostic computed-style vector undercounts directly written custom-property geometry. The direct-variable/reverse-scroll browser contract and videos are the METHOD continuity sources of record.
+- A JavaScript-disabled Chromium screenshot context did not terminate reliably; no-JavaScript semantic/action behavior passed in the complete browser matrix instead.
+- Historical `FONT-001` remains unresolved; R-X did not authorize a new external font or asset claim.
+- The user-owned pre-existing deletion `artifacts/performance/phase-r.zip` remains untouched and unstaged. Consequently the local worktree cannot be literally clean without consuming unrelated user state.
+- No deployment or Cloudflare preview was performed.

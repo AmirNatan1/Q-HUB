@@ -1,0 +1,2415 @@
+{
+  "schemaVersion": 1,
+  "package": "Q-HUB Phase R-X spatial and mode evidence",
+  "generatedAt": "2026-08-17T08:30:14.251Z",
+  "output": "artifacts/review/phase-rx/candidate-stills-final",
+  "filter": null,
+  "source": {
+    "head": "570df6492bb864f4f3977dd2449f785eb286f473",
+    "tree": "39ddc9230778d1741516451adaaf9ca45bab472e",
+    "branch": "repair/phase-rx-experience-integration-scroll-fluidity",
+    "committedAt": "2026-08-17T11:26:46+03:00",
+    "statusAtStart": "D artifacts/performance/phase-r.zip\n?? artifacts/performance/phase-rx/candidate-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-mobile.json\n?? artifacts/performance/phase-rx/candidate-final-summary.json\n?? artifacts/performance/phase-rx/candidate-mobile.json\n?? artifacts/performance/phase-rx/candidate-summary.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/candidate-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-final-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/candidate-final-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-final-slow-review-diagnostic.json\n?? artifacts/review/phase-rx/candidate-final-slow-review.webm\n?? artifacts/review/phase-rx/candidate-slow-review-diagnostic.json\n?? artifacts/review/phase-rx/candidate-slow-review.webm\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-action.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/candidate-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/candidate-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/candidate-stills/manifest.json\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/candidate-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/candidate-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-access.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-method.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-startup.png\n?? artifacts/review/phase-rx/candidate-stills/wide-access.png\n?? artifacts/review/phase-rx/candidate-stills/wide-activity.png\n?? artifacts/review/phase-rx/candidate-stills/wide-method.png\n?? artifacts/review/phase-rx/candidate-stills/wide-startup.png\n?? artifacts/review/phase-rx/page@0635458a5bdfe99a9f235490594a49b0.webm\n?? artifacts/review/phase-rx/page@54dcdedb944062fd658b337737d36ad0.webm\n?? artifacts/review/phase-rx/page@843c6c71f1d405d4695a9822b6515c8a.webm\n?? artifacts/review/phase-rx/page@c72c3cf82df5e8335131a950fa96a28d.webm\n?? artifacts/review/phase-rx/page@e43b436c1cbd0e73c93e2e17d39e44b4.webm\n?? artifacts/review/phase-rx/page@eab4a2bb0813fd9eda2ba1bb91e22cb9.webm\n?? artifacts/review/phase-rx/page@f0dc1aa1e244aec2999e8c96a53c6fe1.webm\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/wide-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/wide-startup.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/qa-stills/desktop-action.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/qa-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-stills/manifest.json\n?? artifacts/review/phase-rx/qa-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-access.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-access.png\n?? artifacts/review/phase-rx/qa-stills/tablet-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-method.png\n?? artifacts/review/phase-rx/qa-stills/tablet-startup.png\n?? artifacts/review/phase-rx/qa-stills/wide-access.png\n?? artifacts/review/phase-rx/qa-stills/wide-activity.png\n?? artifacts/review/phase-rx/qa-stills/wide-method.png\n?? artifacts/review/phase-rx/qa-stills/wide-startup.png",
+    "candidateEnvironmentName": "PHASE_RX_EVIDENCE_CANDIDATE_SHA",
+    "candidateEnvironmentProvided": true,
+    "basis": "explicit-candidate-sha-equals-head",
+    "preservedPreExistingDeletion": true
+  },
+  "captureRuntime": {
+    "browserVersion": "151.0.7922.34",
+    "baseUrl": "http://127.0.0.1:57183/",
+    "productionBuild": false,
+    "isolatedProductionPreview": true
+  },
+  "counts": {
+    "screenshots": 41,
+    "zeroIssueScreenshots": 41,
+    "uniqueHashes": 40,
+    "duplicateGroups": 1
+  },
+  "duplicateGroups": [
+    {
+      "hash": "1c92fee652d5e820f9d802142c8c041e51c8b8f3081b8c8cf8be0805783c3294",
+      "ids": [
+        "desktop-method-2",
+        "no-webgl-method"
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "id": "desktop-presence-resolved",
+      "file": "candidate-stills-final/desktop-presence-resolved.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "presence",
+      "targetProgress": 0.6,
+      "mode": "normal",
+      "state": {
+        "phase": "presence",
+        "mode": "normal",
+        "activePhase": "presence",
+        "progress": 0.6,
+        "sectionState": "resolved",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 594,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 189270,
+      "sha256": "c18ffac001a64032f4d822238cd2931367361821bd6907d7977efa4fec2a25cb",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-access-1",
+      "file": "candidate-stills-final/desktop-access-1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "access",
+      "targetProgress": 0.18,
+      "mode": "normal",
+      "state": {
+        "phase": "access",
+        "mode": "normal",
+        "activePhase": "access",
+        "progress": 0.18,
+        "sectionState": "strategic",
+        "partnerFocus": "vdl-group",
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 1764,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 247779,
+      "sha256": "3b2834e63a100c0766edd2433b8c147a5c4e40721d41378335d4c2433294a084",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-access-2",
+      "file": "candidate-stills-final/desktop-access-2.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "access",
+      "targetProgress": 0.34,
+      "mode": "normal",
+      "state": {
+        "phase": "access",
+        "mode": "normal",
+        "activePhase": "access",
+        "progress": 0.34,
+        "sectionState": "strategic",
+        "partnerFocus": "hyundai-motor-group",
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 2196,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 99424,
+      "sha256": "0329ee18bb1e877bca2a0f07bfe5c9a85a36a8fe21c635839db46f3faf863ced",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-access-3",
+      "file": "candidate-stills-final/desktop-access-3.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "access",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "access",
+        "mode": "normal",
+        "activePhase": "access",
+        "progress": 0.5,
+        "sectionState": "strategic",
+        "partnerFocus": "bazan-group",
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 2628,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 195433,
+      "sha256": "88444fb1462843a2c890aea25b82f2c7dab37ca8530e84cc82938d0ec8f79092",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-access-4",
+      "file": "candidate-stills-final/desktop-access-4.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "access",
+      "targetProgress": 0.66,
+      "mode": "normal",
+      "state": {
+        "phase": "access",
+        "mode": "normal",
+        "activePhase": "access",
+        "progress": 0.66,
+        "sectionState": "founding",
+        "partnerFocus": "taavura-livnat-group",
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 3060,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 204591,
+      "sha256": "8958b97c660df02e7cbaf958f9db657a8ef48692e0d98a0d5c1b0a3f9c090e02",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-access-5",
+      "file": "candidate-stills-final/desktop-access-5.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "access",
+      "targetProgress": 0.82,
+      "mode": "normal",
+      "state": {
+        "phase": "access",
+        "mode": "normal",
+        "activePhase": "access",
+        "progress": 0.82,
+        "sectionState": "founding",
+        "partnerFocus": "talcar",
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 3492,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 231956,
+      "sha256": "7e3e2110a074f3e883f096a482587e92857dba917ffb5e918ce551c9a81d13aa",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-startup-1",
+      "file": "candidate-stills-final/desktop-startup-1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "startup",
+      "targetProgress": 0.18,
+      "mode": "normal",
+      "state": {
+        "phase": "startup",
+        "mode": "normal",
+        "activePhase": "startup",
+        "progress": 0.1799,
+        "sectionState": "outside",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 4318,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "0.1799",
+          "--crossing-scale-x": "1.0000",
+          "--crossing-scale-y": "1.0000",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 347886,
+      "sha256": "8e311546ef42785c85eefb08e4f555eb8edab067e8a4ed165320214d80b8c160",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-startup-2",
+      "file": "candidate-stills-final/desktop-startup-2.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "startup",
+      "targetProgress": 0.48,
+      "mode": "normal",
+      "state": {
+        "phase": "startup",
+        "mode": "normal",
+        "activePhase": "startup",
+        "progress": 0.4799,
+        "sectionState": "threshold",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 4885,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "0.4799",
+          "--crossing-scale-x": "0.6500",
+          "--crossing-scale-y": "0.0900",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 427994,
+      "sha256": "cf4721af042f535dfa30c129e4743027cca475b6333fc666cfeb4dd070c39bca",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-startup-3",
+      "file": "candidate-stills-final/desktop-startup-3.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "startup",
+      "targetProgress": 0.76,
+      "mode": "normal",
+      "state": {
+        "phase": "startup",
+        "mode": "normal",
+        "activePhase": "startup",
+        "progress": 0.7598,
+        "sectionState": "field",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 5414,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "0.7598",
+          "--crossing-scale-x": "0.9828",
+          "--crossing-scale-y": "0.0662",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 507187,
+      "sha256": "986cc8a9d4684cd8b6896931c497920ec0ffe9869a46f58e6a45a315a2254e04",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-method-1",
+      "file": "candidate-stills-final/desktop-method-1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "method",
+      "targetProgress": 0.16,
+      "mode": "normal",
+      "state": {
+        "phase": "method",
+        "mode": "normal",
+        "activePhase": "method",
+        "progress": 0.1601,
+        "sectionState": "find",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 6329,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "13.138%",
+          "--method-focus-left": "67.851%",
+          "--method-test-weight": "0.1828",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 199430,
+      "sha256": "b830dbd620f006823c33d7005b1e49b11de8587f2c0efc79fb47864af3d046a8",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-method-2",
+      "file": "candidate-stills-final/desktop-method-2.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "method",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "method",
+        "mode": "normal",
+        "activePhase": "method",
+        "progress": 0.5,
+        "sectionState": "test",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 7308,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "53.401%",
+          "--method-focus-left": "48.723%",
+          "--method-test-weight": "0.9873",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 207715,
+      "sha256": "1c92fee652d5e820f9d802142c8c041e51c8b8f3081b8c8cf8be0805783c3294",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-method-3",
+      "file": "candidate-stills-final/desktop-method-3.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "method",
+      "targetProgress": 0.84,
+      "mode": "normal",
+      "state": {
+        "phase": "method",
+        "mode": "normal",
+        "activePhase": "method",
+        "progress": 0.8399,
+        "sectionState": "prove",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 8287,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "7.000%",
+          "--method-focus-left": "4.000%",
+          "--method-test-weight": "0.0000",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 197363,
+      "sha256": "45f0d5ec81599518675e70231d2aeb975833066e0ced6c3a28447d08433695d7",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-activity-1",
+      "file": "candidate-stills-final/desktop-activity-1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "activity",
+      "targetProgress": 0.16,
+      "mode": "normal",
+      "state": {
+        "phase": "activity",
+        "mode": "normal",
+        "activePhase": "activity",
+        "progress": 0.1598,
+        "sectionState": "field-testing",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 9050,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [
+          "field-testing"
+        ],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 92820,
+      "sha256": "87f05b7c897741efd4eb231d85640d6135f354ec5d30ab9c65c93d550e2b9864",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-activity-2",
+      "file": "candidate-stills-final/desktop-activity-2.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "activity",
+      "targetProgress": 0.37,
+      "mode": "normal",
+      "state": {
+        "phase": "activity",
+        "mode": "normal",
+        "activePhase": "activity",
+        "progress": 0.3698,
+        "sectionState": "programs",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 9447,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [
+          "programs"
+        ],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 176330,
+      "sha256": "e6ba2990a3ce89756a8816d32c32e7812d5cf79587496df122ebeaafd33d90c9",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-activity-3",
+      "file": "candidate-stills-final/desktop-activity-3.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "activity",
+      "targetProgress": 0.62,
+      "mode": "normal",
+      "state": {
+        "phase": "activity",
+        "mode": "normal",
+        "activePhase": "activity",
+        "progress": 0.6201,
+        "sectionState": "partner-engagement",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 9920,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [
+          "partner-engagement"
+        ],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 594364,
+      "sha256": "76c0a4e3d4e716e76eb5cb757112ead53e50d26e3ceb29578bb7818e575103dd",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-activity-4",
+      "file": "candidate-stills-final/desktop-activity-4.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "activity",
+      "targetProgress": 0.84,
+      "mode": "normal",
+      "state": {
+        "phase": "activity",
+        "mode": "normal",
+        "activePhase": "activity",
+        "progress": 0.8402,
+        "sectionState": "global-ecosystem",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 10336,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [
+          "global-ecosystem"
+        ],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 305323,
+      "sha256": "3730c1fe7bdfeffafc0d7aef8ff5bf3eb7b606d3147dfc0ebe42971765c75a81",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-evidence",
+      "file": "candidate-stills-final/desktop-evidence.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "evidence",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "evidence",
+        "mode": "normal",
+        "activePhase": "evidence",
+        "progress": 0.5004,
+        "sectionState": null,
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 11246,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "1.0000",
+          "--stage-action-glow": "0.0000"
+        }
+      },
+      "issues": [],
+      "bytes": 40323,
+      "sha256": "ecf03062454b06ee8cfe5131effb519f21467b92bfc52f4c4ef0131ac30f8383",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "desktop-action",
+      "file": "candidate-stills-final/desktop-action.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "action",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "action",
+        "mode": "normal",
+        "activePhase": "action",
+        "progress": 0.5,
+        "sectionState": null,
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 12528,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.2800"
+        }
+      },
+      "issues": [],
+      "bytes": 399771,
+      "sha256": "433dc3fbd3ff4dac954493b352c217470b2c70fee59188e834c4791f5b44c8ee",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "wide-access",
+      "file": "candidate-stills-final/wide-access.png",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "phase": "access",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "access",
+        "mode": "normal",
+        "activePhase": "access",
+        "progress": 0.5001,
+        "sectionState": "strategic",
+        "partnerFocus": "bazan-group",
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "scrollY": 3154,
+        "documentHeight": 16362,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 277242,
+      "sha256": "28c2a33b2c9f875cb42bf9416dcadbde086765350722e1428a5eb77f3bd2a809",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "wide-startup",
+      "file": "candidate-stills-final/wide-startup.png",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "phase": "startup",
+      "targetProgress": 0.48,
+      "mode": "normal",
+      "state": {
+        "phase": "startup",
+        "mode": "normal",
+        "activePhase": "startup",
+        "progress": 0.4799,
+        "sectionState": "threshold",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "scrollY": 5862,
+        "documentHeight": 16362,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "0.4799",
+          "--crossing-scale-x": "0.6500",
+          "--crossing-scale-y": "0.0900",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 613755,
+      "sha256": "3d56bd900303db32866006df325d8240854aacb93cff9dddfd04b91fb9cfa7e9",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "wide-method",
+      "file": "candidate-stills-final/wide-method.png",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "phase": "method",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "method",
+        "mode": "normal",
+        "activePhase": "method",
+        "progress": 0.5001,
+        "sectionState": "test",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "scrollY": 8770,
+        "documentHeight": 16362,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "53.394%",
+          "--method-focus-left": "48.716%",
+          "--method-test-weight": "0.9871",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 287582,
+      "sha256": "968c77539a8e9f25162962293bffdefd7dd7d469cc139887524375de36071b7b",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "wide-activity",
+      "file": "candidate-stills-final/wide-activity.png",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "phase": "activity",
+      "targetProgress": 0.62,
+      "mode": "normal",
+      "state": {
+        "phase": "activity",
+        "mode": "normal",
+        "activePhase": "activity",
+        "progress": 0.6201,
+        "sectionState": "partner-engagement",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        },
+        "scrollY": 11904,
+        "documentHeight": 16362,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [
+          "partner-engagement"
+        ],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 902783,
+      "sha256": "99dd69b9a5d22a330a4289380455706000bbecdb828f1e3b982462705b51a91c",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "tablet-access",
+      "file": "candidate-stills-final/tablet-access.png",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "phase": "access",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "access",
+        "mode": "normal",
+        "activePhase": "access",
+        "progress": 0.5,
+        "sectionState": "strategic",
+        "partnerFocus": "bazan-group",
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "scrollY": 2627,
+        "documentHeight": 10436,
+        "horizontalOverflow": false,
+        "headingVisible": false,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 131424,
+      "sha256": "371b8e0959f07c3f81a99d67f94398162dc4070ce16e03cc6affa52b1f9c347f",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "tablet-startup",
+      "file": "candidate-stills-final/tablet-startup.png",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "phase": "startup",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "startup",
+        "mode": "normal",
+        "activePhase": "startup",
+        "progress": 0.4998,
+        "sectionState": "threshold",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "scrollY": 5259,
+        "documentHeight": 10436,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "0.4998",
+          "--crossing-scale-x": "0.6500",
+          "--crossing-scale-y": "0.0900",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 147170,
+      "sha256": "f4745038345a412311cc560df54fd441766b26dcb3cfff8cafda5e8a5fd1e4a5",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "tablet-method",
+      "file": "candidate-stills-final/tablet-method.png",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "phase": "method",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "method",
+        "mode": "normal",
+        "activePhase": "method",
+        "progress": 0.4996,
+        "sectionState": "test",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "scrollY": 6334,
+        "documentHeight": 10436,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "53.422%",
+          "--method-focus-left": "48.743%",
+          "--method-test-weight": "0.9877",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 107687,
+      "sha256": "18546f1279a6a42de07178961540193acdee664a4af0354b8a5d18751d95284c",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "tablet-activity",
+      "file": "candidate-stills-final/tablet-activity.png",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "phase": "activity",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "activity",
+        "mode": "normal",
+        "activePhase": "activity",
+        "progress": 0.5,
+        "sectionState": "partner-engagement",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "scrollY": 7384,
+        "documentHeight": 10436,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [
+          "field-testing",
+          "programs",
+          "partner-engagement",
+          "global-ecosystem"
+        ],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 46209,
+      "sha256": "fb8794bc0319fb5fa15457ec4c8c54b2b5312afc4c84d5a9fc601d060bd34338",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "mobile-390-presence",
+      "file": "candidate-stills-final/mobile-390-presence.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "presence",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "presence",
+        "mode": "normal",
+        "activePhase": "presence",
+        "progress": 0.5001,
+        "sectionState": "resolved",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scrollY": 17,
+        "documentHeight": 8616,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 59359,
+      "sha256": "4e5bb9b004c6acf8f2644f6938bf88829984fd602bc9d0ed37ea7d06744dbdef",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "mobile-390-access",
+      "file": "candidate-stills-final/mobile-390-access.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "access",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "access",
+        "mode": "normal",
+        "activePhase": "access",
+        "progress": 0.5001,
+        "sectionState": "strategic",
+        "partnerFocus": "bazan-group",
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scrollY": 2173,
+        "documentHeight": 8616,
+        "horizontalOverflow": false,
+        "headingVisible": false,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 59523,
+      "sha256": "2cabcf06f8ff283e96f8cdb5a593ef65fb2e5e5eb59f2ca83aa2d1b36fcabd09",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "mobile-390-startup",
+      "file": "candidate-stills-final/mobile-390-startup.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "startup",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "startup",
+        "mode": "normal",
+        "activePhase": "startup",
+        "progress": 0.5006,
+        "sectionState": "threshold",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scrollY": 4350,
+        "documentHeight": 8616,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "0.5006",
+          "--crossing-scale-x": "0.6500",
+          "--crossing-scale-y": "0.0900",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 85710,
+      "sha256": "4d3b148db88c1d4614a53d9eae4d713c6fe2bec06b03151604b876147d9bcb12",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "mobile-390-method",
+      "file": "candidate-stills-final/mobile-390-method.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "method",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "method",
+        "mode": "normal",
+        "activePhase": "method",
+        "progress": 0.5003,
+        "sectionState": "test",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scrollY": 5236,
+        "documentHeight": 8616,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "53.381%",
+          "--method-focus-left": "48.703%",
+          "--method-test-weight": "0.9868",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 60958,
+      "sha256": "1238074d0c44740593d88c4f563dc93bcea5934ea1da51697b33a30520767192",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "mobile-390-activity",
+      "file": "candidate-stills-final/mobile-390-activity.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "activity",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "activity",
+        "mode": "normal",
+        "activePhase": "activity",
+        "progress": 0.5003,
+        "sectionState": "partner-engagement",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scrollY": 6101,
+        "documentHeight": 8616,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [
+          "field-testing",
+          "programs",
+          "partner-engagement",
+          "global-ecosystem"
+        ],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 30477,
+      "sha256": "127a77cf270a47182a540fe1d70a7bd93ac8f539e0f47b66bcc53662790dd6ae",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "mobile-390-evidence",
+      "file": "candidate-stills-final/mobile-390-evidence.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "evidence",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "evidence",
+        "mode": "normal",
+        "activePhase": "evidence",
+        "progress": 0.5003,
+        "sectionState": null,
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scrollY": 6945,
+        "documentHeight": 8616,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "1.0000",
+          "--stage-action-glow": "0.0000"
+        }
+      },
+      "issues": [],
+      "bytes": 21982,
+      "sha256": "5973d26c4e6785664ac528c71ebc8f3364b062c4ef373cd0c2fd4b611c25a223",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "mobile-390-action",
+      "file": "candidate-stills-final/mobile-390-action.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "action",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "action",
+        "mode": "normal",
+        "activePhase": "action",
+        "progress": 0.4801,
+        "sectionState": null,
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scrollY": 7772,
+        "documentHeight": 8616,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.2800"
+        }
+      },
+      "issues": [],
+      "bytes": 109891,
+      "sha256": "94cedcd4039c55eb2cbb5bfc7375612bcfb87a6876f68d287afeb6656e4a2a63",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "mobile-430-access",
+      "file": "candidate-stills-final/mobile-430-access.png",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "phase": "access",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "access",
+        "mode": "normal",
+        "activePhase": "access",
+        "progress": 0.4999,
+        "sectionState": "strategic",
+        "partnerFocus": "bazan-group",
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "scrollY": 2380,
+        "documentHeight": 9477,
+        "horizontalOverflow": false,
+        "headingVisible": false,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 68102,
+      "sha256": "b0b65eeb1c131227a7c3719f847d418af1fbeeb6fb0366998d1ecbb7163d0453",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "mobile-430-startup",
+      "file": "candidate-stills-final/mobile-430-startup.png",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "phase": "startup",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "startup",
+        "mode": "normal",
+        "activePhase": "startup",
+        "progress": 0.4997,
+        "sectionState": "threshold",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "scrollY": 4765,
+        "documentHeight": 9477,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "0.4997",
+          "--crossing-scale-x": "0.6500",
+          "--crossing-scale-y": "0.0900",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 95619,
+      "sha256": "6df8a1addae04a94ff546c05f98639e845417bf12ec055ba960c2fece91200e2",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "mobile-430-method",
+      "file": "candidate-stills-final/mobile-430-method.png",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "phase": "method",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "method",
+        "mode": "normal",
+        "activePhase": "method",
+        "progress": 0.5001,
+        "sectionState": "test",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "scrollY": 5744,
+        "documentHeight": 9477,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "53.396%",
+          "--method-focus-left": "48.718%",
+          "--method-test-weight": "0.9872",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 68544,
+      "sha256": "91738ad6ef74056f174ecce571549eb4cc6e3a302edbbee7d7efa3633e083c58",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "mobile-430-activity",
+      "file": "candidate-stills-final/mobile-430-activity.png",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "phase": "activity",
+      "targetProgress": 0.5,
+      "mode": "normal",
+      "state": {
+        "phase": "activity",
+        "mode": "normal",
+        "activePhase": "activity",
+        "progress": 0.4998,
+        "sectionState": "programs",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "scrollY": 6699,
+        "documentHeight": 9477,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [
+          "field-testing",
+          "programs",
+          "partner-engagement",
+          "global-ecosystem"
+        ],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 34381,
+      "sha256": "7e51b191c5067ee8119bc902ff91d14d5fbbf2cada93d190057775ca99b485e9",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "reduced-motion-activity",
+      "file": "candidate-stills-final/reduced-motion-activity.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "activity",
+      "targetProgress": 0.5,
+      "mode": "reduced-motion",
+      "state": {
+        "phase": "activity",
+        "mode": "reduced-motion",
+        "activePhase": "activity",
+        "progress": 0.5002,
+        "sectionState": "partner-engagement",
+        "partnerFocus": null,
+        "renderMode": "reduced-motion",
+        "inputMode": "touch-scroll",
+        "scrollChoreography": null,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scrollY": 5143,
+        "documentHeight": 7658,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [
+          "field-testing",
+          "programs",
+          "partner-engagement",
+          "global-ecosystem"
+        ],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": true,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 92849,
+      "sha256": "754d0c9a78674b704ee035ba1055c47fc5b0003d13b4258f5605472bf0f53e1d",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "no-webgl-method",
+      "file": "candidate-stills-final/no-webgl-method.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "method",
+      "targetProgress": 0.5,
+      "mode": "no-webgl",
+      "state": {
+        "phase": "method",
+        "mode": "no-webgl",
+        "activePhase": "method",
+        "progress": 0.5,
+        "sectionState": "test",
+        "partnerFocus": null,
+        "renderMode": "no-webgl-fallback",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 7308,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "53.401%",
+          "--method-focus-left": "48.723%",
+          "--method-test-weight": "0.9873",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 207715,
+      "sha256": "1c92fee652d5e820f9d802142c8c041e51c8b8f3081b8c8cf8be0805783c3294",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "forced-colors-presence",
+      "file": "candidate-stills-final/forced-colors-presence.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "presence",
+      "targetProgress": 0.6,
+      "mode": "forced-colors",
+      "state": {
+        "phase": "presence",
+        "mode": "forced-colors",
+        "activePhase": "presence",
+        "progress": 0.6,
+        "sectionState": "resolved",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 594,
+        "documentHeight": 12689,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": true,
+        "focusedStartupAction": false,
+        "visualVariables": {
+          "--crossing-position": "",
+          "--crossing-scale-x": "",
+          "--crossing-scale-y": "",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 45132,
+      "sha256": "c797bba7c349c66cd69db2560b3d137ee88f91183d8d7cef80b495a3a4119335",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    },
+    {
+      "id": "keyboard-focus-startup",
+      "file": "candidate-stills-final/keyboard-focus-startup.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "startup",
+      "targetProgress": 0.76,
+      "mode": "keyboard-focus",
+      "state": {
+        "phase": "startup",
+        "mode": "keyboard-focus",
+        "activePhase": "startup",
+        "progress": 0.7598,
+        "sectionState": "field",
+        "partnerFocus": null,
+        "renderMode": "dom-fallback-ready",
+        "inputMode": "pointer",
+        "scrollChoreography": "continuous",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "scrollY": 5414,
+        "documentHeight": 13635,
+        "horizontalOverflow": false,
+        "headingVisible": true,
+        "visibleActivity": [],
+        "phaseOrder": [
+          "presence",
+          "access",
+          "startup",
+          "method",
+          "activity",
+          "evidence",
+          "action"
+        ],
+        "reducedMotion": false,
+        "forcedColors": false,
+        "focusedStartupAction": true,
+        "visualVariables": {
+          "--crossing-position": "0.7598",
+          "--crossing-scale-x": "0.9828",
+          "--crossing-scale-y": "0.0662",
+          "--method-surface-left": "",
+          "--method-focus-left": "",
+          "--method-test-weight": "",
+          "--stage-paper-opacity": "0.0000",
+          "--stage-action-glow": "0.0800"
+        }
+      },
+      "issues": [],
+      "bytes": 510742,
+      "sha256": "a588ad0e202bf1d315c95ad6efdbf01ad48ea26dde2294c7b1dc73cf14475045",
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473"
+    }
+  ],
+  "limitations": [
+    "Headless Chromium screenshots require human confirmation on physical displays and GPUs.",
+    "Local production preview evidence does not represent a Cloudflare preview deployment.",
+    "Screenshots freeze time-based transitions; scroll-linked geometry is verified separately with natural-wheel diagnostics.",
+    "The JavaScript-disabled Chromium context did not terminate reliably during capture; no-JS remains covered by the release behavior suite rather than a new R-X still.",
+    "This headless Chromium runtime resolved normal desktop captures to the DOM/CSS fallback, so the explicit no-WebGL METHOD still is intentionally equivalent to the normal fallback still."
+  ]
+}

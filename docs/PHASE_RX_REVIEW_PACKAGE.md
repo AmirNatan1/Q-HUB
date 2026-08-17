@@ -1,10 +1,10 @@
 # Phase R-X Human Review Package
 
-**Status:** In preparation
+**Status:** Ready for human review
 
 **Decision boundary:** Human review only; no agent ACCEPT / REPAIR / REDIRECT decision
 
-This package will bind the final implementation, runtime, Lighthouse, evidence, documentation, and git identities after all closure commands finish. The preserved Phase R strategy and the Phase R-X scope are defined in `docs/PHASE_RX_EXPERIENCE_INTEGRATION_GOAL.md`; the result ledger is `docs/PHASE_RX_ACCEPTANCE.md`; reproduction and before/after continuity evidence is `docs/PHASE_RX_SCROLL_DIAGNOSTIC.md`.
+This package binds the final implementation, runtime, Lighthouse, evidence, and documentation identities. The preserved Phase R strategy and the Phase R-X scope are defined in `docs/PHASE_RX_EXPERIENCE_INTEGRATION_GOAL.md`; the result ledger is `docs/PHASE_RX_ACCEPTANCE.md`; reproduction and before/after continuity evidence is `docs/PHASE_RX_SCROLL_DIAGNOSTIC.md`.
 
 ## Review sequence
 
@@ -16,13 +16,30 @@ This package will bind the final implementation, runtime, Lighthouse, evidence, 
 
 ## Candidate identities
 
-Final source and git identities are pending the source-bound closure run.
+- branch: `repair/phase-rx-experience-integration-scroll-fluidity`
+- starting Phase R source: `36e750ed2ae265440c5546e24deebda74db5255a`
+- final implementation/evidence source: `570df6492bb864f4f3977dd2449f785eb286f473`
+- final implementation tree: `39ddc9230778d1741516451adaaf9ca45bab472e`
+- canonical evidence digest: `2124215fcd3c1a88e1de6ba88aee4f3f739eec943b49dab5249e1cc38ca35a42`
+- deployment: none
 
 ## Evidence location
 
 `artifacts/review/phase-rx/`
 
-The final root manifest will inventory every delivered WebM, PNG, JSON artifact, byte count, SHA-256, source identity, duration/dimensions where applicable, and disclosed limitation.
+The root `manifest.json` inventories 72 canonical files with byte counts and SHA-256 values, plus 114 retained non-canonical QA/pre-final records kept separate from the decision set.
+
+Canonical review entry points:
+
+- `baseline-continuous-scroll.webm`
+- `candidate-final-continuous-scroll.webm`
+- `candidate-final-slow-review.webm`
+- `candidate-stills-final/manifest.json` and 41 PNGs
+- `video-review.json` and three nine-frame filmstrips
+- `manifest.json`
+- `artifacts/performance/phase-rx/candidate-final-summary.json`
+- `artifacts/lighthouse/phase-rx-final/summary.json`
+- `artifacts/bundle-phase-r-report.json`
 
 ## Human review questions
 
@@ -38,4 +55,4 @@ The final root manifest will inventory every delivered WebM, PNG, JSON artifact,
 
 ## Known boundary
 
-No production deployment, Cloudflare preview validation, or physical-hardware certification is part of Phase R-X. Those remain explicitly deferred until after human acceptance.
+No production deployment, Cloudflare preview validation, or physical-hardware certification is part of Phase R-X. Those remain explicitly deferred until after human acceptance. The METHOD diagnostic's computed-style vector undercounts custom-property geometry; the passing direct-variable/reverse-scroll browser contract and review video are the authoritative METHOD continuity evidence. The pre-existing user deletion `artifacts/performance/phase-r.zip` remains untouched, so the local worktree intentionally retains that inherited deletion.

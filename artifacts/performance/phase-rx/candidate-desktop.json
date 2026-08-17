@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate",
+  "profile": "desktop",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "source": {
+    "head": "a564284984470ea2d8837f1b04fc7fbe076a13ce",
+    "tree": "ff73b72dc3fe59d023b5c36c9bf5038a1ea15e8e",
+    "branch": "repair/phase-rx-experience-integration-scroll-fluidity",
+    "committedAt": "2026-08-17T10:57:48+03:00",
+    "expectedBranch": "repair/phase-rx-experience-integration-scroll-fluidity",
+    "candidateEnvironment": {
+      "name": "PHASE_RX_RUNTIME_CANDIDATE_SHA",
+      "provided": true,
+      "equalsHead": true
+    },
+    "statusAtStart": "D artifacts/performance/phase-r.zip\n?? artifacts/review/phase-rx/baseline-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll.webm\n?? artifacts/review/phase-rx/page@54dcdedb944062fd658b337737d36ad0.webm\n?? artifacts/review/phase-rx/page@e43b436c1cbd0e73c93e2e17d39e44b4.webm\n?? artifacts/review/phase-rx/page@f0dc1aa1e244aec2999e8c96a53c6fe1.webm\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/wide-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/wide-startup.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/qa-stills/desktop-action.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/qa-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-stills/manifest.json\n?? artifacts/review/phase-rx/qa-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-access.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-access.png\n?? artifacts/review/phase-rx/qa-stills/tablet-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-method.png\n?? artifacts/review/phase-rx/qa-stills/tablet-startup.png\n?? artifacts/review/phase-rx/qa-stills/wide-access.png\n?? artifacts/review/phase-rx/qa-stills/wide-activity.png\n?? artifacts/review/phase-rx/qa-stills/wide-method.png\n?? artifacts/review/phase-rx/qa-stills/wide-startup.png",
+    "preservedPreExistingDeletion": true
+  },
+  "measuredAt": "2026-08-17T07:58:32.396Z",
+  "productionBuild": true,
+  "input": {
+    "type": "repeated-native-wheel",
+    "deltaY": 120,
+    "intervalMs": 35,
+    "requestedSteps": 125
+  },
+  "initial": {
+    "maximumScrollY": 12735,
+    "renderMode": "webgl-enhanced",
+    "inputMode": "pointer",
+    "scrollChoreography": "continuous",
+    "scrollSnapType": "none",
+    "bodyScrollSnapType": "none",
+    "externalResources": []
+  },
+  "final": {
+    "scrollY": 12735,
+    "maximumScrollY": 12735,
+    "reachedNaturalEnd": true,
+    "activePhase": "action",
+    "renderMode": "webgl-enhanced"
+  },
+  "durationMs": 9089.4,
+  "phaseCoverage": [
+    "presence",
+    "access",
+    "startup",
+    "method",
+    "activity",
+    "evidence",
+    "action"
+  ],
+  "frames": {
+    "samples": 402,
+    "p50Ms": 16.7,
+    "p95Ms": 50,
+    "p99Ms": 66.7,
+    "over33_3Ms": 75,
+    "over50Ms": 15,
+    "maxMs": 166.7
+  },
+  "longTasks": {
+    "supported": true,
+    "count": 3,
+    "totalDurationMs": 288,
+    "maxDurationMs": 181,
+    "entries": [
+      {
+        "startTime": 4352,
+        "duration": 181
+      },
+      {
+        "startTime": 5619.199999988079,
+        "duration": 57
+      },
+      {
+        "startTime": 6496.100000023842,
+        "duration": 50
+      }
+    ]
+  },
+  "inputEvents": {
+    "count": 125,
+    "types": {
+      "wheel": 125
+    },
+    "preventedWheelEvents": 0
+  },
+  "scrollEvents": 107,
+  "memory": {
+    "start": {
+      "usedJSHeapSize": 10000000,
+      "totalJSHeapSize": 10000000,
+      "jsHeapSizeLimit": 3760000000
+    },
+    "end": {
+      "usedJSHeapSize": 10000000,
+      "totalJSHeapSize": 10000000,
+      "jsHeapSizeLimit": 3760000000
+    },
+    "usedHeapDelta": 0
+  },
+  "errors": []
+}

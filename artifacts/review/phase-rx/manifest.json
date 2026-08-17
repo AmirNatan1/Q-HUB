@@ -1,0 +1,1751 @@
+{
+  "schemaVersion": 1,
+  "package": "Q-HUB Phase R-X human review evidence",
+  "generatedAt": "2026-08-17T08:33:02.952Z",
+  "source": {
+    "implementationCandidate": "570df6492bb864f4f3977dd2449f785eb286f473",
+    "tree": "39ddc9230778d1741516451adaaf9ca45bab472e",
+    "branch": "repair/phase-rx-experience-integration-scroll-fluidity",
+    "candidateEnvironment": "PHASE_RX_MANIFEST_CANDIDATE_SHA",
+    "candidateVerified": true,
+    "preservedPreExistingDeletion": true
+  },
+  "canonical": {
+    "count": 72,
+    "bytes": 25265187,
+    "digestAlgorithm": "sha256(file\\0bytes\\0sha256 joined by newline, sorted by file)",
+    "digest": "2124215fcd3c1a88e1de6ba88aee4f3f739eec943b49dab5249e1cc38ca35a42",
+    "files": [
+      {
+        "file": "artifacts/bundle-phase-r-report.json",
+        "bytes": 4224,
+        "sha256": "aef26874f26519c9cea58c32b815c1b4f1143d3e817d7fdff37071f3df7d1ea2"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/desktop-homepage.html",
+        "bytes": 605151,
+        "sha256": "a657a1ddf430093828fe061b684edecb3990656eb0b1abc6555bede321f97e79"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/desktop-homepage.json",
+        "bytes": 510103,
+        "sha256": "c269366d302aa32dcc9b7894f65b7ea21d8e93247c3c90ee97d936520d9a3ce4"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/desktop-maradin-field-record.html",
+        "bytes": 694607,
+        "sha256": "f8f5d1a64048c16e85929cc63aeabab61d65fa9632e00b5ac901348fabbd1a9c"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/desktop-maradin-field-record.json",
+        "bytes": 599301,
+        "sha256": "54f816e27c0479da5072c0d579c54b5dfe5ca55d643ef49a8c07562c79f4c48d"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/desktop-proof-index.html",
+        "bytes": 586936,
+        "sha256": "5a9b0dfd64834634f372c20431a9ebaf2a336b18b9821ad1fd2f32fb1a927463"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/desktop-proof-index.json",
+        "bytes": 486022,
+        "sha256": "8c8efb3052173b16ad713a85d99ad5c8f7ac67025d015f0648a273278a8434a8"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/mobile-homepage.html",
+        "bytes": 567171,
+        "sha256": "6b0c493f33416ef4200b95766b6d7a251fa5d0d99bb634bb5d973736c1ee2592"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/mobile-homepage.json",
+        "bytes": 473356,
+        "sha256": "a6ef71d817ff831ed7bbf68b269f5234f44a015a2c19511f5b110c4a46f92c8b"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/mobile-maradin-field-record.html",
+        "bytes": 698014,
+        "sha256": "a8258359d587ee5d4dc640615883e9436b560937249d02bbc9b29daf2fc095c1"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/mobile-maradin-field-record.json",
+        "bytes": 603018,
+        "sha256": "a377bb30422d42f28caf4cb8573e74aae241b66e0ea04a44c30e49a1bba994c8"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/mobile-proof-index.html",
+        "bytes": 573708,
+        "sha256": "cf909f5f9abd7fb2595d53d397e8ff0342f0e67923459c3c1941c19d43503a7a"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/mobile-proof-index.json",
+        "bytes": 474062,
+        "sha256": "1d7fb2c9b9d1d5709b39820716a84534e024bdbecf6eadbcafc9741e6fac3853"
+      },
+      {
+        "file": "artifacts/lighthouse/phase-rx-final/summary.json",
+        "bytes": 19722,
+        "sha256": "8f5133fe423cf863524c5b4468e586aeac3986aab8e6f9a6c9dda11a4ad91548"
+      },
+      {
+        "file": "artifacts/performance/phase-rx/candidate-desktop.json",
+        "bytes": 6613,
+        "sha256": "8fadcd088d48b04c5fb54314c48adc024ea30254948144e9500f522c9a7b6ab6"
+      },
+      {
+        "file": "artifacts/performance/phase-rx/candidate-final-desktop.json",
+        "bytes": 9996,
+        "sha256": "39a9ebe14f19492b32c0492108926a6fea8aa8169dd4207e39e78132ffdf310c"
+      },
+      {
+        "file": "artifacts/performance/phase-rx/candidate-final-mobile.json",
+        "bytes": 9874,
+        "sha256": "06b542081ca7b89fa225cc01db2eda0155a6ed622859255b72a50f422992cf4c"
+      },
+      {
+        "file": "artifacts/performance/phase-rx/candidate-final-summary.json",
+        "bytes": 14608,
+        "sha256": "1119187d86899e85dec9934c395e2dd943557b9bdd16006b926c0b68b58c3f5c"
+      },
+      {
+        "file": "artifacts/performance/phase-rx/candidate-mobile.json",
+        "bytes": 6413,
+        "sha256": "03ec3dcea5e238a53048c8d73f6ab1bac24e23357424b36f51b90354a1217f0b"
+      },
+      {
+        "file": "artifacts/performance/phase-rx/candidate-summary.json",
+        "bytes": 11201,
+        "sha256": "e1c26b6d9df4f6e4fcdbfb6c826f6f3be57b09df23d218bc069b75bcaa71c3de"
+      },
+      {
+        "file": "artifacts/review/phase-rx/baseline-continuous-scroll-diagnostic.json",
+        "bytes": 161681,
+        "sha256": "72f28063cd52a0e662e7e7188b541bb5779b21bfb585770c47b5326b25fb1be9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/baseline-continuous-scroll.webm",
+        "bytes": 3092152,
+        "sha256": "4231c2405495c1373092d6658dde3003973a512b01240341b7d6fef5c164ec98"
+      },
+      {
+        "file": "artifacts/review/phase-rx/baseline-filmstrip.png",
+        "bytes": 405146,
+        "sha256": "a292ea6c9de72065797a773215c2abc0895cc5036742db6100ab41ce6eb8fae6"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-final-continuous-filmstrip.png",
+        "bytes": 324236,
+        "sha256": "20c3b8f9a9320d32120010962a4e97ad96b53a74968a99efd851628fe5c237c6"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-final-continuous-scroll-diagnostic.json",
+        "bytes": 154694,
+        "sha256": "c07455b06622cd7cd68f16e1c1a0d1462a88cf89095708e4a0495ff1b276a3ac"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-final-continuous-scroll.webm",
+        "bytes": 1607518,
+        "sha256": "e9d79fcd0bfa20762c4dbe26be16613f24e1b719e0cf228ecc6976dbeb04aaf4"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-final-slow-filmstrip.png",
+        "bytes": 346730,
+        "sha256": "c82aaf4e8beca5a515afe1643b7acdbe95e169b6069d00c11da1c10e30c9e496"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-final-slow-review-diagnostic.json",
+        "bytes": 246864,
+        "sha256": "a1833fc08b9576139d15e6fcc99e40bedc642ea836282ac2237d373d5d866c39"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-final-slow-review.webm",
+        "bytes": 3148212,
+        "sha256": "529f268e113a884d0b73dbae4c562860c3685636d41714dd97ae40ee969ff3f1"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-access-1.png",
+        "bytes": 247779,
+        "sha256": "3b2834e63a100c0766edd2433b8c147a5c4e40721d41378335d4c2433294a084"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-access-2.png",
+        "bytes": 99424,
+        "sha256": "0329ee18bb1e877bca2a0f07bfe5c9a85a36a8fe21c635839db46f3faf863ced"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-access-3.png",
+        "bytes": 195433,
+        "sha256": "88444fb1462843a2c890aea25b82f2c7dab37ca8530e84cc82938d0ec8f79092"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-access-4.png",
+        "bytes": 204591,
+        "sha256": "8958b97c660df02e7cbaf958f9db657a8ef48692e0d98a0d5c1b0a3f9c090e02"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-access-5.png",
+        "bytes": 231956,
+        "sha256": "7e3e2110a074f3e883f096a482587e92857dba917ffb5e918ce551c9a81d13aa"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-action.png",
+        "bytes": 399771,
+        "sha256": "433dc3fbd3ff4dac954493b352c217470b2c70fee59188e834c4791f5b44c8ee"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-activity-1.png",
+        "bytes": 92820,
+        "sha256": "87f05b7c897741efd4eb231d85640d6135f354ec5d30ab9c65c93d550e2b9864"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-activity-2.png",
+        "bytes": 176330,
+        "sha256": "e6ba2990a3ce89756a8816d32c32e7812d5cf79587496df122ebeaafd33d90c9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-activity-3.png",
+        "bytes": 594364,
+        "sha256": "76c0a4e3d4e716e76eb5cb757112ead53e50d26e3ceb29578bb7818e575103dd"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-activity-4.png",
+        "bytes": 305323,
+        "sha256": "3730c1fe7bdfeffafc0d7aef8ff5bf3eb7b606d3147dfc0ebe42971765c75a81"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-evidence.png",
+        "bytes": 40323,
+        "sha256": "ecf03062454b06ee8cfe5131effb519f21467b92bfc52f4c4ef0131ac30f8383"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-method-1.png",
+        "bytes": 199430,
+        "sha256": "b830dbd620f006823c33d7005b1e49b11de8587f2c0efc79fb47864af3d046a8"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-method-2.png",
+        "bytes": 207715,
+        "sha256": "1c92fee652d5e820f9d802142c8c041e51c8b8f3081b8c8cf8be0805783c3294"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-method-3.png",
+        "bytes": 197363,
+        "sha256": "45f0d5ec81599518675e70231d2aeb975833066e0ced6c3a28447d08433695d7"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-presence-resolved.png",
+        "bytes": 189270,
+        "sha256": "c18ffac001a64032f4d822238cd2931367361821bd6907d7977efa4fec2a25cb"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-startup-1.png",
+        "bytes": 347886,
+        "sha256": "8e311546ef42785c85eefb08e4f555eb8edab067e8a4ed165320214d80b8c160"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-startup-2.png",
+        "bytes": 427994,
+        "sha256": "cf4721af042f535dfa30c129e4743027cca475b6333fc666cfeb4dd070c39bca"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/desktop-startup-3.png",
+        "bytes": 507187,
+        "sha256": "986cc8a9d4684cd8b6896931c497920ec0ffe9869a46f58e6a45a315a2254e04"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/forced-colors-presence.png",
+        "bytes": 45132,
+        "sha256": "c797bba7c349c66cd69db2560b3d137ee88f91183d8d7cef80b495a3a4119335"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/keyboard-focus-startup.png",
+        "bytes": 510742,
+        "sha256": "a588ad0e202bf1d315c95ad6efdbf01ad48ea26dde2294c7b1dc73cf14475045"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/manifest.json",
+        "bytes": 78979,
+        "sha256": "2198f52438a080725a6fc7b7ff8bdb1d1dfd9f75b3764f4f57952d1094e7158b"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/mobile-390-access.png",
+        "bytes": 59523,
+        "sha256": "2cabcf06f8ff283e96f8cdb5a593ef65fb2e5e5eb59f2ca83aa2d1b36fcabd09"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/mobile-390-action.png",
+        "bytes": 109891,
+        "sha256": "94cedcd4039c55eb2cbb5bfc7375612bcfb87a6876f68d287afeb6656e4a2a63"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/mobile-390-activity.png",
+        "bytes": 30477,
+        "sha256": "127a77cf270a47182a540fe1d70a7bd93ac8f539e0f47b66bcc53662790dd6ae"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/mobile-390-evidence.png",
+        "bytes": 21982,
+        "sha256": "5973d26c4e6785664ac528c71ebc8f3364b062c4ef373cd0c2fd4b611c25a223"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/mobile-390-method.png",
+        "bytes": 60958,
+        "sha256": "1238074d0c44740593d88c4f563dc93bcea5934ea1da51697b33a30520767192"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/mobile-390-presence.png",
+        "bytes": 59359,
+        "sha256": "4e5bb9b004c6acf8f2644f6938bf88829984fd602bc9d0ed37ea7d06744dbdef"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/mobile-390-startup.png",
+        "bytes": 85710,
+        "sha256": "4d3b148db88c1d4614a53d9eae4d713c6fe2bec06b03151604b876147d9bcb12"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/mobile-430-access.png",
+        "bytes": 68102,
+        "sha256": "b0b65eeb1c131227a7c3719f847d418af1fbeeb6fb0366998d1ecbb7163d0453"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/mobile-430-activity.png",
+        "bytes": 34381,
+        "sha256": "7e51b191c5067ee8119bc902ff91d14d5fbbf2cada93d190057775ca99b485e9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/mobile-430-method.png",
+        "bytes": 68544,
+        "sha256": "91738ad6ef74056f174ecce571549eb4cc6e3a302edbbee7d7efa3633e083c58"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/mobile-430-startup.png",
+        "bytes": 95619,
+        "sha256": "6df8a1addae04a94ff546c05f98639e845417bf12ec055ba960c2fece91200e2"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/no-webgl-method.png",
+        "bytes": 207715,
+        "sha256": "1c92fee652d5e820f9d802142c8c041e51c8b8f3081b8c8cf8be0805783c3294"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/reduced-motion-activity.png",
+        "bytes": 92849,
+        "sha256": "754d0c9a78674b704ee035ba1055c47fc5b0003d13b4258f5605472bf0f53e1d"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/tablet-access.png",
+        "bytes": 131424,
+        "sha256": "371b8e0959f07c3f81a99d67f94398162dc4070ce16e03cc6affa52b1f9c347f"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/tablet-activity.png",
+        "bytes": 46209,
+        "sha256": "fb8794bc0319fb5fa15457ec4c8c54b2b5312afc4c84d5a9fc601d060bd34338"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/tablet-method.png",
+        "bytes": 107687,
+        "sha256": "18546f1279a6a42de07178961540193acdee664a4af0354b8a5d18751d95284c"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/tablet-startup.png",
+        "bytes": 147170,
+        "sha256": "f4745038345a412311cc560df54fd441766b26dcb3cfff8cafda5e8a5fd1e4a5"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/wide-access.png",
+        "bytes": 277242,
+        "sha256": "28c2a33b2c9f875cb42bf9416dcadbde086765350722e1428a5eb77f3bd2a809"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/wide-activity.png",
+        "bytes": 902783,
+        "sha256": "99dd69b9a5d22a330a4289380455706000bbecdb828f1e3b982462705b51a91c"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/wide-method.png",
+        "bytes": 287582,
+        "sha256": "968c77539a8e9f25162962293bffdefd7dd7d469cc139887524375de36071b7b"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills-final/wide-startup.png",
+        "bytes": 613755,
+        "sha256": "3d56bd900303db32866006df325d8240854aacb93cff9dddfd04b91fb9cfa7e9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/video-review.json",
+        "bytes": 15080,
+        "sha256": "ae2a81f0d9db644b93dc3d2d045382331712bbbe19bd562051ce0dba67003d34"
+      }
+    ]
+  },
+  "retainedNonCanonical": {
+    "classification": "QA iterations and source-bound pre-final candidate evidence; retained, excluded from the canonical decision set.",
+    "count": 114,
+    "bytes": 47011360,
+    "digest": "293e9d0427033ab7e08976a11965540acb45caf1ddc9db5843ce6e7166a76c27",
+    "files": [
+      {
+        "file": "artifacts/review/phase-rx/candidate-continuous-scroll-diagnostic.json",
+        "bytes": 150903,
+        "sha256": "da80fb7f987f3365c5c9fd8d523a431a9aa7713307c14912810b4924a90bd588"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-continuous-scroll.webm",
+        "bytes": 1559747,
+        "sha256": "3078f0fbe3eff0cb72b79ae01b086e98bbefdedc0b796c877bab498fac565120"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-slow-review-diagnostic.json",
+        "bytes": 242944,
+        "sha256": "d3fc7512578e71e18b9b840d0f8498fec1a5926f9f4a77026d2e43f274b9faae"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-slow-review.webm",
+        "bytes": 3132725,
+        "sha256": "79e75d25d075e34c9e4de76dab9e88e58fd1544e21355cbb8e9c25ba1370ee1c"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-access-1.png",
+        "bytes": 247779,
+        "sha256": "3b2834e63a100c0766edd2433b8c147a5c4e40721d41378335d4c2433294a084"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-access-2.png",
+        "bytes": 99424,
+        "sha256": "0329ee18bb1e877bca2a0f07bfe5c9a85a36a8fe21c635839db46f3faf863ced"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-access-3.png",
+        "bytes": 195433,
+        "sha256": "88444fb1462843a2c890aea25b82f2c7dab37ca8530e84cc82938d0ec8f79092"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-access-4.png",
+        "bytes": 204591,
+        "sha256": "8958b97c660df02e7cbaf958f9db657a8ef48692e0d98a0d5c1b0a3f9c090e02"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-access-5.png",
+        "bytes": 231956,
+        "sha256": "7e3e2110a074f3e883f096a482587e92857dba917ffb5e918ce551c9a81d13aa"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-action.png",
+        "bytes": 399771,
+        "sha256": "433dc3fbd3ff4dac954493b352c217470b2c70fee59188e834c4791f5b44c8ee"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-activity-1.png",
+        "bytes": 92820,
+        "sha256": "87f05b7c897741efd4eb231d85640d6135f354ec5d30ab9c65c93d550e2b9864"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-activity-2.png",
+        "bytes": 176330,
+        "sha256": "e6ba2990a3ce89756a8816d32c32e7812d5cf79587496df122ebeaafd33d90c9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-activity-3.png",
+        "bytes": 594364,
+        "sha256": "76c0a4e3d4e716e76eb5cb757112ead53e50d26e3ceb29578bb7818e575103dd"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-activity-4.png",
+        "bytes": 305323,
+        "sha256": "3730c1fe7bdfeffafc0d7aef8ff5bf3eb7b606d3147dfc0ebe42971765c75a81"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-evidence.png",
+        "bytes": 40323,
+        "sha256": "ecf03062454b06ee8cfe5131effb519f21467b92bfc52f4c4ef0131ac30f8383"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-method-1.png",
+        "bytes": 196151,
+        "sha256": "eed6aa34d409706c904858d6c5dc8f3841da6f6f3622ee2143d73975e8145a29"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-method-2.png",
+        "bytes": 203847,
+        "sha256": "69140d7a20465bdfda9efb40db325225aee16f024a11c9a315fd1ff8541f925e"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-method-3.png",
+        "bytes": 195502,
+        "sha256": "6ef0c17ad95695a5d48af2275b32bdcf16945f89d7208295530e20d72f060b0d"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-presence-resolved.png",
+        "bytes": 189270,
+        "sha256": "c18ffac001a64032f4d822238cd2931367361821bd6907d7977efa4fec2a25cb"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-startup-1.png",
+        "bytes": 347886,
+        "sha256": "8e311546ef42785c85eefb08e4f555eb8edab067e8a4ed165320214d80b8c160"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-startup-2.png",
+        "bytes": 427994,
+        "sha256": "cf4721af042f535dfa30c129e4743027cca475b6333fc666cfeb4dd070c39bca"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/desktop-startup-3.png",
+        "bytes": 507187,
+        "sha256": "986cc8a9d4684cd8b6896931c497920ec0ffe9869a46f58e6a45a315a2254e04"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/forced-colors-presence.png",
+        "bytes": 45132,
+        "sha256": "c797bba7c349c66cd69db2560b3d137ee88f91183d8d7cef80b495a3a4119335"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/keyboard-focus-startup.png",
+        "bytes": 510742,
+        "sha256": "a588ad0e202bf1d315c95ad6efdbf01ad48ea26dde2294c7b1dc73cf14475045"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/manifest.json",
+        "bytes": 75223,
+        "sha256": "e5378c81ba5477fa1df61672adff9fc87453f704d513cd893f9dbf86918c4d00"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/mobile-390-access.png",
+        "bytes": 59523,
+        "sha256": "2cabcf06f8ff283e96f8cdb5a593ef65fb2e5e5eb59f2ca83aa2d1b36fcabd09"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/mobile-390-action.png",
+        "bytes": 109891,
+        "sha256": "94cedcd4039c55eb2cbb5bfc7375612bcfb87a6876f68d287afeb6656e4a2a63"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/mobile-390-activity.png",
+        "bytes": 30477,
+        "sha256": "127a77cf270a47182a540fe1d70a7bd93ac8f539e0f47b66bcc53662790dd6ae"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/mobile-390-evidence.png",
+        "bytes": 21982,
+        "sha256": "5973d26c4e6785664ac528c71ebc8f3364b062c4ef373cd0c2fd4b611c25a223"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/mobile-390-method.png",
+        "bytes": 59677,
+        "sha256": "53daa42f22f0aa362ed854081540a63091a43bf11778cef49b8e1331466069ba"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/mobile-390-presence.png",
+        "bytes": 59359,
+        "sha256": "4e5bb9b004c6acf8f2644f6938bf88829984fd602bc9d0ed37ea7d06744dbdef"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/mobile-390-startup.png",
+        "bytes": 85710,
+        "sha256": "4d3b148db88c1d4614a53d9eae4d713c6fe2bec06b03151604b876147d9bcb12"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/mobile-430-access.png",
+        "bytes": 68102,
+        "sha256": "b0b65eeb1c131227a7c3719f847d418af1fbeeb6fb0366998d1ecbb7163d0453"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/mobile-430-activity.png",
+        "bytes": 34381,
+        "sha256": "7e51b191c5067ee8119bc902ff91d14d5fbbf2cada93d190057775ca99b485e9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/mobile-430-method.png",
+        "bytes": 67466,
+        "sha256": "6c25b1d5755eacfb41bf096842fb3858e4afe5ba413cc0c57908fb91f6d50efd"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/mobile-430-startup.png",
+        "bytes": 95619,
+        "sha256": "6df8a1addae04a94ff546c05f98639e845417bf12ec055ba960c2fece91200e2"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/no-webgl-method.png",
+        "bytes": 203847,
+        "sha256": "69140d7a20465bdfda9efb40db325225aee16f024a11c9a315fd1ff8541f925e"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/reduced-motion-activity.png",
+        "bytes": 92849,
+        "sha256": "754d0c9a78674b704ee035ba1055c47fc5b0003d13b4258f5605472bf0f53e1d"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/tablet-access.png",
+        "bytes": 131424,
+        "sha256": "371b8e0959f07c3f81a99d67f94398162dc4070ce16e03cc6affa52b1f9c347f"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/tablet-activity.png",
+        "bytes": 46209,
+        "sha256": "fb8794bc0319fb5fa15457ec4c8c54b2b5312afc4c84d5a9fc601d060bd34338"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/tablet-method.png",
+        "bytes": 106016,
+        "sha256": "fb7965feb9761a4ad5b49432bde7c82808733b4c35d2c1453a0f1d99b89760f6"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/tablet-startup.png",
+        "bytes": 147170,
+        "sha256": "f4745038345a412311cc560df54fd441766b26dcb3cfff8cafda5e8a5fd1e4a5"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/wide-access.png",
+        "bytes": 277242,
+        "sha256": "28c2a33b2c9f875cb42bf9416dcadbde086765350722e1428a5eb77f3bd2a809"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/wide-activity.png",
+        "bytes": 902783,
+        "sha256": "99dd69b9a5d22a330a4289380455706000bbecdb828f1e3b982462705b51a91c"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/wide-method.png",
+        "bytes": 284413,
+        "sha256": "f949a4ee77fff459ab3f85f4a394f28eed01c3558432c2c5470e7d4f7a8de431"
+      },
+      {
+        "file": "artifacts/review/phase-rx/candidate-stills/wide-startup.png",
+        "bytes": 613755,
+        "sha256": "3d56bd900303db32866006df325d8240854aacb93cff9dddfd04b91fb9cfa7e9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/page@0635458a5bdfe99a9f235490594a49b0.webm",
+        "bytes": 3148212,
+        "sha256": "529f268e113a884d0b73dbae4c562860c3685636d41714dd97ae40ee969ff3f1"
+      },
+      {
+        "file": "artifacts/review/phase-rx/page@54dcdedb944062fd658b337737d36ad0.webm",
+        "bytes": 3027213,
+        "sha256": "f70a2090e62192ba275ece7171b2467165c51a7ca4c3a55fb5cf5657c95a35ef"
+      },
+      {
+        "file": "artifacts/review/phase-rx/page@843c6c71f1d405d4695a9822b6515c8a.webm",
+        "bytes": 1607518,
+        "sha256": "e9d79fcd0bfa20762c4dbe26be16613f24e1b719e0cf228ecc6976dbeb04aaf4"
+      },
+      {
+        "file": "artifacts/review/phase-rx/page@c72c3cf82df5e8335131a950fa96a28d.webm",
+        "bytes": 3132725,
+        "sha256": "79e75d25d075e34c9e4de76dab9e88e58fd1544e21355cbb8e9c25ba1370ee1c"
+      },
+      {
+        "file": "artifacts/review/phase-rx/page@e43b436c1cbd0e73c93e2e17d39e44b4.webm",
+        "bytes": 3033592,
+        "sha256": "898dda08c3069c6c82fbe510bd2b6e1d94fe5da35692a6aa34210ec67a588a8c"
+      },
+      {
+        "file": "artifacts/review/phase-rx/page@eab4a2bb0813fd9eda2ba1bb91e22cb9.webm",
+        "bytes": 1559747,
+        "sha256": "3078f0fbe3eff0cb72b79ae01b086e98bbefdedc0b796c877bab498fac565120"
+      },
+      {
+        "file": "artifacts/review/phase-rx/page@f0dc1aa1e244aec2999e8c96a53c6fe1.webm",
+        "bytes": 3092152,
+        "sha256": "4231c2405495c1373092d6658dde3003973a512b01240341b7d6fef5c164ec98"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-1.png",
+        "bytes": 347886,
+        "sha256": "8e311546ef42785c85eefb08e4f555eb8edab067e8a4ed165320214d80b8c160"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-2.png",
+        "bytes": 427994,
+        "sha256": "cf4721af042f535dfa30c129e4743027cca475b6333fc666cfeb4dd070c39bca"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-3.png",
+        "bytes": 507187,
+        "sha256": "986cc8a9d4684cd8b6896931c497920ec0ffe9869a46f58e6a45a315a2254e04"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix-2/keyboard-focus-startup.png",
+        "bytes": 510742,
+        "sha256": "a588ad0e202bf1d315c95ad6efdbf01ad48ea26dde2294c7b1dc73cf14475045"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix-2/manifest.json",
+        "bytes": 18902,
+        "sha256": "abef7bbe973ba7cb0625b9e05d769cd0eba7b23bc2a95d962b1038fd407b76ea"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix-2/mobile-390-startup.png",
+        "bytes": 85710,
+        "sha256": "4d3b148db88c1d4614a53d9eae4d713c6fe2bec06b03151604b876147d9bcb12"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix-2/mobile-430-startup.png",
+        "bytes": 95619,
+        "sha256": "6df8a1addae04a94ff546c05f98639e845417bf12ec055ba960c2fece91200e2"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix-2/tablet-startup.png",
+        "bytes": 147170,
+        "sha256": "f4745038345a412311cc560df54fd441766b26dcb3cfff8cafda5e8a5fd1e4a5"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix-2/wide-startup.png",
+        "bytes": 613755,
+        "sha256": "3d56bd900303db32866006df325d8240854aacb93cff9dddfd04b91fb9cfa7e9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-1.png",
+        "bytes": 347886,
+        "sha256": "8e311546ef42785c85eefb08e4f555eb8edab067e8a4ed165320214d80b8c160"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-2.png",
+        "bytes": 427994,
+        "sha256": "cf4721af042f535dfa30c129e4743027cca475b6333fc666cfeb4dd070c39bca"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-3.png",
+        "bytes": 507187,
+        "sha256": "986cc8a9d4684cd8b6896931c497920ec0ffe9869a46f58e6a45a315a2254e04"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix/keyboard-focus-startup.png",
+        "bytes": 510742,
+        "sha256": "a588ad0e202bf1d315c95ad6efdbf01ad48ea26dde2294c7b1dc73cf14475045"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix/manifest.json",
+        "bytes": 18301,
+        "sha256": "5c27f908d56a5bc743ae0ee312edad3e66376683a399a3a941441671d7a4ecc7"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix/mobile-390-startup.png",
+        "bytes": 100309,
+        "sha256": "3fa4efc6001233b391643b4307b530b600e69c0ca7ac5516f0d7c47adec4a01a"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix/mobile-430-startup.png",
+        "bytes": 109521,
+        "sha256": "a43a11eb513b4dfc80aa677ce4ad64528a0f422afd84f69d4dbb94530d476cba"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix/tablet-startup.png",
+        "bytes": 171563,
+        "sha256": "c5b08794d67acfcbe26144d22c3a63acb0d12931a4a8d492e8b46605e1955c56"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-mobile-fix/wide-startup.png",
+        "bytes": 613755,
+        "sha256": "3d56bd900303db32866006df325d8240854aacb93cff9dddfd04b91fb9cfa7e9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-access-1.png",
+        "bytes": 247779,
+        "sha256": "3b2834e63a100c0766edd2433b8c147a5c4e40721d41378335d4c2433294a084"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-access-2.png",
+        "bytes": 99424,
+        "sha256": "0329ee18bb1e877bca2a0f07bfe5c9a85a36a8fe21c635839db46f3faf863ced"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-access-3.png",
+        "bytes": 195433,
+        "sha256": "88444fb1462843a2c890aea25b82f2c7dab37ca8530e84cc82938d0ec8f79092"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-access-4.png",
+        "bytes": 204591,
+        "sha256": "8958b97c660df02e7cbaf958f9db657a8ef48692e0d98a0d5c1b0a3f9c090e02"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-access-5.png",
+        "bytes": 231956,
+        "sha256": "7e3e2110a074f3e883f096a482587e92857dba917ffb5e918ce551c9a81d13aa"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-action.png",
+        "bytes": 399771,
+        "sha256": "433dc3fbd3ff4dac954493b352c217470b2c70fee59188e834c4791f5b44c8ee"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-activity-1.png",
+        "bytes": 92820,
+        "sha256": "87f05b7c897741efd4eb231d85640d6135f354ec5d30ab9c65c93d550e2b9864"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-activity-2.png",
+        "bytes": 176330,
+        "sha256": "e6ba2990a3ce89756a8816d32c32e7812d5cf79587496df122ebeaafd33d90c9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-activity-3.png",
+        "bytes": 594364,
+        "sha256": "76c0a4e3d4e716e76eb5cb757112ead53e50d26e3ceb29578bb7818e575103dd"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-activity-4.png",
+        "bytes": 305323,
+        "sha256": "3730c1fe7bdfeffafc0d7aef8ff5bf3eb7b606d3147dfc0ebe42971765c75a81"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-evidence.png",
+        "bytes": 40323,
+        "sha256": "ecf03062454b06ee8cfe5131effb519f21467b92bfc52f4c4ef0131ac30f8383"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-method-1.png",
+        "bytes": 196151,
+        "sha256": "eed6aa34d409706c904858d6c5dc8f3841da6f6f3622ee2143d73975e8145a29"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-method-2.png",
+        "bytes": 203847,
+        "sha256": "69140d7a20465bdfda9efb40db325225aee16f024a11c9a315fd1ff8541f925e"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-method-3.png",
+        "bytes": 195502,
+        "sha256": "6ef0c17ad95695a5d48af2275b32bdcf16945f89d7208295530e20d72f060b0d"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-presence-resolved.png",
+        "bytes": 189270,
+        "sha256": "c18ffac001a64032f4d822238cd2931367361821bd6907d7977efa4fec2a25cb"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-startup-1.png",
+        "bytes": 347886,
+        "sha256": "8e311546ef42785c85eefb08e4f555eb8edab067e8a4ed165320214d80b8c160"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-startup-2.png",
+        "bytes": 427994,
+        "sha256": "cf4721af042f535dfa30c129e4743027cca475b6333fc666cfeb4dd070c39bca"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/desktop-startup-3.png",
+        "bytes": 507187,
+        "sha256": "986cc8a9d4684cd8b6896931c497920ec0ffe9869a46f58e6a45a315a2254e04"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/forced-colors-presence.png",
+        "bytes": 45132,
+        "sha256": "c797bba7c349c66cd69db2560b3d137ee88f91183d8d7cef80b495a3a4119335"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/keyboard-focus-startup.png",
+        "bytes": 510742,
+        "sha256": "a588ad0e202bf1d315c95ad6efdbf01ad48ea26dde2294c7b1dc73cf14475045"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/manifest.json",
+        "bytes": 72185,
+        "sha256": "f13b1cfe92ed2184a633b2fbb8a09ec996bcfe761796c0af0a6ef38bf55ce4c9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/mobile-390-access.png",
+        "bytes": 59523,
+        "sha256": "2cabcf06f8ff283e96f8cdb5a593ef65fb2e5e5eb59f2ca83aa2d1b36fcabd09"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/mobile-390-action.png",
+        "bytes": 109891,
+        "sha256": "94cedcd4039c55eb2cbb5bfc7375612bcfb87a6876f68d287afeb6656e4a2a63"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/mobile-390-activity.png",
+        "bytes": 30477,
+        "sha256": "127a77cf270a47182a540fe1d70a7bd93ac8f539e0f47b66bcc53662790dd6ae"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/mobile-390-evidence.png",
+        "bytes": 21982,
+        "sha256": "5973d26c4e6785664ac528c71ebc8f3364b062c4ef373cd0c2fd4b611c25a223"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/mobile-390-method.png",
+        "bytes": 59677,
+        "sha256": "53daa42f22f0aa362ed854081540a63091a43bf11778cef49b8e1331466069ba"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/mobile-390-presence.png",
+        "bytes": 59359,
+        "sha256": "4e5bb9b004c6acf8f2644f6938bf88829984fd602bc9d0ed37ea7d06744dbdef"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/mobile-390-startup.png",
+        "bytes": 100300,
+        "sha256": "97e899062c588cbcb595fd6eef60f632d6e22cda68d317e6ddf91ff6861cb313"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/mobile-430-access.png",
+        "bytes": 68102,
+        "sha256": "b0b65eeb1c131227a7c3719f847d418af1fbeeb6fb0366998d1ecbb7163d0453"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/mobile-430-activity.png",
+        "bytes": 34381,
+        "sha256": "7e51b191c5067ee8119bc902ff91d14d5fbbf2cada93d190057775ca99b485e9"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/mobile-430-method.png",
+        "bytes": 67466,
+        "sha256": "6c25b1d5755eacfb41bf096842fb3858e4afe5ba413cc0c57908fb91f6d50efd"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/mobile-430-startup.png",
+        "bytes": 109521,
+        "sha256": "a43a11eb513b4dfc80aa677ce4ad64528a0f422afd84f69d4dbb94530d476cba"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/no-webgl-method.png",
+        "bytes": 203847,
+        "sha256": "69140d7a20465bdfda9efb40db325225aee16f024a11c9a315fd1ff8541f925e"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/reduced-motion-access.png",
+        "bytes": 141926,
+        "sha256": "e725f952f47635d56b677fed9c65615e1327cada1f7eb78ec3cdc613b54536ed"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/reduced-motion-activity.png",
+        "bytes": 92849,
+        "sha256": "754d0c9a78674b704ee035ba1055c47fc5b0003d13b4258f5605472bf0f53e1d"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/tablet-access.png",
+        "bytes": 131424,
+        "sha256": "371b8e0959f07c3f81a99d67f94398162dc4070ce16e03cc6affa52b1f9c347f"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/tablet-activity.png",
+        "bytes": 46209,
+        "sha256": "fb8794bc0319fb5fa15457ec4c8c54b2b5312afc4c84d5a9fc601d060bd34338"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/tablet-method.png",
+        "bytes": 106016,
+        "sha256": "fb7965feb9761a4ad5b49432bde7c82808733b4c35d2c1453a0f1d99b89760f6"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/tablet-startup.png",
+        "bytes": 171563,
+        "sha256": "c5b08794d67acfcbe26144d22c3a63acb0d12931a4a8d492e8b46605e1955c56"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/wide-access.png",
+        "bytes": 277242,
+        "sha256": "28c2a33b2c9f875cb42bf9416dcadbde086765350722e1428a5eb77f3bd2a809"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/wide-activity.png",
+        "bytes": 902783,
+        "sha256": "99dd69b9a5d22a330a4289380455706000bbecdb828f1e3b982462705b51a91c"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/wide-method.png",
+        "bytes": 284413,
+        "sha256": "f949a4ee77fff459ab3f85f4a394f28eed01c3558432c2c5470e7d4f7a8de431"
+      },
+      {
+        "file": "artifacts/review/phase-rx/qa-stills/wide-startup.png",
+        "bytes": 613755,
+        "sha256": "3d56bd900303db32866006df325d8240854aacb93cff9dddfd04b91fb9cfa7e9"
+      }
+    ]
+  },
+  "indexes": {
+    "baseline": {
+      "source": {
+        "head": "36e750ed2ae265440c5546e24deebda74db5255a",
+        "branch": "redirect/quantum-presence-startup-magnet"
+      },
+      "video": {
+        "file": "artifacts/review/phase-rx/baseline-continuous-scroll.webm",
+        "bytes": 3092152,
+        "sha256": "4231c2405495c1373092d6658dde3003973a512b01240341b7d6fef5c164ec98",
+        "durationSeconds": 25.88,
+        "width": 1440,
+        "height": 900
+      },
+      "response": {
+        "targetInputSamples": 96,
+        "visuallyResponsiveSamples": 62,
+        "visuallyResponsiveRate": 0.6458,
+        "deadVisualSamples": 31,
+        "deadVisualRate": 0.3229,
+        "byPhase": {
+          "access": {
+            "inputSamples": 25,
+            "scrollResponsiveSamples": 25,
+            "visuallyResponsiveSamples": 20,
+            "deadVisualSamples": 4,
+            "deadVisualRate": 0.16,
+            "observedSubstates": [
+              "opening",
+              "strategic",
+              "founding"
+            ]
+          },
+          "startup": {
+            "inputSamples": 25,
+            "scrollResponsiveSamples": 25,
+            "visuallyResponsiveSamples": 21,
+            "deadVisualSamples": 4,
+            "deadVisualRate": 0.16,
+            "observedSubstates": [
+              "outside",
+              "threshold",
+              "field"
+            ]
+          },
+          "method": {
+            "inputSamples": 25,
+            "scrollResponsiveSamples": 25,
+            "visuallyResponsiveSamples": 7,
+            "deadVisualSamples": 16,
+            "deadVisualRate": 0.64,
+            "observedSubstates": [
+              "find",
+              "test",
+              "prove"
+            ]
+          },
+          "activity": {
+            "inputSamples": 21,
+            "scrollResponsiveSamples": 21,
+            "visuallyResponsiveSamples": 14,
+            "deadVisualSamples": 7,
+            "deadVisualRate": 0.3333,
+            "observedSubstates": [
+              "field-testing",
+              "programs",
+              "partner-engagement",
+              "global-ecosystem"
+            ]
+          }
+        }
+      }
+    },
+    "candidateContinuous": {
+      "source": {
+        "head": "570df6492bb864f4f3977dd2449f785eb286f473",
+        "branch": "repair/phase-rx-experience-integration-scroll-fluidity",
+        "actualHead": "570df6492bb864f4f3977dd2449f785eb286f473",
+        "actualBranch": "repair/phase-rx-experience-integration-scroll-fluidity",
+        "tree": "39ddc9230778d1741516451adaaf9ca45bab472e",
+        "candidateVerified": true,
+        "statusAtStart": "D artifacts/performance/phase-r.zip\n?? artifacts/performance/phase-rx/candidate-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-mobile.json\n?? artifacts/performance/phase-rx/candidate-final-summary.json\n?? artifacts/performance/phase-rx/candidate-mobile.json\n?? artifacts/performance/phase-rx/candidate-summary.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/candidate-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-slow-review-diagnostic.json\n?? artifacts/review/phase-rx/candidate-slow-review.webm\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-action.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/candidate-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/candidate-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/candidate-stills/manifest.json\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/candidate-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/candidate-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-access.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-method.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-startup.png\n?? artifacts/review/phase-rx/candidate-stills/wide-access.png\n?? artifacts/review/phase-rx/candidate-stills/wide-activity.png\n?? artifacts/review/phase-rx/candidate-stills/wide-method.png\n?? artifacts/review/phase-rx/candidate-stills/wide-startup.png\n?? artifacts/review/phase-rx/page@54dcdedb944062fd658b337737d36ad0.webm\n?? artifacts/review/phase-rx/page@c72c3cf82df5e8335131a950fa96a28d.webm\n?? artifacts/review/phase-rx/page@e43b436c1cbd0e73c93e2e17d39e44b4.webm\n?? artifacts/review/phase-rx/page@eab4a2bb0813fd9eda2ba1bb91e22cb9.webm\n?? artifacts/review/phase-rx/page@f0dc1aa1e244aec2999e8c96a53c6fe1.webm\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/wide-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/wide-startup.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/qa-stills/desktop-action.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/qa-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-stills/manifest.json\n?? artifacts/review/phase-rx/qa-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-access.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-access.png\n?? artifacts/review/phase-rx/qa-stills/tablet-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-method.png\n?? artifacts/review/phase-rx/qa-stills/tablet-startup.png\n?? artifacts/review/phase-rx/qa-stills/wide-access.png\n?? artifacts/review/phase-rx/qa-stills/wide-activity.png\n?? artifacts/review/phase-rx/qa-stills/wide-method.png\n?? artifacts/review/phase-rx/qa-stills/wide-startup.png",
+        "preservedPreExistingDeletion": true
+      },
+      "video": {
+        "file": "artifacts/review/phase-rx/candidate-final-continuous-scroll.webm",
+        "bytes": 1607518,
+        "sha256": "e9d79fcd0bfa20762c4dbe26be16613f24e1b719e0cf228ecc6976dbeb04aaf4",
+        "durationSeconds": 14.32,
+        "width": 1440,
+        "height": 900
+      },
+      "response": {
+        "targetInputSamples": 94,
+        "visuallyResponsiveSamples": 74,
+        "visuallyResponsiveRate": 0.7872,
+        "deadVisualSamples": 19,
+        "deadVisualRate": 0.2021,
+        "byPhase": {
+          "access": {
+            "inputSamples": 24,
+            "scrollResponsiveSamples": 24,
+            "visuallyResponsiveSamples": 24,
+            "deadVisualSamples": 0,
+            "deadVisualRate": 0,
+            "observedSubstates": [
+              "opening",
+              "strategic",
+              "founding"
+            ]
+          },
+          "startup": {
+            "inputSamples": 24,
+            "scrollResponsiveSamples": 24,
+            "visuallyResponsiveSamples": 22,
+            "deadVisualSamples": 2,
+            "deadVisualRate": 0.0833,
+            "observedSubstates": [
+              "outside",
+              "threshold",
+              "field"
+            ]
+          },
+          "method": {
+            "inputSamples": 25,
+            "scrollResponsiveSamples": 25,
+            "visuallyResponsiveSamples": 9,
+            "deadVisualSamples": 15,
+            "deadVisualRate": 0.6,
+            "observedSubstates": [
+              "find",
+              "test",
+              "prove"
+            ]
+          },
+          "activity": {
+            "inputSamples": 21,
+            "scrollResponsiveSamples": 21,
+            "visuallyResponsiveSamples": 19,
+            "deadVisualSamples": 2,
+            "deadVisualRate": 0.0952,
+            "observedSubstates": [
+              "field-testing",
+              "programs",
+              "partner-engagement",
+              "global-ecosystem"
+            ]
+          }
+        }
+      }
+    },
+    "candidateSlow": {
+      "source": {
+        "head": "570df6492bb864f4f3977dd2449f785eb286f473",
+        "branch": "repair/phase-rx-experience-integration-scroll-fluidity",
+        "actualHead": "570df6492bb864f4f3977dd2449f785eb286f473",
+        "actualBranch": "repair/phase-rx-experience-integration-scroll-fluidity",
+        "tree": "39ddc9230778d1741516451adaaf9ca45bab472e",
+        "candidateVerified": true,
+        "statusAtStart": "D artifacts/performance/phase-r.zip\n?? artifacts/performance/phase-rx/candidate-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-mobile.json\n?? artifacts/performance/phase-rx/candidate-final-summary.json\n?? artifacts/performance/phase-rx/candidate-mobile.json\n?? artifacts/performance/phase-rx/candidate-summary.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/candidate-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-final-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/candidate-final-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-slow-review-diagnostic.json\n?? artifacts/review/phase-rx/candidate-slow-review.webm\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-action.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/candidate-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/candidate-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/candidate-stills/manifest.json\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/candidate-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/candidate-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-access.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-method.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-startup.png\n?? artifacts/review/phase-rx/candidate-stills/wide-access.png\n?? artifacts/review/phase-rx/candidate-stills/wide-activity.png\n?? artifacts/review/phase-rx/candidate-stills/wide-method.png\n?? artifacts/review/phase-rx/candidate-stills/wide-startup.png\n?? artifacts/review/phase-rx/page@54dcdedb944062fd658b337737d36ad0.webm\n?? artifacts/review/phase-rx/page@843c6c71f1d405d4695a9822b6515c8a.webm\n?? artifacts/review/phase-rx/page@c72c3cf82df5e8335131a950fa96a28d.webm\n?? artifacts/review/phase-rx/page@e43b436c1cbd0e73c93e2e17d39e44b4.webm\n?? artifacts/review/phase-rx/page@eab4a2bb0813fd9eda2ba1bb91e22cb9.webm\n?? artifacts/review/phase-rx/page@f0dc1aa1e244aec2999e8c96a53c6fe1.webm\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/wide-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/wide-startup.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/qa-stills/desktop-action.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/qa-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-stills/manifest.json\n?? artifacts/review/phase-rx/qa-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-access.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-access.png\n?? artifacts/review/phase-rx/qa-stills/tablet-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-method.png\n?? artifacts/review/phase-rx/qa-stills/tablet-startup.png\n?? artifacts/review/phase-rx/qa-stills/wide-access.png\n?? artifacts/review/phase-rx/qa-stills/wide-activity.png\n?? artifacts/review/phase-rx/qa-stills/wide-method.png\n?? artifacts/review/phase-rx/qa-stills/wide-startup.png",
+        "preservedPreExistingDeletion": true
+      },
+      "video": {
+        "file": "artifacts/review/phase-rx/candidate-final-slow-review.webm",
+        "bytes": 3148212,
+        "sha256": "529f268e113a884d0b73dbae4c562860c3685636d41714dd97ae40ee969ff3f1",
+        "durationSeconds": 28.64,
+        "width": 1440,
+        "height": 900
+      },
+      "response": {
+        "targetInputSamples": 154,
+        "visuallyResponsiveSamples": 116,
+        "visuallyResponsiveRate": 0.7532,
+        "deadVisualSamples": 37,
+        "deadVisualRate": 0.2403,
+        "byPhase": {
+          "access": {
+            "inputSamples": 39,
+            "scrollResponsiveSamples": 39,
+            "visuallyResponsiveSamples": 39,
+            "deadVisualSamples": 0,
+            "deadVisualRate": 0,
+            "observedSubstates": [
+              "opening",
+              "strategic",
+              "founding"
+            ]
+          },
+          "startup": {
+            "inputSamples": 40,
+            "scrollResponsiveSamples": 40,
+            "visuallyResponsiveSamples": 35,
+            "deadVisualSamples": 5,
+            "deadVisualRate": 0.125,
+            "observedSubstates": [
+              "outside",
+              "threshold",
+              "field"
+            ]
+          },
+          "method": {
+            "inputSamples": 41,
+            "scrollResponsiveSamples": 41,
+            "visuallyResponsiveSamples": 12,
+            "deadVisualSamples": 28,
+            "deadVisualRate": 0.6829,
+            "observedSubstates": [
+              "find",
+              "test",
+              "prove"
+            ]
+          },
+          "activity": {
+            "inputSamples": 34,
+            "scrollResponsiveSamples": 34,
+            "visuallyResponsiveSamples": 30,
+            "deadVisualSamples": 4,
+            "deadVisualRate": 0.1176,
+            "observedSubstates": [
+              "field-testing",
+              "programs",
+              "partner-engagement",
+              "global-ecosystem"
+            ]
+          }
+        }
+      }
+    },
+    "stills": {
+      "source": {
+        "head": "570df6492bb864f4f3977dd2449f785eb286f473",
+        "tree": "39ddc9230778d1741516451adaaf9ca45bab472e",
+        "branch": "repair/phase-rx-experience-integration-scroll-fluidity",
+        "committedAt": "2026-08-17T11:26:46+03:00",
+        "statusAtStart": "D artifacts/performance/phase-r.zip\n?? artifacts/performance/phase-rx/candidate-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-mobile.json\n?? artifacts/performance/phase-rx/candidate-final-summary.json\n?? artifacts/performance/phase-rx/candidate-mobile.json\n?? artifacts/performance/phase-rx/candidate-summary.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/candidate-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-final-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/candidate-final-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-final-slow-review-diagnostic.json\n?? artifacts/review/phase-rx/candidate-final-slow-review.webm\n?? artifacts/review/phase-rx/candidate-slow-review-diagnostic.json\n?? artifacts/review/phase-rx/candidate-slow-review.webm\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-action.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/candidate-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/candidate-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/candidate-stills/manifest.json\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/candidate-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/candidate-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-access.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-method.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-startup.png\n?? artifacts/review/phase-rx/candidate-stills/wide-access.png\n?? artifacts/review/phase-rx/candidate-stills/wide-activity.png\n?? artifacts/review/phase-rx/candidate-stills/wide-method.png\n?? artifacts/review/phase-rx/candidate-stills/wide-startup.png\n?? artifacts/review/phase-rx/page@0635458a5bdfe99a9f235490594a49b0.webm\n?? artifacts/review/phase-rx/page@54dcdedb944062fd658b337737d36ad0.webm\n?? artifacts/review/phase-rx/page@843c6c71f1d405d4695a9822b6515c8a.webm\n?? artifacts/review/phase-rx/page@c72c3cf82df5e8335131a950fa96a28d.webm\n?? artifacts/review/phase-rx/page@e43b436c1cbd0e73c93e2e17d39e44b4.webm\n?? artifacts/review/phase-rx/page@eab4a2bb0813fd9eda2ba1bb91e22cb9.webm\n?? artifacts/review/phase-rx/page@f0dc1aa1e244aec2999e8c96a53c6fe1.webm\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/wide-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/wide-startup.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/qa-stills/desktop-action.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/qa-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-stills/manifest.json\n?? artifacts/review/phase-rx/qa-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-access.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-access.png\n?? artifacts/review/phase-rx/qa-stills/tablet-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-method.png\n?? artifacts/review/phase-rx/qa-stills/tablet-startup.png\n?? artifacts/review/phase-rx/qa-stills/wide-access.png\n?? artifacts/review/phase-rx/qa-stills/wide-activity.png\n?? artifacts/review/phase-rx/qa-stills/wide-method.png\n?? artifacts/review/phase-rx/qa-stills/wide-startup.png",
+        "candidateEnvironmentName": "PHASE_RX_EVIDENCE_CANDIDATE_SHA",
+        "candidateEnvironmentProvided": true,
+        "basis": "explicit-candidate-sha-equals-head",
+        "preservedPreExistingDeletion": true
+      },
+      "counts": {
+        "screenshots": 41,
+        "zeroIssueScreenshots": 41,
+        "uniqueHashes": 40,
+        "duplicateGroups": 1
+      }
+    },
+    "runtime": {
+      "schemaVersion": 1,
+      "stage": "candidate",
+      "evidenceLabel": "final",
+      "generatedAt": "2026-08-17T08:27:36.950Z",
+      "source": {
+        "head": "570df6492bb864f4f3977dd2449f785eb286f473",
+        "tree": "39ddc9230778d1741516451adaaf9ca45bab472e",
+        "branch": "repair/phase-rx-experience-integration-scroll-fluidity",
+        "committedAt": "2026-08-17T11:26:46+03:00",
+        "expectedBranch": "repair/phase-rx-experience-integration-scroll-fluidity",
+        "candidateEnvironment": {
+          "name": "PHASE_RX_RUNTIME_CANDIDATE_SHA",
+          "provided": true,
+          "equalsHead": true
+        },
+        "statusAtStart": "D artifacts/performance/phase-r.zip\n?? artifacts/performance/phase-rx/candidate-desktop.json\n?? artifacts/performance/phase-rx/candidate-mobile.json\n?? artifacts/performance/phase-rx/candidate-summary.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/candidate-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-slow-review-diagnostic.json\n?? artifacts/review/phase-rx/candidate-slow-review.webm\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-action.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/candidate-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/candidate-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/candidate-stills/manifest.json\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/candidate-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/candidate-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-access.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-method.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-startup.png\n?? artifacts/review/phase-rx/candidate-stills/wide-access.png\n?? artifacts/review/phase-rx/candidate-stills/wide-activity.png\n?? artifacts/review/phase-rx/candidate-stills/wide-method.png\n?? artifacts/review/phase-rx/candidate-stills/wide-startup.png\n?? artifacts/review/phase-rx/page@54dcdedb944062fd658b337737d36ad0.webm\n?? artifacts/review/phase-rx/page@c72c3cf82df5e8335131a950fa96a28d.webm\n?? artifacts/review/phase-rx/page@e43b436c1cbd0e73c93e2e17d39e44b4.webm\n?? artifacts/review/phase-rx/page@eab4a2bb0813fd9eda2ba1bb91e22cb9.webm\n?? artifacts/review/phase-rx/page@f0dc1aa1e244aec2999e8c96a53c6fe1.webm\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/wide-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/wide-startup.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/qa-stills/desktop-action.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/qa-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-stills/manifest.json\n?? artifacts/review/phase-rx/qa-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-access.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-access.png\n?? artifacts/review/phase-rx/qa-stills/tablet-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-method.png\n?? artifacts/review/phase-rx/qa-stills/tablet-startup.png\n?? artifacts/review/phase-rx/qa-stills/wide-access.png\n?? artifacts/review/phase-rx/qa-stills/wide-activity.png\n?? artifacts/review/phase-rx/qa-stills/wide-method.png\n?? artifacts/review/phase-rx/qa-stills/wide-startup.png",
+        "preservedPreExistingDeletion": true
+      },
+      "buildInput": "fresh npm run build production output",
+      "measuredBaseUrl": "http://127.0.0.1:53085/",
+      "browserVersion": "151.0.7922.34",
+      "profiles": [
+        {
+          "profile": "desktop",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "durationMs": 8818.8,
+          "input": {
+            "type": "repeated-native-wheel",
+            "deltaY": 120,
+            "intervalMs": 35,
+            "requestedSteps": 125
+          },
+          "phaseCoverage": [
+            "presence",
+            "access",
+            "startup",
+            "method",
+            "activity",
+            "evidence",
+            "action"
+          ],
+          "frames": {
+            "samples": 392,
+            "p50Ms": 16.7,
+            "p95Ms": 49.945,
+            "p99Ms": 66.7,
+            "over33_3Ms": 73,
+            "over50Ms": 12,
+            "maxMs": 150
+          },
+          "longTasks": {
+            "supported": true,
+            "count": 2,
+            "totalDurationMs": 214,
+            "maxDurationMs": 152,
+            "entries": [
+              {
+                "startTime": 4273.300000011921,
+                "duration": 152
+              },
+              {
+                "startTime": 5406,
+                "duration": 62
+              }
+            ]
+          },
+          "inputEvents": {
+            "count": 125,
+            "types": {
+              "wheel": 125
+            },
+            "preventedWheelEvents": 0
+          },
+          "scrollEvents": 107,
+          "memory": {
+            "start": {
+              "usedJSHeapSize": 10000000,
+              "totalJSHeapSize": 10000000,
+              "jsHeapSizeLimit": 3760000000
+            },
+            "end": {
+              "usedJSHeapSize": 10000000,
+              "totalJSHeapSize": 10000000,
+              "jsHeapSizeLimit": 3760000000
+            },
+            "usedHeapDelta": 0
+          },
+          "reachedNaturalEnd": true,
+          "renderMode": "webgl-enhanced",
+          "errors": []
+        },
+        {
+          "profile": "mobile",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "durationMs": 7299.7,
+          "input": {
+            "type": "repeated-native-touch-swipe",
+            "startY": 675,
+            "endY": 203,
+            "requestedSwipes": 29
+          },
+          "phaseCoverage": [
+            "presence",
+            "access",
+            "startup",
+            "method",
+            "activity",
+            "evidence",
+            "action"
+          ],
+          "frames": {
+            "samples": 435,
+            "p50Ms": 16.7,
+            "p95Ms": 16.8,
+            "p99Ms": 16.8,
+            "over33_3Ms": 0,
+            "over50Ms": 0,
+            "maxMs": 33.3
+          },
+          "longTasks": {
+            "supported": true,
+            "count": 0,
+            "totalDurationMs": 0,
+            "maxDurationMs": 0,
+            "entries": []
+          },
+          "inputEvents": {
+            "count": 141,
+            "types": {
+              "touchstart": 18,
+              "touchmove": 123
+            },
+            "preventedWheelEvents": 0
+          },
+          "scrollEvents": 120,
+          "memory": {
+            "start": {
+              "usedJSHeapSize": 10000000,
+              "totalJSHeapSize": 10000000,
+              "jsHeapSizeLimit": 3760000000
+            },
+            "end": {
+              "usedJSHeapSize": 10000000,
+              "totalJSHeapSize": 10000000,
+              "jsHeapSizeLimit": 3760000000
+            },
+            "usedHeapDelta": 0
+          },
+          "reachedNaturalEnd": true,
+          "renderMode": "dom-fallback-ready",
+          "errors": []
+        }
+      ],
+      "comparisonSources": {
+        "acceptedPhase3": {
+          "sourceHead": "ff78e2d911960bb2c05d7404966bbf688d0764e9",
+          "generatedAt": "2026-08-16T08:44:27.284Z",
+          "profiles": [
+            {
+              "profile": "desktop",
+              "frames": {
+                "samples": 202,
+                "p50Ms": 83.3,
+                "p95Ms": 165.865,
+                "p99Ms": 233.3,
+                "over33_3Ms": 137,
+                "over50Ms": 124,
+                "maxMs": 233.4
+              },
+              "longTasks": {
+                "count": 10,
+                "totalDurationMs": 573,
+                "maxDurationMs": 82
+              }
+            },
+            {
+              "profile": "mobile",
+              "frames": {
+                "samples": 329,
+                "p50Ms": 16.7,
+                "p95Ms": 50,
+                "p99Ms": 66.7,
+                "over33_3Ms": 99,
+                "over50Ms": 7,
+                "maxMs": 116.7
+              },
+              "longTasks": {
+                "count": 0,
+                "totalDurationMs": 0,
+                "maxDurationMs": 0
+              }
+            }
+          ]
+        },
+        "acceptedPhaseR": {
+          "sourceHead": "953881b5cc0317dda0f6751407e180fc9ef0359f",
+          "generatedAt": "2026-08-16T19:08:23.896Z",
+          "profiles": [
+            {
+              "profile": "desktop",
+              "frames": {
+                "samples": 510,
+                "p50Ms": 16.7,
+                "p95Ms": 50,
+                "p99Ms": 65.115,
+                "over33_3Ms": 105,
+                "over50Ms": 10,
+                "maxMs": 100.1
+              },
+              "longTasks": {
+                "count": 5,
+                "totalDurationMs": 356,
+                "maxDurationMs": 86
+              }
+            },
+            {
+              "profile": "mobile",
+              "frames": {
+                "samples": 489,
+                "p50Ms": 16.7,
+                "p95Ms": 16.8,
+                "p99Ms": 18.768,
+                "over33_3Ms": 4,
+                "over50Ms": 0,
+                "maxMs": 33.4
+              },
+              "longTasks": {
+                "count": 0,
+                "totalDurationMs": 0,
+                "maxDurationMs": 0
+              }
+            }
+          ]
+        },
+        "preRxContinuousScroll": {
+          "file": "artifacts/review/phase-rx/baseline-continuous-scroll-diagnostic.json",
+          "note": "Video-bound natural-wheel diagnostic; use response metrics for continuity and disclose capture overhead for frame timing."
+        }
+      },
+      "artifacts": [
+        {
+          "file": "artifacts/performance/phase-rx/candidate-final-desktop.json",
+          "bytes": 9996,
+          "sha256": "39a9ebe14f19492b32c0492108926a6fea8aa8169dd4207e39e78132ffdf310c"
+        },
+        {
+          "file": "artifacts/performance/phase-rx/candidate-final-mobile.json",
+          "bytes": 9874,
+          "sha256": "06b542081ca7b89fa225cc01db2eda0155a6ed622859255b72a50f422992cf4c"
+        }
+      ],
+      "limitations": [
+        "Headless local production-preview measurements require human confirmation on physical hardware and GPUs.",
+        "Frame timing varies with host load; comparisons retain source identities and measurement profiles.",
+        "The accepted Phase 3 and Phase R summaries used their historical journey drivers; R-X additionally uses real wheel and touch input."
+      ]
+    },
+    "lighthouse": {
+      "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473",
+      "buildBinding": {
+        "startedAt": "2026-08-17T08:30:55.842Z",
+        "finishedAt": "2026-08-17T08:31:10.975Z",
+        "sourceHead": "570df6492bb864f4f3977dd2449f785eb286f473",
+        "sourceTree": "39ddc9230778d1741516451adaaf9ca45bab472e",
+        "distDigestAlgorithm": "sha256(file\\0sha256\\0bytes joined by newline, sorted by file)",
+        "distDigest": "ce68377f0626acc9d22112e443d37adaba626d635ef6db09e2f28dc18bd0414d",
+        "distFileCount": 35,
+        "distBytes": 9670488,
+        "unchangedThroughAllSixAudits": true
+      },
+      "results": [
+        {
+          "profile": "desktop",
+          "target": {
+            "name": "homepage",
+            "route": "/"
+          },
+          "measuredUrl": "http://127.0.0.1:55083/",
+          "scores": {
+            "performance": 1,
+            "accessibility": 1,
+            "best-practices": 1,
+            "seo": 1
+          },
+          "metrics": {
+            "lcp": {
+              "numericValue": 407.99974999999995,
+              "displayValue": "0.4 s"
+            },
+            "tbt": {
+              "numericValue": 0,
+              "displayValue": "0 ms"
+            },
+            "cls": {
+              "numericValue": 0,
+              "displayValue": "0"
+            }
+          },
+          "thresholds": {
+            "performance": 0.95,
+            "accessibility": 0.95,
+            "best-practices": 0.95,
+            "seo": 0.95,
+            "cls": 0
+          },
+          "failures": [],
+          "artifacts": {
+            "json": "artifacts/lighthouse/phase-rx-final/desktop-homepage.json",
+            "html": "artifacts/lighthouse/phase-rx-final/desktop-homepage.html"
+          }
+        },
+        {
+          "profile": "mobile",
+          "target": {
+            "name": "homepage",
+            "route": "/"
+          },
+          "measuredUrl": "http://127.0.0.1:55083/",
+          "scores": {
+            "performance": 1,
+            "accessibility": 1,
+            "best-practices": 1,
+            "seo": 1
+          },
+          "metrics": {
+            "lcp": {
+              "numericValue": 1678.09605,
+              "displayValue": "1.7 s"
+            },
+            "tbt": {
+              "numericValue": 0,
+              "displayValue": "0 ms"
+            },
+            "cls": {
+              "numericValue": 0,
+              "displayValue": "0"
+            }
+          },
+          "thresholds": {
+            "performance": 0.95,
+            "accessibility": 0.95,
+            "best-practices": 0.95,
+            "seo": 0.95,
+            "cls": 0
+          },
+          "failures": [],
+          "artifacts": {
+            "json": "artifacts/lighthouse/phase-rx-final/mobile-homepage.json",
+            "html": "artifacts/lighthouse/phase-rx-final/mobile-homepage.html"
+          }
+        },
+        {
+          "profile": "desktop",
+          "target": {
+            "name": "proof-index",
+            "route": "/proof/"
+          },
+          "measuredUrl": "http://127.0.0.1:55083/proof/",
+          "scores": {
+            "performance": 1,
+            "accessibility": 1,
+            "best-practices": 1,
+            "seo": 1
+          },
+          "metrics": {
+            "lcp": {
+              "numericValue": 292.1459,
+              "displayValue": "0.3 s"
+            },
+            "tbt": {
+              "numericValue": 0,
+              "displayValue": "0 ms"
+            },
+            "cls": {
+              "numericValue": 0,
+              "displayValue": "0"
+            }
+          },
+          "thresholds": {
+            "performance": 0.95,
+            "accessibility": 0.95,
+            "best-practices": 0.95,
+            "seo": 0.95,
+            "cls": 0
+          },
+          "failures": [],
+          "artifacts": {
+            "json": "artifacts/lighthouse/phase-rx-final/desktop-proof-index.json",
+            "html": "artifacts/lighthouse/phase-rx-final/desktop-proof-index.html"
+          }
+        },
+        {
+          "profile": "mobile",
+          "target": {
+            "name": "proof-index",
+            "route": "/proof/"
+          },
+          "measuredUrl": "http://127.0.0.1:55083/proof/",
+          "scores": {
+            "performance": 1,
+            "accessibility": 1,
+            "best-practices": 1,
+            "seo": 1
+          },
+          "metrics": {
+            "lcp": {
+              "numericValue": 1231.5971,
+              "displayValue": "1.2 s"
+            },
+            "tbt": {
+              "numericValue": 0,
+              "displayValue": "0 ms"
+            },
+            "cls": {
+              "numericValue": 0,
+              "displayValue": "0"
+            }
+          },
+          "thresholds": {
+            "performance": 0.95,
+            "accessibility": 0.95,
+            "best-practices": 0.95,
+            "seo": 0.95,
+            "cls": 0
+          },
+          "failures": [],
+          "artifacts": {
+            "json": "artifacts/lighthouse/phase-rx-final/mobile-proof-index.json",
+            "html": "artifacts/lighthouse/phase-rx-final/mobile-proof-index.html"
+          }
+        },
+        {
+          "profile": "desktop",
+          "target": {
+            "name": "maradin-field-record",
+            "route": "/proof/maradin-dynamic-ground-projection/"
+          },
+          "measuredUrl": "http://127.0.0.1:55083/proof/maradin-dynamic-ground-projection/",
+          "scores": {
+            "performance": 1,
+            "accessibility": 1,
+            "best-practices": 1,
+            "seo": 1
+          },
+          "metrics": {
+            "lcp": {
+              "numericValue": 458.0844000000001,
+              "displayValue": "0.5 s"
+            },
+            "tbt": {
+              "numericValue": 0,
+              "displayValue": "0 ms"
+            },
+            "cls": {
+              "numericValue": 0,
+              "displayValue": "0"
+            }
+          },
+          "thresholds": {
+            "performance": 0.95,
+            "accessibility": 0.95,
+            "best-practices": 0.95,
+            "seo": 0.95,
+            "cls": 0
+          },
+          "failures": [],
+          "artifacts": {
+            "json": "artifacts/lighthouse/phase-rx-final/desktop-maradin-field-record.json",
+            "html": "artifacts/lighthouse/phase-rx-final/desktop-maradin-field-record.html"
+          }
+        },
+        {
+          "profile": "mobile",
+          "target": {
+            "name": "maradin-field-record",
+            "route": "/proof/maradin-dynamic-ground-projection/"
+          },
+          "measuredUrl": "http://127.0.0.1:55083/proof/maradin-dynamic-ground-projection/",
+          "scores": {
+            "performance": 0.99,
+            "accessibility": 1,
+            "best-practices": 1,
+            "seo": 1
+          },
+          "metrics": {
+            "lcp": {
+              "numericValue": 1982.5582,
+              "displayValue": "2.0 s"
+            },
+            "tbt": {
+              "numericValue": 0,
+              "displayValue": "0 ms"
+            },
+            "cls": {
+              "numericValue": 0,
+              "displayValue": "0"
+            }
+          },
+          "thresholds": {
+            "performance": 0.95,
+            "accessibility": 0.95,
+            "best-practices": 0.95,
+            "seo": 0.95,
+            "cls": 0
+          },
+          "failures": [],
+          "artifacts": {
+            "json": "artifacts/lighthouse/phase-rx-final/mobile-maradin-field-record.json",
+            "html": "artifacts/lighthouse/phase-rx-final/mobile-maradin-field-record.html"
+          }
+        }
+      ]
+    },
+    "videoReview": {
+      "source": {
+        "head": "570df6492bb864f4f3977dd2449f785eb286f473",
+        "tree": "39ddc9230778d1741516451adaaf9ca45bab472e",
+        "branch": "repair/phase-rx-experience-integration-scroll-fluidity",
+        "declaredCandidate": "570df6492bb864f4f3977dd2449f785eb286f473",
+        "candidateVerified": true,
+        "statusAtStart": "D artifacts/performance/phase-r.zip\n?? artifacts/performance/phase-rx/candidate-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-mobile.json\n?? artifacts/performance/phase-rx/candidate-final-summary.json\n?? artifacts/performance/phase-rx/candidate-mobile.json\n?? artifacts/performance/phase-rx/candidate-summary.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/candidate-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-final-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/candidate-final-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-final-slow-review-diagnostic.json\n?? artifacts/review/phase-rx/candidate-final-slow-review.webm\n?? artifacts/review/phase-rx/candidate-slow-review-diagnostic.json\n?? artifacts/review/phase-rx/candidate-slow-review.webm\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-access-1.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-access-2.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-access-3.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-access-4.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-access-5.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-action.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-activity-1.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-activity-2.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-activity-3.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-activity-4.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-evidence.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-method-1.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-method-2.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-method-3.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-startup-1.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-startup-2.png\n?? artifacts/review/phase-rx/candidate-stills-final/desktop-startup-3.png\n?? artifacts/review/phase-rx/candidate-stills-final/forced-colors-presence.png\n?? artifacts/review/phase-rx/candidate-stills-final/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/candidate-stills-final/manifest.json\n?? artifacts/review/phase-rx/candidate-stills-final/mobile-390-access.png\n?? artifacts/review/phase-rx/candidate-stills-final/mobile-390-action.png\n?? artifacts/review/phase-rx/candidate-stills-final/mobile-390-activity.png\n?? artifacts/review/phase-rx/candidate-stills-final/mobile-390-evidence.png\n?? artifacts/review/phase-rx/candidate-stills-final/mobile-390-method.png\n?? artifacts/review/phase-rx/candidate-stills-final/mobile-390-presence.png\n?? artifacts/review/phase-rx/candidate-stills-final/mobile-390-startup.png\n?? artifacts/review/phase-rx/candidate-stills-final/mobile-430-access.png\n?? artifacts/review/phase-rx/candidate-stills-final/mobile-430-activity.png\n?? artifacts/review/phase-rx/candidate-stills-final/mobile-430-method.png\n?? artifacts/review/phase-rx/candidate-stills-final/mobile-430-startup.png\n?? artifacts/review/phase-rx/candidate-stills-final/no-webgl-method.png\n?? artifacts/review/phase-rx/candidate-stills-final/reduced-motion-activity.png\n?? artifacts/review/phase-rx/candidate-stills-final/tablet-access.png\n?? artifacts/review/phase-rx/candidate-stills-final/tablet-activity.png\n?? artifacts/review/phase-rx/candidate-stills-final/tablet-method.png\n?? artifacts/review/phase-rx/candidate-stills-final/tablet-startup.png\n?? artifacts/review/phase-rx/candidate-stills-final/wide-access.png\n?? artifacts/review/phase-rx/candidate-stills-final/wide-activity.png\n?? artifacts/review/phase-rx/candidate-stills-final/wide-method.png\n?? artifacts/review/phase-rx/candidate-stills-final/wide-startup.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-action.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/candidate-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/candidate-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/candidate-stills/manifest.json\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/candidate-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/candidate-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-access.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-method.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-startup.png\n?? artifacts/review/phase-rx/candidate-stills/wide-access.png\n?? artifacts/review/phase-rx/candidate-stills/wide-activity.png\n?? artifacts/review/phase-rx/candidate-stills/wide-method.png\n?? artifacts/review/phase-rx/candidate-stills/wide-startup.png\n?? artifacts/review/phase-rx/page@0635458a5bdfe99a9f235490594a49b0.webm\n?? artifacts/review/phase-rx/page@54dcdedb944062fd658b337737d36ad0.webm\n?? artifacts/review/phase-rx/page@843c6c71f1d405d4695a9822b6515c8a.webm\n?? artifacts/review/phase-rx/page@c72c3cf82df5e8335131a950fa96a28d.webm\n?? artifacts/review/phase-rx/page@e43b436c1cbd0e73c93e2e17d39e44b4.webm\n?? artifacts/review/phase-rx/page@eab4a2bb0813fd9eda2ba1bb91e22cb9.webm\n?? artifacts/review/phase-rx/page@f0dc1aa1e244aec2999e8c96a53c6fe1.webm\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/wide-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/wide-startup.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/qa-stills/desktop-action.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/qa-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-stills/manifest.json\n?? artifacts/review/phase-rx/qa-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-access.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-access.png\n?? artifacts/review/phase-rx/qa-stills/tablet-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-method.png\n?? artifacts/review/phase-rx/qa-stills/tablet-startup.png\n?? artifacts/review/phase-rx/qa-stills/wide-access.png\n?? artifacts/review/phase-rx/qa-stills/wide-activity.png\n?? artifacts/review/phase-rx/qa-stills/wide-method.png\n?? artifacts/review/phase-rx/qa-stills/wide-startup.png",
+        "preservedPreExistingDeletion": true
+      },
+      "counts": {
+        "videos": 3,
+        "playedToEnd": 3,
+        "mediaErrors": 0
+      }
+    }
+  },
+  "limitations": [
+    "Headless browser evidence requires human review on physical displays and GPUs.",
+    "The diagnostic's METHOD visual-vector sampling undercounts custom-property geometry; the browser contract separately verifies direct METHOD variable changes and immediate reverse response.",
+    "Video-capture timing includes encoding and headless review overhead; the dedicated runtime artifacts are the performance source of record.",
+    "No Cloudflare preview or production deployment was created in Phase R-X.",
+    "The pre-existing user deletion artifacts/performance/phase-r.zip was preserved and excluded from every evidence source check."
+  ]
+}

@@ -1,0 +1,5731 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate",
+  "pace": "continuous",
+  "evidenceLabel": "final",
+  "generatedAt": "2026-08-17T08:28:29.155Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "inputPattern": {
+    "deltaY": 96,
+    "intervalMs": 52,
+    "initialDwellMs": 500,
+    "finalDwellMs": 650
+  },
+  "captureBasis": "fresh production build",
+  "source": {
+    "head": "570df6492bb864f4f3977dd2449f785eb286f473",
+    "branch": "repair/phase-rx-experience-integration-scroll-fluidity",
+    "actualHead": "570df6492bb864f4f3977dd2449f785eb286f473",
+    "actualBranch": "repair/phase-rx-experience-integration-scroll-fluidity",
+    "tree": "39ddc9230778d1741516451adaaf9ca45bab472e",
+    "candidateVerified": true,
+    "statusAtStart": "D artifacts/performance/phase-r.zip\n?? artifacts/performance/phase-rx/candidate-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-desktop.json\n?? artifacts/performance/phase-rx/candidate-final-mobile.json\n?? artifacts/performance/phase-rx/candidate-final-summary.json\n?? artifacts/performance/phase-rx/candidate-mobile.json\n?? artifacts/performance/phase-rx/candidate-summary.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/baseline-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-continuous-scroll-diagnostic.json\n?? artifacts/review/phase-rx/candidate-continuous-scroll.webm\n?? artifacts/review/phase-rx/candidate-slow-review-diagnostic.json\n?? artifacts/review/phase-rx/candidate-slow-review.webm\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-action.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/candidate-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/candidate-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/candidate-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/candidate-stills/manifest.json\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/candidate-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/candidate-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/candidate-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-access.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-activity.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-method.png\n?? artifacts/review/phase-rx/candidate-stills/tablet-startup.png\n?? artifacts/review/phase-rx/candidate-stills/wide-access.png\n?? artifacts/review/phase-rx/candidate-stills/wide-activity.png\n?? artifacts/review/phase-rx/candidate-stills/wide-method.png\n?? artifacts/review/phase-rx/candidate-stills/wide-startup.png\n?? artifacts/review/phase-rx/page@54dcdedb944062fd658b337737d36ad0.webm\n?? artifacts/review/phase-rx/page@c72c3cf82df5e8335131a950fa96a28d.webm\n?? artifacts/review/phase-rx/page@e43b436c1cbd0e73c93e2e17d39e44b4.webm\n?? artifacts/review/phase-rx/page@eab4a2bb0813fd9eda2ba1bb91e22cb9.webm\n?? artifacts/review/phase-rx/page@f0dc1aa1e244aec2999e8c96a53c6fe1.webm\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix-2/wide-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-mobile-fix/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-mobile-fix/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/manifest.json\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/tablet-startup.png\n?? artifacts/review/phase-rx/qa-mobile-fix/wide-startup.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-access-5.png\n?? artifacts/review/phase-rx/qa-stills/desktop-action.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-activity-4.png\n?? artifacts/review/phase-rx/qa-stills/desktop-evidence.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-method-3.png\n?? artifacts/review/phase-rx/qa-stills/desktop-presence-resolved.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-1.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-2.png\n?? artifacts/review/phase-rx/qa-stills/desktop-startup-3.png\n?? artifacts/review/phase-rx/qa-stills/forced-colors-presence.png\n?? artifacts/review/phase-rx/qa-stills/keyboard-focus-startup.png\n?? artifacts/review/phase-rx/qa-stills/manifest.json\n?? artifacts/review/phase-rx/qa-stills/mobile-390-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-action.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-evidence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-presence.png\n?? artifacts/review/phase-rx/qa-stills/mobile-390-startup.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-access.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-activity.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-method.png\n?? artifacts/review/phase-rx/qa-stills/mobile-430-startup.png\n?? artifacts/review/phase-rx/qa-stills/no-webgl-method.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-access.png\n?? artifacts/review/phase-rx/qa-stills/reduced-motion-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-access.png\n?? artifacts/review/phase-rx/qa-stills/tablet-activity.png\n?? artifacts/review/phase-rx/qa-stills/tablet-method.png\n?? artifacts/review/phase-rx/qa-stills/tablet-startup.png\n?? artifacts/review/phase-rx/qa-stills/wide-access.png\n?? artifacts/review/phase-rx/qa-stills/wide-activity.png\n?? artifacts/review/phase-rx/qa-stills/wide-method.png\n?? artifacts/review/phase-rx/qa-stills/wide-startup.png",
+    "preservedPreExistingDeletion": true
+  },
+  "historicalPhaseREvidence": {
+    "count": 25,
+    "bytes": 12500820,
+    "digest": "2947f6636332c16132583f7f9f41fa5e9718ec77eed35f9305eafd4e43216913"
+  },
+  "video": {
+    "file": "artifacts/review/phase-rx/candidate-final-continuous-scroll.webm",
+    "bytes": 1607518,
+    "sha256": "e9d79fcd0bfa20762c4dbe26be16613f24e1b719e0cf228ecc6976dbeb04aaf4",
+    "durationSeconds": 14.32,
+    "width": 1440,
+    "height": 900
+  },
+  "browserVersion": "151.0.7922.34",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+  "errors": [],
+  "wheelInputs": [
+    {
+      "timestamp": 1727.8999999761581,
+      "requestedAtMs": 0,
+      "deltaY": 96,
+      "scrollY": 96,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 1842.199999988079,
+      "requestedAtMs": 114.30000001192093,
+      "deltaY": 96,
+      "scrollY": 192,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 1964.1000000238419,
+      "requestedAtMs": 236.20000004768372,
+      "deltaY": 96,
+      "scrollY": 288,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 2071.199999988079,
+      "requestedAtMs": 343.30000001192093,
+      "deltaY": 96,
+      "scrollY": 384,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 2177,
+      "requestedAtMs": 449.10000002384186,
+      "deltaY": 96,
+      "scrollY": 480,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 2292.399999976158,
+      "requestedAtMs": 564.5,
+      "deltaY": 96,
+      "scrollY": 576,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 2406.699999988079,
+      "requestedAtMs": 678.8000000119209,
+      "deltaY": 96,
+      "scrollY": 672,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 2520.100000023842,
+      "requestedAtMs": 792.2000000476837,
+      "deltaY": 96,
+      "scrollY": 768,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 2647.899999976158,
+      "requestedAtMs": 920,
+      "deltaY": 96,
+      "scrollY": 864,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 2765.699999988079,
+      "requestedAtMs": 1037.800000011921,
+      "deltaY": 96,
+      "scrollY": 960,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 2881.300000011921,
+      "requestedAtMs": 1153.4000000357628,
+      "deltaY": 96,
+      "scrollY": 1056,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 2995.899999976158,
+      "requestedAtMs": 1268,
+      "deltaY": 96,
+      "scrollY": 1152,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 3108.800000011921,
+      "requestedAtMs": 1380.9000000357628,
+      "deltaY": 96,
+      "scrollY": 1248,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 3158.300000011921,
+      "requestedAtMs": 1430.4000000357628,
+      "deltaY": 96,
+      "scrollY": 1344,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 3225.300000011921,
+      "requestedAtMs": 1497.4000000357628,
+      "deltaY": 96,
+      "scrollY": 1440,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 3291.5,
+      "requestedAtMs": 1563.6000000238419,
+      "deltaY": 96,
+      "scrollY": 1536,
+      "phase": "presence"
+    },
+    {
+      "timestamp": 3407.399999976158,
+      "requestedAtMs": 1679.5,
+      "deltaY": 96,
+      "scrollY": 1632,
+      "phase": "access"
+    },
+    {
+      "timestamp": 3534.600000023842,
+      "requestedAtMs": 1806.7000000476837,
+      "deltaY": 96,
+      "scrollY": 1728,
+      "phase": "access"
+    },
+    {
+      "timestamp": 3600.100000023842,
+      "requestedAtMs": 1872.2000000476837,
+      "deltaY": 96,
+      "scrollY": 1824,
+      "phase": "access"
+    },
+    {
+      "timestamp": 3683.5,
+      "requestedAtMs": 1955.6000000238419,
+      "deltaY": 96,
+      "scrollY": 1920,
+      "phase": "access"
+    },
+    {
+      "timestamp": 3837.600000023842,
+      "requestedAtMs": 2109.7000000476837,
+      "deltaY": 96,
+      "scrollY": 2016,
+      "phase": "access"
+    },
+    {
+      "timestamp": 3939.199999988079,
+      "requestedAtMs": 2211.300000011921,
+      "deltaY": 96,
+      "scrollY": 2112,
+      "phase": "access"
+    },
+    {
+      "timestamp": 4025.199999988079,
+      "requestedAtMs": 2297.300000011921,
+      "deltaY": 96,
+      "scrollY": 2208,
+      "phase": "access"
+    },
+    {
+      "timestamp": 4082.699999988079,
+      "requestedAtMs": 2354.800000011921,
+      "deltaY": 96,
+      "scrollY": 2304,
+      "phase": "access"
+    },
+    {
+      "timestamp": 4183.699999988079,
+      "requestedAtMs": 2455.800000011921,
+      "deltaY": 96,
+      "scrollY": 2400,
+      "phase": "access"
+    },
+    {
+      "timestamp": 4268.699999988079,
+      "requestedAtMs": 2540.800000011921,
+      "deltaY": 96,
+      "scrollY": 2496,
+      "phase": "access"
+    },
+    {
+      "timestamp": 4384.5,
+      "requestedAtMs": 2656.600000023842,
+      "deltaY": 96,
+      "scrollY": 2592,
+      "phase": "access"
+    },
+    {
+      "timestamp": 4467.800000011921,
+      "requestedAtMs": 2739.900000035763,
+      "deltaY": 96,
+      "scrollY": 2688,
+      "phase": "access"
+    },
+    {
+      "timestamp": 4547.5,
+      "requestedAtMs": 2819.600000023842,
+      "deltaY": 96,
+      "scrollY": 2784,
+      "phase": "access"
+    },
+    {
+      "timestamp": 4669.300000011921,
+      "requestedAtMs": 2941.400000035763,
+      "deltaY": 96,
+      "scrollY": 2880,
+      "phase": "access"
+    },
+    {
+      "timestamp": 4826.5,
+      "requestedAtMs": 3098.600000023842,
+      "deltaY": 96,
+      "scrollY": 2976,
+      "phase": "access"
+    },
+    {
+      "timestamp": 4951.399999976158,
+      "requestedAtMs": 3223.5,
+      "deltaY": 96,
+      "scrollY": 3072,
+      "phase": "access"
+    },
+    {
+      "timestamp": 5054.300000011921,
+      "requestedAtMs": 3326.400000035763,
+      "deltaY": 96,
+      "scrollY": 3168,
+      "phase": "access"
+    },
+    {
+      "timestamp": 5155.800000011921,
+      "requestedAtMs": 3427.900000035763,
+      "deltaY": 96,
+      "scrollY": 3264,
+      "phase": "access"
+    },
+    {
+      "timestamp": 5291.800000011921,
+      "requestedAtMs": 3563.900000035763,
+      "deltaY": 96,
+      "scrollY": 3360,
+      "phase": "access"
+    },
+    {
+      "timestamp": 5439.100000023842,
+      "requestedAtMs": 3711.2000000476837,
+      "deltaY": 96,
+      "scrollY": 3456,
+      "phase": "access"
+    },
+    {
+      "timestamp": 5540.800000011921,
+      "requestedAtMs": 3812.900000035763,
+      "deltaY": 96,
+      "scrollY": 3552,
+      "phase": "access"
+    },
+    {
+      "timestamp": 5624.199999988079,
+      "requestedAtMs": 3896.300000011921,
+      "deltaY": 96,
+      "scrollY": 3648,
+      "phase": "access"
+    },
+    {
+      "timestamp": 5712.300000011921,
+      "requestedAtMs": 3984.400000035763,
+      "deltaY": 96,
+      "scrollY": 3744,
+      "phase": "access"
+    },
+    {
+      "timestamp": 5800.100000023842,
+      "requestedAtMs": 4072.2000000476837,
+      "deltaY": 96,
+      "scrollY": 3840,
+      "phase": "access"
+    },
+    {
+      "timestamp": 5843.399999976158,
+      "requestedAtMs": 4115.5,
+      "deltaY": 96,
+      "scrollY": 3936,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 5924.800000011921,
+      "requestedAtMs": 4196.900000035763,
+      "deltaY": 96,
+      "scrollY": 4032,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6174.800000011921,
+      "requestedAtMs": 4446.900000035763,
+      "deltaY": 96,
+      "scrollY": 4128,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6255.600000023842,
+      "requestedAtMs": 4527.700000047684,
+      "deltaY": 96,
+      "scrollY": 4224,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6319.899999976158,
+      "requestedAtMs": 4592,
+      "deltaY": 96,
+      "scrollY": 4320,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6385.399999976158,
+      "requestedAtMs": 4657.5,
+      "deltaY": 96,
+      "scrollY": 4416,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6455.399999976158,
+      "requestedAtMs": 4727.5,
+      "deltaY": 96,
+      "scrollY": 4512,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6525.600000023842,
+      "requestedAtMs": 4797.700000047684,
+      "deltaY": 96,
+      "scrollY": 4608,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6598.399999976158,
+      "requestedAtMs": 4870.5,
+      "deltaY": 96,
+      "scrollY": 4704,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6680.800000011921,
+      "requestedAtMs": 4952.900000035763,
+      "deltaY": 96,
+      "scrollY": 4800,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6746.399999976158,
+      "requestedAtMs": 5018.5,
+      "deltaY": 96,
+      "scrollY": 4896,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6835.800000011921,
+      "requestedAtMs": 5107.900000035763,
+      "deltaY": 96,
+      "scrollY": 4992,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6908.600000023842,
+      "requestedAtMs": 5180.700000047684,
+      "deltaY": 96,
+      "scrollY": 4992,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 6999.199999988079,
+      "requestedAtMs": 5271.300000011921,
+      "deltaY": 96,
+      "scrollY": 5184,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 7070.100000023842,
+      "requestedAtMs": 5342.200000047684,
+      "deltaY": 96,
+      "scrollY": 5280,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 7134.899999976158,
+      "requestedAtMs": 5407,
+      "deltaY": 96,
+      "scrollY": 5376,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 7203.600000023842,
+      "requestedAtMs": 5475.700000047684,
+      "deltaY": 96,
+      "scrollY": 5472,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 7293.699999988079,
+      "requestedAtMs": 5565.800000011921,
+      "deltaY": 96,
+      "scrollY": 5568,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 7358.399999976158,
+      "requestedAtMs": 5630.5,
+      "deltaY": 96,
+      "scrollY": 5568,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 7455.699999988079,
+      "requestedAtMs": 5727.800000011921,
+      "deltaY": 96,
+      "scrollY": 5760,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 7541.399999976158,
+      "requestedAtMs": 5813.5,
+      "deltaY": 96,
+      "scrollY": 5856,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 7608.399999976158,
+      "requestedAtMs": 5880.5,
+      "deltaY": 96,
+      "scrollY": 5952,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 7675.100000023842,
+      "requestedAtMs": 5947.200000047684,
+      "deltaY": 96,
+      "scrollY": 6048,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 7741.699999988079,
+      "requestedAtMs": 6013.800000011921,
+      "deltaY": 96,
+      "scrollY": 6144,
+      "phase": "startup"
+    },
+    {
+      "timestamp": 7876.699999988079,
+      "requestedAtMs": 6148.800000011921,
+      "deltaY": 96,
+      "scrollY": 6240,
+      "phase": "method"
+    },
+    {
+      "timestamp": 7949.300000011921,
+      "requestedAtMs": 6221.400000035763,
+      "deltaY": 96,
+      "scrollY": 6336,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8020.300000011921,
+      "requestedAtMs": 6292.400000035763,
+      "deltaY": 96,
+      "scrollY": 6432,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8088.800000011921,
+      "requestedAtMs": 6360.900000035763,
+      "deltaY": 96,
+      "scrollY": 6528,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8153.100000023842,
+      "requestedAtMs": 6425.200000047684,
+      "deltaY": 96,
+      "scrollY": 6624,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8217.800000011921,
+      "requestedAtMs": 6489.900000035763,
+      "deltaY": 96,
+      "scrollY": 6720,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8279.699999988079,
+      "requestedAtMs": 6551.800000011921,
+      "deltaY": 96,
+      "scrollY": 6816,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8342.199999988079,
+      "requestedAtMs": 6614.300000011921,
+      "deltaY": 96,
+      "scrollY": 6912,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8410.199999988079,
+      "requestedAtMs": 6682.300000011921,
+      "deltaY": 96,
+      "scrollY": 7008,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8474.5,
+      "requestedAtMs": 6746.600000023842,
+      "deltaY": 96,
+      "scrollY": 7008,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8558.699999988079,
+      "requestedAtMs": 6830.800000011921,
+      "deltaY": 96,
+      "scrollY": 7200,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8636.899999976158,
+      "requestedAtMs": 6909,
+      "deltaY": 96,
+      "scrollY": 7296,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8698.800000011921,
+      "requestedAtMs": 6970.900000035763,
+      "deltaY": 96,
+      "scrollY": 7392,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8760.699999988079,
+      "requestedAtMs": 7032.800000011921,
+      "deltaY": 96,
+      "scrollY": 7488,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8825.699999988079,
+      "requestedAtMs": 7097.800000011921,
+      "deltaY": 96,
+      "scrollY": 7584,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8909.199999988079,
+      "requestedAtMs": 7181.300000011921,
+      "deltaY": 96,
+      "scrollY": 7680,
+      "phase": "method"
+    },
+    {
+      "timestamp": 8978.800000011921,
+      "requestedAtMs": 7250.900000035763,
+      "deltaY": 96,
+      "scrollY": 7776,
+      "phase": "method"
+    },
+    {
+      "timestamp": 9058,
+      "requestedAtMs": 7330.100000023842,
+      "deltaY": 96,
+      "scrollY": 7872,
+      "phase": "method"
+    },
+    {
+      "timestamp": 9141.899999976158,
+      "requestedAtMs": 7414,
+      "deltaY": 96,
+      "scrollY": 7968,
+      "phase": "method"
+    },
+    {
+      "timestamp": 9222,
+      "requestedAtMs": 7494.100000023842,
+      "deltaY": 96,
+      "scrollY": 8064,
+      "phase": "method"
+    },
+    {
+      "timestamp": 9303.199999988079,
+      "requestedAtMs": 7575.300000011921,
+      "deltaY": 96,
+      "scrollY": 8160,
+      "phase": "method"
+    },
+    {
+      "timestamp": 9365.800000011921,
+      "requestedAtMs": 7637.900000035763,
+      "deltaY": 96,
+      "scrollY": 8256,
+      "phase": "method"
+    },
+    {
+      "timestamp": 9442.100000023842,
+      "requestedAtMs": 7714.200000047684,
+      "deltaY": 96,
+      "scrollY": 8352,
+      "phase": "method"
+    },
+    {
+      "timestamp": 9527.5,
+      "requestedAtMs": 7799.600000023842,
+      "deltaY": 96,
+      "scrollY": 8448,
+      "phase": "method"
+    },
+    {
+      "timestamp": 9597.100000023842,
+      "requestedAtMs": 7869.200000047684,
+      "deltaY": 96,
+      "scrollY": 8544,
+      "phase": "method"
+    },
+    {
+      "timestamp": 9675.300000011921,
+      "requestedAtMs": 7947.400000035763,
+      "deltaY": 96,
+      "scrollY": 8640,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 9758.100000023842,
+      "requestedAtMs": 8030.200000047684,
+      "deltaY": 96,
+      "scrollY": 8736,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 9824.5,
+      "requestedAtMs": 8096.600000023842,
+      "deltaY": 96,
+      "scrollY": 8832,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 9891.399999976158,
+      "requestedAtMs": 8163.5,
+      "deltaY": 96,
+      "scrollY": 8928,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 9958.800000011921,
+      "requestedAtMs": 8230.900000035763,
+      "deltaY": 96,
+      "scrollY": 9024,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10024.399999976158,
+      "requestedAtMs": 8296.5,
+      "deltaY": 96,
+      "scrollY": 9120,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10107.600000023842,
+      "requestedAtMs": 8379.700000047684,
+      "deltaY": 96,
+      "scrollY": 9216,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10174.899999976158,
+      "requestedAtMs": 8447,
+      "deltaY": 96,
+      "scrollY": 9312,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10241,
+      "requestedAtMs": 8513.100000023842,
+      "deltaY": 96,
+      "scrollY": 9408,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10304.600000023842,
+      "requestedAtMs": 8576.700000047684,
+      "deltaY": 96,
+      "scrollY": 9504,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10375.100000023842,
+      "requestedAtMs": 8647.200000047684,
+      "deltaY": 96,
+      "scrollY": 9600,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10457.699999988079,
+      "requestedAtMs": 8729.800000011921,
+      "deltaY": 96,
+      "scrollY": 9696,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10524.600000023842,
+      "requestedAtMs": 8796.700000047684,
+      "deltaY": 96,
+      "scrollY": 9792,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10591.300000011921,
+      "requestedAtMs": 8863.400000035763,
+      "deltaY": 96,
+      "scrollY": 9888,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10657.699999988079,
+      "requestedAtMs": 8929.800000011921,
+      "deltaY": 96,
+      "scrollY": 9984,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10724.600000023842,
+      "requestedAtMs": 8996.700000047684,
+      "deltaY": 96,
+      "scrollY": 10080,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10790.899999976158,
+      "requestedAtMs": 9063,
+      "deltaY": 96,
+      "scrollY": 10176,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10857.800000011921,
+      "requestedAtMs": 9129.900000035763,
+      "deltaY": 96,
+      "scrollY": 10272,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10924.699999988079,
+      "requestedAtMs": 9196.800000011921,
+      "deltaY": 96,
+      "scrollY": 10368,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 10991.5,
+      "requestedAtMs": 9263.600000023842,
+      "deltaY": 96,
+      "scrollY": 10464,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 11058.5,
+      "requestedAtMs": 9330.600000023842,
+      "deltaY": 96,
+      "scrollY": 10560,
+      "phase": "activity"
+    },
+    {
+      "timestamp": 11124.399999976158,
+      "requestedAtMs": 9396.5,
+      "deltaY": 96,
+      "scrollY": 10656,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11191,
+      "requestedAtMs": 9463.100000023842,
+      "deltaY": 96,
+      "scrollY": 10752,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11258.100000023842,
+      "requestedAtMs": 9530.200000047684,
+      "deltaY": 96,
+      "scrollY": 10848,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11342,
+      "requestedAtMs": 9614.100000023842,
+      "deltaY": 96,
+      "scrollY": 10944,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11425.199999988079,
+      "requestedAtMs": 9697.300000011921,
+      "deltaY": 96,
+      "scrollY": 11040,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11501.600000023842,
+      "requestedAtMs": 9773.700000047684,
+      "deltaY": 96,
+      "scrollY": 11136,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11574.699999988079,
+      "requestedAtMs": 9846.800000011921,
+      "deltaY": 96,
+      "scrollY": 11232,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11641.399999976158,
+      "requestedAtMs": 9913.5,
+      "deltaY": 96,
+      "scrollY": 11328,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11707.5,
+      "requestedAtMs": 9979.600000023842,
+      "deltaY": 96,
+      "scrollY": 11424,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11774.5,
+      "requestedAtMs": 10046.600000023842,
+      "deltaY": 96,
+      "scrollY": 11520,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11841.100000023842,
+      "requestedAtMs": 10113.200000047684,
+      "deltaY": 96,
+      "scrollY": 11616,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11908.300000011921,
+      "requestedAtMs": 10180.400000035763,
+      "deltaY": 96,
+      "scrollY": 11712,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 11974.199999988079,
+      "requestedAtMs": 10246.300000011921,
+      "deltaY": 96,
+      "scrollY": 11808,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 12041.300000011921,
+      "requestedAtMs": 10313.400000035763,
+      "deltaY": 96,
+      "scrollY": 11904,
+      "phase": "evidence"
+    },
+    {
+      "timestamp": 12109.800000011921,
+      "requestedAtMs": 10381.900000035763,
+      "deltaY": 96,
+      "scrollY": 12000,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12174.800000011921,
+      "requestedAtMs": 10446.900000035763,
+      "deltaY": 96,
+      "scrollY": 12096,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12258.100000023842,
+      "requestedAtMs": 10530.200000047684,
+      "deltaY": 96,
+      "scrollY": 12192,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12341.800000011921,
+      "requestedAtMs": 10613.900000035763,
+      "deltaY": 96,
+      "scrollY": 12288,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12407.5,
+      "requestedAtMs": 10679.600000023842,
+      "deltaY": 96,
+      "scrollY": 12384,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12474,
+      "requestedAtMs": 10746.100000023842,
+      "deltaY": 96,
+      "scrollY": 12480,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12541.199999988079,
+      "requestedAtMs": 10813.300000011921,
+      "deltaY": 96,
+      "scrollY": 12576,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12607.600000023842,
+      "requestedAtMs": 10879.700000047684,
+      "deltaY": 96,
+      "scrollY": 12672,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12675,
+      "requestedAtMs": 10947.100000023842,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12742.5,
+      "requestedAtMs": 11014.600000023842,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12807.199999988079,
+      "requestedAtMs": 11079.300000011921,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12874.199999988079,
+      "requestedAtMs": 11146.300000011921,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 12940.899999976158,
+      "requestedAtMs": 11213,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13007.600000023842,
+      "requestedAtMs": 11279.700000047684,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13074.300000011921,
+      "requestedAtMs": 11346.400000035763,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13140.800000011921,
+      "requestedAtMs": 11412.900000035763,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13207.600000023842,
+      "requestedAtMs": 11479.700000047684,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13274.199999988079,
+      "requestedAtMs": 11546.300000011921,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13340.899999976158,
+      "requestedAtMs": 11613,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13407.800000011921,
+      "requestedAtMs": 11679.900000035763,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13490.800000011921,
+      "requestedAtMs": 11762.900000035763,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13557.600000023842,
+      "requestedAtMs": 11829.700000047684,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13624.199999988079,
+      "requestedAtMs": 11896.300000011921,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13707.899999976158,
+      "requestedAtMs": 11980,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    },
+    {
+      "timestamp": 13774,
+      "requestedAtMs": 12046.100000023842,
+      "deltaY": 96,
+      "scrollY": 12735,
+      "phase": "action"
+    }
+  ],
+  "samples": [
+    {
+      "step": 0,
+      "requestedAtMs": 1,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 1728.8999999761581,
+        "scrollY": 96,
+        "phase": "presence",
+        "substate": "origin",
+        "partnerFocus": null,
+        "localProgress": 0.2526,
+        "activeProgress": 0.2526
+      },
+      "after": {
+        "timestamp": 1765.3999999761581,
+        "scrollY": 96,
+        "phase": "presence",
+        "substate": "origin",
+        "partnerFocus": null,
+        "localProgress": 0.3088,
+        "activeProgress": 0.3088
+      },
+      "scrollDelta": 0,
+      "scrollChanged": false,
+      "activeProgressDelta": 0.05620000000000003,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 1,
+      "requestedAtMs": 37.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 1765.3999999761581,
+        "scrollY": 96,
+        "phase": "presence",
+        "substate": "origin",
+        "partnerFocus": null,
+        "localProgress": 0.3088,
+        "activeProgress": 0.3088
+      },
+      "after": {
+        "timestamp": 1881,
+        "scrollY": 192,
+        "phase": "presence",
+        "substate": "origin",
+        "partnerFocus": null,
+        "localProgress": 0.3649,
+        "activeProgress": 0.3649
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05609999999999998,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 2,
+      "requestedAtMs": 153.10000002384186,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 1881,
+        "scrollY": 192,
+        "phase": "presence",
+        "substate": "origin",
+        "partnerFocus": null,
+        "localProgress": 0.3649,
+        "activeProgress": 0.3649
+      },
+      "after": {
+        "timestamp": 1996.1000000238419,
+        "scrollY": 288,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.4211,
+        "activeProgress": 0.4211
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05619999999999997,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 3,
+      "requestedAtMs": 268.2000000476837,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 1996.1000000238419,
+        "scrollY": 288,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.4211,
+        "activeProgress": 0.4211
+      },
+      "after": {
+        "timestamp": 2105.699999988079,
+        "scrollY": 384,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.4772,
+        "activeProgress": 0.4772
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05610000000000004,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 4,
+      "requestedAtMs": 377.80000001192093,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 2105.699999988079,
+        "scrollY": 384,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.4772,
+        "activeProgress": 0.4772
+      },
+      "after": {
+        "timestamp": 2212,
+        "scrollY": 480,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.5333,
+        "activeProgress": 0.5333
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05609999999999998,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 5,
+      "requestedAtMs": 484.10000002384186,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 2212,
+        "scrollY": 480,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.5333,
+        "activeProgress": 0.5333
+      },
+      "after": {
+        "timestamp": 2327.899999976158,
+        "scrollY": 576,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.5895,
+        "activeProgress": 0.5895
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05620000000000003,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 6,
+      "requestedAtMs": 600,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 2327.899999976158,
+        "scrollY": 576,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.5895,
+        "activeProgress": 0.5895
+      },
+      "after": {
+        "timestamp": 2441.800000011921,
+        "scrollY": 672,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.6456,
+        "activeProgress": 0.6456
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05609999999999993,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 7,
+      "requestedAtMs": 713.9000000357628,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 2441.800000011921,
+        "scrollY": 672,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.6456,
+        "activeProgress": 0.6456
+      },
+      "after": {
+        "timestamp": 2561.800000011921,
+        "scrollY": 768,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.7018,
+        "activeProgress": 0.7018
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05620000000000003,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 8,
+      "requestedAtMs": 833.9000000357628,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 2561.800000011921,
+        "scrollY": 768,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.7018,
+        "activeProgress": 0.7018
+      },
+      "after": {
+        "timestamp": 2686.5,
+        "scrollY": 864,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.7579,
+        "activeProgress": 0.7579
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05610000000000004,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 9,
+      "requestedAtMs": 958.6000000238419,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 2686.5,
+        "scrollY": 864,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.7579,
+        "activeProgress": 0.7579
+      },
+      "after": {
+        "timestamp": 2805.100000023842,
+        "scrollY": 960,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.814,
+        "activeProgress": 0.814
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05609999999999993,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 10,
+      "requestedAtMs": 1077.2000000476837,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 2805.100000023842,
+        "scrollY": 960,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.814,
+        "activeProgress": 0.814
+      },
+      "after": {
+        "timestamp": 2919.199999988079,
+        "scrollY": 1056,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.8702,
+        "activeProgress": 0.8702
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05620000000000003,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 11,
+      "requestedAtMs": 1191.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 2919.199999988079,
+        "scrollY": 1056,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.8702,
+        "activeProgress": 0.8702
+      },
+      "after": {
+        "timestamp": 3033.800000011921,
+        "scrollY": 1152,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.9263,
+        "activeProgress": 0.9263
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05610000000000004,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 12,
+      "requestedAtMs": 1305.9000000357628,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 3033.800000011921,
+        "scrollY": 1152,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.9263,
+        "activeProgress": 0.9263
+      },
+      "after": {
+        "timestamp": 3125.699999988079,
+        "scrollY": 1248,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.9825,
+        "activeProgress": 0.9825
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05620000000000003,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 13,
+      "requestedAtMs": 1397.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 3125.699999988079,
+        "scrollY": 1248,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 0.9825,
+        "activeProgress": 0.9825
+      },
+      "after": {
+        "timestamp": 3183,
+        "scrollY": 1344,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 1,
+        "activeProgress": 1
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.01749999999999996,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 14,
+      "requestedAtMs": 1455.1000000238419,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 3183,
+        "scrollY": 1344,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 1,
+        "activeProgress": 1
+      },
+      "after": {
+        "timestamp": 3244.899999976158,
+        "scrollY": 1440,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 1,
+        "activeProgress": 1
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 15,
+      "requestedAtMs": 1517,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 3244.899999976158,
+        "scrollY": 1440,
+        "phase": "presence",
+        "substate": "resolved",
+        "partnerFocus": null,
+        "localProgress": 1,
+        "activeProgress": 1
+      },
+      "after": {
+        "timestamp": 3356.899999976158,
+        "scrollY": 1536,
+        "phase": "access",
+        "substate": "opening",
+        "partnerFocus": null,
+        "localProgress": 0.0956,
+        "activeProgress": 0.0956
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.9044,
+      "visualDelta": {
+        "maximum": 38.4,
+        "total": 190.636
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": true,
+      "stateChanged": true
+    },
+    {
+      "step": 16,
+      "requestedAtMs": 1629,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 3356.899999976158,
+        "scrollY": 1536,
+        "phase": "access",
+        "substate": "opening",
+        "partnerFocus": null,
+        "localProgress": 0.0956,
+        "activeProgress": 0.0956
+      },
+      "after": {
+        "timestamp": 3491.699999988079,
+        "scrollY": 1632,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "vdl-group",
+        "localProgress": 0.1311,
+        "activeProgress": 0.1311
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.03549999999999999,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 12.476
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 17,
+      "requestedAtMs": 1763.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 3491.699999988079,
+        "scrollY": 1632,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "vdl-group",
+        "localProgress": 0.1311,
+        "activeProgress": 0.1311
+      },
+      "after": {
+        "timestamp": 3572.300000011921,
+        "scrollY": 1728,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "vdl-group",
+        "localProgress": 0.1667,
+        "activeProgress": 0.1667
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.03559999999999999,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 11.964
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 18,
+      "requestedAtMs": 1844.4000000357628,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 3572.300000011921,
+        "scrollY": 1728,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "vdl-group",
+        "localProgress": 0.1667,
+        "activeProgress": 0.1667
+      },
+      "after": {
+        "timestamp": 3630.100000023842,
+        "scrollY": 1824,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "vdl-group",
+        "localProgress": 0.2022,
+        "activeProgress": 0.2022
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035500000000000004,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 11.876
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 19,
+      "requestedAtMs": 1902.2000000476837,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 3630.100000023842,
+        "scrollY": 1824,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "vdl-group",
+        "localProgress": 0.2022,
+        "activeProgress": 0.2022
+      },
+      "after": {
+        "timestamp": 3718,
+        "scrollY": 1920,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "vdl-group",
+        "localProgress": 0.2378,
+        "activeProgress": 0.2378
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.03560000000000002,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 16.423
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 20,
+      "requestedAtMs": 1990.1000000238419,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 3718,
+        "scrollY": 1920,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "vdl-group",
+        "localProgress": 0.2378,
+        "activeProgress": 0.2378
+      },
+      "after": {
+        "timestamp": 3878.800000011921,
+        "scrollY": 2016,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "hyundai-motor-group",
+        "localProgress": 0.2733,
+        "activeProgress": 0.2733
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035499999999999976,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 24.977
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 21,
+      "requestedAtMs": 2150.900000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 3878.800000011921,
+        "scrollY": 2016,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "hyundai-motor-group",
+        "localProgress": 0.2733,
+        "activeProgress": 0.2733
+      },
+      "after": {
+        "timestamp": 3996.399999976158,
+        "scrollY": 2112,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "hyundai-motor-group",
+        "localProgress": 0.3089,
+        "activeProgress": 0.3089
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.03560000000000002,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 19.646
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 22,
+      "requestedAtMs": 2268.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 3996.399999976158,
+        "scrollY": 2112,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "hyundai-motor-group",
+        "localProgress": 0.3089,
+        "activeProgress": 0.3089
+      },
+      "after": {
+        "timestamp": 4056,
+        "scrollY": 2208,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "hyundai-motor-group",
+        "localProgress": 0.3444,
+        "activeProgress": 0.3444
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035499999999999976,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 11.88
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 23,
+      "requestedAtMs": 2328.100000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 4056,
+        "scrollY": 2208,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "hyundai-motor-group",
+        "localProgress": 0.3444,
+        "activeProgress": 0.3444
+      },
+      "after": {
+        "timestamp": 4111.100000023842,
+        "scrollY": 2304,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "hyundai-motor-group",
+        "localProgress": 0.38,
+        "activeProgress": 0.38
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.03560000000000002,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 11.893
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 24,
+      "requestedAtMs": 2383.2000000476837,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 4111.100000023842,
+        "scrollY": 2304,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "hyundai-motor-group",
+        "localProgress": 0.38,
+        "activeProgress": 0.38
+      },
+      "after": {
+        "timestamp": 4212.699999988079,
+        "scrollY": 2400,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "hyundai-motor-group",
+        "localProgress": 0.4156,
+        "activeProgress": 0.4156
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.03560000000000002,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 22.927
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 25,
+      "requestedAtMs": 2484.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 4212.699999988079,
+        "scrollY": 2400,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "hyundai-motor-group",
+        "localProgress": 0.4156,
+        "activeProgress": 0.4156
+      },
+      "after": {
+        "timestamp": 4325.100000023842,
+        "scrollY": 2496,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "bazan-group",
+        "localProgress": 0.4511,
+        "activeProgress": 0.4511
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035499999999999976,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 24.841
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 26,
+      "requestedAtMs": 2597.2000000476837,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 4325.100000023842,
+        "scrollY": 2496,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "bazan-group",
+        "localProgress": 0.4511,
+        "activeProgress": 0.4511
+      },
+      "after": {
+        "timestamp": 4442.699999988079,
+        "scrollY": 2592,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "bazan-group",
+        "localProgress": 0.4867,
+        "activeProgress": 0.4867
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.03560000000000002,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 13.269
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 27,
+      "requestedAtMs": 2714.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 4442.699999988079,
+        "scrollY": 2592,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "bazan-group",
+        "localProgress": 0.4867,
+        "activeProgress": 0.4867
+      },
+      "after": {
+        "timestamp": 4494.899999976158,
+        "scrollY": 2688,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "bazan-group",
+        "localProgress": 0.5222,
+        "activeProgress": 0.5222
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035499999999999976,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 11.876
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 28,
+      "requestedAtMs": 2767,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 4494.899999976158,
+        "scrollY": 2688,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "bazan-group",
+        "localProgress": 0.5222,
+        "activeProgress": 0.5222
+      },
+      "after": {
+        "timestamp": 4589.800000011921,
+        "scrollY": 2784,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "bazan-group",
+        "localProgress": 0.5578,
+        "activeProgress": 0.5578
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035599999999999965,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 16.423
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 29,
+      "requestedAtMs": 2861.900000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 4589.800000011921,
+        "scrollY": 2784,
+        "phase": "access",
+        "substate": "strategic",
+        "partnerFocus": "bazan-group",
+        "localProgress": 0.5578,
+        "activeProgress": 0.5578
+      },
+      "after": {
+        "timestamp": 4750,
+        "scrollY": 2880,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "taavura-livnat-group",
+        "localProgress": 0.5933,
+        "activeProgress": 0.5933
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.03550000000000009,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 24.977
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 30,
+      "requestedAtMs": 3022.100000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 4750,
+        "scrollY": 2880,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "taavura-livnat-group",
+        "localProgress": 0.5933,
+        "activeProgress": 0.5933
+      },
+      "after": {
+        "timestamp": 4899.399999976158,
+        "scrollY": 2976,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "taavura-livnat-group",
+        "localProgress": 0.6289,
+        "activeProgress": 0.6289
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035599999999999965,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 19.646
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 31,
+      "requestedAtMs": 3171.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 4899.399999976158,
+        "scrollY": 2976,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "taavura-livnat-group",
+        "localProgress": 0.6289,
+        "activeProgress": 0.6289
+      },
+      "after": {
+        "timestamp": 5004.399999976158,
+        "scrollY": 3072,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "taavura-livnat-group",
+        "localProgress": 0.6644,
+        "activeProgress": 0.6644
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035499999999999976,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 11.88
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 32,
+      "requestedAtMs": 3276.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 5004.399999976158,
+        "scrollY": 3072,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "taavura-livnat-group",
+        "localProgress": 0.6644,
+        "activeProgress": 0.6644
+      },
+      "after": {
+        "timestamp": 5103.600000023842,
+        "scrollY": 3168,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "taavura-livnat-group",
+        "localProgress": 0.7,
+        "activeProgress": 0.7
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035599999999999965,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 11.893
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 33,
+      "requestedAtMs": 3375.7000000476837,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 5103.600000023842,
+        "scrollY": 3168,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "taavura-livnat-group",
+        "localProgress": 0.7,
+        "activeProgress": 0.7
+      },
+      "after": {
+        "timestamp": 5211.100000023842,
+        "scrollY": 3264,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "taavura-livnat-group",
+        "localProgress": 0.7356,
+        "activeProgress": 0.7356
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035600000000000076,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 22.927
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 34,
+      "requestedAtMs": 3483.2000000476837,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 5211.100000023842,
+        "scrollY": 3264,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "taavura-livnat-group",
+        "localProgress": 0.7356,
+        "activeProgress": 0.7356
+      },
+      "after": {
+        "timestamp": 5369.699999988079,
+        "scrollY": 3360,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "talcar",
+        "localProgress": 0.7711,
+        "activeProgress": 0.7711
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035499999999999976,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 24.841
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 35,
+      "requestedAtMs": 3641.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 5369.699999988079,
+        "scrollY": 3360,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "talcar",
+        "localProgress": 0.7711,
+        "activeProgress": 0.7711
+      },
+      "after": {
+        "timestamp": 5513.699999988079,
+        "scrollY": 3456,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "talcar",
+        "localProgress": 0.8067,
+        "activeProgress": 0.8067
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035599999999999965,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 13.269
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 36,
+      "requestedAtMs": 3785.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 5513.699999988079,
+        "scrollY": 3456,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "talcar",
+        "localProgress": 0.8067,
+        "activeProgress": 0.8067
+      },
+      "after": {
+        "timestamp": 5573.199999988079,
+        "scrollY": 3552,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "talcar",
+        "localProgress": 0.8422,
+        "activeProgress": 0.8422
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035499999999999976,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 11.876
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 37,
+      "requestedAtMs": 3845.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 5573.199999988079,
+        "scrollY": 3552,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "talcar",
+        "localProgress": 0.8422,
+        "activeProgress": 0.8422
+      },
+      "after": {
+        "timestamp": 5652.300000011921,
+        "scrollY": 3648,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "talcar",
+        "localProgress": 0.8778,
+        "activeProgress": 0.8778
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035600000000000076,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 12.079
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 38,
+      "requestedAtMs": 3924.400000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 5652.300000011921,
+        "scrollY": 3648,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "talcar",
+        "localProgress": 0.8778,
+        "activeProgress": 0.8778
+      },
+      "after": {
+        "timestamp": 5742.800000011921,
+        "scrollY": 3744,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "talcar",
+        "localProgress": 0.9133,
+        "activeProgress": 0.9133
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.035499999999999976,
+      "visualDelta": {
+        "maximum": 11.872,
+        "total": 12.507
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 39,
+      "requestedAtMs": 4014.900000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 5742.800000011921,
+        "scrollY": 3744,
+        "phase": "access",
+        "substate": "founding",
+        "partnerFocus": "talcar",
+        "localProgress": 0.9133,
+        "activeProgress": 0.9133
+      },
+      "after": {
+        "timestamp": 5806.800000011921,
+        "scrollY": 3840,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.9133,
+      "visualDelta": {
+        "maximum": 343.779,
+        "total": 1248.503
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": true,
+      "stateChanged": true
+    },
+    {
+      "step": 40,
+      "requestedAtMs": 4078.900000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 5806.800000011921,
+        "scrollY": 3840,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "after": {
+        "timestamp": 5858.199999988079,
+        "scrollY": 3936,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 41,
+      "requestedAtMs": 4130.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 5858.199999988079,
+        "scrollY": 3936,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "after": {
+        "timestamp": 6146.199999988079,
+        "scrollY": 4032,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.0286,
+        "activeProgress": 0.0286
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.0286,
+      "visualDelta": {
+        "maximum": 28,
+        "total": 28
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 42,
+      "requestedAtMs": 4418.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6146.199999988079,
+        "scrollY": 4032,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.0286,
+        "activeProgress": 0.0286
+      },
+      "after": {
+        "timestamp": 6209.699999988079,
+        "scrollY": 4128,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.0794,
+        "activeProgress": 0.0794
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.0508,
+      "visualDelta": {
+        "maximum": 49.75,
+        "total": 49.75
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 43,
+      "requestedAtMs": 4481.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6209.699999988079,
+        "scrollY": 4128,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.0794,
+        "activeProgress": 0.0794
+      },
+      "after": {
+        "timestamp": 6290.300000011921,
+        "scrollY": 4224,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.1302,
+        "activeProgress": 0.1302
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000001,
+      "visualDelta": {
+        "maximum": 49.734,
+        "total": 49.734
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 44,
+      "requestedAtMs": 4562.400000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6290.300000011921,
+        "scrollY": 4224,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.1302,
+        "activeProgress": 0.1302
+      },
+      "after": {
+        "timestamp": 6354.399999976158,
+        "scrollY": 4320,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.181,
+        "activeProgress": 0.181
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999984,
+      "visualDelta": {
+        "maximum": 49.75,
+        "total": 49.75
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 45,
+      "requestedAtMs": 4626.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6354.399999976158,
+        "scrollY": 4320,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.181,
+        "activeProgress": 0.181
+      },
+      "after": {
+        "timestamp": 6419.699999988079,
+        "scrollY": 4416,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.2317,
+        "activeProgress": 0.2317
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050699999999999995,
+      "visualDelta": {
+        "maximum": 49.641,
+        "total": 52.328
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 46,
+      "requestedAtMs": 4691.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6419.699999988079,
+        "scrollY": 4416,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.2317,
+        "activeProgress": 0.2317
+      },
+      "after": {
+        "timestamp": 6492.699999988079,
+        "scrollY": 4512,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.2825,
+        "activeProgress": 0.2825
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999984,
+      "visualDelta": {
+        "maximum": 49.75,
+        "total": 56.532
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 47,
+      "requestedAtMs": 4764.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6492.699999988079,
+        "scrollY": 4512,
+        "phase": "startup",
+        "substate": "outside",
+        "partnerFocus": null,
+        "localProgress": 0.2825,
+        "activeProgress": 0.2825
+      },
+      "after": {
+        "timestamp": 6563.899999976158,
+        "scrollY": 4608,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.3333,
+        "activeProgress": 0.3333
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000001,
+      "visualDelta": {
+        "maximum": 49.734,
+        "total": 58.977
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 48,
+      "requestedAtMs": 4836,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6563.899999976158,
+        "scrollY": 4608,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.3333,
+        "activeProgress": 0.3333
+      },
+      "after": {
+        "timestamp": 6632.199999988079,
+        "scrollY": 4704,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.3841,
+        "activeProgress": 0.3841
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000001,
+      "visualDelta": {
+        "maximum": 49.75,
+        "total": 59.885
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 49,
+      "requestedAtMs": 4904.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6632.199999988079,
+        "scrollY": 4704,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.3841,
+        "activeProgress": 0.3841
+      },
+      "after": {
+        "timestamp": 6717.5,
+        "scrollY": 4800,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.4349,
+        "activeProgress": 0.4349
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000001,
+      "visualDelta": {
+        "maximum": 49.75,
+        "total": 59.132
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 50,
+      "requestedAtMs": 4989.600000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6717.5,
+        "scrollY": 4800,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.4349,
+        "activeProgress": 0.4349
+      },
+      "after": {
+        "timestamp": 6787.899999976158,
+        "scrollY": 4896,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.4857,
+        "activeProgress": 0.4857
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000001,
+      "visualDelta": {
+        "maximum": 49.735,
+        "total": 56.763
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 51,
+      "requestedAtMs": 5060,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6787.899999976158,
+        "scrollY": 4896,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.4857,
+        "activeProgress": 0.4857
+      },
+      "after": {
+        "timestamp": 6874.899999976158,
+        "scrollY": 4992,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.5365,
+        "activeProgress": 0.5365
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999956,
+      "visualDelta": {
+        "maximum": 49.75,
+        "total": 54.829
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 52,
+      "requestedAtMs": 5147,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6874.899999976158,
+        "scrollY": 4992,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.5365,
+        "activeProgress": 0.5365
+      },
+      "after": {
+        "timestamp": 6969,
+        "scrollY": 5088,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.5873,
+        "activeProgress": 0.5873
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000007,
+      "visualDelta": {
+        "maximum": 49.734,
+        "total": 58.053
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 53,
+      "requestedAtMs": 5241.100000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 6969,
+        "scrollY": 5088,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.5873,
+        "activeProgress": 0.5873
+      },
+      "after": {
+        "timestamp": 7036.399999976158,
+        "scrollY": 5184,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.6381,
+        "activeProgress": 0.6381
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999956,
+      "visualDelta": {
+        "maximum": 49.75,
+        "total": 61.642
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 54,
+      "requestedAtMs": 5308.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7036.399999976158,
+        "scrollY": 5184,
+        "phase": "startup",
+        "substate": "threshold",
+        "partnerFocus": null,
+        "localProgress": 0.6381,
+        "activeProgress": 0.6381
+      },
+      "after": {
+        "timestamp": 7106.100000023842,
+        "scrollY": 5280,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.6889,
+        "activeProgress": 0.6889
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999956,
+      "visualDelta": {
+        "maximum": 49.734,
+        "total": 62.297
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 55,
+      "requestedAtMs": 5378.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7106.100000023842,
+        "scrollY": 5280,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.6889,
+        "activeProgress": 0.6889
+      },
+      "after": {
+        "timestamp": 7168,
+        "scrollY": 5376,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.7397,
+        "activeProgress": 0.7397
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000007,
+      "visualDelta": {
+        "maximum": 49.75,
+        "total": 60.063
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 56,
+      "requestedAtMs": 5440.100000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7168,
+        "scrollY": 5376,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.7397,
+        "activeProgress": 0.7397
+      },
+      "after": {
+        "timestamp": 7238.300000011921,
+        "scrollY": 5472,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.7905,
+        "activeProgress": 0.7905
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999956,
+      "visualDelta": {
+        "maximum": 49.75,
+        "total": 54.892
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 57,
+      "requestedAtMs": 5510.400000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7238.300000011921,
+        "scrollY": 5472,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.7905,
+        "activeProgress": 0.7905
+      },
+      "after": {
+        "timestamp": 7327.600000023842,
+        "scrollY": 5568,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.8413,
+        "activeProgress": 0.8413
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000007,
+      "visualDelta": {
+        "maximum": 49.734,
+        "total": 49.889
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 58,
+      "requestedAtMs": 5599.700000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7327.600000023842,
+        "scrollY": 5568,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.8413,
+        "activeProgress": 0.8413
+      },
+      "after": {
+        "timestamp": 7424.199999988079,
+        "scrollY": 5664,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.8921,
+        "activeProgress": 0.8921
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999956,
+      "visualDelta": {
+        "maximum": 49.75,
+        "total": 49.75
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 59,
+      "requestedAtMs": 5696.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7424.199999988079,
+        "scrollY": 5664,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.8921,
+        "activeProgress": 0.8921
+      },
+      "after": {
+        "timestamp": 7491.100000023842,
+        "scrollY": 5760,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.9429,
+        "activeProgress": 0.9429
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999956,
+      "visualDelta": {
+        "maximum": 49.74,
+        "total": 49.74
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 60,
+      "requestedAtMs": 5763.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7491.100000023842,
+        "scrollY": 5760,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.9429,
+        "activeProgress": 0.9429
+      },
+      "after": {
+        "timestamp": 7568.199999988079,
+        "scrollY": 5856,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.9937,
+        "activeProgress": 0.9937
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000007,
+      "visualDelta": {
+        "maximum": 49.74,
+        "total": 49.74
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 61,
+      "requestedAtMs": 5840.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7568.199999988079,
+        "scrollY": 5856,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 0.9937,
+        "activeProgress": 0.9937
+      },
+      "after": {
+        "timestamp": 7641.300000011921,
+        "scrollY": 5952,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 1,
+        "activeProgress": 1
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.006299999999999972,
+      "visualDelta": {
+        "maximum": 6.18,
+        "total": 6.18
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 62,
+      "requestedAtMs": 5913.400000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7641.300000011921,
+        "scrollY": 5952,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 1,
+        "activeProgress": 1
+      },
+      "after": {
+        "timestamp": 7691.100000023842,
+        "scrollY": 6048,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 1,
+        "activeProgress": 1
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 63,
+      "requestedAtMs": 5963.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7691.100000023842,
+        "scrollY": 6048,
+        "phase": "startup",
+        "substate": "field",
+        "partnerFocus": null,
+        "localProgress": 1,
+        "activeProgress": 1
+      },
+      "after": {
+        "timestamp": 7823.699999988079,
+        "scrollY": 6144,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.0958,
+        "activeProgress": 0.0958
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.9042,
+      "visualDelta": {
+        "maximum": 1179.8,
+        "total": 2104.952
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": true,
+      "stateChanged": true
+    },
+    {
+      "step": 64,
+      "requestedAtMs": 6095.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7823.699999988079,
+        "scrollY": 6144,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.0958,
+        "activeProgress": 0.0958
+      },
+      "after": {
+        "timestamp": 7917.199999988079,
+        "scrollY": 6240,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.1292,
+        "activeProgress": 0.1292
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.03340000000000001,
+      "visualDelta": {
+        "maximum": 0.049,
+        "total": 0.321
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 65,
+      "requestedAtMs": 6189.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7917.199999988079,
+        "scrollY": 6240,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.1292,
+        "activeProgress": 0.1292
+      },
+      "after": {
+        "timestamp": 7989.5,
+        "scrollY": 6336,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.1625,
+        "activeProgress": 0.1625
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.08,
+        "total": 0.467
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 66,
+      "requestedAtMs": 6261.600000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 7989.5,
+        "scrollY": 6336,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.1625,
+        "activeProgress": 0.1625
+      },
+      "after": {
+        "timestamp": 8057.800000011921,
+        "scrollY": 6432,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.1958,
+        "activeProgress": 0.1958
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.096,
+        "total": 0.561
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 67,
+      "requestedAtMs": 6329.900000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8057.800000011921,
+        "scrollY": 6432,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.1958,
+        "activeProgress": 0.1958
+      },
+      "after": {
+        "timestamp": 8125.100000023842,
+        "scrollY": 6528,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.2292,
+        "activeProgress": 0.2292
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033399999999999985,
+      "visualDelta": {
+        "maximum": 0.112,
+        "total": 0.629
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 68,
+      "requestedAtMs": 6397.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8125.100000023842,
+        "scrollY": 6528,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.2292,
+        "activeProgress": 0.2292
+      },
+      "after": {
+        "timestamp": 8189.899999976158,
+        "scrollY": 6624,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.2625,
+        "activeProgress": 0.2625
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033300000000000024,
+      "visualDelta": {
+        "maximum": 0.112,
+        "total": 0.655
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 69,
+      "requestedAtMs": 6462,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8189.899999976158,
+        "scrollY": 6624,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.2625,
+        "activeProgress": 0.2625
+      },
+      "after": {
+        "timestamp": 8252.800000011921,
+        "scrollY": 6720,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.2958,
+        "activeProgress": 0.2958
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.096,
+        "total": 0.616
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 70,
+      "requestedAtMs": 6524.900000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8252.800000011921,
+        "scrollY": 6720,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.2958,
+        "activeProgress": 0.2958
+      },
+      "after": {
+        "timestamp": 8313.600000023842,
+        "scrollY": 6816,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.3292,
+        "activeProgress": 0.3292
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033399999999999985,
+      "visualDelta": {
+        "maximum": 0.112,
+        "total": 0.634
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 71,
+      "requestedAtMs": 6585.700000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8313.600000023842,
+        "scrollY": 6816,
+        "phase": "method",
+        "substate": "find",
+        "partnerFocus": null,
+        "localProgress": 0.3292,
+        "activeProgress": 0.3292
+      },
+      "after": {
+        "timestamp": 8382.100000023842,
+        "scrollY": 6912,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.3625,
+        "activeProgress": 0.3625
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.08,
+        "total": 0.52
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 72,
+      "requestedAtMs": 6654.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8382.100000023842,
+        "scrollY": 6912,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.3625,
+        "activeProgress": 0.3625
+      },
+      "after": {
+        "timestamp": 8445.300000011921,
+        "scrollY": 7008,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.3958,
+        "activeProgress": 0.3958
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.08,
+        "total": 0.459
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 73,
+      "requestedAtMs": 6717.400000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8445.300000011921,
+        "scrollY": 7008,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.3958,
+        "activeProgress": 0.3958
+      },
+      "after": {
+        "timestamp": 8530.699999988079,
+        "scrollY": 7104,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.4292,
+        "activeProgress": 0.4292
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.03340000000000004,
+      "visualDelta": {
+        "maximum": 0.064,
+        "total": 0.344
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 74,
+      "requestedAtMs": 6802.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8530.699999988079,
+        "scrollY": 7104,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.4292,
+        "activeProgress": 0.4292
+      },
+      "after": {
+        "timestamp": 8605.100000023842,
+        "scrollY": 7200,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.4625,
+        "activeProgress": 0.4625
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.032,
+        "total": 0.184
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 75,
+      "requestedAtMs": 6877.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8605.100000023842,
+        "scrollY": 7200,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.4625,
+        "activeProgress": 0.4625
+      },
+      "after": {
+        "timestamp": 8671.399999976158,
+        "scrollY": 7296,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.4958,
+        "activeProgress": 0.4958
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.024,
+        "total": 0.173
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 76,
+      "requestedAtMs": 6943.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8671.399999976158,
+        "scrollY": 7296,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.4958,
+        "activeProgress": 0.4958
+      },
+      "after": {
+        "timestamp": 8733,
+        "scrollY": 7392,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.5292,
+        "activeProgress": 0.5292
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033399999999999985,
+      "visualDelta": {
+        "maximum": 0.172,
+        "total": 1.42
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 77,
+      "requestedAtMs": 7005.100000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8733,
+        "scrollY": 7392,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.5292,
+        "activeProgress": 0.5292
+      },
+      "after": {
+        "timestamp": 8798.699999988079,
+        "scrollY": 7488,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.5625,
+        "activeProgress": 0.5625
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.32,
+        "total": 2.608
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 78,
+      "requestedAtMs": 7070.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8798.699999988079,
+        "scrollY": 7488,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.5625,
+        "activeProgress": 0.5625
+      },
+      "after": {
+        "timestamp": 8864.199999988079,
+        "scrollY": 7584,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.5958,
+        "activeProgress": 0.5958
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.406,
+        "total": 3.333
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 79,
+      "requestedAtMs": 7136.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8864.199999988079,
+        "scrollY": 7584,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.5958,
+        "activeProgress": 0.5958
+      },
+      "after": {
+        "timestamp": 8951.5,
+        "scrollY": 7680,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.6292,
+        "activeProgress": 0.6292
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033399999999999985,
+      "visualDelta": {
+        "maximum": 0.469,
+        "total": 3.806
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 80,
+      "requestedAtMs": 7223.600000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 8951.5,
+        "scrollY": 7680,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.6292,
+        "activeProgress": 0.6292
+      },
+      "after": {
+        "timestamp": 9012.100000023842,
+        "scrollY": 7776,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.6625,
+        "activeProgress": 0.6625
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.453,
+        "total": 3.714
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 81,
+      "requestedAtMs": 7284.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9012.100000023842,
+        "scrollY": 7776,
+        "phase": "method",
+        "substate": "test",
+        "partnerFocus": null,
+        "localProgress": 0.6625,
+        "activeProgress": 0.6625
+      },
+      "after": {
+        "timestamp": 9091.899999976158,
+        "scrollY": 7872,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.6958,
+        "activeProgress": 0.6958
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.414,
+        "total": 3.33
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 82,
+      "requestedAtMs": 7364,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9091.899999976158,
+        "scrollY": 7872,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.6958,
+        "activeProgress": 0.6958
+      },
+      "after": {
+        "timestamp": 9193,
+        "scrollY": 7968,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.7292,
+        "activeProgress": 0.7292
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033399999999999985,
+      "visualDelta": {
+        "maximum": 0.321,
+        "total": 2.599
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 83,
+      "requestedAtMs": 7465.100000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9193,
+        "scrollY": 7968,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.7292,
+        "activeProgress": 0.7292
+      },
+      "after": {
+        "timestamp": 9257.600000023842,
+        "scrollY": 8064,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.7625,
+        "activeProgress": 0.7625
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.195,
+        "total": 1.56
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 84,
+      "requestedAtMs": 7529.700000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9257.600000023842,
+        "scrollY": 8064,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.7625,
+        "activeProgress": 0.7625
+      },
+      "after": {
+        "timestamp": 9337.899999976158,
+        "scrollY": 8160,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.7958,
+        "activeProgress": 0.7958
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0.023,
+        "total": 0.208
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 85,
+      "requestedAtMs": 7610,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9337.899999976158,
+        "scrollY": 8160,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.7958,
+        "activeProgress": 0.7958
+      },
+      "after": {
+        "timestamp": 9401.899999976158,
+        "scrollY": 8256,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.8292,
+        "activeProgress": 0.8292
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033400000000000096,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 86,
+      "requestedAtMs": 7674,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9401.899999976158,
+        "scrollY": 8256,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.8292,
+        "activeProgress": 0.8292
+      },
+      "after": {
+        "timestamp": 9491.300000011921,
+        "scrollY": 8352,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.8625,
+        "activeProgress": 0.8625
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 87,
+      "requestedAtMs": 7763.400000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9491.300000011921,
+        "scrollY": 8352,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.8625,
+        "activeProgress": 0.8625
+      },
+      "after": {
+        "timestamp": 9560.600000023842,
+        "scrollY": 8448,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.8958,
+        "activeProgress": 0.8958
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.033299999999999996,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 88,
+      "requestedAtMs": 7832.700000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9560.600000023842,
+        "scrollY": 8448,
+        "phase": "method",
+        "substate": "prove",
+        "partnerFocus": null,
+        "localProgress": 0.8958,
+        "activeProgress": 0.8958
+      },
+      "after": {
+        "timestamp": 9609.5,
+        "scrollY": 8544,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.8958,
+      "visualDelta": {
+        "maximum": 65.195,
+        "total": 302.434
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": true,
+      "stateChanged": true
+    },
+    {
+      "step": 89,
+      "requestedAtMs": 7881.600000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9609.5,
+        "scrollY": 8544,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "after": {
+        "timestamp": 9690.899999976158,
+        "scrollY": 8640,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 90,
+      "requestedAtMs": 7963,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9690.899999976158,
+        "scrollY": 8640,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "after": {
+        "timestamp": 9775.199999988079,
+        "scrollY": 8736,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 91,
+      "requestedAtMs": 8047.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9775.199999988079,
+        "scrollY": 8736,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "after": {
+        "timestamp": 9848.300000011921,
+        "scrollY": 8832,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0.0444,
+        "activeProgress": 0.0444
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.0444,
+      "visualDelta": {
+        "maximum": 6.224,
+        "total": 6.424
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 92,
+      "requestedAtMs": 8120.400000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9848.300000011921,
+        "scrollY": 8832,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0.0444,
+        "activeProgress": 0.0444
+      },
+      "after": {
+        "timestamp": 9928.399999976158,
+        "scrollY": 8928,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0.0952,
+        "activeProgress": 0.0952
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050800000000000005,
+      "visualDelta": {
+        "maximum": 21.872,
+        "total": 23.606
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 93,
+      "requestedAtMs": 8200.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 9928.399999976158,
+        "scrollY": 8928,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0.0952,
+        "activeProgress": 0.0952
+      },
+      "after": {
+        "timestamp": 10000.100000023842,
+        "scrollY": 9024,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0.146,
+        "activeProgress": 0.146
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999984,
+      "visualDelta": {
+        "maximum": 21.888,
+        "total": 21.998
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 94,
+      "requestedAtMs": 8272.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10000.100000023842,
+        "scrollY": 9024,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0.146,
+        "activeProgress": 0.146
+      },
+      "after": {
+        "timestamp": 10048.300000011921,
+        "scrollY": 9120,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0.1968,
+        "activeProgress": 0.1968
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000001,
+      "visualDelta": {
+        "maximum": 21.872,
+        "total": 21.88
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 95,
+      "requestedAtMs": 8320.400000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10048.300000011921,
+        "scrollY": 9120,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0.1968,
+        "activeProgress": 0.1968
+      },
+      "after": {
+        "timestamp": 10129.5,
+        "scrollY": 9216,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0.2476,
+        "activeProgress": 0.2476
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999984,
+      "visualDelta": {
+        "maximum": 21.888,
+        "total": 26.056
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 96,
+      "requestedAtMs": 8401.600000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10129.5,
+        "scrollY": 9216,
+        "phase": "activity",
+        "substate": "field-testing",
+        "partnerFocus": null,
+        "localProgress": 0.2476,
+        "activeProgress": 0.2476
+      },
+      "after": {
+        "timestamp": 10205,
+        "scrollY": 9312,
+        "phase": "activity",
+        "substate": "programs",
+        "partnerFocus": null,
+        "localProgress": 0.2984,
+        "activeProgress": 0.2984
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000001,
+      "visualDelta": {
+        "maximum": 21.888,
+        "total": 43.064
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 97,
+      "requestedAtMs": 8477.100000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10205,
+        "scrollY": 9312,
+        "phase": "activity",
+        "substate": "programs",
+        "partnerFocus": null,
+        "localProgress": 0.2984,
+        "activeProgress": 0.2984
+      },
+      "after": {
+        "timestamp": 10272.899999976158,
+        "scrollY": 9408,
+        "phase": "activity",
+        "substate": "programs",
+        "partnerFocus": null,
+        "localProgress": 0.3492,
+        "activeProgress": 0.3492
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000001,
+      "visualDelta": {
+        "maximum": 21.872,
+        "total": 22.142
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 98,
+      "requestedAtMs": 8545,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10272.899999976158,
+        "scrollY": 9408,
+        "phase": "activity",
+        "substate": "programs",
+        "partnerFocus": null,
+        "localProgress": 0.3492,
+        "activeProgress": 0.3492
+      },
+      "after": {
+        "timestamp": 10315.800000011921,
+        "scrollY": 9504,
+        "phase": "activity",
+        "substate": "programs",
+        "partnerFocus": null,
+        "localProgress": 0.4,
+        "activeProgress": 0.4
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000001,
+      "visualDelta": {
+        "maximum": 21.888,
+        "total": 21.892
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 99,
+      "requestedAtMs": 8587.900000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10315.800000011921,
+        "scrollY": 9504,
+        "phase": "activity",
+        "substate": "programs",
+        "partnerFocus": null,
+        "localProgress": 0.4,
+        "activeProgress": 0.4
+      },
+      "after": {
+        "timestamp": 10392.300000011921,
+        "scrollY": 9600,
+        "phase": "activity",
+        "substate": "programs",
+        "partnerFocus": null,
+        "localProgress": 0.4508,
+        "activeProgress": 0.4508
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999956,
+      "visualDelta": {
+        "maximum": 21.872,
+        "total": 22.436
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 100,
+      "requestedAtMs": 8664.400000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10392.300000011921,
+        "scrollY": 9600,
+        "phase": "activity",
+        "substate": "programs",
+        "partnerFocus": null,
+        "localProgress": 0.4508,
+        "activeProgress": 0.4508
+      },
+      "after": {
+        "timestamp": 10479.199999988079,
+        "scrollY": 9696,
+        "phase": "activity",
+        "substate": "partner-engagement",
+        "partnerFocus": null,
+        "localProgress": 0.5016,
+        "activeProgress": 0.5016
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000007,
+      "visualDelta": {
+        "maximum": 21.2,
+        "total": 27.798
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 101,
+      "requestedAtMs": 8751.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10479.199999988079,
+        "scrollY": 9696,
+        "phase": "activity",
+        "substate": "partner-engagement",
+        "partnerFocus": null,
+        "localProgress": 0.5016,
+        "activeProgress": 0.5016
+      },
+      "after": {
+        "timestamp": 10552.100000023842,
+        "scrollY": 9792,
+        "phase": "activity",
+        "substate": "partner-engagement",
+        "partnerFocus": null,
+        "localProgress": 0.5524,
+        "activeProgress": 0.5524
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999956,
+      "visualDelta": {
+        "maximum": 21.872,
+        "total": 23.614
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 102,
+      "requestedAtMs": 8824.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10552.100000023842,
+        "scrollY": 9792,
+        "phase": "activity",
+        "substate": "partner-engagement",
+        "partnerFocus": null,
+        "localProgress": 0.5524,
+        "activeProgress": 0.5524
+      },
+      "after": {
+        "timestamp": 10615.800000011921,
+        "scrollY": 9888,
+        "phase": "activity",
+        "substate": "partner-engagement",
+        "partnerFocus": null,
+        "localProgress": 0.6032,
+        "activeProgress": 0.6032
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999956,
+      "visualDelta": {
+        "maximum": 21.888,
+        "total": 22.058
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 103,
+      "requestedAtMs": 8887.900000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10615.800000011921,
+        "scrollY": 9888,
+        "phase": "activity",
+        "substate": "partner-engagement",
+        "partnerFocus": null,
+        "localProgress": 0.6032,
+        "activeProgress": 0.6032
+      },
+      "after": {
+        "timestamp": 10679.199999988079,
+        "scrollY": 9984,
+        "phase": "activity",
+        "substate": "partner-engagement",
+        "partnerFocus": null,
+        "localProgress": 0.654,
+        "activeProgress": 0.654
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000007,
+      "visualDelta": {
+        "maximum": 21.888,
+        "total": 21.894
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 104,
+      "requestedAtMs": 8951.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10679.199999988079,
+        "scrollY": 9984,
+        "phase": "activity",
+        "substate": "partner-engagement",
+        "partnerFocus": null,
+        "localProgress": 0.654,
+        "activeProgress": 0.654
+      },
+      "after": {
+        "timestamp": 10745.399999976158,
+        "scrollY": 10080,
+        "phase": "activity",
+        "substate": "partner-engagement",
+        "partnerFocus": null,
+        "localProgress": 0.7048,
+        "activeProgress": 0.7048
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999956,
+      "visualDelta": {
+        "maximum": 21.872,
+        "total": 22.586
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 105,
+      "requestedAtMs": 9017.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10745.399999976158,
+        "scrollY": 10080,
+        "phase": "activity",
+        "substate": "partner-engagement",
+        "partnerFocus": null,
+        "localProgress": 0.7048,
+        "activeProgress": 0.7048
+      },
+      "after": {
+        "timestamp": 10812.600000023842,
+        "scrollY": 10176,
+        "phase": "activity",
+        "substate": "global-ecosystem",
+        "partnerFocus": null,
+        "localProgress": 0.7556,
+        "activeProgress": 0.7556
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000007,
+      "visualDelta": {
+        "maximum": 19.616,
+        "total": 41.764
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": true
+    },
+    {
+      "step": 106,
+      "requestedAtMs": 9084.700000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10812.600000023842,
+        "scrollY": 10176,
+        "phase": "activity",
+        "substate": "global-ecosystem",
+        "partnerFocus": null,
+        "localProgress": 0.7556,
+        "activeProgress": 0.7556
+      },
+      "after": {
+        "timestamp": 10887.100000023842,
+        "scrollY": 10272,
+        "phase": "activity",
+        "substate": "global-ecosystem",
+        "partnerFocus": null,
+        "localProgress": 0.8063,
+        "activeProgress": 0.8063
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05069999999999997,
+      "visualDelta": {
+        "maximum": 21.888,
+        "total": 22.59
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 107,
+      "requestedAtMs": 9159.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10887.100000023842,
+        "scrollY": 10272,
+        "phase": "activity",
+        "substate": "global-ecosystem",
+        "partnerFocus": null,
+        "localProgress": 0.8063,
+        "activeProgress": 0.8063
+      },
+      "after": {
+        "timestamp": 10943.600000023842,
+        "scrollY": 10368,
+        "phase": "activity",
+        "substate": "global-ecosystem",
+        "partnerFocus": null,
+        "localProgress": 0.8571,
+        "activeProgress": 0.8571
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.050799999999999956,
+      "visualDelta": {
+        "maximum": 21.888,
+        "total": 21.894
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 108,
+      "requestedAtMs": 9215.700000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 10943.600000023842,
+        "scrollY": 10368,
+        "phase": "activity",
+        "substate": "global-ecosystem",
+        "partnerFocus": null,
+        "localProgress": 0.8571,
+        "activeProgress": 0.8571
+      },
+      "after": {
+        "timestamp": 11015.399999976158,
+        "scrollY": 10464,
+        "phase": "activity",
+        "substate": "global-ecosystem",
+        "partnerFocus": null,
+        "localProgress": 0.9079,
+        "activeProgress": 0.9079
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.05080000000000007,
+      "visualDelta": {
+        "maximum": 21.872,
+        "total": 22.05
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 109,
+      "requestedAtMs": 9287.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11015.399999976158,
+        "scrollY": 10464,
+        "phase": "activity",
+        "substate": "global-ecosystem",
+        "partnerFocus": null,
+        "localProgress": 0.9079,
+        "activeProgress": 0.9079
+      },
+      "after": {
+        "timestamp": 11082.600000023842,
+        "scrollY": 10560,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.9079,
+      "visualDelta": {
+        "maximum": 56,
+        "total": 214.03
+      },
+      "visualProgressChanged": true,
+      "phaseChanged": true,
+      "stateChanged": true
+    },
+    {
+      "step": 110,
+      "requestedAtMs": 9354.700000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11082.600000023842,
+        "scrollY": 10560,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0,
+        "activeProgress": 0
+      },
+      "after": {
+        "timestamp": 11142.5,
+        "scrollY": 10656,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.0148,
+        "activeProgress": 0.0148
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.0148,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 111,
+      "requestedAtMs": 9414.600000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11142.5,
+        "scrollY": 10656,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.0148,
+        "activeProgress": 0.0148
+      },
+      "after": {
+        "timestamp": 11208.399999976158,
+        "scrollY": 10752,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.0938,
+        "activeProgress": 0.0938
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07899999999999999,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 112,
+      "requestedAtMs": 9480.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11208.399999976158,
+        "scrollY": 10752,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.0938,
+        "activeProgress": 0.0938
+      },
+      "after": {
+        "timestamp": 11278.100000023842,
+        "scrollY": 10848,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.1728,
+        "activeProgress": 0.1728
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07900000000000001,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 113,
+      "requestedAtMs": 9550.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11278.100000023842,
+        "scrollY": 10848,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.1728,
+        "activeProgress": 0.1728
+      },
+      "after": {
+        "timestamp": 11358.399999976158,
+        "scrollY": 10944,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.2519,
+        "activeProgress": 0.2519
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.0791,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 114,
+      "requestedAtMs": 9630.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11358.399999976158,
+        "scrollY": 10944,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.2519,
+        "activeProgress": 0.2519
+      },
+      "after": {
+        "timestamp": 11443.600000023842,
+        "scrollY": 11040,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.3309,
+        "activeProgress": 0.3309
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07900000000000001,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 115,
+      "requestedAtMs": 9715.700000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11443.600000023842,
+        "scrollY": 11040,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.3309,
+        "activeProgress": 0.3309
+      },
+      "after": {
+        "timestamp": 11508.5,
+        "scrollY": 11136,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.4099,
+        "activeProgress": 0.4099
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07899999999999996,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 116,
+      "requestedAtMs": 9780.600000023842,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11508.5,
+        "scrollY": 11136,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.4099,
+        "activeProgress": 0.4099
+      },
+      "after": {
+        "timestamp": 11591.800000011921,
+        "scrollY": 11232,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.4889,
+        "activeProgress": 0.4889
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07900000000000001,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 117,
+      "requestedAtMs": 9863.900000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11591.800000011921,
+        "scrollY": 11232,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.4889,
+        "activeProgress": 0.4889
+      },
+      "after": {
+        "timestamp": 11658.600000023842,
+        "scrollY": 11328,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.5679,
+        "activeProgress": 0.5679
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07899999999999996,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 118,
+      "requestedAtMs": 9930.700000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11658.600000023842,
+        "scrollY": 11328,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.5679,
+        "activeProgress": 0.5679
+      },
+      "after": {
+        "timestamp": 11724.699999988079,
+        "scrollY": 11424,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.6469,
+        "activeProgress": 0.6469
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07900000000000007,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 119,
+      "requestedAtMs": 9996.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11724.699999988079,
+        "scrollY": 11424,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.6469,
+        "activeProgress": 0.6469
+      },
+      "after": {
+        "timestamp": 11791.699999988079,
+        "scrollY": 11520,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.7259,
+        "activeProgress": 0.7259
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07899999999999996,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 120,
+      "requestedAtMs": 10063.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11791.699999988079,
+        "scrollY": 11520,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.7259,
+        "activeProgress": 0.7259
+      },
+      "after": {
+        "timestamp": 11858.199999988079,
+        "scrollY": 11616,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.8049,
+        "activeProgress": 0.8049
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07899999999999996,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 121,
+      "requestedAtMs": 10130.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11858.199999988079,
+        "scrollY": 11616,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.8049,
+        "activeProgress": 0.8049
+      },
+      "after": {
+        "timestamp": 11925.399999976158,
+        "scrollY": 11712,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.884,
+        "activeProgress": 0.884
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07910000000000006,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 122,
+      "requestedAtMs": 10197.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11925.399999976158,
+        "scrollY": 11712,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.884,
+        "activeProgress": 0.884
+      },
+      "after": {
+        "timestamp": 11992.300000011921,
+        "scrollY": 11808,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.963,
+        "activeProgress": 0.963
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07899999999999996,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 123,
+      "requestedAtMs": 10264.400000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 11992.300000011921,
+        "scrollY": 11808,
+        "phase": "evidence",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.963,
+        "activeProgress": 0.963
+      },
+      "after": {
+        "timestamp": 12062.100000023842,
+        "scrollY": 11904,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.0378,
+        "activeProgress": 0.0378
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.9252,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": true,
+      "stateChanged": false
+    },
+    {
+      "step": 124,
+      "requestedAtMs": 10334.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 12062.100000023842,
+        "scrollY": 11904,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.0378,
+        "activeProgress": 0.0378
+      },
+      "after": {
+        "timestamp": 12134.399999976158,
+        "scrollY": 12000,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.1089,
+        "activeProgress": 0.1089
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.0711,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 125,
+      "requestedAtMs": 10406.5,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 12134.399999976158,
+        "scrollY": 12000,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.1089,
+        "activeProgress": 0.1089
+      },
+      "after": {
+        "timestamp": 12199.800000011921,
+        "scrollY": 12096,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.18,
+        "activeProgress": 0.18
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.0711,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 126,
+      "requestedAtMs": 10471.900000035763,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 12199.800000011921,
+        "scrollY": 12096,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.18,
+        "activeProgress": 0.18
+      },
+      "after": {
+        "timestamp": 12274.600000023842,
+        "scrollY": 12192,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.2511,
+        "activeProgress": 0.2511
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.0711,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 127,
+      "requestedAtMs": 10546.700000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 12274.600000023842,
+        "scrollY": 12192,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.2511,
+        "activeProgress": 0.2511
+      },
+      "after": {
+        "timestamp": 12358.100000023842,
+        "scrollY": 12288,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.3222,
+        "activeProgress": 0.3222
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.0711,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 128,
+      "requestedAtMs": 10630.200000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 12358.100000023842,
+        "scrollY": 12288,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.3222,
+        "activeProgress": 0.3222
+      },
+      "after": {
+        "timestamp": 12424.699999988079,
+        "scrollY": 12384,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.3933,
+        "activeProgress": 0.3933
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.0711,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 129,
+      "requestedAtMs": 10696.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 12424.699999988079,
+        "scrollY": 12384,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.3933,
+        "activeProgress": 0.3933
+      },
+      "after": {
+        "timestamp": 12491.699999988079,
+        "scrollY": 12480,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.4644,
+        "activeProgress": 0.4644
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.0711,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 130,
+      "requestedAtMs": 10763.800000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 12491.699999988079,
+        "scrollY": 12480,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.4644,
+        "activeProgress": 0.4644
+      },
+      "after": {
+        "timestamp": 12558.199999988079,
+        "scrollY": 12576,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.5356,
+        "activeProgress": 0.5356
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07119999999999999,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 131,
+      "requestedAtMs": 10830.300000011921,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 12558.199999988079,
+        "scrollY": 12576,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.5356,
+        "activeProgress": 0.5356
+      },
+      "after": {
+        "timestamp": 12624.600000023842,
+        "scrollY": 12672,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.6067,
+        "activeProgress": 0.6067
+      },
+      "scrollDelta": 96,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.07110000000000005,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    },
+    {
+      "step": 132,
+      "requestedAtMs": 10896.700000047684,
+      "wheelDeltaY": 96,
+      "coalescedWheelInputs": 1,
+      "before": {
+        "timestamp": 12624.600000023842,
+        "scrollY": 12672,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.6067,
+        "activeProgress": 0.6067
+      },
+      "after": {
+        "timestamp": 12691.100000023842,
+        "scrollY": 12735,
+        "phase": "action",
+        "substate": null,
+        "partnerFocus": null,
+        "localProgress": 0.6533,
+        "activeProgress": 0.6533
+      },
+      "scrollDelta": 63,
+      "scrollChanged": true,
+      "activeProgressDelta": 0.046599999999999975,
+      "visualDelta": {
+        "maximum": 0,
+        "total": 0
+      },
+      "visualProgressChanged": false,
+      "phaseChanged": false,
+      "stateChanged": false
+    }
+  ],
+  "finalSnapshot": {
+    "timestamp": 14481.5,
+    "scrollY": 12735,
+    "maximumScrollY": 12735,
+    "phase": "action",
+    "localProgress": 0.6533,
+    "activeProgress": 0.6533,
+    "substate": null,
+    "partnerFocus": null,
+    "visualVector": [
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "renderMode": "webgl-enhanced"
+  },
+  "performance": {
+    "journeyDurationMs": 13535,
+    "frames": {
+      "samples": 616,
+      "p50Ms": 16.7,
+      "p95Ms": 50,
+      "p99Ms": 83.3,
+      "over33_3Ms": 117,
+      "over50Ms": 26,
+      "maxMs": 216.7
+    },
+    "longTasks": {
+      "supported": true,
+      "count": 5,
+      "totalDurationMs": 568,
+      "maxDurationMs": 221,
+      "entries": [
+        {
+          "startTime": 52.19999998807907,
+          "duration": 116
+        },
+        {
+          "startTime": 761.3999999761581,
+          "duration": 99
+        },
+        {
+          "startTime": 5924.600000023842,
+          "duration": 221
+        },
+        {
+          "startTime": 7741.399999976158,
+          "duration": 81
+        },
+        {
+          "startTime": 9141.5,
+          "duration": 51
+        }
+      ]
+    }
+  },
+  "response": {
+    "targetInputSamples": 94,
+    "visuallyResponsiveSamples": 74,
+    "visuallyResponsiveRate": 0.7872,
+    "deadVisualSamples": 19,
+    "deadVisualRate": 0.2021,
+    "byPhase": {
+      "access": {
+        "inputSamples": 24,
+        "scrollResponsiveSamples": 24,
+        "visuallyResponsiveSamples": 24,
+        "deadVisualSamples": 0,
+        "deadVisualRate": 0,
+        "observedSubstates": [
+          "opening",
+          "strategic",
+          "founding"
+        ]
+      },
+      "startup": {
+        "inputSamples": 24,
+        "scrollResponsiveSamples": 24,
+        "visuallyResponsiveSamples": 22,
+        "deadVisualSamples": 2,
+        "deadVisualRate": 0.0833,
+        "observedSubstates": [
+          "outside",
+          "threshold",
+          "field"
+        ]
+      },
+      "method": {
+        "inputSamples": 25,
+        "scrollResponsiveSamples": 25,
+        "visuallyResponsiveSamples": 9,
+        "deadVisualSamples": 15,
+        "deadVisualRate": 0.6,
+        "observedSubstates": [
+          "find",
+          "test",
+          "prove"
+        ]
+      },
+      "activity": {
+        "inputSamples": 21,
+        "scrollResponsiveSamples": 21,
+        "visuallyResponsiveSamples": 19,
+        "deadVisualSamples": 2,
+        "deadVisualRate": 0.0952,
+        "observedSubstates": [
+          "field-testing",
+          "programs",
+          "partner-engagement",
+          "global-ecosystem"
+        ]
+      }
+    }
+  }
+}
